@@ -245,10 +245,10 @@ export function RideMotion({ children }: { children: ReactNode }) {
       schedule();
     };
 
-    // Reduced motion, or a screen too short to hold text and landscape
-    // together (a phone on its side, a laptop at 200 % zoom), gets the still
-    // panels, and nothing there moves.
-    const still = () => motion.matches || window.innerHeight < 520;
+    // Phones, reduced motion, and short screens (including a laptop at
+    // 200 % zoom) get still panels with the drawing beside its explanation.
+    const still = () =>
+      motion.matches || window.innerWidth <= 760 || window.innerHeight < 520;
     const drawn = [
       ...words.map(({ el }) => el as SVGElement),
       ...(alts ? [alts] : []),

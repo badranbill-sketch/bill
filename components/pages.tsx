@@ -12,7 +12,7 @@ import { Inquiry } from "./inquiry";
 import { Fees } from "./fees";
 import { Resources } from "./resources";
 import { Ride } from "./journey/ride";
-import { Features } from "./features";
+import { Features, Conversation } from "./features";
 import { Reveal } from "./reveal";
 import { DESK } from "./ink/desk";
 import { InkFile } from "./ink/file";
@@ -86,10 +86,8 @@ function Invitation({ lang }: { lang: Language }) {
 }
 
 /**
- * The homepage, as a sequence of pages from Bill's notebook. The hero
- * drawing and the mountain ride carry the only motion; everything after the
- * ride (the journey and guide cards, the Ask Bill videos, the invitation) is
- * still, apart from drawings appearing once.
+ * One reading and focus order on every screen: introduction, guide and
+ * questions, Bill, the journey, then a first conversation.
  */
 export function Home({ lang, review }: { lang: Language; review: boolean }) {
   const c = t(lang);
@@ -106,14 +104,26 @@ export function Home({ lang, review }: { lang: Language; review: boolean }) {
             <p className="lede">{c.intro}</p>
             <div className="hero-actions">
               <MeetingLink lang={lang} />
-              <Link
-                className="text-link"
-                href={`${pathFor(lang, "meeting")}#deroulement`}
-              >
-                {c.how}
+              <Link className="text-link" href="#guide">
+                {lang === "fr"
+                  ? "Commencer par le guide"
+                  : "Start with the guide"}
               </Link>
             </div>
-            <p className="hero-who">{c.portrait}</p>
+            <div className="hero-person">
+              <Portrait lang={lang} sizes="48px" />
+              <p>
+                <strong>Bill Badran</strong>
+                <span>
+                  {lang === "fr"
+                    ? "Planificateur financier · Laval"
+                    : "Financial planner · Laval"}
+                </span>
+              </p>
+            </div>
+          </div>
+          <div className="hero-mobile-art">
+            <InkFile name="hiker" lang={lang} priority />
           </div>
           <figure className="hero-art">
             <InkFile name="desk" lang={lang} priority />
@@ -139,121 +149,65 @@ export function Home({ lang, review }: { lang: Language; review: boolean }) {
           </figure>
         </div>
       </section>
-      <Ride lang={lang} />
-      <Features lang={lang} />
-      <section className="open-door">
-        <div className="wrap">
-          <p>{c.openDoor}</p>
-        </div>
-      </section>
-      <section className="section ivory" id="questions">
-        <div className="wrap spread">
-          <div className="spread-aside">
-            <p className="eyebrow">{c.questionsLabel}</p>
-            <h2>{c.questionsTitle}</h2>
-            <p className="hand">{c.questionsNote}</p>
-            <Reveal>
-              <InkFile name="lighthouse" lang={lang} />
-            </Reveal>
-          </div>
-          <ol className="qa-list">
-            {c.questions.map(([question, answer, anchor], i) => (
-              <li key={anchor}>
-                <Link
-                  className="qa"
-                  href={`${pathFor(lang, "retirement")}#${anchor}`}
-                >
-                  <span className="number" aria-hidden="true">
-                    {i + 1}.
-                  </span>
-                  <h3>{question}</h3>
-                  <p>{answer}</p>
-                  <span className="arrow" aria-hidden="true">
-                    →
-                  </span>
-                </Link>
-              </li>
-            ))}
-          </ol>
-        </div>
-      </section>
-      <div className="band">
-        <Reveal>
-          <InkFile name="dock" lang={lang} />
-        </Reveal>
-      </div>
-      <section className="section philosophy">
-        <div className="wrap">
-          <div>
-            <p className="eyebrow">{c.philosophyLabel}</p>
-            <Reveal>
-              <InkFile name="letter" lang={lang} />
-            </Reveal>
-          </div>
-          <div>
-            <h2>
-              {c.philosophy} <em>{c.philosophyAccent}</em>
-            </h2>
-            <p className="body">{c.philosophyBody}</p>
-            <Link className="text-link" href={pathFor(lang, "about")}>
-              {c.meetBill}
-            </Link>
-            <p className="credibility">
-              <strong>{c.experience}</strong>
-              <span>{c.experienceSub}</span>
-            </p>
-          </div>
-        </div>
-      </section>
-      <section className="section ivory" id="rencontre">
-        <div className="wrap meet">
-          <Reveal>
-            <InkFile name="two-chairs" lang={lang} />
-          </Reveal>
-          <div>
-            <p className="eyebrow">{c.processLabel}</p>
-            <h2>{c.processTitle}</h2>
-            <p className="intro">{c.processIntro}</p>
-            <ol className="steps">
-              {c.steps.map(([title, body], i) => (
-                <li key={title}>
-                  <span className="number" aria-hidden="true">
-                    {i + 1}.
-                  </span>
-                  <div>
-                    <h3>{title}</h3>
-                    <p>{body}</p>
-                  </div>
-                </li>
-              ))}
-            </ol>
-            <div className="meet-actions">
-              <MeetingLink lang={lang} />
-              <Link className="text-link" href={pathFor(lang, "meeting")}>
-                {c.howLink}
+      <div className="home-flow">
+        <Features lang={lang} review={review} />
+        <section className="section philosophy" id="about-bill">
+          <div className="wrap">
+            <div>
+              <p className="eyebrow">{c.philosophyLabel}</p>
+              <Reveal>
+                <InkFile name="letter" lang={lang} />
+              </Reveal>
+            </div>
+            <div>
+              <h2>
+                {c.philosophy} <em>{c.philosophyAccent}</em>
+              </h2>
+              <p className="body">{c.philosophyBody}</p>
+              <Link className="text-link" href={pathFor(lang, "about")}>
+                {c.meetBill}
               </Link>
+              <p className="credibility">
+                <strong>{c.experience}</strong>
+                <span>{c.experienceSub}</span>
+              </p>
             </div>
           </div>
-        </div>
-      </section>
-      <section className="section">
-        <div className="wrap guide-teaser">
-          <div>
-            <p className="eyebrow">{c.resourcesLabel}</p>
-            <h2>{c.resourcesTitle}</h2>
+        </section>
+        <Ride lang={lang} />
+        <section className="section ivory" id="rencontre">
+          <div className="wrap meet">
             <Reveal>
-              <InkFile name="questions-notebook" lang={lang} />
+              <InkFile name="two-chairs" lang={lang} />
             </Reveal>
+            <div>
+              <p className="eyebrow">{c.processLabel}</p>
+              <h2>{c.processTitle}</h2>
+              <p className="intro">{c.processIntro}</p>
+              <ol className="steps">
+                {c.steps.map(([title, body], i) => (
+                  <li key={title}>
+                    <span className="number" aria-hidden="true">
+                      {i + 1}.
+                    </span>
+                    <div>
+                      <h3>{title}</h3>
+                      <p>{body}</p>
+                    </div>
+                  </li>
+                ))}
+              </ol>
+              <div className="meet-actions">
+                <MeetingLink lang={lang} />
+                <Link className="text-link" href={pathFor(lang, "meeting")}>
+                  {c.howLink}
+                </Link>
+              </div>
+            </div>
           </div>
-          <div>
-            <Resources lang={lang} review={review} list />
-            <Link className="text-link" href={pathFor(lang, "resources")}>
-              {c.resourcesLink} →
-            </Link>
-          </div>
-        </div>
-      </section>
-      <Contact lang={lang} />
+        </section>
+        <Conversation lang={lang} />
+      </div>
     </>
   );
 }
