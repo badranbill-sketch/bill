@@ -18,7 +18,7 @@ The supplied `https://calendly.com/bbadran` was inspected read-only on 2026-09-2
 
 ## Guide, newsletter, testimonials
 
-Both referenced PDFs are missing. `business.guides` defaults to null. Add the actual verified-language file under public, record the approved local path and enable only after review; the launch check rejects a configured but missing guide. Downloads are ungated. No message claims a file was emailed or saved.
+The guide « Avant la retraite » / "Before You Retire" is read on the site; no PDF exists yet. `business.guide.pdf.fr/en` default to null and `business.guide.printedCopies` to false. Add the verified file for each language under public, record its path with `approved: true` only after review, and set `printedCopies` only once printed copies exist; the launch check rejects a configured but missing PDF. Downloads are ungated. No message claims a file was emailed or saved.
 
 Newsletter and testimonials default off/empty. No newsletter adapter is included because provider, unsubscribe flow and consent text are absent. Do not enable that flag: the launch check intentionally blocks it. Testimonials require authentic, approved text and publication permission; none have been invented.
 

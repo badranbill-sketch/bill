@@ -35,15 +35,16 @@ export const pages: Record<
       sections: [
         {
           id: "ce-qui-change",
-          heading: "Qu’est-ce qui change financièrement à la retraite?",
+          heading: "Qu’est-ce qui change financièrement à la retraite\u00a0?",
           paragraphs: [
             "Pendant votre carrière, le système est simple\u00a0: gagner, épargner, investir, recommencer. À la retraite, il s’inverse. L’épargne devient un revenu, et chaque retrait touche vos impôts, vos prestations gouvernementales et la durée de votre argent.",
-            "C’est pourquoi la stratégie qui a bâti votre épargne n’est pas forcément celle qui doit vous verser un revenu. Les années avant la retraite sont le moment de la revoir, pendant que toutes les options sont ouvertes.",
+            "C’est pourquoi la stratégie qui a bâti votre épargne n’est pas forcément celle qui doit vous verser un revenu. Les années avant la retraite sont le moment de la revoir, pendant que presque toutes les options sont encore ouvertes.",
           ],
         },
         {
           id: "moyens-retraite",
-          heading: "Comment savoir si j’ai les moyens de prendre ma retraite?",
+          heading:
+            "Comment savoir si j’ai les moyens de prendre ma retraite\u00a0?",
           art: "travel",
           paragraphs: [
             "Commencez par les dépenses, pas par l’épargne. Estimez ce que vous dépenserez vraiment chaque année (l’essentiel, les projets, les imprévus), puis placez chaque source de revenu en face.",
@@ -52,7 +53,7 @@ export const pages: Record<
         },
         {
           id: "sources-revenu",
-          heading: "D’où viendra mon revenu de retraite?",
+          heading: "D’où viendra mon revenu de retraite\u00a0?",
           paragraphs: [
             "La plupart des gens puisent à plusieurs sources, chacune avec ses règles\u00a0:",
           ],
@@ -67,7 +68,7 @@ export const pages: Record<
         },
         {
           id: "ordre",
-          heading: "Dans quel ordre utiliser ces sources?",
+          heading: "Dans quel ordre utiliser ces sources\u00a0?",
           art: "bridge",
           note: "Des décisions qui se répondent.",
           paragraphs: [
@@ -76,7 +77,7 @@ export const pages: Record<
         },
         {
           id: "rrq-psv",
-          heading: "À quel âge demander vos rentes du gouvernement?",
+          heading: "À quel âge demander vos rentes du gouvernement\u00a0?",
           paragraphs: [
             "Vous pouvez commencer la rente du RRQ entre 60 et 72 ans, celle du RPC entre 60 et 70 ans, et la PSV entre 65 et 70 ans. Commencer plus tard donne un paiement plus élevé, à vie. Commencer plus tôt donne plus d’années de paiements.",
             "Le bon âge dépend de votre santé, de vos autres revenus, de votre conjoint et de vos impôts. C’est une décision à prendre avec le plan complet sous les yeux.",
@@ -84,7 +85,7 @@ export const pages: Record<
         },
         {
           id: "impots",
-          heading: "Combien d’impôt vais-je payer à la retraite?",
+          heading: "Combien d’impôt vais-je payer à la retraite\u00a0?",
           paragraphs: [
             "Cela dépend moins de ce que vous avez que de la façon dont vous le retirez. L’ordre des retraits, les minimums du FERR, le fractionnement du revenu de pension avec un conjoint et l’impôt de récupération de la PSV peuvent changer votre facture fiscale pendant des décennies.",
             "Planifier, c’est faire ces choix volontairement, pas par défaut. Certaines situations demandent aussi votre comptable.",
@@ -93,7 +94,7 @@ export const pages: Record<
         {
           id: "baisse-marches",
           heading:
-            "Et si les marchés baissent au moment où je prends ma retraite?",
+            "Et si les marchés baissent au moment où je prends ma retraite\u00a0?",
           paragraphs: [
             "Une baisse durant les premières années de retraite fait plus de dommages que la même baisse à 40 ans, parce que vous retirez de l’argent pendant que les prix sont bas. C’est ce qu’on appelle le risque de séquence des rendements.",
             "S’y préparer, c’est décider à l’avance d’où viendra le revenu des prochaines années, pour qu’une mauvaise année risque moins de forcer une mauvaise vente.",
@@ -101,16 +102,16 @@ export const pages: Record<
         },
         {
           id: "famille",
-          heading: "Qu’arrive-t-il à mon conjoint et à ma famille?",
+          heading: "Qu’arrive-t-il à mon conjoint et à ma famille\u00a0?",
           art: "house",
           paragraphs: [
-            "Planifier la retraite, c’est souvent planifier à deux. Que devient le revenu si l’un de vous décède en premier? Votre testament, votre mandat de protection et vos bénéficiaires sont-ils à jour? L’assurance vie est-elle encore nécessaire?",
+            "Planifier la retraite, c’est souvent planifier à deux. Que devient le revenu si l’un de vous décède en premier\u00a0? Votre testament, votre mandat de protection et vos bénéficiaires sont-ils à jour\u00a0? L’assurance vie est-elle encore nécessaire\u00a0?",
             "Ces questions font partie du même plan que vos placements. Les documents juridiques se préparent avec votre notaire.",
           ],
         },
         {
           id: "cinq-ans",
-          heading: "Que faire cinq ans avant la retraite?",
+          heading: "Que faire cinq ans avant la retraite\u00a0?",
           paragraphs: ["Une liste concrète\u00a0:"],
           items: [
             "Estimer honnêtement vos dépenses de retraite.",
@@ -124,7 +125,8 @@ export const pages: Record<
         },
         {
           id: "planificateur",
-          heading: "Que fait un planificateur financier avant la retraite?",
+          heading:
+            "Que fait un planificateur financier avant la retraite\u00a0?",
           paragraphs: [
             "Bill regarde tout ensemble\u00a0: revenu, placements, impôts, assurances, succession et vos objectifs. Il établit où vous en êtes, met à l’épreuve les décisions devant vous et garde le plan à jour quand la vie change.",
             "Tout commence par une conversation. Ce que Bill fera pour vous, et la façon dont il est rémunéré, vous sont expliqués avant tout engagement. Un avis juridique ou fiscal propre à votre situation peut nécessiter d’autres professionnels.",
@@ -148,7 +150,7 @@ export const pages: Record<
         },
         {
           id: "risque",
-          heading: "Quel risque prendre à l’approche de la retraite?",
+          heading: "Quel risque prendre à l’approche de la retraite\u00a0?",
           paragraphs: [
             "Moins n’est pas automatiquement mieux. Trop de risque fait mal si les marchés baissent au moment où les retraits commencent. Trop peu peut laisser votre épargne derrière l’inflation pendant une longue retraite.",
             "La réponse vient de vos besoins de revenu et de votre horizon, pas d’une règle basée sur l’âge.",
@@ -156,14 +158,14 @@ export const pages: Record<
         },
         {
           id: "diversification",
-          heading: "Mes placements sont-ils vraiment diversifiés?",
+          heading: "Mes placements sont-ils vraiment diversifiés\u00a0?",
           paragraphs: [
             "Plusieurs comptes dans plusieurs institutions, ce n’est pas la même chose que la diversification. Ce qui compte\u00a0: ce qu’ils contiennent, où ils se recoupent et à quoi chacun sert.",
           ],
         },
         {
           id: "frais",
-          heading: "Que paie-t-on, et pour quoi?",
+          heading: "Que paie-t-on, et pour quoi\u00a0?",
           note: "Plus de clarté, moins de bruit.",
           paragraphs: [
             "Demandez quels frais s’appliquent, comment ils sont calculés, qui les reçoit et ce qu’ils couvrent. Sur 25 ans de retraite, un écart qui semble petit s’accumule.",
@@ -238,7 +240,7 @@ export const pages: Record<
       sections: [
         {
           id: "deroulement",
-          heading: "Comment se passe la première rencontre?",
+          heading: "Comment se passe la première rencontre\u00a0?",
           paragraphs: [
             "Bill écoute d’abord. Il pose des questions, répond aux vôtres et vous dit ce qui lui semble le plus important. Ensuite, vous décidez tous les deux si travailler ensemble a du sens.",
             "Le format, la durée et les coûts éventuels sont confirmés au moment de prendre rendez-vous.",
@@ -246,7 +248,7 @@ export const pages: Record<
         },
         {
           id: "apporter",
-          heading: "Que dois-je apporter?",
+          heading: "Que dois-je apporter\u00a0?",
           paragraphs: [
             "Rien n’est obligatoire. Si vous les avez, ces documents aident\u00a0:",
           ],
@@ -259,7 +261,7 @@ export const pages: Record<
         },
         {
           id: "suite",
-          heading: "Que se passe-t-il si nous travaillons ensemble?",
+          heading: "Que se passe-t-il si nous travaillons ensemble\u00a0?",
           paragraphs: [
             "Ce que Bill fera pour vous, et la façon dont il est rémunéré, vous sont expliqués avant tout engagement. Vient ensuite le plan\u00a0: où vous en êtes, les décisions à venir, quelques scénarios et les prochaines étapes, puis des révisions quand les marchés ou votre vie changent.",
           ],
@@ -288,7 +290,7 @@ export const pages: Record<
           heading: "Demandes de contact",
           paragraphs: [
             "Le formulaire, lorsqu’il est configuré, demande un nom, un courriel, un sujet et un message afin de permettre une réponse. Il n’inscrit pas automatiquement à une liste de diffusion. Sans configuration du service d’envoi et de protection contre les abus, le formulaire est indisponible.",
-            "Le connecteur prévu transmet la demande à Resend pour l’envoi vers la boîte de réception de la pratique. Un identifiant dérivé de l’adresse IP est conservé dans Upstash pendant dix minutes pour limiter les tentatives; le corps du message n’y est pas enregistré. Le site n’enregistre pas les messages dans une base de données locale.",
+            "Le connecteur prévu transmet la demande à Resend pour l’envoi vers la boîte de réception de la pratique. Un identifiant dérivé de l’adresse IP est conservé dans Upstash pendant dix minutes pour limiter les tentatives\u00a0; le corps du message n’y est pas enregistré. Le site n’enregistre pas les messages dans une base de données locale.",
           ],
         },
         {
@@ -321,7 +323,7 @@ export const pages: Record<
         {
           heading: "Illustrations et articles",
           paragraphs: [
-            "L’outil sur les frais utilise des hypothèses constantes et simplifiées. Il ne présente ni les frais réels de Bill, ni un rendement attendu, ni une garantie. Les articles désignés comme brouillons sont accessibles seulement dans l’espace local ou protégé de révision; ils ne sont pas des publications approuvées par Bill.",
+            "L’outil sur les frais utilise des hypothèses constantes et simplifiées. Il ne présente ni les frais réels de Bill, ni un rendement attendu, ni une garantie. Les articles désignés comme brouillons sont accessibles seulement dans l’espace local ou protégé de révision\u00a0; ils ne sont pas des publications approuvées par Bill.",
           ],
         },
         {
@@ -352,7 +354,7 @@ export const pages: Record<
           heading: "What changes financially when you retire?",
           paragraphs: [
             "While you work, the system is simple: earn, save, invest, repeat. In retirement it runs the other way. Savings become income, and every withdrawal touches your taxes, your government benefits and how long the money lasts.",
-            "That’s why the strategy that built your savings isn’t automatically the one that should pay you. The years before retirement are when to redesign it, while every option is still open.",
+            "That’s why the strategy that built your savings isn’t automatically the one that should pay you. The years before retirement are when to redesign it, while nearly every option is still open.",
           ],
         },
         {
@@ -417,7 +419,7 @@ export const pages: Record<
           heading: "What happens to my spouse and family?",
           art: "house",
           paragraphs: [
-            "Retirement planning is often couples planning. What happens to income if one of you dies first? Are your will, your protection mandate and your beneficiaries up to date? Is life insurance still needed?",
+            "Planning a retirement often means planning for two. What happens to income if one of you dies first? Are your will, your protection mandate and your beneficiaries up to date? Is life insurance still needed?",
             "These questions belong in the same plan as your investments. Legal documents are prepared with your notary.",
           ],
         },
@@ -652,21 +654,30 @@ export const pages: Record<
   },
 };
 
-/** The retirement guide page (route key `resources`). */
+/**
+ * The guide page (route key `resources`): « Avant la retraite » /
+ * "Before You Retire", read on the site. Its chapters come from lib/ask.ts.
+ */
 export const guide = {
   fr: {
-    title: "Guide retraite\u00a0: des réponses claires avant la retraite.",
-    seoTitle: "Guide retraite\u00a0: les questions à régler avant la retraite",
+    title: "Avant la retraite, un petit guide de Bill Badran.",
+    seoTitle: "Avant la retraite\u00a0: les questions qui méritent une réponse",
     description:
-      "Des réponses en langage clair, un bilan en cinq questions et des outils pour les années avant la retraite.",
+      "Les questions qui méritent une réponse avant votre dernière journée de travail, en cinq chapitres et en langage clair. Avec un bilan en cinq questions.",
+    contentsTitle: "Ce que contient le guide",
+    contentsIntro:
+      "Cinq chapitres, dans l’ordre où les questions se posent d’habitude. Allez droit à celle qui vous occupe, et notez celles qui vous concernent\u00a0: c’est un bon point de départ pour en parler avec Bill.",
     read: "Articles et outils",
     sources: "Sources officielles",
   },
   en: {
-    title: "Retirement guide: straight answers before you retire.",
-    seoTitle: "Retirement guide: questions to answer before you retire",
+    title: "Before You Retire, a small guide by Bill Badran.",
+    seoTitle: "Before You Retire: the questions worth answering",
     description:
-      "Plain-language answers, a five-question check-up and tools for the years before retirement.",
+      "The questions worth answering before your last day at work, in five short chapters and plain language. With a five-question check-up.",
+    contentsTitle: "What’s inside",
+    contentsIntro:
+      "Five chapters, in the order the questions usually come up. Go straight to the one on your mind, and mark the ones that sound like yours: they’re a good place to start with Bill.",
     read: "Articles and tools",
     sources: "Official sources",
   },

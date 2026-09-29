@@ -22,16 +22,25 @@ export function Navigation({
     opener.current?.focus();
   };
   const links = (
-    ["retirement", "investments", "meeting", "about", "resources"] as PageKey[]
-  ).map((key, i) => (
+    [
+      ["retirement", c.nav.retirement],
+      ["investments", c.nav.investments],
+      ["ask", c.nav.ask],
+      ["about", c.nav.about],
+      ["resources", c.nav.guide],
+    ] as [PageKey, string][]
+  ).map(([key, label]) => (
     <Link
       key={key}
       href={pathFor(lang, key)}
+      // Where the header runs short of room, this one steps back first
+      // (it is still in the footer and linked from the retirement page).
+      className={key === "investments" ? "nav-optional" : undefined}
       onClick={() => {
         if (open) close();
       }}
     >
-      {c.nav[i]}
+      {label}
     </Link>
   ));
   return (

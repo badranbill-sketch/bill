@@ -49,6 +49,8 @@ for (const width of [1440, 390]) {
 for (const [name, route, width] of [
   ["retirement-desktop", "/fr/planification-retraite", 1440],
   ["guide-desktop", "/en/retirement-guide", 1440],
+  ["ask-desktop", "/fr/demandez-a-bill", 1440],
+  ["ask-mobile", "/en/ask-bill", 390],
   ["about-desktop", "/en/about", 1440],
   ["article-desktop", "/fr/revision/cinq-ans-avant-la-retraite", 1440],
   ["fees-mobile", "/en/tools/investment-fees", 390],

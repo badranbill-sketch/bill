@@ -35,9 +35,18 @@ export const business = {
     legalNotices: false,
     contactOperations: false,
   },
-  guides: {
-    fr: null as null | { path: string; approved: boolean },
-    en: null as null | { path: string; approved: boolean },
+  /**
+   * The small printed guide, « Avant la retraite » / "Before You Retire".
+   * Its chapters are the Ask Bill questions (lib/ask.ts), so it can always
+   * be read on the site. A PDF appears only once the file is in public/ and
+   * approved; the offer of a printed copy only once copies exist.
+   */
+  guide: {
+    pdf: {
+      fr: null as null | { path: string; approved: boolean },
+      en: null as null | { path: string; approved: boolean },
+    },
+    printedCopies: false,
   },
   testimonials: [] as { quote: string; name: string; approved: boolean }[],
   newsletterEnabled: false,

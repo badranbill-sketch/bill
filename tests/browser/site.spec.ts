@@ -1,6 +1,8 @@
 import { test, expect } from "@playwright/test";
 import AxeBuilder from "@axe-core/playwright";
 import { routes, pathFor, type PageKey } from "../../lib/routes";
+import { askFeatured, askGroups } from "../../lib/ask";
+import { copy } from "../../lib/copy";
 import fs from "node:fs";
 const screenshotDir = process.env.SCREENSHOT_DIR || "test-results/screenshots";
 for (const lang of ["fr", "en"] as const) {
@@ -18,12 +20,15 @@ for (const lang of ["fr", "en"] as const) {
       await page.evaluate(() => document.fonts.ready);
       await expect(page.locator("h1")).toBeVisible();
       await expect(page.locator("html")).toHaveAttribute("lang", `${lang}-CA`);
-      await expect(page.locator(".hero img")).toBeVisible();
+      // Bill's portrait is the anchor of the first screen.
+      const portrait = page.locator(".hero-print img");
+      await expect(portrait).toBeVisible();
       expect(
-        await page
-          .locator(".hero img")
-          .evaluate((img: HTMLImageElement) => img.naturalWidth),
+        await portrait.evaluate((img: HTMLImageElement) => img.naturalWidth),
       ).toBeGreaterThan(0);
+      expect(
+        await portrait.evaluate((el) => el.getBoundingClientRect().top),
+      ).toBeLessThan(viewport.height);
       expect(
         await page
           .locator(".hero .button")
@@ -544,4 +549,99 @@ test("narration: one English track that plays through the acts; none in French",
   await expect(sound).toHaveText("Listen");
   await expect.poll(async () => (await audio()).paused).toBe(true);
   expect(errors).toEqual([]);
+});
+
+for (const lang of ["fr", "en"] as const)
+  test(`${lang} Ask Bill: homepage questions open their answers`, async ({
+    page,
+  }) => {
+    await page.goto(pathFor(lang, "home"));
+    const cards = page.locator(".qa");
+    await expect(cards).toHaveCount(askFeatured(lang).length);
+    const hrefs = await cards.evaluateAll((a) =>
+      a.map((x) => x.getAttribute("href")!),
+    );
+    expect(hrefs).toEqual(askFeatured(lang).map((q) => q.href));
+    await cards.first().click();
+    await expect(page).toHaveURL(new RegExp(`${pathFor(lang, "ask")}#`));
+    const all = askGroups(lang).flatMap((g) => g.questions);
+    await expect(page.locator(".ask-item")).toHaveCount(all.length);
+    for (const q of all) {
+      await expect(page.locator(`[id="${q.anchor}"] h3`)).toHaveText(
+        q.question,
+      );
+      await expect(
+        page.locator(`[id="${q.anchor}"] a[href="${q.more}"]`),
+      ).toHaveCount(1);
+    }
+    // A visitor's own question goes to Bill by email, with a warning.
+    const mail = page.locator('a[href^="mailto:"][href*="subject="]').first();
+    await expect(mail).toHaveAttribute(
+      "href",
+      new RegExp(encodeURIComponent(copy[lang].ask.mailSubject)),
+    );
+    await expect(
+      page.getByText(copy[lang].ask.noAccounts).first(),
+    ).toBeVisible();
+    const scan = await new AxeBuilder({ page })
+      .withTags(["wcag2a", "wcag2aa", "wcag21aa", "wcag22aa"])
+      .analyze();
+    expect(scan.violations).toEqual([]);
+  });
+
+test("guide: booklet, chapters, and no download or printed copy until they exist", async ({
+  page,
+}) => {
+  await page.goto(pathFor("en", "resources"));
+  const b = copy.en.booklet;
+  await expect(page.locator('.page-hero .booklet[role="img"]')).toHaveAttribute(
+    "aria-label",
+    `${b.coverTitle}. ${b.coverSubtitle} ${b.coverAuthor}`,
+  );
+  await expect(page.locator(".chapters > li")).toHaveCount(
+    askGroups("en").length,
+  );
+  await expect(page.locator("a[download]")).toHaveCount(0);
+  await expect(page.getByText(b.requestCopy)).toHaveCount(0);
+  const scan = await new AxeBuilder({ page })
+    .withTags(["wcag2a", "wcag2aa", "wcag21aa", "wcag22aa"])
+    .analyze();
+  expect(scan.violations).toEqual([]);
+  await page.goto(pathFor("en", "home"));
+  // Nothing to bring yet: the line asks for the visitor's questions instead.
+  await expect(page.locator("#guide .bring-it")).toContainText(
+    b.bringQuestions,
+  );
+  await expect(page.locator("#guide .bring-it")).not.toContainText(b.bringIt);
+  await expect(page.locator("#guide .booklet-contents li")).toHaveCount(
+    askGroups("en").length,
+  );
+  await page.locator("#guide").getByRole("link", { name: b.read }).click();
+  await expect(page).toHaveURL(new RegExp(pathFor("en", "resources")));
+});
+
+test("the way to a first meeting stays in the header down to the phone menu", async ({
+  page,
+}) => {
+  for (const [width, visible] of [
+    [1440, true],
+    [1100, true],
+    [920, true],
+    [768, false],
+    [390, false],
+  ] as const) {
+    await page.setViewportSize({ width, height: 800 });
+    await page.goto(pathFor("fr", "home"));
+    const cta = page.locator(".header-cta");
+    if (visible) await expect(cta, `${width}`).toBeVisible();
+    else {
+      await expect(cta, `${width}`).toBeHidden();
+      await expect(page.locator(".menu-button")).toBeVisible();
+    }
+    expect(
+      await page.evaluate(
+        () => document.documentElement.scrollWidth <= innerWidth,
+      ),
+    ).toBe(true);
+  }
 });

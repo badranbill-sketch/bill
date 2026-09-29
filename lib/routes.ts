@@ -6,6 +6,7 @@ export const routes = {
   about: { fr: "a-propos", en: "about" },
   resources: { fr: "guide-retraite", en: "retirement-guide" },
   meeting: { fr: "demarche", en: "how-it-works" },
+  ask: { fr: "demandez-a-bill", en: "ask-bill" },
   fees: { fr: "outils/frais-placement", en: "tools/investment-fees" },
   privacy: { fr: "confidentialite", en: "privacy" },
   legal: { fr: "mentions-legales", en: "legal" },

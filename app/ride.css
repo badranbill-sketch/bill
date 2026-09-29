@@ -1,7 +1,9 @@
 /* The four-act mountain ride (components/journey). */
 /* ---------- the mountain ride ---------- */
 .ride {
-  --act-h: 175vh;
+  /* Each act is about two thirds of a screen of scrolling: the ride is a
+     short epilogue after the first meeting, not the page. */
+  --act-h: 65vh;
   --sky: var(--paper, #faf9f5);
   position: relative;
   background: var(--sky);
@@ -447,7 +449,7 @@
 }
 @media (max-width: 760px) {
   .ride {
-    --act-h: 160svh;
+    --act-h: 65svh;
   }
   .ride[data-mode="live"] {
     height: calc(4 * var(--act-h) + 100svh);

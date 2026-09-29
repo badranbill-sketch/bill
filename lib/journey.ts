@@ -12,7 +12,6 @@ export const journey: Record<
   Language,
   {
     label: string;
-    cta: string;
     listen: string;
     pause: string;
     scrollHint: string;
@@ -25,7 +24,6 @@ export const journey: Record<
 > = {
   fr: {
     label: "Le chemin vers la retraite",
-    cta: "Planifier une première rencontre",
     listen: "Écouter",
     pause: "Pause",
     scrollHint: "Faites défiler pour commencer",
@@ -43,7 +41,7 @@ export const journey: Record<
       {
         eyebrow: "La dernière montée",
         title: "Avant la retraite,\nla pente devient raide.",
-        body: "Une baisse des marchés au moment où les retraits commencent fait plus de dommages que la même baisse à 40 ans. Le plan doit tenir aussi les mauvaises années.",
+        body: "Une baisse des marchés au moment où les retraits commencent fait plus de dégâts que la même baisse à 40\u00a0ans. Le plan doit aussi tenir le coup dans les mauvaises années.",
         rail: "La dernière montée",
       },
       {
@@ -56,14 +54,13 @@ export const journey: Record<
       {
         eyebrow: "La vie devant vous",
         title: "Le but n’est pas d’arriver à la retraite.\nC’est d’y vivre.",
-        body: "Savoir ce que vous pouvez dépenser, d’où vient l’argent et ce qui se passe si la vie change.",
+        body: "Savoir ce que vous pouvez dépenser et d’où vient l’argent. Le chemin reste le vôtre\u00a0; avec quelqu’un qui le connaît, on voit mieux où poser le pied.",
         rail: "La vie devant vous",
       },
     ],
   },
   en: {
     label: "The road to retirement",
-    cta: "Plan a first meeting",
     listen: "Listen",
     pause: "Pause",
     scrollHint: "Scroll to begin",
@@ -93,7 +90,7 @@ export const journey: Record<
       {
         eyebrow: "The life ahead",
         title: "The goal isn’t to reach retirement.\nIt’s to live it.",
-        body: "Knowing what you can spend, where it comes from and what happens if life changes.",
+        body: "Knowing what you can spend and where it comes from. The path is still yours; with someone who knows it, it’s easier to see where to step.",
         rail: "The life ahead",
       },
     ],

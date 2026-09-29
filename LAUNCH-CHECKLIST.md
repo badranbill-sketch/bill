@@ -16,6 +16,7 @@ Public launch approval: **FALSE**. This is a complete working review project, no
 - [x] Hosted preview authentication fails closed without credentials; noindex, empty staging sitemap, public launch gate.
 - [x] Build, TypeScript, lint, unit and browser checks; see TEST-SUMMARY.md for actual evidence and limits.
 - [x] Calendly supplied profile inspected 2026-09-28; Bill's name and meeting choices present. Only the supplied profile URL is linked. No booking submitted.
+- [x] Homepage centred on Bill (portrait-led hero, an early "why Bill" section), Ask Bill page with twelve questions, the guide as a booklet with its chapters, and a shorter mountain ride (about half its former scroll length).
 
 ## Required business and content approvals — owner / Bill / firm
 
@@ -40,7 +41,8 @@ Public launch approval: **FALSE**. This is a complete working review project, no
 
 ## Missing optional assets / deliberately disabled
 
-- [ ] French guide `guide-prosperite-financiere.pdf` and English guide `financial-prosperity-guide.pdf` were not provided. No broken public download links or fabricated replacement stories.
+- [ ] The guide « Avant la retraite » / "Before You Retire" is readable on the site (its chapters are the Ask Bill questions). A PDF appears only once a file is added under `public/` and recorded as approved in `business.guide.pdf`; the offer of a printed copy by email appears only when `business.guide.printedCopies` is set to `true`, once copies actually exist. Neither is shown now. The older « prospérité financière » PDFs were never provided and are no longer referenced.
+- [ ] Bill approves the twelve Ask Bill questions and short answers in both languages (`lib/ask.ts`, website copy) and confirms he is happy to receive visitors' questions by email at the practice address.
 - [ ] Newsletter provider, separate consent and unsubscribe mechanism are absent. Newsletter stays disabled; no adapter is falsely claimed connected.
 - [ ] Approved testimonials and permissions absent; none shown.
 - [ ] Analytics provider and consent review absent. Tracking stays off. Documented allowed events exclude answers, balances and personal information.

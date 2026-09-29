@@ -13,6 +13,7 @@ import {
   WORLD,
 } from "@/lib/ride";
 import { pathFor } from "@/lib/routes";
+import { t } from "@/lib/copy";
 import { Walker } from "./figure";
 import { RideMotion } from "./ride-motion";
 import { FarLayer, LiveLayer, LiveWalker, MainLayer } from "./world";
@@ -135,7 +136,7 @@ export function Ride({ lang }: { lang: Language }) {
   );
   const cta = (
     <Link className="button" href={pathFor(lang, "meeting")}>
-      {j.cta}
+      {t(lang).meeting}
       <span aria-hidden="true">→</span>
     </Link>
   );

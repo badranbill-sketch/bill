@@ -20,8 +20,8 @@ import path from "node:path";
 import { createElement, type ComponentType } from "react";
 import { renderToStaticMarkup } from "react-dom/server";
 import opentype from "opentype.js";
-import { HeroDesk, HeroDeskOverlay } from "../components/ink/desk";
-import { Dock, TwoChairs } from "../components/ink/meeting";
+import { HeroDesk } from "../components/ink/desk";
+import { TwoChairs } from "../components/ink/meeting";
 import { VIGNETTES } from "../components/ink/vignettes";
 import { InkDefs } from "../components/ink/primitives";
 
@@ -32,9 +32,7 @@ const MANIFEST = "lib/ink-files.json";
 
 const DRAWINGS: Record<string, ComponentType<{ lang?: Lang }>> = {
   desk: HeroDesk,
-  "desk-caption": HeroDeskOverlay,
   "two-chairs": TwoChairs,
-  dock: Dock,
   ...Object.fromEntries(
     Object.entries(VIGNETTES).map(([k, v]) => [
       k.replace(/[A-Z]/g, (c, i) => (i ? "-" : "") + c.toLowerCase()),

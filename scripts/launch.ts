@@ -6,9 +6,9 @@ const missing = Object.entries(business.approvals)
   .map(([key]) => key);
 if (!fs.existsSync("public" + business.portrait))
   missing.push("portrait asset");
-for (const [lang, guide] of Object.entries(business.guides)) {
-  if (guide && (!guide.approved || !fs.existsSync("public" + guide.path)))
-    missing.push(`guide ${lang}`);
+for (const [lang, pdf] of Object.entries(business.guide.pdf)) {
+  if (pdf && (!pdf.approved || !fs.existsSync("public" + pdf.path)))
+    missing.push(`guide PDF ${lang}`);
 }
 if (process.env.ENABLE_CONTACT === "true" && !contactConfigured())
   missing.push("contact credentials and trusted proxy");

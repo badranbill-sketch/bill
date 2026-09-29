@@ -11,36 +11,12 @@
       "en": "An open notebook on a desk, by a window overlooking a lake"
     }
   },
-  "desk-caption": {
-    "w": 720,
-    "h": 640,
-    "files": {
-      "fr": "desk-caption-fr.15f201593d.svg",
-      "en": "desk-caption-en.6834acbe8c.svg"
-    },
-    "alt": {
-      "fr": "",
-      "en": ""
-    }
-  },
   "two-chairs": {
     "w": 760,
     "h": 520,
     "files": {
       "fr": "two-chairs.b97566e9b2.svg",
       "en": "two-chairs.b97566e9b2.svg"
-    },
-    "alt": {
-      "fr": "",
-      "en": ""
-    }
-  },
-  "dock": {
-    "w": 1200,
-    "h": 440,
-    "files": {
-      "fr": "dock.ccd6542ba7.svg",
-      "en": "dock.ccd6542ba7.svg"
     },
     "alt": {
       "fr": "",

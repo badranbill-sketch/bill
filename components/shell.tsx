@@ -58,11 +58,12 @@ export function Footer({ lang }: { lang: Language }) {
           </div>
           <div>
             <h2>{lang === "fr" ? "Explorer" : "Explore"}</h2>
-            <Link href={pathFor(lang, "retirement")}>{c.nav[0]}</Link>
-            <Link href={pathFor(lang, "investments")}>{c.nav[1]}</Link>
-            <Link href={pathFor(lang, "meeting")}>{c.nav[2]}</Link>
-            <Link href={pathFor(lang, "about")}>{c.nav[3]}</Link>
-            <Link href={pathFor(lang, "resources")}>{c.nav[4]}</Link>
+            <Link href={pathFor(lang, "retirement")}>{c.nav.retirement}</Link>
+            <Link href={pathFor(lang, "investments")}>{c.nav.investments}</Link>
+            <Link href={pathFor(lang, "ask")}>{c.nav.ask}</Link>
+            <Link href={pathFor(lang, "meeting")}>{c.nav.meeting}</Link>
+            <Link href={pathFor(lang, "about")}>{c.nav.about}</Link>
+            <Link href={pathFor(lang, "resources")}>{c.nav.guide}</Link>
             <Link href={pathFor(lang, "privacy")}>{c.privacy}</Link>
             <Link href={pathFor(lang, "legal")}>{c.legal}</Link>
           </div>

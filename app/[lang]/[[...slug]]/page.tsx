@@ -8,7 +8,7 @@ import {
   reviewEnabled,
   type Language,
 } from "@/lib/business";
-import { routes, keyFor, pathFor, other } from "@/lib/routes";
+import { routes, keyFor, pathFor, other, type PageKey } from "@/lib/routes";
 import {
   articles,
   approvedArticle,
@@ -17,9 +17,19 @@ import {
 } from "@/lib/articles";
 import { guide, pages } from "@/lib/pages";
 import { t } from "@/lib/copy";
+import { askGroups } from "@/lib/ask";
 import { Header, Footer, MeetingLink } from "@/components/shell";
 import { Home, StandardPage, PageHero } from "@/components/pages";
 type Params = { lang: string; slug?: string[] };
+/** A page's name as a visitor would read it, for the breadcrumb data. */
+function crumbName(lang: Language, key: PageKey) {
+  const c = t(lang);
+  if (key === "ask") return c.nav.ask;
+  if (key === "resources") return c.nav.guide;
+  if (key === "fees") return c.feesTitle;
+  if (key === "home") return c.home;
+  return pages[lang][key].title;
+}
 export const dynamic = "force-dynamic";
 function resolve(p: Params) {
   if (p.lang !== "fr" && p.lang !== "en") notFound();
@@ -65,22 +75,26 @@ export async function generateMetadata({
   const title =
     r.article?.title ||
     (r.key === "home"
-      ? `${business.name} | ${c.eyebrow}`
+      ? c.seoHome
       : r.key === "resources"
         ? guide[r.lang].seoTitle
-        : r.key === "fees"
-          ? c.feesTitle
-          : (pages[r.lang][r.key as keyof typeof pages.fr].seoTitle ??
-            pages[r.lang][r.key as keyof typeof pages.fr].title));
+        : r.key === "ask"
+          ? c.askPage.seoTitle
+          : r.key === "fees"
+            ? c.feesTitle
+            : (pages[r.lang][r.key as keyof typeof pages.fr].seoTitle ??
+              pages[r.lang][r.key as keyof typeof pages.fr].title));
   const description =
     r.article?.description ||
     (r.key === "home"
-      ? c.intro
+      ? c.seoHomeDescription
       : r.key === "resources"
         ? guide[r.lang].description
-        : r.key === "fees"
-          ? c.feesDesc
-          : pages[r.lang][r.key as keyof typeof pages.fr].description);
+        : r.key === "ask"
+          ? c.askPage.description
+          : r.key === "fees"
+            ? c.feesDesc
+            : pages[r.lang][r.key as keyof typeof pages.fr].description);
   const route = r.article
     ? articlePath(r.article, r.preview)
     : pathFor(r.lang, r.key!);
@@ -160,7 +174,7 @@ export default async function Page({ params }: { params: Promise<Params> }) {
                       {
                         "@type": "ListItem",
                         position: 2,
-                        name: article?.title || key,
+                        name: article?.title || crumbName(lang, key!),
                         item:
                           business.domain +
                           (article
@@ -170,6 +184,20 @@ export default async function Page({ params }: { params: Promise<Params> }) {
                     ]),
               ],
             },
+            ...(key === "ask"
+              ? [
+                  {
+                    "@type": "FAQPage",
+                    mainEntity: askGroups(lang).flatMap((g) =>
+                      g.questions.map((q) => ({
+                        "@type": "Question",
+                        name: q.question,
+                        acceptedAnswer: { "@type": "Answer", text: q.answer },
+                      })),
+                    ),
+                  },
+                ]
+              : []),
             ...(article
               ? [
                   {
@@ -243,9 +271,7 @@ export default async function Page({ params }: { params: Promise<Params> }) {
                   <p>{c.asideBody}</p>
                   {article.relatedServices.map((k) => (
                     <p key={k}>
-                      <Link href={pathFor(lang, k)}>
-                        {c.nav[k === "retirement" ? 0 : 1]}
-                      </Link>
+                      <Link href={pathFor(lang, k)}>{c.nav[k]}</Link>
                     </p>
                   ))}
                   <MeetingLink lang={lang} />
@@ -254,7 +280,7 @@ export default async function Page({ params }: { params: Promise<Params> }) {
             </section>
           </>
         ) : key === "home" ? (
-          <Home lang={lang} review={review} />
+          <Home lang={lang} />
         ) : (
           <StandardPage lang={lang} page={key!} review={review} />
         )}

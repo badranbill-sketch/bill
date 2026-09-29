@@ -3,36 +3,24 @@ import { curve, Pen, rectPoly, type Pt } from "@/lib/ink";
 import { Art, Hatch, Ink, Note, Pencil, Wash } from "./primitives";
 
 /*
- * Homepage hero: a desk by a window onto a Québec lake. An open notebook
- * with the things that matter, reading glasses, a coffee, a pen, a couple
- * of loose papers. Bill's photograph is placed by the page as an HTML
- * print on top of the drawing (DESK.photo), and HeroDeskOverlay draws the
- * clip and the caption over that print. On phones the print moves beside
- * the byline, so the drawing must also stand on its own without it.
+ * A desk by a window onto a Québec lake. An open notebook with the things
+ * that matter, reading glasses, a coffee, a pen, a couple of loose papers.
+ * It opens the Ask Bill page: the questions on the kitchen table. (It was
+ * the homepage hero until Bill's own print took that place; the empty
+ * paper at the lower right is where that print used to lie.)
  *
  * One eye level for the whole plate: the far shore of the lake (y = 181),
  * vanishing point at the mullion. Light from the upper left, so shade and
  * cast shadows fall right and under.
  */
 
-export const DESK = {
-  w: 720,
-  h: 640,
-  /**
-   * Outer edge of the print, in viewBox units; rotation (deg) about its
-   * centre. HeroDeskOverlay writes the caption on the print's white bottom
-   * margin, which assumes the page's .hero-photo mat (bottom padding 12% of
-   * the figure width, about 86 units). Nothing important is drawn under it.
-   */
-  photo: { x: 470, y: 356, w: 216, h: 270, rotate: 4 },
-};
+export const DESK = { w: 720, h: 640 };
 
 type Words = {
   label: string;
   list: string[];
   next: string[];
   docs: string;
-  caption: string;
 };
 const WORDS: Record<Language, Words> = {
   fr: {
@@ -41,14 +29,12 @@ const WORDS: Record<Language, Words> = {
     list: ["Famille", "Voyages", "Maison", "Revenus", "Retraite"],
     next: ["Et après?"],
     docs: "REER · CELI · RRQ",
-    caption: "Bill, à Laval",
   },
   en: {
     label: "An open notebook on a desk, by a window overlooking a lake",
     list: ["Family", "Travel", "Home", "Income", "Retirement"],
     next: ["What’s", "next?"],
     docs: "RRSP · TFSA · QPP",
-    caption: "Bill, in Laval",
   },
 };
 
@@ -69,11 +55,6 @@ function rot(pts: Pt[], [cx, cy]: Pt, deg: number): Pt[] {
     cy + (x - cx) * s + (y - cy) * c,
   ]);
 }
-const arc = (c: Pt, r: number, a0: number, a1: number, n = 8): Pt[] =>
-  Array.from({ length: n + 1 }, (_, i) => {
-    const a = a0 + ((a1 - a0) * i) / n;
-    return [c[0] + Math.cos(a) * r, c[1] + Math.sin(a) * r] as Pt;
-  });
 /** Points on an ellipse from angle a0 to a1. */
 const oval = (
   cx: number,
@@ -1520,48 +1501,6 @@ export function HeroDesk({ lang = "fr" }: { lang?: Language }) {
       <Fine d={r.penShade} w={0.5} o={0.7} />
       <Ink d={r.penInk} />
       <Fine d={r.penDark} w={0.5} o={0.9} />
-    </Art>
-  );
-}
-
-/** Drawn over the print: the paper clip that holds it, and a caption. */
-export function HeroDeskOverlay({ lang = "fr" }: { lang?: Language }) {
-  const p = new Pen(4242);
-  // A gem clip, 14 × 58, bent end at the top.
-  const clip: Pt[] = [
-    [4.5, 14],
-    [4.5, 44],
-    ...arc([8, 44], 3.5, Math.PI, 0, 6).slice(1),
-    [11.5, 7],
-    ...arc([6, 7], 5.5, 0, -Math.PI, 8).slice(1),
-    [0.5, 51],
-    ...arc([7.5, 51], 7, Math.PI, 0, 8).slice(1),
-    [14.5, 16],
-  ];
-  const placed = rot(
-    clip.map((q) => add(q, [508, 334])),
-    [515, 360],
-    -3,
-  );
-  const clipInk = rel(
-    p.stroke(placed, {
-      w: 1.15,
-      smooth: false,
-      taper: 0.35,
-      wobble: 0.1,
-    }),
-  );
-  const clipShade = polyD(placed.map((q) => add(q, [1.6, 2.2])));
-  const { x, y, w, h, rotate } = DESK.photo;
-  const [cap] = rot([[x + w / 2, y + h - 36]], [x + w / 2, y + h / 2], rotate);
-  return (
-    <Art w={DESK.w} h={DESK.h}>
-      <Fine d={clipShade} w={1.2} o={0.35} soft />
-      <Ink d={clipInk} />
-      {/* on the print's white margin, as one writes on a snapshot */}
-      <Note x={cap[0]} y={cap[1]} size={25} rotate={rotate - 2} anchor="middle">
-        {WORDS[lang].caption}
-      </Note>
     </Art>
   );
 }

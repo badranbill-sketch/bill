@@ -63,7 +63,7 @@ Brass is an accent, never a fill. Nothing gold, nothing glossy.
 - Objects in correct perspective, with cup and table ellipses consistent with the eye level.
 - One focal object per drawing. Edges fade into the paper through line density, not hard crops.
 
-**Size budget** (markup, measured with `node --import tsx scripts/ink-size.tsx <module>`): hero desk ≤ 60 KB, dock ≤ 55 KB, two chairs ≤ 40 KB, each vignette ≤ 12 KB, ride main layer ≤ 110 KB. Fewer, better marks.
+**Size budget** (markup, measured with `node --import tsx scripts/ink-size.tsx <module>`): desk ≤ 60 KB, dock ≤ 55 KB, two chairs ≤ 40 KB, each vignette ≤ 12 KB, ride main layer ≤ 110 KB. Fewer, better marks.
 
 **Preview while drawing:**
 
@@ -71,11 +71,11 @@ Brass is an accent, never a fill. Nothing gold, nothing glossy.
 PLAYWRIGHT_CHROMIUM_EXECUTABLE=/usr/bin/chromium node --import tsx scripts/ink-preview.tsx components/ink/desk.tsx HeroDesk /tmp/desk.png 900 1.5
 ```
 
-Pages don't render these components inline: `npm run ink` (run before `dev` and `build`) exports them to `public/assets/ink/` as standalone SVG files, turning notes and labels into outlines, and the page links to the file. Run it again after changing a drawing. The drawings live in `components/ink/desk.tsx` (the hero), `meeting.tsx` (two chairs, the dock) and `vignettes.tsx` (eight spot drawings). The ride has its own compact pen in `lib/terrain.ts`. To stay within the size budget, the drawings merge strokes into a few paths and write them as relative commands. Copy that approach rather than adding more hatching.
+Pages don't render these components inline: `npm run ink` (run before `dev` and `build`) exports them to `public/assets/ink/` as standalone SVG files, turning notes and labels into outlines, and the page links to the file. Run it again after changing a drawing. The drawings live in `components/ink/desk.tsx` (the desk by the lake, which opens the Ask Bill page), `meeting.tsx` (two chairs; the dock, not on the site at the moment and not exported) and `vignettes.tsx` (eight spot drawings). The ride has its own compact pen in `lib/terrain.ts`. To stay within the size budget, the drawings merge strokes into a few paths and write them as relative commands. Copy that approach rather than adding more hatching.
 
 ## Photography
 
-Use Bill's real photograph: natural light, relaxed, never a corporate pose. For now there is one portrait (`public/assets/bill-portrait.jpg`). It sits inside the drawn world like a print tucked into the notebook, with a line of ink or a handwritten note near it.
+Use Bill's real photograph: natural light, relaxed, never a corporate pose. For now there is one portrait (`public/assets/bill-portrait.jpg`). Bill is the anchor of the homepage: in the hero his print is the largest object, lying on the notebook of questions (_When? How much? In what order?_), with his caption and one handwritten line beside it. The drawing supports him; it never competes with him. On the About page the same print sits beside his story.
 
 Wanted from a photo session:
 
@@ -93,6 +93,10 @@ Editorial, not blocks:
 - a full-width drawing now and then.
 
 Avoid the title / text / card rhythm. On mobile, keep it intimate. Illustrations come between sections like pages of a book and may bleed to the screen edge. The main call to action stays near the top.
+
+## The guide as an object
+
+Bill's small printed guide, « Avant la retraite » / "Before You Retire", is a brand object, not a download. It is drawn with the site's own materials (`components/booklet.tsx`): an ivory cover with a faint spine shadow and a few page edges, the sunrise mark, the title in Newsreader, the subtitle in italic, one pen drawing (the path) and Bill's name in small spaced capitals over a brass hairline. Lots of empty paper. It leans a couple of degrees, like something set down on a table. A printed edition should follow the same cover.
 
 ## One action, repeated naturally
 

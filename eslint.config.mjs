@@ -7,6 +7,8 @@ const config = [
     ignores: [
       ".next/**",
       "reference/**",
+      // The explainer film is its own Remotion project (film/package.json).
+      "film/**",
       "test-results/**",
       "playwright-report/**",
     ],
