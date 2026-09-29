@@ -1,0 +1,83 @@
+[
+  {
+    "file": "cover-art.svg",
+    "name": "cover-art",
+    "width": 816,
+    "height": 604,
+    "depicts": "A couple walking down a path through birches and spruce to a dock with two chairs on a lake; sailboat and low sun",
+    "elementsRemoved": false,
+    "removed": "nothing"
+  },
+  {
+    "file": "porch.svg",
+    "name": "porch",
+    "width": 816,
+    "height": 1056,
+    "depicts": "An open notebook on a porch table with coffee cup, reading glasses and pen, statements to the side, lake beyond the railing",
+    "elementsRemoved": true,
+    "removed": "handwritten list and question on the notebook, the curved arrow linking them, the words on the statements"
+  },
+  {
+    "file": "storm.svg",
+    "name": "storm",
+    "width": 816,
+    "height": 630,
+    "depicts": "A squall with rain shafts over a lake: one small sailboat under it, another in clear weather near a dock",
+    "elementsRemoved": false,
+    "removed": "nothing"
+  },
+  {
+    "file": "horizons.svg",
+    "name": "horizons",
+    "width": 816,
+    "height": 1056,
+    "depicts": "A path from the viewer to far hills with three trail posts (near, halfway, far) and two walkers, birches and spruce",
+    "elementsRemoved": true,
+    "removed": "three captions, their leader lines and a/b/c letter badges"
+  },
+  {
+    "file": "harbour.svg",
+    "name": "harbour",
+    "width": 816,
+    "height": 400,
+    "depicts": "A sheltered cove on a grey day: small boat tied at a dock behind a rocky point, rough open water under low cloud, a figure on shore",
+    "elementsRemoved": false,
+    "removed": "nothing"
+  },
+  {
+    "file": "containers.svg",
+    "name": "containers",
+    "width": 720,
+    "height": 540,
+    "depicts": "Five containers apart on a table: an envelope, a file folder, a small notebook, a stack of statements and a ledger",
+    "elementsRemoved": true,
+    "removed": "five captions and their leader lines"
+  },
+  {
+    "file": "table-plan.svg",
+    "name": "table-plan",
+    "width": 672,
+    "height": 640,
+    "depicts": "A long dining table seen from above: ten chairs, plates and place cards, an open notebook in the centre",
+    "elementsRemoved": true,
+    "removed": "ten place-card names, the centre caption and the pencil threads linking names to the notebook"
+  },
+  {
+    "file": "spending.svg",
+    "name": "spending",
+    "width": 672,
+    "height": 470,
+    "depicts": "A kitchen table from above: grocery list and keys, two tickets, a roofer's quote, a map with passports, a calendar page, coffee and glasses",
+    "elementsRemoved": true,
+    "removed": "handwritten words (list, quote, month) and the five numbered badges"
+  },
+  {
+    "file": "canoe.svg",
+    "name": "canoe",
+    "width": 520,
+    "height": 230,
+    "depicts": "A loaded canoe on the shore, pack in the middle and a paddle across the thwart, spruce at the edge",
+    "elementsRemoved": false,
+    "removed": "nothing"
+  }
+]

@@ -9,6 +9,7 @@ const config = [
       "reference/**",
       "test-results/**",
       "playwright-report/**",
+      "presentation/**",
     ],
   },
 ];
