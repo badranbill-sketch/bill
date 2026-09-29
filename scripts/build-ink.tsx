@@ -21,6 +21,7 @@ import { createElement, type ComponentType } from "react";
 import { renderToStaticMarkup } from "react-dom/server";
 import opentype from "opentype.js";
 import { HeroDesk, HeroDeskOverlay } from "../components/ink/desk";
+import { Hiker } from "../components/ink/hiker";
 import { Dock, TwoChairs } from "../components/ink/meeting";
 import { VIGNETTES } from "../components/ink/vignettes";
 import { InkDefs } from "../components/ink/primitives";
@@ -35,6 +36,7 @@ const DRAWINGS: Record<string, ComponentType<{ lang?: Lang }>> = {
   "desk-caption": HeroDeskOverlay,
   "two-chairs": TwoChairs,
   dock: Dock,
+  hiker: Hiker,
   ...Object.fromEntries(
     Object.entries(VIGNETTES).map(([k, v]) => [
       k.replace(/[A-Z]/g, (c, i) => (i ? "-" : "") + c.toLowerCase()),
@@ -163,12 +165,25 @@ const css = fs
   .replace(/\s+/g, " ")
   .replace(/\s*([{}:;,])\s*/g, "$1")
   .trim();
+/** Rules only some drawings need, so the others stay byte-identical. */
+const EXTRA_CSS: Record<string, string> = {
+  hiker: "app/ink-hiker.css",
+};
+const extraCss = (name: string) =>
+  EXTRA_CSS[name]
+    ? fs
+        .readFileSync(EXTRA_CSS[name], "utf8")
+        .replace(/\/\*[\s\S]*?\*\//g, "")
+        .replace(/\s+/g, " ")
+        .replace(/\s*([{}:;,])\s*/g, "$1")
+        .trim()
+    : "";
 const defs =
   renderToStaticMarkup(createElement(InkDefs)).match(
     /<defs>[\s\S]*<\/defs>/,
   )?.[0] ?? "";
 
-function standalone(markup: string) {
+function standalone(markup: string, name: string) {
   const open = markup.match(/^<svg([^>]*)>/);
   if (!open) throw new Error("drawing does not render a single <svg>");
   const viewBox = attr(open[1], "viewBox")!;
@@ -182,7 +197,7 @@ function standalone(markup: string) {
     : "";
   const svg =
     `<svg xmlns="http://www.w3.org/2000/svg" viewBox="${viewBox}" width="${w}" height="${h}" class="ink-art">` +
-    `<style>${css}</style>` +
+    `<style>${css}${extraCss(name)}</style>` +
     (filter || glyphs ? `<defs>${filter}${glyphs}</defs>` : "") +
     body +
     `</svg>`;
@@ -201,7 +216,7 @@ const manifest: Record<string, Entry> = {};
 let total = 0;
 for (const [name, Comp] of Object.entries(DRAWINGS)) {
   const out = LANGS.map((lang) =>
-    standalone(renderToStaticMarkup(createElement(Comp, { lang }))),
+    standalone(renderToStaticMarkup(createElement(Comp, { lang })), name),
   );
   const same = out[0].svg === out[1].svg;
   const entry: Entry = {

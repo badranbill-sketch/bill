@@ -4,6 +4,7 @@ import { InkDefs } from "@/components/ink/primitives";
 import "../globals.css";
 import "../ink.css";
 import "../ride.css";
+import "../features.css";
 
 /* Editorial serif for headlines. */
 const serif = localFont({

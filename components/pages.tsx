@@ -12,6 +12,7 @@ import { Inquiry } from "./inquiry";
 import { Fees } from "./fees";
 import { Resources } from "./resources";
 import { Ride } from "./journey/ride";
+import { Features } from "./features";
 import { Reveal } from "./reveal";
 import { DESK } from "./ink/desk";
 import { InkFile } from "./ink/file";
@@ -87,7 +88,8 @@ function Invitation({ lang }: { lang: Language }) {
 /**
  * The homepage, as a sequence of pages from Bill's notebook. The hero
  * drawing and the mountain ride carry the only motion; everything after the
- * ride is still, apart from drawings appearing once.
+ * ride (the journey and guide cards, the Ask Bill videos, the invitation) is
+ * still, apart from drawings appearing once.
  */
 export function Home({ lang, review }: { lang: Language; review: boolean }) {
   const c = t(lang);
@@ -138,6 +140,7 @@ export function Home({ lang, review }: { lang: Language; review: boolean }) {
         </div>
       </section>
       <Ride lang={lang} />
+      <Features lang={lang} />
       <section className="open-door">
         <div className="wrap">
           <p>{c.openDoor}</p>

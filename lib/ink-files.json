@@ -47,6 +47,18 @@
       "en": ""
     }
   },
+  "hiker": {
+    "w": 940,
+    "h": 560,
+    "files": {
+      "fr": "hiker.7cb9a1198d.svg",
+      "en": "hiker.7cb9a1198d.svg"
+    },
+    "alt": {
+      "fr": "Un randonneur gravit un sentier de montagne",
+      "en": "A hiker climbing a mountain trail"
+    }
+  },
   "house": {
     "w": 280,
     "h": 220,

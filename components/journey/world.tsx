@@ -1032,6 +1032,112 @@ export function MainLayer({ lang }: { lang: Language }) {
   );
 }
 
+/**
+ * The homepage's still drawing of the hiker: one massif, one trail and a few
+ * spruces, drawn with the ride's pen in its own frame
+ * (components/ink/hiker.tsx).
+ */
+export const HIKER_FRAME = { x: 0, y: 20, w: 940, h: 560 };
+const HIKER_TRAIL: Pt[] = [
+  [-30, 424],
+  [90, 404],
+  [200, 372],
+  [300, 336],
+  [400, 300],
+  [510, 268],
+  [630, 246],
+  [760, 234],
+  [900, 232],
+  [1030, 240],
+];
+export const HIKER_AT: Pt = [318, 330];
+
+let hikerCache: Plane[] | null = null;
+function hikerPlanes() {
+  if (hikerCache) return hikerCache;
+  // Two ranges: a pale one far behind, then the massif in full ink with one
+  // pale tint on its shaded faces.
+  const far = new Plane(new Nib(701));
+  mountain(
+    far,
+    [
+      [-30, 150],
+      [60, 128],
+      [150, 96],
+      [220, 70],
+      [268, 84],
+      [330, 62],
+      [420, 92],
+      [520, 76],
+      [600, 100],
+      [700, 84],
+      [790, 112],
+      [900, 100],
+      [1030, 126],
+    ],
+    { w: 0.9, soft: true, far: true, depth: 44, gap: 4.2, min: 20 },
+  );
+  mountain(
+    far,
+    [
+      [-30, 268],
+      [70, 226],
+      [160, 184],
+      [240, 140],
+      [306, 102],
+      [352, 86],
+      [396, 108],
+      [450, 144],
+      [520, 136],
+      [590, 108],
+      [640, 92],
+      [690, 116],
+      [760, 160],
+      [850, 190],
+      [940, 198],
+      [1030, 214],
+    ],
+    { w: 1.5, depth: 100, gap: 3.4, wash: 0.55, arete: true },
+  );
+  // The near ground: the trail's shoulder, its shade and the trees on it.
+  const near = new Plane(new Nib(702));
+  const line = jag(HIKER_TRAIL, 703, 1.6, 40, 0);
+  near.cut += enc(
+    closeDown(curve(line, 2).pts, HIKER_FRAME.y + HIKER_FRAME.h + 40),
+    true,
+    0,
+  );
+  near.ink += near.nib.contour(line, { w: 1.5, piece: 420 });
+  lip(near, HIKER_TRAIL, -30, 1030);
+  for (const [x, dy, h] of [
+    [52, 14, 96],
+    [104, 26, 70],
+    [150, 34, 46],
+    [790, -4, 78],
+    [830, 4, 100],
+    [872, 6, 62],
+    [910, 2, 84],
+  ] as const)
+    spruce(near, x, yAt(HIKER_TRAIL, x) + dy, h);
+  hikerCache = [far, near];
+  return hikerCache;
+}
+
+export function HikerScene() {
+  const [far, near] = hikerPlanes();
+  return (
+    <>
+      <g className="ride-art far-layer">
+        <PlaneArt p={far} />
+      </g>
+      <g className="ride-art">
+        <PlaneArt p={near} />
+        <path d={smooth(HIKER_TRAIL)} className="route" />
+      </g>
+    </>
+  );
+}
+
 /** Everything the scroll engine moves, in its finished (no-JavaScript) state. */
 export function LiveLayer({ lang }: { lang: Language }) {
   const words = journey[lang].words;

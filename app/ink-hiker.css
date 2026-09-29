@@ -1,0 +1,97 @@
+/* The mountain ride's pen, cut out as a still (components/ink/hiker.tsx).
+   The same rules as app/ride.css, with fallbacks: a file shown as an image
+   cannot see the page's custom properties. */
+.ink-art .cut {
+  fill: var(--sky, #f5f2ea);
+}
+.ink-art .ik {
+  fill: var(--navy, #0e2233);
+}
+.ink-art .ik.soft {
+  fill: var(--navy-2, #173450);
+  opacity: 0.72;
+}
+.ink-art .ht,
+.ink-art .ln,
+.ink-art .pc {
+  fill: none;
+  stroke-linecap: round;
+}
+.ink-art .ht {
+  stroke: var(--navy, #0e2233);
+  stroke-width: 0.5;
+  opacity: 0.55;
+}
+.ink-art .ht.far {
+  stroke: var(--navy-2, #173450);
+  opacity: 0.32;
+}
+.ink-art .ln {
+  stroke: var(--navy-2, #173450);
+  stroke-width: 0.6;
+  opacity: 0.7;
+}
+.ink-art .ln.warm {
+  stroke: var(--brass-soft, #c9a874);
+  stroke-width: 1.4;
+  opacity: 0.85;
+}
+.ink-art .pc {
+  stroke: var(--blue-grey, #a7b4c3);
+  stroke-width: 0.6;
+  opacity: 0.8;
+}
+.ink-art .w {
+  fill: currentColor;
+  fill-opacity: 0.4;
+  stroke: currentColor;
+  stroke-width: 0.8;
+  stroke-opacity: 0.3;
+  stroke-linejoin: round;
+}
+.ink-art .w.blue {
+  color: var(--blue-grey, #a7b4c3);
+}
+.ink-art .w.stone {
+  color: var(--stone, #c9c0b1);
+}
+.ink-art .w.brass {
+  color: var(--brass-soft, #c9a874);
+}
+.ink-art .w.navy {
+  color: var(--navy-2, #173450);
+}
+.ink-art .far-layer .ik.soft {
+  opacity: 0.45;
+}
+.ink-art .route {
+  fill: none;
+  stroke: var(--brass, #a8875a);
+  stroke-width: 2.4;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+.ink-art .fig {
+  fill: var(--navy, #0e2233);
+  stroke: var(--sky, #f5f2ea);
+  stroke-width: 1.1;
+  stroke-linejoin: round;
+  paint-order: stroke;
+}
+.ink-art .fig-coat,
+.ink-art .fig-far {
+  fill: var(--navy-2, #173450);
+}
+.ink-art .fig-pole {
+  fill: none;
+  stroke: var(--navy, #0e2233);
+  stroke-width: 0.9;
+  stroke-linecap: round;
+}
+.ink-art .walker .pose,
+.ink-art .walker .frame-b {
+  display: none;
+}
+.ink-art .walker[data-pose="climb"] .pose-climb {
+  display: inline;
+}
