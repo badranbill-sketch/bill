@@ -49,3 +49,10 @@ calculators, narration, and review protection.
 
 Local verification uses Chromium with responsive viewports; a physical iPhone
 Safari check remains a useful final device check before release.
+
+The repository also contains an independent Remotion application in `film/`, with
+its own package, dependencies, ESLint configuration, and TypeScript configuration.
+The website's root ESLint and TypeScript configurations exclude that application;
+its checks are run with `npm run lint` from `film/` after installing its dependencies.
+This keeps the Next.js build from trying to compile or apply Next.js rules to the
+video project. The website's publication and review-protection checks are unchanged.
