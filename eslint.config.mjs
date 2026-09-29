@@ -9,6 +9,8 @@ const config = [
       "reference/**",
       "test-results/**",
       "playwright-report/**",
+      // The standalone Remotion project has its own ESLint config and dependencies.
+      "film/**",
     ],
   },
 ];

@@ -1,6 +1,9 @@
 import type { NextConfig } from "next";
 const config: NextConfig = {
   poweredByHeader: false,
+  outputFileTracingIncludes: {
+    "/api/guide": ["./content/guides/retirement-review-en.pdf"],
+  },
   devIndicators: false,
   async headers() {
     return [

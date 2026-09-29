@@ -1,71 +1,92 @@
 import type { InkName } from "@/components/ink/file";
 import type { Language } from "./business";
 
-/**
- * Copy for the three blocks that follow the mountain ride: the journey and
- * guide cards, the "Ask Bill" video row and the closing invitation.
- */
 export const features = {
   fr: {
     journey: {
+      label: "Le chemin vers la retraite",
       title: "Un nouveau chapitre mérite un chemin clair.",
       link: "Découvrir le parcours",
     },
     guide: {
-      label: "Un guide pour la suite",
-      title: "Avant de prendre votre retraite",
-      subtitle:
-        "Les questions qui valent la peine d’être posées avant votre dernier jour de travail.",
-      body: "Un guide pratique et facile à lire pour réfléchir à ce qui compte vraiment avant la retraite.",
-      cta: "Obtenir le guide gratuit",
-      author: "Bill Badran",
+      label: "À lire à votre rythme",
+      title: "La retraite, ça veut dire quoi pour vous?",
+      body: "Avant de choisir une date, pensez à la vie que vous souhaitez. Ce guide vous aide à relier les questions, une à la fois.",
+      cta: "Lire le guide gratuit",
+      explore: "Explorer le guide retraite",
+      preview: "Ouvrir le guide de Bill",
+      inside: "Jeter un coup d’œil à l’intérieur",
+      pdf: "PDF · S’ouvre dans un nouvel onglet",
+      review: "PDF en anglais · Édition de révision · Nouvel onglet",
+      pending: "Des questions et une liste de préparation pour commencer.",
+      chapters: [
+        "Ce que vous voulez vivre et dépenser",
+        "Vos rentes et vos sources de revenu",
+        "Les retraits, les impôts et les frais",
+        "Vos notes pour une première rencontre",
+      ],
     },
     ask: {
-      label: "Vraies questions avant la retraite",
+      label: "Les vraies questions avant la retraite",
       title: "Demandez à Bill",
       intro:
-        "Des réponses directes aux questions que se posent vraiment les gens à l’approche de la retraite.",
-      all: "Voir toutes les questions",
-      watch: "Regarder",
+        "Les questions qui reviennent souvent. Un bon point de départ pour en parler.",
+      all: "Explorer toutes les questions",
+      watch: "Regarder la réponse",
+      read: "Explorer cette question",
       soon: "Vidéo à venir",
-      list: "Vidéos de Bill",
+      list: "Questions pour Bill",
       questions: [
-        "J’ai 800 000 $. Puis-je prendre ma retraite à 62 ans?",
+        "J’ai 800 000 $. Puis-je prendre ma retraite à 62 ans?",
         "Devrais-je demander ma rente du RRQ à 60 ans ou attendre?",
         "Devrais-je rembourser mon hypothèque avant la retraite?",
         "Et si le marché s’effondre juste après ma retraite?",
       ],
     },
     talk: {
-      title: "Parlons-en.",
-      body: "Une première rencontre est informelle et sans engagement : une occasion de discuter, de poser vos questions et de voir si nous sommes faits pour travailler ensemble.",
-      cta: "Rencontrer Bill",
+      label: "La prochaine étape peut être simple",
+      title: "Prenons le temps d’en parler.",
+      body: "Dites à Bill où vous en êtes et ce que vous aimeriez clarifier. Une première rencontre permet de voir si le courant passe.",
+      cta: "Planifier une première rencontre",
+      call: "Vous préférez appeler?",
       sign: "De meilleures questions. Un avenir plus lumineux.",
       signed: "— Bill",
     },
   },
   en: {
     journey: {
+      label: "The road to retirement",
       title: "A new chapter deserves a clear path.",
       link: "See the journey",
     },
     guide: {
-      label: "A guide for what comes next",
-      title: "Before You Retire",
-      subtitle: "The questions worth answering before your last day at work.",
-      body: "A practical, easy-to-read guide to help you think through what really matters before retirement.",
-      cta: "Get your free guide",
-      author: "Bill Badran",
+      label: "A little clarity, at your own pace",
+      title: "What does retirement mean to you?",
+      body: "Before choosing a date, start with the life you want. This guide helps you connect the questions, one at a time.",
+      cta: "Read the free guide",
+      explore: "Explore the retirement guide",
+      preview: "Open Bill’s retirement guide",
+      inside: "Take a look inside",
+      pdf: "PDF · Opens in a new tab",
+      review: "English PDF · Review edition · New tab",
+      pending: "Questions and a preparation checklist to help you begin.",
+      chapters: [
+        "How you want to live and what you will spend",
+        "Pensions and your sources of income",
+        "Withdrawals, taxes and fees",
+        "Your notes for a first meeting",
+      ],
     },
     ask: {
       label: "Real questions before retirement",
       title: "Ask Bill",
       intro:
-        "Straight answers to the questions pre-retirees are really asking.",
-      all: "See all questions",
-      watch: "Watch",
+        "The questions that keep coming up. A good place to start a conversation.",
+      all: "Explore all the questions",
+      watch: "Watch the answer",
+      read: "Explore this question",
       soon: "Video coming soon",
-      list: "Videos from Bill",
+      list: "Questions for Bill",
       questions: [
         "I have $800,000. Can I retire at 62?",
         "Should I take QPP at 60 or wait?",
@@ -74,30 +95,27 @@ export const features = {
       ],
     },
     talk: {
+      label: "The next step can be a simple one",
       title: "Let’s have a conversation.",
-      body: "A first meeting is informal and no obligation — just a chance to talk, ask questions, and see if it’s a good fit.",
-      cta: "Meet Bill",
+      body: "Tell Bill where you are and what you’d like to understand. A first meeting is a chance to see whether it’s a good fit.",
+      cta: "Plan a first meeting",
+      call: "Prefer to call?",
       sign: "Better questions. A brighter tomorrow.",
       signed: "— Bill",
     },
   },
 } satisfies Record<Language, unknown>;
 
-/**
- * The "Ask Bill" videos, in the order of `ask.questions`. Nothing is filmed
- * yet, so each card is drawn with a spot illustration and says "coming
- * soon". When a video exists, add its address per language in `href` (a
- * page or a YouTube/Vimeo link) and, optionally, a still from it in
- * `poster` (a path under /public). The card then becomes a link.
- */
+/** Connect approved recordings per language; until then cards lead to related reading. */
 export type AskVideo = {
   art: InkName;
+  anchor: Record<Language, string>;
   href?: Partial<Record<Language, string>>;
   poster?: string;
 };
 export const askVideos: AskVideo[] = [
-  { art: "travel-bag" },
-  { art: "bridge" },
-  { art: "house" },
-  { art: "lighthouse" },
+  { art: "travel-bag", anchor: { fr: "moyens-retraite", en: "can-i-retire" } },
+  { art: "bridge", anchor: { fr: "sources-revenu", en: "income" } },
+  { art: "house", anchor: { fr: "moyens-retraite", en: "can-i-retire" } },
+  { art: "lighthouse", anchor: { fr: "baisse-marches", en: "markets" } },
 ];

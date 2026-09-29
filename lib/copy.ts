@@ -5,8 +5,8 @@ export const copy = {
     meeting: "Planifier une première rencontre",
     shortMeeting: "Première rencontre",
     eyebrow: "Placements et retraite · Laval",
-    hero: "Votre retraite approche.",
-    heroAccent: "Voyons plus clair pour la suite.",
+    hero: "Un nouveau chapitre.",
+    heroAccent: "Un chemin plus clair.",
     intro:
       "Vos placements ne sont qu’une partie de l’histoire. L’objectif est de comprendre comment votre épargne, vos revenus et vos projets peuvent fonctionner ensemble.",
     how: "Découvrir l’approche",
@@ -105,8 +105,8 @@ export const copy = {
     meeting: "Plan a first meeting",
     shortMeeting: "First meeting",
     eyebrow: "Investments and retirement · Laval",
-    hero: "Your retirement is getting closer.",
-    heroAccent: "Let’s get a clearer view of what comes next.",
+    hero: "A new chapter.",
+    heroAccent: "A clearer path.",
     intro:
       "Your investments are only part of the story. The goal is to understand how your savings, your income and your plans can work together.",
     how: "See the approach",

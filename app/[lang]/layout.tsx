@@ -5,6 +5,7 @@ import "../globals.css";
 import "../ink.css";
 import "../ride.css";
 import "../features.css";
+import "../responsive.css";
 
 /* Editorial serif for headlines. */
 const serif = localFont({

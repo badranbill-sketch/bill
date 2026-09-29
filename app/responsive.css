@@ -1,0 +1,282 @@
+/* Shared refinements from the mobile prototype, without a second page implementation. */
+.button {
+  border-radius: 999px;
+  font-weight: 600;
+  min-height: 52px;
+}
+.home-flow {
+  display: flex;
+  flex-direction: column;
+}
+
+.hero-copy .lede {
+  max-width: 30em;
+}
+.hero-person {
+  display: flex;
+  align-items: center;
+  gap: 13px;
+  border-top: 1px solid var(--rule);
+  padding-top: 23px;
+  margin-top: 28px;
+}
+.hero-person > img {
+  width: 48px;
+  height: 48px;
+  object-fit: cover;
+  object-position: 50% 30%;
+  border-radius: 50%;
+}
+.hero-person > .portrait-fallback {
+  width: 48px;
+  height: 48px;
+  min-height: 0;
+  flex: 0 0 48px;
+  padding: 8px;
+  border-radius: 50%;
+}
+.hero-person .portrait-fallback img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+.hero-person .portrait-fallback p,
+.hero-person .portrait-fallback strong {
+  display: none;
+}
+.hero-person p {
+  font-size: 0.875rem;
+  line-height: 1.5;
+  margin: 0;
+  color: var(--muted);
+}
+.hero-person strong,
+.hero-person span {
+  display: block;
+}
+.hero-person strong {
+  color: var(--navy);
+  font-weight: 600;
+}
+.hero-mobile-art {
+  display: none;
+}
+.philosophy .wrap {
+  align-items: center;
+}
+.steps > li {
+  padding-block: 20px;
+}
+@media (min-width: 901px) {
+  .header-inner {
+    gap: 22px;
+  }
+  .desktop-nav {
+    gap: 21px;
+  }
+  .hero {
+    padding-top: 58px;
+    padding-bottom: 66px;
+  }
+  .hero h1 {
+    font-size: clamp(3rem, 4.4vw, 4.3rem);
+  }
+}
+@media (max-width: 760px) {
+  html {
+    scroll-padding-top: 100px;
+  }
+  .wrap {
+    width: calc(100% - 48px);
+  }
+  .site-header {
+    position: sticky;
+    top: 0;
+    z-index: 20;
+    background: var(--paper) var(--grain);
+  }
+  .header-inner {
+    min-height: 76px;
+    gap: 12px;
+  }
+  .brand img {
+    width: 40px;
+    height: 38px;
+  }
+  .brand b {
+    font-size: 1.3rem;
+  }
+  .language {
+    min-width: 44px;
+  }
+  .menu-button {
+    border: 0;
+    min-width: 44px;
+    padding: 10px 4px;
+  }
+  .menu-button span {
+    display: none;
+  }
+  .mobile-menu {
+    padding: 25px max(24px, env(safe-area-inset-right))
+      max(24px, env(safe-area-inset-bottom));
+    height: 100dvh;
+    overflow: auto;
+  }
+  .mobile-menu nav a {
+    min-height: 52px;
+  }
+  .mobile-menu nav {
+    gap: 10px;
+    margin-top: 36px;
+  }
+  .menu-top button {
+    border-radius: 50px;
+  }
+  .hero {
+    padding: 0 0 32px;
+  }
+  .hero-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+  }
+  .hero-copy {
+    width: 100%;
+  }
+  .hero > .wrap {
+    width: calc(100% - 48px);
+  }
+  .hero-art {
+    display: none;
+  }
+  .hero-mobile-art {
+    display: block;
+    order: -1;
+    width: calc(100% + 48px);
+    height: 190px;
+    overflow: hidden;
+    margin: 0 -24px 10px;
+    background: var(--ivory);
+  }
+  .hero-mobile-art .ink-art {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: 30% 42%;
+    mix-blend-mode: multiply;
+  }
+  .hero .eyebrow {
+    font-size: 0.8125rem;
+    margin-bottom: 14px;
+  }
+  .hero h1 {
+    font-size: clamp(2.55rem, 10.5vw, 3.3rem);
+    line-height: 1.03;
+    letter-spacing: -0.035em;
+    text-wrap: initial;
+  }
+  .hero h1 em {
+    margin-top: 3px;
+  }
+  .hero-copy > .lede {
+    font-size: 1.0625rem;
+    line-height: 1.6;
+    margin: 18px 0 22px;
+  }
+  .hero-actions {
+    display: flex;
+    flex-direction: column;
+    gap: 9px;
+    align-items: stretch;
+  }
+  .hero-actions .button {
+    width: 100%;
+    min-height: 52px;
+  }
+  .hero-actions .text-link {
+    align-self: center;
+    min-height: 42px;
+    padding-top: 8px;
+  }
+  .hero-person {
+    margin-top: 18px;
+    padding-top: 18px;
+  }
+
+  .philosophy .wrap {
+    gap: 30px;
+  }
+  .philosophy .wrap > div:first-child .ink-art {
+    max-width: 240px;
+    margin: auto;
+  }
+  .philosophy .body {
+    font-size: 1.125rem;
+  }
+  .section {
+    padding-block: 48px;
+  }
+  .meet {
+    gap: 28px;
+  }
+  .meet > div:first-child .ink-art {
+    max-width: 330px;
+    margin: auto;
+  }
+  .meet-actions {
+    gap: 15px;
+  }
+  .meet-actions .button {
+    width: 100%;
+  }
+  #parcours {
+    scroll-margin-top: 76px;
+  }
+  .ride-panel {
+    padding-block: 36px;
+  }
+  .ride-static-sound {
+    padding-top: 24px;
+  }
+  footer {
+    padding-bottom: max(35px, env(safe-area-inset-bottom));
+  }
+  .footer-grid {
+    gap: 32px;
+  }
+}
+@media (max-width: 360px) {
+  .wrap,
+  .hero > .wrap {
+    width: calc(100% - 36px);
+  }
+  .hero-mobile-art {
+    width: calc(100% + 36px);
+    margin-inline: -18px;
+    height: 160px;
+  }
+  .header-inner {
+    gap: 5px;
+  }
+  .brand {
+    gap: 7px;
+  }
+  .brand b {
+    font-size: 1.15rem;
+  }
+  .brand img {
+    width: 34px;
+  }
+  .hero h1 {
+    font-size: 2.4rem;
+  }
+  .hero-person p {
+    font-size: 0.8125rem;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+}
