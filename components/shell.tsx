@@ -26,7 +26,7 @@ export function Header({
               lang === "fr" ? "Bill Badran, accueil" : "Bill Badran, home"
             }
           >
-            <Image src="/assets/monogram.svg" width={29} height={36} alt="" />
+            <Image src="/assets/monogram.svg" width={54} height={48} alt="" />
             <b>Bill Badran</b>
           </Link>
           <Navigation lang={lang} equivalent={equivalent} />
@@ -42,7 +42,7 @@ export function Footer({ lang }: { lang: Language }) {
       <div className="wrap">
         <div className="footer-grid">
           <div>
-            <Image src="/assets/monogram.svg" width={40} height={50} alt="" />
+            <Image src="/assets/monogram.svg" width={70} height={62} alt="" />
             <p className="footer-statement">{c.footer}</p>
           </div>
           <div>
