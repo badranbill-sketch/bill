@@ -1,0 +1,45 @@
+{
+  "voice": "~/Work/audiodrama/assets/voices/lawyer.wav",
+  "settings": { "exaggeration": 0.42, "cfg_weight": 0.4, "temperature": 0.7 },
+  "gap_ms": 420,
+  "chapter_gap_ms": 950,
+  "chapters": [
+    [
+      {
+        "text": "I'm Bill Badran. For most of your career, the plan was simple: earn, save, invest."
+      },
+      { "text": "And you've built something real." }
+    ],
+    [
+      { "text": "The last climb before retirement is the steepest." },
+      {
+        "text": "A market drop just as you start withdrawing hurts far more than the same drop at forty."
+      },
+      {
+        "text": "So your plan has to hold up in bad years, not just good ones."
+      }
+    ],
+    [
+      { "text": "Then everything has to connect.", "after_ms": 600 },
+      {
+        "text": "Your RRSP becomes a RRIF. You choose when your government pensions start.",
+        "variants": [
+          "Your RRSP becomes a RRIF. You choose when your government pensions start.",
+          "Your R-R-S-P becomes a riff. You choose when your government pensions start.",
+          "Your R.R.S.P. becomes a R.R.I.F. You choose when your government pensions start."
+        ]
+      },
+      { "text": "Every choice moves your taxes." },
+      {
+        "text": "The strategy that built your savings isn't automatically the one that should pay you."
+      }
+    ],
+    [
+      { "text": "The goal was never just to reach retirement." },
+      {
+        "text": "It's knowing what you can spend, where it comes from, and what happens if life changes."
+      },
+      { "text": "When you're ready, let's look at where you stand." }
+    ]
+  ]
+}

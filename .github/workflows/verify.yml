@@ -1,0 +1,32 @@
+name: Verify site and content
+on:
+  pull_request:
+  push:
+    branches: [main]
+permissions:
+  contents: read
+  pull-requests: read
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+          cache: npm
+      - run: npm ci
+      - run: npm run lint && npm run test && npm run build && npm run typecheck
+      - run: node --import tsx scripts/verify-publication.ts
+        env:
+          GH_TOKEN: ${{ github.token }}
+          GITHUB_REPOSITORY: ${{ github.repository }}
+          CONTENT_REVIEWERS: ${{ vars.CONTENT_REVIEWERS }}
+          FIRM_REVIEWERS: ${{ vars.FIRM_REVIEWERS }}
+      - run: npx playwright install --with-deps chromium
+      - run: npm run test:e2e
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: browser-evidence
+          path: test-results/

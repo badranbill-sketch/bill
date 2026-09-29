@@ -1,0 +1,968 @@
+<!doctype html>
+<html lang="fr-CA">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Bill Badran | Placements et retraite à Laval</title>
+<meta name="description" content="Bill Badran, CIM, gestionnaire de portefeuille agréé à Laval. Gestion de placements et planification de la retraite, en français et en anglais.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;1,6..72,400&family=Hanken+Grotesk:wght@400;500;600&display=swap">
+<style>
+/* Layout concept: Calm Horizon. Deep-ink open water above, fog-white harbour below; an etched sea breathes under the hero, hairlines divide everything else, brass is used only for emphasis. */
+:root{
+  --ink:#0E2233; --ink-2:#173450; --ink-3:#244766; --deep:#0A1A28;
+  --fog:#F3F3F0; --paper:#FFFFFF; --stone:#E3E3DD; --line:#D6D6CF;
+  --muted:#5B6874; --faint:#A3AAAE;
+  --brass:#A8875A; --brass-2:#C9A874; --brass-ink:#8A6D42;
+  --on-ink:#F3F3F0; --on-ink-2:#C3CDD5; --on-ink-3:#8FA0AF; --ink-line:#2C4A66;
+  --serif:"Newsreader", Georgia, "Times New Roman", serif;
+  --sans:"Hanken Grotesk", "Helvetica Neue", Arial, sans-serif;
+  --gut:clamp(20px, 5.5vw, 80px);
+  --ease:cubic-bezier(.2,.75,.1,1);
+  color-scheme:light;
+}
+*,*::before,*::after{box-sizing:border-box}
+[hidden]{display:none !important}
+html{scroll-padding-top:90px}
+html:not(.lenis){scroll-behavior:smooth}
+@media (prefers-reduced-motion:reduce){html:not(.lenis){scroll-behavior:auto}}
+html.lenis, html.lenis body{height:auto}
+body{margin:0;background:var(--fog);color:var(--ink);font-family:var(--sans);font-size:17px;line-height:1.65;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+#site[data-lang="fr"] [lang="en"], #site[data-lang="en"] [lang="fr"]{display:none !important}
+a{color:inherit}
+button{font:inherit;color:inherit;cursor:pointer}
+img{max-width:100%;display:block}
+:focus-visible{outline:2px solid var(--brass);outline-offset:3px}
+.wrap{max-width:1440px;margin-inline:auto;padding-inline:var(--gut)}
+.skip{position:absolute;left:-999px;top:10px;z-index:100;background:var(--brass-2);color:var(--ink);padding:8px 14px;border-radius:4px}
+.skip:focus{left:12px}
+.sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+
+h1,h2,h3{font-family:var(--serif);font-weight:400;margin:0;letter-spacing:-0.02em;text-wrap:balance}
+h2{font-size:clamp(2.3rem, 4.6vw, 4.1rem);line-height:1.05}
+h3{font-size:clamp(1.5rem, 2.4vw, 2.3rem);line-height:1.12;letter-spacing:-0.01em}
+h1 em,h2 em,h3 em{font-style:italic;color:var(--brass)}
+p{margin:0}
+.eyebrow{font-size:12px;letter-spacing:.24em;text-transform:uppercase;color:var(--muted);font-weight:500}
+.ink .eyebrow{color:var(--brass-2)}
+.lede{font-size:clamp(1.02rem,1.3vw,1.15rem);line-height:1.65;color:var(--muted);max-width:56ch}
+.ink{background:var(--ink);color:var(--on-ink)}
+.ink .lede{color:var(--on-ink-2)}
+.ink h2 em,.ink h1 em,.ink h3 em{color:var(--brass-2)}
+.fine{font-size:13px;color:#6B7680;font-style:italic;line-height:1.5}
+.ink .fine{color:var(--on-ink-3)}
+.num{font-variant-numeric:tabular-nums}
+
+/* buttons */
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:12px;min-height:52px;padding:0 28px;border-radius:999px;border:1px solid transparent;font-size:15px;font-weight:500;text-decoration:none;white-space:nowrap;transition:background .35s var(--ease),color .35s var(--ease),border-color .35s var(--ease),transform .35s var(--ease)}
+.btn .ar{transition:transform .35s var(--ease)}
+.btn:hover .ar{transform:translateX(4px)}
+.btn-light{background:var(--fog);color:var(--ink)}
+.btn-light:hover{background:var(--brass-2)}
+.btn-ink{background:var(--ink);color:var(--fog)}
+.btn-ink:hover{background:var(--ink-3)}
+.btn-line{border-color:var(--line);color:var(--ink);background:transparent}
+.btn-line:hover{border-color:var(--ink)}
+.link{font-size:15px;font-weight:500;text-decoration:none;padding-bottom:4px;background:linear-gradient(currentColor,currentColor) left bottom/100% 1px no-repeat;transition:background-size .45s var(--ease)}
+.link:hover{background-size:0 1px;background-position:right bottom}
+.ink .link{color:var(--on-ink)}
+
+/* ---------- header ---------- */
+.hdr{position:fixed;left:0;right:0;top:0;z-index:60;padding-top:env(safe-area-inset-top,0px);transition:transform .5s var(--ease),background .4s,color .4s,box-shadow .4s;color:var(--on-ink)}
+.hdr.solid{background:rgba(243,243,240,.92);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);color:var(--ink);box-shadow:0 1px 0 var(--line)}
+.hdr.hide{transform:translateY(-110%)}
+.hdr-in{display:flex;align-items:center;gap:32px;height:84px}
+.brand{display:flex;align-items:center;gap:14px;text-decoration:none;margin-right:auto}
+.brand svg{width:30px;height:auto;color:currentColor}
+.brand b{display:block;font-weight:600;font-size:15px;letter-spacing:.26em}
+.brand small{white-space:nowrap;display:block;font-size:10.5px;letter-spacing:.2em;text-transform:uppercase;opacity:.7}
+.nav{display:flex;gap:30px;font-size:15px}
+.nav a{text-decoration:none;position:relative;padding:6px 0}
+.nav a::after{content:"";position:absolute;left:0;right:0;bottom:0;height:1px;background:currentColor;transform:scaleX(0);transform-origin:right;transition:transform .45s var(--ease)}
+.nav a:hover::after,.nav a.on::after{transform:scaleX(1);transform-origin:left}
+.langs{display:flex;align-items:center;gap:4px;font-size:13px;font-weight:600;letter-spacing:.08em}
+.langs button{border:0;background:none;padding:10px 4px;opacity:.55}
+.langs button[aria-pressed="true"]{opacity:1}
+.langs span{opacity:.35}
+.hdr .btn{min-height:44px;padding:0 20px;font-size:14px}
+.hdr:not(.solid) .btn-ink{background:var(--fog);color:var(--ink)}
+.menu-btn{display:none;width:46px;height:46px;border-radius:50%;border:1px solid currentColor;background:none;align-items:center;justify-content:center;opacity:.85}
+.menu-btn i{display:block;width:18px;height:1.5px;background:currentColor;position:relative}
+.menu-btn i::after{content:"";position:absolute;left:0;top:6px;width:18px;height:1.5px;background:currentColor}
+.menu-btn i{transform:translateY(-3px)}
+@media (max-width:1080px){.nav{gap:22px}.hdr .btn{display:none}}
+@media (max-width:900px){.nav{display:none}.menu-btn{display:inline-flex}}
+@media (max-width:420px){.brand small{display:none}}
+.drawer{position:fixed;inset:0;z-index:70;background:var(--ink);color:var(--on-ink);display:flex;flex-direction:column;padding:calc(24px + env(safe-area-inset-top,0px)) var(--gut) calc(32px + env(safe-area-inset-bottom,0px));clip-path:inset(0 0 100% 0);transition:clip-path .7s var(--ease);visibility:hidden}
+.drawer.open{clip-path:inset(0 0 0 0);visibility:visible}
+.drawer-top{display:flex;justify-content:space-between;align-items:center;height:60px}
+.drawer nav{display:flex;flex-direction:column;gap:6px;margin-top:40px}
+.drawer nav a{font-family:var(--serif);font-size:clamp(2.2rem,9vw,3.4rem);line-height:1.15;text-decoration:none}
+.drawer .btn{margin-top:auto;align-self:flex-start}
+.close-btn{width:46px;height:46px;border-radius:50%;border:1px solid var(--ink-line);background:none;display:flex;align-items:center;justify-content:center}
+
+/* ---------- hero ---------- */
+.hero{position:relative;overflow:hidden;padding-top:clamp(150px,19vh,210px)}
+.hero-grid{position:relative;z-index:2;display:grid;grid-template-columns:minmax(0,1fr) 300px;gap:60px;align-items:end}
+.hero-copy{display:flex;flex-direction:column;gap:32px;min-width:0}
+.hero h1{font-size:clamp(3.1rem, 7.6vw, 6.8rem);line-height:.98;letter-spacing:-0.03em}
+.hero .lede{font-size:clamp(1.05rem,1.4vw,1.25rem);max-width:36em}
+.hero-ctas{display:flex;flex-wrap:wrap;gap:26px;align-items:center}
+.facts{display:flex;flex-direction:column;gap:22px;padding-bottom:6px}
+.fact{border-top:1px solid var(--ink-line);padding-top:14px;display:flex;flex-direction:column;gap:2px}
+.fact b{font-family:var(--serif);font-weight:400;font-size:2.1rem;line-height:1.1}
+.fact > span{font-size:14px;color:var(--on-ink-3)}
+.sea{display:block;width:100%;height:clamp(200px,28vw,340px);margin-top:clamp(20px,4vw,40px)}
+.cue{position:absolute;z-index:2;left:var(--gut);bottom:30px;display:flex;align-items:center;gap:14px;font-size:12px;letter-spacing:.22em;text-transform:uppercase;color:var(--on-ink-2)}
+.cue i{display:block;width:1px;height:46px;background:var(--ink-line);overflow:hidden;position:relative}
+.cue i::after{content:"";position:absolute;inset:0;background:var(--fog);animation:cue 2.4s ease-in-out infinite}
+@keyframes cue{0%{transform:translateY(-100%)}50%{transform:translateY(0)}100%{transform:translateY(100%)}}
+.rv{display:block;overflow:hidden;padding-bottom:.08em;margin-bottom:-.08em}
+.rv > span{display:block;animation:rise 1.25s var(--ease) both}
+@keyframes rise{from{transform:translateY(110%)}to{transform:none}}
+.fade{animation:fadeUp 1.1s var(--ease) both}
+@keyframes fadeUp{from{opacity:0;transform:translateY(18px)}to{opacity:1;transform:none}}
+@media (max-width:900px){.hero-grid{grid-template-columns:1fr;gap:36px}.facts{flex-direction:row;flex-wrap:wrap;gap:18px}.fact{flex:1 1 160px}.cue{display:none}}
+
+/* ---------- marquee ---------- */
+.marquee{border-bottom:1px solid var(--line);overflow:hidden;padding-block:34px}
+.mq{display:flex;width:max-content;gap:48px;font-family:var(--serif);font-style:italic;font-size:clamp(1.9rem,3.4vw,3rem);white-space:nowrap;animation:mq 50s linear infinite}
+.mq span:nth-child(even){color:var(--brass)}
+@keyframes mq{to{transform:translateX(-50%)}}
+
+/* ---------- sections ---------- */
+.band{padding-block:clamp(90px,11vw,160px)}
+.white{background:var(--paper)}
+.sec-head{display:flex;flex-direction:column;gap:22px;max-width:980px;margin-bottom:clamp(40px,5vw,64px)}
+.row-head{display:flex;justify-content:space-between;align-items:flex-end;gap:30px;flex-wrap:wrap;margin-bottom:clamp(36px,4vw,52px)}
+
+/* word-split headings */
+.split .w{display:inline-block;overflow:hidden;vertical-align:top;padding-bottom:.1em;margin-bottom:-.1em}
+.split .w > span{display:inline-block;transition:transform 1s var(--ease)}
+.split.pre .w > span{transform:translateY(106%)}
+.reveal{transition:opacity 1s var(--ease),transform 1s var(--ease)}
+.reveal.pre{opacity:.15;transform:translateY(30px)}
+
+/* statement */
+.statement{display:grid;grid-template-columns:240px minmax(0,1fr);gap:60px}
+.statement p{font-family:var(--serif);font-size:clamp(1.8rem,3.6vw,3.2rem);line-height:1.22;letter-spacing:-0.012em;max-width:22em}
+.statement .sw{color:var(--faint);transition:color .35s}
+.statement .sw.lit{color:var(--ink)}
+@media (max-width:860px){.statement{grid-template-columns:1fr;gap:20px}}
+
+/* services accordion */
+.svc{border-top:1px solid var(--line)}
+.svc-item{border-bottom:1px solid var(--line);position:relative}
+.svc-btn{width:100%;display:grid;grid-template-columns:minmax(0,1.1fr) minmax(0,1fr) 60px;gap:40px;align-items:center;padding:38px 0;border:0;background:none;text-align:left;position:relative;z-index:1;transition:color .5s var(--ease),padding .5s var(--ease)}
+.svc-item::before{content:"";position:absolute;inset:0;background:var(--ink);transform:scaleY(0);transform-origin:bottom;transition:transform .6s var(--ease)}
+.svc-item:hover::before,.svc-item.open::before{transform:scaleY(1)}
+.svc-item:hover .svc-btn,.svc-item.open .svc-btn{color:var(--on-ink);padding-inline:32px}
+.svc-t{font-family:var(--serif);font-size:clamp(1.7rem,3vw,2.6rem);letter-spacing:-0.01em;line-height:1.1}
+.svc-d{font-size:16px;line-height:1.6;color:var(--muted);transition:color .5s}
+.svc-item:hover .svc-d,.svc-item.open .svc-d{color:var(--on-ink-2)}
+.svc-ic{width:56px;height:56px;border-radius:50%;border:1px solid var(--line);display:flex;align-items:center;justify-content:center;transition:all .5s var(--ease)}
+.svc-ic svg{transition:transform .5s var(--ease)}
+.svc-item:hover .svc-ic,.svc-item.open .svc-ic{background:var(--fog);border-color:var(--fog)}
+.svc-item.open .svc-ic svg{transform:rotate(45deg)}
+.svc-panel{display:grid;grid-template-rows:0fr;transition:grid-template-rows .6s var(--ease);position:relative;z-index:1}
+.svc-item.open .svc-panel{grid-template-rows:1fr}
+.svc-panel > div{overflow:hidden}
+.svc-panel .term{color:var(--on-ink)}
+.svc-panel ul{list-style:none;margin:0;padding:0 32px 40px;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px 40px;color:var(--on-ink-2);font-size:16px}
+.svc-panel li{display:flex;gap:14px}
+.svc-panel li::before{content:"";flex:none;width:14px;height:1px;background:var(--brass-2);margin-top:.85em}
+@media (max-width:820px){.svc-btn{grid-template-columns:minmax(0,1fr) 50px;gap:16px 20px}.svc-d{grid-column:1/-1;grid-row:2}.svc-ic{grid-column:2;grid-row:1;width:48px;height:48px}.svc-panel ul{grid-template-columns:1fr;padding-inline:20px}.svc-item:hover .svc-btn,.svc-item.open .svc-btn{padding-inline:20px}}
+
+/* tools */
+.tool{display:grid;grid-template-columns:minmax(0,.85fr) minmax(0,1.15fr);gap:clamp(36px,6vw,90px);align-items:center}
+.tool.flip{grid-template-columns:minmax(0,1.15fr) minmax(0,.85fr)}
+.tool.flip .tool-copy{order:2}
+.tool-copy{display:flex;flex-direction:column;gap:24px;min-width:0}
+.tool-copy h3{font-size:clamp(2rem,3.8vw,3.4rem);line-height:1.06;letter-spacing:-0.02em}
+.ctrl{display:flex;flex-direction:column;gap:10px}
+.ctrl-top{display:flex;justify-content:space-between;gap:14px;font-size:14px;font-weight:600}
+.ctrl output{font-variant-numeric:tabular-nums;color:var(--brass-ink);font-weight:600}
+.pills{display:flex;flex-wrap:wrap;gap:8px}
+.pills button{min-height:42px;padding:0 18px;border-radius:999px;border:1px solid var(--line);background:transparent;font-size:14px;font-variant-numeric:tabular-nums;transition:all .3s}
+.pills button:hover{border-color:var(--ink)}
+.pills button[aria-pressed="true"]{background:var(--ink);border-color:var(--ink);color:var(--fog)}
+input[type=range]{-webkit-appearance:none;appearance:none;width:100%;height:2px;background:linear-gradient(to right,var(--ink) var(--fill,50%),var(--line) var(--fill,50%));outline:none;margin:14px 0}
+input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;width:22px;height:22px;border-radius:50%;background:var(--paper);border:1.5px solid var(--ink);cursor:pointer;transition:transform .2s}
+input[type=range]::-webkit-slider-thumb:hover{transform:scale(1.15)}
+input[type=range]::-moz-range-thumb{width:20px;height:20px;border-radius:50%;background:var(--paper);border:1.5px solid var(--ink);cursor:pointer}
+input[type=range]:focus-visible{outline:2px solid var(--brass);outline-offset:6px}
+.ctrl-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:6px 30px}
+@media (max-width:520px){.ctrl-grid{grid-template-columns:1fr}}
+.result{display:flex;align-items:baseline;gap:14px;flex-wrap:wrap;border-top:1px solid var(--line);padding-top:20px}
+.result b{font-family:var(--serif);font-weight:400;font-size:clamp(2.4rem,4.4vw,3.4rem);line-height:1;color:var(--brass-ink);font-variant-numeric:tabular-nums}
+.result span{font-size:15px;color:var(--muted);max-width:36ch}
+.chart-card{background:var(--paper);border:1px solid var(--stone);border-radius:6px;padding:clamp(18px,2.4vw,30px);min-width:0}
+.fog-card{background:var(--fog)}
+.legend{display:flex;flex-wrap:wrap;gap:8px 26px;font-size:13.5px;margin-bottom:12px}
+.legend span{display:inline-flex;align-items:center;gap:9px}
+.legend i{display:inline-block;width:22px;height:2px}
+.legend i.dash{background:repeating-linear-gradient(90deg,var(--ink) 0 5px,transparent 5px 9px)}
+.chart{width:100%;height:auto;display:block;overflow:visible}
+@media (max-width:900px){.tool,.tool.flip{grid-template-columns:1fr}.tool.flip .tool-copy{order:0}}
+
+/* check-up */
+.check{display:grid;grid-template-columns:minmax(0,1.25fr) minmax(0,.75fr);gap:clamp(30px,5vw,70px);align-items:start}
+.qs{list-style:none;margin:0;padding:0;border-top:1px solid var(--ink-line)}
+.q{display:grid;grid-template-columns:40px minmax(0,1fr) auto;gap:18px;align-items:center;padding:22px 0;border-bottom:1px solid var(--ink-line)}
+.q .n{font-family:var(--serif);font-size:1.4rem;color:var(--brass-2)}
+.q p{color:var(--on-ink-2);font-size:16px}
+.yn{display:flex;gap:6px}
+.yn button{min-width:64px;min-height:42px;border-radius:999px;border:1px solid var(--ink-line);background:none;color:var(--on-ink-2);font-size:14px;transition:all .3s}
+.yn button:hover{border-color:var(--on-ink-3)}
+.yn button[aria-pressed="true"]{background:var(--fog);color:var(--ink);border-color:var(--fog)}
+.score{position:sticky;top:120px;border:1px solid var(--ink-line);border-radius:6px;padding:32px;display:flex;flex-direction:column;gap:16px}
+.gauge{display:flex;gap:6px}
+.gauge i{flex:1;height:3px;background:var(--ink-line);transition:background .4s}
+.gauge i.y{background:var(--brass-2)}
+.gauge i.n{background:var(--on-ink-3)}
+.score .big{font-family:var(--serif);font-size:4rem;line-height:1;font-variant-numeric:tabular-nums}
+.score h3{font-size:1.9rem}
+.score p{color:var(--on-ink-2);font-size:15.5px}
+@media (max-width:900px){.check{grid-template-columns:1fr}.score{position:relative;top:0}}
+@media (max-width:560px){.q{grid-template-columns:30px minmax(0,1fr)}.yn{grid-column:2}}
+
+/* method (sticky) */
+.method{display:grid;grid-template-columns:minmax(0,.9fr) minmax(0,1.1fr);gap:clamp(30px,6vw,100px)}
+.method-l{position:sticky;top:130px;align-self:start;display:flex;flex-direction:column;gap:24px}
+.steps{list-style:none;margin:0;padding:0;display:flex;flex-direction:column}
+.step{display:grid;grid-template-columns:80px minmax(0,1fr);gap:20px;padding:44px 0;border-top:1px solid var(--line);opacity:.35;transition:opacity .6s var(--ease)}
+.step:last-child{border-bottom:1px solid var(--line)}
+.step.on{opacity:1}
+.step .n{font-family:var(--serif);font-size:2.6rem;line-height:1;color:var(--brass)}
+.step h3{margin-bottom:10px}
+.step p{color:var(--muted);max-width:40ch}
+@media (max-width:900px){.method{grid-template-columns:1fr}.method-l{position:relative;top:0}.step{opacity:1;grid-template-columns:56px minmax(0,1fr);padding:30px 0}}
+
+/* about */
+.about{display:grid;grid-template-columns:minmax(0,.85fr) minmax(0,1.15fr);gap:clamp(36px,7vw,110px);align-items:center}
+.portrait{position:relative;aspect-ratio:4/5;border-radius:4px;overflow:hidden;background:var(--ink);max-width:560px;width:100%;clip-path:inset(0 0 0 0);transition:clip-path 1.4s var(--ease)}
+.portrait.pre{clip-path:inset(100% 0 0 0)}
+.portrait .ph{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;transition:transform 1.8s var(--ease)}
+.portrait.pre .ph,.portrait.pre img{transform:scale(1.18)}
+.portrait .ph svg{width:34%;height:auto;color:var(--ink-3)}
+.portrait img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transition:transform 1.8s var(--ease)}
+.portrait figcaption{position:absolute;left:18px;bottom:18px;background:var(--fog);color:var(--ink);padding:14px 18px;border-radius:3px;font-size:13px;line-height:1.45}
+.portrait figcaption b{display:block;font-family:var(--serif);font-weight:400;font-size:21px}
+.about-copy{display:flex;flex-direction:column;gap:26px;min-width:0}
+.creds{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));border-top:1px solid var(--line);margin:0;padding:0;list-style:none}
+.creds li{padding:20px 0;border-bottom:1px solid var(--line);display:flex;flex-direction:column;gap:2px;min-width:0}
+.creds b{font-family:var(--serif);font-weight:400;font-size:1.6rem}
+.creds li > span{font-size:14px;color:var(--muted)}
+@media (max-width:900px){.about{grid-template-columns:1fr}.portrait{max-width:420px}}
+@media (max-width:460px){.creds{grid-template-columns:1fr}}
+
+/* guide */
+.guide{border-radius:6px;padding:clamp(36px,6vw,84px);display:grid;grid-template-columns:minmax(0,1fr) 300px;gap:clamp(36px,6vw,80px);align-items:center}
+.guide-copy{display:flex;flex-direction:column;gap:24px;min-width:0}
+.book{aspect-ratio:8.5/11;width:100%;max-width:300px;background:var(--ink-2);border-radius:3px 8px 8px 3px;padding:34px 30px;display:flex;flex-direction:column;box-shadow:-3px 0 0 var(--deep) inset,0 40px 60px -30px rgba(0,0,0,.65);transform:perspective(1200px) rotateY(-14deg) rotateX(4deg);transition:transform 1.2s var(--ease);justify-self:center}
+.book:hover{transform:perspective(1200px) rotateY(-4deg) rotateX(1deg)}
+.book > small{font-size:9px;letter-spacing:.26em;color:var(--on-ink-3)}
+.book strong{font-family:var(--serif);font-weight:400;font-size:2rem;line-height:1.05;margin-top:22%}
+.book strong em{color:var(--brass-2)}
+.book > span{margin-top:auto;font-size:11px;color:var(--on-ink-3);line-height:1.5}
+.gform{display:flex;flex-direction:column;gap:14px}
+.gform-row{display:flex;gap:10px;flex-wrap:wrap}
+.gform input[type=text],.gform input[type=email]{flex:1 1 180px;min-width:0;min-height:54px;padding:0 20px;border-radius:999px;border:1px solid var(--ink-line);background:transparent;color:var(--on-ink);font:inherit;font-size:15px}
+.gform input::placeholder{color:var(--on-ink-3)}
+.gform input:focus{outline:none;border-color:var(--brass-2)}
+.gform .bad{border-color:#E8A08A !important}
+.gopts{display:flex;flex-wrap:wrap;gap:12px 24px;align-items:center;font-size:14px;color:var(--on-ink-2)}
+.seg{display:inline-flex;border:1px solid var(--ink-line);border-radius:999px;padding:3px}
+.seg button{border:0;background:none;color:var(--on-ink-2);border-radius:999px;padding:6px 14px;font-size:13px}
+.seg button[aria-pressed="true"]{background:var(--fog);color:var(--ink)}
+.consent{display:grid;grid-template-columns:20px 1fr;gap:12px;font-size:13.5px;color:var(--on-ink-3);line-height:1.5;align-items:start}
+.consent input{width:18px;height:18px;margin:2px 0 0;accent-color:var(--brass-2)}
+.consent.bad span{color:#F0B7A4}
+.status{font-size:14px;color:var(--on-ink-2);min-height:0}
+.status:empty{display:none}
+@media (max-width:860px){.guide{grid-template-columns:1fr}.book{max-width:240px;order:-1}}
+
+/* contact */
+.contact{display:grid;grid-template-columns:minmax(0,.9fr) minmax(0,1.1fr);gap:clamp(36px,6vw,100px);align-items:start}
+.contact-l{display:flex;flex-direction:column;gap:26px;min-width:0}
+.ci{display:flex;flex-direction:column;gap:4px;padding:18px 0;border-top:1px solid var(--line)}
+.ci small{font-size:12px;letter-spacing:.2em;text-transform:uppercase;color:var(--muted)}
+.ci-row{display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap}
+.ci a,.ci .v{font-size:1.2rem;text-decoration:none;overflow-wrap:anywhere}
+.copy{border:1px solid var(--line);background:none;border-radius:999px;padding:6px 14px;font-size:12.5px;color:var(--muted);min-height:36px}
+.copy:hover{border-color:var(--ink);color:var(--ink)}
+.socials{display:flex;gap:10px}
+.socials a{width:46px;height:46px;border-radius:50%;border:1px solid var(--line);display:flex;align-items:center;justify-content:center;transition:all .3s}
+.socials a:hover{background:var(--ink);border-color:var(--ink)}
+.socials svg{width:18px;height:18px;fill:var(--ink);transition:fill .3s}
+.socials a:hover svg{fill:var(--fog)}
+.cform{background:var(--paper);border:1px solid var(--stone);border-radius:6px;padding:clamp(24px,3.5vw,44px);display:flex;flex-direction:column;gap:18px}
+.frow{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:18px}
+@media (max-width:560px){.frow{grid-template-columns:1fr}}
+.field{display:flex;flex-direction:column;gap:6px;min-width:0}
+.field label{font-size:13px;font-weight:600}
+.field input,.field textarea,.field select{font:inherit;font-size:16px;padding:13px 0;border:0;border-bottom:1px solid var(--line);background:transparent;color:var(--ink);border-radius:0;width:100%}
+.field textarea{min-height:110px;resize:vertical}
+.field input:focus,.field textarea:focus,.field select:focus{outline:none;border-bottom-color:var(--ink)}
+.field .err{font-size:13px;color:#A6412A}
+.field .err:empty{display:none}
+.field.bad input{border-bottom-color:#A6412A}
+.chips{display:flex;flex-wrap:wrap;gap:8px}
+.chips button{min-height:40px;padding:0 16px;border-radius:999px;border:1px solid var(--line);background:none;font-size:14px}
+.chips button[aria-pressed="true"]{background:var(--ink);border-color:var(--ink);color:var(--fog)}
+.done{display:flex;flex-direction:column;gap:10px}
+@media (max-width:900px){.contact{grid-template-columns:1fr}}
+
+/* footer */
+footer{background:var(--deep);color:var(--on-ink-2);padding-block:80px 40px;font-size:15px}
+.foot-top{display:grid;grid-template-columns:minmax(0,1.4fr) repeat(3,minmax(0,1fr));gap:40px}
+.foot-top h4{margin:0 0 12px;font-size:12px;letter-spacing:.2em;text-transform:uppercase;color:var(--on-ink-3);font-weight:500}
+.foot-top ul{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:8px}
+.foot-top a{text-decoration:none;color:var(--on-ink)}
+.foot-top a:hover{color:var(--brass-2)}
+.foot-brand{display:flex;flex-direction:column;gap:20px;color:var(--on-ink)}
+.foot-brand svg{width:44px;height:auto}
+.foot-brand p{font-family:var(--serif);font-size:1.7rem;line-height:1.2;max-width:14em}
+.disclose{margin-top:60px;padding-top:24px;border-top:1px solid var(--ink-line);display:flex;flex-direction:column;gap:10px;font-size:13px;line-height:1.6;color:var(--on-ink-3)}
+.disclose mark{background:rgba(201,168,116,.18);color:var(--brass-2);padding:1px 6px;border-radius:3px}
+@media (max-width:860px){.foot-top{grid-template-columns:1fr 1fr}.foot-brand{grid-column:1/-1}}
+
+.tip{position:fixed;z-index:80;max-width:300px;background:var(--ink);color:var(--on-ink);border-radius:4px;padding:14px 16px;font-size:14px;line-height:1.5;box-shadow:0 20px 40px -18px rgba(0,0,0,.5)}
+.tip b{display:block;font-family:var(--serif);font-weight:400;font-size:1.2rem;color:var(--brass-2);margin-bottom:2px}
+.term{border:0;background:none;padding:0;font:inherit;color:inherit;text-decoration:underline dotted var(--brass) 1.5px;text-underline-offset:4px}
+.toast{position:fixed;left:50%;bottom:calc(24px + env(safe-area-inset-bottom,0px));z-index:90;transform:translate(-50%,20px);opacity:0;background:var(--ink);color:var(--fog);padding:12px 20px;border-radius:999px;font-size:14px;transition:all .4s var(--ease);pointer-events:none}
+.toast.show{opacity:1;transform:translate(-50%,0)}
+
+@media (prefers-reduced-motion:reduce){
+  .rv > span,.fade{animation:none}
+  .mq{animation:none}
+  .split.pre .w > span,.reveal.pre,.portrait.pre{transform:none;opacity:1;clip-path:none}
+  .step{opacity:1}
+}
+</style>
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<link rel="canonical" href="https://www.billbadran.com/">
+<meta name="theme-color" content="#0E2233">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="fr_CA"><meta property="og:locale:alternate" content="en_CA">
+<meta property="og:title" content="Bill Badran | Placements et retraite à Laval">
+<meta property="og:description" content="Gestion de placements et planification de la retraite. Outils gratuits et guide : les 5 erreurs qu'on voit tout le temps.">
+<meta property="og:url" content="https://www.billbadran.com/">
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "FinancialService", "name": "Bill Badran, placements et retraite", "url": "https://www.billbadran.com/", "telephone": "+1-514-357-2666", "email": "contact@billbadran.com", "knowsLanguage": ["fr-CA", "en-CA"], "areaServed": ["Laval", "Montréal", "Québec"], "address": {"@type": "PostalAddress", "streetAddress": "4150, boul. Saint-Martin Ouest, bureau 204", "addressLocality": "Laval", "addressRegion": "QC", "postalCode": "H7T 1C1", "addressCountry": "CA"}, "founder": {"@type": "Person", "name": "Bill Badran", "jobTitle": "Gestionnaire de portefeuille agréé (CIM)"}, "sameAs": ["https://www.linkedin.com/in/bill-badran-pl-fin-cim%C2%AE-b6305b72/", "https://www.facebook.com/profile.php?id=100092753622484", "https://www.instagram.com/billbadranfp/"]}</script>
+</head>
+<body>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true"><symbol id="bb" viewBox="0 0 355 444"><path fill="currentColor" fill-rule="evenodd" d="M61.5 2.0 L61.0 3.0 L61.0 58.3 L61.2 58.5 L61.0 59.8 L60.3 60.5 L3.8 60.5 L2.8 60.8 L2.3 61.5 L2.3 381.8 L2.5 382.2 L3.3 382.8 L238.2 382.8 L238.3 382.7 L241.3 382.7 L244.8 382.0 L247.7 381.8 L250.0 381.0 L251.5 380.8 L254.2 379.8 L254.7 379.8 L255.8 379.2 L257.7 378.7 L261.7 376.8 L267.2 373.8 L271.2 371.0 L275.8 367.0 L280.8 361.7 L284.0 357.5 L286.8 353.0 L289.7 347.5 L290.2 345.7 L291.7 342.0 L292.2 339.5 L292.7 338.5 L294.0 331.3 L294.3 323.5 L294.0 321.3 L293.8 317.0 L293.2 314.2 L292.8 311.3 L292.2 309.5 L291.8 307.3 L291.2 306.0 L290.8 304.5 L290.2 303.3 L289.7 301.5 L284.8 292.5 L280.8 287.0 L276.0 282.0 L269.0 276.2 L264.8 273.7 L264.3 273.2 L258.0 270.0 L256.8 269.8 L254.3 268.8 L253.2 268.7 L251.7 268.0 L249.5 267.7 L247.8 267.0 L245.7 266.8 L242.2 266.0 L239.7 266.0 L239.5 265.8 L121.2 265.8 L120.3 266.2 L120.0 267.2 L120.2 267.7 L120.2 293.3 L120.0 293.7 L120.3 295.0 L121.0 295.5 L121.8 295.7 L237.3 295.7 L237.5 295.8 L241.7 296.0 L247.5 298.0 L250.0 299.3 L254.0 302.0 L257.7 305.7 L259.7 308.3 L262.0 312.7 L263.7 317.2 L264.7 324.5 L264.5 327.2 L263.7 331.7 L262.7 334.8 L260.7 338.8 L256.8 344.0 L255.0 345.8 L250.0 349.5 L244.3 351.8 L243.0 352.0 L241.3 352.7 L239.0 353.0 L91.7 353.0 L91.0 352.3 L90.8 351.8 L90.8 103.8 L90.0 103.0 L62.2 103.0 L61.3 103.5 L61.0 105.0 L61.0 351.0 L61.2 351.8 L61.0 352.3 L60.2 353.0 L32.7 353.0 L32.2 352.7 L31.8 352.0 L31.8 91.7 L32.2 90.7 L32.5 90.3 L237.2 90.3 L242.7 91.0 L246.2 92.2 L250.2 94.2 L253.7 96.5 L256.7 99.3 L259.5 102.8 L261.7 106.7 L262.8 109.3 L263.8 112.7 L264.7 119.2 L264.5 122.0 L263.7 126.5 L263.2 127.5 L262.5 130.0 L260.7 133.7 L258.0 137.5 L254.8 140.7 L250.7 143.8 L247.3 145.7 L245.2 146.2 L244.2 146.7 L239.0 147.8 L121.2 147.8 L120.3 148.2 L120.0 149.2 L120.2 149.7 L120.2 175.3 L120.0 175.7 L120.3 177.0 L121.0 177.5 L121.8 177.7 L235.5 177.7 L235.7 177.5 L239.0 177.5 L239.2 177.3 L241.5 177.3 L243.0 177.0 L246.3 176.8 L251.2 175.7 L252.8 175.0 L254.0 174.8 L255.2 174.2 L256.7 173.8 L257.8 173.2 L258.7 173.0 L263.5 170.7 L268.7 167.7 L272.3 164.8 L277.5 160.2 L281.0 156.2 L283.8 152.5 L287.8 146.0 L289.8 141.8 L291.2 137.7 L291.8 136.3 L292.2 134.3 L292.8 132.7 L294.0 126.2 L294.3 118.2 L294.0 116.0 L293.8 111.7 L293.0 108.0 L293.0 106.8 L292.2 104.3 L291.5 101.2 L290.2 98.0 L289.8 96.7 L287.8 92.3 L284.2 86.2 L280.2 81.0 L275.3 76.0 L272.2 73.2 L264.5 68.0 L258.5 65.0 L257.5 64.8 L256.2 64.2 L254.5 63.8 L252.5 63.0 L251.0 62.8 L248.8 62.0 L247.0 61.8 L242.5 60.8 L236.2 60.7 L236.0 60.5 L91.5 60.5 L90.8 59.2 L90.8 32.8 L91.0 32.0 L91.5 31.3 L241.3 31.3 L243.8 31.8 L248.8 32.2 L257.8 34.0 L263.2 35.8 L265.0 36.2 L265.8 36.7 L267.5 37.2 L270.8 38.8 L271.7 39.0 L280.0 43.3 L287.2 48.0 L292.5 52.3 L297.2 56.5 L303.8 63.8 L308.7 70.3 L312.5 76.7 L315.0 81.5 L318.5 90.0 L318.8 91.5 L319.8 94.0 L319.8 94.7 L320.7 97.0 L321.0 99.3 L321.8 102.0 L322.0 104.3 L322.8 108.5 L323.0 113.2 L323.7 118.7 L323.5 124.3 L323.2 126.2 L322.8 131.3 L322.0 135.0 L321.8 137.2 L321.0 139.8 L320.8 141.3 L320.0 143.3 L319.8 144.7 L316.8 153.0 L313.5 159.8 L310.7 164.8 L305.8 171.8 L300.8 177.8 L294.2 184.5 L288.0 189.7 L284.5 191.8 L280.8 194.5 L272.7 198.8 L271.8 199.0 L268.3 200.7 L266.8 201.0 L265.7 201.7 L264.2 202.0 L263.3 202.5 L255.7 204.8 L254.0 205.0 L250.8 205.8 L241.5 206.8 L121.2 206.8 L120.3 207.2 L120.0 208.2 L120.2 208.7 L120.2 234.3 L120.0 234.5 L120.2 235.7 L120.7 236.3 L121.8 236.7 L241.5 236.7 L243.5 237.0 L245.3 237.0 L251.2 238.0 L252.5 238.0 L255.2 238.8 L256.8 239.0 L259.0 239.8 L260.3 240.0 L262.3 240.8 L263.7 241.0 L265.5 241.8 L266.5 242.0 L275.8 246.3 L284.0 251.0 L289.0 254.7 L296.3 261.0 L300.8 265.5 L305.7 271.5 L308.8 275.8 L313.7 284.0 L316.7 290.5 L317.0 291.8 L318.7 295.7 L319.0 297.3 L319.7 298.7 L320.0 300.7 L320.8 303.0 L321.2 305.3 L321.7 306.5 L322.0 309.7 L322.8 313.8 L323.0 318.3 L323.7 324.0 L323.5 329.5 L322.8 335.0 L322.8 336.7 L322.0 340.2 L321.7 343.2 L321.2 344.3 L320.7 347.2 L320.0 348.7 L318.7 353.5 L317.0 357.2 L316.8 358.0 L316.0 359.5 L315.8 360.3 L310.5 370.3 L306.7 376.0 L303.5 380.0 L300.3 383.7 L294.8 389.2 L291.3 392.2 L286.7 395.7 L277.3 401.7 L273.2 403.8 L272.3 404.0 L269.0 405.7 L267.5 406.0 L266.3 406.7 L264.8 407.0 L263.7 407.7 L260.5 408.7 L258.2 409.0 L256.3 409.7 L254.0 410.0 L251.7 410.7 L248.3 411.0 L245.0 411.8 L241.8 411.8 L241.7 412.0 L91.7 412.0 L91.0 411.3 L90.8 410.8 L90.8 396.3 L90.5 395.8 L89.5 395.5 L62.7 395.5 L61.8 395.7 L61.3 396.0 L61.0 397.0 L61.0 439.8 L61.2 440.8 L61.5 441.3 L62.3 441.7 L242.7 441.7 L242.8 441.5 L253.3 440.7 L255.0 440.2 L258.3 439.8 L266.7 437.8 L268.7 437.0 L269.8 436.8 L271.8 436.0 L273.0 435.8 L274.0 435.3 L276.0 434.8 L277.2 434.2 L278.8 433.7 L279.5 433.2 L280.8 432.8 L284.2 431.2 L285.0 431.0 L290.2 428.2 L291.2 427.8 L292.0 427.2 L296.5 424.8 L301.5 421.7 L309.8 415.5 L313.8 412.0 L320.5 405.5 L326.7 398.7 L332.8 390.5 L336.0 385.7 L340.8 377.0 L345.8 365.8 L346.2 364.3 L346.7 363.5 L347.0 362.0 L348.0 359.5 L348.2 358.3 L348.8 356.8 L349.2 354.8 L349.8 353.2 L350.0 351.5 L350.8 349.0 L351.0 347.0 L351.8 343.7 L352.2 340.0 L352.8 336.8 L353.0 328.0 L353.2 327.8 L353.0 315.8 L352.8 315.7 L352.7 312.3 L352.2 309.8 L352.0 307.0 L351.2 303.3 L350.8 300.2 L350.0 297.5 L349.7 295.3 L349.0 293.5 L348.8 292.0 L348.0 290.0 L346.8 285.7 L345.2 281.8 L344.8 280.5 L344.2 279.3 L343.8 278.0 L343.0 276.7 L342.8 275.8 L342.0 274.5 L339.8 269.7 L339.2 268.8 L336.8 264.3 L332.7 257.8 L328.7 252.5 L322.0 244.5 L316.5 239.0 L306.3 230.3 L299.8 225.8 L294.7 222.8 L293.7 222.0 L293.7 221.3 L294.0 221.0 L299.8 217.7 L305.5 213.7 L312.2 208.3 L320.2 200.7 L327.7 192.3 L332.0 186.5 L335.8 180.7 L340.8 171.8 L343.2 166.5 L343.7 165.8 L345.2 161.7 L345.8 160.5 L348.0 154.2 L348.2 153.0 L348.8 151.7 L349.3 149.0 L349.8 147.8 L350.0 146.2 L351.0 142.8 L351.0 141.7 L352.0 137.3 L352.0 136.0 L352.3 134.8 L353.0 129.2 L353.2 118.0 L353.0 117.8 L353.0 111.5 L352.8 111.3 L352.7 107.2 L352.0 103.7 L351.8 100.7 L351.0 97.3 L350.8 95.2 L347.8 83.7 L347.2 82.3 L346.8 80.7 L346.2 79.3 L346.0 78.3 L345.2 76.7 L344.8 75.3 L343.0 71.5 L342.8 70.7 L342.2 69.7 L341.8 68.5 L339.2 63.7 L338.8 62.7 L338.2 61.8 L336.7 58.8 L333.0 53.2 L326.5 44.5 L322.0 39.3 L313.7 31.2 L302.0 22.0 L297.7 19.2 L286.7 13.0 L285.5 12.7 L284.0 11.8 L283.2 11.7 L282.0 11.0 L278.2 9.7 L277.3 9.2 L275.5 8.7 L273.7 7.8 L273.2 7.8 L271.5 7.0 L270.3 6.8 L268.2 6.0 L266.7 5.8 L265.0 5.2 L262.5 4.8 L259.8 4.0 L257.2 3.7 L254.2 2.8 L251.8 2.7 L248.5 2.0 L245.8 2.0 L245.7 1.8 L61.8 1.8Z"/></symbol></svg>
+
+<div id="site" data-lang="fr">
+<a class="skip" href="#main"><span lang="fr">Aller au contenu</span><span lang="en">Skip to content</span></a>
+
+<header class="hdr" id="hdr">
+  <div class="wrap hdr-in">
+    <a class="brand" href="#accueil" aria-label="Bill Badran">
+      <svg viewBox="0 0 355 444" aria-hidden="true"><use href="#bb"/></svg>
+      <span><b>BILL BADRAN</b><small><span lang="fr">Placements &amp; retraite</span><span lang="en">Investments &amp; retirement</span></small></span>
+    </a>
+    <nav class="nav" aria-label="Navigation">
+      <a href="#services"><span lang="fr">Placements</span><span lang="en">Investing</span></a>
+      <a href="#retraite"><span lang="fr">Retraite</span><span lang="en">Retirement</span></a>
+      <a href="#outils"><span lang="fr">Outils</span><span lang="en">Tools</span></a>
+      <a href="#guide">Guide</a>
+      <a href="#a-propos"><span lang="fr">À propos</span><span lang="en">About</span></a>
+    </nav>
+    <div class="langs" role="group" aria-label="Langue / Language"><button type="button" data-set-lang="fr" aria-pressed="true">FR</button><span>/</span><button type="button" data-set-lang="en" aria-pressed="false">EN</button></div>
+    <a class="btn btn-ink" href="#contact" data-book><span lang="fr">Prendre rendez-vous</span><span lang="en">Book a meeting</span></a>
+    <button class="menu-btn" type="button" id="menuOpen" aria-expanded="false" aria-controls="drawer"><i></i><span class="sr">Menu</span></button>
+  </div>
+</header>
+
+<div class="drawer" id="drawer" aria-hidden="true">
+  <div class="drawer-top">
+    <span class="brand"><svg viewBox="0 0 355 444" aria-hidden="true" style="width:28px"><use href="#bb"/></svg><b>BILL BADRAN</b></span>
+    <button class="close-btn" type="button" id="menuClose"><svg width="16" height="16" viewBox="0 0 16 16" aria-hidden="true"><path d="M2 2l12 12M14 2L2 14" stroke="#F3F3F0" stroke-width="1.5"/></svg><span class="sr">Fermer / Close</span></button>
+  </div>
+  <nav aria-label="Menu">
+    <a href="#services"><span lang="fr">Placements</span><span lang="en">Investing</span></a>
+    <a href="#retraite"><span lang="fr">Retraite</span><span lang="en">Retirement</span></a>
+    <a href="#outils"><span lang="fr">Outils</span><span lang="en">Tools</span></a>
+    <a href="#guide">Guide</a>
+    <a href="#a-propos"><span lang="fr">À propos</span><span lang="en">About</span></a>
+    <a href="#contact">Contact</a>
+  </nav>
+  <a class="btn btn-light" href="#contact" data-book><span lang="fr">Prendre rendez-vous</span><span lang="en">Book a meeting</span> <span class="ar">→</span></a>
+</div>
+
+<main id="main">
+<!-- ============ HERO ============ -->
+<section class="hero ink" id="accueil" aria-labelledby="h1">
+  <div class="wrap hero-grid">
+    <div class="hero-copy">
+      <div class="eyebrow fade" style="animation-delay:.1s"><span lang="fr">Placements et retraite · Laval</span><span lang="en">Investments &amp; retirement · Laval</span></div>
+      <h1 id="h1">
+        <span lang="fr"><span class="rv"><span style="animation-delay:.15s">Une retraite sereine</span></span><span class="rv"><span style="animation-delay:.27s">commence par la</span></span><span class="rv"><span style="animation-delay:.39s">bonne <em>vision.</em></span></span></span>
+        <span lang="en"><span class="rv"><span style="animation-delay:.15s">A calm retirement</span></span><span class="rv"><span style="animation-delay:.27s">starts with the</span></span><span class="rv"><span style="animation-delay:.39s">right <em>vision.</em></span></span></span>
+      </h1>
+      <p class="lede fade" style="animation-delay:.7s"><span lang="fr">Bill Badran gère vos placements et prépare votre retraite : un portefeuille bâti pour durer, puis un revenu fiable pour la suite.</span><span lang="en">Bill Badran manages your investments and prepares your retirement: a portfolio built to last, then reliable income for what comes next.</span></p>
+      <div class="hero-ctas fade" style="animation-delay:.85s">
+        <a class="btn btn-light" href="#contact" data-book><span lang="fr">Planifier une première rencontre</span><span lang="en">Book a first meeting</span> <span class="ar">→</span></a>
+        <a class="link" href="#guide"><span lang="fr">Télécharger le guide gratuit</span><span lang="en">Get the free guide</span></a>
+      </div>
+    </div>
+    <div class="facts fade" style="animation-delay:1s">
+      <div class="fact"><b>CIM<sup style="font-size:.5em">®</sup></b><span lang="fr">Gestionnaire de portefeuille agréé</span><span lang="en">Chartered Investment Manager</span></div>
+      <div class="fact"><b>15+ <span lang="fr">ans</span><span lang="en">years</span></b><span lang="fr">à bâtir des portefeuilles et des retraites</span><span lang="en">building portfolios and retirements</span></div>
+    </div>
+  </div>
+  <canvas class="sea" id="sea" aria-hidden="true"></canvas>
+  <div class="cue" aria-hidden="true"><i></i><span lang="fr">Défiler</span><span lang="en">Scroll</span></div>
+</section>
+
+<!-- ============ MARQUEE ============ -->
+<div class="marquee" aria-hidden="true">
+  <div class="mq">
+    <span lang="fr">Placements</span><span lang="en">Investing</span><span>·</span><span lang="fr">Revenu de retraite</span><span lang="en">Retirement income</span><span>·</span><span lang="fr">REER</span><span lang="en">RRSP</span><span>·</span><span lang="fr">CELI</span><span lang="en">TFSA</span><span>·</span><span lang="fr">FERR</span><span lang="en">RRIF</span><span>·</span><span lang="fr">RRQ</span><span lang="en">QPP</span><span>·</span><span lang="fr">PSV</span><span lang="en">OAS</span><span>·</span><span lang="fr">Portefeuille sur mesure</span><span lang="en">Custom portfolios</span><span>·</span>
+    <span lang="fr">Placements</span><span lang="en">Investing</span><span>·</span><span lang="fr">Revenu de retraite</span><span lang="en">Retirement income</span><span>·</span><span lang="fr">REER</span><span lang="en">RRSP</span><span>·</span><span lang="fr">CELI</span><span lang="en">TFSA</span><span>·</span><span lang="fr">FERR</span><span lang="en">RRIF</span><span>·</span><span lang="fr">RRQ</span><span lang="en">QPP</span><span>·</span><span lang="fr">PSV</span><span lang="en">OAS</span><span>·</span><span lang="fr">Portefeuille sur mesure</span><span lang="en">Custom portfolios</span><span>·</span>
+  </div>
+</div>
+
+<!-- ============ STATEMENT ============ -->
+<section class="band" id="approche" aria-label="Approche">
+  <div class="wrap statement">
+    <div class="eyebrow" style="padding-top:14px"><span lang="fr">L'approche</span><span lang="en">The approach</span></div>
+    <p id="statement">
+      <span lang="fr">Épargner, c'est la moitié du chemin. L'autre moitié, c'est transformer ce capital en revenu : quel compte, dans quel ordre, à quel âge. Bill bâtit votre portefeuille, puis le plan qui le fait durer aussi longtemps que vous.</span>
+      <span lang="en">Saving is half the journey. The other half is turning that capital into income: which account, in what order, at what age. Bill builds your portfolio, then the plan that makes it last as long as you do.</span>
+    </p>
+  </div>
+</section>
+
+<!-- ============ SERVICES ============ -->
+<section class="band" id="services" style="padding-top:0" aria-labelledby="h-svc">
+  <div class="wrap">
+    <div class="row-head">
+      <h2 id="h-svc" class="split"><span lang="fr">Investir aujourd'hui, <em>en vivre</em> demain</span><span lang="en">Invest today, <em>live on it</em> tomorrow</span></h2>
+      <a class="link" href="#methode"><span lang="fr">Comment je travaille</span><span lang="en">How I work</span></a>
+    </div>
+    <div class="svc" id="svc">
+      <div class="svc-item">
+        <button class="svc-btn" type="button" aria-expanded="false" aria-controls="p1">
+          <span class="svc-t"><span lang="fr">Gestion de portefeuille</span><span lang="en">Portfolio management</span></span>
+          <span class="svc-d"><span lang="fr">Un portefeuille diversifié selon votre tolérance au risque, suivi et rééquilibré, avec des frais expliqués clairement.</span><span lang="en">A portfolio diversified to your risk tolerance, monitored and rebalanced, with fees explained clearly.</span></span>
+          <span class="svc-ic"><svg width="18" height="18" viewBox="0 0 18 18" aria-hidden="true"><path d="M9 2v14M2 9h14" stroke="currentColor" stroke-width="1.5"/></svg></span>
+        </button>
+        <div class="svc-panel" id="p1"><div><ul>
+          <li><span lang="fr">Profil de risque et horizon de placement établis ensemble</span><span lang="en">Risk profile and time horizon set together</span></li>
+          <li><span lang="fr">Diversification réelle, sans doublons entre vos comptes</span><span lang="en">Real diversification, no overlap between your accounts</span></li>
+          <li><span lang="fr">Priorité à la préservation du capital</span><span lang="en">Capital preservation comes first</span></li>
+          <li><span lang="fr">Votre rendement net, après frais, toujours à jour</span><span lang="en">Your net return, after fees, always up to date</span></li>
+          <li><span lang="fr">Règles écrites d'avance pour les baisses de marché</span><span lang="en">Written rules, in advance, for market drops</span></li>
+          <li><span lang="fr">Suivi et rééquilibrage réguliers</span><span lang="en">Regular monitoring and rebalancing</span></li>
+        </ul></div></div>
+      </div>
+      <div class="svc-item" id="retraite">
+        <button class="svc-btn" type="button" aria-expanded="false" aria-controls="p2">
+          <span class="svc-t"><span lang="fr">Planification de la retraite</span><span lang="en">Retirement planning</span></span>
+          <span class="svc-d"><span lang="fr">Quand arrêter, combien il vous faut, et un budget réaliste testé avant le grand départ.</span><span lang="en">When to stop, how much you need, and a realistic budget tested before you leave.</span></span>
+          <span class="svc-ic"><svg width="18" height="18" viewBox="0 0 18 18" aria-hidden="true"><path d="M9 2v14M2 9h14" stroke="currentColor" stroke-width="1.5"/></svg></span>
+        </button>
+        <div class="svc-panel" id="p2"><div><ul>
+          <li><span lang="fr">Vos objectifs de vie et votre date de départ</span><span lang="en">Your life goals and your retirement date</span></li>
+          <li><span lang="fr">Le montant dont vous aurez vraiment besoin</span><span lang="en">The amount you'll really need</span></li>
+          <li><span lang="fr">Budget « go-go », « slow-go », « no-go »</span><span lang="en">A go-go, slow-go and no-go budget</span></li>
+          <li><span lang="fr">Le test des 6 mois, avant de quitter votre emploi</span><span lang="en">The 6-month test, before you leave your job</span></li>
+          <li><span lang="fr">Inflation et imprévus intégrés au plan</span><span lang="en">Inflation and surprises built into the plan</span></li>
+          <li><span lang="fr">Révision chaque année</span><span lang="en">Reviewed every year</span></li>
+        </ul></div></div>
+      </div>
+      <div class="svc-item">
+        <button class="svc-btn" type="button" aria-expanded="false" aria-controls="p3">
+          <span class="svc-t"><span lang="fr">Revenu de retraite</span><span lang="en">Retirement income</span></span>
+          <span class="svc-d"><span lang="fr">REER, CELI, FERR, RRQ et PSV&nbsp;: l'ordre des retraits qui réduit l'impôt et fait durer votre épargne.</span><span lang="en">RRSP, TFSA, RRIF, QPP and OAS: the withdrawal order that lowers tax and makes your savings last.</span></span>
+          <span class="svc-ic"><svg width="18" height="18" viewBox="0 0 18 18" aria-hidden="true"><path d="M9 2v14M2 9h14" stroke="currentColor" stroke-width="1.5"/></svg></span>
+        </button>
+        <div class="svc-panel" id="p3"><div><ul>
+          <li><span lang="fr">Quel compte retirer en premier&nbsp;: <button type="button" class="term" data-term="reer">REER</button>, <button type="button" class="term" data-term="celi">CELI</button> ou <button type="button" class="term" data-term="ferr">FERR</button></span><span lang="en">Which account to draw from first: <button type="button" class="term" data-term="reer">RRSP</button>, <button type="button" class="term" data-term="celi">TFSA</button> or <button type="button" class="term" data-term="ferr">RRIF</button></span></li>
+          <li><span lang="fr">Conversion du REER en FERR au bon moment</span><span lang="en">RRSP to RRIF conversion at the right time</span></li>
+          <li><span lang="fr">Moment optimal pour demander la <button type="button" class="term" data-term="rrq">RRQ</button> et la <button type="button" class="term" data-term="psv">PSV</button></span><span lang="en">The best time to start <button type="button" class="term" data-term="rrq">QPP</button> and <button type="button" class="term" data-term="psv">OAS</button></span></li>
+          <li><span lang="fr">Un revenu stable, versé chaque mois</span><span lang="en">Steady income, paid every month</span></li>
+          <li><span lang="fr">Un coussin hors Bourse pour les années difficiles</span><span lang="en">A cushion outside the market for tough years</span></li>
+          <li><span lang="fr">Ajustements selon les marchés et votre vie</span><span lang="en">Adjusted to markets and to your life</span></li>
+        </ul></div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ TOOLS ============ -->
+<section class="band white" id="outils" aria-labelledby="h-tools">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="eyebrow"><span lang="fr">Outils</span><span lang="en">Tools</span></div>
+      <h2 id="h-tools" class="split"><span lang="fr">Deux chiffres qui changent <em>tout</em></span><span lang="en">Two numbers that change <em>everything</em></span></h2>
+    </div>
+
+    <div class="tool" id="tool-fees">
+      <div class="tool-copy">
+        <div class="eyebrow"><span lang="fr">Le coût d'un petit 1 %</span><span lang="en">The cost of a small 1%</span></div>
+        <h3 class="split"><span lang="fr">Ce qui compte, c'est ce qui <em>reste</em> dans vos poches.</span><span lang="en">What counts is what <em>stays</em> in your pocket.</span></h3>
+        <div class="ctrl"><div class="ctrl-top"><span lang="fr">Montant investi</span><span lang="en">Amount invested</span></div>
+          <div class="pills" id="amtPills" role="group" aria-label="Montant"><button type="button" data-v="100000" aria-pressed="true"></button><button type="button" data-v="250000" aria-pressed="false"></button><button type="button" data-v="500000" aria-pressed="false"></button><button type="button" data-v="1000000" aria-pressed="false"></button></div></div>
+        <div class="ctrl-grid">
+          <div class="ctrl"><label class="ctrl-top" for="fYears"><span lang="fr">Horizon</span><span lang="en">Horizon</span><output id="fYearsO" for="fYears"></output></label><input type="range" id="fYears" min="10" max="35" step="1" value="25"></div>
+          <div class="ctrl"><label class="ctrl-top" for="fGap"><span lang="fr">Frais de plus par année</span><span lang="en">Extra fees per year</span><output id="fGapO" for="fGap"></output></label><input type="range" id="fGap" min="0.25" max="2" step="0.25" value="1"></div>
+        </div>
+        <div class="result"><b id="fDiff">72 052 $</b><span id="fDiffT"></span></div>
+        <p class="fine"><span lang="fr">Exemple fictif simplifié : rendement brut constant de 6 %, frais de base de 1 %, avant impôt, sans retrait.</span><span lang="en">Simplified fictional example: constant 6% gross return, 1% base fees, before tax, no withdrawals.</span></p>
+      </div>
+      <div class="chart-card">
+        <div class="legend"><span><i style="background:var(--ink)"></i><span id="fLgA"></span></span><span><i style="background:var(--brass)"></i><span id="fLgB"></span></span></div>
+        <svg class="chart" id="fChart" viewBox="0 0 680 360" role="img"></svg>
+      </div>
+    </div>
+
+    <div class="tool flip" id="tool-ret" style="margin-top:clamp(80px,10vw,140px)">
+      <div class="tool-copy">
+        <div class="eyebrow"><span lang="fr">Votre épargne durera-t-elle?</span><span lang="en">Will your savings last?</span></div>
+        <h3 class="split"><span lang="fr">Jusqu'à quel âge votre épargne <em>vous suivra</em>-t-elle?</span><span lang="en">How long will your savings <em>keep up</em> with you?</span></h3>
+        <div class="ctrl-grid">
+          <div class="ctrl"><label class="ctrl-top" for="rSave"><span lang="fr">Épargne au départ</span><span lang="en">Savings at retirement</span><output id="rSaveO" for="rSave"></output></label><input type="range" id="rSave" min="100000" max="3000000" step="25000" value="600000"></div>
+          <div class="ctrl"><label class="ctrl-top" for="rDraw"><span lang="fr">Retraits par année</span><span lang="en">Withdrawals per year</span><output id="rDrawO" for="rDraw"></output></label><input type="range" id="rDraw" min="10000" max="200000" step="1000" value="45000"></div>
+          <div class="ctrl"><label class="ctrl-top" for="rAge"><span lang="fr">Âge au départ</span><span lang="en">Retirement age</span><output id="rAgeO" for="rAge"></output></label><input type="range" id="rAge" min="55" max="70" step="1" value="62"></div>
+          <div class="ctrl"><label class="ctrl-top" for="rRet"><span lang="fr">Rendement annuel</span><span lang="en">Annual return</span><output id="rRetO" for="rRet"></output></label><input type="range" id="rRet" min="2" max="6" step="0.5" value="4"></div>
+        </div>
+        <div class="result"><b id="rAgeOut">80 ans</b><span id="rAgeT"></span></div>
+        <p class="fine"><span lang="fr">Exemple fictif simplifié : retraits en début d'année, sans inflation ni impôt, en plus des rentes publiques. Ce n'est pas un conseil personnalisé.</span><span lang="en">Simplified fictional example: withdrawals at the start of each year, no inflation or tax, on top of public pensions. Not personalized advice.</span></p>
+      </div>
+      <div class="chart-card fog-card">
+        <div class="legend"><span><i style="background:var(--brass)"></i><span id="rLgA"></span></span><span><i class="dash"></i><span id="rLgB"></span></span></div>
+        <svg class="chart" id="rChart" viewBox="0 0 680 360" role="img"></svg>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ CHECK-UP ============ -->
+<section class="band ink" id="bilan" aria-labelledby="h-check">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="eyebrow"><span lang="fr">Bilan éclair · 60 secondes</span><span lang="en">Quick check-up · 60 seconds</span></div>
+      <h2 id="h-check" class="split"><span lang="fr">Où sont vos <em>angles morts</em>?</span><span lang="en">Where are your <em>blind spots</em>?</span></h2>
+      <p class="lede"><span lang="fr">Répondez « oui » seulement si c'est vraiment le cas aujourd'hui. Rien n'est envoyé.</span><span lang="en">Answer "yes" only if it's truly the case today. Nothing is sent.</span></p>
+    </div>
+    <div class="check">
+      <ol class="qs" id="qs">
+        <li class="q"><span class="n">1</span><p><span lang="fr">Je connais mon rendement net, après tous les frais.</span><span lang="en">I know my net return, after all fees.</span></p><div class="yn"><button type="button" data-v="1" aria-pressed="false"><span lang="fr">Oui</span><span lang="en">Yes</span></button><button type="button" data-v="0" aria-pressed="false"><span lang="fr">Non</span><span lang="en">No</span></button></div></li>
+        <li class="q"><span class="n">2</span><p><span lang="fr">Je sais exactement quoi faire si mon portefeuille baisse de 20 % demain.</span><span lang="en">I know exactly what to do if my portfolio drops 20% tomorrow.</span></p><div class="yn"><button type="button" data-v="1" aria-pressed="false"><span lang="fr">Oui</span><span lang="en">Yes</span></button><button type="button" data-v="0" aria-pressed="false"><span lang="fr">Non</span><span lang="en">No</span></button></div></li>
+        <li class="q"><span class="n">3</span><p><span lang="fr">Mes comptes ne détiennent pas les mêmes fonds : je suis vraiment diversifié.</span><span lang="en">My accounts don't hold the same funds: I'm truly diversified.</span></p><div class="yn"><button type="button" data-v="1" aria-pressed="false"><span lang="fr">Oui</span><span lang="en">Yes</span></button><button type="button" data-v="0" aria-pressed="false"><span lang="fr">Non</span><span lang="en">No</span></button></div></li>
+        <li class="q"><span class="n">4</span><p><span lang="fr">J'ai testé mon budget de retraite avec des dépenses réalistes.</span><span lang="en">I've tested my retirement budget with realistic spending.</span></p><div class="yn"><button type="button" data-v="1" aria-pressed="false"><span lang="fr">Oui</span><span lang="en">Yes</span></button><button type="button" data-v="0" aria-pressed="false"><span lang="fr">Non</span><span lang="en">No</span></button></div></li>
+        <li class="q"><span class="n">5</span><p><span lang="fr">Je sais dans quel ordre retirer de mes REER, CELI et FERR, et quand demander la RRQ et la PSV.</span><span lang="en">I know in what order to draw from my RRSP, TFSA and RRIF, and when to start QPP and OAS.</span></p><div class="yn"><button type="button" data-v="1" aria-pressed="false"><span lang="fr">Oui</span><span lang="en">Yes</span></button><button type="button" data-v="0" aria-pressed="false"><span lang="fr">Non</span><span lang="en">No</span></button></div></li>
+      </ol>
+      <aside class="score" aria-live="polite">
+        <div class="gauge" id="gauge"><i></i><i></i><i></i><i></i><i></i></div>
+        <div class="big" id="sBig">0/5</div>
+        <h3 id="sTitle"></h3>
+        <p id="sText"></p>
+        <a class="btn btn-light" id="sCta" href="#contact" style="align-self:flex-start"></a>
+      </aside>
+    </div>
+  </div>
+</section>
+
+<!-- ============ METHOD ============ -->
+<section class="band" id="methode" aria-labelledby="h-method">
+  <div class="wrap method">
+    <div class="method-l">
+      <div class="eyebrow"><span lang="fr">Comment je travaille</span><span lang="en">How I work</span></div>
+      <h2 id="h-method" class="split"><span lang="fr">Un angle mort qu'on voit est un angle mort <em>qu'on corrige</em>.</span><span lang="en">A blind spot you can see is a blind spot <em>you can fix</em>.</span></h2>
+      <p class="lede"><span lang="fr">Première rencontre sans engagement. Vous repartez en sachant où vous en êtes et quelles sont vos prochaines étapes.</span><span lang="en">A first meeting with no commitment. You leave knowing where you stand and what your next steps are.</span></p>
+      <a class="btn btn-ink" href="#contact" data-book style="align-self:flex-start"><span lang="fr">Prendre rendez-vous</span><span lang="en">Book a meeting</span> <span class="ar">→</span></a>
+    </div>
+    <ol class="steps" id="steps">
+      <li class="step"><span class="n">01</span><div><h3><span lang="fr">On apprend à vous connaître</span><span lang="en">We get to know you</span></h3><p><span lang="fr">Vos objectifs, votre horizon, votre tolérance au risque et la retraite que vous voulez vivre.</span><span lang="en">Your goals, your horizon, your risk tolerance and the retirement you want to live.</span></p></div></li>
+      <li class="step"><span class="n">02</span><div><h3><span lang="fr">On regarde tout</span><span lang="en">We look at everything</span></h3><p><span lang="fr">Relevés, frais, régimes de retraite et rentes publiques : le portrait complet de votre épargne.</span><span lang="en">Statements, fees, pension plans and public pensions: the full picture of your savings.</span></p></div></li>
+      <li class="step"><span class="n">03</span><div><h3><span lang="fr">On bâtit le portefeuille et le plan</span><span lang="en">We build the portfolio and the plan</span></h3><p><span lang="fr">Un portefeuille à votre mesure, et un plan de retraits qui fait durer votre capital.</span><span lang="en">A portfolio that fits you, and a withdrawal plan that makes your capital last.</span></p></div></li>
+      <li class="step"><span class="n">04</span><div><h3><span lang="fr">On garde le cap</span><span lang="en">We stay on course</span></h3><p><span lang="fr">Suivi régulier, rééquilibrage, et un appel avant chaque grande décision.</span><span lang="en">Regular reviews, rebalancing, and a call before every big decision.</span></p></div></li>
+    </ol>
+  </div>
+</section>
+
+<!-- ============ ABOUT ============ -->
+<section class="band white" id="a-propos" aria-labelledby="h-about">
+  <div class="wrap about">
+    <figure class="portrait" id="portrait" style="margin:0">
+      <div class="ph" aria-hidden="true"><svg viewBox="0 0 355 444"><use href="#bb"/></svg></div>
+      <img src="https://static.wixstatic.com/media/c8051c_659f039437af44628414faff571e3d63~mv2.jpg" alt="Bill Badran" loading="lazy" onerror="this.remove()">
+      <figcaption><b>Bill Badran</b><span lang="fr">B.A.A., Pl.Fin, CIM<sup>®</sup></span><span lang="en">B.B.A., F.Pl., CIM<sup>®</sup></span></figcaption>
+    </figure>
+    <div class="about-copy">
+      <div class="eyebrow"><span lang="fr">Rencontrez Bill</span><span lang="en">Meet Bill</span></div>
+      <h2 id="h-about" class="split"><span lang="fr">Plus de 15 ans à bâtir des <em>portefeuilles</em> et des <em>retraites</em>.</span><span lang="en">More than 15 years building <em>portfolios</em> and <em>retirements</em>.</span></h2>
+      <p class="lede"><span lang="fr">Gestionnaire de portefeuille agréé (CIM) établi à Laval, Bill se consacre à deux choses : faire fructifier l'épargne de ses clients, puis la transformer en un revenu de retraite fiable et durable.</span><span lang="en">A Chartered Investment Manager (CIM) based in Laval, Bill focuses on two things: growing his clients' savings, then turning them into reliable, lasting retirement income.</span></p>
+      <p class="lede"><span lang="fr">Diplômé de l'Université du Québec, il travaille en français et en anglais, avec une conviction : de bonnes décisions, prises à l'avance, valent mieux que dix corrections après coup.</span><span lang="en">A graduate of the Université du Québec, he works in French and English, with one conviction: good decisions made in advance beat ten corrections after the fact.</span></p>
+      <ul class="creds">
+        <li><b>CIM<sup style="font-size:.5em">®</sup></b><span lang="fr">Gestionnaire de portefeuille agréé</span><span lang="en">Chartered Investment Manager</span></li>
+        <li><b><span lang="fr">Pl.Fin</span><span lang="en">F.Pl.</span></b><span lang="fr">Planificateur financier</span><span lang="en">Financial planner</span></li>
+        <li><b lang="fr">Épargne collective</b><b lang="en">Mutual funds</b><span lang="fr">Représentant</span><span lang="en">Representative</span></li>
+        <li><b><span lang="fr">B.A.A.</span><span lang="en">B.B.A.</span></b><span>Université du Québec</span></li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- ============ GUIDE ============ -->
+<section class="band" id="guide" aria-labelledby="h-guide">
+  <div class="wrap">
+    <div class="guide ink">
+      <div class="guide-copy">
+        <div class="eyebrow"><span lang="fr">Guide gratuit · 15 minutes</span><span lang="en">Free guide · 15 minutes</span></div>
+        <h2 id="h-guide" class="split"><span lang="fr">Les 5 erreurs qu'on voit <em>tout le temps</em> en bureau.</span><span lang="en">The 5 mistakes we see <em>all the time</em> at the office.</span></h2>
+        <p class="lede"><span lang="fr">Frais cachés, ventes en panique, budget de retraite deviné : des histoires vraies, des gestes simples, zéro jargon.</span><span lang="en">Hidden fees, panic selling, a guessed retirement budget: real stories, simple steps, zero jargon.</span></p>
+        <form class="gform" id="gForm" novalidate>
+          <div id="gFields" class="gform">
+            <div class="gform-row">
+              <label class="sr" for="gName"><span lang="fr">Prénom</span><span lang="en">First name</span></label><input type="text" id="gName" autocomplete="given-name">
+              <label class="sr" for="gMail"><span lang="fr">Courriel</span><span lang="en">Email</span></label><input type="email" id="gMail" autocomplete="email">
+            </div>
+            <div class="gopts"><span lang="fr">Langue du guide</span><span lang="en">Guide language</span><div class="seg" id="gLang" role="group" aria-label="Langue du guide / Guide language"><button type="button" data-gl="fr" aria-pressed="true">Français</button><button type="button" data-gl="en" aria-pressed="false">English</button></div></div>
+            <label class="consent" id="gConsentW"><input type="checkbox" id="gConsent"><span><span lang="fr">J'accepte de recevoir le guide par courriel et, à l'occasion, des conseils de Bill Badran. Désabonnement en tout temps.</span><span lang="en">I agree to receive the guide by email and, from time to time, tips from Bill Badran. Unsubscribe at any time.</span></span></label>
+            <button class="btn btn-light" type="submit" style="align-self:flex-start"><span lang="fr">Télécharger le guide</span><span lang="en">Download the guide</span> <span class="ar">↓</span></button>
+          </div>
+          <div id="gDone" class="done" hidden>
+            <h3 id="gDoneT"></h3>
+            <p class="lede"><span lang="fr">Prenez un café, lisez à votre rythme et gardez un crayon : il y a un petit bilan à la fin.</span><span lang="en">Grab a coffee, read at your own pace and keep a pencil handy: there's a short check-up at the end.</span></p>
+            <button class="btn btn-light" type="button" id="gAgain" style="align-self:flex-start"><span lang="fr">Télécharger le PDF</span><span lang="en">Download the PDF</span> <span class="ar">↓</span></button>
+          </div>
+          <p class="status" id="gStatus" role="status"></p>
+        </form>
+      </div>
+      <div class="book" aria-hidden="true"><small>BILL BADRAN</small><strong><span lang="fr">Le guide de la <em>prospérité</em> financière</span><span lang="en">The financial <em>prosperity</em> guide</span></strong><span><span lang="fr">Les 5 erreurs qu'on voit tout le temps (et comment les éviter)</span><span lang="en">The 5 mistakes we see all the time (and how to avoid them)</span></span></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ CONTACT ============ -->
+<section class="band" id="contact" style="padding-top:clamp(30px,4vw,60px)" aria-labelledby="h-contact">
+  <div class="wrap contact">
+    <div class="contact-l">
+      <div class="eyebrow">Contact</div>
+      <h2 id="h-contact" class="split"><span lang="fr">Traçons votre <em>cap</em> ensemble.</span><span lang="en">Let's chart your <em>course</em> together.</span></h2>
+      <p class="lede"><span lang="fr">Une première rencontre pour faire le point sur vos placements et votre retraite, sans engagement.</span><span lang="en">A first meeting to review your investments and retirement, with no commitment.</span></p>
+      <div>
+        <div class="ci"><small><span lang="fr">Téléphone</span><span lang="en">Phone</span></small><div class="ci-row"><a href="tel:+15143572666">514 357-2666</a><button type="button" class="copy" data-copy="514 357-2666"><span lang="fr">Copier</span><span lang="en">Copy</span></button></div></div>
+        <div class="ci"><small><span lang="fr">Courriel</span><span lang="en">Email</span></small><div class="ci-row"><a href="mailto:contact@billbadran.com">contact@billbadran.com</a><button type="button" class="copy" data-copy="contact@billbadran.com"><span lang="fr">Copier</span><span lang="en">Copy</span></button></div></div>
+        <div class="ci" style="border-bottom:1px solid var(--line)"><small><span lang="fr">Bureau</span><span lang="en">Office</span></small><a href="https://www.google.com/maps/search/?api=1&query=4150+boul.+Saint-Martin+Ouest+Laval+QC+H7T+1C1" target="_blank" rel="noopener"><span lang="fr">4150, boul. Saint-Martin Ouest, bureau 204, Laval (Québec) H7T 1C1</span><span lang="en">4150 Saint-Martin Blvd West, Suite 204, Laval, Quebec H7T 1C1</span></a></div>
+      </div>
+      <div class="socials">
+        <a href="https://www.linkedin.com/in/bill-badran-pl-fin-cim%C2%AE-b6305b72/" target="_blank" rel="noopener" aria-label="LinkedIn"><svg viewBox="0 0 24 24"><path d="M4.98 3.5a2.5 2.5 0 1 1 0 5 2.5 2.5 0 0 1 0-5zM3 9.5h4V21H3zM9.5 9.5h3.8v1.6h.05c.53-1 1.83-2.05 3.77-2.05 4.03 0 4.78 2.65 4.78 6.1V21h-4v-5.1c0-1.22-.02-2.78-1.7-2.78-1.7 0-1.96 1.33-1.96 2.7V21h-4z"/></svg></a>
+        <a href="https://www.facebook.com/profile.php?id=100092753622484" target="_blank" rel="noopener" aria-label="Facebook"><svg viewBox="0 0 24 24"><path d="M13.5 21v-7.5h2.5l.4-3h-2.9V8.6c0-.87.25-1.46 1.5-1.46h1.55V4.47A20 20 0 0 0 14.3 4.3c-2.23 0-3.8 1.37-3.8 3.87v2.33H8v3h2.5V21z"/></svg></a>
+        <a href="https://www.instagram.com/billbadranfp/" target="_blank" rel="noopener" aria-label="Instagram"><svg viewBox="0 0 24 24"><path d="M12 7.3a4.7 4.7 0 1 0 0 9.4 4.7 4.7 0 0 0 0-9.4zm0 7.7a3 3 0 1 1 0-6 3 3 0 0 1 0 6zm4.9-8.9a1.1 1.1 0 1 1 0 2.2 1.1 1.1 0 0 1 0-2.2zM12 4.2c2.5 0 2.8 0 3.8.06 2.6.12 3.8 1.35 3.9 3.9.05 1 .06 1.3.06 3.84s0 2.8-.06 3.8c-.12 2.55-1.3 3.78-3.9 3.9-1 .05-1.3.06-3.8.06s-2.8 0-3.8-.06c-2.6-.12-3.8-1.36-3.9-3.9C4.2 14.8 4.2 14.5 4.2 12s0-2.8.06-3.8C4.38 5.6 5.6 4.4 8.2 4.26c1-.05 1.3-.06 3.8-.06zM12 2.5c-2.6 0-2.9 0-3.9.06-3.5.16-5.4 2.1-5.6 5.6C2.5 9.1 2.5 9.4 2.5 12s0 2.9.06 3.9c.16 3.5 2.1 5.4 5.6 5.6 1 .05 1.3.06 3.9.06s2.9 0 3.9-.06c3.5-.16 5.4-2.1 5.6-5.6.05-1 .06-1.3.06-3.9s0-2.9-.06-3.9c-.16-3.5-2.1-5.4-5.6-5.6-1-.05-1.3-.06-3.9-.06z"/></svg></a>
+      </div>
+    </div>
+    <form class="cform" id="cForm" novalidate>
+      <div id="cFields" style="display:flex;flex-direction:column;gap:18px">
+        <h3><span lang="fr">Demander une première rencontre</span><span lang="en">Request a first meeting</span></h3>
+        <div class="frow">
+          <div class="field"><label for="cFirst"><span lang="fr">Prénom</span><span lang="en">First name</span></label><input id="cFirst" autocomplete="given-name"><span class="err" id="cFirst-err"></span></div>
+          <div class="field"><label for="cLast"><span lang="fr">Nom</span><span lang="en">Last name</span></label><input id="cLast" autocomplete="family-name"></div>
+        </div>
+        <div class="frow">
+          <div class="field"><label for="cMail"><span lang="fr">Courriel</span><span lang="en">Email</span></label><input id="cMail" type="email" autocomplete="email"><span class="err" id="cMail-err"></span></div>
+          <div class="field"><label for="cPhone"><span lang="fr">Téléphone (facultatif)</span><span lang="en">Phone (optional)</span></label><input id="cPhone" type="tel" autocomplete="tel"></div>
+        </div>
+        <div class="field"><span style="font-size:13px;font-weight:600"><span lang="fr">Ce qui vous amène</span><span lang="en">What brings you here</span></span>
+          <div class="chips" id="cTopics" role="group" aria-label="Sujet / Topic">
+            <button type="button" data-t="invest" aria-pressed="false"><span lang="fr">Mes placements</span><span lang="en">My investments</span></button>
+            <button type="button" data-t="soon" aria-pressed="false"><span lang="fr">Retraite dans moins de 5 ans</span><span lang="en">Retiring within 5 years</span></button>
+            <button type="button" data-t="retired" aria-pressed="false"><span lang="fr">Déjà à la retraite</span><span lang="en">Already retired</span></button>
+            <button type="button" data-t="second" aria-pressed="false"><span lang="fr">Un deuxième avis</span><span lang="en">A second opinion</span></button>
+          </div>
+        </div>
+        <div class="field"><label for="cMsg">Message</label><textarea id="cMsg"></textarea></div>
+        <button class="btn btn-ink" type="submit" style="align-self:flex-start"><span lang="fr">Envoyer</span><span lang="en">Send</span> <span class="ar">→</span></button>
+      </div>
+      <div class="done" id="cDone" hidden><h3 id="cDoneT"></h3><p class="lede" id="cDoneP"></p></div>
+    </form>
+  </div>
+</section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <div class="foot-top">
+      <div class="foot-brand"><svg viewBox="0 0 355 444" aria-hidden="true"><use href="#bb"/></svg><p><span lang="fr">Placements et retraite, à Laval et partout au Québec.</span><span lang="en">Investments and retirement, in Laval and across Quebec.</span></p></div>
+      <div><h4><span lang="fr">Nous joindre</span><span lang="en">Reach us</span></h4><ul><li><a href="tel:+15143572666">514 357-2666</a></li><li><a href="mailto:contact@billbadran.com">contact@billbadran.com</a></li></ul></div>
+      <div><h4><span lang="fr">Bureau</span><span lang="en">Office</span></h4><ul><li><span lang="fr">4150, boul. Saint-Martin O.<br>Bureau 204, Laval</span><span lang="en">4150 Saint-Martin Blvd W.<br>Suite 204, Laval</span></li></ul></div>
+      <div><h4><span lang="fr">Explorer</span><span lang="en">Explore</span></h4><ul><li><a href="#outils"><span lang="fr">Outils</span><span lang="en">Tools</span></a></li><li><a href="#guide"><span lang="fr">Guide gratuit</span><span lang="en">Free guide</span></a></li><li><a href="#confidentialite"><span lang="fr">Confidentialité</span><span lang="en">Privacy</span></a></li></ul></div>
+    </div>
+    <div class="disclose" id="confidentialite">
+      <p><span lang="fr">Bill Badran est gestionnaire de portefeuille agréé (CIM), planificateur financier (Pl.Fin) et représentant en épargne collective. Services offerts par l'entremise de <mark>[cabinet / courtier à confirmer]</mark>. Inscriptions vérifiables au registre de l'Autorité des marchés financiers (lautorite.qc.ca).</span><span lang="en">Bill Badran is a Chartered Investment Manager (CIM), financial planner (F.Pl.) and mutual fund representative. Services offered through <mark>[firm / dealer to confirm]</mark>. Registrations can be verified in the Autorité des marchés financiers register (lautorite.qc.ca).</span></p>
+      <p><span lang="fr">Les outils et exemples de ce site sont fictifs et simplifiés, à titre informatif seulement; ils ne constituent pas un conseil personnalisé. Les rendements passés ne garantissent pas les rendements futurs. Renseignements personnels traités conformément à la Loi 25 : <mark>[politique de confidentialité à publier]</mark>.</span><span lang="en">The tools and examples on this site are fictional and simplified, for information only; they are not personalized advice. Past returns do not guarantee future returns. Personal information is handled under Quebec's Law 25: <mark>[privacy policy to publish]</mark>.</span></p>
+      <p>© 2026 Bill Badran</p>
+    </div>
+  </div>
+</footer>
+
+<div class="tip" id="tip" role="tooltip" hidden></div>
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/lenis@1.1.13/dist/lenis.min.js"></script>
+<script>
+(function(){
+"use strict";
+const $=(s,r=document)=>r.querySelector(s), $$=(s,r=document)=>[...r.querySelectorAll(s)];
+const site=$("#site"), RM=matchMedia("(prefers-reduced-motion: reduce)").matches;
+const clamp=(v,a,b)=>Math.min(b,Math.max(a,v)), lerp=(a,b,t)=>a+(b-a)*t, ease=t=>1-Math.pow(1-t,3);
+
+/* Settings for the live site */
+const CONFIG={guideFiles:{fr:"guide-prosperite-financiere.pdf",en:"financial-prosperity-guide.pdf"},bookingUrl:"https://calendly.com/bbadran",leadEndpoint:"",contactEndpoint:""};
+
+if(CONFIG.bookingUrl){document.querySelectorAll("[data-book]").forEach(a=>{a.href=CONFIG.bookingUrl;a.target="_blank";a.rel="noopener"})}
+const T={
+ fr:{title:"Bill Badran | Placements et retraite à Laval",desc:"Bill Badran, CIM, gestionnaire de portefeuille agréé à Laval. Gestion de placements et planification de la retraite, en français et en anglais.",
+   gName:"Prénom",gMail:"Courriel",yrs:"ans",yearsL:n=>n+" ans",gapL:v=>"+"+pct(v),
+   fA:"Frais de 1 %",fB:v=>"Frais de "+pct(1+v),fT:(y,v)=>"de moins après "+y+" ans, pour "+(v===1?"un seul petit 1 %":pct(v)+" de frais en plus")+".",
+   ageL:a=>a+" ans",retL:v=>pct(v),rA:w=>"Retraits de "+money(w)+"/an",rB:w=>"Pour durer jusqu'à 95 ans\u00a0: "+money(w)+"/an",
+   rOut:a=>a>=100?"100 ans +":Math.floor(a)+" ans",rT:(a,s)=>a>=100?"Votre épargne tient au-delà de 100 ans avec ces hypothèses.":"C'est l'âge où votre épargne serait épuisée. Pour tenir jusqu'à 95 ans\u00a0: environ "+money(s)+" par année.",
+   s:[["Répondez aux 5 questions","Chaque « non » est un angle mort qu'on peut corriger.","Parlons-en"],["On devrait se parler.","Une rencontre peut faire une grosse différence, rapidement.","Réserver une rencontre"],["Bonne base.","Il reste quelques angles morts à régler.","Régler mes angles morts"],["Bravo.","Un bon suivi annuel pour garder le cap.","Planifier mon suivi"]],
+   answered:n=>n+" sur 5 répondues. ",
+   need:"Champ requis.",badMail:"Adresse courriel invalide.",consent:"Cochez la case pour recevoir le guide.",
+   gDone:n=>"C'est parti, "+n+".",gSaving:"Préparation du guide…",gSaved:"Guide téléchargé.",gDeclined:"Téléchargement annulé. Appuyez sur le bouton pour réessayer.",gFail:"Le téléchargement n'est pas disponible ici. Écrivez à contact@billbadran.com et Bill vous l'enverra.",
+   cDone:n=>"Merci, "+n+".",cText:"Votre demande est bien reçue. Bill vous répondra dans les plus brefs délais.",cMail:"Votre logiciel de courriel va s'ouvrir avec le message prêt à envoyer.",cLocal:"Aperçu : ce formulaire n'est pas encore relié à une boîte de réception. Écrivez directement à contact@billbadran.com.",
+   copied:"Copié",subj:"Demande de rencontre",topic:"Sujet",
+   terms:{reer:["REER","Régime enregistré d'épargne-retraite. Vos cotisations réduisent votre impôt aujourd'hui; l'argent est imposé quand vous le retirez."],celi:["CELI","Compte d'épargne libre d'impôt. Pas de déduction à l'entrée, mais les gains et les retraits ne sont jamais imposés."],ferr:["FERR","Fonds enregistré de revenu de retraite. Le REER s'y convertit au plus tard à 71 ans; un retrait minimum est obligatoire chaque année."],rrq:["RRQ","Régime de rentes du Québec. Rente publique basée sur vos années de travail; le moment où vous la demandez change son montant."],psv:["PSV","Pension de la Sécurité de la vieillesse. Pension fédérale versée dès 65 ans, qui peut être réduite si votre revenu est élevé."]}},
+ en:{title:"Bill Badran | Investments & Retirement in Laval",desc:"Bill Badran, CIM, Chartered Investment Manager in Laval, Quebec. Investment management and retirement planning, in French and English.",
+   gName:"First name",gMail:"Email",yrs:"yrs",yearsL:n=>n+" years",gapL:v=>"+"+pct(v),
+   fA:"1% fees",fB:v=>pct(1+v)+" fees",fT:(y,v)=>"less after "+y+" years, from "+(v===1?"just one small 1%":pct(v)+" more in fees")+".",
+   ageL:a=>"age "+a,retL:v=>pct(v),rA:w=>"Withdrawing "+money(w)+"/yr",rB:w=>"To last to 95: "+money(w)+"/yr",
+   rOut:a=>a>=100?"100+":"age "+Math.floor(a),rT:(a,s)=>a>=100?"Your savings last past 100 under these assumptions.":"That's when your savings would run out. To last to 95: about "+money(s)+" a year.",
+   s:[["Answer the 5 questions","Every “no” is a blind spot you can fix.","Let's talk"],["We should talk.","One meeting can make a big difference, fast.","Book a meeting"],["Good foundation.","A few blind spots are left to fix.","Fix my blind spots"],["Well done.","A solid annual review keeps you on course.","Plan my review"]],
+   answered:n=>n+" of 5 answered. ",
+   need:"Required field.",badMail:"Invalid email address.",consent:"Check the box to receive the guide.",
+   gDone:n=>"You're all set, "+n+".",gSaving:"Preparing your guide…",gSaved:"Guide downloaded.",gDeclined:"Download cancelled. Press the button to try again.",gFail:"Downloads aren't available here. Write to contact@billbadran.com and Bill will send it to you.",
+   cDone:n=>"Thank you, "+n+".",cText:"Your request has been received. Bill will get back to you promptly.",cMail:"Your email app will open with the message ready to send.",cLocal:"Preview: this form isn't connected to an inbox yet. Write directly to contact@billbadran.com.",
+   copied:"Copied",subj:"Meeting request",topic:"Topic",
+   terms:{reer:["RRSP","Registered Retirement Savings Plan. Contributions lower your taxes today; the money is taxed when you withdraw it."],celi:["TFSA","Tax-Free Savings Account. No deduction going in, but growth and withdrawals are never taxed."],ferr:["RRIF","Registered Retirement Income Fund. Your RRSP converts into one by age 71 at the latest; a minimum withdrawal is required each year."],rrq:["QPP","Quebec Pension Plan. A public pension based on your working years; when you start it changes the amount."],psv:["OAS","Old Age Security. A federal pension paid from age 65, which can be reduced if your income is high."]}}
+};
+let lang="fr";
+const loc=()=>lang==="fr"?"fr-CA":"en-CA";
+function money(v){return new Intl.NumberFormat(loc(),{style:"currency",currency:"CAD",maximumFractionDigits:0}).format(Math.round(v)).replace(/\s?CA\$|\$\s?CA/,"$")}
+function short(v){if(v>=1e6){const m=(v/1e6).toLocaleString(loc(),{maximumFractionDigits:1});return lang==="fr"?m+" M$":"$"+m+"M"}const k=Math.round(v/1000).toLocaleString(loc());return lang==="fr"?k+" k$":"$"+k+"k"}
+function pct(v){const s=v.toLocaleString(loc(),{maximumFractionDigits:2});return lang==="fr"?s+" %":s+"%"}
+function store(k,v){try{if(v===undefined) return localStorage.getItem(k);localStorage.setItem(k,v)}catch(e){return null}}
+
+function setLang(l){
+  lang=l==="en"?"en":"fr"; site.dataset.lang=lang; document.documentElement.lang=lang==="fr"?"fr-CA":"en-CA";
+  $$("[data-set-lang]").forEach(b=>b.setAttribute("aria-pressed",String(b.dataset.setLang===lang)));
+  document.title=T[lang].title; const md=document.querySelector('meta[name="description"]'); if(md) md.content=T[lang].desc;
+  $("#gName").placeholder=T[lang].gName; $("#gMail").placeholder=T[lang].gMail;
+  if(!guideLangPicked) setGuideLang(lang);
+  store("bb-lang",lang); hideTip();
+  splitAll(); prepStatement(); drawFees(false); drawRet(false); renderScore(); onScroll();
+}
+
+/* ---------- smooth scroll ---------- */
+let lenis=null;
+const fine=matchMedia("(pointer:fine)").matches;
+if(window.Lenis&&!RM&&fine){try{lenis=new Lenis({lerp:.09,smoothWheel:true});document.documentElement.classList.add("lenis");const raf=t=>{lenis.raf(t);requestAnimationFrame(raf)};requestAnimationFrame(raf)}catch(e){lenis=null}}
+function goTo(hash){const el=hash&&hash.length>1?document.getElementById(hash.slice(1)):null;if(!el) return false;if(lenis){lenis.scrollTo(el,{offset:-80,duration:1.4})}else{el.scrollIntoView({behavior:RM?"auto":"smooth"})}return true}
+document.addEventListener("click",e=>{const a=e.target.closest('a[href^="#"]');if(!a) return;const h=a.getAttribute("href");if(h.length>1&&document.getElementById(h.slice(1))){e.preventDefault();closeMenu();goTo(h)}});
+
+/* ---------- header & drawer ---------- */
+const hdr=$("#hdr"), hero=$("#accueil"), drawer=$("#drawer");
+let lastY=0;
+function openMenu(){drawer.classList.add("open");drawer.setAttribute("aria-hidden","false");$("#menuOpen").setAttribute("aria-expanded","true");if(lenis)lenis.stop();$("#menuClose").focus()}
+function closeMenu(){if(!drawer.classList.contains("open")) return;drawer.classList.remove("open");drawer.setAttribute("aria-hidden","true");$("#menuOpen").setAttribute("aria-expanded","false");if(lenis)lenis.start()}
+$("#menuOpen").addEventListener("click",openMenu); $("#menuClose").addEventListener("click",closeMenu);
+document.addEventListener("keydown",e=>{if(e.key==="Escape"){closeMenu();hideTip()}});
+$$("[data-set-lang]").forEach(b=>b.addEventListener("click",()=>setLang(b.dataset.setLang)));
+
+/* ---------- etched sea (canvas) ---------- */
+const sea=$("#sea"), sx=sea.getContext("2d"); let seaW=0,seaH=0,seaOn=true,dpr=1;
+function sizeSea(){const r=sea.getBoundingClientRect();dpr=Math.min(2,window.devicePixelRatio||1);seaW=r.width;seaH=r.height;sea.width=Math.max(1,seaW*dpr);sea.height=Math.max(1,seaH*dpr);sx.setTransform(dpr,0,0,dpr,0,0)}
+function drawSea(t){
+  sx.clearRect(0,0,seaW,seaH);
+  const n=26, calm=1-clamp(scrollY/Math.max(1,hero.offsetHeight),0,1)*.5;
+  for(let i=0;i<n;i++){
+    const k=i/(n-1), y=4+Math.pow(k,1.75)*(seaH-12), amp=(1+Math.pow(k,1.5)*9)*calm, lam=260+k*520, sp=(0.012+k*0.03)*(i%2?1:-.8);
+    sx.beginPath();
+    for(let x=-10;x<=seaW+10;x+=6){const yy=y+Math.sin((x/lam)*6.283+t*sp*6+i*1.7)*amp+Math.sin((x/(lam*.43))+t*sp*9)*amp*.25;x===-10?sx.moveTo(x,yy):sx.lineTo(x,yy)}
+    sx.strokeStyle="rgba(201,211,219,"+(0.1+k*0.45).toFixed(3)+")"; sx.lineWidth=0.6+k*0.9; sx.stroke();
+  }
+}
+if("IntersectionObserver" in window) new IntersectionObserver(es=>{seaOn=es[0].isIntersecting},{threshold:0}).observe(sea);
+function loop(ms){if(seaOn) drawSea(ms/1000); requestAnimationFrame(loop)}
+
+/* ---------- split headings ---------- */
+function splitNode(root){
+  const walker=document.createTreeWalker(root,NodeFilter.SHOW_TEXT); const nodes=[]; while(walker.nextNode()) nodes.push(walker.currentNode);
+  let i=0;
+  nodes.forEach(tn=>{ if(!tn.nodeValue.trim()) return; const frag=document.createDocumentFragment();
+    tn.nodeValue.split(/(\s+)/).forEach(part=>{ if(!part) return; if(/^\s+$/.test(part)){frag.appendChild(document.createTextNode(part));return}
+      const w=document.createElement("span");w.className="w";const s=document.createElement("span");s.textContent=part;s.style.transitionDelay=(i++*0.045)+"s";w.appendChild(s);frag.appendChild(w)});
+    tn.parentNode.replaceChild(frag,tn)});
+}
+function splitAll(){$$(".split").forEach(h=>{if(h.dataset.done) return;h.dataset.done="1";splitNode(h)})}
+
+/* ---------- reveals ---------- */
+const io="IntersectionObserver" in window?new IntersectionObserver(es=>es.forEach(en=>{if(en.isIntersecting){en.target.classList.remove("pre");io.unobserve(en.target)}}),{rootMargin:"0px 0px -10% 0px"}):null;
+function armReveals(){if(!io||RM) return;$$(".split, .reveal, #portrait").forEach(el=>{if(el.getBoundingClientRect().top>innerHeight*0.95){el.classList.add("pre");io.observe(el)}})}
+
+/* ---------- statement fill ---------- */
+let sWords=[];
+function prepStatement(){const p=$("#statement");const span=$(`[lang="${lang}"]`,p);if(!span.dataset.done){span.dataset.done="1";const words=span.textContent.trim().split(/\s+/);span.textContent="";words.forEach((w,i)=>{const s=document.createElement("span");s.className="sw";s.textContent=w+(i<words.length-1?" ":"");span.appendChild(s)})}sWords=$$(".sw",span);if(RM) sWords.forEach(s=>s.classList.add("lit"))}
+function fillStatement(){if(RM||!sWords.length) return;const r=$("#statement").getBoundingClientRect(),vh=innerHeight;const p=clamp((vh*0.82-r.top)/(r.height+vh*0.25),0,1);const n=Math.round(p*sWords.length);sWords.forEach((s,i)=>s.classList.toggle("lit",i<n))}
+
+/* ---------- services accordion ---------- */
+$$(".svc-item").forEach(it=>{const b=$(".svc-btn",it);b.addEventListener("click",e=>{const open=!it.classList.contains("open");$$(".svc-item").forEach(o=>{o.classList.remove("open");$(".svc-btn",o).setAttribute("aria-expanded","false")});if(open){it.classList.add("open");b.setAttribute("aria-expanded","true")}setTimeout(()=>{if(lenis)lenis.resize()},650)})});
+
+/* ---------- jargon tips ---------- */
+const tip=$("#tip");let tipFor=null;
+function showTip(btn){const d=T[lang].terms[btn.dataset.term];if(!d) return;tip.textContent="";const b=document.createElement("b");b.textContent=d[0];tip.append(b,document.createTextNode(d[1]));tip.hidden=false;tipFor=btn;const r=btn.getBoundingClientRect();let x=clamp(r.left+r.width/2-tip.offsetWidth/2,12,innerWidth-tip.offsetWidth-12),y=r.top-tip.offsetHeight-10;if(y<90)y=r.bottom+10;tip.style.left=x+"px";tip.style.top=y+"px"}
+function hideTip(){tip.hidden=true;tipFor=null}
+document.addEventListener("click",e=>{const t=e.target.closest(".term");if(t){e.preventDefault();e.stopPropagation();tipFor===t?hideTip():showTip(t)}else if(!e.target.closest("#tip")) hideTip()},true);
+$$(".term").forEach(t=>{t.addEventListener("mouseenter",()=>{if(fine) showTip(t)});t.addEventListener("mouseleave",()=>{if(fine) hideTip()})});
+
+/* ---------- charts ---------- */
+const AX='font-family="Hanken Grotesk,sans-serif" font-size="12" fill="#6B7680"';
+function scale(v){const e=Math.pow(10,Math.floor(Math.log10(v))-1);for(const m of [1,2,2.5,5,10,20,25,50,100]){const st=m*e,n=Math.ceil(v/st-1e-9);if(n<=7) return {max:n*st,n}}return {max:v,n:4}}
+function animateLines(svg){if(RM) return;$$(".ln",svg).forEach(l=>{const L=l.getTotalLength();l.style.strokeDasharray=L;l.style.strokeDashoffset=L;l.getBoundingClientRect();l.style.transition="stroke-dashoffset 1.8s cubic-bezier(.3,.7,.2,1)";l.style.strokeDashoffset=0})}
+let countTok=0;
+function countTo(el,to,fmt){if(RM){el.textContent=fmt(to);return}const tok=++countTok,t0=performance.now();(function f(n){if(tok!==countTok) return;const k=clamp((n-t0)/1600,0,1);el.textContent=fmt(to*ease(k));if(k<1)requestAnimationFrame(f)})(t0)}
+
+let amt=100000;
+$$("#amtPills button").forEach(b=>b.addEventListener("click",()=>{amt=+b.dataset.v;$$("#amtPills button").forEach(x=>x.setAttribute("aria-pressed",String(x===b)));drawFees(false)}));
+function fill(el){el.style.setProperty("--fill",((el.value-el.min)/(el.max-el.min)*100)+"%")}
+function drawFees(anim){
+  const t=T[lang],Y=+$("#fYears").value,G=+$("#fGap").value;
+  $$("#amtPills button").forEach(b=>b.textContent=short(+b.dataset.v));
+  $("#fYearsO").textContent=t.yearsL(Y);$("#fGapO").textContent=t.gapL(G);[$("#fYears"),$("#fGap")].forEach(fill);
+  const A=[],B=[];for(let y=0;y<=Y;y++){A.push(amt*Math.pow(1.05,y));B.push(amt*Math.pow(1.05-G/100,y))}
+  const diff=A[Y]-B[Y];
+  $("#fLgA").textContent=t.fA;$("#fLgB").textContent=t.fB(G);$("#fDiffT").textContent=t.fT(Y,G);
+  if(anim) countTo($("#fDiff"),diff,money); else {countTok++;$("#fDiff").textContent=money(diff)}
+  const W=680,H=360,L=64,R=120,Tp=16,Bt=40,pw=W-L-R,ph=H-Tp-Bt,sc=scale(A[Y]*1.02),max=sc.max;
+  const X=y=>L+y/Y*pw,Yp=v=>Tp+ph-v/max*ph;let s="";
+  for(let i=0;i<=sc.n;i++){const v=max/sc.n*i,y=Yp(v);s+=`<line x1="${L}" x2="${L+pw}" y1="${y}" y2="${y}" stroke="${i?"#EEEEEA":"#D6D6CF"}"/><text x="${L-12}" y="${y+4}" text-anchor="end" ${AX}>${i?short(v):"0"}</text>`}
+  for(let y=0;y<=Y;y+=5) s+=`<text x="${X(y)}" y="${H-12}" text-anchor="middle" ${AX}>${y} ${t.yrs}</text>`;
+  if(Y%5) s+=`<text x="${X(Y)}" y="${H-12}" text-anchor="middle" ${AX}>${Y}</text>`;
+  const pts=a=>a.map((v,i)=>`${X(i).toFixed(1)},${Yp(v).toFixed(1)}`).join(" ");
+  s+=`<polygon points="${pts(A)} ${[...B].reverse().map((v,k)=>`${X(Y-k).toFixed(1)},${Yp(v).toFixed(1)}`).join(" ")}" fill="#A8875A" opacity=".12"/>`;
+  s+=`<polyline class="ln" points="${pts(B)}" fill="none" stroke="#A8875A" stroke-width="2.5" stroke-linejoin="round"/><polyline class="ln" points="${pts(A)}" fill="none" stroke="#0E2233" stroke-width="2.5" stroke-linejoin="round"/>`;
+  let ya=Yp(A[Y]),yb=Yp(B[Y]);if(yb-ya<34){const m=(ya+yb)/2;ya=m-17;yb=m+17}
+  s+=`<circle cx="${X(Y)}" cy="${Yp(A[Y])}" r="5" fill="#0E2233"/><circle cx="${X(Y)}" cy="${Yp(B[Y])}" r="5" fill="#A8875A"/>`;
+  s+=`<text x="${X(Y)+14}" y="${ya+5}" font-family="Hanken Grotesk,sans-serif" font-size="15" font-weight="600" fill="#0E2233">${money(A[Y])}</text><text x="${X(Y)+14}" y="${yb+5}" font-family="Hanken Grotesk,sans-serif" font-size="15" font-weight="600" fill="#8A6D42">${money(B[Y])}</text>`;
+  const svg=$("#fChart");svg.innerHTML=s;svg.setAttribute("aria-label",`${t.fA}: ${money(A[Y])}. ${t.fB(G)}: ${money(B[Y])}.`);if(anim) animateLines(svg);
+}
+["#fYears","#fGap"].forEach(id=>$(id).addEventListener("input",()=>drawFees(false)));
+
+function sim(P,w,r,a0){const out=[[a0,P]];let b=P,a=a0;while(a<100){b=(b-w)*(1+r);a++;if(b<=0){const prev=out[out.length-1][1];const frac=prev/(w*(1+r)+(prev-w)*0);out.push([a-1+Math.min(1,prev/w),0]);return {pts:out,end:a-1+Math.min(1,prev/w)}}out.push([a,b])}return {pts:out,end:100}}
+function sustainable(P,r,a0,to){const n=to-a0,v=Math.pow(1+r,-n);return P*r/((1+r)*(1-v))}
+function drawRet(anim){
+  const t=T[lang],P=+$("#rSave").value,w=+$("#rDraw").value,a0=+$("#rAge").value,r=+$("#rRet").value/100;
+  $("#rSaveO").textContent=money(P);$("#rDrawO").textContent=money(w);$("#rAgeO").textContent=t.ageL(a0);$("#rRetO").textContent=t.retL(+$("#rRet").value);
+  ["#rSave","#rDraw","#rAge","#rRet"].forEach(id=>fill($(id)));
+  const main=sim(P,w,r,a0),sw=sustainable(P,r,a0,95),ref=sim(P,sw,r,a0);
+  $("#rAgeOut").textContent=t.rOut(main.end);$("#rAgeT").textContent=t.rT(main.end,sw);
+  $("#rLgA").textContent=t.rA(w);$("#rLgB").textContent=t.rB(sw);
+  const W=680,H=360,L=64,R=24,Tp=16,Bt=40,pw=W-L-R,ph=H-Tp-Bt;
+  const sc=scale(Math.max(P,...main.pts.map(p=>p[1]),...ref.pts.map(p=>p[1]))*1.02),maxV=sc.max;
+  const X=a=>L+(a-a0)/(100-a0)*pw,Yp=v=>Tp+ph-v/maxV*ph;let s="";
+  for(let i=0;i<=sc.n;i++){const v=maxV/sc.n*i,y=Yp(v);s+=`<line x1="${L}" x2="${L+pw}" y1="${y}" y2="${y}" stroke="${i?"#E6E6E1":"#D6D6CF"}"/><text x="${L-12}" y="${y+4}" text-anchor="end" ${AX}>${i?short(v):"0"}</text>`}
+  const ticks=[a0];for(let a=Math.ceil((a0+1)/10)*10;a<=100;a+=10) if(a-a0>=5) ticks.push(a);
+  ticks.forEach(a=>{s+=`<text x="${X(a)}" y="${H-12}" text-anchor="middle" ${AX}>${a===a0?t.ageL(a):a}</text>`});
+  const pts=arr=>arr.map(p=>`${X(p[0]).toFixed(1)},${Yp(p[1]).toFixed(1)}`).join(" ");
+  s+=`<line x1="${X(95)}" x2="${X(95)}" y1="${Tp}" y2="${Tp+ph}" stroke="#C9CCC6" stroke-dasharray="2 4"/><text x="${X(95)-6}" y="${Tp+12}" text-anchor="end" ${AX}>95</text>`;
+  s+=`<polyline points="${pts(ref.pts)}" fill="none" stroke="#0E2233" stroke-width="1.6" stroke-dasharray="5 4"/>`;
+  s+=`<polyline class="ln" points="${pts(main.pts)}" fill="none" stroke="#A8875A" stroke-width="2.8" stroke-linejoin="round"/>`;
+  if(main.end<100) s+=`<circle cx="${X(main.end)}" cy="${Yp(0)}" r="6" fill="#F3F3F0" stroke="#A8875A" stroke-width="2.5"/>`;
+  const svg=$("#rChart");svg.innerHTML=s;svg.setAttribute("aria-label",t.rT(main.end,sw));if(anim) animateLines(svg);
+}
+["#rSave","#rDraw","#rAge","#rRet"].forEach(id=>$(id).addEventListener("input",()=>drawRet(false)));
+let feesDrawn=false,retDrawn=false;
+
+/* ---------- check-up ---------- */
+const ans=[null,null,null,null,null];
+$$("#qs .q").forEach((q,i)=>$$(".yn button",q).forEach(b=>b.addEventListener("click",()=>{ans[i]=+b.dataset.v;$$(".yn button",q).forEach(x=>x.setAttribute("aria-pressed",String(x===b)));renderScore()})));
+function renderScore(){const t=T[lang],n=ans.filter(a=>a!==null).length,y=ans.filter(a=>a===1).length;
+  $$("#gauge i").forEach((g,i)=>g.className=ans[i]===1?"y":ans[i]===0?"n":"");$("#sBig").textContent=y+"/5";
+  const k=n<5?0:y<=2?1:y<=4?2:3,s=t.s[k];$("#sTitle").textContent=s[0];$("#sText").textContent=(n>0&&n<5?t.answered(n):"")+s[1];$("#sCta").textContent=s[2]+" →"}
+
+/* ---------- method steps ---------- */
+const steps=$$("#steps .step");
+function activeStep(){const mid=innerHeight*0.55;let on=0;steps.forEach((s,i)=>{if(s.getBoundingClientRect().top<mid) on=i});steps.forEach((s,i)=>s.classList.toggle("on",i===on))}
+
+/* ---------- toast & copy ---------- */
+const toast=$("#toast");let tt;
+function say(m){toast.textContent=m;toast.classList.add("show");clearTimeout(tt);tt=setTimeout(()=>toast.classList.remove("show"),2200)}
+function fallbackCopy(v){try{const ta=document.createElement("textarea");ta.value=v;ta.style.position="fixed";ta.style.opacity="0";document.body.appendChild(ta);ta.select();const r=document.execCommand("copy");ta.remove();return r}catch(e){return false}}
+$$(".copy").forEach(b=>b.addEventListener("click",()=>{const v=b.dataset.copy,ok=()=>say(T[lang].copied);try{navigator.clipboard.writeText(v).then(ok,()=>{if(fallbackCopy(v))ok()})}catch(e){if(fallbackCopy(v))ok()}}));
+
+/* ---------- capabilities (preview page) ---------- */
+const inArtifact=!!(window.claude&&window.claude.use);
+const capP=inArtifact?Promise.all([window.claude.use("db").catch(()=>null),window.claude.use("downloads").catch(()=>null)]):Promise.resolve([null,null]);
+const EMAIL=/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/;
+const clean=s=>(s||"").replace(/\s+/g," ").trim().slice(0,120);
+
+/* ---------- guide form ---------- */
+let guideLang="fr",guideLangPicked=false;
+function setGuideLang(l){guideLang=l;$$("#gLang button").forEach(b=>b.setAttribute("aria-pressed",String(b.dataset.gl===l)))}
+$$("#gLang button").forEach(b=>b.addEventListener("click",()=>{guideLangPicked=true;setGuideLang(b.dataset.gl)}));
+async function deliver(){const st=$("#gStatus"),t=T[lang],file=CONFIG.guideFiles[guideLang];const [,dl]=await capP;
+  if(inArtifact){if(!dl){st.textContent=t.gFail;return}st.textContent=t.gSaving;
+    try{const res=await fetch(file);if(!res.ok) throw {code:"unavailable"};await dl.save({filename:file,data:await res.blob()});st.textContent=t.gSaved}catch(e){st.textContent=e&&e.code==="declined"?t.gDeclined:t.gFail}}
+  else{const a=document.createElement("a");a.href=file;a.download=file;document.body.appendChild(a);a.click();a.remove();st.textContent=t.gSaved}}
+$("#gForm").addEventListener("submit",async e=>{e.preventDefault();const t=T[lang],name=clean($("#gName").value),mail=clean($("#gMail").value),ok1=!!name,ok2=EMAIL.test(mail),ok3=$("#gConsent").checked;
+  $("#gName").classList.toggle("bad",!ok1);$("#gMail").classList.toggle("bad",!ok2);$("#gConsentW").classList.toggle("bad",!ok3);
+  if(!ok1||!ok2||!ok3){$("#gStatus").textContent=!ok1||!mail?t.need:!ok2?t.badMail:t.consent;(!ok1?$("#gName"):!ok2?$("#gMail"):$("#gConsent")).focus();return}
+  $("#gStatus").textContent="";const lead={name,email:mail,guideLang,siteLang:lang,checkupYes:ans.every(a=>a!==null)?ans.filter(a=>a===1).length:null,consent:true,createdAt:new Date().toISOString(),source:"guide"};
+  $("#gFields").hidden=true;$("#gDone").hidden=false;$("#gDoneT").textContent=t.gDone(name);
+  const [db]=await capP;if(db){try{await db.collection("leads").add(lead)}catch(err){}}else if(CONFIG.leadEndpoint){fetch(CONFIG.leadEndpoint,{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify(lead)}).catch(()=>{})}
+  deliver()});
+$("#gAgain").addEventListener("click",deliver);
+
+/* ---------- contact form ---------- */
+$$("#cTopics button").forEach(b=>b.addEventListener("click",()=>b.setAttribute("aria-pressed",String(b.getAttribute("aria-pressed")!=="true"))));
+function fieldErr(id,msg){$("#"+id).closest(".field").classList.toggle("bad",!!msg);$("#"+id+"-err").textContent=msg||"";return !msg}
+$("#cForm").addEventListener("submit",async e=>{e.preventDefault();const t=T[lang];
+  const first=clean($("#cFirst").value),last=clean($("#cLast").value),mail=clean($("#cMail").value),phone=clean($("#cPhone").value),msg=($("#cMsg").value||"").trim().slice(0,4000);
+  const topics=$$("#cTopics button[aria-pressed=true]").map(b=>b.textContent.trim());
+  let ok=fieldErr("cFirst",first?"":t.need);ok=fieldErr("cMail",!mail?t.need:EMAIL.test(mail)?"":t.badMail)&&ok;
+  if(!ok){$(".field.bad input",$("#cForm")).focus();return}
+  const rec={first,last,email:mail,phone,topics,message:msg,lang,createdAt:new Date().toISOString()};
+  const [db]=await capP;let text=t.cText;
+  if(db){try{await db.collection("messages").add(rec)}catch(err){text=t.cLocal}}
+  else if(CONFIG.contactEndpoint){try{await fetch(CONFIG.contactEndpoint,{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify(rec)})}catch(err){}}
+  else if(!inArtifact){const body=`${msg}\n\n${topics.length?t.topic+" : "+topics.join(", ")+"\n":""}${first} ${last}\n${mail}${phone?"\n"+phone:""}`;location.href=`mailto:contact@billbadran.com?subject=${encodeURIComponent(t.subj+" – "+first+" "+last)}&body=${encodeURIComponent(body)}`;text=t.cMail}
+  else text=t.cLocal;
+  $("#cFields").hidden=true;$("#cDone").hidden=false;$("#cDoneT").textContent=t.cDone(first);$("#cDoneP").textContent=text});
+
+/* ---------- scroll engine ---------- */
+const navLinks=$$(".nav a").map(a=>({a,el:document.getElementById(a.getAttribute("href").slice(1))}));
+function onScroll(){
+  const y=window.scrollY,hH=hero.offsetHeight;
+  hdr.classList.toggle("solid",y>hH-90);
+  hdr.classList.toggle("hide",y>hH&&y>lastY+4&&!drawer.classList.contains("open"));
+  if(y<lastY-4||y<hH) hdr.classList.remove("hide");
+  lastY=y;
+  sea.style.transform=RM?"":`translateY(${(y*0.18).toFixed(1)}px)`;
+  fillStatement(); activeStep();
+  if(!feesDrawn&&$("#tool-fees").getBoundingClientRect().top<innerHeight*.7){feesDrawn=true;drawFees(true)}
+  if(!retDrawn&&$("#tool-ret").getBoundingClientRect().top<innerHeight*.7){retDrawn=true;drawRet(true)}
+  let cur=null;navLinks.forEach(o=>{if(o.el&&o.el.getBoundingClientRect().top<innerHeight*.4) cur=o.a});navLinks.forEach(o=>o.a.classList.toggle("on",o.a===cur));
+  if(tipFor) hideTip();
+}
+let tick=false;addEventListener("scroll",()=>{if(!tick){tick=true;requestAnimationFrame(()=>{tick=false;onScroll()})}},{passive:true});
+addEventListener("resize",()=>{sizeSea();onScroll()});
+
+/* ---------- boot ---------- */
+const hash=(location.hash||"").slice(1).toLowerCase();
+const saved=store("bb-lang");
+setLang(hash==="en"||hash==="fr"?hash:(saved==="en"?"en":"fr"));
+sizeSea(); drawSea(0); armReveals(); onScroll();
+if(!RM) requestAnimationFrame(loop);
+if(hash&&hash!=="en"&&hash!=="fr") setTimeout(()=>goTo("#"+hash),300);
+})();
+</script>
+</body>
+</html>

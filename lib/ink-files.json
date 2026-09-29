@@ -1,0 +1,146 @@
+{
+  "desk": {
+    "w": 720,
+    "h": 640,
+    "files": {
+      "fr": "desk-fr.75906ff3c1.svg",
+      "en": "desk-en.b5c1493928.svg"
+    },
+    "alt": {
+      "fr": "Un carnet ouvert sur un bureau, devant une fenêtre qui donne sur un lac",
+      "en": "An open notebook on a desk, by a window overlooking a lake"
+    }
+  },
+  "desk-caption": {
+    "w": 720,
+    "h": 640,
+    "files": {
+      "fr": "desk-caption-fr.15f201593d.svg",
+      "en": "desk-caption-en.6834acbe8c.svg"
+    },
+    "alt": {
+      "fr": "",
+      "en": ""
+    }
+  },
+  "two-chairs": {
+    "w": 760,
+    "h": 520,
+    "files": {
+      "fr": "two-chairs.b97566e9b2.svg",
+      "en": "two-chairs.b97566e9b2.svg"
+    },
+    "alt": {
+      "fr": "",
+      "en": ""
+    }
+  },
+  "dock": {
+    "w": 1200,
+    "h": 440,
+    "files": {
+      "fr": "dock.ccd6542ba7.svg",
+      "en": "dock.ccd6542ba7.svg"
+    },
+    "alt": {
+      "fr": "",
+      "en": ""
+    }
+  },
+  "house": {
+    "w": 280,
+    "h": 220,
+    "files": {
+      "fr": "house.1bec17b827.svg",
+      "en": "house.1bec17b827.svg"
+    },
+    "alt": {
+      "fr": "",
+      "en": ""
+    }
+  },
+  "travel-bag": {
+    "w": 280,
+    "h": 220,
+    "files": {
+      "fr": "travel-bag.5139bd84df.svg",
+      "en": "travel-bag.5139bd84df.svg"
+    },
+    "alt": {
+      "fr": "",
+      "en": ""
+    }
+  },
+  "sailboat": {
+    "w": 280,
+    "h": 220,
+    "files": {
+      "fr": "sailboat.13078576fe.svg",
+      "en": "sailboat.13078576fe.svg"
+    },
+    "alt": {
+      "fr": "",
+      "en": ""
+    }
+  },
+  "lighthouse": {
+    "w": 280,
+    "h": 220,
+    "files": {
+      "fr": "lighthouse.b6b8127f9b.svg",
+      "en": "lighthouse.b6b8127f9b.svg"
+    },
+    "alt": {
+      "fr": "",
+      "en": ""
+    }
+  },
+  "bridge": {
+    "w": 280,
+    "h": 220,
+    "files": {
+      "fr": "bridge.a0bf3aaaf8.svg",
+      "en": "bridge.a0bf3aaaf8.svg"
+    },
+    "alt": {
+      "fr": "",
+      "en": ""
+    }
+  },
+  "path": {
+    "w": 280,
+    "h": 220,
+    "files": {
+      "fr": "path.963e014171.svg",
+      "en": "path.963e014171.svg"
+    },
+    "alt": {
+      "fr": "",
+      "en": ""
+    }
+  },
+  "questions-notebook": {
+    "w": 280,
+    "h": 220,
+    "files": {
+      "fr": "questions-notebook-fr.cd52cc813c.svg",
+      "en": "questions-notebook-en.9b91096bda.svg"
+    },
+    "alt": {
+      "fr": "",
+      "en": ""
+    }
+  },
+  "letter": {
+    "w": 280,
+    "h": 220,
+    "files": {
+      "fr": "letter-fr.cef0e401c8.svg",
+      "en": "letter-en.06cfed5f3a.svg"
+    },
+    "alt": {
+      "fr": "",
+      "en": ""
+    }
+  }
+}

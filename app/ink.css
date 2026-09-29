@@ -1,0 +1,81 @@
+/* Pen-and-ink illustrations: one hand, one set of inks. */
+.ink-defs {
+  position: absolute;
+  width: 0;
+  height: 0;
+  overflow: hidden;
+}
+.ink-art {
+  display: block;
+  width: 100%;
+  height: auto;
+  overflow: visible;
+}
+.ink-art .ink {
+  fill: var(--ink, #0e2233);
+}
+.ink-art .ink.soft {
+  fill: var(--ink-soft, #173450);
+  opacity: 0.85;
+}
+.ink-art .hatch {
+  fill: none;
+  stroke: var(--ink, #0e2233);
+  stroke-linecap: round;
+  opacity: 0.42;
+}
+.ink-art .hatch.soft {
+  stroke: var(--ink-soft, #173450);
+  opacity: 0.28;
+}
+.ink-art .pencil {
+  fill: none;
+  stroke: var(--pencil, #a7b4c3);
+  stroke-width: 0.5;
+  stroke-linecap: round;
+  opacity: 0.5;
+}
+.ink-art .wash-fill {
+  fill: currentColor;
+  opacity: 0.34;
+}
+.ink-art .wash-edge {
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 0.8;
+  opacity: 0.22;
+}
+.ink-art .wash.blue {
+  color: var(--blue-grey, #a7b4c3);
+}
+.ink-art .wash.stone {
+  color: var(--stone, #c9c0b1);
+}
+.ink-art .wash.brass {
+  color: var(--brass-soft, #c9a874);
+}
+.ink-art .wash.navy {
+  color: var(--navy-2, #173450);
+}
+.ink-art .wash.ivory {
+  color: var(--ivory, #f5f2ea);
+}
+.ink-art .note {
+  font-family: var(--hand, "Caveat"), cursive;
+  fill: var(--ink-soft, #173450);
+}
+.ink-art .note.brass {
+  fill: #8a6d42;
+}
+/* A printed caption inside a drawing, as on an architect's plate. */
+.ink-art .label {
+  font-family: var(--serif, "Newsreader"), serif;
+  font-style: italic;
+  fill: var(--ink-soft, #173450);
+}
+.ink-art .leader {
+  fill: none;
+  stroke: var(--ink-soft, #173450);
+  stroke-width: 0.6;
+  opacity: 0.7;
+}

@@ -1,0 +1,518 @@
+/* The four-act mountain ride (components/journey). */
+/* ---------- the mountain ride ---------- */
+.ride {
+  --act-h: 175vh;
+  --sky: var(--paper, #faf9f5);
+  position: relative;
+  background: var(--sky);
+  border-top: 1px solid var(--rule, rgba(14, 34, 51, 0.16));
+}
+.ride[data-mode="live"] {
+  height: calc(4 * var(--act-h) + 100vh);
+}
+.ride-anchor {
+  position: absolute;
+  left: 0;
+  top: calc(var(--i) * var(--act-h) + min(var(--i), 1) * 2vh);
+  scroll-margin-top: 0;
+}
+.ride-stage {
+  position: sticky;
+  top: 0;
+  height: 100vh;
+  height: 100svh;
+  overflow: hidden;
+  background: var(--sky);
+}
+/* The stage stays rendered (at zero size) so the still panels can <use> its
+   drawing: hidden clip paths would clip the clones away entirely. */
+.ride[data-mode="static"] .ride-stage {
+  position: absolute;
+  width: 0;
+  height: 0;
+  overflow: hidden;
+}
+.ride[data-mode="static"] .ride-stage > :not(.ride-window) {
+  visibility: hidden;
+}
+.ride[data-mode="live"] .ride-static {
+  display: none;
+}
+.ride-window {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+}
+.ride-layer {
+  position: absolute;
+  left: 0;
+  top: 0;
+  transform-origin: 0 0;
+  will-change: transform;
+  overflow: visible;
+}
+
+/* text column, over a paper scrim on the left */
+.ride-text {
+  position: absolute;
+  inset: 0 auto 0 0;
+  width: min(46%, 660px);
+  padding: 0 40px 0 max(48px, calc((100vw - 1240px) / 2));
+  background: linear-gradient(90deg, var(--sky) 74%, rgba(250, 249, 245, 0));
+  display: grid;
+  align-items: center;
+}
+.ride-act {
+  grid-area: 1 / 1;
+  max-width: 400px;
+  opacity: 0;
+  transform: translateY(10px);
+  transition:
+    opacity 0.7s var(--ease),
+    transform 0.9s var(--ease);
+  pointer-events: none;
+}
+.ride-text:has(.ride-act:focus-within) .ride-act:not(:focus-within) {
+  opacity: 0;
+  visibility: hidden;
+}
+.ride-act[data-active="true"],
+.ride-act:focus-within {
+  opacity: 1;
+  transform: none;
+  pointer-events: auto;
+}
+.ride-count {
+  font-size: 0.8125rem;
+  letter-spacing: 0.06em;
+  margin: 0 0 18px;
+  font-variant-numeric: tabular-nums;
+}
+.ride-count span {
+  color: var(--muted);
+}
+.ride-act .eyebrow,
+.ride-panel .eyebrow {
+  margin-bottom: 14px;
+}
+.ride-act h2,
+.ride-panel h2 {
+  font-size: clamp(1.8rem, 2.6vw, 2.6rem);
+  line-height: 1.08;
+}
+.ride-body {
+  color: var(--muted);
+  font-size: 1.0625rem;
+  line-height: 1.6;
+  margin: 18px 0 0;
+}
+.ride-act .button {
+  margin-top: 26px;
+}
+.ride-sound {
+  position: absolute;
+  left: max(48px, calc((100vw - 1240px) / 2));
+  bottom: 32px;
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  min-height: 44px;
+  padding: 0 18px 0 14px;
+  border: 1px solid var(--line);
+  border-radius: 3px;
+  background: var(--white);
+  color: var(--navy);
+  font-size: 0.875rem;
+}
+.ride-sound svg {
+  width: 18px;
+  height: 18px;
+  fill: var(--navy);
+}
+.ride-sound .waves {
+  fill: none;
+  stroke: var(--brass);
+  stroke-width: 1.5;
+  stroke-linecap: round;
+  opacity: 0.35;
+}
+.ride-sound[data-playing="true"] .waves {
+  opacity: 1;
+}
+.ride-sound[data-playing="true"] {
+  border-color: var(--brass);
+}
+/* A quiet, still hint: a pencil tick and a line of text. */
+.ride-hint {
+  position: absolute;
+  left: 50%;
+  bottom: 22px;
+  transform: translateX(-50%);
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin: 0;
+  font-size: 0.875rem;
+  color: var(--muted);
+  opacity: 0;
+  transition: opacity 0.6s;
+}
+.ride-hint[data-shown="true"] {
+  opacity: 1;
+}
+.ride-hint i {
+  display: block;
+  width: 1px;
+  height: 28px;
+  background: var(--brass);
+  opacity: 0.7;
+}
+
+/* progress rail */
+.ride-rail {
+  position: absolute;
+  right: clamp(12px, 2vw, 32px);
+  top: 50%;
+  transform: translateY(-50%);
+  width: 150px;
+}
+.ride-rail ol {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  position: relative;
+}
+.ride-rail ol::before {
+  content: "";
+  position: absolute;
+  left: 5px;
+  top: 22px;
+  bottom: 22px;
+  width: 1px;
+  background: var(--line);
+}
+.ride-rail a {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  min-height: 44px;
+  text-decoration: none;
+  font-size: 0.7812rem;
+  line-height: 1.3;
+  color: var(--navy);
+}
+.rail-dot {
+  position: relative;
+  flex: none;
+  width: 11px;
+  height: 11px;
+  border-radius: 50%;
+  background: #c9c6be;
+  border: 2px solid var(--sky);
+  transition:
+    background 0.3s,
+    transform 0.3s;
+}
+.ride-rail li[data-active="true"] .rail-dot {
+  background: var(--brass);
+  transform: scale(1.25);
+}
+.rail-label {
+  opacity: 0;
+  transition: opacity 0.3s;
+  padding: 2px 6px;
+  border-radius: 2px;
+  background: var(--sky);
+}
+.ride-rail li[data-active="true"] .rail-label,
+.ride-rail a:hover .rail-label,
+.ride-rail a:focus-visible .rail-label {
+  opacity: 1;
+}
+
+/* still panels: no JavaScript or reduced motion */
+.ride-static {
+  display: grid;
+}
+.ride-static-sound {
+  width: min(1240px, calc(100% - 96px));
+  margin: 32px auto 0;
+}
+.ride-static-sound .ride-sound {
+  position: static;
+}
+/* Without JavaScript the narration can't play: no button. */
+.ride:not([data-ready]) .ride-static-sound {
+  display: none;
+}
+.ride-panel {
+  display: grid;
+  grid-template-columns: minmax(260px, 380px) minmax(0, 1fr);
+  gap: 40px;
+  align-items: center;
+  width: min(1240px, calc(100% - 96px));
+  margin: auto;
+  padding: 48px 0;
+  border-top: 1px solid var(--rule, rgba(14, 34, 51, 0.16));
+}
+.ride-panel:first-child {
+  border-top: 0;
+}
+.ride-panel-art {
+  display: block;
+  width: 100%;
+  height: auto;
+  aspect-ratio: 2 / 1;
+  /* Like the other drawings, the crop fades into the paper: no hard frame. */
+  --fade-x: linear-gradient(90deg, transparent, #000 7%, #000 93%, transparent);
+  --fade-y: linear-gradient(
+    180deg,
+    transparent,
+    #000 6%,
+    #000 88%,
+    transparent
+  );
+  -webkit-mask-image: var(--fade-x), var(--fade-y);
+  -webkit-mask-composite: source-in;
+  mask-image: var(--fade-x), var(--fade-y);
+  mask-composite: intersect;
+}
+/* Phones get a tighter crop of each act, so the signs stay readable. */
+.ride-panel-narrow {
+  display: none;
+}
+
+/* ---------- pen, pencil and watercolour ---------- */
+/* Rules are written for both the live drawing (.ride svg) and the <use>
+   clones in the still panels, which only see their own .ride-art groups. */
+:is(.ride svg, .ride-art) .cut {
+  fill: var(--sky);
+}
+:is(.ride svg, .ride-art) .ik {
+  fill: var(--navy);
+}
+:is(.ride svg, .ride-art) .ik.soft {
+  fill: var(--navy-2);
+  opacity: 0.72;
+}
+:is(.ride svg, .ride-art) .ht,
+:is(.ride svg, .ride-art) .ln,
+:is(.ride svg, .ride-art) .pc {
+  fill: none;
+  stroke-linecap: round;
+}
+:is(.ride svg, .ride-art) .ht {
+  stroke: var(--navy);
+  stroke-width: 0.5;
+  opacity: 0.55;
+}
+/* hatching on what lies further away: the same pen, lighter */
+:is(.ride svg, .ride-art) .ht.far {
+  stroke: var(--navy-2);
+  opacity: 0.32;
+}
+:is(.ride svg, .ride-art) .ln {
+  stroke: var(--navy-2);
+  stroke-width: 0.6;
+  opacity: 0.7;
+}
+:is(.ride svg, .ride-art) .ln.warm {
+  stroke: var(--brass-soft);
+  stroke-width: 1.4;
+  opacity: 0.85;
+}
+:is(.ride svg, .ride-art) .pc {
+  stroke: var(--blue-grey);
+  stroke-width: 0.6;
+  opacity: 0.8;
+}
+:is(.ride svg, .ride-art) .w {
+  fill: currentColor;
+  fill-opacity: 0.4;
+  stroke: currentColor;
+  stroke-width: 0.8;
+  stroke-opacity: 0.3;
+  stroke-linejoin: round;
+}
+:is(.ride svg, .ride-art) .w.blue {
+  color: var(--blue-grey);
+}
+:is(.ride svg, .ride-art) .w.stone {
+  color: var(--stone);
+}
+:is(.ride svg, .ride-art) .w.brass {
+  color: var(--brass-soft);
+}
+:is(.ride svg, .ride-art) .w.navy {
+  color: var(--navy-2);
+}
+/* the distant ranges: lighter ink */
+:is(.ride svg, .ride-art).far-layer .ik.soft {
+  opacity: 0.45;
+}
+:is(.ride svg, .ride-art) .route {
+  fill: none;
+  stroke: var(--brass);
+  stroke-width: 2.4;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+.ride[data-mode="live"] .route {
+  stroke-dasharray: 1 1;
+}
+:is(.ride svg, .ride-art) .route-ghost {
+  fill: none;
+  stroke: var(--brass);
+  stroke-width: 1.4;
+  stroke-linecap: round;
+  stroke-dasharray: 0.5 7;
+  opacity: 0.55;
+}
+:is(.ride svg, .ride-art) .board {
+  fill: #ebe7de;
+}
+:is(.ride svg, .ride-art) .sign-text {
+  font: 400 0.875rem var(--serif);
+  text-anchor: middle;
+  fill: var(--navy);
+}
+:is(.ride svg, .ride-art) .sign-text.big {
+  font-size: 1.25rem;
+}
+/* printed captions, like the labels of an engraved plate */
+:is(.ride svg, .ride-art) .ride-label {
+  font-family: var(--serif);
+  font-style: italic;
+  text-anchor: middle;
+  fill: var(--navy-2);
+  paint-order: stroke;
+  stroke: var(--sky);
+  stroke-width: 4px;
+  stroke-linejoin: round;
+}
+:is(.ride svg, .ride-art) .ride-leader {
+  fill: none;
+  stroke: var(--navy-2);
+  stroke-width: 0.6;
+  opacity: 0.75;
+}
+:is(.ride svg, .ride-art) .note {
+  font-family: var(--hand);
+  fill: var(--navy-2);
+}
+
+/* the walker: a scale figure, a filled ink silhouette. A hairline of paper
+   around each part keeps the near arm and leg readable over the coat. */
+:is(.ride svg, .ride-art) .fig {
+  fill: var(--navy);
+  stroke: var(--sky);
+  stroke-width: 1.1;
+  stroke-linejoin: round;
+  paint-order: stroke;
+}
+:is(.ride svg, .ride-art) .fig-coat {
+  fill: var(--navy-2);
+}
+:is(.ride svg, .ride-art) .fig-far {
+  fill: var(--navy-2);
+}
+:is(.ride svg, .ride-art) .fig-pole {
+  fill: none;
+  stroke: var(--navy);
+  stroke-width: 0.9;
+  stroke-linecap: round;
+}
+.walker .pose,
+.walker .frame-b {
+  display: none;
+}
+.walker[data-pose="walk"] .pose-walk,
+.walker[data-pose="climb"] .pose-climb,
+.walker[data-pose="stand"] .pose-stand,
+.walker[data-pose="sit"] .pose-sit,
+.walker[data-step="1"] .frame-b {
+  display: inline;
+}
+.walker[data-step="1"] .frame-a:has(+ .frame-b) {
+  display: none;
+}
+
+@media (max-width: 1099px) {
+  .ride-rail {
+    display: none;
+  }
+  .ride-text {
+    width: min(52%, 520px);
+  }
+}
+@media (max-width: 760px) {
+  .ride {
+    --act-h: 160svh;
+  }
+  .ride[data-mode="live"] {
+    height: calc(4 * var(--act-h) + 100svh);
+  }
+  .ride-text {
+    inset: 0 0 auto 0;
+    width: auto;
+    height: 47%;
+    padding: 26px 20px 0;
+    align-items: start;
+    background: linear-gradient(180deg, var(--sky) 82%, rgba(250, 249, 245, 0));
+  }
+  .ride-window {
+    top: 38%;
+  }
+  .ride-act h2 {
+    font-size: clamp(1.55rem, 6.8vw, 1.9rem);
+  }
+  .ride-count {
+    margin-bottom: 10px;
+  }
+  .ride-act .eyebrow {
+    margin-bottom: 8px;
+  }
+  .ride-body {
+    font-size: 0.9688rem;
+    margin-top: 10px;
+  }
+  .ride-act .button {
+    margin-top: 14px;
+  }
+  .ride-sound {
+    left: auto;
+    right: 16px;
+    bottom: 18px;
+  }
+  .ride-hint {
+    left: 20px;
+    transform: none;
+    bottom: 26px;
+  }
+  .ride-static-sound {
+    width: calc(100% - 40px);
+    margin-top: 24px;
+  }
+  .ride-panel {
+    grid-template-columns: minmax(0, 1fr);
+    width: calc(100% - 40px);
+    gap: 20px;
+    padding: 40px 0;
+  }
+  .ride-panel-art {
+    aspect-ratio: 4 / 3;
+    width: calc(100% + 40px);
+    margin-inline: -20px;
+  }
+  .ride-panel-wide {
+    display: none;
+  }
+  .ride-panel-narrow {
+    display: block;
+  }
+}
+@media print {
+  .ride {
+    display: none !important;
+  }
+}

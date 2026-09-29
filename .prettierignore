@@ -1,0 +1,7 @@
+.next
+node_modules
+reference
+content
+public
+playwright-report
+test-results
