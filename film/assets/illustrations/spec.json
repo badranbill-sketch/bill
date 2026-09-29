@@ -1,0 +1,25 @@
+{
+  "_note": "Inputs for tools/illustrate.py. seeds = where the pen starts: [x, y, delay], x and y as fractions of the (cropped) picture, delay as a fraction of the reveal. paper_cost = how reluctantly the ink jumps across blank paper (higher = more line by line). width = output width in px (the height follows). crop / erase = [left, top, right, bottom] fractions of the raw image.",
+  "defaults": {"width": 1920, "feather": 70, "paper_cost": 10, "white_point": 0.95, "seeds": [[0.5, 0.5, 0]]},
+  "images": {
+    "lake-chairs": {"seeds": [[0.33, 0.68, 0], [0.62, 0.36, 0.18], [0.86, 0.43, 0.3], [0.2, 0.3, 0.35]]},
+    "meadow-path": {"seeds": [[0.35, 0.8, 0], [0.68, 0.8, 0.12], [0.15, 0.45, 0.2], [0.7, 0.35, 0.3]]},
+    "morning-porch": {"seeds": [[0.25, 0.8, 0], [0.08, 0.5, 0.1], [0.72, 0.5, 0.25], [0.6, 0.65, 0.3]]},
+    "couple-walking": {"seeds": [[0.33, 0.78, 0], [0.45, 0.88, 0.08], [0.18, 0.5, 0.1], [0.55, 0.5, 0.25], [0.75, 0.45, 0.35]]},
+    "sailboat-calm": {"seeds": [[0.36, 0.68, 0], [0.5, 0.58, 0.15], [0.4, 0.3, 0.3]]},
+    "conversation": {"seeds": [[0.5, 0.7, 0], [0.28, 0.45, 0.12], [0.8, 0.55, 0.18], [0.66, 0.22, 0.3], [0.85, 0.15, 0.35]]},
+    "kitchen-table": {"seeds": [[0.33, 0.4, 0], [0.45, 0.6, 0.08], [0.62, 0.62, 0.15], [0.2, 0.15, 0.3]]},
+    "couple-talking": {"width": 1600, "seeds": [[0.3, 0.55, 0], [0.62, 0.4, 0.1], [0.5, 0.72, 0.2], [0.55, 0.2, 0.3], [0.15, 0.3, 0.35]]},
+    "cafe-map": {"width": 1200, "seeds": [[0.35, 0.5, 0], [0.55, 0.75, 0.15], [0.25, 0.1, 0.25], [0.75, 0.5, 0.35]]},
+    "grandparents": {"width": 1200, "seeds": [[0.38, 0.78, 0], [0.38, 0.6, 0.2], [0.75, 0.8, 0.25], [0.2, 0.35, 0.3]]},
+    "easel-garden": {"width": 1200, "seeds": [[0.4, 0.6, 0], [0.47, 0.55, 0.05], [0.28, 0.45, 0.15], [0.72, 0.45, 0.25]]},
+    "home": {"width": 1200, "seeds": [[0.35, 0.5, 0], [0.17, 0.75, 0.12], [0.15, 0.35, 0.2], [0.78, 0.55, 0.25], [0.65, 0.75, 0.3]]},
+    "sailboat-rough": {"width": 1400, "seeds": [[0.44, 0.85, 0], [0.5, 0.93, 0.1], [0.5, 0.35, 0.3]]},
+    "notebook": {"width": 1400, "seeds": [[0.45, 0.6, 0], [0.78, 0.25, 0.15], [0.2, 0.25, 0.2]]},
+    "coin-jar": {"width": 900, "feather": 40, "crop": [0.18, 0.24, 0.8, 0.96], "seeds": [[0.45, 0.5, 0], [0.4, 0.8, 0.15]]},
+    "keys-document": {"width": 1000, "feather": 40, "crop": [0.12, 0.2, 0.85, 0.84], "erase": [[0.34, 0.235, 0.47, 0.315]], "seeds": [[0.45, 0.45, 0], [0.2, 0.6, 0.1], [0.6, 0.7, 0.15], [0.72, 0.25, 0.2]]},
+    "will-folder": {"width": 900, "feather": 40, "crop": [0.2, 0.1, 0.82, 0.92], "seeds": [[0.6, 0.6, 0], [0.25, 0.4, 0.12]]},
+    "statement": {"width": 800, "feather": 40, "crop": [0.2, 0.2, 0.8, 0.9], "seeds": [[0.35, 0.2, 0], [0.4, 0.5, 0.05], [0.75, 0.4, 0.15]]},
+    "policy": {"width": 800, "feather": 40, "crop": [0.24, 0.16, 0.78, 0.86], "seeds": [[0.42, 0.12, 0], [0.5, 0.5, 0.05]]}
+  }
+}

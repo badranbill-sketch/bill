@@ -1,0 +1,471 @@
+{
+ "_readme": "Single source of truth for the narration. Edit text/pauses here, then run `npm run voice:scratch` (temporary synthetic voice) or `npm run voice:bill -- <recording>` (Bill's real voice). Both write public/audio/narration.wav, src/data/timing.json and public/captions/*. `clip` groups lines that are spoken in one breath; `pause` is the silence (seconds) placed after a line when it ends a clip; `slot` marks lines Bill says on camera. `rate` (words per minute) steers which synthetic take is kept; it has no effect on a real recording.",
+ "language": "en",
+ "leadIn": 0.6,
+ "tail": 7.0,
+ "voice": {
+  "_note": "TEMPORARY VOICE. An ElevenLabs library voice ('Jonathan - Warm Executive Narrator'), NOT Bill and NOT a clone of Bill. It exists only to time and present the film. Replace it with Bill's own recording (npm run voice:bill) before publishing, or confirm the ElevenLabs plan covers commercial use of library voices.",
+  "engine": "elevenlabs eleven_multilingual_v2",
+  "speaker": "Jonathan - Warm Executive Narrator",
+  "voice_id": "eocOcfJL8piTXLNNpSCR",
+  "stretch": 1.1,
+  "takes": "assets/voice/jonathan/{A,B,C,D}.mp3 — generated in four paragraphs from the script text, imported with: npm run voice:import",
+  "qwen_fallback": {
+   "engine": "qwen3-tts-customvoice-1.7b",
+   "speaker": "ryan",
+   "seed": 11,
+   "instruct": "A mature, calm financial planner speaking to camera at a relaxed, measured pace. Low, warm and reassuring tone; sincere and thoughtful, like a quiet conversation across a desk.",
+   "rate": 150,
+   "takes": 4
+  }
+ },
+ "lines": [
+  {
+   "id": "hi",
+   "clip": "hi",
+   "scene": "intro",
+   "slot": "intro",
+   "pause": 0.42,
+   "text": "Hi, I'm Bill Badran. I'm a financial planner.",
+   "cue": "Open directly on Bill. Small lower third: BILL BADRAN / Financial Planner."
+  },
+  {
+   "id": "start",
+   "clip": "start",
+   "scene": "intro",
+   "slot": "intro",
+   "pause": 0.51,
+   "text": "And to me, a financial plan should start with something more important than numbers.",
+   "cue": "Stay on Bill. Slow push-in. No graphics."
+  },
+  {
+   "id": "your-life",
+   "clip": "your-life",
+   "scene": "life",
+   "pause": 1.6,
+   "text": "Your life.",
+   "cue": "CUT to cream field. Huge serif YOUR LIFE. A thin gold line draws beneath it. Hold the beat.",
+   "rate": 90,
+   "takes": 8
+  },
+  {
+   "id": "retirement",
+   "clip": "retirement",
+   "scene": "life",
+   "pause": 0.3,
+   "text": "The retirement you're looking forward to.",
+   "cue": "The gold line becomes a horizon; camera travels along it. A lakeside cottage and garden rise from the line."
+  },
+  {
+   "id": "people",
+   "clip": "people",
+   "scene": "life",
+   "pause": 0.3,
+   "text": "The people you want to take care of.",
+   "cue": "A table under a warm lamp; a family gathers around it."
+  },
+  {
+   "id": "freedom",
+   "clip": "freedom",
+   "scene": "life",
+   "pause": 0.77,
+   "text": "The freedom to do more of what matters to you.",
+   "cue": "A calendar with open days, a bicycle, a travel bag. Small label: WHAT MATTERS TO YOU?"
+  },
+  {
+   "id": "fifteen",
+   "clip": "fifteen",
+   "scene": "years",
+   "slot": "credibility",
+   "pause": 0.42,
+   "text": "For more than fifteen years, I've worked with individuals and families to help them plan for goals like these.",
+   "cue": "Back to Bill, different framing. Quiet credential line: 15+ years · individuals & families."
+  },
+  {
+   "id": "noticed",
+   "clip": "noticed",
+   "scene": "years",
+   "slot": "credibility",
+   "pause": 0.51,
+   "text": "And I've noticed something.",
+   "cue": "Hold on Bill."
+  },
+  {
+   "id": "work",
+   "clip": "people-work",
+   "scene": "years",
+   "pause": 0,
+   "text": "People work hard.",
+   "cue": "The gold line returns as a life timeline. A pay stub lands on it."
+  },
+  {
+   "id": "save",
+   "clip": "people-work",
+   "scene": "years",
+   "pause": 0,
+   "text": "They save.",
+   "cue": "A savings account card lands further along."
+  },
+  {
+   "id": "decisions",
+   "clip": "people-work",
+   "scene": "years",
+   "pause": 0.42,
+   "text": "They try to make good decisions.",
+   "cue": "More small documents settle along the timeline. Nothing is wrong."
+  },
+  {
+   "id": "piece",
+   "clip": "piece",
+   "scene": "years",
+   "pause": 0.42,
+   "text": "But often, their financial lives have grown one piece at a time.",
+   "cue": "Objects keep accumulating, one by one, each a reasonable decision."
+  },
+  {
+   "id": "account",
+   "clip": "account",
+   "scene": "islands",
+   "pause": 0.3,
+   "text": "A retirement account here.",
+   "cue": "Camera settles on one card: retirement savings, on its own cream island."
+  },
+  {
+   "id": "policy",
+   "clip": "policy",
+   "scene": "islands",
+   "pause": 0.3,
+   "text": "An insurance policy there.",
+   "cue": "An insurance policy (dated 2009) on another island."
+  },
+  {
+   "id": "will",
+   "clip": "will",
+   "scene": "islands",
+   "pause": 0.51,
+   "text": "A will that hasn't been reviewed in years.",
+   "cue": "A will, last reviewed long ago. Taxes and investments complete the set."
+  },
+  {
+   "id": "sense",
+   "clip": "sense",
+   "scene": "islands",
+   "pause": 0.51,
+   "text": "Each piece may make sense on its own.",
+   "cue": "Each island gets a quiet check mark. The composition looks almost organised."
+  },
+  {
+   "id": "who",
+   "clip": "who",
+   "scene": "islands",
+   "pause": 2.0,
+   "text": "But who's looking at how they all fit together?",
+   "cue": "PULL BACK: wide gaps between the islands. The gold line reaches toward them and stops short. WHO SEES THE WHOLE PICTURE? Hold.",
+   "rate": 135,
+   "takes": 8
+  },
+  {
+   "id": "created",
+   "clip": "created",
+   "scene": "guide",
+   "pause": 0.38,
+   "text": "That's why I created The Guide to Financial Prosperity.",
+   "cue": "The line's end point swells into the guide's gold sun. Navy floods in; the cover assembles: sails, hull, moving water, title."
+  },
+  {
+   "id": "help",
+   "clip": "help",
+   "scene": "guide",
+   "pause": 0.59,
+   "text": "To help you see the bigger picture — and take a clearer next step.",
+   "cue": "The cover settles as a page; the boat eases forward."
+  },
+  {
+   "id": "inside",
+   "clip": "inside",
+   "scene": "blindspots",
+   "pause": 0.42,
+   "text": "Inside, we explore five common blind spots.",
+   "cue": "The guide's five numbered circles (teal, coral, gold, navy, purple). 5 COMMON BLIND SPOTS."
+  },
+  {
+   "id": "m1",
+   "clip": "m1",
+   "scene": "blindspots",
+   "pause": 0.47,
+   "text": "Finances that are scattered, without one coordinated plan.",
+   "cue": "Circle 1 opens. Tiles scattered, the same one repeated. SCATTERED FINANCES."
+  },
+  {
+   "id": "m2",
+   "clip": "m2",
+   "scene": "blindspots",
+   "pause": 0.47,
+   "text": "Focusing on returns without understanding fees and taxes.",
+   "cue": "Circle 2. An unlabelled return bar; fees and taxes peel away. WHAT ACTUALLY STAYS WITH YOU?"
+  },
+  {
+   "id": "m3",
+   "clip": "m3",
+   "scene": "blindspots",
+   "pause": 0.47,
+   "text": "Letting fear drive investment decisions.",
+   "cue": "Circle 3. A line falls; a cursor drifts to SELL and freezes. No recovery is drawn. DECIDE WITH A PLAN. NOT PANIC."
+  },
+  {
+   "id": "m4",
+   "clip": "m4",
+   "scene": "blindspots",
+   "pause": 0.47,
+   "text": "Guessing what retirement will actually cost.",
+   "cue": "Circle 4. A tidy annual budget; travel, home repairs, family, health, the unexpected push it past the line. REAL LIFE DOESN'T FOLLOW A SPREADSHEET."
+  },
+  {
+   "id": "m5",
+   "clip": "m5",
+   "scene": "blindspots",
+   "pause": 0.77,
+   "text": "And asking for advice after a major decision, when some options may already be gone.",
+   "cue": "Circle 5. Paper, signature line, pen approaching. It stops a millimetre short. BEFORE. NOT AFTER."
+  },
+  {
+   "id": "easy",
+   "clip": "easy",
+   "scene": "simple",
+   "pause": 0.51,
+   "text": "They're easy mistakes to make, especially when nobody has shown you what to look for.",
+   "cue": "Slow down. Real pieces of the guide drift by: a question card, a story, a chart.",
+   "slot": "mistakes"
+  },
+  {
+   "id": "simple",
+   "clip": "simple",
+   "scene": "simple",
+   "pause": 0.3,
+   "text": "So I've kept this guide simple.",
+   "cue": "The pieces settle into a clean row."
+  },
+  {
+   "id": "examples",
+   "clip": "examples",
+   "scene": "simple",
+   "pause": 0.26,
+   "text": "Everyday examples.",
+   "cue": "A story card from the guide comes forward.",
+   "rate": 100
+  },
+  {
+   "id": "questions",
+   "clip": "questions",
+   "scene": "simple",
+   "pause": 0.26,
+   "text": "Practical questions.",
+   "cue": "The guide's yellow question note comes forward.",
+   "rate": 100
+  },
+  {
+   "id": "jargon",
+   "clip": "jargon",
+   "scene": "simple",
+   "pause": 0.51,
+   "text": "No complicated jargon.",
+   "cue": "The cover's 'Zéro jargon' pill.",
+   "rate": 110
+  },
+  {
+   "id": "five-q",
+   "clip": "five-q",
+   "scene": "simple",
+   "pause": 0.59,
+   "text": "And at the end, five questions to help you look at your own situation.",
+   "cue": "Five question rows with empty circles. No scores."
+  },
+  {
+   "id": "perfect",
+   "clip": "perfect",
+   "scene": "simple",
+   "pause": 1.2,
+   "text": "You don't need perfect answers.",
+   "cue": "The circles stay empty. Everything else clears away.",
+   "rate": 130,
+   "takes": 8,
+   "slot": "approach"
+  },
+  {
+   "id": "honest",
+   "clip": "honest",
+   "scene": "simple",
+   "pause": 0.77,
+   "text": "You just need an honest starting point.",
+   "cue": "The five circles gather into one point. START WITH WHERE YOU ARE.",
+   "rate": 135,
+   "slot": "approach"
+  },
+  {
+   "id": "approach",
+   "clip": "approach",
+   "scene": "plan",
+   "slot": "approach",
+   "pause": 0.51,
+   "text": "That's how I approach financial planning, too.",
+   "cue": "Bill, briefly."
+  },
+  {
+   "id": "start-you",
+   "clip": "start-you",
+   "scene": "plan",
+   "pause": 1.1,
+   "text": "We start with you:",
+   "cue": "THE CENTREPIECE. The point blooms into YOUR LIFE at the centre of the frame. Stillness.",
+   "rate": 110,
+   "takes": 8,
+   "tts": "We start — with you.",
+   "instruct": "A mature, calm financial planner saying the most important line of the film. Slow and deliberate, warm and sincere, with a small breath before 'with you'. Low, reassuring tone."
+  },
+  {
+   "id": "family",
+   "clip": "yours",
+   "scene": "plan",
+   "pause": 0,
+   "text": "your family,",
+   "cue": "FAMILY appears close to YOUR LIFE, joined by a short gold arc.",
+   "rate": 120
+  },
+  {
+   "id": "priorities",
+   "clip": "yours",
+   "scene": "plan",
+   "pause": 0,
+   "text": "your priorities,",
+   "cue": "PRIORITIES.",
+   "rate": 120
+  },
+  {
+   "id": "goals",
+   "clip": "yours",
+   "scene": "plan",
+   "pause": 0.59,
+   "text": "your goals.",
+   "cue": "GOALS.",
+   "rate": 120
+  },
+  {
+   "id": "whole",
+   "clip": "whole",
+   "scene": "plan",
+   "pause": 0.3,
+   "text": "Then we look at the whole picture —",
+   "cue": "Pull back. The financial tiles are out there, still separate."
+  },
+  {
+   "id": "investments",
+   "clip": "areas",
+   "scene": "plan",
+   "pause": 0,
+   "text": "your investments,",
+   "cue": "INVESTMENTS (teal) turns toward the centre.",
+   "rate": 125
+  },
+  {
+   "id": "taxes",
+   "clip": "areas",
+   "scene": "plan",
+   "pause": 0,
+   "text": "taxes,",
+   "cue": "TAXES (coral).",
+   "rate": 125
+  },
+  {
+   "id": "insurance",
+   "clip": "areas",
+   "scene": "plan",
+   "pause": 0,
+   "text": "insurance,",
+   "cue": "INSURANCE (gold).",
+   "rate": 125
+  },
+  {
+   "id": "retirement-area",
+   "clip": "areas",
+   "scene": "plan",
+   "pause": 0,
+   "text": "retirement,",
+   "cue": "RETIREMENT (navy).",
+   "rate": 125
+  },
+  {
+   "id": "estate",
+   "clip": "areas",
+   "scene": "plan",
+   "pause": 0.3,
+   "text": "and estate planning —",
+   "cue": "ESTATE (purple).",
+   "rate": 125
+  },
+  {
+   "id": "build",
+   "clip": "build",
+   "scene": "plan",
+   "pause": 1.2,
+   "text": "and build one coordinated plan.",
+   "cue": "For the first time the gold line connects everything, one organic loop around YOUR LIFE. The islands become one composition. ONE COORDINATED PLAN.",
+   "rate": 125
+  },
+  {
+   "id": "revisit",
+   "clip": "revisit",
+   "scene": "changes",
+   "pause": 0.77,
+   "text": "A plan we revisit as your life changes.",
+   "cue": "The connected system rearranges (a child joins, a new home, retirement moves closer) and stays connected. The years tick by."
+  },
+  {
+   "id": "role",
+   "clip": "role",
+   "scene": "role",
+   "slot": "role",
+   "pause": 0.68,
+   "text": "My role is to help you understand your choices and how they connect to the future you want.",
+   "cue": "Bill. Hold. Almost no graphics."
+  },
+  {
+   "id": "read",
+   "clip": "read",
+   "scene": "invite",
+   "slot": "invitation",
+   "pause": 0.38,
+   "text": "Take a few minutes to read the guide.",
+   "cue": "Bill, eye contact."
+  },
+  {
+   "id": "ready",
+   "clip": "ready",
+   "scene": "invite",
+   "slot": "invitation",
+   "pause": 0.68,
+   "text": "And when you're ready, let's talk about what matters to you.",
+   "cue": "Bill, eye contact."
+  },
+  {
+   "id": "worked",
+   "clip": "worked",
+   "scene": "invite",
+   "slot": "invitation",
+   "pause": 0.77,
+   "text": "You've worked hard for what you have.",
+   "cue": "Bill. Then a short beat as the frame turns navy.",
+   "rate": 135,
+   "takes": 8
+  },
+  {
+   "id": "next",
+   "clip": "next",
+   "scene": "end",
+   "pause": 0,
+   "text": "Let's build a plan for what comes next.",
+   "cue": "Navy. The gold line becomes the horizon, the sun rises, the sailboat moves across the teal water. A PLAN FOR WHAT COMES NEXT. Then name, READ THE FREE GUIDE, billbadran.com, French-only note, disclaimer.",
+   "rate": 125,
+   "takes": 8
+  }
+ ]
+}

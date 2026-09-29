@@ -1,0 +1,179 @@
+{
+ "hi": {
+  "chosen": 11,
+  "reject": []
+ },
+ "start": {
+  "chosen": 314,
+  "reject": []
+ },
+ "your-life": {
+  "chosen": 617,
+  "reject": []
+ },
+ "retirement": {
+  "chosen": 314,
+  "reject": []
+ },
+ "people": {
+  "chosen": 11,
+  "reject": [
+   213
+  ]
+ },
+ "freedom": {
+  "chosen": 213,
+  "reject": []
+ },
+ "fifteen": {
+  "chosen": 11,
+  "reject": []
+ },
+ "noticed": {
+  "chosen": 112,
+  "reject": []
+ },
+ "people-work": {
+  "chosen": 112,
+  "reject": []
+ },
+ "piece": {
+  "chosen": 112,
+  "reject": []
+ },
+ "account": {
+  "chosen": 11,
+  "reject": []
+ },
+ "policy": {
+  "chosen": 314,
+  "reject": []
+ },
+ "will": {
+  "chosen": 112,
+  "reject": []
+ },
+ "sense": {
+  "chosen": 11,
+  "reject": []
+ },
+ "who": {
+  "chosen": 11,
+  "reject": []
+ },
+ "created": {
+  "chosen": 112,
+  "reject": []
+ },
+ "help": {
+  "chosen": 213,
+  "reject": []
+ },
+ "inside": {
+  "chosen": 11,
+  "reject": []
+ },
+ "m1": {
+  "chosen": 314,
+  "reject": []
+ },
+ "m2": {
+  "chosen": 213,
+  "reject": []
+ },
+ "m3": {
+  "chosen": 11,
+  "reject": []
+ },
+ "m4": {
+  "chosen": 11,
+  "reject": []
+ },
+ "m5": {
+  "chosen": 314,
+  "reject": []
+ },
+ "easy": {
+  "chosen": 213,
+  "reject": []
+ },
+ "simple": {
+  "chosen": 11,
+  "reject": []
+ },
+ "examples": {
+  "chosen": 213,
+  "reject": []
+ },
+ "questions": {
+  "chosen": 112,
+  "reject": []
+ },
+ "jargon": {
+  "chosen": 314,
+  "reject": []
+ },
+ "five-q": {
+  "chosen": 213,
+  "reject": []
+ },
+ "perfect": {
+  "chosen": 213,
+  "reject": []
+ },
+ "honest": {
+  "chosen": 112,
+  "reject": []
+ },
+ "approach": {
+  "chosen": 112,
+  "reject": []
+ },
+ "start-you": {
+  "chosen": 718,
+  "reject": [
+   11,
+   112
+  ]
+ },
+ "yours": {
+  "chosen": 11,
+  "reject": []
+ },
+ "whole": {
+  "chosen": 11,
+  "reject": []
+ },
+ "areas": {
+  "chosen": 314,
+  "reject": []
+ },
+ "build": {
+  "chosen": 213,
+  "reject": []
+ },
+ "revisit": {
+  "chosen": 11,
+  "reject": []
+ },
+ "role": {
+  "chosen": 11,
+  "reject": []
+ },
+ "read": {
+  "chosen": 112,
+  "reject": []
+ },
+ "ready": {
+  "chosen": 112,
+  "reject": []
+ },
+ "worked": {
+  "chosen": 617,
+  "reject": []
+ },
+ "next": {
+  "chosen": 112,
+  "reject": []
+ }
+}

@@ -1,0 +1,78 @@
+{
+  "cafe-map": {
+    "width": 1200,
+    "height": 674
+  },
+  "coin-jar": {
+    "width": 900,
+    "height": 587
+  },
+  "conversation": {
+    "width": 1920,
+    "height": 1079
+  },
+  "couple-talking": {
+    "width": 1600,
+    "height": 899
+  },
+  "couple-walking": {
+    "width": 1920,
+    "height": 1079
+  },
+  "easel-garden": {
+    "width": 1200,
+    "height": 674
+  },
+  "grandparents": {
+    "width": 1200,
+    "height": 674
+  },
+  "home": {
+    "width": 1200,
+    "height": 674
+  },
+  "keys-document": {
+    "width": 1000,
+    "height": 492
+  },
+  "kitchen-table": {
+    "width": 1920,
+    "height": 1079
+  },
+  "lake-chairs": {
+    "width": 1920,
+    "height": 1079
+  },
+  "meadow-path": {
+    "width": 1920,
+    "height": 1079
+  },
+  "morning-porch": {
+    "width": 1920,
+    "height": 1079
+  },
+  "notebook": {
+    "width": 1400,
+    "height": 787
+  },
+  "policy": {
+    "width": 800,
+    "height": 582
+  },
+  "sailboat-calm": {
+    "width": 1920,
+    "height": 1079
+  },
+  "sailboat-rough": {
+    "width": 1400,
+    "height": 787
+  },
+  "statement": {
+    "width": 800,
+    "height": 525
+  },
+  "will-folder": {
+    "width": 900,
+    "height": 669
+  }
+}

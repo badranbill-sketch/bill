@@ -1,0 +1,2369 @@
+{
+ "_generated": "by tools/voice.py — do not edit; change script/script.json and re-run npm run voice:scratch / voice:bill",
+ "source": "scratch",
+ "voice": "TEMPORARY synthetic voice (elevenlabs eleven_multilingual_v2, 'Jonathan - Warm Executive Narrator') — not Bill",
+ "audio": "audio/narration.wav",
+ "leadIn": 0.6,
+ "narrationEnd": 173.267,
+ "tail": 7.0,
+ "duration": 180.267,
+ "lines": [
+  {
+   "id": "hi",
+   "scene": "intro",
+   "slot": "intro",
+   "clip": "hi",
+   "text": "Hi, I'm Bill Badran. I'm a financial planner.",
+   "cue": "Open directly on Bill. Small lower third: BILL BADRAN / Financial Planner.",
+   "start": 0.65,
+   "end": 4.45,
+   "words": [
+    {
+     "w": "Hi,",
+     "s": 0.65,
+     "e": 0.87
+    },
+    {
+     "w": "I'm",
+     "s": 1.15,
+     "e": 1.59
+    },
+    {
+     "w": "Bill",
+     "s": 1.59,
+     "e": 1.75
+    },
+    {
+     "w": "Badran.",
+     "s": 1.75,
+     "e": 2.17
+    },
+    {
+     "w": "I'm",
+     "s": 2.65,
+     "e": 3.31
+    },
+    {
+     "w": "a",
+     "s": 3.31,
+     "e": 3.41
+    },
+    {
+     "w": "financial",
+     "s": 3.41,
+     "e": 3.83
+    },
+    {
+     "w": "planner.",
+     "s": 3.83,
+     "e": 4.29
+    }
+   ]
+  },
+  {
+   "id": "start",
+   "scene": "intro",
+   "slot": "intro",
+   "clip": "start",
+   "text": "And to me, a financial plan should start with something more important than numbers.",
+   "cue": "Stay on Bill. Slow push-in. No graphics.",
+   "start": 4.97,
+   "end": 11.44,
+   "words": [
+    {
+     "w": "And",
+     "s": 4.97,
+     "e": 5.09
+    },
+    {
+     "w": "to",
+     "s": 5.09,
+     "e": 5.27
+    },
+    {
+     "w": "me,",
+     "s": 5.27,
+     "e": 5.49
+    },
+    {
+     "w": "a",
+     "s": 5.83,
+     "e": 6.33
+    },
+    {
+     "w": "financial",
+     "s": 6.33,
+     "e": 6.73
+    },
+    {
+     "w": "plan",
+     "s": 6.73,
+     "e": 7.27
+    },
+    {
+     "w": "should",
+     "s": 7.27,
+     "e": 8.11
+    },
+    {
+     "w": "start",
+     "s": 8.11,
+     "e": 8.53
+    },
+    {
+     "w": "with",
+     "s": 8.53,
+     "e": 8.91
+    },
+    {
+     "w": "something",
+     "s": 8.91,
+     "e": 9.33
+    },
+    {
+     "w": "more",
+     "s": 9.33,
+     "e": 9.73
+    },
+    {
+     "w": "important",
+     "s": 9.73,
+     "e": 10.23
+    },
+    {
+     "w": "than",
+     "s": 10.23,
+     "e": 10.77
+    },
+    {
+     "w": "numbers.",
+     "s": 10.77,
+     "e": 11.29
+    }
+   ]
+  },
+  {
+   "id": "your-life",
+   "scene": "life",
+   "slot": null,
+   "clip": "your-life",
+   "text": "Your life.",
+   "cue": "CUT to cream field. Huge serif YOUR LIFE. A thin gold line draws beneath it. Hold the beat.",
+   "start": 11.95,
+   "end": 13.07,
+   "words": [
+    {
+     "w": "Your",
+     "s": 12.1,
+     "e": 12.56
+    },
+    {
+     "w": "life.",
+     "s": 12.56,
+     "e": 12.96
+    }
+   ]
+  },
+  {
+   "id": "retirement",
+   "scene": "life",
+   "slot": null,
+   "clip": "retirement",
+   "text": "The retirement you're looking forward to.",
+   "cue": "The gold line becomes a horizon; camera travels along it. A lakeside cottage and garden rise from the line.",
+   "start": 14.86,
+   "end": 16.89,
+   "words": [
+    {
+     "w": "The",
+     "s": 14.86,
+     "e": 14.93
+    },
+    {
+     "w": "retirement",
+     "s": 14.93,
+     "e": 15.43
+    },
+    {
+     "w": "you're",
+     "s": 15.43,
+     "e": 15.77
+    },
+    {
+     "w": "looking",
+     "s": 15.77,
+     "e": 15.99
+    },
+    {
+     "w": "forward",
+     "s": 15.99,
+     "e": 16.37
+    },
+    {
+     "w": "to.",
+     "s": 16.37,
+     "e": 16.69
+    }
+   ]
+  },
+  {
+   "id": "people",
+   "scene": "life",
+   "slot": null,
+   "clip": "people",
+   "text": "The people you want to take care of.",
+   "cue": "A table under a warm lamp; a family gathers around it.",
+   "start": 17.32,
+   "end": 19.04,
+   "words": [
+    {
+     "w": "The",
+     "s": 17.32,
+     "e": 17.41
+    },
+    {
+     "w": "people",
+     "s": 17.41,
+     "e": 17.71
+    },
+    {
+     "w": "you",
+     "s": 17.71,
+     "e": 17.91
+    },
+    {
+     "w": "want",
+     "s": 17.91,
+     "e": 18.09
+    },
+    {
+     "w": "to",
+     "s": 18.09,
+     "e": 18.19
+    },
+    {
+     "w": "take",
+     "s": 18.19,
+     "e": 18.39
+    },
+    {
+     "w": "care",
+     "s": 18.39,
+     "e": 18.67
+    },
+    {
+     "w": "of.",
+     "s": 18.67,
+     "e": 18.99
+    }
+   ]
+  },
+  {
+   "id": "freedom",
+   "scene": "life",
+   "slot": null,
+   "clip": "freedom",
+   "text": "The freedom to do more of what matters to you.",
+   "cue": "A calendar with open days, a bicycle, a travel bag. Small label: WHAT MATTERS TO YOU?",
+   "start": 19.53,
+   "end": 22.03,
+   "words": [
+    {
+     "w": "The",
+     "s": 19.53,
+     "e": 19.63
+    },
+    {
+     "w": "freedom",
+     "s": 19.63,
+     "e": 19.99
+    },
+    {
+     "w": "to",
+     "s": 19.99,
+     "e": 20.27
+    },
+    {
+     "w": "do",
+     "s": 20.27,
+     "e": 20.47
+    },
+    {
+     "w": "more",
+     "s": 20.47,
+     "e": 20.83
+    },
+    {
+     "w": "of",
+     "s": 20.83,
+     "e": 21.07
+    },
+    {
+     "w": "what",
+     "s": 21.07,
+     "e": 21.23
+    },
+    {
+     "w": "matters",
+     "s": 21.23,
+     "e": 21.57
+    },
+    {
+     "w": "to",
+     "s": 21.57,
+     "e": 21.83
+    },
+    {
+     "w": "you.",
+     "s": 21.83,
+     "e": 22.05
+    }
+   ]
+  },
+  {
+   "id": "fifteen",
+   "scene": "years",
+   "slot": "credibility",
+   "clip": "fifteen",
+   "text": "For more than fifteen years, I've worked with individuals and families to help them plan for goals like these.",
+   "cue": "Back to Bill, different framing. Quiet credential line: 15+ years · individuals & families.",
+   "start": 22.8,
+   "end": 31.5,
+   "words": [
+    {
+     "w": "For",
+     "s": 22.8,
+     "e": 24.08
+    },
+    {
+     "w": "more",
+     "s": 24.08,
+     "e": 24.3
+    },
+    {
+     "w": "than",
+     "s": 24.3,
+     "e": 24.5
+    },
+    {
+     "w": "fifteen",
+     "s": 24.5,
+     "e": 24.92
+    },
+    {
+     "w": "years,",
+     "s": 24.92,
+     "e": 25.46
+    },
+    {
+     "w": "I've",
+     "s": 25.9,
+     "e": 26.52
+    },
+    {
+     "w": "worked",
+     "s": 26.52,
+     "e": 26.82
+    },
+    {
+     "w": "with",
+     "s": 26.82,
+     "e": 27.06
+    },
+    {
+     "w": "individuals",
+     "s": 27.06,
+     "e": 27.68
+    },
+    {
+     "w": "and",
+     "s": 27.68,
+     "e": 28.24
+    },
+    {
+     "w": "families",
+     "s": 28.24,
+     "e": 28.78
+    },
+    {
+     "w": "to",
+     "s": 28.78,
+     "e": 29.1
+    },
+    {
+     "w": "help",
+     "s": 29.1,
+     "e": 29.32
+    },
+    {
+     "w": "them",
+     "s": 29.32,
+     "e": 29.56
+    },
+    {
+     "w": "plan",
+     "s": 29.56,
+     "e": 29.98
+    },
+    {
+     "w": "for",
+     "s": 29.98,
+     "e": 30.26
+    },
+    {
+     "w": "goals",
+     "s": 30.26,
+     "e": 30.58
+    },
+    {
+     "w": "like",
+     "s": 30.58,
+     "e": 30.92
+    },
+    {
+     "w": "these.",
+     "s": 30.92,
+     "e": 31.34
+    }
+   ]
+  },
+  {
+   "id": "noticed",
+   "scene": "years",
+   "slot": "credibility",
+   "clip": "noticed",
+   "text": "And I've noticed something.",
+   "cue": "Hold on Bill.",
+   "start": 32.11,
+   "end": 33.35,
+   "words": [
+    {
+     "w": "And",
+     "s": 32.11,
+     "e": 32.23
+    },
+    {
+     "w": "I've",
+     "s": 32.23,
+     "e": 32.41
+    },
+    {
+     "w": "noticed",
+     "s": 32.41,
+     "e": 32.75
+    },
+    {
+     "w": "something.",
+     "s": 32.75,
+     "e": 33.17
+    }
+   ]
+  },
+  {
+   "id": "work",
+   "scene": "years",
+   "slot": null,
+   "clip": "people-work",
+   "text": "People work hard.",
+   "cue": "The gold line returns as a life timeline. A pay stub lands on it.",
+   "start": 34.04,
+   "end": 35.02,
+   "words": [
+    {
+     "w": "People",
+     "s": 34.04,
+     "e": 34.3
+    },
+    {
+     "w": "work",
+     "s": 34.3,
+     "e": 34.6
+    },
+    {
+     "w": "hard.",
+     "s": 34.6,
+     "e": 35.02
+    }
+   ]
+  },
+  {
+   "id": "save",
+   "scene": "years",
+   "slot": null,
+   "clip": "people-work",
+   "text": "They save.",
+   "cue": "A savings account card lands further along.",
+   "start": 35.02,
+   "end": 36.16,
+   "words": [
+    {
+     "w": "They",
+     "s": 35.02,
+     "e": 35.64
+    },
+    {
+     "w": "save.",
+     "s": 35.64,
+     "e": 36.16
+    }
+   ]
+  },
+  {
+   "id": "decisions",
+   "scene": "years",
+   "slot": null,
+   "clip": "people-work",
+   "text": "They try to make good decisions.",
+   "cue": "More small documents settle along the timeline. Nothing is wrong.",
+   "start": 36.5,
+   "end": 38.66,
+   "words": [
+    {
+     "w": "They",
+     "s": 36.5,
+     "e": 36.92
+    },
+    {
+     "w": "try",
+     "s": 36.92,
+     "e": 37.18
+    },
+    {
+     "w": "to",
+     "s": 37.18,
+     "e": 37.36
+    },
+    {
+     "w": "make",
+     "s": 37.36,
+     "e": 37.54
+    },
+    {
+     "w": "good",
+     "s": 37.54,
+     "e": 37.78
+    },
+    {
+     "w": "decisions.",
+     "s": 37.78,
+     "e": 38.38
+    }
+   ]
+  },
+  {
+   "id": "piece",
+   "scene": "years",
+   "slot": null,
+   "clip": "piece",
+   "text": "But often, their financial lives have grown one piece at a time.",
+   "cue": "Objects keep accumulating, one by one, each a reasonable decision.",
+   "start": 39.15,
+   "end": 43.65,
+   "words": [
+    {
+     "w": "But",
+     "s": 39.15,
+     "e": 39.27
+    },
+    {
+     "w": "often,",
+     "s": 39.27,
+     "e": 39.75
+    },
+    {
+     "w": "their",
+     "s": 39.97,
+     "e": 40.33
+    },
+    {
+     "w": "financial",
+     "s": 40.33,
+     "e": 40.79
+    },
+    {
+     "w": "lives",
+     "s": 40.79,
+     "e": 41.27
+    },
+    {
+     "w": "have",
+     "s": 41.27,
+     "e": 41.55
+    },
+    {
+     "w": "grown",
+     "s": 41.55,
+     "e": 41.91
+    },
+    {
+     "w": "one",
+     "s": 41.91,
+     "e": 42.47
+    },
+    {
+     "w": "piece",
+     "s": 42.47,
+     "e": 42.79
+    },
+    {
+     "w": "at",
+     "s": 42.79,
+     "e": 43.05
+    },
+    {
+     "w": "a",
+     "s": 43.05,
+     "e": 43.15
+    },
+    {
+     "w": "time.",
+     "s": 43.15,
+     "e": 43.51
+    }
+   ]
+  },
+  {
+   "id": "account",
+   "scene": "islands",
+   "slot": null,
+   "clip": "account",
+   "text": "A retirement account here.",
+   "cue": "Camera settles on one card: retirement savings, on its own cream island.",
+   "start": 44.23,
+   "end": 45.7,
+   "words": [
+    {
+     "w": "A",
+     "s": 44.23,
+     "e": 44.3
+    },
+    {
+     "w": "retirement",
+     "s": 44.3,
+     "e": 44.78
+    },
+    {
+     "w": "account",
+     "s": 44.78,
+     "e": 45.2
+    },
+    {
+     "w": "here.",
+     "s": 45.2,
+     "e": 45.58
+    }
+   ]
+  },
+  {
+   "id": "policy",
+   "scene": "islands",
+   "slot": null,
+   "clip": "policy",
+   "text": "An insurance policy there.",
+   "cue": "An insurance policy (dated 2009) on another island.",
+   "start": 46.78,
+   "end": 48.36,
+   "words": [
+    {
+     "w": "An",
+     "s": 46.78,
+     "e": 46.9
+    },
+    {
+     "w": "insurance",
+     "s": 46.9,
+     "e": 47.3
+    },
+    {
+     "w": "policy",
+     "s": 47.3,
+     "e": 47.96
+    },
+    {
+     "w": "there.",
+     "s": 47.96,
+     "e": 48.28
+    }
+   ]
+  },
+  {
+   "id": "will",
+   "scene": "islands",
+   "slot": null,
+   "clip": "will",
+   "text": "A will that hasn't been reviewed in years.",
+   "cue": "A will, last reviewed long ago. Taxes and investments complete the set.",
+   "start": 48.78,
+   "end": 51.74,
+   "words": [
+    {
+     "w": "A",
+     "s": 48.78,
+     "e": 48.86
+    },
+    {
+     "w": "will",
+     "s": 48.86,
+     "e": 49.2
+    },
+    {
+     "w": "that",
+     "s": 49.2,
+     "e": 49.86
+    },
+    {
+     "w": "hasn't",
+     "s": 49.86,
+     "e": 50.26
+    },
+    {
+     "w": "been",
+     "s": 50.26,
+     "e": 50.42
+    },
+    {
+     "w": "reviewed",
+     "s": 50.42,
+     "e": 50.82
+    },
+    {
+     "w": "in",
+     "s": 50.82,
+     "e": 51.06
+    },
+    {
+     "w": "years.",
+     "s": 51.06,
+     "e": 51.4
+    }
+   ]
+  },
+  {
+   "id": "sense",
+   "scene": "islands",
+   "slot": null,
+   "clip": "sense",
+   "text": "Each piece may make sense on its own.",
+   "cue": "Each island gets a quiet check mark. The composition looks almost organised.",
+   "start": 52.41,
+   "end": 54.73,
+   "words": [
+    {
+     "w": "Each",
+     "s": 52.41,
+     "e": 52.64
+    },
+    {
+     "w": "piece",
+     "s": 52.64,
+     "e": 53.02
+    },
+    {
+     "w": "may",
+     "s": 53.02,
+     "e": 53.34
+    },
+    {
+     "w": "make",
+     "s": 53.34,
+     "e": 53.62
+    },
+    {
+     "w": "sense",
+     "s": 53.62,
+     "e": 53.9
+    },
+    {
+     "w": "on",
+     "s": 53.9,
+     "e": 54.1
+    },
+    {
+     "w": "its",
+     "s": 54.1,
+     "e": 54.26
+    },
+    {
+     "w": "own.",
+     "s": 54.26,
+     "e": 54.62
+    }
+   ]
+  },
+  {
+   "id": "who",
+   "scene": "islands",
+   "slot": null,
+   "clip": "who",
+   "text": "But who's looking at how they all fit together?",
+   "cue": "PULL BACK: wide gaps between the islands. The gold line reaches toward them and stops short. WHO SEES THE WHOLE PICTURE? Hold.",
+   "start": 55.24,
+   "end": 58.71,
+   "words": [
+    {
+     "w": "But",
+     "s": 55.35,
+     "e": 56.45
+    },
+    {
+     "w": "who's",
+     "s": 56.45,
+     "e": 56.73
+    },
+    {
+     "w": "looking",
+     "s": 56.73,
+     "e": 57.03
+    },
+    {
+     "w": "at",
+     "s": 57.03,
+     "e": 57.27
+    },
+    {
+     "w": "how",
+     "s": 57.27,
+     "e": 57.53
+    },
+    {
+     "w": "they",
+     "s": 57.53,
+     "e": 57.75
+    },
+    {
+     "w": "all",
+     "s": 57.75,
+     "e": 57.91
+    },
+    {
+     "w": "fit",
+     "s": 57.91,
+     "e": 58.17
+    },
+    {
+     "w": "together?",
+     "s": 58.17,
+     "e": 58.45
+    }
+   ]
+  },
+  {
+   "id": "created",
+   "scene": "guide",
+   "slot": null,
+   "clip": "created",
+   "text": "That's why I created The Guide to Financial Prosperity.",
+   "cue": "The line's end point swells into the guide's gold sun. Navy floods in; the cover assembles: sails, hull, moving water, title.",
+   "start": 60.841,
+   "end": 64.411,
+   "words": [
+    {
+     "w": "That's",
+     "s": 60.841,
+     "e": 61.111
+    },
+    {
+     "w": "why",
+     "s": 61.111,
+     "e": 61.251
+    },
+    {
+     "w": "I",
+     "s": 61.251,
+     "e": 61.411
+    },
+    {
+     "w": "created",
+     "s": 61.411,
+     "e": 61.971
+    },
+    {
+     "w": "The",
+     "s": 61.971,
+     "e": 62.611
+    },
+    {
+     "w": "Guide",
+     "s": 62.611,
+     "e": 62.871
+    },
+    {
+     "w": "to",
+     "s": 62.871,
+     "e": 63.111
+    },
+    {
+     "w": "Financial",
+     "s": 63.111,
+     "e": 63.551
+    },
+    {
+     "w": "Prosperity.",
+     "s": 63.551,
+     "e": 64.391
+    }
+   ]
+  },
+  {
+   "id": "help",
+   "scene": "guide",
+   "slot": null,
+   "clip": "help",
+   "text": "To help you see the bigger picture — and take a clearer next step.",
+   "cue": "The cover settles as a page; the boat eases forward.",
+   "start": 64.791,
+   "end": 69.991,
+   "words": [
+    {
+     "w": "To",
+     "s": 64.811,
+     "e": 65.831
+    },
+    {
+     "w": "help",
+     "s": 65.831,
+     "e": 66.051
+    },
+    {
+     "w": "you",
+     "s": 66.051,
+     "e": 66.251
+    },
+    {
+     "w": "see",
+     "s": 66.251,
+     "e": 66.611
+    },
+    {
+     "w": "the",
+     "s": 66.611,
+     "e": 67.071
+    },
+    {
+     "w": "bigger",
+     "s": 67.071,
+     "e": 67.291
+    },
+    {
+     "w": "picture",
+     "s": 67.291,
+     "e": 67.771
+    },
+    {
+     "w": "and",
+     "s": 67.771,
+     "e": 68.611
+    },
+    {
+     "w": "take",
+     "s": 68.611,
+     "e": 68.791
+    },
+    {
+     "w": "a",
+     "s": 68.791,
+     "e": 68.931
+    },
+    {
+     "w": "clearer",
+     "s": 68.931,
+     "e": 69.291
+    },
+    {
+     "w": "next",
+     "s": 69.291,
+     "e": 69.651
+    },
+    {
+     "w": "step.",
+     "s": 69.651,
+     "e": 69.991
+    }
+   ]
+  },
+  {
+   "id": "inside",
+   "scene": "blindspots",
+   "slot": null,
+   "clip": "inside",
+   "text": "Inside, we explore five common blind spots.",
+   "cue": "The guide's five numbered circles (teal, coral, gold, navy, purple). 5 COMMON BLIND SPOTS.",
+   "start": 70.771,
+   "end": 74.541,
+   "words": [
+    {
+     "w": "Inside,",
+     "s": 70.771,
+     "e": 71.221
+    },
+    {
+     "w": "we",
+     "s": 71.541,
+     "e": 72.121
+    },
+    {
+     "w": "explore",
+     "s": 72.121,
+     "e": 72.581
+    },
+    {
+     "w": "five",
+     "s": 72.581,
+     "e": 73.001
+    },
+    {
+     "w": "common",
+     "s": 73.001,
+     "e": 73.561
+    },
+    {
+     "w": "blind",
+     "s": 73.561,
+     "e": 73.821
+    },
+    {
+     "w": "spots.",
+     "s": 73.821,
+     "e": 74.441
+    }
+   ]
+  },
+  {
+   "id": "m1",
+   "scene": "blindspots",
+   "slot": null,
+   "clip": "m1",
+   "text": "Finances that are scattered, without one coordinated plan.",
+   "cue": "Circle 1 opens. Tiles scattered, the same one repeated. SCATTERED FINANCES.",
+   "start": 75.151,
+   "end": 79.141,
+   "words": [
+    {
+     "w": "Finances",
+     "s": 75.151,
+     "e": 75.641
+    },
+    {
+     "w": "that",
+     "s": 75.641,
+     "e": 75.881
+    },
+    {
+     "w": "are",
+     "s": 75.881,
+     "e": 76.001
+    },
+    {
+     "w": "scattered,",
+     "s": 76.001,
+     "e": 76.521
+    },
+    {
+     "w": "without",
+     "s": 76.821,
+     "e": 77.481
+    },
+    {
+     "w": "one",
+     "s": 77.481,
+     "e": 77.901
+    },
+    {
+     "w": "coordinated",
+     "s": 77.901,
+     "e": 78.541
+    },
+    {
+     "w": "plan.",
+     "s": 78.541,
+     "e": 79.041
+    }
+   ]
+  },
+  {
+   "id": "m2",
+   "scene": "blindspots",
+   "slot": null,
+   "clip": "m2",
+   "text": "Focusing on returns without understanding fees and taxes.",
+   "cue": "Circle 2. An unlabelled return bar; fees and taxes peel away. WHAT ACTUALLY STAYS WITH YOU?",
+   "start": 79.801,
+   "end": 83.581,
+   "words": [
+    {
+     "w": "Focusing",
+     "s": 79.801,
+     "e": 80.261
+    },
+    {
+     "w": "on",
+     "s": 80.261,
+     "e": 80.441
+    },
+    {
+     "w": "returns",
+     "s": 80.441,
+     "e": 81.001
+    },
+    {
+     "w": "without",
+     "s": 81.001,
+     "e": 81.601
+    },
+    {
+     "w": "understanding",
+     "s": 81.601,
+     "e": 82.381
+    },
+    {
+     "w": "fees",
+     "s": 82.381,
+     "e": 82.821
+    },
+    {
+     "w": "and",
+     "s": 82.821,
+     "e": 83.121
+    },
+    {
+     "w": "taxes.",
+     "s": 83.121,
+     "e": 83.601
+    }
+   ]
+  },
+  {
+   "id": "m3",
+   "scene": "blindspots",
+   "slot": null,
+   "clip": "m3",
+   "text": "Letting fear drive investment decisions.",
+   "cue": "Circle 3. A line falls; a cursor drifts to SELL and freezes. No recovery is drawn. DECIDE WITH A PLAN. NOT PANIC.",
+   "start": 84.051,
+   "end": 87.791,
+   "words": [
+    {
+     "w": "Letting",
+     "s": 84.051,
+     "e": 85.651
+    },
+    {
+     "w": "fear",
+     "s": 85.651,
+     "e": 86.131
+    },
+    {
+     "w": "drive",
+     "s": 86.131,
+     "e": 86.531
+    },
+    {
+     "w": "investment",
+     "s": 86.531,
+     "e": 87.131
+    },
+    {
+     "w": "decisions.",
+     "s": 87.131,
+     "e": 87.811
+    }
+   ]
+  },
+  {
+   "id": "m4",
+   "scene": "blindspots",
+   "slot": null,
+   "clip": "m4",
+   "text": "Guessing what retirement will actually cost.",
+   "cue": "Circle 4. A tidy annual budget; travel, home repairs, family, health, the unexpected push it past the line. REAL LIFE DOESN'T FOLLOW A SPREADSHEET.",
+   "start": 88.261,
+   "end": 91.861,
+   "words": [
+    {
+     "w": "Guessing",
+     "s": 88.261,
+     "e": 89.721
+    },
+    {
+     "w": "what",
+     "s": 89.721,
+     "e": 90.021
+    },
+    {
+     "w": "retirement",
+     "s": 90.021,
+     "e": 90.521
+    },
+    {
+     "w": "will",
+     "s": 90.521,
+     "e": 90.881
+    },
+    {
+     "w": "actually",
+     "s": 90.881,
+     "e": 91.321
+    },
+    {
+     "w": "cost.",
+     "s": 91.321,
+     "e": 91.881
+    }
+   ]
+  },
+  {
+   "id": "m5",
+   "scene": "blindspots",
+   "slot": null,
+   "clip": "m5",
+   "text": "And asking for advice after a major decision, when some options may already be gone.",
+   "cue": "Circle 5. Paper, signature line, pen approaching. It stops a millimetre short. BEFORE. NOT AFTER.",
+   "start": 92.331,
+   "end": 99.211,
+   "words": [
+    {
+     "w": "And",
+     "s": 92.331,
+     "e": 93.671
+    },
+    {
+     "w": "asking",
+     "s": 93.671,
+     "e": 94.031
+    },
+    {
+     "w": "for",
+     "s": 94.031,
+     "e": 94.291
+    },
+    {
+     "w": "advice",
+     "s": 94.291,
+     "e": 94.711
+    },
+    {
+     "w": "after",
+     "s": 94.711,
+     "e": 95.251
+    },
+    {
+     "w": "a",
+     "s": 95.251,
+     "e": 95.411
+    },
+    {
+     "w": "major",
+     "s": 95.411,
+     "e": 95.631
+    },
+    {
+     "w": "decision,",
+     "s": 95.631,
+     "e": 96.171
+    },
+    {
+     "w": "when",
+     "s": 96.171,
+     "e": 97.071
+    },
+    {
+     "w": "some",
+     "s": 97.071,
+     "e": 97.391
+    },
+    {
+     "w": "options",
+     "s": 97.391,
+     "e": 97.871
+    },
+    {
+     "w": "may",
+     "s": 97.871,
+     "e": 98.131
+    },
+    {
+     "w": "already",
+     "s": 98.131,
+     "e": 98.511
+    },
+    {
+     "w": "be",
+     "s": 98.511,
+     "e": 98.711
+    },
+    {
+     "w": "gone.",
+     "s": 98.711,
+     "e": 98.951
+    }
+   ]
+  },
+  {
+   "id": "easy",
+   "scene": "simple",
+   "slot": "mistakes",
+   "clip": "easy",
+   "text": "They're easy mistakes to make, especially when nobody has shown you what to look for.",
+   "cue": "Slow down. Real pieces of the guide drift by: a question card, a story, a chart.",
+   "start": 100.098,
+   "end": 105.008,
+   "words": [
+    {
+     "w": "They're",
+     "s": 100.098,
+     "e": 100.218
+    },
+    {
+     "w": "easy",
+     "s": 100.218,
+     "e": 100.538
+    },
+    {
+     "w": "mistakes",
+     "s": 100.538,
+     "e": 100.978
+    },
+    {
+     "w": "to",
+     "s": 100.978,
+     "e": 101.238
+    },
+    {
+     "w": "make,",
+     "s": 101.238,
+     "e": 101.578
+    },
+    {
+     "w": "especially",
+     "s": 101.758,
+     "e": 102.378
+    },
+    {
+     "w": "when",
+     "s": 102.378,
+     "e": 102.818
+    },
+    {
+     "w": "nobody",
+     "s": 102.818,
+     "e": 103.178
+    },
+    {
+     "w": "has",
+     "s": 103.178,
+     "e": 103.498
+    },
+    {
+     "w": "shown",
+     "s": 103.498,
+     "e": 103.758
+    },
+    {
+     "w": "you",
+     "s": 103.758,
+     "e": 103.978
+    },
+    {
+     "w": "what",
+     "s": 103.978,
+     "e": 104.238
+    },
+    {
+     "w": "to",
+     "s": 104.238,
+     "e": 104.398
+    },
+    {
+     "w": "look",
+     "s": 104.398,
+     "e": 104.578
+    },
+    {
+     "w": "for.",
+     "s": 104.578,
+     "e": 104.898
+    }
+   ]
+  },
+  {
+   "id": "simple",
+   "scene": "simple",
+   "slot": null,
+   "clip": "simple",
+   "text": "So I've kept this guide simple.",
+   "cue": "The pieces settle into a clean row.",
+   "start": 105.708,
+   "end": 107.398,
+   "words": [
+    {
+     "w": "So",
+     "s": 105.708,
+     "e": 105.838
+    },
+    {
+     "w": "I've",
+     "s": 105.838,
+     "e": 106.058
+    },
+    {
+     "w": "kept",
+     "s": 106.058,
+     "e": 106.258
+    },
+    {
+     "w": "this",
+     "s": 106.258,
+     "e": 106.498
+    },
+    {
+     "w": "guide",
+     "s": 106.498,
+     "e": 106.758
+    },
+    {
+     "w": "simple.",
+     "s": 106.758,
+     "e": 107.258
+    }
+   ]
+  },
+  {
+   "id": "examples",
+   "scene": "simple",
+   "slot": null,
+   "clip": "examples",
+   "text": "Everyday examples.",
+   "cue": "A story card from the guide comes forward.",
+   "start": 107.888,
+   "end": 109.088,
+   "words": [
+    {
+     "w": "Everyday",
+     "s": 107.888,
+     "e": 108.168
+    },
+    {
+     "w": "examples.",
+     "s": 108.168,
+     "e": 108.828
+    }
+   ]
+  },
+  {
+   "id": "questions",
+   "scene": "simple",
+   "slot": null,
+   "clip": "questions",
+   "text": "Practical questions.",
+   "cue": "The guide's yellow question note comes forward.",
+   "start": 109.348,
+   "end": 111.058,
+   "words": [
+    {
+     "w": "Practical",
+     "s": 109.598,
+     "e": 110.138
+    },
+    {
+     "w": "questions.",
+     "s": 110.138,
+     "e": 110.758
+    }
+   ]
+  },
+  {
+   "id": "jargon",
+   "scene": "simple",
+   "slot": null,
+   "clip": "jargon",
+   "text": "No complicated jargon.",
+   "cue": "The cover's 'Zéro jargon' pill.",
+   "start": 111.378,
+   "end": 112.908,
+   "words": [
+    {
+     "w": "No",
+     "s": 111.378,
+     "e": 111.548
+    },
+    {
+     "w": "complicated",
+     "s": 111.548,
+     "e": 112.148
+    },
+    {
+     "w": "jargon.",
+     "s": 112.148,
+     "e": 112.708
+    }
+   ]
+  },
+  {
+   "id": "five-q",
+   "scene": "simple",
+   "slot": null,
+   "clip": "five-q",
+   "text": "And at the end, five questions to help you look at your own situation.",
+   "cue": "Five question rows with empty circles. No scores.",
+   "start": 113.583,
+   "end": 117.843,
+   "words": [
+    {
+     "w": "And",
+     "s": 113.583,
+     "e": 113.713
+    },
+    {
+     "w": "at",
+     "s": 113.713,
+     "e": 113.853
+    },
+    {
+     "w": "the",
+     "s": 113.853,
+     "e": 114.013
+    },
+    {
+     "w": "end,",
+     "s": 114.013,
+     "e": 114.393
+    },
+    {
+     "w": "five",
+     "s": 114.633,
+     "e": 115.073
+    },
+    {
+     "w": "questions",
+     "s": 115.073,
+     "e": 115.593
+    },
+    {
+     "w": "to",
+     "s": 115.593,
+     "e": 115.873
+    },
+    {
+     "w": "help",
+     "s": 115.873,
+     "e": 116.033
+    },
+    {
+     "w": "you",
+     "s": 116.033,
+     "e": 116.233
+    },
+    {
+     "w": "look",
+     "s": 116.233,
+     "e": 116.433
+    },
+    {
+     "w": "at",
+     "s": 116.433,
+     "e": 116.593
+    },
+    {
+     "w": "your",
+     "s": 116.593,
+     "e": 116.733
+    },
+    {
+     "w": "own",
+     "s": 116.733,
+     "e": 116.913
+    },
+    {
+     "w": "situation.",
+     "s": 116.913,
+     "e": 117.553
+    }
+   ]
+  },
+  {
+   "id": "perfect",
+   "scene": "simple",
+   "slot": "approach",
+   "clip": "perfect",
+   "text": "You don't need perfect answers.",
+   "cue": "The circles stay empty. Everything else clears away.",
+   "start": 118.623,
+   "end": 120.283,
+   "words": [
+    {
+     "w": "You",
+     "s": 118.623,
+     "e": 118.723
+    },
+    {
+     "w": "don't",
+     "s": 118.723,
+     "e": 118.983
+    },
+    {
+     "w": "need",
+     "s": 118.983,
+     "e": 119.163
+    },
+    {
+     "w": "perfect",
+     "s": 119.163,
+     "e": 119.543
+    },
+    {
+     "w": "answers.",
+     "s": 119.543,
+     "e": 120.043
+    }
+   ]
+  },
+  {
+   "id": "honest",
+   "scene": "simple",
+   "slot": "approach",
+   "clip": "honest",
+   "text": "You just need an honest starting point.",
+   "cue": "The five circles gather into one point. START WITH WHERE YOU ARE.",
+   "start": 121.483,
+   "end": 124.363,
+   "words": [
+    {
+     "w": "You",
+     "s": 121.723,
+     "e": 122.383
+    },
+    {
+     "w": "just",
+     "s": 122.383,
+     "e": 122.623
+    },
+    {
+     "w": "need",
+     "s": 122.623,
+     "e": 122.943
+    },
+    {
+     "w": "an",
+     "s": 122.943,
+     "e": 123.263
+    },
+    {
+     "w": "honest",
+     "s": 123.263,
+     "e": 123.663
+    },
+    {
+     "w": "starting",
+     "s": 123.663,
+     "e": 124.023
+    },
+    {
+     "w": "point.",
+     "s": 124.023,
+     "e": 124.383
+    }
+   ]
+  },
+  {
+   "id": "approach",
+   "scene": "plan",
+   "slot": "approach",
+   "clip": "approach",
+   "text": "That's how I approach financial planning, too.",
+   "cue": "Bill, briefly.",
+   "start": 125.133,
+   "end": 128.433,
+   "words": [
+    {
+     "w": "That's",
+     "s": 125.133,
+     "e": 126.473
+    },
+    {
+     "w": "how",
+     "s": 126.473,
+     "e": 126.593
+    },
+    {
+     "w": "I",
+     "s": 126.593,
+     "e": 126.773
+    },
+    {
+     "w": "approach",
+     "s": 126.773,
+     "e": 127.193
+    },
+    {
+     "w": "financial",
+     "s": 127.193,
+     "e": 127.713
+    },
+    {
+     "w": "planning,",
+     "s": 127.713,
+     "e": 128.133
+    },
+    {
+     "w": "too.",
+     "s": 128.133,
+     "e": 128.453
+    }
+   ]
+  },
+  {
+   "id": "start-you",
+   "scene": "plan",
+   "slot": null,
+   "clip": "start-you",
+   "text": "We start with you:",
+   "cue": "THE CENTREPIECE. The point blooms into YOUR LIFE at the centre of the frame. Stillness.",
+   "start": 128.943,
+   "end": 130.983,
+   "words": [
+    {
+     "w": "We",
+     "s": 128.943,
+     "e": 130.223
+    },
+    {
+     "w": "start",
+     "s": 130.223,
+     "e": 130.483
+    },
+    {
+     "w": "with",
+     "s": 130.483,
+     "e": 130.723
+    },
+    {
+     "w": "you:",
+     "s": 130.723,
+     "e": 131.003
+    }
+   ]
+  },
+  {
+   "id": "family",
+   "scene": "plan",
+   "slot": null,
+   "clip": "yours",
+   "text": "your family,",
+   "cue": "FAMILY appears close to YOUR LIFE, joined by a short gold arc.",
+   "start": 132.083,
+   "end": 133.643,
+   "words": [
+    {
+     "w": "your",
+     "s": 132.083,
+     "e": 133.203
+    },
+    {
+     "w": "family,",
+     "s": 133.203,
+     "e": 133.643
+    }
+   ]
+  },
+  {
+   "id": "priorities",
+   "scene": "plan",
+   "slot": null,
+   "clip": "yours",
+   "text": "your priorities,",
+   "cue": "PRIORITIES.",
+   "start": 134.023,
+   "end": 134.703,
+   "words": [
+    {
+     "w": "your",
+     "s": 134.023,
+     "e": 134.103
+    },
+    {
+     "w": "priorities,",
+     "s": 134.103,
+     "e": 134.703
+    }
+   ]
+  },
+  {
+   "id": "goals",
+   "scene": "plan",
+   "slot": null,
+   "clip": "yours",
+   "text": "your goals.",
+   "cue": "GOALS.",
+   "start": 134.823,
+   "end": 135.733,
+   "words": [
+    {
+     "w": "your",
+     "s": 134.823,
+     "e": 135.323
+    },
+    {
+     "w": "goals.",
+     "s": 135.323,
+     "e": 135.763
+    }
+   ]
+  },
+  {
+   "id": "whole",
+   "scene": "plan",
+   "slot": null,
+   "clip": "whole",
+   "text": "Then we look at the whole picture —",
+   "cue": "Pull back. The financial tiles are out there, still separate.",
+   "start": 136.333,
+   "end": 138.953,
+   "words": [
+    {
+     "w": "Then",
+     "s": 136.333,
+     "e": 137.753
+    },
+    {
+     "w": "we",
+     "s": 137.753,
+     "e": 137.913
+    },
+    {
+     "w": "look",
+     "s": 137.913,
+     "e": 138.093
+    },
+    {
+     "w": "at",
+     "s": 138.093,
+     "e": 138.213
+    },
+    {
+     "w": "the",
+     "s": 138.213,
+     "e": 138.333
+    },
+    {
+     "w": "whole",
+     "s": 138.333,
+     "e": 138.513
+    },
+    {
+     "w": "picture",
+     "s": 138.513,
+     "e": 138.973
+    }
+   ]
+  },
+  {
+   "id": "investments",
+   "scene": "plan",
+   "slot": null,
+   "clip": "areas",
+   "text": "your investments,",
+   "cue": "INVESTMENTS (teal) turns toward the centre.",
+   "start": 139.253,
+   "end": 140.953,
+   "words": [
+    {
+     "w": "your",
+     "s": 139.253,
+     "e": 140.393
+    },
+    {
+     "w": "investments,",
+     "s": 140.393,
+     "e": 140.953
+    }
+   ]
+  },
+  {
+   "id": "taxes",
+   "scene": "plan",
+   "slot": null,
+   "clip": "areas",
+   "text": "taxes,",
+   "cue": "TAXES (coral).",
+   "start": 141.373,
+   "end": 141.973,
+   "words": [
+    {
+     "w": "taxes,",
+     "s": 141.373,
+     "e": 141.973
+    }
+   ]
+  },
+  {
+   "id": "insurance",
+   "scene": "plan",
+   "slot": null,
+   "clip": "areas",
+   "text": "insurance,",
+   "cue": "INSURANCE (gold).",
+   "start": 142.313,
+   "end": 142.913,
+   "words": [
+    {
+     "w": "insurance,",
+     "s": 142.313,
+     "e": 142.913
+    }
+   ]
+  },
+  {
+   "id": "retirement-area",
+   "scene": "plan",
+   "slot": null,
+   "clip": "areas",
+   "text": "retirement,",
+   "cue": "RETIREMENT (navy).",
+   "start": 143.273,
+   "end": 143.893,
+   "words": [
+    {
+     "w": "retirement,",
+     "s": 143.273,
+     "e": 143.893
+    }
+   ]
+  },
+  {
+   "id": "estate",
+   "scene": "plan",
+   "slot": null,
+   "clip": "areas",
+   "text": "and estate planning —",
+   "cue": "ESTATE (purple).",
+   "start": 143.893,
+   "end": 145.213,
+   "words": [
+    {
+     "w": "and",
+     "s": 143.893,
+     "e": 144.473
+    },
+    {
+     "w": "estate",
+     "s": 144.473,
+     "e": 144.773
+    },
+    {
+     "w": "planning",
+     "s": 144.773,
+     "e": 145.233
+    }
+   ]
+  },
+  {
+   "id": "build",
+   "scene": "plan",
+   "slot": null,
+   "clip": "build",
+   "text": "and build one coordinated plan.",
+   "cue": "For the first time the gold line connects everything, one organic loop around YOUR LIFE. The islands become one composition. ONE COORDINATED PLAN.",
+   "start": 145.513,
+   "end": 148.523,
+   "words": [
+    {
+     "w": "and",
+     "s": 145.513,
+     "e": 146.773
+    },
+    {
+     "w": "build",
+     "s": 146.773,
+     "e": 147.113
+    },
+    {
+     "w": "one",
+     "s": 147.113,
+     "e": 147.473
+    },
+    {
+     "w": "coordinated",
+     "s": 147.473,
+     "e": 148.113
+    },
+    {
+     "w": "plan.",
+     "s": 148.113,
+     "e": 148.553
+    }
+   ]
+  },
+  {
+   "id": "revisit",
+   "scene": "changes",
+   "slot": null,
+   "clip": "revisit",
+   "text": "A plan we revisit as your life changes.",
+   "cue": "The connected system rearranges (a child joins, a new home, retirement moves closer) and stays connected. The years tick by.",
+   "start": 149.733,
+   "end": 153.373,
+   "words": [
+    {
+     "w": "A",
+     "s": 149.733,
+     "e": 150.913
+    },
+    {
+     "w": "plan",
+     "s": 150.913,
+     "e": 151.213
+    },
+    {
+     "w": "we",
+     "s": 151.213,
+     "e": 151.413
+    },
+    {
+     "w": "revisit",
+     "s": 151.413,
+     "e": 151.893
+    },
+    {
+     "w": "as",
+     "s": 151.893,
+     "e": 152.293
+    },
+    {
+     "w": "your",
+     "s": 152.293,
+     "e": 152.413
+    },
+    {
+     "w": "life",
+     "s": 152.413,
+     "e": 152.633
+    },
+    {
+     "w": "changes.",
+     "s": 152.633,
+     "e": 153.153
+    }
+   ]
+  },
+  {
+   "id": "role",
+   "scene": "role",
+   "slot": "role",
+   "clip": "role",
+   "text": "My role is to help you understand your choices and how they connect to the future you want.",
+   "cue": "Bill. Hold. Almost no graphics.",
+   "start": 154.257,
+   "end": 160.667,
+   "words": [
+    {
+     "w": "My",
+     "s": 154.257,
+     "e": 154.447
+    },
+    {
+     "w": "role",
+     "s": 154.447,
+     "e": 154.827
+    },
+    {
+     "w": "is",
+     "s": 154.827,
+     "e": 155.567
+    },
+    {
+     "w": "to",
+     "s": 155.567,
+     "e": 155.707
+    },
+    {
+     "w": "help",
+     "s": 155.707,
+     "e": 155.947
+    },
+    {
+     "w": "you",
+     "s": 155.947,
+     "e": 156.107
+    },
+    {
+     "w": "understand",
+     "s": 156.107,
+     "e": 156.647
+    },
+    {
+     "w": "your",
+     "s": 156.647,
+     "e": 156.987
+    },
+    {
+     "w": "choices",
+     "s": 156.987,
+     "e": 157.467
+    },
+    {
+     "w": "and",
+     "s": 157.467,
+     "e": 158.307
+    },
+    {
+     "w": "how",
+     "s": 158.307,
+     "e": 158.507
+    },
+    {
+     "w": "they",
+     "s": 158.507,
+     "e": 158.687
+    },
+    {
+     "w": "connect",
+     "s": 158.687,
+     "e": 159.087
+    },
+    {
+     "w": "to",
+     "s": 159.087,
+     "e": 159.327
+    },
+    {
+     "w": "the",
+     "s": 159.327,
+     "e": 159.467
+    },
+    {
+     "w": "future",
+     "s": 159.467,
+     "e": 159.767
+    },
+    {
+     "w": "you",
+     "s": 159.767,
+     "e": 160.007
+    },
+    {
+     "w": "want.",
+     "s": 160.007,
+     "e": 160.327
+    }
+   ]
+  },
+  {
+   "id": "read",
+   "scene": "invite",
+   "slot": "invitation",
+   "clip": "read",
+   "text": "Take a few minutes to read the guide.",
+   "cue": "Bill, eye contact.",
+   "start": 161.487,
+   "end": 163.277,
+   "words": [
+    {
+     "w": "Take",
+     "s": 161.487,
+     "e": 161.637
+    },
+    {
+     "w": "a",
+     "s": 161.637,
+     "e": 161.757
+    },
+    {
+     "w": "few",
+     "s": 161.757,
+     "e": 161.937
+    },
+    {
+     "w": "minutes",
+     "s": 161.937,
+     "e": 162.237
+    },
+    {
+     "w": "to",
+     "s": 162.237,
+     "e": 162.457
+    },
+    {
+     "w": "read",
+     "s": 162.457,
+     "e": 162.637
+    },
+    {
+     "w": "the",
+     "s": 162.637,
+     "e": 162.777
+    },
+    {
+     "w": "guide.",
+     "s": 162.777,
+     "e": 163.157
+    }
+   ]
+  },
+  {
+   "id": "ready",
+   "scene": "invite",
+   "slot": "invitation",
+   "clip": "ready",
+   "text": "And when you're ready, let's talk about what matters to you.",
+   "cue": "Bill, eye contact.",
+   "start": 163.707,
+   "end": 167.237,
+   "words": [
+    {
+     "w": "And",
+     "s": 163.707,
+     "e": 163.807
+    },
+    {
+     "w": "when",
+     "s": 163.807,
+     "e": 163.987
+    },
+    {
+     "w": "you're",
+     "s": 163.987,
+     "e": 164.227
+    },
+    {
+     "w": "ready,",
+     "s": 164.227,
+     "e": 164.487
+    },
+    {
+     "w": "let's",
+     "s": 164.907,
+     "e": 165.547
+    },
+    {
+     "w": "talk",
+     "s": 165.547,
+     "e": 165.787
+    },
+    {
+     "w": "about",
+     "s": 165.787,
+     "e": 166.107
+    },
+    {
+     "w": "what",
+     "s": 166.107,
+     "e": 166.347
+    },
+    {
+     "w": "matters",
+     "s": 166.347,
+     "e": 166.727
+    },
+    {
+     "w": "to",
+     "s": 166.727,
+     "e": 166.987
+    },
+    {
+     "w": "you.",
+     "s": 166.987,
+     "e": 167.187
+    }
+   ]
+  },
+  {
+   "id": "worked",
+   "scene": "invite",
+   "slot": "invitation",
+   "clip": "worked",
+   "text": "You've worked hard for what you have.",
+   "cue": "Bill. Then a short beat as the frame turns navy.",
+   "start": 168.107,
+   "end": 169.937,
+   "words": [
+    {
+     "w": "You've",
+     "s": 168.107,
+     "e": 168.327
+    },
+    {
+     "w": "worked",
+     "s": 168.327,
+     "e": 168.547
+    },
+    {
+     "w": "hard",
+     "s": 168.547,
+     "e": 168.867
+    },
+    {
+     "w": "for",
+     "s": 168.867,
+     "e": 169.067
+    },
+    {
+     "w": "what",
+     "s": 169.067,
+     "e": 169.247
+    },
+    {
+     "w": "you",
+     "s": 169.247,
+     "e": 169.387
+    },
+    {
+     "w": "have.",
+     "s": 169.387,
+     "e": 169.787
+    }
+   ]
+  },
+  {
+   "id": "next",
+   "scene": "end",
+   "slot": null,
+   "clip": "next",
+   "text": "Let's build a plan for what comes next.",
+   "cue": "Navy. The gold line becomes the horizon, the sun rises, the sailboat moves across the teal water. A PLAN FOR WHAT COMES NEXT. Then name, READ THE FREE GUIDE, billbadran.com, French-only note, disclaimer.",
+   "start": 170.897,
+   "end": 173.267,
+   "words": [
+    {
+     "w": "Let's",
+     "s": 170.897,
+     "e": 171.167
+    },
+    {
+     "w": "build",
+     "s": 171.167,
+     "e": 171.367
+    },
+    {
+     "w": "a",
+     "s": 171.367,
+     "e": 171.527
+    },
+    {
+     "w": "plan",
+     "s": 171.527,
+     "e": 171.867
+    },
+    {
+     "w": "for",
+     "s": 171.867,
+     "e": 172.127
+    },
+    {
+     "w": "what",
+     "s": 172.127,
+     "e": 172.327
+    },
+    {
+     "w": "comes",
+     "s": 172.327,
+     "e": 172.627
+    },
+    {
+     "w": "next.",
+     "s": 172.627,
+     "e": 173.047
+    }
+   ]
+  }
+ ]
+}
