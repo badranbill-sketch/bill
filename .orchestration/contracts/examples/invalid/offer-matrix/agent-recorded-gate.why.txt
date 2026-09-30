@@ -1,0 +1,4 @@
+rule: OM-DOC-2
+breaks: Gate records are written by human gate owners only; an agent role cannot record a gate.
+expect_keyword: enum
+expect_path: /gate_records/0/recorded_by_role

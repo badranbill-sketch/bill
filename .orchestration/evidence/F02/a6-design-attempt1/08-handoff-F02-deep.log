@@ -1,0 +1,16 @@
+$ PYTHONDONTWRITEBYTECODE=1 $VENV/bin/python .orchestration/contracts/validate.py --handoff .orchestration/handoffs/F02.json
+# F02 contract set validation (validate.py)
+utc_now: 2026-09-30T06:09:12Z
+python: 3.11.15  jsonschema: 4.26.0
+repo: /home/user/bill  branch: claude/orchestration-foundation  HEAD: 5cbbf9b5d21dbf03d2cb44e524a6fcdc10d5515b
+contracts dir: /home/user/bill/.orchestration/contracts
+contract set version: 1.0  frozen for build on: 2026-09-30
+environment: local container; fixture evidence only (no browser, no network, no provider)
+
+## Handoff check: /home/user/bill/.orchestration/handoffs/F02.json
+PASS  F02.json: schema-valid; base_commit = HEAD; 390 artifact hashes match; changed paths and 6 evidence paths exist
+
+## Summary
+pass: 1  fail: 0  known: 0  info: 0
+exit_code=0
+exit=0

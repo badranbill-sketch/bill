@@ -1,0 +1,28 @@
+{
+  "schema_version": "1.0",
+  "job_id": "job_2v4s6swt7mjv8e6d86wkq7ep7p",
+  "purpose_key": "pk1:con_xsekt13hxv12z5bp4rm4s2f0hw:49f0d91f-144a-424f-bcd6-9acc9ee0f160:e07:h9a8cfe540ced072a",
+  "contact_id": "con_xsekt13hxv12z5bp4rm4s2f0hw",
+  "trigger_event_id": "49f0d91f-144a-424f-bcd6-9acc9ee0f160",
+  "template_id": "e07",
+  "template_version": "h9a8cfe540ced072a",
+  "locale": "fr",
+  "channel": "email",
+  "provider": "brevo",
+  "message_class": "operational",
+  "priority": 1,
+  "status": "leased",
+  "due_at": "2026-10-08T22:00:00Z",
+  "expires_at": "2026-10-09T20:00:00Z",
+  "attempt_count": 0,
+  "max_attempts": 5,
+  "created_at": "2026-10-02T13:59:00Z",
+  "updated_at": "2026-10-08T22:00:05Z",
+  "resource_ref": "wev_rrrt8jn3qqp17g4yaqcs747g6t",
+  "lease": {
+    "worker_id": "wkr_wf02-dispatcher",
+    "lease_token": "140512e1-787e-4f29-b728-9eea8878a096",
+    "leased_at": "2026-10-08T22:00:05Z",
+    "leased_until": "2026-10-08T22:02:05Z"
+  }
+}

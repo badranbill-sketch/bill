@@ -1,0 +1,5 @@
+rule: JS-TIME-2 expires_at is later than due_at
+expect_path: /
+expect_keyword: semantic:due_before_expiry
+
+A job that expires before it is due could never be sent; creating it is a defect.

@@ -1,0 +1,36 @@
+metaschema (Ajv 2020-12) valid: true
+VALID already-retired-zeros.json: schema=true semantic=ok
+VALID complete-single.json: schema=true semantic=ok
+VALID household-mixed.json: schema=true semantic=ok
+VALID minimal-all-unknown.json: schema=true semantic=ok
+VALID range-limits.json: schema=true semantic=ok
+INVALID OK already-receiving-with-point.json [START - already receiving has no start point] hits=1 value_ok=true msg_ok=true; other errors: none
+INVALID OK coverage-none-with-sources.json [XF-08 - coverage agrees with the source list] hits=1 value_ok=true msg_ok=true; other errors: none
+INVALID OK duplicate-source-id.json [XF-06 - source ids are unique] schema_valid=true semantic=[{"rule":"XF-06","path":"/chapters/income/sources/1/id"}]
+INVALID OK end-before-start.json [XF-05 - end is after start] schema_valid=true semantic=[{"rule":"XF-05","path":"/chapters/income/sources/0/end"}]
+INVALID OK estimated-without-value.json [STATUS-3 - estimated/confirmed need a value] hits=1 value_ok=true msg_ok=true; other errors: none
+INVALID OK estimated-zero-value.json [STATUS-2 - zero has exactly one representation] hits=1 value_ok=true msg_ok=true; other errors: none
+INVALID OK extra-pii-email.json [PRIVACY - no personal identifier fields (closed shapes)] hits=1 value_ok=true msg_ok=true; other errors: none
+INVALID OK float-cents.json [UNITS - money is an integer number of cents] hits=1 value_ok=true msg_ok=true; other errors: none
+INVALID OK home-counted-spendable.json [ASSET - home/business excluded from spendable] hits=1 value_ok=true msg_ok=true; other errors: none
+INVALID OK horizon-beyond-age-120.json [XF-03 - last illustrated age at most 120] hits=1 value_ok=true msg_ok=true; other errors: none
+INVALID OK horizon-zero.json [RANGE - planning horizon is at least 1 year] hits=2 value_ok=true msg_ok=true; other errors: none
+INVALID OK income-basis-missing.json [BASIS - every income source states gross, net or unknown] hits=1 value_ok=true msg_ok=true; other errors: none
+INVALID OK income-guaranteed-label.json [LABEL - no 'guaranteed' dependability] hits=1 value_ok=true msg_ok=true; other errors: none
+INVALID OK infinity-literal.json [NONFINITE - number must be a finite integer] strict_parse_rejected=true (Unexpected token 'I', ..." "value": Infinity
+ "... is not valid JSON); ajv keywords at path: maximum; all errors: /chapters/life/spending/amount/value:maximum /chapters/life/spending/amount/value:maximum
+INVALID OK inflation-unknown.json [ASSUMPTION - inflation is an explicit assumption] hits=1 value_ok=true msg_ok=true; other errors: none
+INVALID OK monthly-spending-over-limit.json [RANGE - monthly spending up to $100,000.00] hits=1 value_ok=true msg_ok=true; other errors: none
+INVALID OK nan-as-string.json [NONFINITE - number must be a finite integer] hits=1 value_ok=true msg_ok=true; other errors: none
+INVALID OK nan-literal.json [NONFINITE - number must be a finite integer] strict_parse_rejected=true (Unexpected token 'N', ..." "value": NaN
+    },"... is not valid JSON); ajv keywords at path: maximum,minimum,type; all errors: /chapters/life/spending/amount/value:maximum /chapters/life/spending/amount/value:minimum /chapters/life/spending/amount/value:type /chapters/life/spending/amount/value:maximum /chapters/life/spending/amount/value:minimum
+INVALID OK negative-spending.json [RANGE - money is never negative] hits=2 value_ok=true msg_ok=true; other errors: none
+INVALID OK partner-retirement-before-partner-age.json [XF-02 - partner retirement age not earlier than partner current age] hits=1 value_ok=true msg_ok=true; other errors: none
+INVALID OK partner-source-without-household.json [XF-07 - partner-owned source needs household timing] hits=1 value_ok=true msg_ok=true; other errors: none
+INVALID OK pii-label-in-source.json [PRIVACY - no free text anywhere] hits=1 value_ok=true msg_ok=true; other errors: none
+INVALID OK retirement-before-current-age.json [XF-01 - retirement age not earlier than current age] hits=1 value_ok=true msg_ok=true; other errors: none
+INVALID OK spending-pretax-basis.json [BASIS - spending is after tax (stated)] hits=1 value_ok=true msg_ok=true; other errors: none
+INVALID OK spending-status-zero.json [RANGE - household spending cannot be zero] hits=1 value_ok=true msg_ok=true; other errors: none
+INVALID OK start-age-already-passed.json [XF-04 - an age-based start is not before the owner's current age] schema_valid=true semantic=[{"rule":"XF-04","path":"/chapters/income/sources/0/start/point/value"}]
+INVALID OK unknown-with-value.json [STATUS-1 - unknown carries no value] hits=1 value_ok=true msg_ok=true; other errors: none
+ALL EXAMPLES BEHAVE AS STATED (Ajv 8)

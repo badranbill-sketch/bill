@@ -1,0 +1,6 @@
+rule: NONFINITE - number must be a finite integer
+layer: schema
+expect_keyword: type
+expect_path: /chapters/life/spending/amount/value
+plain_message_en_draft: Enter an amount in dollars and cents.
+explanation: A string such as "NaN" is not an integer; values are never strings.

@@ -1,0 +1,218 @@
+{
+ "fixture_id": "WM25",
+ "title": "Spending unknown, window known",
+ "contract_version": "1.0",
+ "covers": [
+  "WK01",
+  "WK03"
+ ],
+ "purpose": "Unknown spending is never 0: every row has spending null, gap and surplus null, reason spending_unknown; income rows are still shown exactly.",
+ "input": {
+  "contract": "workshop-inputs",
+  "contract_version": "1.0",
+  "currency": "CAD",
+  "base_year": 2026,
+  "chapters": {
+   "life": {
+    "spending": {
+     "amount": {
+      "status": "unknown"
+     },
+     "period": "monthly",
+     "tax_basis": "after_tax",
+     "price_basis": "today_dollars",
+     "unit": "household"
+    }
+   },
+   "income": {
+    "coverage": "all_known_sources_listed",
+    "sources": [
+     {
+      "id": "src-1",
+      "kind": "workplace_pension",
+      "owner": "self",
+      "amount": {
+       "status": "estimated",
+       "value": 3000000
+      },
+      "period": "annual",
+      "tax_basis": "net",
+      "price_basis": "start_year_dollars",
+      "start": {
+       "reference": "already_receiving"
+      },
+      "escalation_bp": {
+       "status": "estimated",
+       "value": 200
+      },
+      "dependability": "scheduled"
+     }
+    ]
+   },
+   "savings": {},
+   "timing": {
+    "current_age": {
+     "status": "estimated",
+     "value": 65
+    },
+    "retirement_age": {
+     "status": "estimated",
+     "value": 65
+    },
+    "planning_horizon_years": {
+     "status": "estimated",
+     "value": 3
+    },
+    "inflation_bp": {
+     "status": "estimated",
+     "value": 200
+    },
+    "capital_illustration_return_bp": {
+     "status": "estimated",
+     "value": 300
+    }
+   }
+  }
+ },
+ "expected": {
+  "contract_version": "1.0",
+  "assumptions_echo": {
+   "base_year": 2026,
+   "inflation_bp": 200,
+   "planning_horizon_years": 3,
+   "capital_illustration_return_bp": 300,
+   "year_index": "t=0 is calendar year base_year; annual totals per calendar year",
+   "rounding": "exact rational arithmetic; half-even to whole cents at display only"
+  },
+  "window": {
+   "t_R": 0,
+   "first_t": 0,
+   "last_t": 2,
+   "first_calendar_year": 2026,
+   "last_calendar_year": 2028,
+   "first_age": 65,
+   "last_age": 67
+  },
+  "completeness": {
+   "state": "incomplete_unknown_spending",
+   "reasons": [
+    "spending_unknown"
+   ]
+  },
+  "years": [
+   {
+    "t": 0,
+    "calendar_year": 2026,
+    "age": 65,
+    "spending_cents": null,
+    "income_by_source_cents": {
+     "src-1": 3000000
+    },
+    "income_net_cents": 3000000,
+    "income_gross_cents": 0,
+    "income_unknown_basis_cents": 0,
+    "status": "not_computable",
+    "reasons": [
+     "spending_unknown"
+    ],
+    "gap_cents": null,
+    "surplus_cents": null,
+    "gap_today_dollars_cents": null,
+    "surplus_today_dollars_cents": null,
+    "exact": {
+     "spending": null
+    }
+   },
+   {
+    "t": 1,
+    "calendar_year": 2027,
+    "age": 66,
+    "spending_cents": null,
+    "income_by_source_cents": {
+     "src-1": 3060000
+    },
+    "income_net_cents": 3060000,
+    "income_gross_cents": 0,
+    "income_unknown_basis_cents": 0,
+    "status": "not_computable",
+    "reasons": [
+     "spending_unknown"
+    ],
+    "gap_cents": null,
+    "surplus_cents": null,
+    "gap_today_dollars_cents": null,
+    "surplus_today_dollars_cents": null,
+    "exact": {
+     "spending": null
+    }
+   },
+   {
+    "t": 2,
+    "calendar_year": 2028,
+    "age": 67,
+    "spending_cents": null,
+    "income_by_source_cents": {
+     "src-1": 3121200
+    },
+    "income_net_cents": 3121200,
+    "income_gross_cents": 0,
+    "income_unknown_basis_cents": 0,
+    "status": "not_computable",
+    "reasons": [
+     "spending_unknown"
+    ],
+    "gap_cents": null,
+    "surplus_cents": null,
+    "gap_today_dollars_cents": null,
+    "surplus_today_dollars_cents": null,
+    "exact": {
+     "spending": null
+    }
+   }
+  ],
+  "flags": [],
+  "savings_summary": {
+   "accessible_categories_with_positive_value": [],
+   "home_or_business_positive_value": false,
+   "excluded_from_spendable": [],
+   "pension_value_kept_separate": false,
+   "totals_computed": false
+  },
+  "capital_illustration": {
+   "feature_flag": "off",
+   "displayed": false,
+   "state": "disabled_by_flag",
+   "reference_if_enabled": {
+    "r_bp": 300,
+    "computable": false,
+    "not_computable_reasons": [
+     "state_not_complete"
+    ],
+    "display_eligible_if_enabled": false,
+    "ineligible_reasons": [
+     "state_not_complete"
+    ],
+    "C_R_cents": null,
+    "C_R_exact": null,
+    "valued_at": null,
+    "flow_timing": "end_of_year"
+   }
+  },
+  "clip": {
+   "predicates": {
+    "C": true,
+    "M": false,
+    "X": false,
+    "H": false,
+    "F": false
+   },
+   "selected": "W10",
+   "selection_reason": "core_inputs_missing"
+  }
+ },
+ "independent_checks": [
+  "hand: 3,000,000 x 1.02 = 3,060,000; x 1.02 = 3,121,200",
+  "a runtime that reads unknown spending as 0 would show surplus 3,000,000 in year 0"
+ ],
+ "tolerance": "exact integer cents after half-even rounding; exact strings must match exactly; no numeric tolerance"
+}

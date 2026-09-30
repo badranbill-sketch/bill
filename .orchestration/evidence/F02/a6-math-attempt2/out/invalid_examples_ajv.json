@@ -1,0 +1,418 @@
+[
+ {
+  "name": "already-receiving-with-point",
+  "layer": "schema",
+  "strictOk": true,
+  "e": [
+   [
+    "not",
+    "/chapters/income/sources/0/start",
+    "{}"
+   ],
+   [
+    "if",
+    "/chapters/income/sources/0/start",
+    "{\"failingKeyword\":\"then\"}"
+   ]
+  ]
+ },
+ {
+  "name": "coverage-none-with-sources",
+  "layer": "schema",
+  "strictOk": true,
+  "e": [
+   [
+    "maxItems",
+    "/chapters/income/sources",
+    "{\"limit\":0}"
+   ],
+   [
+    "if",
+    "/chapters/income",
+    "{\"failingKeyword\":\"then\"}"
+   ]
+  ]
+ },
+ {
+  "name": "duplicate-source-id",
+  "layer": "semantic",
+  "strictOk": true,
+  "e": []
+ },
+ {
+  "name": "end-before-start",
+  "layer": "semantic",
+  "strictOk": true,
+  "e": []
+ },
+ {
+  "name": "estimated-without-value",
+  "layer": "schema",
+  "strictOk": true,
+  "e": [
+   [
+    "required",
+    "/chapters/life/spending/amount",
+    "{\"missingProperty\":\"value\"}"
+   ],
+   [
+    "if",
+    "/chapters/life/spending/amount",
+    "{\"failingKeyword\":\"then\"}"
+   ]
+  ]
+ },
+ {
+  "name": "estimated-zero-value",
+  "layer": "schema",
+  "strictOk": true,
+  "e": [
+   [
+    "minimum",
+    "/chapters/income/sources/0/amount/value",
+    "{\"comparison\":\">=\",\"limit\":1}"
+   ],
+   [
+    "if",
+    "/chapters/income/sources/0/amount",
+    "{\"failingKeyword\":\"then\"}"
+   ]
+  ]
+ },
+ {
+  "name": "extra-pii-email",
+  "layer": "schema",
+  "strictOk": true,
+  "e": [
+   [
+    "additionalProperties",
+    "",
+    "{\"additionalProperty\":\"email\"}"
+   ]
+  ]
+ },
+ {
+  "name": "float-cents",
+  "layer": "schema",
+  "strictOk": true,
+  "e": [
+   [
+    "type",
+    "/chapters/life/spending/amount/value",
+    "{\"type\":\"integer\"}"
+   ]
+  ]
+ },
+ {
+  "name": "home-counted-spendable",
+  "layer": "schema",
+  "strictOk": true,
+  "e": [
+   [
+    "const",
+    "/chapters/savings/home_value/excluded_from_spendable",
+    "{\"allowedValue\":true}"
+   ]
+  ]
+ },
+ {
+  "name": "horizon-beyond-age-120",
+  "layer": "schema",
+  "strictOk": true,
+  "e": [
+   [
+    "maximum",
+    "/chapters/timing/planning_horizon_years/value",
+    "{\"comparison\":\"<=\",\"limit\":26}"
+   ],
+   [
+    "if",
+    "/chapters/timing",
+    "{\"failingKeyword\":\"then\"}"
+   ]
+  ]
+ },
+ {
+  "name": "horizon-zero",
+  "layer": "schema",
+  "strictOk": true,
+  "e": [
+   [
+    "minimum",
+    "/chapters/timing/planning_horizon_years/value",
+    "{\"comparison\":\">=\",\"limit\":1}"
+   ],
+   [
+    "if",
+    "/chapters/timing/planning_horizon_years",
+    "{\"failingKeyword\":\"then\"}"
+   ],
+   [
+    "minimum",
+    "/chapters/timing/planning_horizon_years/value",
+    "{\"comparison\":\">=\",\"limit\":1}"
+   ]
+  ]
+ },
+ {
+  "name": "income-basis-missing",
+  "layer": "schema",
+  "strictOk": true,
+  "e": [
+   [
+    "required",
+    "/chapters/income/sources/0",
+    "{\"missingProperty\":\"tax_basis\"}"
+   ]
+  ]
+ },
+ {
+  "name": "income-guaranteed-label",
+  "layer": "schema",
+  "strictOk": true,
+  "e": [
+   [
+    "enum",
+    "/chapters/income/sources/0/dependability",
+    "{\"allowedValues\":[\"scheduled\",\"uncertain\"]}"
+   ]
+  ]
+ },
+ {
+  "name": "infinity-literal",
+  "layer": "json-parse",
+  "strictOk": false,
+  "e": [
+   [
+    "maximum",
+    "/chapters/life/spending/amount/value",
+    "{\"comparison\":\"<=\",\"limit\":10000000}"
+   ],
+   [
+    "if",
+    "/chapters/life/spending",
+    "{\"failingKeyword\":\"then\"}"
+   ],
+   [
+    "maximum",
+    "/chapters/life/spending/amount/value",
+    "{\"comparison\":\"<=\",\"limit\":9007199254740991}"
+   ]
+  ]
+ },
+ {
+  "name": "inflation-unknown",
+  "layer": "schema",
+  "strictOk": true,
+  "e": [
+   [
+    "enum",
+    "/chapters/timing/inflation_bp/status",
+    "{\"allowedValues\":[\"zero\",\"estimated\"]}"
+   ]
+  ]
+ },
+ {
+  "name": "monthly-spending-over-limit",
+  "layer": "schema",
+  "strictOk": true,
+  "e": [
+   [
+    "maximum",
+    "/chapters/life/spending/amount/value",
+    "{\"comparison\":\"<=\",\"limit\":10000000}"
+   ],
+   [
+    "if",
+    "/chapters/life/spending",
+    "{\"failingKeyword\":\"then\"}"
+   ]
+  ]
+ },
+ {
+  "name": "nan-as-string",
+  "layer": "schema",
+  "strictOk": true,
+  "e": [
+   [
+    "type",
+    "/chapters/life/spending/amount/value",
+    "{\"type\":\"integer\"}"
+   ]
+  ]
+ },
+ {
+  "name": "nan-literal",
+  "layer": "json-parse",
+  "strictOk": false,
+  "e": [
+   [
+    "maximum",
+    "/chapters/life/spending/amount/value",
+    "{\"comparison\":\"<=\",\"limit\":10000000}"
+   ],
+   [
+    "if",
+    "/chapters/life/spending",
+    "{\"failingKeyword\":\"then\"}"
+   ],
+   [
+    "minimum",
+    "/chapters/life/spending/amount/value",
+    "{\"comparison\":\">=\",\"limit\":1}"
+   ],
+   [
+    "if",
+    "/chapters/life/spending/amount",
+    "{\"failingKeyword\":\"then\"}"
+   ],
+   [
+    "type",
+    "/chapters/life/spending/amount/value",
+    "{\"type\":\"integer\"}"
+   ],
+   [
+    "maximum",
+    "/chapters/life/spending/amount/value",
+    "{\"comparison\":\"<=\",\"limit\":9007199254740991}"
+   ],
+   [
+    "minimum",
+    "/chapters/life/spending/amount/value",
+    "{\"comparison\":\">=\",\"limit\":0}"
+   ]
+  ]
+ },
+ {
+  "name": "negative-spending",
+  "layer": "schema",
+  "strictOk": true,
+  "e": [
+   [
+    "minimum",
+    "/chapters/life/spending/amount/value",
+    "{\"comparison\":\">=\",\"limit\":1}"
+   ],
+   [
+    "if",
+    "/chapters/life/spending/amount",
+    "{\"failingKeyword\":\"then\"}"
+   ],
+   [
+    "minimum",
+    "/chapters/life/spending/amount/value",
+    "{\"comparison\":\">=\",\"limit\":0}"
+   ]
+  ]
+ },
+ {
+  "name": "partner-retirement-before-partner-age",
+  "layer": "schema",
+  "strictOk": true,
+  "e": [
+   [
+    "minimum",
+    "/chapters/timing/household/partner_retirement_age/value",
+    "{\"comparison\":\">=\",\"limit\":60}"
+   ],
+   [
+    "if",
+    "/chapters/timing/household",
+    "{\"failingKeyword\":\"then\"}"
+   ]
+  ]
+ },
+ {
+  "name": "partner-source-without-household",
+  "layer": "schema",
+  "strictOk": true,
+  "e": [
+   [
+    "required",
+    "/chapters/timing",
+    "{\"missingProperty\":\"household\"}"
+   ],
+   [
+    "if",
+    "",
+    "{\"failingKeyword\":\"then\"}"
+   ]
+  ]
+ },
+ {
+  "name": "pii-label-in-source",
+  "layer": "schema",
+  "strictOk": true,
+  "e": [
+   [
+    "additionalProperties",
+    "/chapters/income/sources/0",
+    "{\"additionalProperty\":\"label\"}"
+   ]
+  ]
+ },
+ {
+  "name": "retirement-before-current-age",
+  "layer": "schema",
+  "strictOk": true,
+  "e": [
+   [
+    "minimum",
+    "/chapters/timing/retirement_age/value",
+    "{\"comparison\":\">=\",\"limit\":58}"
+   ],
+   [
+    "if",
+    "/chapters/timing",
+    "{\"failingKeyword\":\"then\"}"
+   ]
+  ]
+ },
+ {
+  "name": "spending-pretax-basis",
+  "layer": "schema",
+  "strictOk": true,
+  "e": [
+   [
+    "const",
+    "/chapters/life/spending/tax_basis",
+    "{\"allowedValue\":\"after_tax\"}"
+   ]
+  ]
+ },
+ {
+  "name": "spending-status-zero",
+  "layer": "schema",
+  "strictOk": true,
+  "e": [
+   [
+    "enum",
+    "/chapters/life/spending/amount/status",
+    "{\"allowedValues\":[\"unknown\",\"estimated\",\"confirmed\"]}"
+   ]
+  ]
+ },
+ {
+  "name": "start-age-already-passed",
+  "layer": "semantic",
+  "strictOk": true,
+  "e": []
+ },
+ {
+  "name": "unknown-with-value",
+  "layer": "schema",
+  "strictOk": true,
+  "e": [
+   [
+    "not",
+    "/chapters/life/spending/amount",
+    "{}"
+   ],
+   [
+    "if",
+    "/chapters/life/spending/amount",
+    "{\"failingKeyword\":\"then\"}"
+   ]
+  ]
+ }
+]

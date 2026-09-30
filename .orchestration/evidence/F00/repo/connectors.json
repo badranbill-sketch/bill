@@ -1,0 +1,112 @@
+{
+  "note": "Repair 3 (2026-09-30T03:17Z, A0 delegate): this file now holds the minimised content of repair2/connectors.minimised.json, substituted for the original repo-lane file (original sha256 f3516ff1f9924eb2d8c3a254e26f18dbe8389aab1311aa676805e1d5d3871054, probe 2026-09-30T02:00Z). The original held unrelated third-party identifiers (2 Meta ad-account names and IDs, 1 n8n workflow name, the n8n Cloud instance subdomain, a project owner label, 2 Drive file IDs, and a Drive search-result string naming unrelated personal files); those are reduced to counts here and the original was not retained (review F00-attempt2 P3-2). All counts, booleans, call lists and account identities used by inventory.md §7 are unchanged.",
+  "probed_at_utc": "2026-09-30T02:00Z",
+  "method": "ToolSearch keyword searches + deferred-tool listing; probes limited to the read-only calls named in the packet",
+  "exposed_connectors": [
+    "github",
+    "n8n",
+    "Google_Calendar",
+    "Google_Drive",
+    "Gmail",
+    "Pipeboard_Meta_Ads",
+    "Canva",
+    "Notion",
+    "Trello",
+    "Zoom_for_Claude",
+    "Wix",
+    "Shopify",
+    "ElevenLabs",
+    "Higgsfield",
+    "HyperFrames_by_HeyGen",
+    "ComfyUI_Cloud",
+    "Docusign",
+    "Fathom",
+    "Spotify",
+    "Claude_Docs",
+    "Claude_Code_Remote"
+  ],
+  "n8n": {
+    "calls": [
+      "search_projects(limit 20)",
+      "search_workflows(limit 25)",
+      "list_credentials(limit 50)",
+      "get_workflow_details(detailLevel=execution) for the single workflow, to read the trigger host",
+      "ListMcpResourcesTool(server=n8n)"
+    ],
+    "hosting": "n8n Cloud (webhook host *.app.n8n.cloud); instance subdomain not recorded",
+    "version": "not_visible (no tool exposes it)",
+    "projects": {
+      "count": 1,
+      "type": "personal",
+      "owner_account": "[redacted: personal Gmail, not Bill's]",
+      "teamProjectsEnabled": true
+    },
+    "workflows": {
+      "count": 1,
+      "bill_related": false,
+      "names": "not recorded (unrelated)"
+    },
+    "credentials": {
+      "count": 1,
+      "types": [
+        "gmailOAuth2"
+      ]
+    }
+  },
+  "google_calendar": {
+    "call": "list_calendars(pageSize 50)",
+    "count": 2,
+    "primary": "arnaud@verdierconseils.ca (America/Toronto)",
+    "others": [
+      "Holidays in Canada"
+    ],
+    "bill_or_booking_calendar_visible": false,
+    "events_read": false
+  },
+  "google_drive": {
+    "identity": "arnaudverdier8@gmail.com (see repair2/F00-PROBE-drive_identity.log)",
+    "bill_files": {
+      "count": 2,
+      "title": "bill-badran-before-retirement-guide-en-print 2.pdf",
+      "size_bytes_each": 27067783,
+      "ids": "not recorded"
+    },
+    "unrelated_personal_files_seen": 2,
+    "content_downloaded": false
+  },
+  "meta_ads_pipeboard": {
+    "call": "get_ad_accounts(limit 25)",
+    "connections": 1,
+    "accounts": {
+      "count": 2,
+      "status": "ACTIVE",
+      "currency": "CAD",
+      "bill_badran_account": 0,
+      "names_ids": "not recorded (neither is Bill's)"
+    }
+  },
+  "availability_only_no_calls": {
+    "Gmail": "exposed (includes send/forward/trash tools) - not called",
+    "Zoom_for_Claude": "exposed - not called; plan forbids resurrecting Zoom",
+    "Wix": "exposed - not called; outside selected stack",
+    "Shopify": "exposed - not called; outside selected stack (book checkout is hosted Stripe)",
+    "Canva": "exposed - not called",
+    "Notion": "exposed - not called",
+    "Trello": "exposed - not called",
+    "ElevenLabs": "exposed - not called; any Bill voice clone needs Bill's specific consent",
+    "Higgsfield": "exposed - not called; avatar/voice features need specific consent; includes publish/deploy tools",
+    "HyperFrames_by_HeyGen": "exposed - not called; compose/render disabled from CLI agents per its own instructions",
+    "ComfyUI_Cloud": "exposed - not called; generation consumes credits",
+    "Docusign": "exposed - not called",
+    "Fathom": "exposed - not called (read-only meeting recorder)"
+  },
+  "not_exposed_by_name": [
+    "Brevo",
+    "Supabase",
+    "Stripe",
+    "Calendly",
+    "LinkedIn",
+    "Google Meet (only via Calendar create_event addGoogleMeetUrl)",
+    "VPS/SSH"
+  ]
+}

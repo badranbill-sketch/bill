@@ -1,0 +1,29 @@
+$ PYTHONDONTWRITEBYTECODE=1 $VENV/bin/python .orchestration/evidence/F02/data/validate_f02_data.py
+PASS  present: feature-flags.md
+PASS  all 44 rule IDs cited by .why.txt files are defined in the lane's .md files
+PASS  data-model sketch: 10 tables, 132 columns, no forbidden column (exceptions: contacts.email_normalized, email_hmac, first_name)
+PASS  delivery_jobs columns cover the delivery-job schema fields
+
+## Result: 209 passed, 0 failed
+exit=0
+
+$ PYTHONDONTWRITEBYTECODE=1 $VENV/bin/python .orchestration/evidence/F02/math/validate.py
+0e4160acae3c0573f690c8205822c0ecba5d992675125782e7e1f56b25016435  .orchestration/contracts/fixtures/workshop/WM22-price-basis-unknown.json
+3f0ce5b39653e49a0acfde40b2b161de2896c4e3a1cb254c57faeda5f211734c  .orchestration/contracts/fixtures/workshop/WM23-tax-basis-unknown.json
+8ac57927c0bb64faf9f438cd0f3b168a15344fe1eaa81a6284b5b3804b427cfa  .orchestration/contracts/fixtures/workshop/WM24-rounding-float-trap.json
+c8201bc12d53855c251ab2d5583673683940aeecaf327467d239a4ad5bc03071  .orchestration/contracts/fixtures/workshop/clip-rules.json
+eba475882d5d82ba9df657f8d26f226cfda4fbe2092dd7a0e04f00d04daa0a64  .orchestration/contracts/fixtures/workshop/index.json
+== summary: 86 passed, 0 failed
+exit=0
+
+$ PYTHONDONTWRITEBYTECODE=1 $VENV/bin/python .orchestration/evidence/F02/offers/validate_offers.py
+PASS  offer-matrix meeting_types ['book-consultation-30', 'intro-15'] = bookings.offer_id values in operational-data-model.md ['book-consultation-30', 'intro-15']
+PASS  asset-manifest accepts one sample ID of every kind
+  INFO event-envelope resource_content_version accepts kinds ['capsule', 'clip', 'case', 'template', 'ad', 'article', 'page', 'guide']; not yet: ['companion', 'ink', 'book', 'event', 'copy'] (cross-lane reconciliation item for A0, not a failure of this lane)
+
+## Summary
+pass: 92  fail: 0
+exit=0
+
+$ diff <sha256 of contracts + lane evidence before> <after>
+no file changed (read-only confirmed)

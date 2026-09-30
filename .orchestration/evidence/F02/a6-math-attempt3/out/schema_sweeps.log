@@ -1,0 +1,41 @@
+XF-01 sweep: 5893 cases, 0 wrong []
+XF-02 sweep: 5893 cases, 0 wrong []
+XF-03 sweep (A 18): 4260 cases, 0 wrong []
+XF-03 sweep (A unknown): 4260 cases, 0 wrong []
+OK   base_year 2025: accepted=false expected=false
+OK   base_year 2101: accepted=false expected=false
+OK   annual spending 120,000,001: accepted=false expected=false
+OK   annual spending 120,000,000: accepted=true expected=true
+OK   spending value 450000.0 (integral float, documented as accepted): accepted=true expected=true
+OK   balance 5,000,000,001: accepted=false expected=false
+OK   home excluded_from_spendable false: accepted=false expected=false
+OK   planning horizon confirmed: accepted=false expected=false
+OK   planning horizon unknown: accepted=false expected=false
+OK   inflation 1001: accepted=false expected=false
+OK   inflation confirmed: accepted=false expected=false
+OK   return confirmed: accepted=false expected=false
+OK   return unknown: accepted=false expected=false
+OK   current_age 17: accepted=false expected=false
+OK   current_age zero status: accepted=false expected=false
+OK   retirement_age 29: accepted=false expected=false
+OK   9 sources: accepted=false expected=false
+OK   all_known with 0 sources: accepted=false expected=false
+OK   not_answered with a source: accepted=false expected=false
+OK   some_missing with 0 sources (allowed): accepted=true expected=true
+OK   income monthly 5,000,001: accepted=false expected=false
+OK   income annual 60,000,001: accepted=false expected=false
+OK   escalation unknown: accepted=false expected=false
+OK   escalation 1001: accepted=false expected=false
+OK   start year_index 0: accepted=false expected=false
+OK   start year_index zero status: accepted=false expected=false
+OK   start year_index 83: accepted=false expected=false
+OK   start age 101: accepted=false expected=false
+OK   start age without point: accepted=false expected=false
+OK   end already_receiving: accepted=false expected=false
+OK   end age zero status: accepted=false expected=false
+OK   id src-100: accepted=false expected=false
+NOTE id src-0 (pattern admits; doc says src-1..src-99): accepted=true expected=null
+NOTE id src-01 (pattern admits; distinct from src-1): accepted=true expected=null
+OK   tax_basis after_tax: accepted=false expected=false
+OK   kind pension (not in enum): accepted=false expected=false
+ALL SWEEPS OK

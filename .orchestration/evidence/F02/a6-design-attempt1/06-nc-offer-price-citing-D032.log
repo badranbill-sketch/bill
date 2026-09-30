@@ -1,0 +1,7 @@
+$ (A6 NC-A6-2) same injection but record_ref = .orchestration/decisions.md#D-032 (exists; its text says "No price exists anywhere ... No price is proposed here"); validate.py --contracts-dir <copy>
+PASS  invalid examples/invalid/worker-handoff/exit-code-string.json [WH-TEST-1]: fails anyOf at /tests/0/exit_code
+FAIL  CX-29 .orchestration/evidence/F02/offers/validation.log: 139 recorded hashes match current files :: ['.orchestration/contracts/examples/valid/offer-matrix/authoritative-2026-09-30.json']
+## Summary
+pass: 311  fail: 1  known: 17  info: 2
+exit_code=1
+exit=1

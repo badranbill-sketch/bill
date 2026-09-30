@@ -1,0 +1,431 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://bill.contracts.local/worker-handoff/1.0",
+  "title": "Worker handoff 1.0",
+  "description": "The worker handoff of 03 ('Worker handoff schema'), closed. A worker submits it and stops; status can only be 'submitted' because A0 writes acceptance separately after A6 verification. Placeholders are rejected: commits are 40 lowercase hex, artifact hashes 64 lowercase hex, and the 03 example strings are refused. exit_code null means the exit status was not captured (say so in assumptions). blocked_checks use the evidence vocabulary blocked | not_run (D-038). A side effect needs a gate authorization. metered_cost never carries an estimate. Semantics: approval-scopes.md §8. Status: proposed, submitted, not accepted.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "task_id",
+    "base_commit",
+    "result_commit",
+    "contract_version",
+    "changed_paths",
+    "artifacts",
+    "tests",
+    "assumptions",
+    "blocked_checks",
+    "human_approvals_required",
+    "external_actions_taken",
+    "metered_cost",
+    "status"
+  ],
+  "properties": {
+    "task_id": {
+      "type": "string",
+      "pattern": "^(?:F0[0-3]|D0[0-2]|P0[0-5]|W0[0-4]|C(?:0[0-9]|1[01])|U0[0-5]|N(?:0[0-9]|10)|R0[0-2]|H0[01]|L0[0-6]|O0[0-2])$",
+      "description": "One of the 62 task IDs in .orchestration/tasks.json. A split task needs a contract minor version."
+    },
+    "base_commit": {
+      "type": "string",
+      "pattern": "^[0-9a-f]{40}$"
+    },
+    "result_commit": {
+      "anyOf": [
+        {
+          "type": "string",
+          "pattern": "^[0-9a-f]{40}$"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "description": "null when the work is uncommitted (workers do not commit unless the packet says so)."
+    },
+    "contract_version": {
+      "type": "string",
+      "pattern": "^[1-9][0-9]*\\.[0-9]+$",
+      "description": "The contract version named in the dispatch packet."
+    },
+    "changed_paths": {
+      "type": "array",
+      "uniqueItems": true,
+      "items": {
+        "$ref": "#/$defs/repo_path"
+      },
+      "description": "Machine-readable repo-relative paths only (directories end with '/'). Notes go in assumptions."
+    },
+    "artifacts": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "path",
+          "sha256"
+        ],
+        "properties": {
+          "path": {
+            "$ref": "#/$defs/repo_path"
+          },
+          "sha256": {
+            "type": "string",
+            "pattern": "^[0-9a-f]{64}$"
+          }
+        }
+      }
+    },
+    "tests": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "id",
+          "command",
+          "exit_code",
+          "evidence",
+          "environment"
+        ],
+        "properties": {
+          "id": {
+            "type": "string",
+            "pattern": "^[A-Z][A-Z0-9]{1,15}(?:-[A-Za-z0-9]{1,24})*$"
+          },
+          "command": {
+            "allOf": [
+              {
+                "type": "string",
+                "minLength": 1,
+                "maxLength": 4000
+              },
+              {
+                "$ref": "#/$defs/no_placeholder"
+              }
+            ]
+          },
+          "exit_code": {
+            "anyOf": [
+              {
+                "type": "integer",
+                "minimum": 0,
+                "maximum": 255
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "evidence": {
+            "$ref": "#/$defs/repo_path"
+          },
+          "environment": {
+            "allOf": [
+              {
+                "type": "string",
+                "pattern": "^(?:local|ci|staging|provider-sandbox|production)(?:[ :].{1,200})?$"
+              },
+              {
+                "$ref": "#/$defs/no_placeholder"
+              }
+            ],
+            "description": "Where it ran. Fixture evidence runs in local or ci; sandbox evidence in staging or provider-sandbox; live evidence in production (03 A-roles, D-038)."
+          }
+        }
+      }
+    },
+    "assumptions": {
+      "type": "array",
+      "items": {
+        "allOf": [
+          {
+            "type": "string",
+            "minLength": 3,
+            "maxLength": 4000
+          },
+          {
+            "$ref": "#/$defs/no_placeholder"
+          }
+        ]
+      }
+    },
+    "blocked_checks": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "check",
+          "status",
+          "reason"
+        ],
+        "properties": {
+          "check": {
+            "allOf": [
+              {
+                "type": "string",
+                "minLength": 3,
+                "maxLength": 500
+              },
+              {
+                "$ref": "#/$defs/no_placeholder"
+              }
+            ]
+          },
+          "status": {
+            "enum": [
+              "blocked",
+              "not_run"
+            ]
+          },
+          "reason": {
+            "allOf": [
+              {
+                "type": "string",
+                "minLength": 3,
+                "maxLength": 1000
+              },
+              {
+                "$ref": "#/$defs/no_placeholder"
+              }
+            ]
+          },
+          "owner": {
+            "type": "string",
+            "minLength": 2,
+            "maxLength": 120
+          }
+        }
+      }
+    },
+    "human_approvals_required": {
+      "type": "array",
+      "items": {
+        "allOf": [
+          {
+            "type": "string",
+            "pattern": "^G[0-6](?:/G[0-6])*: \\S",
+            "maxLength": 1000
+          },
+          {
+            "$ref": "#/$defs/no_placeholder"
+          }
+        ]
+      }
+    },
+    "external_actions_taken": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "actor",
+          "type",
+          "target"
+        ],
+        "properties": {
+          "actor": {
+            "allOf": [
+              {
+                "type": "string",
+                "minLength": 2,
+                "maxLength": 120
+              },
+              {
+                "$ref": "#/$defs/no_placeholder"
+              }
+            ]
+          },
+          "type": {
+            "allOf": [
+              {
+                "type": "string",
+                "minLength": 3,
+                "maxLength": 200
+              },
+              {
+                "$ref": "#/$defs/no_placeholder"
+              }
+            ]
+          },
+          "target": {
+            "allOf": [
+              {
+                "type": "string",
+                "minLength": 3,
+                "maxLength": 2000
+              },
+              {
+                "$ref": "#/$defs/no_placeholder"
+              }
+            ]
+          },
+          "effect": {
+            "enum": [
+              "read_only",
+              "side_effect"
+            ]
+          },
+          "authorization": {
+            "type": "string",
+            "pattern": "^G[0-6]:\\.orchestration/(?:decisions\\.md#D-[0-9]{3}[a-z]?|approval-packets/[^\\s]+)$"
+          }
+        },
+        "allOf": [
+          {
+            "if": {
+              "properties": {
+                "effect": {
+                  "const": "side_effect"
+                }
+              },
+              "required": [
+                "effect"
+              ]
+            },
+            "then": {
+              "required": [
+                "authorization"
+              ]
+            }
+          }
+        ]
+      }
+    },
+    "metered_cost": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "amount",
+        "currency",
+        "status"
+      ],
+      "properties": {
+        "amount": {
+          "anyOf": [
+            {
+              "type": "number",
+              "minimum": 0
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "currency": {
+          "anyOf": [
+            {
+              "type": "string",
+              "pattern": "^[A-Z]{3}$"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "status": {
+          "enum": [
+            "unavailable-not-estimated",
+            "provider-metered"
+          ]
+        },
+        "source": {
+          "$ref": "#/$defs/repo_path"
+        }
+      },
+      "allOf": [
+        {
+          "if": {
+            "properties": {
+              "status": {
+                "const": "unavailable-not-estimated"
+              }
+            }
+          },
+          "then": {
+            "properties": {
+              "amount": {
+                "type": "null"
+              },
+              "currency": {
+                "type": "null"
+              }
+            }
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "status": {
+                "const": "provider-metered"
+              }
+            }
+          },
+          "then": {
+            "properties": {
+              "amount": {
+                "type": "number"
+              },
+              "currency": {
+                "type": "string"
+              }
+            },
+            "required": [
+              "source"
+            ]
+          }
+        }
+      ]
+    },
+    "status": {
+      "const": "submitted"
+    }
+  },
+  "$defs": {
+    "no_placeholder": {
+      "not": {
+        "anyOf": [
+          {
+            "enum": [
+              "actual-sha",
+              "actual-sha-or-null",
+              "actual-hash",
+              "actual command",
+              "actual path",
+              "actual/path",
+              "TODO",
+              "TBD",
+              "todo",
+              "tbd",
+              "placeholder",
+              "PLACEHOLDER",
+              "n/a",
+              "N/A"
+            ]
+          },
+          {
+            "pattern": "^[Aa][Cc][Tt][Uu][Aa][Ll][ /_-]"
+          },
+          {
+            "pattern": "^(?:[Xx]{3,}|\\.\\.\\.|<[^>]*>)$"
+          }
+        ]
+      },
+      "description": "Placeholders from the 03 example (and TODO/TBD/xxx/<...>) are not completion evidence (03)."
+    },
+    "repo_path": {
+      "allOf": [
+        {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 500,
+          "pattern": "^(?![/~])(?!.*(?:^|/)\\.\\.(?:/|$))[^\\s]+$"
+        },
+        {
+          "$ref": "#/$defs/no_placeholder"
+        }
+      ]
+    }
+  }
+}

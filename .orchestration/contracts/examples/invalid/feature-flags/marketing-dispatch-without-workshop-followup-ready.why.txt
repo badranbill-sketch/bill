@@ -1,0 +1,5 @@
+rule: FF-INV-3 a flag can be true only when every capability it controls is code_ready, provider_tested and approved; marketing_dispatch controls workshop_followup
+expect_path: capabilities/workshop_followup/approved/value
+expect_keyword: const
+
+marketing_dispatch switched on while the workshop follow-up (E11) has no recorded approval. Before repair attempt 2 this document was accepted, because marketing_dispatch did not list workshop_followup (review A6D-07).

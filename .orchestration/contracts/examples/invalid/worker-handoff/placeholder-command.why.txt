@@ -1,0 +1,4 @@
+rule: WH-PH-2
+breaks: A test command must be the command actually run, not the 03 placeholder.
+expect_keyword: not
+expect_path: /tests/0/command

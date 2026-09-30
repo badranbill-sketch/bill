@@ -1,0 +1,7 @@
+rule: XF-08 - coverage agrees with the source list
+layer: schema
+expect_keyword: maxItems
+expect_path: /chapters/income/sources
+expect_validator_value: 0
+plain_message_en_draft: You said no income is planned, but income is listed. Which is right?
+explanation: no_planned_income means an empty list.

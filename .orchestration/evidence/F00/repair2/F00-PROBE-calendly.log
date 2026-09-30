@@ -1,0 +1,5 @@
+# F00-PROBE-calendly  2026-09-30T02:52:07Z
+$ curl -sS -o /dev/null -w "http_code=%{http_code}\n" --max-time 20 https://calendly.com/bbadran
+curl: (56) CONNECT tunnel failed, response 403
+http_code=000
+exit_code=56

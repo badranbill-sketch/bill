@@ -1,0 +1,6 @@
+rule: LABEL - no 'guaranteed' dependability
+layer: schema
+expect_keyword: enum
+expect_path: /chapters/income/sources/0/dependability
+plain_message_en_draft: (never shown)
+explanation: Only scheduled or uncertain exist; nothing in the workshop is labelled guaranteed.

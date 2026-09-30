@@ -1,0 +1,4 @@
+$ (final) PYTHONDONTWRITEBYTECODE=1 $VENV/bin/python .orchestration/contracts/validate.py | tail -3
+## Summary
+pass: 312  fail: 0  known: 17  info: 2
+exit_code=0

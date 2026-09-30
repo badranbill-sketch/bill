@@ -1,0 +1,39 @@
+$ docker info (selected fields)
+ServerVersion=29.3.1 Driver=overlayfs CgroupVersion=1 CgroupDriver=cgroupfs OS=Ubuntu 24.04.4 LTS NCPU=4 MemTotal=16876515328 Containers=0 Images=0
+exit=0
+$ docker compose version
+Docker Compose version v5.1.1
+$ docker run --rm hello-world
+Unable to find image 'hello-world:latest' locally
+docker: Error response from daemon: unknown: failed to resolve reference "docker.io/library/hello-world:latest": unexpected status from HEAD request to https://registry-1.docker.io/v2/library/hello-world/manifests/latest: 429 Too Many Requests
+
+Run 'docker run --help' for more information
+exit=125
+$ retry: docker pull hello-world (single retry after previous 429)
+Using default tag: latest
+Error response from daemon: unknown: failed to resolve reference "docker.io/library/hello-world:latest": unexpected status from HEAD request to https://registry-1.docker.io/v2/library/hello-world/manifests/latest: 429 Too Many Requests
+exit=1
+$ tar -C rootfs -c . | docker import - f00-local-smoke:1   (static tini only; no registry)
+sha256:084df29c1571521faff1159d2421c662e3855624816db2689c7dd0db2a96fc59
+exit=0
+$ docker run --rm --network none f00-local-smoke:1 /bin/tini --version
+tini version 0.19.0 - git.de40ad0
+exit=0
+$ docker run --rm f00-local-smoke:1 /bin/tini --version  (default bridge network)
+tini version 0.19.0 - git.de40ad0
+exit=0
+$ docker rmi f00-local-smoke:1
+Deleted: sha256:084df29c1571521faff1159d2421c662e3855624816db2689c7dd0db2a96fc59
+exit=0
+$ 02:02:03Z final retry: docker pull hello-world
+Status: Downloaded newer image for hello-world:latest
+docker.io/library/hello-world:latest
+exit=0
+dockerd pid still running: 3134
+1
+$ docker run --rm hello-world
+
+Hello from Docker!
+This message shows that your installation appears to be working correctly.
+
+exit=0

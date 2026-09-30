@@ -1,0 +1,19 @@
+# F00-SPOT-03_ts_error_codes  2026-09-30T02:52:01Z  cwd=/home/user/bill
+$ for t in main guide video; do echo "== $t"; grep -o 'error TS[0-9]*' .orchestration/evidence/F00/checks/$t/06_typecheck.log | sort | uniq -c; echo -n 'non-film error lines: '; grep 'error TS' .orchestration/evidence/F00/checks/$t/06_typecheck.log | grep -vc '^film/'; done; echo '== TS7006 locations (main)'; grep 'error TS7006' .orchestration/evidence/F00/checks/main/06_typecheck.log
+== main
+     23 error TS2307
+      3 error TS7006
+non-film error lines: 0
+== guide
+     23 error TS2307
+      3 error TS7006
+non-film error lines: 0
+== video
+     23 error TS2307
+      3 error TS7006
+non-film error lines: 0
+== TS7006 locations (main)
+film/src/audio/Soundtrack.tsx(18,57): error TS7006: Parameter 'f' implicitly has an 'any' type.
+film/src/audio/Soundtrack.tsx(22,106): error TS7006: Parameter 'f' implicitly has an 'any' type.
+film/src/components/BillShot.tsx(18,72): error TS7006: Parameter 'f' implicitly has an 'any' type.
+exit_code=0

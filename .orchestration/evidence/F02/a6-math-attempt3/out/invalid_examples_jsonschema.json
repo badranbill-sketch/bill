@@ -1,0 +1,164 @@
+[
+ {
+  "file": "already-receiving-with-point.json",
+  "rule": "START - already receiving has no start point",
+  "ok": true,
+  "detail": "hits=1 value_ok=True msg_ok=True other_leaf_errors=[]"
+ },
+ {
+  "file": "coverage-none-with-sources.json",
+  "rule": "XF-08 - coverage agrees with the source list",
+  "ok": true,
+  "detail": "hits=1 value_ok=True msg_ok=True other_leaf_errors=[]"
+ },
+ {
+  "file": "duplicate-source-id.json",
+  "rule": "XF-06 - source ids are unique",
+  "ok": true,
+  "detail": "schema_errors=0 semantic=[('XF-06', '/chapters/income/sources/1/id')]"
+ },
+ {
+  "file": "end-before-start.json",
+  "rule": "XF-05 - end is after start",
+  "ok": true,
+  "detail": "schema_errors=0 semantic=[('XF-05', '/chapters/income/sources/0/end')]"
+ },
+ {
+  "file": "estimated-without-value.json",
+  "rule": "STATUS-3 - estimated/confirmed need a value",
+  "ok": true,
+  "detail": "hits=1 value_ok=True msg_ok=True other_leaf_errors=[]"
+ },
+ {
+  "file": "estimated-zero-value.json",
+  "rule": "STATUS-2 - zero has exactly one representation",
+  "ok": true,
+  "detail": "hits=1 value_ok=True msg_ok=True other_leaf_errors=[]"
+ },
+ {
+  "file": "extra-pii-email.json",
+  "rule": "PRIVACY - no personal identifier fields (closed shapes)",
+  "ok": true,
+  "detail": "hits=1 value_ok=True msg_ok=True other_leaf_errors=[]"
+ },
+ {
+  "file": "float-cents.json",
+  "rule": "UNITS - money is an integer number of cents",
+  "ok": true,
+  "detail": "hits=1 value_ok=True msg_ok=True other_leaf_errors=[]"
+ },
+ {
+  "file": "home-counted-spendable.json",
+  "rule": "ASSET - home/business excluded from spendable",
+  "ok": true,
+  "detail": "hits=1 value_ok=True msg_ok=True other_leaf_errors=[]"
+ },
+ {
+  "file": "horizon-beyond-age-120.json",
+  "rule": "XF-03 - last illustrated age at most 120",
+  "ok": true,
+  "detail": "hits=1 value_ok=True msg_ok=True other_leaf_errors=[]"
+ },
+ {
+  "file": "horizon-zero.json",
+  "rule": "RANGE - planning horizon is at least 1 year",
+  "ok": true,
+  "detail": "hits=2 value_ok=True msg_ok=True other_leaf_errors=[]"
+ },
+ {
+  "file": "income-basis-missing.json",
+  "rule": "BASIS - every income source states gross, net or unknown",
+  "ok": true,
+  "detail": "hits=1 value_ok=True msg_ok=True other_leaf_errors=[]"
+ },
+ {
+  "file": "income-guaranteed-label.json",
+  "rule": "LABEL - no 'guaranteed' dependability",
+  "ok": true,
+  "detail": "hits=1 value_ok=True msg_ok=True other_leaf_errors=[]"
+ },
+ {
+  "file": "infinity-literal.json",
+  "rule": "NONFINITE - number must be a finite integer",
+  "ok": true,
+  "detail": "strict_rejected=True; keywords at path=['maximum', 'type']; counts=['type', 'maximum', 'maximum']"
+ },
+ {
+  "file": "inflation-unknown.json",
+  "rule": "ASSUMPTION - inflation is an explicit assumption",
+  "ok": true,
+  "detail": "hits=1 value_ok=True msg_ok=True other_leaf_errors=[]"
+ },
+ {
+  "file": "monthly-spending-over-limit.json",
+  "rule": "RANGE - monthly spending up to $100,000.00",
+  "ok": true,
+  "detail": "hits=1 value_ok=True msg_ok=True other_leaf_errors=[]"
+ },
+ {
+  "file": "nan-as-string.json",
+  "rule": "NONFINITE - number must be a finite integer",
+  "ok": true,
+  "detail": "hits=1 value_ok=True msg_ok=True other_leaf_errors=[]"
+ },
+ {
+  "file": "nan-literal.json",
+  "rule": "NONFINITE - number must be a finite integer",
+  "ok": true,
+  "detail": "strict_rejected=True; keywords at path=['type']; counts=['type']"
+ },
+ {
+  "file": "negative-spending.json",
+  "rule": "RANGE - money is never negative",
+  "ok": true,
+  "detail": "hits=2 value_ok=True msg_ok=True other_leaf_errors=[]"
+ },
+ {
+  "file": "partner-retirement-before-partner-age.json",
+  "rule": "XF-02 - partner retirement age not earlier than partner current age",
+  "ok": true,
+  "detail": "hits=1 value_ok=True msg_ok=True other_leaf_errors=[]"
+ },
+ {
+  "file": "partner-source-without-household.json",
+  "rule": "XF-07 - partner-owned source needs household timing",
+  "ok": true,
+  "detail": "hits=1 value_ok=True msg_ok=True other_leaf_errors=[]"
+ },
+ {
+  "file": "pii-label-in-source.json",
+  "rule": "PRIVACY - no free text anywhere",
+  "ok": true,
+  "detail": "hits=1 value_ok=True msg_ok=True other_leaf_errors=[]"
+ },
+ {
+  "file": "retirement-before-current-age.json",
+  "rule": "XF-01 - retirement age not earlier than current age",
+  "ok": true,
+  "detail": "hits=1 value_ok=True msg_ok=True other_leaf_errors=[]"
+ },
+ {
+  "file": "spending-pretax-basis.json",
+  "rule": "BASIS - spending is after tax (stated)",
+  "ok": true,
+  "detail": "hits=1 value_ok=True msg_ok=True other_leaf_errors=[]"
+ },
+ {
+  "file": "spending-status-zero.json",
+  "rule": "RANGE - household spending cannot be zero",
+  "ok": true,
+  "detail": "hits=1 value_ok=True msg_ok=True other_leaf_errors=[]"
+ },
+ {
+  "file": "start-age-already-passed.json",
+  "rule": "XF-04 - an age-based start is not before the owner's current age",
+  "ok": true,
+  "detail": "schema_errors=0 semantic=[('XF-04', '/chapters/income/sources/0/start/point/value')]"
+ },
+ {
+  "file": "unknown-with-value.json",
+  "rule": "STATUS-1 - unknown carries no value",
+  "ok": true,
+  "detail": "hits=1 value_ok=True msg_ok=True other_leaf_errors=[]"
+ }
+]

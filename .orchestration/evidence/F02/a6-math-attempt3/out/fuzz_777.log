@@ -1,0 +1,24 @@
+{
+ "seed": "777",
+ "generated": 5000,
+ "tried": 5697,
+ "rejectedSchema": 246,
+ "rejectedSem": 451,
+ "clipCount": {
+  "W07/funding_gap": 793,
+  "W09/household_timing": 284,
+  "W10/core_inputs_missing": 1970,
+  "W06/missing_income": 1732,
+  "W08/tax_basis": 172,
+  "W10/neutral_fallback": 49
+ },
+ "stateCount": {
+  "complete": 1126,
+  "incomplete_unknown_spending": 1038,
+  "incomplete_unknown_income": 1732,
+  "basis_mismatch": 83,
+  "incomplete_unknown_timing": 932,
+  "basis_unknown": 89
+ },
+ "violations": {}
+}

@@ -1,0 +1,6 @@
+# Large regenerable files not copied (deterministic: fuzz.mjs <seed> <n>, then oracle_ref.py).
+# Regenerate with run_all.sh and compare these sha256 values.
+57753d0c0cd226ffd8328dc8815e20920f47c38b719f19a6f910aeeed62160a9  fuzz_inputs_20260930.json
+a0782cabf48e79279f71cb51c6146289a732ad6bb8f24c707a92bead7de138ee  fuzz_inputs_777.json
+cae52cd66daf1f59637a3443e5fb5501af1a4803ae2cdc45a3df2e1f533f9396  ref_outputs_20260930.json
+07e5e15a5dcf5d50e0b6835776f9868e1049187927e452bdb5d68ee4547f48dd  ref_outputs_777.json

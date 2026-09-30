@@ -1,0 +1,4 @@
+rule: AM-ST-1
+breaks: status is one of brief, draft, reviewed, recorded, edited, approved, published.
+expect_keyword: enum
+expect_path: /assets/0/status

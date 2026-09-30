@@ -1,0 +1,188 @@
+{
+ "fixture_id": "WM24",
+ "title": "Exact tie that IEEE doubles miss",
+ "contract_version": "1.0",
+ "covers": [
+  "WK01",
+  "WK02"
+ ],
+ "purpose": "1,000,800 x 1.025^2 = 1,051,465.5 exactly -> 1,051,466 (half-even); iterated float64 gives 1,051,465.4999999998.",
+ "input": {
+  "contract": "workshop-inputs",
+  "contract_version": "1.0",
+  "currency": "CAD",
+  "base_year": 2026,
+  "chapters": {
+   "life": {
+    "spending": {
+     "amount": {
+      "status": "estimated",
+      "value": 1000800
+     },
+     "period": "annual",
+     "tax_basis": "after_tax",
+     "price_basis": "today_dollars",
+     "unit": "household"
+    }
+   },
+   "income": {
+    "coverage": "no_planned_income",
+    "sources": []
+   },
+   "savings": {},
+   "timing": {
+    "current_age": {
+     "status": "estimated",
+     "value": 70
+    },
+    "retirement_age": {
+     "status": "estimated",
+     "value": 70
+    },
+    "planning_horizon_years": {
+     "status": "estimated",
+     "value": 3
+    },
+    "inflation_bp": {
+     "status": "estimated",
+     "value": 250
+    }
+   }
+  }
+ },
+ "expected": {
+  "contract_version": "1.0",
+  "assumptions_echo": {
+   "base_year": 2026,
+   "inflation_bp": 250,
+   "planning_horizon_years": 3,
+   "capital_illustration_return_bp": null,
+   "year_index": "t=0 is calendar year base_year; annual totals per calendar year",
+   "rounding": "exact rational arithmetic; half-even to whole cents at display only"
+  },
+  "window": {
+   "t_R": 0,
+   "first_t": 0,
+   "last_t": 2,
+   "first_calendar_year": 2026,
+   "last_calendar_year": 2028,
+   "first_age": 70,
+   "last_age": 72
+  },
+  "completeness": {
+   "state": "complete",
+   "reasons": []
+  },
+  "years": [
+   {
+    "t": 0,
+    "calendar_year": 2026,
+    "age": 70,
+    "spending_cents": 1000800,
+    "income_by_source_cents": {},
+    "income_net_cents": 0,
+    "income_gross_cents": 0,
+    "income_unknown_basis_cents": 0,
+    "status": "computed",
+    "reasons": [],
+    "gap_cents": 1000800,
+    "surplus_cents": 0,
+    "gap_today_dollars_cents": 1000800,
+    "surplus_today_dollars_cents": 0,
+    "exact": {
+     "spending": "1000800",
+     "income_compared": "0",
+     "gap": "1000800",
+     "surplus": "0"
+    }
+   },
+   {
+    "t": 1,
+    "calendar_year": 2027,
+    "age": 71,
+    "spending_cents": 1025820,
+    "income_by_source_cents": {},
+    "income_net_cents": 0,
+    "income_gross_cents": 0,
+    "income_unknown_basis_cents": 0,
+    "status": "computed",
+    "reasons": [],
+    "gap_cents": 1025820,
+    "surplus_cents": 0,
+    "gap_today_dollars_cents": 1000800,
+    "surplus_today_dollars_cents": 0,
+    "exact": {
+     "spending": "1025820",
+     "income_compared": "0",
+     "gap": "1025820",
+     "surplus": "0"
+    }
+   },
+   {
+    "t": 2,
+    "calendar_year": 2028,
+    "age": 72,
+    "spending_cents": 1051466,
+    "income_by_source_cents": {},
+    "income_net_cents": 0,
+    "income_gross_cents": 0,
+    "income_unknown_basis_cents": 0,
+    "status": "computed",
+    "reasons": [],
+    "gap_cents": 1051466,
+    "surplus_cents": 0,
+    "gap_today_dollars_cents": 1000800,
+    "surplus_today_dollars_cents": 0,
+    "exact": {
+     "spending": "1051465.5",
+     "income_compared": "0",
+     "gap": "1051465.5",
+     "surplus": "0"
+    }
+   }
+  ],
+  "flags": [],
+  "savings_summary": {
+   "accessible_categories_with_positive_value": [],
+   "home_or_business_positive_value": false,
+   "excluded_from_spendable": [],
+   "pension_value_kept_separate": false,
+   "totals_computed": false
+  },
+  "capital_illustration": {
+   "feature_flag": "off",
+   "displayed": false,
+   "state": "disabled_by_flag",
+   "reference_if_enabled": {
+    "r_bp": null,
+    "computable": false,
+    "not_computable_reasons": [
+     "return_assumption_absent"
+    ],
+    "display_eligible_if_enabled": false,
+    "ineligible_reasons": [
+     "return_assumption_absent"
+    ],
+    "C_R_cents": null,
+    "C_R_exact": null,
+    "valued_at": null,
+    "flow_timing": "end_of_year"
+   }
+  },
+  "clip": {
+   "predicates": {
+    "C": false,
+    "M": false,
+    "X": false,
+    "H": false,
+    "F": true
+   },
+   "selected": "W07",
+   "selection_reason": "funding_gap"
+  }
+ },
+ "independent_checks": [
+  "exact tie found by search over a in [1,000,000, 1,003,000), bp in {100..300}, t in {2,3}"
+ ],
+ "tolerance": "exact integer cents after half-even rounding; exact strings must match exactly; no numeric tolerance"
+}

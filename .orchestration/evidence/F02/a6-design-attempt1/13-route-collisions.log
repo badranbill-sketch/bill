@@ -1,0 +1,5 @@
+$ python3 .orchestration/evidence/F02/a6-design-attempt1/route_collisions.py
+existing keys (union of 6 branches): 10 ['about', 'ask', 'fees', 'home', 'investments', 'legal', 'meeting', 'privacy', 'resources', 'retirement']
+proposed keys: 10 ['book', 'bookConsultation', 'bookOrderStatus', 'crossroads', 'crossroadsConfirmed', 'crossroadsJoin', 'crossroadsReplay', 'emailPreferences', 'unsubscribe', 'workshop']
+problems: none
+exit=0

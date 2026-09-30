@@ -1,0 +1,4 @@
+rule: AM-KIND-2
+breaks: In an authoritative manifest, publication IDs, master and rights references are real, never 'fixture:'.
+expect_keyword: not
+expect_path: /assets/0/publication_id

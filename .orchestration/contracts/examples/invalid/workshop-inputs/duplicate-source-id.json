@@ -1,0 +1,114 @@
+{
+ "contract": "workshop-inputs",
+ "contract_version": "1.0",
+ "currency": "CAD",
+ "base_year": 2026,
+ "chapters": {
+  "life": {
+   "spending": {
+    "amount": {
+     "status": "estimated",
+     "value": 450000
+    },
+    "period": "monthly",
+    "tax_basis": "after_tax",
+    "price_basis": "today_dollars",
+    "unit": "household"
+   },
+   "lifestyle_focus": "travel"
+  },
+  "income": {
+   "coverage": "all_known_sources_listed",
+   "sources": [
+    {
+     "id": "src-1",
+     "kind": "workplace_pension",
+     "owner": "self",
+     "amount": {
+      "status": "confirmed",
+      "value": 2400000
+     },
+     "period": "annual",
+     "tax_basis": "net",
+     "price_basis": "start_year_dollars",
+     "start": {
+      "reference": "age",
+      "point": {
+       "status": "estimated",
+       "value": 62
+      }
+     },
+     "escalation_bp": {
+      "status": "confirmed",
+      "value": 150
+     },
+     "dependability": "scheduled"
+    },
+    {
+     "id": "src-1",
+     "kind": "qpp_cpp",
+     "owner": "self",
+     "amount": {
+      "status": "estimated",
+      "value": 95000
+     },
+     "period": "monthly",
+     "tax_basis": "net",
+     "price_basis": "today_dollars",
+     "start": {
+      "reference": "age",
+      "point": {
+       "status": "estimated",
+       "value": 65
+      }
+     },
+     "escalation_bp": {
+      "status": "estimated",
+      "value": 200
+     },
+     "dependability": "scheduled"
+    }
+   ]
+  },
+  "savings": {
+   "accounts": {
+    "rrsp_rrif": {
+     "status": "estimated",
+     "value": 32000000
+    },
+    "tfsa": {
+     "status": "estimated",
+     "value": 8500000
+    },
+    "non_registered": {
+     "status": "unknown"
+    }
+   },
+   "home_value": {
+    "amount": {
+     "status": "estimated",
+     "value": 65000000
+    },
+    "excluded_from_spendable": true
+   }
+  },
+  "timing": {
+   "current_age": {
+    "status": "confirmed",
+    "value": 58
+   },
+   "retirement_age": {
+    "status": "estimated",
+    "value": 62
+   },
+   "planning_horizon_years": {
+    "status": "estimated",
+    "value": 30
+   },
+   "inflation_bp": {
+    "status": "estimated",
+    "value": 200
+   }
+  }
+ }
+}

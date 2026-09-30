@@ -1,0 +1,5 @@
+rule: JS-RECON-1 reconcile_required only after a provider call may have started (send_started_at recorded)
+expect_path: /
+expect_keyword: required
+
+Without send_started_at the job was never sent and must return to retry_due instead.

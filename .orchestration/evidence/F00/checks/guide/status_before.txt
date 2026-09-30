@@ -1,0 +1,3 @@
+sha=749b360f75185041e1aa3408500857605bc4507f
+--- git status --porcelain (before any run):
+--- end

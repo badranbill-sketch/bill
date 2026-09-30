@@ -1,0 +1,871 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://bill.contracts.local/event-envelope/1.0",
+  "title": "Operational event envelope 1.0",
+  "description": "Exactly the 04 §3 envelope. Closed shape: no payload, no form body, no financial field. Per-type rules (subject kind, resource kind, allowed sources, consent_reference required/forbidden) are in allOf. Semantics: event-envelope.md. Status: proposed (F02), not accepted.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version",
+    "event_id",
+    "type",
+    "occurred_at",
+    "subject_id",
+    "locale",
+    "source",
+    "resource_id",
+    "idempotency_key"
+  ],
+  "properties": {
+    "schema_version": {
+      "const": "1.0"
+    },
+    "event_id": {
+      "$ref": "#/$defs/uuid"
+    },
+    "type": {
+      "$ref": "#/$defs/event_type"
+    },
+    "occurred_at": {
+      "$ref": "#/$defs/utc_timestamp"
+    },
+    "subject_id": {
+      "anyOf": [
+        {
+          "$ref": "#/$defs/subject_contact"
+        },
+        {
+          "$ref": "#/$defs/subject_content_item"
+        },
+        {
+          "$ref": "#/$defs/subject_job"
+        }
+      ],
+      "description": "Internal random ID of the entity the event is about (con_ contact, cnt_ content item, job_ delivery job). Never an email or name."
+    },
+    "locale": {
+      "enum": [
+        "fr",
+        "en"
+      ]
+    },
+    "source": {
+      "$ref": "#/$defs/source"
+    },
+    "resource_id": {
+      "anyOf": [
+        {
+          "$ref": "#/$defs/resource_guide_version"
+        },
+        {
+          "$ref": "#/$defs/resource_consent_wording"
+        },
+        {
+          "$ref": "#/$defs/resource_webinar_event"
+        },
+        {
+          "$ref": "#/$defs/resource_workshop_version"
+        },
+        {
+          "$ref": "#/$defs/resource_book_order"
+        },
+        {
+          "$ref": "#/$defs/resource_consultation_right"
+        },
+        {
+          "$ref": "#/$defs/resource_booking"
+        },
+        {
+          "$ref": "#/$defs/resource_content_version"
+        },
+        {
+          "$ref": "#/$defs/resource_template_version"
+        }
+      ],
+      "description": "Approved resource reference: an internal entity ID, or a versioned registry code. On contact-subject events a registry code has a closed key and a hash version (PB-ID-3); content-item codes are asset-manifest 1.0 asset IDs. Every registry code must also be a member of the approved resource registry, which the schema cannot see (runtime rule PB-ID-5 / EV-REG-1, event-envelope.md §4.2)."
+    },
+    "consent_reference": {
+      "$ref": "#/$defs/consent_event_id"
+    },
+    "idempotency_key": {
+      "$ref": "#/$defs/idempotency_key"
+    }
+  },
+  "allOf": [
+    {
+      "if": {
+        "properties": {
+          "type": {
+            "const": "guide.requested"
+          }
+        },
+        "required": [
+          "type"
+        ]
+      },
+      "then": {
+        "properties": {
+          "subject_id": {
+            "$ref": "#/$defs/subject_contact"
+          },
+          "resource_id": {
+            "$ref": "#/$defs/resource_guide_version"
+          },
+          "source": {
+            "enum": [
+              "site.guide_request"
+            ]
+          },
+          "consent_reference": {
+            "not": {},
+            "description": "Forbidden for this type: consent is never carried by, or inferred from, a non-consent event."
+          }
+        }
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "type": {
+            "const": "marketing.opted_in"
+          }
+        },
+        "required": [
+          "type"
+        ]
+      },
+      "then": {
+        "properties": {
+          "subject_id": {
+            "$ref": "#/$defs/subject_contact"
+          },
+          "resource_id": {
+            "$ref": "#/$defs/resource_consent_wording"
+          },
+          "source": {
+            "enum": [
+              "site.consent_capture",
+              "site.optin_confirmation",
+              "site.preferences"
+            ]
+          }
+        },
+        "required": [
+          "consent_reference"
+        ]
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "type": {
+            "const": "marketing.withdrawn"
+          }
+        },
+        "required": [
+          "type"
+        ]
+      },
+      "then": {
+        "properties": {
+          "subject_id": {
+            "$ref": "#/$defs/subject_contact"
+          },
+          "resource_id": {
+            "$ref": "#/$defs/resource_consent_wording"
+          },
+          "source": {
+            "enum": [
+              "site.unsubscribe",
+              "site.preferences",
+              "provider.brevo_webhook",
+              "operator.suppression"
+            ]
+          }
+        },
+        "required": [
+          "consent_reference"
+        ]
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "type": {
+            "const": "webinar.registered"
+          }
+        },
+        "required": [
+          "type"
+        ]
+      },
+      "then": {
+        "properties": {
+          "subject_id": {
+            "$ref": "#/$defs/subject_contact"
+          },
+          "resource_id": {
+            "$ref": "#/$defs/resource_webinar_event"
+          },
+          "source": {
+            "enum": [
+              "site.webinar_registration",
+              "operator.reconciliation"
+            ]
+          },
+          "consent_reference": {
+            "not": {},
+            "description": "Forbidden for this type: consent is never carried by, or inferred from, a non-consent event."
+          }
+        }
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "type": {
+            "const": "webinar.cancelled"
+          }
+        },
+        "required": [
+          "type"
+        ]
+      },
+      "then": {
+        "properties": {
+          "subject_id": {
+            "$ref": "#/$defs/subject_contact"
+          },
+          "resource_id": {
+            "$ref": "#/$defs/resource_webinar_event"
+          },
+          "source": {
+            "enum": [
+              "site.webinar_registration",
+              "site.preferences",
+              "operator.reconciliation"
+            ]
+          },
+          "consent_reference": {
+            "not": {},
+            "description": "Forbidden for this type: consent is never carried by, or inferred from, a non-consent event."
+          }
+        }
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "type": {
+            "const": "webinar.join_clicked"
+          }
+        },
+        "required": [
+          "type"
+        ]
+      },
+      "then": {
+        "properties": {
+          "subject_id": {
+            "$ref": "#/$defs/subject_contact"
+          },
+          "resource_id": {
+            "$ref": "#/$defs/resource_webinar_event"
+          },
+          "source": {
+            "enum": [
+              "site.join_redirect"
+            ]
+          },
+          "consent_reference": {
+            "not": {},
+            "description": "Forbidden for this type: consent is never carried by, or inferred from, a non-consent event."
+          }
+        }
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "type": {
+            "const": "webinar.attendance_verified"
+          }
+        },
+        "required": [
+          "type"
+        ]
+      },
+      "then": {
+        "properties": {
+          "subject_id": {
+            "$ref": "#/$defs/subject_contact"
+          },
+          "resource_id": {
+            "$ref": "#/$defs/resource_webinar_event"
+          },
+          "source": {
+            "enum": [
+              "provider.meet_attendance",
+              "operator.reconciliation"
+            ]
+          },
+          "consent_reference": {
+            "not": {},
+            "description": "Forbidden for this type: consent is never carried by, or inferred from, a non-consent event."
+          }
+        }
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "type": {
+            "const": "workshop.access_requested"
+          }
+        },
+        "required": [
+          "type"
+        ]
+      },
+      "then": {
+        "properties": {
+          "subject_id": {
+            "$ref": "#/$defs/subject_contact"
+          },
+          "resource_id": {
+            "$ref": "#/$defs/resource_workshop_version"
+          },
+          "source": {
+            "enum": [
+              "site.workshop_access"
+            ]
+          },
+          "consent_reference": {
+            "not": {},
+            "description": "Forbidden for this type: consent is never carried by, or inferred from, a non-consent event."
+          }
+        }
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "type": {
+            "const": "workshop.completed"
+          }
+        },
+        "required": [
+          "type"
+        ]
+      },
+      "then": {
+        "properties": {
+          "subject_id": {
+            "$ref": "#/$defs/subject_contact"
+          },
+          "resource_id": {
+            "$ref": "#/$defs/resource_workshop_version"
+          },
+          "source": {
+            "enum": [
+              "site.workshop_completion"
+            ]
+          }
+        },
+        "required": [
+          "consent_reference"
+        ]
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "type": {
+            "const": "book.payment_confirmed"
+          }
+        },
+        "required": [
+          "type"
+        ]
+      },
+      "then": {
+        "properties": {
+          "subject_id": {
+            "$ref": "#/$defs/subject_contact"
+          },
+          "resource_id": {
+            "$ref": "#/$defs/resource_book_order"
+          },
+          "source": {
+            "enum": [
+              "provider.stripe_webhook"
+            ]
+          },
+          "consent_reference": {
+            "not": {},
+            "description": "Forbidden for this type: consent is never carried by, or inferred from, a non-consent event."
+          }
+        }
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "type": {
+            "const": "book.refunded"
+          }
+        },
+        "required": [
+          "type"
+        ]
+      },
+      "then": {
+        "properties": {
+          "subject_id": {
+            "$ref": "#/$defs/subject_contact"
+          },
+          "resource_id": {
+            "$ref": "#/$defs/resource_book_order"
+          },
+          "source": {
+            "enum": [
+              "provider.stripe_webhook"
+            ]
+          },
+          "consent_reference": {
+            "not": {},
+            "description": "Forbidden for this type: consent is never carried by, or inferred from, a non-consent event."
+          }
+        }
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "type": {
+            "const": "book.dispatched"
+          }
+        },
+        "required": [
+          "type"
+        ]
+      },
+      "then": {
+        "properties": {
+          "subject_id": {
+            "$ref": "#/$defs/subject_contact"
+          },
+          "resource_id": {
+            "$ref": "#/$defs/resource_book_order"
+          },
+          "source": {
+            "enum": [
+              "operator.fulfilment"
+            ]
+          },
+          "consent_reference": {
+            "not": {},
+            "description": "Forbidden for this type: consent is never carried by, or inferred from, a non-consent event."
+          }
+        }
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "type": {
+            "const": "consultation.redeemed"
+          }
+        },
+        "required": [
+          "type"
+        ]
+      },
+      "then": {
+        "properties": {
+          "subject_id": {
+            "$ref": "#/$defs/subject_contact"
+          },
+          "resource_id": {
+            "$ref": "#/$defs/resource_consultation_right"
+          },
+          "source": {
+            "enum": [
+              "provider.booking_sync",
+              "operator.reconciliation"
+            ]
+          },
+          "consent_reference": {
+            "not": {},
+            "description": "Forbidden for this type: consent is never carried by, or inferred from, a non-consent event."
+          }
+        }
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "type": {
+            "const": "meeting.confirmed"
+          }
+        },
+        "required": [
+          "type"
+        ]
+      },
+      "then": {
+        "properties": {
+          "subject_id": {
+            "$ref": "#/$defs/subject_contact"
+          },
+          "resource_id": {
+            "$ref": "#/$defs/resource_booking"
+          },
+          "source": {
+            "enum": [
+              "provider.booking_sync",
+              "operator.reconciliation"
+            ]
+          },
+          "consent_reference": {
+            "not": {},
+            "description": "Forbidden for this type: consent is never carried by, or inferred from, a non-consent event."
+          }
+        }
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "type": {
+            "const": "meeting.cancelled"
+          }
+        },
+        "required": [
+          "type"
+        ]
+      },
+      "then": {
+        "properties": {
+          "subject_id": {
+            "$ref": "#/$defs/subject_contact"
+          },
+          "resource_id": {
+            "$ref": "#/$defs/resource_booking"
+          },
+          "source": {
+            "enum": [
+              "provider.booking_sync",
+              "operator.reconciliation"
+            ]
+          },
+          "consent_reference": {
+            "not": {},
+            "description": "Forbidden for this type: consent is never carried by, or inferred from, a non-consent event."
+          }
+        }
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "type": {
+            "const": "meeting.held"
+          }
+        },
+        "required": [
+          "type"
+        ]
+      },
+      "then": {
+        "properties": {
+          "subject_id": {
+            "$ref": "#/$defs/subject_contact"
+          },
+          "resource_id": {
+            "$ref": "#/$defs/resource_booking"
+          },
+          "source": {
+            "enum": [
+              "operator.reconciliation"
+            ]
+          },
+          "consent_reference": {
+            "not": {},
+            "description": "Forbidden for this type: consent is never carried by, or inferred from, a non-consent event."
+          }
+        }
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "type": {
+            "const": "content.draft_created"
+          }
+        },
+        "required": [
+          "type"
+        ]
+      },
+      "then": {
+        "properties": {
+          "subject_id": {
+            "$ref": "#/$defs/subject_content_item"
+          },
+          "resource_id": {
+            "$ref": "#/$defs/resource_content_version"
+          },
+          "source": {
+            "enum": [
+              "editorial.draft_job"
+            ]
+          },
+          "consent_reference": {
+            "not": {},
+            "description": "Forbidden for this type: consent is never carried by, or inferred from, a non-consent event."
+          }
+        }
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "type": {
+            "const": "content.approved"
+          }
+        },
+        "required": [
+          "type"
+        ]
+      },
+      "then": {
+        "properties": {
+          "subject_id": {
+            "$ref": "#/$defs/subject_content_item"
+          },
+          "resource_id": {
+            "$ref": "#/$defs/resource_content_version"
+          },
+          "source": {
+            "enum": [
+              "editorial.approval_ledger"
+            ]
+          },
+          "consent_reference": {
+            "not": {},
+            "description": "Forbidden for this type: consent is never carried by, or inferred from, a non-consent event."
+          }
+        }
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "type": {
+            "const": "content.published"
+          }
+        },
+        "required": [
+          "type"
+        ]
+      },
+      "then": {
+        "properties": {
+          "subject_id": {
+            "$ref": "#/$defs/subject_content_item"
+          },
+          "resource_id": {
+            "$ref": "#/$defs/resource_content_version"
+          },
+          "source": {
+            "enum": [
+              "editorial.publication_handoff"
+            ]
+          },
+          "consent_reference": {
+            "not": {},
+            "description": "Forbidden for this type: consent is never carried by, or inferred from, a non-consent event."
+          }
+        }
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "type": {
+            "const": "delivery.failed"
+          }
+        },
+        "required": [
+          "type"
+        ]
+      },
+      "then": {
+        "properties": {
+          "subject_id": {
+            "$ref": "#/$defs/subject_job"
+          },
+          "resource_id": {
+            "$ref": "#/$defs/resource_template_version"
+          },
+          "source": {
+            "enum": [
+              "system.dispatcher",
+              "provider.brevo_webhook"
+            ]
+          },
+          "consent_reference": {
+            "not": {},
+            "description": "Forbidden for this type: consent is never carried by, or inferred from, a non-consent event."
+          }
+        }
+      }
+    }
+  ],
+  "$defs": {
+    "uuid": {
+      "type": "string",
+      "pattern": "^[0-9a-f]{8}-[0-9a-f]{4}-[47][0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$",
+      "maxLength": 36,
+      "description": "Server-generated UUID (version 4 or 7), lowercase hex."
+    },
+    "utc_timestamp": {
+      "type": "string",
+      "pattern": "^[0-9]{4}-(?:0[1-9]|1[0-2])-(?:0[1-9]|[12][0-9]|3[01])T(?:[01][0-9]|2[0-3]):[0-5][0-9]:[0-5][0-9](?:\\.[0-9]{1,6})?Z$",
+      "maxLength": 32,
+      "description": "RFC 3339 timestamp in UTC with a literal 'Z' suffix. Offsets such as -04:00 are rejected; America/Toronto is a display concern only (D-044)."
+    },
+    "event_type": {
+      "enum": [
+        "guide.requested",
+        "marketing.opted_in",
+        "marketing.withdrawn",
+        "webinar.registered",
+        "webinar.cancelled",
+        "webinar.join_clicked",
+        "webinar.attendance_verified",
+        "workshop.access_requested",
+        "workshop.completed",
+        "book.payment_confirmed",
+        "book.refunded",
+        "book.dispatched",
+        "consultation.redeemed",
+        "meeting.confirmed",
+        "meeting.cancelled",
+        "meeting.held",
+        "content.draft_created",
+        "content.approved",
+        "content.published",
+        "delivery.failed"
+      ],
+      "description": "The 20 event types of 04 §3, closed. Anything else is rejected."
+    },
+    "source": {
+      "enum": [
+        "site.guide_request",
+        "site.consent_capture",
+        "site.optin_confirmation",
+        "site.preferences",
+        "site.unsubscribe",
+        "site.webinar_registration",
+        "site.join_redirect",
+        "site.workshop_access",
+        "site.workshop_completion",
+        "provider.stripe_webhook",
+        "provider.brevo_webhook",
+        "provider.booking_sync",
+        "provider.meet_attendance",
+        "operator.reconciliation",
+        "operator.fulfilment",
+        "operator.suppression",
+        "editorial.draft_job",
+        "editorial.approval_ledger",
+        "editorial.publication_handoff",
+        "system.dispatcher"
+      ],
+      "description": "Approved source codes (closed). Each type narrows this list; see allOf."
+    },
+    "consent_event_id": {
+      "type": "string",
+      "pattern": "^cev_[0-9a-hjkmnp-tv-z]{26}$",
+      "maxLength": 30,
+      "description": "ID of a real consent_events row (operational-data-model.md)."
+    },
+    "idempotency_key": {
+      "type": "string",
+      "pattern": "^ik1_[0-9a-f]{64}$",
+      "maxLength": 68,
+      "description": "ik1_ + HMAC-SHA256 (lowercase hex) over the per-type canonical tuple of internal IDs and provider event IDs (event-envelope.md). Never an email, name, amount, age, answer or form body."
+    },
+    "subject_contact": {
+      "type": "string",
+      "pattern": "^con_[0-9a-hjkmnp-tv-z]{26}$",
+      "maxLength": 30
+    },
+    "subject_content_item": {
+      "type": "string",
+      "pattern": "^cnt_[0-9a-hjkmnp-tv-z]{26}$",
+      "maxLength": 30
+    },
+    "subject_job": {
+      "type": "string",
+      "pattern": "^job_[0-9a-hjkmnp-tv-z]{26}$",
+      "maxLength": 30
+    },
+    "resource_guide_version": {
+      "type": "string",
+      "pattern": "^guide\\.(?:retirement-guide)\\.h[0-9a-f]{12,64}$",
+      "maxLength": 120,
+      "description": "Contact-subject registry code (PB-ID-3): the key is one of the closed guide keys and the version is h + sha256 prefix of the approved edition. No free word and no readable number can be written here. Membership in the approved resource registry is a runtime check (PB-ID-5, EV-REG-1)."
+    },
+    "resource_consent_wording": {
+      "type": "string",
+      "pattern": "^consent\\.(?:nurture|workshop-followup)\\.h[0-9a-f]{12,64}$",
+      "maxLength": 120,
+      "description": "Contact-subject registry code (PB-ID-3): consent purpose (closed, pending G5) plus h + sha256 prefix of the exact wording shown."
+    },
+    "resource_webinar_event": {
+      "type": "string",
+      "pattern": "^wev_[0-9a-hjkmnp-tv-z]{26}$",
+      "maxLength": 120,
+      "description": "Internal webinar event ID."
+    },
+    "resource_workshop_version": {
+      "type": "string",
+      "pattern": "^workshop\\.(?:retirement-workshop)\\.h[0-9a-f]{12,64}$",
+      "maxLength": 120,
+      "description": "Contact-subject registry code (PB-ID-3): the key is one of the closed workshop keys and the version is h + sha256 prefix of the deployed workshop build. No free word and no readable number can be written here."
+    },
+    "resource_book_order": {
+      "type": "string",
+      "pattern": "^ord_[0-9a-hjkmnp-tv-z]{26}$",
+      "maxLength": 120,
+      "description": "Internal order ID."
+    },
+    "resource_consultation_right": {
+      "type": "string",
+      "pattern": "^rgt_[0-9a-hjkmnp-tv-z]{26}$",
+      "maxLength": 120,
+      "description": "Internal consultation right ID."
+    },
+    "resource_booking": {
+      "type": "string",
+      "pattern": "^bkg_[0-9a-hjkmnp-tv-z]{26}$",
+      "maxLength": 120,
+      "description": "Internal booking ID."
+    },
+    "resource_content_version": {
+      "type": "string",
+      "pattern": "^(?:capsule\\.s(?:0[1-9]|1[0-8])|companion\\.s(?:0[1-9]|1[0-8])|clip\\.w(?:0[0-9]|1[01])|case\\.c(?:0[1-9]|10)|ink\\.a0[1-8]|template\\.e(?:0[1-9]|1[0-6])|ad\\.(?:ad0[1-6]|rt0[1-3])|(?:article|page|guide|book|event|copy)\\.[a-z]+(?:-[a-z]+){0,7})\\.(?:v[1-9][0-9]{0,2}|h[0-9a-f]{12,64})$",
+      "maxLength": 120,
+      "description": "Content-item registry code: any asset_id that asset-manifest 1.0 defines, plus v1-v999 or h + sha256 prefix. Used only with a cnt_ subject, so it is about an editorial item, never about a visitor."
+    },
+    "resource_template_version": {
+      "type": "string",
+      "pattern": "^template\\.e(?:0[1-9]|1[0-6])\\.(?:v[1-9][0-9]{0,2}|h[0-9a-f]{12,64})$",
+      "maxLength": 120,
+      "description": "Email template code on delivery.failed (job subject)."
+    }
+  }
+}

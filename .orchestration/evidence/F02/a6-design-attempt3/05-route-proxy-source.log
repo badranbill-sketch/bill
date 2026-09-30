@@ -1,0 +1,98 @@
+## branch heads
+origin/main 77de3bd
+origin/codex/desktop-iphone-unified 66cce52
+origin/claude/bill-centered-homepage d63aabd
+origin/guide/pre-retirement-guide 749b360
+origin/claude/bill-presentation-video fc00445
+origin/add-ask-bill-section 01e296c
+
+## blob ids of lib/routes.ts, proxy.ts, app/sitemap.ts, app/robots.ts, scripts/verify-publication.ts, docs/CONTENT-WORKFLOW.md, content/approvals.json, lib/business.ts per branch
+lib/routes.ts                            7592590 7592590 c094895 7592590 7592590 7592590
+proxy.ts                                 4159faf 4159faf 4159faf 4159faf 4159faf 4159faf
+app/sitemap.ts                           710d180 710d180 710d180 710d180 710d180 710d180
+app/robots.ts                            3d86370 3d86370 3d86370 3d86370 3d86370 3d86370
+scripts/verify-publication.ts            393d8d6 393d8d6 393d8d6 393d8d6 393d8d6 393d8d6
+docs/CONTENT-WORKFLOW.md                 6ea8d61 6ea8d61 6ea8d61 6ea8d61 6ea8d61 6ea8d61
+content/approvals.json                   0967ef4 0967ef4 0967ef4 0967ef4 0967ef4 0967ef4
+lib/business.ts                          4bcea8f 4bcea8f 4edc95c 4bcea8f 4bcea8f 4bcea8f
+lib/articles.ts                          df24ccb df24ccb df24ccb df24ccb df24ccb df24ccb
+app/[lang]/[[...slug]]/page.tsx          969c71c 969c71c c416fda 969c71c 969c71c 969c71c
+components/pages.tsx                     5c0c00a 3f59ac9 9e42cba 5c0c00a 5c0c00a 09239c2
+components/navigation.tsx                4da2d15 4da2d15 f6f2f28 4da2d15 4da2d15 4da2d15
+app/api/guide/route.ts                   ABSENT dcadef3 ABSENT ABSENT ABSENT ABSENT
+app/api/inquiry/route.ts                 54e915b 54e915b 54e915b 54e915b 54e915b 54e915b
+lib/features.ts                          ABSENT c5054f8 ABSENT ABSENT ABSENT a0f4ccc
+.github/workflows/verify.yml             9eb5e13 9eb5e13 9eb5e13 9eb5e13 9eb5e13 9eb5e13
+.github/CODEOWNERS                       ABSENT ABSENT ABSENT ABSENT ABSENT ABSENT
+
+## origin/codex lib/routes.ts
+import type { Language } from "./business";
+export const routes = {
+  home: { fr: "", en: "" },
+  retirement: { fr: "planification-retraite", en: "retirement-planning" },
+  investments: { fr: "placements-retraite", en: "investing-for-retirement" },
+  about: { fr: "a-propos", en: "about" },
+  resources: { fr: "guide-retraite", en: "retirement-guide" },
+  meeting: { fr: "demarche", en: "how-it-works" },
+  fees: { fr: "outils/frais-placement", en: "tools/investment-fees" },
+  privacy: { fr: "confidentialite", en: "privacy" },
+  legal: { fr: "mentions-legales", en: "legal" },
+} as const;
+export type PageKey = keyof typeof routes;
+export const pathFor = (lang: Language, key: PageKey) =>
+  `/${lang}${routes[key][lang] ? "/" + routes[key][lang] : ""}`;
+export const keyFor = (lang: Language, slug: string) =>
+  (Object.keys(routes) as PageKey[]).find((k) => routes[k][lang] === slug);
+export const other = (lang: Language): Language =>
+  lang === "fr" ? "en" : "fr";
+
+## origin/codex proxy.ts
+import { NextRequest, NextResponse } from "next/server";
+import { timingSafeEqual } from "node:crypto";
+import { launchApproved, localReview, reviewEnabled } from "./lib/business";
+function equal(a: string, b: string) {
+  const x = Buffer.from(a),
+    y = Buffer.from(b);
+  return x.length === y.length && timingSafeEqual(x, y);
+}
+export function proxy(request: NextRequest) {
+  const path = request.nextUrl.pathname;
+  const draft = /^\/(fr|en)\/revision(?:\/|$)/.test(path);
+  const headers = {
+    "X-Robots-Tag": "noindex, nofollow",
+    "Cache-Control": "private, no-store",
+  };
+  if (draft && !reviewEnabled())
+    return new NextResponse("Not found", { status: 404, headers });
+  const needsAuth =
+    (draft && !localReview()) || (!launchApproved() && !localReview());
+  if (needsAuth) {
+    const user = process.env.REVIEW_USER,
+      pass = process.env.REVIEW_PASSWORD;
+    if (!user || !pass)
+      return new NextResponse("Review access is not configured.", {
+        status: 503,
+        headers,
+      });
+    const expected =
+      "Basic " + Buffer.from(`${user}:${pass}`).toString("base64");
+    if (!equal(request.headers.get("authorization") || "", expected))
+      return new NextResponse("Protected review", {
+        status: 401,
+        headers: {
+          ...headers,
+          "WWW-Authenticate":
+            'Basic realm="Bill Badran review", charset="UTF-8"',
+        },
+      });
+  }
+  const response = NextResponse.next();
+  if (!launchApproved() || draft)
+    Object.entries(headers).forEach(([k, v]) => response.headers.set(k, v));
+  return response;
+}
+export const config = {
+  matcher: [
+    "/((?!_next/static|_next/image|assets/|favicon.ico|robots.txt|sitemap.xml).*)",
+  ],
+};

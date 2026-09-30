@@ -1,0 +1,415 @@
+{
+  "contract": "offer-matrix",
+  "contract_version": "1.0",
+  "document_kind": "authoritative",
+  "as_of": "2026-09-30",
+  "gate_records": [],
+  "offers": {
+    "guide-pdf": {
+      "offer_id": "guide-pdf",
+      "kind": "digital_download",
+      "receives": "The approved digital retirement book (PDF), free.",
+      "price": {
+        "model": "free"
+      },
+      "duration_minutes": null,
+      "access": {
+        "requires_marketing_consent": false,
+        "requires_email": false,
+        "download_fallback_when_email_fails": true
+      },
+      "approved_editions": [],
+      "primary_route": {
+        "route_key": "resources",
+        "route_status": "existing"
+      },
+      "gate_dependencies": [
+        {
+          "gate": "G0",
+          "covers": "which book is canonical and which languages exist (HB-04, HB-18)"
+        },
+        {
+          "gate": "G1",
+          "covers": "claims and professional facts in the book and its landing copy (HB-21, HB-25)"
+        },
+        {
+          "gate": "G3",
+          "covers": "exact sha256 of each PDF edition and of the landing copy"
+        },
+        {
+          "gate": "G5",
+          "covers": "optional email copy: consent wording, processors, retention (HB-27)"
+        },
+        {
+          "gate": "G6",
+          "covers": "public activation of the guide path"
+        }
+      ],
+      "guardrails": [
+        "Marketing consent is separate from access and fulfilment: the PDF never requires a marketing opt-in.",
+        "Access is immediate and needs no email address; an emailed copy is optional.",
+        "The approved PDF stays downloadable on the site when email delivery or storage fails.",
+        "Only a G3-approved edition (exact sha256) is offered publicly; the review edition stays behind review protection."
+      ],
+      "spec_refs": [
+        "01 §1",
+        "01 §7",
+        "04 §1",
+        "04 §6",
+        "D-001",
+        "D-054"
+      ]
+    },
+    "intro-15": {
+      "offer_id": "intro-15",
+      "kind": "meeting",
+      "receives": "15 minutes with Bill about one question, at no charge, online or in person.",
+      "price": {
+        "model": "free"
+      },
+      "question_limit": 1,
+      "meeting_type_id": "intro-15",
+      "duration_minutes": 15,
+      "modalities_permitted": [
+        "online",
+        "in_person"
+      ],
+      "modalities_offered": [],
+      "in_person_location": {
+        "status": "pending",
+        "value": null,
+        "approvals": []
+      },
+      "online_service": {
+        "status": "pending",
+        "value": null,
+        "approvals": []
+      },
+      "capacity_per_week": {
+        "status": "pending",
+        "value": null,
+        "approvals": []
+      },
+      "capacity_proposal": {
+        "slots_per_week": 6,
+        "buffer_minutes": 10,
+        "status_note": "plan proposal pending G0 (D-033, HB-16)"
+      },
+      "booking_route": {
+        "route_key": "meeting",
+        "route_status": "existing"
+      },
+      "not_included": [
+        "a complete financial plan",
+        "onboarding",
+        "a promise of individualized advice outside the appropriate professional process"
+      ],
+      "booking_truth": "Confirmed only by the calendar or provider event (provider.booking_sync) or an audited operator reconciliation (operator.reconciliation); a booking-link click changes nothing.",
+      "primary_route": {
+        "route_key": "meeting",
+        "route_status": "existing"
+      },
+      "gate_dependencies": [
+        {
+          "gate": "G0",
+          "covers": "scheduling owner, weekly capacity, online meeting service, in-person location (HB-14, HB-15, HB-16)"
+        },
+        {
+          "gate": "G1",
+          "covers": "approved scope and wording of the 15-minute introduction (HB-24)"
+        },
+        {
+          "gate": "G3",
+          "covers": "exact hashes of the meeting page copy, W11, S13, AD04, RT01, E05 and E15"
+        },
+        {
+          "gate": "G5",
+          "covers": "scheduler intake questions, booking data processing and retention"
+        },
+        {
+          "gate": "G6",
+          "covers": "public activation of the meeting path"
+        }
+      ],
+      "guardrails": [
+        "Exactly 15 minutes and one question; never 60 minutes.",
+        "Not a complete plan, not onboarding, and not a promise of individualized advice outside the appropriate professional process.",
+        "In person is offered only once Bill's location and room are confirmed (G0); online only once the online meeting service is recorded (G0), never Zoom.",
+        "A booking-link click is not a booking: only the calendar or provider event, or an audited operator reconciliation, confirms it.",
+        "Every relevant page can link straight to this meeting; nothing has to be watched, finished or bought first.",
+        "Scheduler links are never prefilled and intake questions ask for no balances, amounts, account numbers or documents."
+      ],
+      "spec_refs": [
+        "01 §1",
+        "01 §11",
+        "01 §17",
+        "05 W11",
+        "D-002",
+        "D-005",
+        "D-008",
+        "D-033"
+      ]
+    },
+    "book-bundle": {
+      "offer_id": "book-bundle",
+      "kind": "printed_book_with_consultation",
+      "receives": "A paid printed copy of the approved book, including one 30-minute consultation with Bill, online or in person.",
+      "price": {
+        "model": "paid",
+        "status": "pending",
+        "value": null,
+        "approvals": []
+      },
+      "approved_print_editions": [],
+      "included_consultation": {
+        "count": 1,
+        "meeting_type_id": "book-consultation-30",
+        "duration_minutes": 30,
+        "modalities_permitted": [
+          "online",
+          "in_person"
+        ],
+        "modalities_offered": [],
+        "in_person_location": {
+          "status": "pending",
+          "value": null,
+          "approvals": []
+        },
+        "online_service": {
+          "status": "pending",
+          "value": null,
+          "approvals": []
+        },
+        "capacity_per_week": {
+          "status": "pending",
+          "value": null,
+          "approvals": []
+        },
+        "capacity_proposal": {
+          "slots_per_week": 2,
+          "buffer_minutes": 10,
+          "status_note": "plan proposal pending G0 (D-033, HB-16)"
+        },
+        "booking_route": {
+          "route_key": "bookConsultation",
+          "route_status": "proposed"
+        },
+        "validity": {
+          "status": "pending",
+          "value": null,
+          "approvals": []
+        },
+        "separately_priced": false,
+        "survives_no_fit": true,
+        "removable_by_fit_screen": true,
+        "booking_truth": "Confirmed only by the calendar or provider event (provider.booking_sync) or an audited operator reconciliation (operator.reconciliation); a booking-link click changes nothing."
+      },
+      "entitlement": {
+        "unit": {
+          "proposal": "one_household_per_bundle",
+          "status": "pending",
+          "value": null,
+          "approvals": []
+        },
+        "rights_per_verified_paid_order": 1,
+        "issued_only_from": "book.payment_confirmed from provider.stripe_webhook (verified signature, stored event ID, current status paid)",
+        "never_from": [
+          "a return-page redirect or its query string",
+          "a hidden or reusable scheduling URL",
+          "a booking-link click",
+          "a second webhook delivery or a second checkout session for the same order"
+        ],
+        "reschedule": "moves the existing right to the new booking; never creates another right",
+        "refund": "an unused right is voided as the approved refund terms say (HB-20, HB-28)"
+      },
+      "cap": {
+        "proposal_bundles": 8,
+        "limited_by": [
+          "real calendar capacity",
+          "print and dispatch capacity"
+        ],
+        "status": "pending",
+        "value": null,
+        "approvals": []
+      },
+      "prepayment_disclosures": {
+        "price": {
+          "status": "pending",
+          "value": null,
+          "approvals": []
+        },
+        "currency": {
+          "status": "pending",
+          "value": null,
+          "approvals": []
+        },
+        "tax_treatment": {
+          "status": "pending",
+          "value": null,
+          "approvals": []
+        },
+        "shipping": {
+          "status": "pending",
+          "value": null,
+          "approvals": []
+        },
+        "eligibility": {
+          "status": "pending",
+          "value": null,
+          "approvals": []
+        },
+        "booking": {
+          "status": "pending",
+          "value": null,
+          "approvals": []
+        },
+        "cancellation": {
+          "status": "pending",
+          "value": null,
+          "approvals": []
+        },
+        "refund": {
+          "status": "pending",
+          "value": null,
+          "approvals": []
+        }
+      },
+      "sale_state": "not_on_sale",
+      "primary_route": {
+        "route_key": "book",
+        "route_status": "proposed"
+      },
+      "gate_dependencies": [
+        {
+          "gate": "G0",
+          "covers": "price, currency, tax treatment, shipping, cap, consultation validity and weekly capacity (HB-20, HB-16)"
+        },
+        {
+          "gate": "G1",
+          "covers": "offer wording, eligibility and the entitlement unit (HB-20, HB-24)"
+        },
+        {
+          "gate": "G2",
+          "covers": "Stripe account, test mode first, then live (HB-06)"
+        },
+        {
+          "gate": "G3",
+          "covers": "exact hashes of the offer page, the terms, the print master and E12, E13, E14"
+        },
+        {
+          "gate": "G5",
+          "covers": "fulfilment, refund and cancellation process and shipping-address handling (HB-28)"
+        },
+        {
+          "gate": "G6",
+          "covers": "checkout_live and the capped book-sales rollout step"
+        }
+      ],
+      "guardrails": [
+        "The included consultation is 30 minutes, never 60; there is no one-hour book offer.",
+        "Price, currency, tax treatment, shipping, eligibility, booking, cancellation and refund terms are disclosed before payment.",
+        "The promise is '30 minutes included', not a separately priced service with an invented value.",
+        "A buyer keeps the included consultation even if no ongoing relationship follows; a commercial-fit screen cannot remove it.",
+        "One consultation right per verified paid order, issued only after a verified signed payment webhook; never from a redirect, a hidden scheduling URL or a click.",
+        "Rescheduling moves the existing right; duplicate webhooks or clicks never create a second right, book or email.",
+        "Sales are capped by real calendar and print/dispatch capacity; no price or cap is used before G0 records it."
+      ],
+      "spec_refs": [
+        "01 §1",
+        "01 §11",
+        "04 §1",
+        "04 §2",
+        "05 AD06",
+        "05 E12",
+        "D-003",
+        "D-007",
+        "D-010",
+        "D-032"
+      ]
+    },
+    "continued-work": {
+      "offer_id": "continued-work",
+      "kind": "discussion",
+      "receives": "A discussion of scope, fees and next steps, only if the fit is mutual.",
+      "price": {
+        "model": "not_stated_in_matrix"
+      },
+      "duration_minutes": null,
+      "requires_mutual_fit": true,
+      "prerequisite_for_other_offers": false,
+      "primary_route": null,
+      "gate_dependencies": [
+        {
+          "gate": "G1",
+          "covers": "any public wording about continued work, scope or fees (HB-24)"
+        },
+        {
+          "gate": "G3",
+          "covers": "exact hash of any artifact that mentions continued work"
+        }
+      ],
+      "guardrails": [
+        "Offered only when the fit is mutual; never a condition for the free introduction or the included consultation.",
+        "A book buyer still receives the included consultation when no ongoing relationship results.",
+        "This matrix states no fee, minimum asset level or engagement term; any such public statement needs G1 and G3."
+      ],
+      "spec_refs": [
+        "01 §1",
+        "D-004"
+      ]
+    }
+  },
+  "meeting_types": {
+    "intro-15": {
+      "offer_id": "intro-15",
+      "duration_minutes": 15,
+      "requires_consultation_right": false
+    },
+    "book-consultation-30": {
+      "offer_id": "book-bundle",
+      "duration_minutes": 30,
+      "requires_consultation_right": true
+    }
+  },
+  "rules": {
+    "no_mandatory_funnel_staircase": {
+      "direct_meeting_offer_id": "intro-15",
+      "intro_15_prerequisites": [],
+      "must_link_to_meeting": [
+        "home",
+        "retirement",
+        "investments",
+        "about",
+        "resources",
+        "fees",
+        "articles",
+        "workshop",
+        "crossroads",
+        "crossroadsConfirmed",
+        "crossroadsReplay",
+        "book"
+      ],
+      "exempt_from_meeting_link": [
+        "meeting",
+        "privacy",
+        "legal",
+        "emailPreferences",
+        "unsubscribe",
+        "crossroadsJoin",
+        "bookOrderStatus",
+        "bookConsultation"
+      ],
+      "workshop_ending_useful_without_email_or_booking": true
+    },
+    "forbidden": [
+      "a 60-minute consultation or a one-hour book offer",
+      "Zoom for Bill's meetings or events",
+      "an invented or estimated price, cap or value",
+      "a separately priced value for the included consultation",
+      "a mandatory funnel staircase before the 15-minute meeting",
+      "a live customer-facing LLM answering visitors",
+      "workshop financial figures leaving the browser"
+    ],
+    "change_control": "Offers change only when Arnaud and Bill change them explicitly. A0 records the change in decisions.md and issues a new contract version. No agent can change an offer."
+  }
+}

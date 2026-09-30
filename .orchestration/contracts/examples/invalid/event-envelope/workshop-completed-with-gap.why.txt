@@ -1,0 +1,5 @@
+rule: EV-WS-1 workshop.completed carries no answers, gap or clip (04 §3); closed envelope
+expect_path: /
+expect_keyword: additionalProperties
+
+A derived funding gap (fictional) attached to the completion signal.

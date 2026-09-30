@@ -1,0 +1,4 @@
+rule: AM-CTA-1
+breaks: An asset whose CTA is an offer states that offer, so offer_refs must list it (and its approval then needs G1).
+expect_keyword: contains
+expect_path: /assets/2/offer_refs

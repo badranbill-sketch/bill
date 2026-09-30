@@ -1,0 +1,27 @@
+# F00-SPOT-05_repo_state  2026-09-30T02:52:01Z  cwd=/home/user/bill
+$ git rev-parse HEAD; git status --porcelain; echo '-- stash:'; git stash list; echo '-- worktrees:'; git worktree list; echo '-- branches:'; git branch -a -vv --no-color
+eeb79a9380b297880e8fb530ac1f5b6f2fa7f89d
+?? .orchestration/evidence/
+?? .orchestration/handoffs/
+?? .orchestration/inventory.md
+?? .orchestration/reviews/
+-- stash:
+-- worktrees:
+/home/user/bill                                                                                        eeb79a9 [claude/orchestration-foundation]
+/tmp/claude-0/-home-user/bb8d4187-6ae8-587b-a816-8153faeea853/scratchpad/wt/base01-codex               66cce52 (detached HEAD)
+/tmp/claude-0/-home-user/bb8d4187-6ae8-587b-a816-8153faeea853/scratchpad/wt/base01-diag-main-filmdeps  77de3bd (detached HEAD)
+/tmp/claude-0/-home-user/bb8d4187-6ae8-587b-a816-8153faeea853/scratchpad/wt/base01-guide               749b360 (detached HEAD)
+/tmp/claude-0/-home-user/bb8d4187-6ae8-587b-a816-8153faeea853/scratchpad/wt/base01-homepage            d63aabd (detached HEAD)
+/tmp/claude-0/-home-user/bb8d4187-6ae8-587b-a816-8153faeea853/scratchpad/wt/base01-main                77de3bd (detached HEAD)
+/tmp/claude-0/-home-user/bb8d4187-6ae8-587b-a816-8153faeea853/scratchpad/wt/base01-video               fc00445 (detached HEAD)
+-- branches:
+* claude/orchestration-foundation                eeb79a9 [origin/claude/orchestration-foundation] Record execution spec, task graph and acceptance catalog (orchestration)
+  main                                           77de3bd [origin/main] Size refreshed logo mark in site chrome
+  remotes/origin/add-ask-bill-section            01e296c Add journey, guide, Ask Bill and conversation section after the ride
+  remotes/origin/claude/bill-centered-homepage   d63aabd Put Bill at the centre; add Ask Bill and the Before You Retire guide
+  remotes/origin/claude/bill-presentation-video  fc00445 Add the presentation video "The other side of the table" (Remotion)
+  remotes/origin/claude/orchestration-foundation eeb79a9 Record execution spec, task graph and acceptance catalog (orchestration)
+  remotes/origin/codex/desktop-iphone-unified    66cce52 Keep website checks scoped to the Next.js application
+  remotes/origin/guide/pre-retirement-guide      749b360 Add the pre-retirement guide (EN/FR print and screen PDFs)
+  remotes/origin/main                            77de3bd Size refreshed logo mark in site chrome
+exit_code=0

@@ -1,0 +1,7 @@
+rule: XF-02 - partner retirement age not earlier than partner current age
+layer: schema
+expect_keyword: minimum
+expect_path: /chapters/timing/household/partner_retirement_age/value
+expect_validator_value: 60
+plain_message_en_draft: Your partner's retirement age can't be earlier than their current age. If they've already retired, use their current age.
+explanation: Partner aged 60 with retirement age 57. Enumerated XF-02 clause for partner_current_age = 60 sets minimum 60.

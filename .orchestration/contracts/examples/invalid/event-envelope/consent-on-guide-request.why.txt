@@ -1,0 +1,5 @@
+rule: EV-CONSENT-1 consent_reference is forbidden on non-consent events; consent is never inferred from a download
+expect_path: consent_reference
+expect_keyword: not
+
+A guide request tries to carry marketing consent. Opt-in is a separate marketing.opted_in event (AM-CONSENT-1).

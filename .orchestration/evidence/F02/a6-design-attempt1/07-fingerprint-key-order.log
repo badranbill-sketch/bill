@@ -1,0 +1,6 @@
+$ cd <F00 codex worktree @66cce52, lib/articles.ts blob df24ccb1d87f781441a52ea8b5ec63933bae7b7c, zod 4.6.5> && node --import tsx .orchestration/evidence/F02/a6-design-attempt1/fingerprint_order.ts
+file-order keys        : 41d981aea965386d4e43cfbeabb470c7ff7cad3ad37d90094861713de1d48989
+reversed top-level keys: 41d981aea965386d4e43cfbeabb470c7ff7cad3ad37d90094861713de1d48989 (SAME hash)
+reordered source keys  : 41d981aea965386d4e43cfbeabb470c7ff7cad3ad37d90094861713de1d48989 (SAME hash)
+title changed (control): efc948668223ed941c2e5df816f016dfbaff18e2c5966c0d5ea8613d8ac28c57 (different hash)
+exit=0

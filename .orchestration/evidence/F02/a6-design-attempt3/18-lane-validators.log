@@ -1,0 +1,18 @@
+tree hash before: 13f6a04e610478a0499db4d91e7b85fee1e431e1cf9d7bda2fcb8b265b02fdcb
+$ PYTHONDONTWRITEBYTECODE=1 /tmp/claude-0/-home-user/bb8d4187-6ae8-587b-a816-8153faeea853/scratchpad/venv-f02/bin/python .orchestration/evidence/F02/data/validate_f02_data.py
+### 8c. Negative controls: the section 8 checks catch the attempt-2 defects
+PASS  NC-F the attempt-2 suppressed branch (no send_started_at rule) accepts the race record, so 8a is not vacuous
+PASS  NC-G the attempt-2 op_record_withdrawal wording is caught by the stale-text search
+PASS  NC-H with no matching email_hmac the reference join joins nothing (the join is not vacuous)
+
+## Result: 298 passed, 0 failed
+exit=0
+$ PYTHONDONTWRITEBYTECODE=1 /tmp/claude-0/-home-user/bb8d4187-6ae8-587b-a816-8153faeea853/scratchpad/venv-f02/bin/python .orchestration/evidence/F02/offers/validate_offers.py
+PASS  offer-matrix meeting_types ['book-consultation-30', 'intro-15'] = bookings.offer_id values in operational-data-model.md ['book-consultation-30', 'intro-15']
+PASS  asset-manifest accepts one sample ID of every kind
+  INFO event-envelope resource_content_version accepts kinds ['capsule', 'companion', 'clip', 'case', 'ink', 'template', 'ad', 'article', 'page', 'guide', 'book', 'event', 'copy']; not yet: [] (cross-lane reconciliation item for A0, not a failure of this lane)
+
+## Summary
+pass: 92  fail: 0
+exit=0
+tree hash after:  13f6a04e610478a0499db4d91e7b85fee1e431e1cf9d7bda2fcb8b265b02fdcb

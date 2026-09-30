@@ -1,0 +1,4 @@
+rule: AM-RIGHTS-1
+breaks: An approved or published asset cannot have pending rights.
+expect_keyword: not
+expect_path: /assets/6/rights/status

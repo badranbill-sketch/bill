@@ -1,0 +1,10 @@
+$ python .orchestration/evidence/F02/a6-design-attempt2/withdrawal_leased_race.py
+base example: retry-due-e04-deferred-daily-budget.json status retry_due class promotional
+suppressed job with send_started_at set and attempt_count 1 -> ACCEPTED by delivery-job 1.0
+
+job-state-machine.md T3: | T3 | pending / retry_due → suppressed | an upstream suppression sweep (withdrawal, blocklist, cancellation, booking, refund, remade event) | `op_record_withdrawal`, domain operations |
+job-state-machine.md T5: | T5 | leased → suppressed | the pre-send check (§6) fails on an eligibility rule | `op_prepare_send` |
+job-state-machine.md rule: Any transition not in this table is forbidden. Every transition is conditional on the caller holding the current `lease_token` where the job is leased, and it updates `updated_at`.
+operational-data-model.md: | `op_record_withdrawal(contact_id, purpose, source, evidence)` | Appends a revoked consent row and suppresses pending and leased promotional jobs in the same transaction. |
+authority-matrix.md: - **AM-CONSENT-2.** Revocation wins. A later `revoked` row, a Brevo blocklist or unsubscribe signal, or a global suppression vetoes every pending and leased promotional job, even if an older record sa
+exit=0

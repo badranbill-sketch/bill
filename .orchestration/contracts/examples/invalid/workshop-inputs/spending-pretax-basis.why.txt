@@ -1,0 +1,6 @@
+rule: BASIS - spending is after tax (stated)
+layer: schema
+expect_keyword: const
+expect_path: /chapters/life/spending/tax_basis
+plain_message_en_draft: (never shown - the basis is stated, not chosen)
+explanation: Spending basis is fixed to after_tax in contract 1.0.

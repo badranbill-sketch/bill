@@ -1,0 +1,15 @@
+$ python3 .orchestration/evidence/F02/a6-design-attempt3/routes3.py
+origin/main: keys=9
+origin/codex/desktop-iphone-unified: keys=9
+origin/claude/bill-centered-homepage: keys=10
+origin/guide/pre-retirement-guide: keys=9
+origin/claude/bill-presentation-video: keys=9
+origin/add-ask-bill-section: keys=9
+existing keys (union): ['about', 'ask', 'fees', 'home', 'investments', 'legal', 'meeting', 'privacy', 'resources', 'retirement']
+proposed keys: 10 ['book', 'bookConsultation', 'bookOrderStatus', 'crossroads', 'crossroadsConfirmed', 'crossroadsJoin', 'crossroadsReplay', 'emailPreferences', 'unsubscribe', 'workshop']
+slug problems: none
+asset-manifest intended_route_key (null allowed, ignored) == existing+ask+proposed: True []
+must_link_to_meeting: ['home', 'retirement', 'investments', 'about', 'resources', 'fees', 'articles', 'workshop', 'crossroads', 'crossroadsConfirmed', 'crossroadsReplay', 'book']
+exempt: ['meeting', 'privacy', 'legal', 'emailPreferences', 'unsubscribe', 'crossroadsJoin', 'bookOrderStatus', 'bookConsultation']
+route keys in neither list: ['ask'] | non-route keys in lists: ['articles'] | in both: []
+exit=0

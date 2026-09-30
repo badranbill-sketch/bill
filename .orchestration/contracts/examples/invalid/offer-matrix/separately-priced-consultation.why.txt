@@ -1,0 +1,4 @@
+rule: OM-BOOK-1
+breaks: The included consultation has no separate price or invented value.
+expect_keyword: const
+expect_path: /offers/book-bundle/included_consultation/separately_priced

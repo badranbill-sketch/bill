@@ -1,0 +1,1199 @@
+[
+ {
+  "group": "site_capability",
+  "item": "Bilingual routing (FR/EN equivalent URL map)",
+  "status": "exists",
+  "evidence": "origin/main:lib/routes.ts; origin/main:app/[lang]/[[...slug]]/page.tsx; origin/claude/bill-centered-homepage:lib/routes.ts (+ask route demandez-a-bill/ask-bill)",
+  "note": "9 page keys on main (home, retirement, investments, about, resources, meeting, fees, privacy, legal); centered branch adds 'ask'. New plan routes (workshop, crossroads, book, preferences) must be added to this map, not as conflicting routes."
+ },
+ {
+  "group": "site_capability",
+  "item": "Review protection (proxy.ts Basic auth, noindex, draft 404)",
+  "status": "exists",
+  "evidence": "origin/main:proxy.ts (identical on all 6 branches)",
+  "note": "Matcher excludes /assets/*, so everything under public/assets (portrait, ink SVGs, codex AI cover jpg) is fetchable without review auth on a hosted preview. /api/* is behind review auth while launch is off, so any future provider callback (Stripe/Brevo/booking) needs a narrow exemption with its own signature check (04 §4)."
+ },
+ {
+  "group": "site_capability",
+  "item": "Hash-bound two-PR content publication (approvals.json + verify-publication + CI)",
+  "status": "exists",
+  "evidence": "origin/main:lib/articles.ts:103-128; origin/main:scripts/verify-publication.ts; origin/main:scripts/protections.ts; origin/main:.github/workflows/verify.yml; origin/main:content/approvals.json ('{}')",
+  "note": "Identical on all branches. Not run against a real repo (TEST-SUMMARY.md:39). No .github/CODEOWNERS on any branch; CONTENT_REVIEWERS/FIRM_REVIEWERS variables unknown. Covers articles only, not emails/scripts/ads/book."
+ },
+ {
+  "group": "site_capability",
+  "item": "Launch guard (approval flags, launch:check)",
+  "status": "exists",
+  "evidence": "origin/main:lib/business.ts:28-37,46-52; origin/main:scripts/launch.ts; origin/claude/bill-centered-homepage:scripts/launch.ts (guide.pdf variant)",
+  "note": "All 8 approval flags false on every branch. No flags yet for checkout/marketing dispatch/ads/auto-publication (04 §7)."
+ },
+ {
+  "group": "site_capability",
+  "item": "Feature flags for plan (checkout, marketing dispatch, ads, auto-publish, tracking)",
+  "status": "partial",
+  "evidence": "origin/main:lib/business.ts:43-44 (newsletterEnabled=false, analyticsEnabled=false); origin/add-ask-bill-section:lib/features.ts and origin/codex/desktop-iphone-unified:lib/features.ts are COPY/config for homepage blocks, not feature flags",
+  "note": "Only newsletter/analytics/public-launch gates exist. The five-state flag model (code_ready/provider_tested/approved/enabled/live_verified) is missing."
+ },
+ {
+  "group": "site_capability",
+  "item": "Inquiry API (validated contact form)",
+  "status": "partial",
+  "evidence": "origin/main:app/api/inquiry/route.ts; origin/main:lib/contact.ts:20-23,50,72; origin/main:docs/INTEGRATIONS.md:5",
+  "note": "Works fail-closed; adapters are Resend (send) + Upstash Redis (rate limit), not Brevo/Supabase. Privacy notice names Resend/Upstash as processors (origin/main:lib/pages.ts:291,601). Stack decision needed in F01."
+ },
+ {
+  "group": "site_capability",
+  "item": "Guide landing + immediate approved PDF access",
+  "status": "partial",
+  "evidence": "origin/codex/desktop-iphone-unified:app/api/guide/route.ts (review-only, 404 when launched or review off); origin/codex/desktop-iphone-unified:content/guides/retirement-review-en.pdf; origin/claude/bill-centered-homepage:components/booklet.tsx + business.guide.pdf=null; origin/main:lib/business.ts:38-41 guides=null",
+  "note": "No approved PDF exists; public route shows no download on any branch. Optional email request not implemented."
+ },
+ {
+  "group": "site_capability",
+  "item": "Fifteen-minute meeting page + provider handoff",
+  "status": "partial",
+  "evidence": "origin/main:lib/routes.ts meeting=demarche/how-it-works; origin/main:lib/business.ts:14-15 bookingUrl=https://calendly.com/bbadran bookingVerified=true; origin/main:components/pages.tsx:485",
+  "note": "Meeting page exists but states no duration/cost/format (docs/COPY-STRATEGY.md flag 6). No '15 minutes, one question' copy anywhere. Offer requires G1."
+ },
+ {
+  "group": "site_capability",
+  "item": "Workshop routes (intro, 4 steps, summary, local print)",
+  "status": "missing",
+  "evidence": "git grep -i -E 'workshop|atelier|milestone' across all 6 origin branches (changed files on non-main branches) returned 0 hits",
+  "note": "Precedents only: origin/main:components/checklist.tsx + lib/checklist.ts (5-question local-only check-up with print, no storage) and origin/main:lib/fees.ts (pure tested annual-compounding illustration)."
+ },
+ {
+  "group": "site_capability",
+  "item": "Crossroads landing/registration/confirmation/join/replay",
+  "status": "missing",
+  "evidence": "git grep 'crossroad|carrefour|game show|quiz' found only a test name on main/centered/codex",
+  "note": ""
+ },
+ {
+  "group": "site_capability",
+  "item": "Book offer, hosted checkout, purchase status, consultation redemption",
+  "status": "missing",
+  "evidence": "git grep 'stripe|checkout' (excluding actions/checkout) 0 relevant hits on all branches",
+  "note": ""
+ },
+ {
+  "group": "site_capability",
+  "item": "Privacy page",
+  "status": "partial",
+  "evidence": "origin/main:lib/pages.ts:276-309 (FR privacy), 586-619 (EN privacy); route confidentialite/privacy; approvals.privacyPolicy=false (lib/business.ts:34)",
+  "note": "Operational review notice only; says policy must be approved before launch. Describes Resend/Upstash, not Brevo/Supabase/n8n/Stripe."
+ },
+ {
+  "group": "site_capability",
+  "item": "Email preferences, accessible unsubscribe, consent withdrawal",
+  "status": "missing",
+  "evidence": "git grep 'unsubscribe|désabonn|preferences' only hits docs saying newsletter is absent (origin/main:docs/INTEGRATIONS.md:23)",
+  "note": ""
+ },
+ {
+  "group": "site_capability",
+  "item": "Minimal authenticated operations view",
+  "status": "missing",
+  "evidence": "no admin/ops route on any branch (app/api has only inquiry, plus guide on codex)",
+  "note": ""
+ },
+ {
+  "group": "site_capability",
+  "item": "SEO robots/sitemap/structured data",
+  "status": "exists",
+  "evidence": "origin/main:app/robots.ts; origin/main:app/sitemap.ts; origin/main:app/[lang]/[[...slug]]/page.tsx:135-175",
+  "note": "Disallow-all and empty sitemap until launchApproved(); Person schema carries no credentials. Identical on all branches."
+ },
+ {
+  "group": "site_capability",
+  "item": "Test suite",
+  "status": "exists",
+  "evidence": "origin/main:tests/logic.test.ts (11 test() decls), tests/ride.test.ts (2), tests/browser/site.spec.ts (18 decls); centered adds tests/ask.test.ts (5) and 21 browser decls; codex adds tests/browser/responsive.spec.ts (2)",
+  "note": "Static count of test() declarations only; NOT run by this lane (F03 owns execution). centered TEST-SUMMARY.md:45 states main's 'npm run build' failed on film/ modules before tsconfig/eslint exclusion (documented, not verified here)."
+ },
+ {
+  "group": "workshop",
+  "item": "Chapter 1: What life do you want to fund? (UI + inputs + state)",
+  "status": "missing",
+  "evidence": "git grep -i -E 'workshop|atelier|milestone' across all 6 origin branches (changed files on non-main branches) returned 0 hits",
+  "note": "No workshop domain/UI code on any branch."
+ },
+ {
+  "group": "workshop",
+  "item": "Chapter 2: What income is already planned? (UI + inputs + state)",
+  "status": "missing",
+  "evidence": "git grep -i -E 'workshop|atelier|milestone' across all 6 origin branches (changed files on non-main branches) returned 0 hits",
+  "note": "No workshop domain/UI code on any branch."
+ },
+ {
+  "group": "workshop",
+  "item": "Chapter 3: What have you built? (UI + inputs + state)",
+  "status": "missing",
+  "evidence": "git grep -i -E 'workshop|atelier|milestone' across all 6 origin branches (changed files on non-main branches) returned 0 hits",
+  "note": "No workshop domain/UI code on any branch."
+ },
+ {
+  "group": "workshop",
+  "item": "Chapter 4: When do the pieces change? (UI + inputs + state)",
+  "status": "missing",
+  "evidence": "git grep -i -E 'workshop|atelier|milestone' across all 6 origin branches (changed files on non-main branches) returned 0 hits",
+  "note": "No workshop domain/UI code on any branch."
+ },
+ {
+  "group": "workshop",
+  "item": "Numerical contract / calculation reference / fixtures (D_t, P_j,t, G_t)",
+  "status": "missing",
+  "evidence": "git grep -i -E 'workshop|atelier|milestone' across all 6 origin branches (changed files on non-main branches) returned 0 hits",
+  "note": "origin/main:lib/fees.ts is a fee-drag illustration only; reference/original.html holds the deliberately unshipped age-of-depletion calculator (LAUNCH-CHECKLIST.md 'Deferred')."
+ },
+ {
+  "group": "workshop",
+  "item": "Milestone summary + local print/export + accessible chart data",
+  "status": "missing",
+  "evidence": "git grep -i -E 'workshop|atelier|milestone' across all 6 origin branches (changed files on non-main branches) returned 0 hits",
+  "note": "Checklist print (origin/main:components/checklist.tsx) is a precedent for local print."
+ },
+ {
+  "group": "workshop",
+  "item": "Deterministic branch clip selection",
+  "status": "missing",
+  "evidence": "git grep -i -E 'workshop|atelier|milestone' across all 6 origin branches (changed files on non-main branches) returned 0 hits",
+  "note": ""
+ },
+ {
+  "group": "workshop_clip",
+  "item": "W00 Welcome — spoken script (FR/EN)",
+  "status": "missing",
+  "evidence": "no workshop scripts in any branch",
+  "note": "No script and no recording. No Bill video file exists in any branch (0 .mp4/.mov/.webm)."
+ },
+ {
+  "group": "workshop_clip",
+  "item": "W01 Life and spending — spoken script (FR/EN)",
+  "status": "missing",
+  "evidence": "no workshop scripts in any branch",
+  "note": "No script and no recording. No Bill video file exists in any branch (0 .mp4/.mov/.webm)."
+ },
+ {
+  "group": "workshop_clip",
+  "item": "W02 Existing income — spoken script (FR/EN)",
+  "status": "missing",
+  "evidence": "no workshop scripts in any branch",
+  "note": "No script and no recording. No Bill video file exists in any branch (0 .mp4/.mov/.webm)."
+ },
+ {
+  "group": "workshop_clip",
+  "item": "W03 What you built — spoken script (FR/EN)",
+  "status": "missing",
+  "evidence": "no workshop scripts in any branch",
+  "note": "No script and no recording. No Bill video file exists in any branch (0 .mp4/.mov/.webm)."
+ },
+ {
+  "group": "workshop_clip",
+  "item": "W04 Timing/milestones — spoken script (FR/EN)",
+  "status": "missing",
+  "evidence": "no workshop scripts in any branch",
+  "note": "No script and no recording. No Bill video file exists in any branch (0 .mp4/.mov/.webm)."
+ },
+ {
+  "group": "workshop_clip",
+  "item": "W05 Read the summary — spoken script (FR/EN)",
+  "status": "missing",
+  "evidence": "no workshop scripts in any branch",
+  "note": "No script and no recording. No Bill video file exists in any branch (0 .mp4/.mov/.webm)."
+ },
+ {
+  "group": "workshop_clip",
+  "item": "W06 Missing-income branch — spoken script (FR/EN)",
+  "status": "missing",
+  "evidence": "no workshop scripts in any branch",
+  "note": "No script and no recording. No Bill video file exists in any branch (0 .mp4/.mov/.webm)."
+ },
+ {
+  "group": "workshop_clip",
+  "item": "W07 Funding-gap branch — spoken script (FR/EN)",
+  "status": "missing",
+  "evidence": "no workshop scripts in any branch",
+  "note": "No script and no recording. No Bill video file exists in any branch (0 .mp4/.mov/.webm)."
+ },
+ {
+  "group": "workshop_clip",
+  "item": "W08 Tax-basis branch — spoken script (FR/EN)",
+  "status": "missing",
+  "evidence": "no workshop scripts in any branch",
+  "note": "No script and no recording. No Bill video file exists in any branch (0 .mp4/.mov/.webm)."
+ },
+ {
+  "group": "workshop_clip",
+  "item": "W09 Household-timing branch — spoken script (FR/EN)",
+  "status": "missing",
+  "evidence": "no workshop scripts in any branch",
+  "note": "No script and no recording. No Bill video file exists in any branch (0 .mp4/.mov/.webm)."
+ },
+ {
+  "group": "workshop_clip",
+  "item": "W10 Neutral/uncertain branch — spoken script (FR/EN)",
+  "status": "missing",
+  "evidence": "no workshop scripts in any branch",
+  "note": "No script and no recording. No Bill video file exists in any branch (0 .mp4/.mov/.webm)."
+ },
+ {
+  "group": "workshop_clip",
+  "item": "W11 Invitation — spoken script (FR/EN)",
+  "status": "missing",
+  "evidence": "no workshop scripts in any branch",
+  "note": "No script and no recording. No Bill video file exists in any branch (0 .mp4/.mov/.webm). Final wording depends on G1 approval of the 15-minute offer."
+ },
+ {
+  "group": "workshop_clip",
+  "item": "W00–W11 recordings, captions, transcripts, posters",
+  "status": "blocked_human",
+  "evidence": "0 video files across all branches (git ls-tree -r); film README expects public/video/bill-*.mp4 which do not exist",
+  "note": "Requires approved scripts + final input labels, then Bill recording (G4)."
+ },
+ {
+  "group": "crossroads_case",
+  "item": "C01 Claire and Marc: balance but no spending target — case card, A/B/C/D, answer key, explanation, score rule",
+  "status": "missing",
+  "evidence": "origin/codex/desktop-iphone-unified:content/guides/retirement-review-en.pdf pp.2-3,5 uses fictional Claire and Marc (source material only)",
+  "note": "No case card/options/answer key exists. Any QPP/tax fact must be re-verified from current official sources."
+ },
+ {
+  "group": "crossroads_case",
+  "item": "C02 Commuting removed, travel + renovation added — case card, A/B/C/D, answer key, explanation, score rule",
+  "status": "missing",
+  "evidence": "review PDF 'What you will spend' ch. (p.8+) and origin/guide/pre-retirement-guide:guide/copy.ts ch.2 spending — thematic source only",
+  "note": "No case card/options/answer key exists. Any QPP/tax fact must be re-verified from current official sources."
+ },
+ {
+  "group": "crossroads_case",
+  "item": "C03 Equal savings, different pensions/start dates — case card, A/B/C/D, answer key, explanation, score rule",
+  "status": "missing",
+  "evidence": "no case material",
+  "note": "No case card/options/answer key exists. Any QPP/tax fact must be re-verified from current official sources."
+ },
+ {
+  "group": "crossroads_case",
+  "item": "C04 QPP timing without facts (insufficient-information) — case card, A/B/C/D, answer key, explanation, score rule",
+  "status": "missing",
+  "evidence": "origin/claude/bill-centered-homepage:lib/ask.ts:419 'Should I take my QPP at 60, or wait?' answer text — thematic source only",
+  "note": "No case card/options/answer key exists. Any QPP/tax fact must be re-verified from current official sources."
+ },
+ {
+  "group": "crossroads_case",
+  "item": "C05 Mortgage payoff from different account types — case card, A/B/C/D, answer key, explanation, score rule",
+  "status": "missing",
+  "evidence": "origin/claude/bill-centered-homepage:lib/ask.ts:447 mortgage Q&A — thematic source only",
+  "note": "No case card/options/answer key exists. Any QPP/tax fact must be re-verified from current official sources."
+ },
+ {
+  "group": "crossroads_case",
+  "item": "C06 Plan shows only average returns — case card, A/B/C/D, answer key, explanation, score rule",
+  "status": "missing",
+  "evidence": "origin/guide/pre-retirement-guide:guide/art/charts.tsx sequence panels; review PDF p.20 'Bad years first/last' — thematic source only",
+  "note": "No case card/options/answer key exists. Any QPP/tax fact must be re-verified from current official sources."
+ },
+ {
+  "group": "crossroads_case",
+  "item": "C07 One partner retires years earlier — case card, A/B/C/D, answer key, explanation, score rule",
+  "status": "missing",
+  "evidence": "no case material",
+  "note": "No case card/options/answer key exists. Any QPP/tax fact must be re-verified from current official sources."
+ },
+ {
+  "group": "crossroads_case",
+  "item": "C08 Large gift to adult child — case card, A/B/C/D, answer key, explanation, score rule",
+  "status": "missing",
+  "evidence": "review PDF gift examples pp.26,32 and p.36 ('What can we give our daughter?') — thematic source only",
+  "note": "No case card/options/answer key exists. Any QPP/tax fact must be re-verified from current official sources."
+ },
+ {
+  "group": "crossroads_case",
+  "item": "C09 RRSP/TFSA totals vs after-tax spending — case card, A/B/C/D, answer key, explanation, score rule",
+  "status": "missing",
+  "evidence": "origin/claude/bill-centered-homepage:lib/ask.ts:433; review PDF 'Withdrawals and tax' p.24+ — thematic source only",
+  "note": "No case card/options/answer key exists. Any QPP/tax fact must be re-verified from current official sources."
+ },
+ {
+  "group": "crossroads_case",
+  "item": "C10 Final integrating case — case card, A/B/C/D, answer key, explanation, score rule",
+  "status": "missing",
+  "evidence": "no case material",
+  "note": "No case card/options/answer key exists. Any QPP/tax fact must be re-verified from current official sources."
+ },
+ {
+  "group": "crossroads_event_kit",
+  "item": "10 round decks",
+  "status": "missing",
+  "evidence": "git grep 'crossroad|carrefour|game show|webinar' — only internal pitch mentions (presentation/src/content.ts:75,352)",
+  "note": "Reusable visual precedent only: origin/claude/bill-presentation-video:presentation/src/primitives/objects.tsx (Signpost, DecisionCard Remotion components)."
+ },
+ {
+  "group": "crossroads_event_kit",
+  "item": "Host opening",
+  "status": "missing",
+  "evidence": "git grep 'crossroad|carrefour|game show|webinar' — only internal pitch mentions (presentation/src/content.ts:75,352)",
+  "note": ""
+ },
+ {
+  "group": "crossroads_event_kit",
+  "item": "Transition lines",
+  "status": "missing",
+  "evidence": "git grep 'crossroad|carrefour|game show|webinar' — only internal pitch mentions (presentation/src/content.ts:75,352)",
+  "note": ""
+ },
+ {
+  "group": "crossroads_event_kit",
+  "item": "Answer key",
+  "status": "missing",
+  "evidence": "git grep 'crossroad|carrefour|game show|webinar' — only internal pitch mentions (presentation/src/content.ts:75,352)",
+  "note": ""
+ },
+ {
+  "group": "crossroads_event_kit",
+  "item": "Q&A boundaries",
+  "status": "missing",
+  "evidence": "git grep 'crossroad|carrefour|game show|webinar' — only internal pitch mentions (presentation/src/content.ts:75,352)",
+  "note": ""
+ },
+ {
+  "group": "crossroads_event_kit",
+  "item": "Local printable scorecard",
+  "status": "missing",
+  "evidence": "git grep 'crossroad|carrefour|game show|webinar' — only internal pitch mentions (presentation/src/content.ts:75,352)",
+  "note": ""
+ },
+ {
+  "group": "crossroads_event_kit",
+  "item": "Closing book/meeting invitation",
+  "status": "missing",
+  "evidence": "git grep 'crossroad|carrefour|game show|webinar' — only internal pitch mentions (presentation/src/content.ts:75,352)",
+  "note": ""
+ },
+ {
+  "group": "crossroads_event_kit",
+  "item": "Guest instructions",
+  "status": "missing",
+  "evidence": "git grep 'crossroad|carrefour|game show|webinar' — only internal pitch mentions (presentation/src/content.ts:75,352)",
+  "note": ""
+ },
+ {
+  "group": "crossroads_event_kit",
+  "item": "Moderator checklist",
+  "status": "missing",
+  "evidence": "git grep 'crossroad|carrefour|game show|webinar' — only internal pitch mentions (presentation/src/content.ts:75,352)",
+  "note": ""
+ },
+ {
+  "group": "crossroads_event_kit",
+  "item": "Recording disclosure",
+  "status": "missing",
+  "evidence": "git grep 'crossroad|carrefour|game show|webinar' — only internal pitch mentions (presentation/src/content.ts:75,352)",
+  "note": ""
+ },
+ {
+  "group": "crossroads_event_kit",
+  "item": "Cancellation/outage message",
+  "status": "missing",
+  "evidence": "git grep 'crossroad|carrefour|game show|webinar' — only internal pitch mentions (presentation/src/content.ts:75,352)",
+  "note": ""
+ },
+ {
+  "group": "crossroads_event_kit",
+  "item": "Approved replay description",
+  "status": "missing",
+  "evidence": "git grep 'crossroad|carrefour|game show|webinar' — only internal pitch mentions (presentation/src/content.ts:75,352)",
+  "note": ""
+ },
+ {
+  "group": "crossroads_event_kit",
+  "item": "Invitation/reminder/follow-up copy",
+  "status": "missing",
+  "evidence": "git grep 'crossroad|carrefour|game show|webinar' — only internal pitch mentions (presentation/src/content.ts:75,352)",
+  "note": ""
+ },
+ {
+  "group": "crossroads_event_kit",
+  "item": "60-minute rehearsable run-of-show",
+  "status": "missing",
+  "evidence": "git grep 'crossroad|carrefour|game show|webinar' — only internal pitch mentions (presentation/src/content.ts:75,352)",
+  "note": ""
+ },
+ {
+  "group": "crossroads_event_kit",
+  "item": "Event date/cap, Google Meet account (Workspace edition), rehearsal",
+  "status": "blocked_human",
+  "evidence": "no event date in any branch; no Workspace/Meet reference anywhere (git grep 'google meet|workspace' 0 hits)",
+  "note": "G0 (date/cap) and G2 (account) inputs. Workspace Standard is a candidate, not purchased."
+ },
+ {
+  "group": "ink_asset",
+  "item": "A01 Open notebook, glasses and one cup (workshop intro)",
+  "status": "partial",
+  "evidence": "origin/main:components/ink/desk.tsx (HeroDesk: notebook, reading glasses, coffee, pen, window onto lake) -> public/assets/ink/desk-en.b5c1493928.svg / desk-fr.75906ff3c1.svg (720x640); origin/guide/pre-retirement-guide:guide/art/porch.tsx (notebook, cup, glasses, pen on porch table)",
+  "note": "Existing desk is a busy hero scene with handwritten Caveat notes and a lake window, not a quiet composition with text whitespace. Needs new composition + mobile crop + A6 render check."
+ },
+ {
+  "group": "ink_asset",
+  "item": "A02 A comfortable ordinary Tuesday at home (lifestyle)",
+  "status": "partial",
+  "evidence": "origin/main:components/ink/vignettes.tsx:612 House -> public/assets/ink/house.1bec17b827.svg (280x220 exterior spot); origin/guide/pre-retirement-guide:guide/art/spending.tsx (kitchen table from above); film/assets/illustrations/raw/home.png, kitchen-table.png, morning-porch.png (Canva AI raster, film only)",
+  "note": "No existing drawing depicts an ordinary weekday of human life at home; film rasters are Canva-AI with unverified commercial terms (film/README.md:13-16)."
+ },
+ {
+  "group": "ink_asset",
+  "item": "A03 Small bridge over water (income)",
+  "status": "partial",
+  "evidence": "origin/main:components/ink/vignettes.tsx:1185 Bridge -> public/assets/ink/bridge.a0bf3aaaf8.svg (280x220, stone arch over a stream)",
+  "note": "Closest match; spot size only, alt text empty (lib/ink-files.json). Needs chapter-scale version, alt text, mobile crop."
+ },
+ {
+  "group": "ink_asset",
+  "item": "A04 Organized envelopes/notebook tabs (savings)",
+  "status": "partial",
+  "evidence": "origin/guide/pre-retirement-guide:guide/art/containers.tsx (five containers: envelope, folder, notebook, statements, ledger); origin/main:components/ink/vignettes.tsx:1633 Letter -> letter-en/fr SVG",
+  "note": "containers.tsx lives only on the guide branch and carries captions; not exported to public/assets."
+ },
+ {
+  "group": "ink_asset",
+  "item": "A05 Winding path with four understated markers (timing summary)",
+  "status": "partial",
+  "evidence": "origin/main:components/ink/vignettes.tsx:1387 Path -> public/assets/ink/path.963e014171.svg; origin/guide/pre-retirement-guide:guide/art/horizons.tsx (path with THREE trail posts, embedded captions per presentation/public/plates/plates.json)",
+  "note": "No four-marker responsive version; labels must be UI text, not embedded."
+ },
+ {
+  "group": "ink_asset",
+  "item": "A06 Two adult-scale empty chairs on a dock (household/meeting)",
+  "status": "partial",
+  "evidence": "origin/main:components/ink/meeting.tsx:1168 Dock (Adirondack chairs near dock end, pinhole perspective) -> public/assets/ink/dock.ccd6542ba7.svg (1200x440); meeting.tsx:576 TwoChairs -> two-chairs.b97566e9b2.svg",
+  "note": "Strongest existing match. dock.svg carries a handwritten note ('Ce qui compte vraiment') and is removed from the export on origin/claude/bill-centered-homepage. Needs clean variant, alt text (currently empty), mobile crop, approval."
+ },
+ {
+  "group": "ink_asset",
+  "item": "A07 Crossroads signpost with single path foreground (challenge)",
+  "status": "missing",
+  "evidence": "no signpost drawing in site/guide ink; origin/claude/bill-presentation-video:presentation/src/primitives/objects.tsx:16 Signpost is a small animated Remotion primitive, not an illustration",
+  "note": ""
+ },
+ {
+  "group": "ink_asset",
+  "item": "A08 Bill's actual approved book beside an envelope (book/fulfilment)",
+  "status": "blocked_human",
+  "evidence": "No approved cover exists. Candidates: origin/codex/desktop-iphone-unified:public/assets/retirement-guide-cover.jpg (534x800, AI-assisted sketch portrait, 'BILL BADRAN FINANCIAL PLANNING', script signature); origin/claude/bill-centered-homepage:components/booklet.tsx (drawn 'Avant la retraite / Before You Retire' cover); origin/guide/pre-retirement-guide:guide/art/cover.tsx",
+  "note": "Brief requires the real approved cover; cover-portrait decision is open (presentation/src/content.ts s11d 'Cover portrait'). Needs G3/G4."
+ },
+ {
+  "group": "ink_asset",
+  "item": "Provenance/licence notes, editable sources, checksums for A01-A08",
+  "status": "missing",
+  "evidence": "Site ink is code-drawn from seeded Pen (docs/ART-DIRECTION.md); no per-asset provenance/rights/checksum manifest exists",
+  "note": ""
+ },
+ {
+  "group": "social_capsule",
+  "item": "S01 \"I have $800,000. Can I retire?\"",
+  "status": "partial",
+  "evidence": "origin/codex/desktop-iphone-unified:lib/features.ts (question title 'I have $800,000. Can I retire at 62?'); origin/claude/bill-centered-homepage:lib/ask.ts:377,405 ('I have $1 million. Is that enough?', 'Can I retire at 62?' 45-90 word answers)",
+  "note": "Source text only: no 45-75 s spoken script, companion brief, FR/EN pair, on-screen words, CTA, sources or compliance note."
+ },
+ {
+  "group": "social_capsule",
+  "item": "S02 \"What does a good retirement actually cost you?\"",
+  "status": "partial",
+  "evidence": "origin/claude/bill-centered-homepage:lib/ask.ts:363 'How much do I actually need to retire?'; origin/guide/pre-retirement-guide:guide/copy.ts ch.2 spending worksheet",
+  "note": "Source text only: no 45-75 s spoken script, companion brief, FR/EN pair, on-screen words, CTA, sources or compliance note."
+ },
+ {
+  "group": "social_capsule",
+  "item": "S03 \"Your savings are about to change jobs.\"",
+  "status": "partial",
+  "evidence": "origin/guide/pre-retirement-guide:guide/README.md metaphor 'your investments change jobs' + guide/copy.ts ch.4; review PDF p.4",
+  "note": "Source text only: no 45-75 s spoken script, companion brief, FR/EN pair, on-screen words, CTA, sources or compliance note."
+ },
+ {
+  "group": "social_capsule",
+  "item": "S04 \"Are you sure you'll spend less?\"",
+  "status": "partial",
+  "evidence": "review PDF p.8 'Allow the years to be different'; guide/copy.ts ch.2 (recurring vs large irregular costs)",
+  "note": "Source text only: no 45-75 s spoken script, companion brief, FR/EN pair, on-screen words, CTA, sources or compliance note."
+ },
+ {
+  "group": "social_capsule",
+  "item": "S05 \"Good accounts. No shared plan.\"",
+  "status": "partial",
+  "evidence": "origin/guide/pre-retirement-guide:guide/copy.ts ch.7 'Your accounts are not your plan'",
+  "note": "Source text only: no 45-75 s spoken script, companion brief, FR/EN pair, on-screen words, CTA, sources or compliance note."
+ },
+ {
+  "group": "social_capsule",
+  "item": "S06 \"Have you pictured the same retirement?\"",
+  "status": "missing",
+  "evidence": "centered lib/ask.ts:489 covers a spouse dying first (different topic); presentation 'Ask Your Spouse Tonight' format title (internal)",
+  "note": "No script."
+ },
+ {
+  "group": "social_capsule",
+  "item": "S07 \"When should I start my QPP?\"",
+  "status": "partial",
+  "evidence": "origin/claude/bill-centered-homepage:lib/ask.ts:419; codex lib/features.ts QPP question title",
+  "note": "Source text only: no 45-75 s spoken script, companion brief, FR/EN pair, on-screen words, CTA, sources or compliance note."
+ },
+ {
+  "group": "social_capsule",
+  "item": "S08 \"Would you pay off the mortgage?\"",
+  "status": "partial",
+  "evidence": "origin/claude/bill-centered-homepage:lib/ask.ts:447; codex lib/features.ts mortgage title",
+  "note": "Source text only: no 45-75 s spoken script, companion brief, FR/EN pair, on-screen words, CTA, sources or compliance note."
+ },
+ {
+  "group": "social_capsule",
+  "item": "S09 \"Which account would you use first?\"",
+  "status": "partial",
+  "evidence": "origin/claude/bill-centered-homepage:lib/ask.ts:433 'RRSP or TFSA: which should I draw from first?'",
+  "note": "Source text only: no 45-75 s spoken script, companion brief, FR/EN pair, on-screen words, CTA, sources or compliance note."
+ },
+ {
+  "group": "social_capsule",
+  "item": "S10 \"What happens if the first retirement years are difficult?\"",
+  "status": "partial",
+  "evidence": "origin/claude/bill-centered-homepage:lib/ask.ts:461; guide/art/charts.tsx sequence panels; review PDF p.20 'Bad years first/last'",
+  "note": "Source text only: no 45-75 s spoken script, companion brief, FR/EN pair, on-screen words, CTA, sources or compliance note."
+ },
+ {
+  "group": "social_capsule",
+  "item": "S11 \"Here is the question I'd ask before answering.\"",
+  "status": "missing",
+  "evidence": "no material",
+  "note": "No script."
+ },
+ {
+  "group": "social_capsule",
+  "item": "S12 \"Retirement is more than your last day at work.\"",
+  "status": "partial",
+  "evidence": "guide/copy.ts ch.3/ch.6 timeline ('What arrives on its own', 'Not every dollar has the same timeline')",
+  "note": "Source text only: no 45-75 s spoken script, companion brief, FR/EN pair, on-screen words, CTA, sources or compliance note."
+ },
+ {
+  "group": "social_capsule",
+  "item": "S13 \"What would we talk about first?\"",
+  "status": "missing",
+  "evidence": "no 15-minute offer copy anywhere; meeting page states no duration (docs/COPY-STRATEGY.md flag 6)",
+  "note": "No script. Needs G1-approved 15-minute offer."
+ },
+ {
+  "group": "social_capsule",
+  "item": "S14 \"What are you retiring to?\"",
+  "status": "partial",
+  "evidence": "guide/copy.ts ch.1 'What is all this money for?'; presentation 'Retirement Is Tuesday Morning' format title (internal)",
+  "note": "Source text only: no 45-75 s spoken script, companion brief, FR/EN pair, on-screen words, CTA, sources or compliance note."
+ },
+ {
+  "group": "social_capsule",
+  "item": "S15 \"Same savings. Different retirements.\"",
+  "status": "missing",
+  "evidence": "no material",
+  "note": "No script."
+ },
+ {
+  "group": "social_capsule",
+  "item": "S16 \"Can helping family fit your retirement?\"",
+  "status": "partial",
+  "evidence": "review PDF fictional gift example pp.26,36 ('What can we give our daughter?')",
+  "note": "Source text only: no 45-75 s spoken script, companion brief, FR/EN pair, on-screen words, CTA, sources or compliance note."
+ },
+ {
+  "group": "social_capsule",
+  "item": "S17 \"I turned retirement questions into a game.\"",
+  "status": "missing",
+  "evidence": "no Crossroads material",
+  "note": "No script. Needs separate prelaunch/live endings."
+ },
+ {
+  "group": "social_capsule",
+  "item": "S18 \"Work through four questions with me.\"",
+  "status": "missing",
+  "evidence": "no workshop exists",
+  "note": "No script. Needs separate prelaunch/live endings."
+ },
+ {
+  "group": "social_capsule",
+  "item": "18 companion cut briefs (15-30 s)",
+  "status": "missing",
+  "evidence": "no companion briefs in any branch",
+  "note": ""
+ },
+ {
+  "group": "social_capsule",
+  "item": "Capsule recordings/edits (26 published pieces)",
+  "status": "blocked_human",
+  "evidence": "0 video files in any branch",
+  "note": "Requires scripts, then Bill recording (G4)."
+ },
+ {
+  "group": "article_package",
+  "item": "Week 1: What should you gather before choosing a retirement date?",
+  "status": "partial",
+  "evidence": "origin/main:content/en-five-years-before-retirement.md + content/fr-cinq-ans-avant-la-retraite.md (EN 494 / FR 528 words incl. frontmatter; status draft, author null, reviewer null, generation ai-assisted)",
+  "note": "Closest existing article (sections: date in context, budget, information you have, investment questions, agenda). Unapproved: content/approvals.json is {}. No Bill contribution, LinkedIn adaptation, reuse idea or internal-link metadata."
+ },
+ {
+  "group": "article_package",
+  "item": "Week 2: How do you turn a lifestyle idea into a retirement spending estimate?",
+  "status": "partial",
+  "evidence": "origin/main:content/en-five-years-before-retirement.md §2 'Turn an impression into a budget discussion'; guide/copy.ts ch.2",
+  "note": "Only a section of another draft."
+ },
+ {
+  "group": "article_package",
+  "item": "Week 3: How do pensions and savings fit on the same timeline?",
+  "status": "partial",
+  "evidence": "origin/main:content/en-investments-and-retirement-income.md + content/fr-placements-et-revenu-de-retraite.md (EN 472 / FR 520 words; draft, ai-assisted, author/reviewer null)",
+  "note": "'Map the questions over time' section overlaps. Unapproved."
+ },
+ {
+  "group": "article_package",
+  "item": "Week 4: What should a couple discuss before comparing account balances?",
+  "status": "missing",
+  "evidence": "no matching content/*.md on any branch (4 articles exist, identical on all branches)",
+  "note": "Full package (article + sources + Bill contribution + metadata + links + LinkedIn + reuse idea) missing."
+ },
+ {
+  "group": "article_package",
+  "item": "Week 5: What information matters before deciding when to claim QPP?",
+  "status": "missing",
+  "evidence": "centered lib/ask.ts:419 short answer only",
+  "note": "Full package (article + sources + Bill contribution + metadata + links + LinkedIn + reuse idea) missing."
+ },
+ {
+  "group": "article_package",
+  "item": "Week 6: What changes if you pay off the mortgage before retiring?",
+  "status": "missing",
+  "evidence": "centered lib/ask.ts:447 short answer only",
+  "note": "Full package (article + sources + Bill contribution + metadata + links + LinkedIn + reuse idea) missing."
+ },
+ {
+  "group": "article_package",
+  "item": "Week 7: Why do RRSP and TFSA withdrawals need different questions?",
+  "status": "missing",
+  "evidence": "centered lib/ask.ts:433 short answer only; review PDF 'Withdrawals and tax'",
+  "note": "Full package (article + sources + Bill contribution + metadata + links + LinkedIn + reuse idea) missing."
+ },
+ {
+  "group": "article_package",
+  "item": "Week 8: What should a plan show besides an average-return scenario?",
+  "status": "missing",
+  "evidence": "guide sequence-of-returns chapter (source only)",
+  "note": "Full package (article + sources + Bill contribution + metadata + links + LinkedIn + reuse idea) missing."
+ },
+ {
+  "group": "article_package",
+  "item": "Week 9: What does a financial planner need before giving a useful answer?",
+  "status": "missing",
+  "evidence": "no matching content/*.md on any branch (4 articles exist, identical on all branches)",
+  "note": "Title uses 'financial planner' — protected title pending G1 (COPY-STRATEGY.md flag 2)."
+ },
+ {
+  "group": "article_package",
+  "item": "Week 10: How can different retirement dates affect one household?",
+  "status": "missing",
+  "evidence": "no matching content/*.md on any branch (4 articles exist, identical on all branches)",
+  "note": "Full package (article + sources + Bill contribution + metadata + links + LinkedIn + reuse idea) missing."
+ },
+ {
+  "group": "article_package",
+  "item": "Week 11: How can helping family fit into retirement planning?",
+  "status": "missing",
+  "evidence": "review PDF gift examples pp.26,32 (source only)",
+  "note": "Full package (article + sources + Bill contribution + metadata + links + LinkedIn + reuse idea) missing."
+ },
+ {
+  "group": "article_package",
+  "item": "Week 12: What can a retirement game teach without using your personal finances?",
+  "status": "missing",
+  "evidence": "no matching content/*.md on any branch (4 articles exist, identical on all branches)",
+  "note": "Depends on an actual scheduled Challenge."
+ },
+ {
+  "group": "article_package",
+  "item": "Week 13: What belongs on your retirement questions list for the next year?",
+  "status": "missing",
+  "evidence": "review PDF pp.33-35 checklist/notes; guide/copy.ts p.26-27 checklist (source only)",
+  "note": "Full package (article + sources + Bill contribution + metadata + links + LinkedIn + reuse idea) missing."
+ },
+ {
+  "group": "email_template",
+  "item": "E01 Requested guide delivery",
+  "status": "missing",
+  "evidence": "no email templates on any branch; only format guidance in origin/claude/bill-centered-homepage:docs/ASK-BILL.md (Email row) and an internal 7-email concept at origin/claude/bill-presentation-video:presentation/src/content.ts:271-278,347",
+  "note": ""
+ },
+ {
+  "group": "email_template",
+  "item": "E02 Marketing opt-in confirmation",
+  "status": "missing",
+  "evidence": "no email templates on any branch; only format guidance in origin/claude/bill-centered-homepage:docs/ASK-BILL.md (Email row) and an internal 7-email concept at origin/claude/bill-presentation-video:presentation/src/content.ts:271-278,347",
+  "note": ""
+ },
+ {
+  "group": "email_template",
+  "item": "E03 One useful spending exercise",
+  "status": "missing",
+  "evidence": "no email templates on any branch; only format guidance in origin/claude/bill-centered-homepage:docs/ASK-BILL.md (Email row) and an internal 7-email concept at origin/claude/bill-presentation-video:presentation/src/content.ts:271-278,347",
+  "note": ""
+ },
+ {
+  "group": "email_template",
+  "item": "E04 Couple/timeline question",
+  "status": "missing",
+  "evidence": "no email templates on any branch; only format guidance in origin/claude/bill-centered-homepage:docs/ASK-BILL.md (Email row) and an internal 7-email concept at origin/claude/bill-presentation-video:presentation/src/content.ts:271-278,347",
+  "note": ""
+ },
+ {
+  "group": "email_template",
+  "item": "E05 Exact 15-minute meeting explanation",
+  "status": "missing",
+  "evidence": "no email templates on any branch; only format guidance in origin/claude/bill-centered-homepage:docs/ASK-BILL.md (Email row) and an internal 7-email concept at origin/claude/bill-presentation-video:presentation/src/content.ts:271-278,347",
+  "note": "Offer wording needs G1 (15-minute / book + 30-minute)."
+ },
+ {
+  "group": "email_template",
+  "item": "E06 Event registration confirmation",
+  "status": "missing",
+  "evidence": "no email templates on any branch; only format guidance in origin/claude/bill-centered-homepage:docs/ASK-BILL.md (Email row) and an internal 7-email concept at origin/claude/bill-presentation-video:presentation/src/content.ts:271-278,347",
+  "note": ""
+ },
+ {
+  "group": "email_template",
+  "item": "E07 Event 24-hour reminder",
+  "status": "missing",
+  "evidence": "no email templates on any branch; only format guidance in origin/claude/bill-centered-homepage:docs/ASK-BILL.md (Email row) and an internal 7-email concept at origin/claude/bill-presentation-video:presentation/src/content.ts:271-278,347",
+  "note": ""
+ },
+ {
+  "group": "email_template",
+  "item": "E08 Event 1-hour reminder",
+  "status": "missing",
+  "evidence": "no email templates on any branch; only format guidance in origin/claude/bill-centered-homepage:docs/ASK-BILL.md (Email row) and an internal 7-email concept at origin/claude/bill-presentation-video:presentation/src/content.ts:271-278,347",
+  "note": ""
+ },
+ {
+  "group": "email_template",
+  "item": "E09 Event replay/resources",
+  "status": "missing",
+  "evidence": "no email templates on any branch; only format guidance in origin/claude/bill-centered-homepage:docs/ASK-BILL.md (Email row) and an internal 7-email concept at origin/claude/bill-presentation-video:presentation/src/content.ts:271-278,347",
+  "note": ""
+ },
+ {
+  "group": "email_template",
+  "item": "E10 Workshop access link",
+  "status": "missing",
+  "evidence": "no email templates on any branch; only format guidance in origin/claude/bill-centered-homepage:docs/ASK-BILL.md (Email row) and an internal 7-email concept at origin/claude/bill-presentation-video:presentation/src/content.ts:271-278,347",
+  "note": ""
+ },
+ {
+  "group": "email_template",
+  "item": "E11 Workshop next-step invitation",
+  "status": "missing",
+  "evidence": "no email templates on any branch; only format guidance in origin/claude/bill-centered-homepage:docs/ASK-BILL.md (Email row) and an internal 7-email concept at origin/claude/bill-presentation-video:presentation/src/content.ts:271-278,347",
+  "note": ""
+ },
+ {
+  "group": "email_template",
+  "item": "E12 Book purchase confirmation",
+  "status": "missing",
+  "evidence": "no email templates on any branch; only format guidance in origin/claude/bill-centered-homepage:docs/ASK-BILL.md (Email row) and an internal 7-email concept at origin/claude/bill-presentation-video:presentation/src/content.ts:271-278,347",
+  "note": "Offer wording needs G1 (15-minute / book + 30-minute)."
+ },
+ {
+  "group": "email_template",
+  "item": "E13 Consultation redemption instructions",
+  "status": "missing",
+  "evidence": "no email templates on any branch; only format guidance in origin/claude/bill-centered-homepage:docs/ASK-BILL.md (Email row) and an internal 7-email concept at origin/claude/bill-presentation-video:presentation/src/content.ts:271-278,347",
+  "note": "Offer wording needs G1 (15-minute / book + 30-minute)."
+ },
+ {
+  "group": "email_template",
+  "item": "E14 Book dispatch/update",
+  "status": "missing",
+  "evidence": "no email templates on any branch; only format guidance in origin/claude/bill-centered-homepage:docs/ASK-BILL.md (Email row) and an internal 7-email concept at origin/claude/bill-presentation-video:presentation/src/content.ts:271-278,347",
+  "note": ""
+ },
+ {
+  "group": "email_template",
+  "item": "E15 Meeting preparation/confirmation",
+  "status": "missing",
+  "evidence": "no email templates on any branch; only format guidance in origin/claude/bill-centered-homepage:docs/ASK-BILL.md (Email row) and an internal 7-email concept at origin/claude/bill-presentation-video:presentation/src/content.ts:271-278,347",
+  "note": ""
+ },
+ {
+  "group": "email_template",
+  "item": "E16 Meeting reschedule/cancellation follow-up",
+  "status": "missing",
+  "evidence": "no email templates on any branch; only format guidance in origin/claude/bill-centered-homepage:docs/ASK-BILL.md (Email row) and an internal 7-email concept at origin/claude/bill-presentation-video:presentation/src/content.ts:271-278,347",
+  "note": ""
+ },
+ {
+  "group": "email_template",
+  "item": "Operational notices (event cancellation, delivery outage, rights issue, privacy contact, job-failure alert)",
+  "status": "missing",
+  "evidence": "none on any branch",
+  "note": ""
+ },
+ {
+  "group": "ad_creative",
+  "item": "AD01 'Ten retirement decisions' → event",
+  "status": "missing",
+  "evidence": "no ad material on any branch (git grep 'retarget|campaign|meta ads' 0 hits)",
+  "note": "Two headline/body variants, crop, FR/EN, landing mapping all missing."
+ },
+ {
+  "group": "ad_creative",
+  "item": "AD02 fictional A/B/C/D case → event",
+  "status": "missing",
+  "evidence": "no ad material on any branch (git grep 'retarget|campaign|meta ads' 0 hits)",
+  "note": "Two headline/body variants, crop, FR/EN, landing mapping all missing."
+ },
+ {
+  "group": "ad_creative",
+  "item": "AD03 'A different way to talk about retirement' → event",
+  "status": "missing",
+  "evidence": "no ad material on any branch (git grep 'retarget|campaign|meta ads' 0 hits)",
+  "note": "Two headline/body variants, crop, FR/EN, landing mapping all missing."
+ },
+ {
+  "group": "ad_creative",
+  "item": "AD04 'One question. Fifteen minutes with Bill.' → meeting",
+  "status": "missing",
+  "evidence": "no ad material on any branch (git grep 'retarget|campaign|meta ads' 0 hits)",
+  "note": "Two headline/body variants, crop, FR/EN, landing mapping all missing. Needs G1 offer approval; AD06 also needs real approved book, price and terms (G0/G3)."
+ },
+ {
+  "group": "ad_creative",
+  "item": "AD05 'Put your retirement questions on one page' → workshop",
+  "status": "missing",
+  "evidence": "no ad material on any branch (git grep 'retarget|campaign|meta ads' 0 hits)",
+  "note": "Two headline/body variants, crop, FR/EN, landing mapping all missing."
+ },
+ {
+  "group": "ad_creative",
+  "item": "AD06 real book + 'Thirty minutes with Bill included' → book offer",
+  "status": "missing",
+  "evidence": "no ad material on any branch (git grep 'retarget|campaign|meta ads' 0 hits)",
+  "note": "Two headline/body variants, crop, FR/EN, landing mapping all missing. Needs G1 offer approval; AD06 also needs real approved book, price and terms (G0/G3)."
+ },
+ {
+  "group": "ad_creative",
+  "item": "RT01 Bill explaining the 15-minute meeting",
+  "status": "blocked_human",
+  "evidence": "0 video files in any branch",
+  "note": "Retargeting edits require real Bill footage/events that do not exist yet; ad account/category check (ADS01) also required."
+ },
+ {
+  "group": "ad_creative",
+  "item": "RT02 genuine approved Crossroads explanation excerpt",
+  "status": "blocked_human",
+  "evidence": "0 video files in any branch",
+  "note": "Retargeting edits require real Bill footage/events that do not exist yet; ad account/category check (ADS01) also required."
+ },
+ {
+  "group": "ad_creative",
+  "item": "RT03 real workshop demonstration",
+  "status": "blocked_human",
+  "evidence": "0 video files in any branch",
+  "note": "Retargeting edits require real Bill footage/events that do not exist yet; ad account/category check (ADS01) also required."
+ },
+ {
+  "group": "calendar",
+  "item": "90-day rolling calendar (posts day 2/5 +7, articles day 3 +7)",
+  "status": "missing",
+  "evidence": "no calendar on any branch; origin/claude/bill-presentation-video:presentation/src/content.ts:339-356 'First 90 days' is an internal roadmap with different items (7-email automation, two-copy experiment, 'Webinars next')",
+  "note": "Depends on actual launch date (G0)."
+ },
+ {
+  "group": "book",
+  "item": "Book content (the retirement book/free PDF)",
+  "status": "partial",
+  "evidence": "origin/codex/desktop-iphone-unified:content/guides/retirement-review-en.pdf (40 pp, 432x648 pt = 6x9 in, sha256 9dc48a1f...10f8bf, Title 'Build a Better Retirement Together', review edition); origin/guide/pre-retirement-guide:guide/ (32-page US-Letter generator, 'Before retirement, your investments change jobs', outputs git-ignored); origin/main:film/assets/source/Guide_prosperite_financiere_Bill_Badran.pdf (14 pp, FR, older 'Le guide de la prospérité financière')",
+  "note": "No approved edition. The 40-page PDF matches R7 content but its source is not in any branch (codex docs/RESPONSIVE-REVIEW.md: 'from the retirement-guide prototype'); not reproducible. No French edition of the 40-page book."
+ },
+ {
+  "group": "book",
+  "item": "Book offer copy: paid printed book incl. one 30-minute consultation",
+  "status": "missing",
+  "evidence": "git grep '30 ?min|trente minutes|thirty minutes|consultation' across all branches: no consultation offer text (only guide/copy.ts:756 unrelated 'consultation' work)",
+  "note": "No 30-minute and no 60-minute consultation is described anywhere. Conflicting concepts to retire: disabled 'Ask for a printed copy' email request (origin/claude/bill-centered-homepage:lib/copy.ts:109,251; components/pages.tsx:291; business.guide.printedCopies=false) and internal 'two-copy experiment / Print 50–100 books' (presentation/src/content.ts:299,350)."
+ },
+ {
+  "group": "book",
+  "item": "Book terms (price, shipping, eligibility, booking, cancellation/refund)",
+  "status": "blocked_human",
+  "evidence": "no price/terms anywhere",
+  "note": "G0 book price/cap + G1/G5 terms."
+ },
+ {
+  "group": "book",
+  "item": "Fulfilment procedure/copy (operator, address source, print proof, dispatch, lost/damaged, refund reconciliation)",
+  "status": "missing",
+  "evidence": "none on any branch",
+  "note": ""
+ },
+ {
+  "group": "bill_media",
+  "item": "Bill 20-minute recorded voice interview (style reference)",
+  "status": "blocked_human",
+  "evidence": "no interview recording or transcript in any branch",
+  "note": "Requires Bill + consent (G4)."
+ },
+ {
+  "group": "bill_media",
+  "item": "Real Bill recordings (video/voice) for site, workshop, capsules, events",
+  "status": "blocked_human",
+  "evidence": "0 video files in any branch. Existing audio is synthetic: origin/main:public/audio/journey/en.mp3 (Chatterbox clone of 'lawyer.wav', docs/NARRATION.md 'stand-in'); origin/main:film/assets/voice/jonathan/*.mp3 (ElevenLabs 'Jonathan', film/README.md:11)",
+  "note": "Synthetic voices speak first-person Bill lines ('I'm Bill Badran') — must be replaced or removed before any public use; plan forbids voice clone without specific consent."
+ },
+ {
+  "group": "bill_media",
+  "item": "Portrait/photo rights",
+  "status": "blocked_human",
+  "evidence": "origin/main:public/assets/bill-portrait.jpg (960x960, blob 4b504d5; same blob in film/public/photos and presentation/public/photos); lib/business.ts:32 portraitRights=false; reference/bill*.jpg|avif (5 unused photos)",
+  "note": "G4."
+ },
+ {
+  "group": "infra",
+  "item": "n8n self-hosted config (Docker Compose, SQLite, pinned tag, loopback, key, backups)",
+  "status": "missing",
+  "evidence": "git grep 'n8n' 0 hits on all branches",
+  "note": "Local config can be authored; live install blocked on VPS access."
+ },
+ {
+  "group": "infra",
+  "item": "n8n live instance on VPS",
+  "status": "blocked_human",
+  "evidence": "no VPS host/access information in repo",
+  "note": "G2 VPS access; reverse-proxy layout unknown."
+ },
+ {
+  "group": "n8n_workflow",
+  "item": "WF00 intake/claim adapter",
+  "status": "missing",
+  "evidence": "no n8n workflow exports on any branch",
+  "note": ""
+ },
+ {
+  "group": "n8n_workflow",
+  "item": "WF01 contacts/consent",
+  "status": "missing",
+  "evidence": "no n8n workflow exports on any branch",
+  "note": ""
+ },
+ {
+  "group": "n8n_workflow",
+  "item": "WF02 message dispatcher",
+  "status": "missing",
+  "evidence": "no n8n workflow exports on any branch",
+  "note": ""
+ },
+ {
+  "group": "n8n_workflow",
+  "item": "WF03 guide/workshop",
+  "status": "missing",
+  "evidence": "no n8n workflow exports on any branch",
+  "note": ""
+ },
+ {
+  "group": "n8n_workflow",
+  "item": "WF04 event lifecycle",
+  "status": "missing",
+  "evidence": "no n8n workflow exports on any branch",
+  "note": ""
+ },
+ {
+  "group": "n8n_workflow",
+  "item": "WF05 book/fulfilment",
+  "status": "missing",
+  "evidence": "no n8n workflow exports on any branch",
+  "note": ""
+ },
+ {
+  "group": "n8n_workflow",
+  "item": "WF06 booking reconciliation",
+  "status": "missing",
+  "evidence": "no n8n workflow exports on any branch",
+  "note": ""
+ },
+ {
+  "group": "n8n_workflow",
+  "item": "WF07 suppression/replies",
+  "status": "missing",
+  "evidence": "no n8n workflow exports on any branch",
+  "note": ""
+ },
+ {
+  "group": "n8n_workflow",
+  "item": "WF08 weekly article draft",
+  "status": "missing",
+  "evidence": "no n8n workflow exports on any branch",
+  "note": ""
+ },
+ {
+  "group": "n8n_workflow",
+  "item": "WF09 approved publication handoff",
+  "status": "missing",
+  "evidence": "no n8n workflow exports on any branch",
+  "note": ""
+ },
+ {
+  "group": "n8n_workflow",
+  "item": "WF10 health/operations report",
+  "status": "missing",
+  "evidence": "no n8n workflow exports on any branch",
+  "note": ""
+ },
+ {
+  "group": "n8n_workflow",
+  "item": "WF11 retention/reconciliation",
+  "status": "missing",
+  "evidence": "no n8n workflow exports on any branch",
+  "note": ""
+ },
+ {
+  "group": "n8n_workflow",
+  "item": "SM01 RSS to email",
+  "status": "missing",
+  "evidence": "no n8n workflow exports on any branch",
+  "note": ""
+ },
+ {
+  "group": "n8n_workflow",
+  "item": "SM02 webhook to Telegram",
+  "status": "missing",
+  "evidence": "no n8n workflow exports on any branch",
+  "note": ""
+ },
+ {
+  "group": "infra",
+  "item": "Supabase schema/grants/RLS (contacts, consent_events, registrations, orders/rights, bookings, integration_events, delivery_jobs, audit_events)",
+  "status": "missing",
+  "evidence": "git grep 'supabase|postgres|migration' 0 relevant hits",
+  "note": "Local migrations can be authored."
+ },
+ {
+  "group": "infra",
+  "item": "Supabase project + backups/restore",
+  "status": "blocked_human",
+  "evidence": "no project reference",
+  "note": "G2 account; Free tier has no automatic backups (S2)."
+ },
+ {
+  "group": "infra",
+  "item": "Stripe hosted checkout + signed webhook",
+  "status": "missing",
+  "evidence": "no Stripe code on any branch",
+  "note": "Integration code can be written against test fixtures."
+ },
+ {
+  "group": "infra",
+  "item": "Stripe account, product, price, test keys",
+  "status": "blocked_human",
+  "evidence": "none",
+  "note": "G0 price, G2 account/test mode."
+ },
+ {
+  "group": "infra",
+  "item": "Brevo adapter (contacts, transactional, suppression)",
+  "status": "missing",
+  "evidence": "no Brevo code; current email adapter is Resend (origin/main:lib/contact.ts:72)",
+  "note": ""
+ },
+ {
+  "group": "infra",
+  "item": "Brevo account + sending domain DKIM/SPF/DMARC",
+  "status": "blocked_human",
+  "evidence": "none",
+  "note": "G2 + DNS ownership."
+ },
+ {
+  "group": "infra",
+  "item": "Booking: existing Calendly link",
+  "status": "exists",
+  "evidence": "origin/main:lib/business.ts:14-15; origin/main:docs/INTEGRATIONS.md:15-17 (read-only inspection 2026-09-28, three meeting choices)",
+  "note": "Event types/durations not visible in repo; live read of calendly.com/bbadran from this sandbox returned proxy 403 (not_visible). Must confirm no 60-minute intro offer is linked."
+ },
+ {
+  "group": "infra",
+  "item": "Booking reconciliation (provider/calendar read or operator import) and Google appointment schedules test",
+  "status": "missing",
+  "evidence": "none on any branch",
+  "note": "Google test blocked on Workspace account (G2)."
+ },
+ {
+  "group": "infra",
+  "item": "Hosting on existing VPS (app container, proxy, TLS, health, rollback)",
+  "status": "missing",
+  "evidence": "README/docs describe only Vercel: origin/main:README.md:65-72 '## Protected Vercel deployment'; docs/CONTENT-WORKFLOW.md:24; scripts/content.ts:113; reference/implementation-brief.txt:122",
+  "note": "Stack delta vs plan default (VPS). No Dockerfile/compose on any branch."
+ },
+ {
+  "group": "ops",
+  "item": "Operating runbooks (release, rollback, incident, fulfilment, restore)",
+  "status": "missing",
+  "evidence": "no runbooks on any branch",
+  "note": ""
+ },
+ {
+  "group": "other_marketing",
+  "item": "Landing/confirmation/error/unsubscribe copy",
+  "status": "partial",
+  "evidence": "origin/main:components/inquiry.tsx (contact error/rate-limit states) — only inquiry states exist",
+  "note": ""
+ },
+ {
+  "group": "other_marketing",
+  "item": "One-page meeting agenda",
+  "status": "partial",
+  "evidence": "origin/main:lib/pages.ts:561-568 (EN meeting 'What should I bring?'); review PDF p.35 notes page",
+  "note": ""
+ },
+ {
+  "group": "other_marketing",
+  "item": "Anonymized internal call-outcome checklist",
+  "status": "missing",
+  "evidence": "none",
+  "note": ""
+ },
+ {
+  "group": "other_marketing",
+  "item": "Local partner invitation kit",
+  "status": "missing",
+  "evidence": "presentation/src/content.ts 'Two-chair evenings ... co-hosted with an accountant or notary' (internal idea only)",
+  "note": ""
+ },
+ {
+  "group": "other_marketing",
+  "item": "Printed QR insert",
+  "status": "missing",
+  "evidence": "presentation/README.md 'QR (deliberately not scannable)' stand-in",
+  "note": ""
+ },
+ {
+  "group": "other_marketing",
+  "item": "Review-request draft (firm/platform approval)",
+  "status": "missing",
+  "evidence": "presentation/src/content.ts:233-234 internal idea only",
+  "note": ""
+ },
+ {
+  "group": "other_marketing",
+  "item": "Google Business Profile field checklist",
+  "status": "missing",
+  "evidence": "presentation/src/content.ts:225-235 internal idea only",
+  "note": ""
+ },
+ {
+  "group": "other_marketing",
+  "item": "Site FAQ linking questions to resources",
+  "status": "partial",
+  "evidence": "origin/claude/bill-centered-homepage:lib/ask.ts + docs/ASK-BILL.md (Ask Bill page, 12 Q&A, FAQ structured data after launch)",
+  "note": ""
+ }
+]

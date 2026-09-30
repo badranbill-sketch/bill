@@ -1,0 +1,54 @@
+{
+  "contract": "asset-manifest",
+  "contract_version": "1.0",
+  "manifest_kind": "authoritative",
+  "generated_at": "2026-09-30T12:00:00Z",
+  "assets": [
+    {
+      "asset_id": "ink.a01",
+      "locale": "zxx",
+      "version": 1,
+      "title_internal": "A01 notebook, glasses and cup (fixture)",
+      "owner_role": "A1",
+      "medium": "image",
+      "status": "approved",
+      "language_availability": "not_applicable",
+      "captions_source_locale": null,
+      "source_path": "public/assets/ink/fixture-a01.svg",
+      "factual_claims": {
+        "present": false,
+        "sources": []
+      },
+      "offer_refs": [],
+      "credential_claims": false,
+      "rights": {
+        "status": "created_for_project",
+        "holder": null,
+        "evidence_ref": null,
+        "synthetic_bill_likeness": false
+      },
+      "recording": null,
+      "review_hash": {
+        "method": "file-sha256-v1",
+        "sha256": "157eb2e59eeaeddf954e8e2375b986e0ef94d1f5ecee7f54b6bdd182b6602908"
+      },
+      "approval": {
+        "gates": [
+          "G3"
+        ],
+        "approved_by_roles": [
+          "bill",
+          "arnaud"
+        ],
+        "approved_on": "2026-09-30",
+        "record_ref": "fixture:packet-ink-a01"
+      },
+      "intended_route_key": "workshop",
+      "cta": "none",
+      "primary_channel": "workshop",
+      "publication_id": null,
+      "published_at": null,
+      "published_content_sha256": null
+    }
+  ]
+}

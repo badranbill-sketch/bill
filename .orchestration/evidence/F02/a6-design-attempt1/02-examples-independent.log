@@ -1,0 +1,189 @@
+$ $VENV/bin/python scratchpad/a6/check_examples.py  (A6 independent: every example vs its schema, jsonschema Draft202012)
+OK  valid   event-envelope/book-dispatched.json
+OK  valid   event-envelope/book-payment_confirmed.json
+OK  valid   event-envelope/book-refunded.json
+OK  valid   event-envelope/consultation-redeemed.json
+OK  valid   event-envelope/content-approved.json
+OK  valid   event-envelope/content-draft_created.json
+OK  valid   event-envelope/content-published.json
+OK  valid   event-envelope/delivery-failed.json
+OK  valid   event-envelope/guide-requested.json
+OK  valid   event-envelope/marketing-opted_in.json
+OK  valid   event-envelope/marketing-withdrawn.json
+OK  valid   event-envelope/meeting-cancelled.json
+OK  valid   event-envelope/meeting-confirmed-operator-reconciliation.json
+OK  valid   event-envelope/meeting-confirmed.json
+OK  valid   event-envelope/meeting-held.json
+OK  valid   event-envelope/webinar-attendance_verified.json
+OK  valid   event-envelope/webinar-cancelled.json
+OK  valid   event-envelope/webinar-join_clicked.json
+OK  valid   event-envelope/webinar-registered.json
+OK  valid   event-envelope/workshop-access_requested.json
+OK  valid   event-envelope/workshop-completed.json
+OK  invalid event-envelope/age-in-resource-id.json  n_err=2  first=[resource_id] anyOf: 'workshop.retire-at-62.v1' is not valid under any of the given schemas
+OK  invalid event-envelope/attendance-from-join-click.json  n_err=1  first=[source] enum: 'site.join_redirect' is not one of ['provider.meet_attendance', 'operator.reconciliation']
+OK  invalid event-envelope/consent-on-guide-request.json  n_err=1  first=[consent_reference] not: 'cev_0rv6kbtcg8zyd6m76tv1pmxp7d' should not be valid under {}
+OK  invalid event-envelope/email-as-subject-id.json  n_err=2  first=[subject_id] anyOf: 'jane.fixture@example.com' is not valid under any of the given schemas
+OK  invalid event-envelope/email-in-idempotency-key.json  n_err=1  first=[idempotency_key] pattern: 'ik1_jane.fixture@example.com' does not match '^ik1_[0-9a-f]{64}$'
+OK  invalid event-envelope/extra-property-form-body.json  n_err=1  first=[] additionalProperties: Additional properties are not allowed ('form' was unexpected)
+OK  invalid event-envelope/financial-amount-field.json  n_err=1  first=[] additionalProperties: Additional properties are not allowed ('monthly_spending' was unexpected)
+OK  invalid event-envelope/locale-es.json  n_err=1  first=[locale] enum: 'es' is not one of ['fr', 'en']
+OK  invalid event-envelope/meeting-confirmed-from-click.json  n_err=1  first=[source] enum: 'site.join_redirect' is not one of ['provider.booking_sync', 'operator.reconciliation']
+OK  invalid event-envelope/missing-idempotency-key.json  n_err=1  first=[] required: 'idempotency_key' is a required property
+OK  invalid event-envelope/non-utc-timestamp.json  n_err=1  first=[occurred_at] pattern: '2026-10-02T10:00:00-04:00' does not match '^[0-9]{4}-(?:0[1-9]|1[0-2])-(?:0[1-9]|[12][0-9]|3[01])T(?:[01][0-9
+OK  invalid event-envelope/payment-confirmed-by-operator.json  n_err=1  first=[source] enum: 'operator.reconciliation' is not one of ['provider.stripe_webhook']
+OK  invalid event-envelope/schema-version-2.json  n_err=1  first=[schema_version] const: '1.0' was expected
+OK  invalid event-envelope/unknown-source.json  n_err=2  first=[source] enum: 'site.checkout_return' is not one of ['site.guide_request', 'site.consent_capture', 'site.optin_confirmation',
+OK  invalid event-envelope/unknown-type.json  n_err=1  first=[type] enum: 'workshop.gap_calculated' is not one of ['guide.requested', 'marketing.opted_in', 'marketing.withdrawn', 'webi
+OK  invalid event-envelope/workshop-completed-with-gap.json  n_err=1  first=[] additionalProperties: Additional properties are not allowed ('gap' was unexpected)
+OK  invalid event-envelope/workshop-completed-with-selected-clip.json  n_err=1  first=[] additionalProperties: Additional properties are not allowed ('selected_clip' was unexpected)
+OK  invalid event-envelope/workshop-completed-without-consent.json  n_err=1  first=[] required: 'consent_reference' is a required property
+OK  invalid event-envelope/wrong-subject-kind.json  n_err=1  first=[subject_id] pattern: 'con_xsekt13hxv12z5bp4rm4s2f0hw' does not match '^job_[0-9a-hjkmnp-tv-z]{26}$'
+OK  valid   delivery-job/complete-e03-nurture-delivery-unknown.json
+OK  valid   delivery-job/dead-letter-e14-input-rejected.json
+OK  valid   delivery-job/expired-e08-reminder-past-event.json
+OK  valid   delivery-job/leased-e07-reminder.json
+OK  valid   delivery-job/pending-e01-guide-delivery.json
+OK  valid   delivery-job/pending-e09-replay-promotional-variant.json
+OK  valid   delivery-job/reconcile-required-e13-timeout-after-send.json
+OK  valid   delivery-job/retry-due-e04-deferred-daily-budget.json
+OK  valid   delivery-job/retry-due-e10-rate-limited.json
+OK  valid   delivery-job/sent-e12-purchase-confirmation.json
+OK  valid   delivery-job/suppressed-e05-already-booked.json
+OK  invalid delivery-job/attempt-count-over-ceiling.json  n_err=1  first=[attempt_count] maximum: 9 is greater than the maximum of 8
+OK  invalid delivery-job/email-in-purpose-key.json  n_err=1  first=[purpose_key] pattern: 'pk1:jane.fixture@example.com:guide:e01:v1' does not match '^pk1:con_[0-9a-hjkmnp-tv-z]{26}:[0-9a-f]{8}-[0-9a-
+BAD invalid delivery-job/expiry-before-due.json  n_err=0  (ACCEPTED!)
+OK  invalid delivery-job/financial-field-in-job.json  n_err=1  first=[] additionalProperties: Additional properties are not allowed ('gap_amount' was unexpected)
+OK  invalid delivery-job/free-text-error.json  n_err=1  first=[last_error] additionalProperties: Additional properties are not allowed ('message' was unexpected)
+OK  invalid delivery-job/leased-with-provider-id.json  n_err=1  first=[provider_message_id] not: 'fixture-msg-1' should not be valid under {}
+OK  invalid delivery-job/leased-without-lease.json  n_err=1  first=[] required: 'lease' is a required property
+OK  invalid delivery-job/non-utc-expiry.json  n_err=1  first=[expires_at] pattern: '2026-10-05T10:00:00-04:00' does not match '^[0-9]{4}-(?:0[1-9]|1[0-2])-(?:0[1-9]|[12][0-9]|3[01])T(?:[01][0-9
+OK  invalid delivery-job/nurture-template-as-operational.json  n_err=1  first=[message_class] const: 'promotional' was expected
+OK  invalid delivery-job/promotional-high-priority.json  n_err=1  first=[priority] minimum: 1 is less than the minimum of 5
+OK  invalid delivery-job/promotional-without-consent.json  n_err=1  first=[] required: 'consent_reference' is a required property
+BAD invalid delivery-job/purpose-key-mismatch.json  n_err=0  (ACCEPTED!)
+OK  invalid delivery-job/recipient-email-field.json  n_err=1  first=[] additionalProperties: Additional properties are not allowed ('recipient_email' was unexpected)
+OK  invalid delivery-job/reconcile-without-send-started.json  n_err=1  first=[] required: 'send_started_at' is a required property
+BAD invalid delivery-job/retry-after-expiry.json  n_err=0  (ACCEPTED!)
+OK  invalid delivery-job/sent-without-provider-id.json  n_err=1  first=[] required: 'provider_message_id' is a required property
+OK  invalid delivery-job/unhashed-template-version.json  n_err=1  first=[template_version] pattern: 'v2' does not match '^h[0-9a-f]{12,64}$'
+OK  invalid delivery-job/unknown-status-delivered.json  n_err=1  first=[status] enum: 'delivered' is not one of ['pending', 'leased', 'sent', 'complete', 'retry_due', 'suppressed', 'expired', 'rec
+OK  valid   feature-flags/defaults-production.json
+OK  valid   feature-flags/defaults-staging.json
+OK  valid   feature-flags/production-public-guide-step-fictional.json
+OK  valid   feature-flags/staging-guide-delivery-allowlist-test.json
+OK  invalid feature-flags/agent-recorded-approval.json  n_err=1  first=[capabilities/guide_request_delivery/approved/recorded_by] enum: 'A0' is not one of ['bill', 'firm_reviewer', 'arnaud', 'privacy_owner', 'account_owner', None]
+OK  invalid feature-flags/approval-without-scope-hash.json  n_err=1  first=[capabilities/guide_request_delivery/approved/scope_hashes] minItems: [] should be non-empty
+OK  invalid feature-flags/enabled-without-controlling-flag.json  n_err=1  first=[flags/marketing_dispatch/value] const: True was expected
+OK  invalid feature-flags/flag-default-true.json  n_err=1  first=[flags/third_party_tracking/default] const: False was expected
+OK  invalid feature-flags/flag-on-without-approval.json  n_err=1  first=[capabilities/book_checkout/approved/value] const: True was expected
+OK  invalid feature-flags/gate-mapping-altered.json  n_err=1  first=[flags/paid_ads/enable_gates] const: ['G2', 'G3', 'G5', 'G6'] was expected
+OK  invalid feature-flags/live-verified-in-staging.json  n_err=1  first=[capabilities/guide_request_delivery/live_verified/value] const: False was expected
+OK  invalid feature-flags/live-verified-without-enabled.json  n_err=1  first=[capabilities/workshop_access/enabled/value] const: True was expected
+OK  invalid feature-flags/missing-readiness-state.json  n_err=1  first=[capabilities/event_lifecycle] required: 'live_verified' is a required property
+OK  invalid feature-flags/public-launch-in-staging.json  n_err=3  first=[capabilities/public_site/approved/value] const: True was expected
+OK  invalid feature-flags/single-boolean-capability.json  n_err=2  first=[capabilities/guide_request_delivery] type: True is not of type 'object'
+OK  invalid feature-flags/state-true-without-evidence.json  n_err=1  first=[capabilities/workshop_access/code_ready/evidence_ref] type: None is not of type 'string'
+OK  invalid feature-flags/unknown-flag.json  n_err=1  first=[flags] additionalProperties: Additional properties are not allowed ('newsletter' was unexpected)
+OK  valid   offer-matrix/authoritative-2026-09-30.json
+OK  valid   offer-matrix/fixture-all-gates-recorded-fictional.json
+OK  valid   offer-matrix/fixture-test-mode-only.json
+OK  invalid offer-matrix/agent-recorded-gate.json  n_err=1  first=[gate_records/0/recorded_by_role] enum: 'A0' is not one of ['arnaud', 'bill', 'firm_reviewer', 'privacy_owner', 'account_owner']
+BAD invalid offer-matrix/approval-gate-mismatch.json  n_err=0  (ACCEPTED!)
+BAD invalid offer-matrix/approval-record-missing.json  n_err=0  (ACCEPTED!)
+OK  invalid offer-matrix/book-consultation-60-minutes.json  n_err=1  first=[offers/book-bundle/included_consultation/duration_minutes] const: 30 was expected
+OK  invalid offer-matrix/cap-recorded-without-approval.json  n_err=2  first=[offers/book-bundle/cap/approvals] minItems: [] should be non-empty
+OK  invalid offer-matrix/extra-one-hour-offer.json  n_err=1  first=[offers] additionalProperties: Additional properties are not allowed ('one-hour-session' was unexpected)
+OK  invalid offer-matrix/fit-screen-removes-consultation.json  n_err=1  first=[offers/book-bundle/included_consultation/removable_by_fit_screen] const: False was expected
+OK  invalid offer-matrix/fixture-ref-in-authoritative.json  n_err=23  first=[gate_records/0/record_ref] pattern: 'fixture:g3-01' does not match '^\\.orchestration/(?:decisions\\.md#D-[0-9]{3}[a-z]?|approval-packets/[A-Za-z0
+OK  invalid offer-matrix/funnel-prerequisite.json  n_err=1  first=[rules/no_mandatory_funnel_staircase/intro_15_prerequisites] maxItems: ['workshop_completed'] is expected to be empty
+OK  invalid offer-matrix/guide-requires-consent.json  n_err=1  first=[offers/guide-pdf/access] const: {'requires_marketing_consent': False, 'requires_email': False, 'download_fallback_when_email_fails': True} was
+OK  invalid offer-matrix/in-person-without-confirmed-location.json  n_err=1  first=[offers/intro-15/in_person_location/status] const: 'recorded' was expected
+OK  invalid offer-matrix/intro-60-minutes.json  n_err=1  first=[offers/intro-15/duration_minutes] const: 15 was expected
+OK  invalid offer-matrix/invented-price-while-pending.json  n_err=1  first=[offers/book-bundle/price/value] type: {'amount_minor': 2995, 'currency': 'CAD'} is not of type 'null'
+OK  invalid offer-matrix/meeting-type-60-minutes.json  n_err=1  first=[meeting_types/book-consultation-30/duration_minutes] const: 30 was expected
+OK  invalid offer-matrix/missing-cancellation-disclosure.json  n_err=1  first=[offers/book-bundle/prepayment_disclosures] required: 'cancellation' is a required property
+OK  invalid offer-matrix/missing-disclosure-list.json  n_err=1  first=[offers/book-bundle] required: 'prepayment_disclosures' is a required property
+OK  invalid offer-matrix/on-sale-with-pending-terms.json  n_err=15  first=[offers/book-bundle/approved_print_editions] minItems: [] should be non-empty
+OK  invalid offer-matrix/online-without-recorded-service.json  n_err=1  first=[offers/book-bundle/included_consultation/online_service/status] const: 'recorded' was expected
+OK  invalid offer-matrix/price-recorded-without-g0-approval.json  n_err=2  first=[offers/book-bundle/price/approvals] minItems: [] should be non-empty
+OK  invalid offer-matrix/separately-priced-consultation.json  n_err=1  first=[offers/book-bundle/included_consultation/separately_priced] const: False was expected
+OK  invalid offer-matrix/two-rights-per-order.json  n_err=1  first=[offers/book-bundle/entitlement/rights_per_verified_paid_order] const: 1 was expected
+OK  invalid offer-matrix/zoom-online-service.json  n_err=2  first=[offers/intro-15/online_service/value] anyOf: 'zoom_meetings' is not valid under any of the given schemas
+OK  valid   asset-manifest/authoritative-empty-2026-09-30.json
+OK  valid   asset-manifest/fixture-lifecycle.json
+OK  invalid asset-manifest/agent-role-approval.json  n_err=1  first=[assets/7/approval] anyOf: {'gates': ['G1', 'G3'], 'approved_by_roles': ['bill', 'A5'], 'approved_on': '2026-09-30', 'record_ref': 'fixtu
+OK  invalid asset-manifest/approval-on-draft.json  n_err=2  first=[assets/1/approval] type: {'gates': ['G3'], 'approved_by_roles': ['bill'], 'approved_on': '2026-09-30', 'record_ref': 'fixture:premature
+OK  invalid asset-manifest/approval-without-g3.json  n_err=1  first=[assets/6/approval/gates] contains: ['G0'] does not contain items matching the given schema
+OK  invalid asset-manifest/approved-with-pending-rights.json  n_err=1  first=[assets/6/rights/status] not: 'pending' should not be valid under {'const': 'pending'}
+OK  invalid asset-manifest/approved-without-review-hash.json  n_err=1  first=[assets/7/review_hash] type: None is not of type 'object'
+OK  invalid asset-manifest/capsule-s19-id.json  n_err=1  first=[assets/0/asset_id] pattern: 'capsule.s19' does not match '^(?:capsule\\.s(?:0[1-9]|1[0-8])|companion\\.s(?:0[1-9]|1[0-8])|clip\\.w(?:0[0-9
+OK  invalid asset-manifest/captions-only-marked-recorded.json  n_err=3  first=[assets/4/language_availability] const: 'language_recorded' was expected
+OK  invalid asset-manifest/cta-offer-not-referenced.json  n_err=1  first=[assets/2/offer_refs] contains: [] does not contain items matching the given schema
+BAD invalid asset-manifest/duplicate-entry.json  n_err=0  (ACCEPTED!)
+OK  invalid asset-manifest/factual-claims-without-sources.json  n_err=1  first=[assets/2/factual_claims/sources] minItems: [] should be non-empty
+OK  invalid asset-manifest/fixture-publication-id-in-authoritative.json  n_err=1  first=[assets/0/publication_id] anyOf: 'fixture:site-deploy-0001' is not valid under any of the given schemas
+OK  invalid asset-manifest/fixture-ref-in-authoritative.json  n_err=1  first=[assets/0/approval] anyOf: {'gates': ['G3'], 'approved_by_roles': ['bill', 'arnaud'], 'approved_on': '2026-09-30', 'record_ref': 'fixture
+OK  invalid asset-manifest/offer-copy-approved-without-g1.json  n_err=1  first=[assets/7/approval/gates] contains: ['G3'] does not contain items matching the given schema
+BAD invalid asset-manifest/publication-hash-mismatch.json  n_err=0  (ACCEPTED!)
+OK  invalid asset-manifest/publication-id-on-draft.json  n_err=1  first=[assets/1/publication_id] type: 'fixture:not-really-published' is not of type 'null'
+OK  invalid asset-manifest/published-without-publication-id.json  n_err=1  first=[assets/9/publication_id] type: None is not of type 'string'
+OK  invalid asset-manifest/recorded-without-consent.json  n_err=1  first=[assets/3/recording] anyOf: {'master_ref': 'fixture:master-w00-en', 'master_sha256': '4bbd1dd6debcad45385811d2d39bc6ee4f3d862f473e78fa553c
+OK  invalid asset-manifest/recording-approved-without-g4.json  n_err=1  first=[assets/8/approval/gates] contains: ['G1', 'G3'] does not contain items matching the given schema
+OK  invalid asset-manifest/reviewed-claim-without-access-date.json  n_err=1  first=[assets/2/factual_claims/sources/0/accessed] type: None is not of type 'string'
+OK  invalid asset-manifest/synthetic-bill-likeness.json  n_err=1  first=[assets/3/rights/synthetic_bill_likeness] const: False was expected
+OK  invalid asset-manifest/text-asset-marked-recorded.json  n_err=3  first=[assets/2/language_availability] const: 'language_recorded' was expected
+OK  invalid asset-manifest/unknown-status-ready.json  n_err=1  first=[assets/0/status] enum: 'ready' is not one of ['brief', 'draft', 'reviewed', 'recorded', 'edited', 'approved', 'published']
+OK  valid   worker-handoff/fixture-side-effect-metered.json
+OK  valid   worker-handoff/normalized-f00-subset.json
+OK  invalid worker-handoff/absolute-changed-path.json  n_err=1  first=[changed_paths/0] pattern: '/home/user/bill/.orchestration/inventory.md' does not match '^(?![/~])(?!.*(?:^|/)\\.\\.(?:/|$))[^\\s]+$'
+OK  invalid worker-handoff/annotated-changed-path.json  n_err=1  first=[changed_paths/0] pattern: '.orchestration/evidence/F00/ (untracked; written by three lanes)' does not match '^(?![/~])(?!.*(?:^|/)\\.\\.
+OK  invalid worker-handoff/blocked-check-not-visible.json  n_err=1  first=[blocked_checks/0/status] enum: 'not_visible' is not one of ['blocked', 'not_run']
+OK  invalid worker-handoff/empty-artifacts.json  n_err=1  first=[artifacts] minItems: [] should be non-empty
+OK  invalid worker-handoff/environment-unlabelled.json  n_err=1  first=[tests/0/environment] pattern: 'my laptop' does not match '^(?:local|ci|staging|provider-sandbox|production)(?:[ :].{1,200})?$'
+OK  invalid worker-handoff/estimated-cost.json  n_err=2  first=[metered_cost/amount] type: 12.5 is not of type 'null'
+OK  invalid worker-handoff/exit-code-string.json  n_err=1  first=[tests/0/exit_code] anyOf: '0' is not valid under any of the given schemas
+OK  invalid worker-handoff/extra-accepted-by-field.json  n_err=1  first=[] additionalProperties: Additional properties are not allowed ('accepted_by' was unexpected)
+OK  invalid worker-handoff/metered-cost-without-source.json  n_err=1  first=[metered_cost] required: 'source' is a required property
+OK  invalid worker-handoff/missing-metered-cost.json  n_err=1  first=[] required: 'metered_cost' is a required property
+OK  invalid worker-handoff/placeholder-artifact-hash.json  n_err=1  first=[artifacts/0/sha256] pattern: 'actual-hash' does not match '^[0-9a-f]{64}$'
+OK  invalid worker-handoff/placeholder-command.json  n_err=1  first=[tests/0/command] not: 'actual command' should not be valid under {'anyOf': [{'enum': ['actual-sha', 'actual-sha-or-null', 'actual-ha
+OK  invalid worker-handoff/short-result-commit.json  n_err=1  first=[result_commit] anyOf: '5cbbf9b' is not valid under any of the given schemas
+OK  invalid worker-handoff/side-effect-without-authorization.json  n_err=1  first=[external_actions_taken/0] required: 'authorization' is a required property
+OK  invalid worker-handoff/status-accepted.json  n_err=1  first=[status] const: 'submitted' was expected
+OK  invalid worker-handoff/unknown-task-id.json  n_err=1  first=[task_id] pattern: 'W99' does not match '^(?:F0[0-3]|D0[0-2]|P0[0-5]|W0[0-4]|C(?:0[0-9]|1[01])|U0[0-5]|N(?:0[0-9]|10)|R0[0-2]|H0[
+OK  invalid worker-handoff/verbatim-03-example.json  n_err=7  first=[artifacts/0/path] not: 'actual/path' should not be valid under {'anyOf': [{'enum': ['actual-sha', 'actual-sha-or-null', 'actual-hash'
+OK  valid   workshop-inputs/already-retired-zeros.json
+OK  valid   workshop-inputs/complete-single.json
+OK  valid   workshop-inputs/household-mixed.json
+OK  valid   workshop-inputs/minimal-all-unknown.json
+OK  valid   workshop-inputs/range-limits.json
+OK  invalid workshop-inputs/already-receiving-with-point.json  n_err=1  first=[chapters/income/sources/0/start] not: {'reference': 'already_receiving', 'point': {'status': 'estimated', 'value': 3}} should not be valid under {'r
+OK  invalid workshop-inputs/coverage-none-with-sources.json  n_err=1  first=[chapters/income/sources] maxItems: [{'id': 'src-1', 'kind': 'workplace_pension', 'owner': 'self', 'amount': {'status': 'confirmed', 'value': 2400
+BAD invalid workshop-inputs/duplicate-source-id.json  n_err=0  (ACCEPTED!)
+BAD invalid workshop-inputs/end-before-start.json  n_err=0  (ACCEPTED!)
+OK  invalid workshop-inputs/estimated-without-value.json  n_err=1  first=[chapters/life/spending/amount] required: 'value' is a required property
+OK  invalid workshop-inputs/estimated-zero-value.json  n_err=1  first=[chapters/income/sources/0/amount/value] minimum: 0 is less than the minimum of 1
+OK  invalid workshop-inputs/extra-pii-email.json  n_err=1  first=[] additionalProperties: Additional properties are not allowed ('email' was unexpected)
+OK  invalid workshop-inputs/float-cents.json  n_err=1  first=[chapters/life/spending/amount/value] type: 450000.5 is not of type 'integer'
+OK  invalid workshop-inputs/home-counted-spendable.json  n_err=1  first=[chapters/savings/home_value/excluded_from_spendable] const: True was expected
+OK  invalid workshop-inputs/horizon-beyond-age-120.json  n_err=1  first=[chapters/timing/planning_horizon_years/value] maximum: 30 is greater than the maximum of 26
+OK  invalid workshop-inputs/horizon-zero.json  n_err=2  first=[chapters/timing/planning_horizon_years/value] minimum: 0 is less than the minimum of 1
+OK  invalid workshop-inputs/income-basis-missing.json  n_err=1  first=[chapters/income/sources/0] required: 'tax_basis' is a required property
+OK  invalid workshop-inputs/income-guaranteed-label.json  n_err=1  first=[chapters/income/sources/0/dependability] enum: 'guaranteed' is not one of ['scheduled', 'uncertain']
+OK  invalid workshop-inputs/infinity-literal.json  n_err=3  first=[chapters/life/spending/amount/value] type: inf is not of type 'integer'
+OK  invalid workshop-inputs/inflation-unknown.json  n_err=1  first=[chapters/timing/inflation_bp/status] enum: 'unknown' is not one of ['zero', 'estimated']
+OK  invalid workshop-inputs/monthly-spending-over-limit.json  n_err=1  first=[chapters/life/spending/amount/value] maximum: 10000001 is greater than the maximum of 10000000
+OK  invalid workshop-inputs/nan-as-string.json  n_err=1  first=[chapters/life/spending/amount/value] type: 'NaN' is not of type 'integer'
+OK  invalid workshop-inputs/nan-literal.json  n_err=1  first=[chapters/life/spending/amount/value] type: nan is not of type 'integer'
+OK  invalid workshop-inputs/negative-spending.json  n_err=2  first=[chapters/life/spending/amount/value] minimum: -450000 is less than the minimum of 0
+OK  invalid workshop-inputs/partner-retirement-before-partner-age.json  n_err=1  first=[chapters/timing/household/partner_retirement_age/value] minimum: 57 is less than the minimum of 60
+OK  invalid workshop-inputs/partner-source-without-household.json  n_err=1  first=[chapters/timing] required: 'household' is a required property
+OK  invalid workshop-inputs/pii-label-in-source.json  n_err=1  first=[chapters/income/sources/0] additionalProperties: Additional properties are not allowed ('label' was unexpected)
+OK  invalid workshop-inputs/retirement-before-current-age.json  n_err=1  first=[chapters/timing/retirement_age/value] minimum: 55 is less than the minimum of 58
+OK  invalid workshop-inputs/spending-pretax-basis.json  n_err=1  first=[chapters/life/spending/tax_basis] const: 'after_tax' was expected
+OK  invalid workshop-inputs/spending-status-zero.json  n_err=1  first=[chapters/life/spending/amount/status] enum: 'zero' is not one of ['unknown', 'estimated', 'confirmed']
+BAD invalid workshop-inputs/start-age-already-passed.json  n_err=0  (ACCEPTED!)
+OK  invalid workshop-inputs/unknown-with-value.json  n_err=1  first=[chapters/life/spending/amount] not: {'status': 'unknown', 'value': 450000} should not be valid under {'required': ['value']}
+unexpected: 10
+exit=1

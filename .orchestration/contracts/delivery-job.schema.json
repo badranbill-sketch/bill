@@ -1,0 +1,775 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://bill.contracts.local/delivery-job/1.0",
+  "title": "Delivery job 1.0",
+  "description": "One durable email job (proposed delivery_jobs row). No recipient address, no message body, no free-text error, no financial field. State semantics and transitions: job-state-machine.md. Status: proposed (F02), not accepted.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version",
+    "job_id",
+    "purpose_key",
+    "contact_id",
+    "trigger_event_id",
+    "template_id",
+    "template_version",
+    "locale",
+    "channel",
+    "provider",
+    "message_class",
+    "priority",
+    "status",
+    "due_at",
+    "expires_at",
+    "attempt_count",
+    "max_attempts",
+    "created_at",
+    "updated_at"
+  ],
+  "properties": {
+    "schema_version": {
+      "const": "1.0"
+    },
+    "job_id": {
+      "type": "string",
+      "pattern": "^job_[0-9a-hjkmnp-tv-z]{26}$",
+      "maxLength": 30
+    },
+    "purpose_key": {
+      "type": "string",
+      "pattern": "^pk1:con_[0-9a-hjkmnp-tv-z]{26}:[0-9a-f]{8}-[0-9a-f]{4}-[47][0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}:e(?:0[1-9]|1[0-6]):h[0-9a-f]{12,64}$",
+      "maxLength": 140,
+      "description": "pk1:<contact_id>:<trigger_event_id>:<template_id>:<template_version>. IDs only, no PII. Equality with the component fields is a runtime check (job-state-machine.md, rule JS-KEY-1)."
+    },
+    "contact_id": {
+      "type": "string",
+      "pattern": "^con_[0-9a-hjkmnp-tv-z]{26}$",
+      "maxLength": 30,
+      "description": "The recipient is resolved from contacts at send time by a scoped server operation. The job never stores an address."
+    },
+    "trigger_event_id": {
+      "$ref": "#/$defs/uuid"
+    },
+    "resource_ref": {
+      "type": "string",
+      "pattern": "^(?:wev|ord|rgt|bkg)_[0-9a-hjkmnp-tv-z]{26}$",
+      "maxLength": 30,
+      "description": "Webinar event, order, consultation right or booking the message is about."
+    },
+    "template_id": {
+      "enum": [
+        "e01",
+        "e02",
+        "e03",
+        "e04",
+        "e05",
+        "e06",
+        "e07",
+        "e08",
+        "e09",
+        "e10",
+        "e11",
+        "e12",
+        "e13",
+        "e14",
+        "e15",
+        "e16"
+      ],
+      "description": "E01-E16 (email-eligibility.json). A closed enum: n8n can never pass a template name that becomes arbitrary work."
+    },
+    "template_version": {
+      "type": "string",
+      "pattern": "^h[0-9a-f]{12,64}$",
+      "maxLength": 65,
+      "description": "h + sha256 prefix (12-64 hex) of the approved template version (G3 binds hashes)."
+    },
+    "locale": {
+      "enum": [
+        "fr",
+        "en"
+      ]
+    },
+    "channel": {
+      "const": "email"
+    },
+    "provider": {
+      "const": "brevo"
+    },
+    "message_class": {
+      "enum": [
+        "operational",
+        "promotional"
+      ],
+      "description": "Proposed class, pending G5 (email-eligibility.json classification_status)."
+    },
+    "consent_reference": {
+      "type": "string",
+      "pattern": "^cev_[0-9a-hjkmnp-tv-z]{26}$",
+      "maxLength": 30,
+      "description": "Consent evidence captured at job creation. It is re-checked after lease, before send."
+    },
+    "priority": {
+      "type": "integer",
+      "minimum": 0,
+      "maximum": 9,
+      "description": "0 = first. Operational 0-3, promotional 5-9."
+    },
+    "status": {
+      "enum": [
+        "pending",
+        "leased",
+        "sent",
+        "complete",
+        "retry_due",
+        "suppressed",
+        "expired",
+        "reconcile_required",
+        "dead_letter"
+      ]
+    },
+    "due_at": {
+      "$ref": "#/$defs/utc_timestamp"
+    },
+    "expires_at": {
+      "$ref": "#/$defs/utc_timestamp"
+    },
+    "next_attempt_at": {
+      "$ref": "#/$defs/utc_timestamp"
+    },
+    "send_started_at": {
+      "$ref": "#/$defs/utc_timestamp"
+    },
+    "sent_at": {
+      "$ref": "#/$defs/utc_timestamp"
+    },
+    "completed_at": {
+      "$ref": "#/$defs/utc_timestamp"
+    },
+    "attempt_count": {
+      "type": "integer",
+      "minimum": 0,
+      "maximum": 8,
+      "description": "Number of provider calls started (incremented when send_started_at is recorded, not at lease)."
+    },
+    "max_attempts": {
+      "type": "integer",
+      "minimum": 1,
+      "maximum": 8,
+      "description": "Proposed default 5; hard ceiling 8."
+    },
+    "lease": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "worker_id",
+        "lease_token",
+        "leased_at",
+        "leased_until"
+      ],
+      "properties": {
+        "worker_id": {
+          "type": "string",
+          "pattern": "^wkr_[a-z0-9]+(?:-[a-z0-9]+){0,4}$",
+          "maxLength": 48
+        },
+        "lease_token": {
+          "$ref": "#/$defs/uuid"
+        },
+        "leased_at": {
+          "$ref": "#/$defs/utc_timestamp"
+        },
+        "leased_until": {
+          "$ref": "#/$defs/utc_timestamp"
+        }
+      }
+    },
+    "provider_message_id": {
+      "type": "string",
+      "pattern": "^(?:<[A-Za-z0-9._%+-]{1,128}@[A-Za-z0-9.-]{1,128}>|[A-Za-z0-9._:-]{1,128})$",
+      "maxLength": 260,
+      "description": "As returned by the provider on acceptance. Exact Brevo format unverified until P05. Acceptance is not inbox delivery."
+    },
+    "delivery_status": {
+      "enum": [
+        "unknown",
+        "delivered",
+        "bounced",
+        "blocked_by_provider"
+      ],
+      "description": "Post-send reconciliation result; 'unknown' is honest when no provider signal exists."
+    },
+    "last_error": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "code",
+        "at"
+      ],
+      "properties": {
+        "code": {
+          "enum": [
+            "input_rejected",
+            "auth_expired",
+            "provider_outage",
+            "rate_limited",
+            "quota_exhausted",
+            "uncertain_outcome",
+            "timeout",
+            "lease_expired",
+            "application_defect"
+          ]
+        },
+        "http_status": {
+          "type": [
+            "integer",
+            "null"
+          ],
+          "minimum": 100,
+          "maximum": 599
+        },
+        "at": {
+          "$ref": "#/$defs/utc_timestamp"
+        }
+      },
+      "description": "Sanitized: a code and an HTTP status only. No provider body, no free text, no address."
+    },
+    "defer_reason": {
+      "enum": [
+        "daily_budget",
+        "frequency_cap",
+        "reminder_collision",
+        "capability_disabled"
+      ]
+    },
+    "suppression_reason": {
+      "enum": [
+        "consent_missing",
+        "consent_withdrawn",
+        "provider_blocklist",
+        "contact_suppressed",
+        "already_booked",
+        "client_flag",
+        "human_reply",
+        "registration_cancelled",
+        "event_cancelled",
+        "event_remade",
+        "entitlement_inactive",
+        "order_refunded",
+        "booking_cancelled",
+        "already_rebooked",
+        "not_allowlisted"
+      ]
+    },
+    "created_at": {
+      "$ref": "#/$defs/utc_timestamp"
+    },
+    "updated_at": {
+      "$ref": "#/$defs/utc_timestamp"
+    }
+  },
+  "allOf": [
+    {
+      "if": {
+        "properties": {
+          "message_class": {
+            "const": "operational"
+          }
+        }
+      },
+      "then": {
+        "properties": {
+          "priority": {
+            "maximum": 3
+          },
+          "consent_reference": {
+            "not": {},
+            "description": "Operational jobs carry no consent reference; consent is not inferred from them."
+          }
+        }
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "message_class": {
+            "const": "promotional"
+          }
+        }
+      },
+      "then": {
+        "required": [
+          "consent_reference"
+        ],
+        "properties": {
+          "priority": {
+            "minimum": 5
+          }
+        }
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "template_id": {
+            "enum": [
+              "e03",
+              "e04",
+              "e05",
+              "e11"
+            ]
+          }
+        }
+      },
+      "then": {
+        "properties": {
+          "message_class": {
+            "const": "promotional"
+          }
+        }
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "template_id": {
+            "enum": [
+              "e01",
+              "e02",
+              "e06",
+              "e07",
+              "e08",
+              "e10",
+              "e12",
+              "e13",
+              "e14",
+              "e15",
+              "e16"
+            ]
+          }
+        }
+      },
+      "then": {
+        "properties": {
+          "message_class": {
+            "const": "operational"
+          }
+        }
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "template_id": {
+            "enum": [
+              "e06",
+              "e07",
+              "e08",
+              "e09"
+            ]
+          }
+        }
+      },
+      "then": {
+        "required": [
+          "resource_ref"
+        ],
+        "properties": {
+          "resource_ref": {
+            "pattern": "^wev_[0-9a-hjkmnp-tv-z]{26}$"
+          }
+        }
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "template_id": {
+            "enum": [
+              "e12",
+              "e14"
+            ]
+          }
+        }
+      },
+      "then": {
+        "required": [
+          "resource_ref"
+        ],
+        "properties": {
+          "resource_ref": {
+            "pattern": "^ord_[0-9a-hjkmnp-tv-z]{26}$"
+          }
+        }
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "template_id": {
+            "enum": [
+              "e13"
+            ]
+          }
+        }
+      },
+      "then": {
+        "required": [
+          "resource_ref"
+        ],
+        "properties": {
+          "resource_ref": {
+            "pattern": "^rgt_[0-9a-hjkmnp-tv-z]{26}$"
+          }
+        }
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "template_id": {
+            "enum": [
+              "e15",
+              "e16"
+            ]
+          }
+        }
+      },
+      "then": {
+        "required": [
+          "resource_ref"
+        ],
+        "properties": {
+          "resource_ref": {
+            "pattern": "^bkg_[0-9a-hjkmnp-tv-z]{26}$"
+          }
+        }
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "template_id": {
+            "enum": [
+              "e01",
+              "e02",
+              "e03",
+              "e04",
+              "e05",
+              "e10",
+              "e11"
+            ]
+          }
+        }
+      },
+      "then": {
+        "properties": {
+          "resource_ref": {
+            "not": {}
+          }
+        }
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "status": {
+            "const": "pending"
+          }
+        },
+        "required": [
+          "status"
+        ]
+      },
+      "then": {
+        "properties": {
+          "lease": {
+            "not": {},
+            "description": "Only a leased job holds a lease."
+          },
+          "provider_message_id": {
+            "not": {},
+            "description": "A provider message ID exists only after provider acceptance (sent/complete)."
+          },
+          "send_started_at": {
+            "not": {}
+          },
+          "sent_at": {
+            "not": {}
+          },
+          "suppression_reason": {
+            "not": {}
+          }
+        }
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "status": {
+            "const": "leased"
+          }
+        },
+        "required": [
+          "status"
+        ]
+      },
+      "then": {
+        "required": [
+          "lease"
+        ],
+        "properties": {
+          "provider_message_id": {
+            "not": {},
+            "description": "A provider message ID exists only after provider acceptance (sent/complete)."
+          },
+          "sent_at": {
+            "not": {}
+          },
+          "suppression_reason": {
+            "not": {}
+          }
+        }
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "status": {
+            "const": "sent"
+          }
+        },
+        "required": [
+          "status"
+        ]
+      },
+      "then": {
+        "required": [
+          "provider_message_id",
+          "sent_at",
+          "send_started_at"
+        ],
+        "properties": {
+          "lease": {
+            "not": {},
+            "description": "Only a leased job holds a lease."
+          },
+          "attempt_count": {
+            "minimum": 1
+          },
+          "completed_at": {
+            "not": {}
+          }
+        }
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "status": {
+            "const": "complete"
+          }
+        },
+        "required": [
+          "status"
+        ]
+      },
+      "then": {
+        "required": [
+          "provider_message_id",
+          "sent_at",
+          "send_started_at",
+          "completed_at",
+          "delivery_status"
+        ],
+        "properties": {
+          "lease": {
+            "not": {},
+            "description": "Only a leased job holds a lease."
+          },
+          "attempt_count": {
+            "minimum": 1
+          }
+        }
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "status": {
+            "const": "retry_due"
+          }
+        },
+        "required": [
+          "status"
+        ]
+      },
+      "then": {
+        "required": [
+          "next_attempt_at"
+        ],
+        "anyOf": [
+          {
+            "required": [
+              "last_error"
+            ]
+          },
+          {
+            "required": [
+              "defer_reason"
+            ]
+          }
+        ],
+        "properties": {
+          "lease": {
+            "not": {},
+            "description": "Only a leased job holds a lease."
+          },
+          "provider_message_id": {
+            "not": {},
+            "description": "A provider message ID exists only after provider acceptance (sent/complete)."
+          },
+          "send_started_at": {
+            "not": {}
+          }
+        }
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "status": {
+            "const": "suppressed"
+          }
+        },
+        "required": [
+          "status"
+        ]
+      },
+      "then": {
+        "required": [
+          "suppression_reason"
+        ],
+        "properties": {
+          "lease": {
+            "not": {},
+            "description": "Only a leased job holds a lease."
+          },
+          "provider_message_id": {
+            "not": {},
+            "description": "A provider message ID exists only after provider acceptance (sent/complete)."
+          },
+          "send_started_at": {
+            "not": {},
+            "description": "JS-SUPP-1: a suppressed job has no send marker. Suppression stops a job only before its provider call starts (T3, T5) or after evidence of non-acceptance (T16 clears the marker). A started call ends in sent or reconcile_required (T9, T11)."
+          },
+          "sent_at": {
+            "not": {}
+          }
+        }
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "status": {
+            "const": "expired"
+          }
+        },
+        "required": [
+          "status"
+        ]
+      },
+      "then": {
+        "properties": {
+          "lease": {
+            "not": {},
+            "description": "Only a leased job holds a lease."
+          },
+          "provider_message_id": {
+            "not": {},
+            "description": "A provider message ID exists only after provider acceptance (sent/complete)."
+          }
+        }
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "status": {
+            "const": "reconcile_required"
+          }
+        },
+        "required": [
+          "status"
+        ]
+      },
+      "then": {
+        "required": [
+          "send_started_at",
+          "last_error"
+        ],
+        "properties": {
+          "lease": {
+            "not": {},
+            "description": "Only a leased job holds a lease."
+          },
+          "provider_message_id": {
+            "not": {},
+            "description": "A provider message ID exists only after provider acceptance (sent/complete)."
+          },
+          "last_error": {
+            "properties": {
+              "code": {
+                "enum": [
+                  "uncertain_outcome",
+                  "timeout",
+                  "lease_expired"
+                ]
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "status": {
+            "const": "dead_letter"
+          }
+        },
+        "required": [
+          "status"
+        ]
+      },
+      "then": {
+        "required": [
+          "last_error"
+        ],
+        "properties": {
+          "lease": {
+            "not": {},
+            "description": "Only a leased job holds a lease."
+          },
+          "provider_message_id": {
+            "not": {},
+            "description": "A provider message ID exists only after provider acceptance (sent/complete)."
+          }
+        }
+      }
+    }
+  ],
+  "$defs": {
+    "uuid": {
+      "type": "string",
+      "pattern": "^[0-9a-f]{8}-[0-9a-f]{4}-[47][0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$",
+      "maxLength": 36
+    },
+    "utc_timestamp": {
+      "type": "string",
+      "pattern": "^[0-9]{4}-(?:0[1-9]|1[0-2])-(?:0[1-9]|[12][0-9]|3[01])T(?:[01][0-9]|2[0-3]):[0-5][0-9]:[0-5][0-9](?:\\.[0-9]{1,6})?Z$",
+      "maxLength": 32,
+      "description": "RFC 3339 timestamp in UTC with a literal 'Z' suffix. Offsets such as -04:00 are rejected; America/Toronto is a display concern only (D-044)."
+    }
+  }
+}

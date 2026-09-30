@@ -1,0 +1,54 @@
+{
+  "task_id": "N10",
+  "base_commit": "5cbbf9b5d21dbf03d2cb44e524a6fcdc10d5515b",
+  "result_commit": null,
+  "contract_version": "1.0",
+  "changed_paths": [
+    "automations/smoke/"
+  ],
+  "artifacts": [
+    {
+      "path": ".orchestration/source/03_AGENT_PROMPTS.md",
+      "sha256": "e756e2b928787ba21b9715c8ce4f5f557d49e5d35a3dc91f357928be0ec05fe0"
+    }
+  ],
+  "tests": [
+    {
+      "id": "AUTO03",
+      "command": "fixture: import disabled SM01 into the pinned staging n8n",
+      "exit_code": 0,
+      "evidence": ".orchestration/provider-evidence/fixture-sm01-import.log",
+      "environment": "staging (fixture example)"
+    }
+  ],
+  "assumptions": [
+    "Fictional example: no N10 work, import or delivery has happened."
+  ],
+  "blocked_checks": [
+    {
+      "check": "SM02 delivery to the approved Telegram chat",
+      "status": "blocked",
+      "reason": "no approved chat recorded (HB-09b)",
+      "owner": "arnaud"
+    }
+  ],
+  "human_approvals_required": [
+    "G2: allowlisted smoke targets and the Telegram bot owner (HB-09b)"
+  ],
+  "external_actions_taken": [
+    {
+      "actor": "A4 (fixture)",
+      "type": "allowlisted test send",
+      "target": "one allowlisted staging inbox (fixture)",
+      "effect": "side_effect",
+      "authorization": "G2:.orchestration/approval-packets/fixture-g2-smoke.md"
+    }
+  ],
+  "metered_cost": {
+    "amount": 0,
+    "currency": "XXX",
+    "status": "provider-metered",
+    "source": ".orchestration/runs/fixture-run.json"
+  },
+  "status": "submitted"
+}

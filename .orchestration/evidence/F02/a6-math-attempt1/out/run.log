@@ -1,0 +1,699 @@
+# A6 independent math verification of F02 (attempt 1)
+# date (UTC): 2026-09-30T06:16:42Z
+# repo: /home/user/bill  branch: claude/orchestration-foundation  HEAD: 5cbbf9b5d21dbf03d2cb44e524a6fcdc10d5515b
+# environment: local container, node v22.22.2, ajv 8.20.0; fixture evidence only (no browser, no network, no provider)
+# independence: evidence/F02/math/compute_fixtures.py and workshop_reference.py were not read, imported or executed
+
+$ sha256sum <reviewed artifacts>   # compared with evidence/F02/math/validation.log
+20df5bc3a360a70d2cbaef2d980d72181a938571f9c602f4377d135fcca3775e  .orchestration/contracts/workshop-inputs.schema.json
+724eacd898fdd63d377846e0dd393b08668f2464f903277e2dbbe2758ddc6154  .orchestration/contracts/workshop-inputs.md
+56fe68faeaf8fd454876d403af9203664e1c1d72f069b9ffc833dd821a5365c3  .orchestration/contracts/workshop-math.md
+292ae40ccb400ae464889b061dab8f2f4d1b8f1b8a7543c766f894c67c045f57  .orchestration/contracts/workshop-clip-rules.md
+2855ae7c6330777a343cc7e2757d6016b9977b0fa39a981a26028a0ab38dc644  .orchestration/contracts/fixtures/workshop/WM01-zero-inflation-zero-escalation.json
+03765112fb6102f81d9b43ef3f0cc0edc08b0ca307b8d5c75e686baea5e7e579  .orchestration/contracts/fixtures/workshop/WM02-geometric-growth-closed-form.json
+ea0b927c60e9d6b5489292ee5678620254f8225b2001c212e40e654e7e42c64d  .orchestration/contracts/fixtures/workshop/WM03-later-income-start.json
+e531e1178ce646fae13071e7b9210861ccf3c418b1985a72950bd41e9acc83ff  .orchestration/contracts/fixtures/workshop/WM04-price-basis-today-vs-start-year.json
+d1da16c8459ff366ae7110403559ba87f9f1de1bbe63183b61492bbb7d0eef85  .orchestration/contracts/fixtures/workshop/WM05-month-to-year-conversion.json
+9f6ce32af58f7c5ab8c8179684e8fd1495a13dd2052dffd804a74a5e4c33138c  .orchestration/contracts/fixtures/workshop/WM06-zero-income-declared.json
+1dbad8fec77a7e8afbc89313cc2c3b05d81e73c6566235cbb43a55bd42003bbc  .orchestration/contracts/fixtures/workshop/WM07-unknown-income-not-answered.json
+83b4a8e586b3b6df2af5ed40b759a6399650bfa129c64c8adba73b7d1932d4b6  .orchestration/contracts/fixtures/workshop/WM08-unknown-amount-later-start.json
+60bb6d1e72bbc52027bba096e5699df67e019c734f0fae7aa1c7f4373f31fedc  .orchestration/contracts/fixtures/workshop/WM09-gross-net-mismatch.json
+8abb0c7e7f1a933b252a0ac3e9db52da8b67b1d9243180d05ba30f0f74123585  .orchestration/contracts/fixtures/workshop/WM10-housing-only-wealth.json
+6e73333f4231d36d403949fa216097358f28fbf8b1465637df6f5753d82ab4bf  .orchestration/contracts/fixtures/workshop/WM11-pension-double-count.json
+fa98b2d3610d7a3e1e1d7a2f8f00d60582d9488197eda1cf91f6ad5c416d740d  .orchestration/contracts/fixtures/workshop/WM12-surplus-years.json
+514274b3dbebb38a19dc4b285dc1bfee856ba6e80b330637f31dc6e23a8980bd  .orchestration/contracts/fixtures/workshop/WM13-retirement-year-boundary.json
+b260add745e16e0e0f407bebe1173be066ea1fab20f3657f18220ac968847dde  .orchestration/contracts/fixtures/workshop/WM14-capital-illustration-r-zero.json
+346c0e24d4f0ab71e36eedcf572697c3592337ddad303a3038564ff92bbd1a89  .orchestration/contracts/fixtures/workshop/WM15-capital-illustration-growing-annuity.json
+58707dc6fe47704f695f5d5c3a223a5aaf0c68d62e0a34c3cc279054db3560c8  .orchestration/contracts/fixtures/workshop/WM16-capital-illustration-level-annuity.json
+6d90881b23d6c19ab965bb38a78314a2bc229fa7f83048098bd0ce24fd4fd143  .orchestration/contracts/fixtures/workshop/WM17-rounding-half-even.json
+162a9081e2661e3ccbb0d799d50e53388763779f4a3e23c457662295cab9ed5a  .orchestration/contracts/fixtures/workshop/WM18-horizon-and-source-end.json
+24c12cdb2492d9bd6c9f8b3c7b7d7e5d558da5fd5f89536e557a12d946f05fc2  .orchestration/contracts/fixtures/workshop/WM19-uncertain-income-labelled-scheduled.json
+2e1f29dad9fb8f01ca75d247727dc3bd3c76df274ef30c620c3047253e9be1cf  .orchestration/contracts/fixtures/workshop/WM20-timing-unknown.json
+d6a54dfa6fb6dc71719230b2f521167e84542fe66e5d9e0d4dadd1a7b5a423d8  .orchestration/contracts/fixtures/workshop/WM21-household-timing.json
+0e4160acae3c0573f690c8205822c0ecba5d992675125782e7e1f56b25016435  .orchestration/contracts/fixtures/workshop/WM22-price-basis-unknown.json
+3f0ce5b39653e49a0acfde40b2b161de2896c4e3a1cb254c57faeda5f211734c  .orchestration/contracts/fixtures/workshop/WM23-tax-basis-unknown.json
+8ac57927c0bb64faf9f438cd0f3b168a15344fe1eaa81a6284b5b3804b427cfa  .orchestration/contracts/fixtures/workshop/WM24-rounding-float-trap.json
+c8201bc12d53855c251ab2d5583673683940aeecaf327467d239a4ad5bc03071  .orchestration/contracts/fixtures/workshop/clip-rules.json
+eba475882d5d82ba9df657f8d26f226cfda4fbe2092dd7a0e04f00d04daa0a64  .orchestration/contracts/fixtures/workshop/index.json
+hashes identical to validation.log: yes
+
+$ node run_fixtures.mjs
+== WM01 Zero inflation and zero escalation
+  ok  WM01 full output record equals expected (0 differences)
+  ok  WM01 input passes XF-04..XF-06
+  ok  WM01 D_t (recurrence) equals a*(1+i)^t (closed-form BigInt power) in every window year
+  ok  WM01 at most one of G_t, S_t is positive
+  ok  WM01 G_t - S_t = D_t - sum P exactly
+  ok  WM01 |displayed (G-S) - (displayed D - displayed income total)| <= 1 cent
+  ok  WM01 every paying P_j,t equals b_j(1+q_j)^(t-s_j) by closed-form power
+== WM02 Geometric spending growth (closed form)
+  ok  WM02 full output record equals expected (0 differences)
+  ok  WM02 input passes XF-04..XF-06
+  ok  WM02 D_t (recurrence) equals a*(1+i)^t (closed-form BigInt power) in every window year
+  ok  WM02 at most one of G_t, S_t is positive
+  ok  WM02 G_t - S_t = D_t - sum P exactly
+  ok  WM02 |displayed (G-S) - (displayed D - displayed income total)| <= 1 cent
+  ok  WM02 every paying P_j,t equals b_j(1+q_j)^(t-s_j) by closed-form power
+== WM03 Income that starts after retirement
+  ok  WM03 full output record equals expected (0 differences)
+  ok  WM03 input passes XF-04..XF-06
+  ok  WM03 D_t (recurrence) equals a*(1+i)^t (closed-form BigInt power) in every window year
+  ok  WM03 at most one of G_t, S_t is positive
+  ok  WM03 G_t - S_t = D_t - sum P exactly
+  ok  WM03 |displayed (G-S) - (displayed D - displayed income total)| <= 1 cent
+  ok  WM03 every paying P_j,t equals b_j(1+q_j)^(t-s_j) by closed-form power
+== WM04 Today's dollars vs start-year dollars
+  ok  WM04 full output record equals expected (0 differences)
+  ok  WM04 input passes XF-04..XF-06
+  ok  WM04 D_t (recurrence) equals a*(1+i)^t (closed-form BigInt power) in every window year
+  ok  WM04 at most one of G_t, S_t is positive
+  ok  WM04 G_t - S_t = D_t - sum P exactly
+  ok  WM04 |displayed (G-S) - (displayed D - displayed income total)| <= 1 cent
+  ok  WM04 every paying P_j,t equals b_j(1+q_j)^(t-s_j) by closed-form power
+== WM05 Monthly to annual conversion
+  ok  WM05 full output record equals expected (0 differences)
+  ok  WM05 input passes XF-04..XF-06
+  ok  WM05 D_t (recurrence) equals a*(1+i)^t (closed-form BigInt power) in every window year
+  ok  WM05 at most one of G_t, S_t is positive
+  ok  WM05 G_t - S_t = D_t - sum P exactly
+  ok  WM05 |displayed (G-S) - (displayed D - displayed income total)| <= 1 cent
+  ok  WM05 every paying P_j,t equals b_j(1+q_j)^(t-s_j) by closed-form power
+== WM06 Declared zero planned income
+  ok  WM06 full output record equals expected (0 differences)
+  ok  WM06 input passes XF-04..XF-06
+  ok  WM06 D_t (recurrence) equals a*(1+i)^t (closed-form BigInt power) in every window year
+  ok  WM06 at most one of G_t, S_t is positive
+  ok  WM06 G_t - S_t = D_t - sum P exactly
+  ok  WM06 |displayed (G-S) - (displayed D - displayed income total)| <= 1 cent
+  ok  WM06 every paying P_j,t equals b_j(1+q_j)^(t-s_j) by closed-form power
+== WM07 Income not answered (unknown, not zero)
+  ok  WM07 full output record equals expected (0 differences)
+  ok  WM07 input passes XF-04..XF-06
+  ok  WM07 D_t (recurrence) equals a*(1+i)^t (closed-form BigInt power) in every window year
+  ok  WM07 every paying P_j,t equals b_j(1+q_j)^(t-s_j) by closed-form power
+== WM08 Unknown amount on a later source
+  ok  WM08 full output record equals expected (0 differences)
+  ok  WM08 input passes XF-04..XF-06
+  ok  WM08 D_t (recurrence) equals a*(1+i)^t (closed-form BigInt power) in every window year
+  ok  WM08 at most one of G_t, S_t is positive
+  ok  WM08 G_t - S_t = D_t - sum P exactly
+  ok  WM08 |displayed (G-S) - (displayed D - displayed income total)| <= 1 cent
+  ok  WM08 every paying P_j,t equals b_j(1+q_j)^(t-s_j) by closed-form power
+== WM09 Gross income against after-tax spending
+  ok  WM09 full output record equals expected (0 differences)
+  ok  WM09 input passes XF-04..XF-06
+  ok  WM09 D_t (recurrence) equals a*(1+i)^t (closed-form BigInt power) in every window year
+  ok  WM09 every paying P_j,t equals b_j(1+q_j)^(t-s_j) by closed-form power
+== WM10 Home is the only wealth entered
+  ok  WM10 full output record equals expected (0 differences)
+  ok  WM10 input passes XF-04..XF-06
+  ok  WM10 D_t (recurrence) equals a*(1+i)^t (closed-form BigInt power) in every window year
+  ok  WM10 at most one of G_t, S_t is positive
+  ok  WM10 G_t - S_t = D_t - sum P exactly
+  ok  WM10 |displayed (G-S) - (displayed D - displayed income total)| <= 1 cent
+  ok  WM10 every paying P_j,t equals b_j(1+q_j)^(t-s_j) by closed-form power
+== WM11 Pension counted as asset and income
+  ok  WM11 full output record equals expected (0 differences)
+  ok  WM11 input passes XF-04..XF-06
+  ok  WM11 D_t (recurrence) equals a*(1+i)^t (closed-form BigInt power) in every window year
+  ok  WM11 at most one of G_t, S_t is positive
+  ok  WM11 G_t - S_t = D_t - sum P exactly
+  ok  WM11 |displayed (G-S) - (displayed D - displayed income total)| <= 1 cent
+  ok  WM11 every paying P_j,t equals b_j(1+q_j)^(t-s_j) by closed-form power
+== WM12 Surplus years then gap years
+  ok  WM12 full output record equals expected (0 differences)
+  ok  WM12 input passes XF-04..XF-06
+  ok  WM12 D_t (recurrence) equals a*(1+i)^t (closed-form BigInt power) in every window year
+  ok  WM12 at most one of G_t, S_t is positive
+  ok  WM12 G_t - S_t = D_t - sum P exactly
+  ok  WM12 |displayed (G-S) - (displayed D - displayed income total)| <= 1 cent
+  ok  WM12 every paying P_j,t equals b_j(1+q_j)^(t-s_j) by closed-form power
+== WM13 Window starts at t = R - A
+  ok  WM13 full output record equals expected (0 differences)
+  ok  WM13 input passes XF-04..XF-06
+  ok  WM13 D_t (recurrence) equals a*(1+i)^t (closed-form BigInt power) in every window year
+  ok  WM13 at most one of G_t, S_t is positive
+  ok  WM13 G_t - S_t = D_t - sum P exactly
+  ok  WM13 |displayed (G-S) - (displayed D - displayed income total)| <= 1 cent
+  ok  WM13 every paying P_j,t equals b_j(1+q_j)^(t-s_j) by closed-form power
+== WM14 Capital illustration with r = 0 (feature OFF)
+  ok  WM14 full output record equals expected (0 differences)
+  ok  WM14 input passes XF-04..XF-06
+  ok  WM14 D_t (recurrence) equals a*(1+i)^t (closed-form BigInt power) in every window year
+  ok  WM14 at most one of G_t, S_t is positive
+  ok  WM14 G_t - S_t = D_t - sum P exactly
+  ok  WM14 |displayed (G-S) - (displayed D - displayed income total)| <= 1 cent
+  ok  WM14 every paying P_j,t equals b_j(1+q_j)^(t-s_j) by closed-form power
+== WM15 Capital illustration, r > 0, growing gap (feature OFF)
+  ok  WM15 full output record equals expected (0 differences)
+  ok  WM15 input passes XF-04..XF-06
+  ok  WM15 D_t (recurrence) equals a*(1+i)^t (closed-form BigInt power) in every window year
+  ok  WM15 at most one of G_t, S_t is positive
+  ok  WM15 G_t - S_t = D_t - sum P exactly
+  ok  WM15 |displayed (G-S) - (displayed D - displayed income total)| <= 1 cent
+  ok  WM15 every paying P_j,t equals b_j(1+q_j)^(t-s_j) by closed-form power
+== WM16 Capital illustration, r > 0, level gap (feature OFF)
+  ok  WM16 full output record equals expected (0 differences)
+  ok  WM16 input passes XF-04..XF-06
+  ok  WM16 D_t (recurrence) equals a*(1+i)^t (closed-form BigInt power) in every window year
+  ok  WM16 at most one of G_t, S_t is positive
+  ok  WM16 G_t - S_t = D_t - sum P exactly
+  ok  WM16 |displayed (G-S) - (displayed D - displayed income total)| <= 1 cent
+  ok  WM16 every paying P_j,t equals b_j(1+q_j)^(t-s_j) by closed-form power
+== WM17 Half-even rounding at exactly half a cent
+  ok  WM17 full output record equals expected (0 differences)
+  ok  WM17 input passes XF-04..XF-06
+  ok  WM17 D_t (recurrence) equals a*(1+i)^t (closed-form BigInt power) in every window year
+  ok  WM17 at most one of G_t, S_t is positive
+  ok  WM17 G_t - S_t = D_t - sum P exactly
+  ok  WM17 |displayed (G-S) - (displayed D - displayed income total)| <= 1 cent
+  ok  WM17 every paying P_j,t equals b_j(1+q_j)^(t-s_j) by closed-form power
+== WM18 Source that ends; source beyond the horizon
+  ok  WM18 full output record equals expected (0 differences)
+  ok  WM18 input passes XF-04..XF-06
+  ok  WM18 D_t (recurrence) equals a*(1+i)^t (closed-form BigInt power) in every window year
+  ok  WM18 at most one of G_t, S_t is positive
+  ok  WM18 G_t - S_t = D_t - sum P exactly
+  ok  WM18 |displayed (G-S) - (displayed D - displayed income total)| <= 1 cent
+  ok  WM18 every paying P_j,t equals b_j(1+q_j)^(t-s_j) by closed-form power
+== WM19 Rental income labelled scheduled
+  ok  WM19 full output record equals expected (0 differences)
+  ok  WM19 input passes XF-04..XF-06
+  ok  WM19 D_t (recurrence) equals a*(1+i)^t (closed-form BigInt power) in every window year
+  ok  WM19 at most one of G_t, S_t is positive
+  ok  WM19 G_t - S_t = D_t - sum P exactly
+  ok  WM19 |displayed (G-S) - (displayed D - displayed income total)| <= 1 cent
+  ok  WM19 every paying P_j,t equals b_j(1+q_j)^(t-s_j) by closed-form power
+== WM20 Current age unknown
+  ok  WM20 full output record equals expected (0 differences)
+  ok  WM20 input passes XF-04..XF-06
+  ok  WM20 D_t (recurrence) equals a*(1+i)^t (closed-form BigInt power) in every window year
+  ok  WM20 every paying P_j,t equals b_j(1+q_j)^(t-s_j) by closed-form power
+== WM21 Partner retires later
+  ok  WM21 full output record equals expected (0 differences)
+  ok  WM21 input passes XF-04..XF-06
+  ok  WM21 D_t (recurrence) equals a*(1+i)^t (closed-form BigInt power) in every window year
+  ok  WM21 at most one of G_t, S_t is positive
+  ok  WM21 G_t - S_t = D_t - sum P exactly
+  ok  WM21 |displayed (G-S) - (displayed D - displayed income total)| <= 1 cent
+  ok  WM21 every paying P_j,t equals b_j(1+q_j)^(t-s_j) by closed-form power
+== WM22 Price basis unknown on a future source
+  ok  WM22 full output record equals expected (0 differences)
+  ok  WM22 input passes XF-04..XF-06
+  ok  WM22 D_t (recurrence) equals a*(1+i)^t (closed-form BigInt power) in every window year
+  ok  WM22 at most one of G_t, S_t is positive
+  ok  WM22 G_t - S_t = D_t - sum P exactly
+  ok  WM22 |displayed (G-S) - (displayed D - displayed income total)| <= 1 cent
+  ok  WM22 every paying P_j,t equals b_j(1+q_j)^(t-s_j) by closed-form power
+== WM23 Tax basis unknown
+  ok  WM23 full output record equals expected (0 differences)
+  ok  WM23 input passes XF-04..XF-06
+  ok  WM23 D_t (recurrence) equals a*(1+i)^t (closed-form BigInt power) in every window year
+  ok  WM23 every paying P_j,t equals b_j(1+q_j)^(t-s_j) by closed-form power
+== WM24 Exact tie that IEEE doubles miss
+  ok  WM24 full output record equals expected (0 differences)
+  ok  WM24 input passes XF-04..XF-06
+  ok  WM24 D_t (recurrence) equals a*(1+i)^t (closed-form BigInt power) in every window year
+  ok  WM24 at most one of G_t, S_t is positive
+  ok  WM24 G_t - S_t = D_t - sum P exactly
+  ok  WM24 |displayed (G-S) - (displayed D - displayed income total)| <= 1 cent
+  ok  WM24 every paying P_j,t equals b_j(1+q_j)^(t-s_j) by closed-form power
+== fixture-specific closed forms
+  ok  WM02 sum of expected exact D_5..D_14 = a(1.02)^5((1.02)^10-1)/0.02
+  ok  WM02 deflated gap = 5,000,000 in every year
+  ok  WM14 C_R = 5 x 1,800,000 = 9,000,000 (r = 0)
+  ok  WM15 C_R_exact equals growing-annuity closed form (80458251 cents)
+  ok  WM15 C_R_cents = half-even(closed form)
+  ok  WM16 C_R_exact equals level-annuity closed form (25369100 cents)
+  ok  WM11 C_R = sum 1,800,000/1.03^(k+1); display ineligible (pension guard)
+  ok  WM12 C_R (r=0) = sum of gaps only = 339131.5372
+  ok  WM12 netted total would be -526360.4628 (differs; surplus not netted)
+  ok  WM17 JS Math.round(1010050.5)=1010051 but half-even expected 1010050
+  ok  WM17 1010151.5 -> 1010152 (tie to even, upward)
+  ok  WM17 displayed S=101 vs displayed P-D=102 (one-cent display gap)
+  ok  WM24 double 1051465.4999999998 vs exact 1051465.5 -> half-even 1051466
+== summary: 169 passed, 0 failed
+[exit 0]
+
+$ node clip_rules.mjs
+== precedence list in fixture equals contract s3
+  ok  clip-rules.json precedence == C>M>X>H>F>none as written in workshop-clip-rules.md s3
+== totality: every one of the 32 predicate vectors maps to exactly one (clip, reason)
+  ok  row for 00000 present in truth table
+  ok  row 1 selected_by_precedence W10 == independent W10
+  ok  row 1 possible=true matches (C and F) exclusion
+  ok  row for 00001 present in truth table
+  ok  row 2 selected_by_precedence W07 == independent W07
+  ok  row 2 possible=true matches (C and F) exclusion
+  ok  row for 00010 present in truth table
+  ok  row 3 selected_by_precedence W09 == independent W09
+  ok  row 3 possible=true matches (C and F) exclusion
+  ok  row for 00011 present in truth table
+  ok  row 4 selected_by_precedence W09 == independent W09
+  ok  row 4 possible=true matches (C and F) exclusion
+  ok  row for 00100 present in truth table
+  ok  row 5 selected_by_precedence W08 == independent W08
+  ok  row 5 possible=true matches (C and F) exclusion
+  ok  row for 00101 present in truth table
+  ok  row 6 selected_by_precedence W08 == independent W08
+  ok  row 6 possible=true matches (C and F) exclusion
+  ok  row for 00110 present in truth table
+  ok  row 7 selected_by_precedence W08 == independent W08
+  ok  row 7 possible=true matches (C and F) exclusion
+  ok  row for 00111 present in truth table
+  ok  row 8 selected_by_precedence W08 == independent W08
+  ok  row 8 possible=true matches (C and F) exclusion
+  ok  row for 01000 present in truth table
+  ok  row 9 selected_by_precedence W06 == independent W06
+  ok  row 9 possible=true matches (C and F) exclusion
+  ok  row for 01001 present in truth table
+  ok  row 10 selected_by_precedence W06 == independent W06
+  ok  row 10 possible=true matches (C and F) exclusion
+  ok  row for 01010 present in truth table
+  ok  row 11 selected_by_precedence W06 == independent W06
+  ok  row 11 possible=true matches (C and F) exclusion
+  ok  row for 01011 present in truth table
+  ok  row 12 selected_by_precedence W06 == independent W06
+  ok  row 12 possible=true matches (C and F) exclusion
+  ok  row for 01100 present in truth table
+  ok  row 13 selected_by_precedence W06 == independent W06
+  ok  row 13 possible=true matches (C and F) exclusion
+  ok  row for 01101 present in truth table
+  ok  row 14 selected_by_precedence W06 == independent W06
+  ok  row 14 possible=true matches (C and F) exclusion
+  ok  row for 01110 present in truth table
+  ok  row 15 selected_by_precedence W06 == independent W06
+  ok  row 15 possible=true matches (C and F) exclusion
+  ok  row for 01111 present in truth table
+  ok  row 16 selected_by_precedence W06 == independent W06
+  ok  row 16 possible=true matches (C and F) exclusion
+  ok  row for 10000 present in truth table
+  ok  row 17 selected_by_precedence W10 == independent W10
+  ok  row 17 possible=true matches (C and F) exclusion
+  ok  row for 10001 present in truth table
+  ok  row 18 selected_by_precedence W10 == independent W10
+  ok  row 18 possible=false matches (C and F) exclusion
+  ok  row for 10010 present in truth table
+  ok  row 19 selected_by_precedence W10 == independent W10
+  ok  row 19 possible=true matches (C and F) exclusion
+  ok  row for 10011 present in truth table
+  ok  row 20 selected_by_precedence W10 == independent W10
+  ok  row 20 possible=false matches (C and F) exclusion
+  ok  row for 10100 present in truth table
+  ok  row 21 selected_by_precedence W10 == independent W10
+  ok  row 21 possible=true matches (C and F) exclusion
+  ok  row for 10101 present in truth table
+  ok  row 22 selected_by_precedence W10 == independent W10
+  ok  row 22 possible=false matches (C and F) exclusion
+  ok  row for 10110 present in truth table
+  ok  row 23 selected_by_precedence W10 == independent W10
+  ok  row 23 possible=true matches (C and F) exclusion
+  ok  row for 10111 present in truth table
+  ok  row 24 selected_by_precedence W10 == independent W10
+  ok  row 24 possible=false matches (C and F) exclusion
+  ok  row for 11000 present in truth table
+  ok  row 25 selected_by_precedence W10 == independent W10
+  ok  row 25 possible=true matches (C and F) exclusion
+  ok  row for 11001 present in truth table
+  ok  row 26 selected_by_precedence W10 == independent W10
+  ok  row 26 possible=false matches (C and F) exclusion
+  ok  row for 11010 present in truth table
+  ok  row 27 selected_by_precedence W10 == independent W10
+  ok  row 27 possible=true matches (C and F) exclusion
+  ok  row for 11011 present in truth table
+  ok  row 28 selected_by_precedence W10 == independent W10
+  ok  row 28 possible=false matches (C and F) exclusion
+  ok  row for 11100 present in truth table
+  ok  row 29 selected_by_precedence W10 == independent W10
+  ok  row 29 possible=true matches (C and F) exclusion
+  ok  row for 11101 present in truth table
+  ok  row 30 selected_by_precedence W10 == independent W10
+  ok  row 30 possible=false matches (C and F) exclusion
+  ok  row for 11110 present in truth table
+  ok  row 31 selected_by_precedence W10 == independent W10
+  ok  row 31 possible=true matches (C and F) exclusion
+  ok  row for 11111 present in truth table
+  ok  row 32 selected_by_precedence W10 == independent W10
+  ok  row 32 possible=false matches (C and F) exclusion
+  ok  decision list is total over 2^5 inputs
+  ok  truth table has 32 distinct rows
+== possible rows: recompute predicates, state, flags and selection from the row input
+  ok  row 1 input passes XF-04..XF-06
+  ok  row 1 computed predicates {"C":false,"M":false,"X":false,"H":false,"F":false} == intended
+  ok  row 1 selected W10/neutral_fallback
+  ok  row 1 state complete
+  ok  row 1 flags []
+  ok  row 2 input passes XF-04..XF-06
+  ok  row 2 computed predicates {"C":false,"M":false,"X":false,"H":false,"F":true} == intended
+  ok  row 2 selected W07/funding_gap
+  ok  row 2 state complete
+  ok  row 2 flags []
+  ok  row 3 input passes XF-04..XF-06
+  ok  row 3 computed predicates {"C":false,"M":false,"X":false,"H":true,"F":false} == intended
+  ok  row 3 selected W09/household_timing
+  ok  row 3 state complete
+  ok  row 3 flags ["household_timing_differs"]
+  ok  row 4 input passes XF-04..XF-06
+  ok  row 4 computed predicates {"C":false,"M":false,"X":false,"H":true,"F":true} == intended
+  ok  row 4 selected W09/household_timing
+  ok  row 4 state complete
+  ok  row 4 flags ["household_timing_differs"]
+  ok  row 5 input passes XF-04..XF-06
+  ok  row 5 computed predicates {"C":false,"M":false,"X":true,"H":false,"F":false} == intended
+  ok  row 5 selected W08/tax_basis
+  ok  row 5 state basis_mismatch
+  ok  row 5 flags ["gross_net_mismatch"]
+  ok  row 6 input passes XF-04..XF-06
+  ok  row 6 computed predicates {"C":false,"M":false,"X":true,"H":false,"F":true} == intended
+  ok  row 6 selected W08/tax_basis
+  ok  row 6 state basis_mismatch
+  ok  row 6 flags ["gross_net_mismatch"]
+  ok  row 7 input passes XF-04..XF-06
+  ok  row 7 computed predicates {"C":false,"M":false,"X":true,"H":true,"F":false} == intended
+  ok  row 7 selected W08/tax_basis
+  ok  row 7 state basis_mismatch
+  ok  row 7 flags ["gross_net_mismatch","household_timing_differs"]
+  ok  row 8 input passes XF-04..XF-06
+  ok  row 8 computed predicates {"C":false,"M":false,"X":true,"H":true,"F":true} == intended
+  ok  row 8 selected W08/tax_basis
+  ok  row 8 state basis_mismatch
+  ok  row 8 flags ["gross_net_mismatch","household_timing_differs"]
+  ok  row 9 input passes XF-04..XF-06
+  ok  row 9 computed predicates {"C":false,"M":true,"X":false,"H":false,"F":false} == intended
+  ok  row 9 selected W06/missing_income
+  ok  row 9 state incomplete_unknown_income
+  ok  row 9 flags ["incomplete_income"]
+  ok  row 10 input passes XF-04..XF-06
+  ok  row 10 computed predicates {"C":false,"M":true,"X":false,"H":false,"F":true} == intended
+  ok  row 10 selected W06/missing_income
+  ok  row 10 state incomplete_unknown_income
+  ok  row 10 flags ["incomplete_income"]
+  ok  row 11 input passes XF-04..XF-06
+  ok  row 11 computed predicates {"C":false,"M":true,"X":false,"H":true,"F":false} == intended
+  ok  row 11 selected W06/missing_income
+  ok  row 11 state incomplete_unknown_income
+  ok  row 11 flags ["household_timing_differs","incomplete_income"]
+  ok  row 12 input passes XF-04..XF-06
+  ok  row 12 computed predicates {"C":false,"M":true,"X":false,"H":true,"F":true} == intended
+  ok  row 12 selected W06/missing_income
+  ok  row 12 state incomplete_unknown_income
+  ok  row 12 flags ["household_timing_differs","incomplete_income"]
+  ok  row 13 input passes XF-04..XF-06
+  ok  row 13 computed predicates {"C":false,"M":true,"X":true,"H":false,"F":false} == intended
+  ok  row 13 selected W06/missing_income
+  ok  row 13 state incomplete_unknown_income
+  ok  row 13 flags ["gross_net_mismatch","incomplete_income"]
+  ok  row 14 input passes XF-04..XF-06
+  ok  row 14 computed predicates {"C":false,"M":true,"X":true,"H":false,"F":true} == intended
+  ok  row 14 selected W06/missing_income
+  ok  row 14 state incomplete_unknown_income
+  ok  row 14 flags ["gross_net_mismatch","incomplete_income"]
+  ok  row 15 input passes XF-04..XF-06
+  ok  row 15 computed predicates {"C":false,"M":true,"X":true,"H":true,"F":false} == intended
+  ok  row 15 selected W06/missing_income
+  ok  row 15 state incomplete_unknown_income
+  ok  row 15 flags ["gross_net_mismatch","household_timing_differs","incomplete_income"]
+  ok  row 16 input passes XF-04..XF-06
+  ok  row 16 computed predicates {"C":false,"M":true,"X":true,"H":true,"F":true} == intended
+  ok  row 16 selected W06/missing_income
+  ok  row 16 state incomplete_unknown_income
+  ok  row 16 flags ["gross_net_mismatch","household_timing_differs","incomplete_income"]
+  ok  row 17 input passes XF-04..XF-06
+  ok  row 17 computed predicates {"C":true,"M":false,"X":false,"H":false,"F":false} == intended
+  ok  row 17 selected W10/core_inputs_missing
+  ok  row 17 state incomplete_unknown_spending
+  ok  row 17 flags []
+  ok  row 19 input passes XF-04..XF-06
+  ok  row 19 computed predicates {"C":true,"M":false,"X":false,"H":true,"F":false} == intended
+  ok  row 19 selected W10/core_inputs_missing
+  ok  row 19 state incomplete_unknown_spending
+  ok  row 19 flags ["household_timing_differs"]
+  ok  row 21 input passes XF-04..XF-06
+  ok  row 21 computed predicates {"C":true,"M":false,"X":true,"H":false,"F":false} == intended
+  ok  row 21 selected W10/core_inputs_missing
+  ok  row 21 state incomplete_unknown_spending
+  ok  row 21 flags ["gross_net_mismatch"]
+  ok  row 23 input passes XF-04..XF-06
+  ok  row 23 computed predicates {"C":true,"M":false,"X":true,"H":true,"F":false} == intended
+  ok  row 23 selected W10/core_inputs_missing
+  ok  row 23 state incomplete_unknown_spending
+  ok  row 23 flags ["gross_net_mismatch","household_timing_differs"]
+  ok  row 25 input passes XF-04..XF-06
+  ok  row 25 computed predicates {"C":true,"M":true,"X":false,"H":false,"F":false} == intended
+  ok  row 25 selected W10/core_inputs_missing
+  ok  row 25 state incomplete_unknown_spending
+  ok  row 25 flags ["incomplete_income"]
+  ok  row 27 input passes XF-04..XF-06
+  ok  row 27 computed predicates {"C":true,"M":true,"X":false,"H":true,"F":false} == intended
+  ok  row 27 selected W10/core_inputs_missing
+  ok  row 27 state incomplete_unknown_spending
+  ok  row 27 flags ["household_timing_differs","incomplete_income"]
+  ok  row 29 input passes XF-04..XF-06
+  ok  row 29 computed predicates {"C":true,"M":true,"X":true,"H":false,"F":false} == intended
+  ok  row 29 selected W10/core_inputs_missing
+  ok  row 29 state incomplete_unknown_spending
+  ok  row 29 flags ["gross_net_mismatch","incomplete_income"]
+  ok  row 31 input passes XF-04..XF-06
+  ok  row 31 computed predicates {"C":true,"M":true,"X":true,"H":true,"F":false} == intended
+  ok  row 31 selected W10/core_inputs_missing
+  ok  row 31 state incomplete_unknown_spending
+  ok  row 31 flags ["gross_net_mismatch","household_timing_differs","incomplete_income"]
+== supplementary cases
+  ok  CS01 input passes XF-04..XF-06
+  ok  CS01 predicates {"C":true,"M":true,"X":true,"H":false,"F":false}
+  ok  CS01 selected W10/core_inputs_missing
+  ok  CS01 state incomplete_unknown_timing
+  ok  CS01 flags ["gross_net_mismatch","incomplete_income"]
+  ok  CS02 input passes XF-04..XF-06
+  ok  CS02 predicates {"C":true,"M":false,"X":false,"H":false,"F":false}
+  ok  CS02 selected W10/core_inputs_missing
+  ok  CS02 state incomplete_unknown_timing
+  ok  CS02 flags []
+  ok  CS03 input passes XF-04..XF-06
+  ok  CS03 predicates {"C":false,"M":true,"X":false,"H":false,"F":false}
+  ok  CS03 selected W06/missing_income
+  ok  CS03 state incomplete_unknown_income
+  ok  CS03 flags ["incomplete_income"]
+  ok  CS04 input passes XF-04..XF-06
+  ok  CS04 predicates {"C":false,"M":false,"X":true,"H":false,"F":false}
+  ok  CS04 selected W08/tax_basis
+  ok  CS04 state basis_unknown
+  ok  CS04 flags ["tax_basis_unknown"]
+  ok  CS05 input passes XF-04..XF-06
+  ok  CS05 predicates {"C":false,"M":false,"X":false,"H":false,"F":false}
+  ok  CS05 selected W10/neutral_fallback
+  ok  CS05 state complete
+  ok  CS05 flags []
+  ok  CS06 input passes XF-04..XF-06
+  ok  CS06 predicates {"C":false,"M":false,"X":false,"H":false,"F":false}
+  ok  CS06 selected W10/neutral_fallback
+  ok  CS06 state complete
+  ok  CS06 flags []
+  ok  CS07 input passes XF-04..XF-06
+  ok  CS07 predicates {"C":false,"M":false,"X":false,"H":false,"F":true}
+  ok  CS07 selected W07/funding_gap
+  ok  CS07 state complete
+  ok  CS07 flags ["includes_uncertain_income"]
+== media states (independent implementation of s7)
+  ok  MS01 Nothing recorded yet (today's real state): {"selected":"W07","render_state":"unavailable","disclosure_shown":true,"substitute_clip":null,"release_check":"pass"}
+  ok  MS02 Recorded and approved in active locale: {"selected":"W07","render_state":"play","disclosure_shown":true,"substitute_clip":null,"release_check":"pass"}
+  ok  MS03 Recorded only in the other language: {"selected":"W07","render_state":"other_locale_only","disclosure_shown":true,"substitute_clip":null,"release_check":"pass"}
+  ok  MS04 Labelled test media in a local test build: {"selected":"W08","render_state":"play_test_media_labelled","disclosure_shown":true,"substitute_clip":null,"release_check":"pass"}
+  ok  MS05 Test media referenced by a production build: {"selected":"W08","render_state":"unavailable","disclosure_shown":true,"substitute_clip":null,"release_check":"fail_test_media_referenced"}
+  ok  MS06 Another branch clip exists but the selected one does not: no substitution: {"selected":"W06","render_state":"unavailable","disclosure_shown":true,"substitute_clip":null,"release_check":"pass"}
+== disclosure text
+  ok  EN disclosure states automatic selection and no review by Bill
+== purity: selection ignores media availability, locale, time (same input twice)
+  ok  identical input -> identical selection
+== summary: 262 passed, 0 failed
+[exit 0]
+
+$ node validate_schema.mjs
+  info strict-mode compile raised: strict mode: missing type "object" for keyword "required" at "https://bill.contracts.local/workshop-inputs/1.0#/allOf/0/if/properties/chapters" (strictTypes)
+  ok  schema is valid against the draft 2020-12 metaschema (Ajv)
+== valid examples: schema + semantic layer accept
+  ok  valid/already-retired-zeros.json accepted
+  ok  valid/complete-single.json accepted
+  ok  valid/household-mixed.json accepted
+  ok  valid/minimal-all-unknown.json accepted
+  ok  valid/range-limits.json accepted
+== fixture inputs: schema + semantic layer accept
+  ok  fixture WM01-zero-inflation-zero-escalation.json input accepted
+  ok  fixture WM02-geometric-growth-closed-form.json input accepted
+  ok  fixture WM03-later-income-start.json input accepted
+  ok  fixture WM04-price-basis-today-vs-start-year.json input accepted
+  ok  fixture WM05-month-to-year-conversion.json input accepted
+  ok  fixture WM06-zero-income-declared.json input accepted
+  ok  fixture WM07-unknown-income-not-answered.json input accepted
+  ok  fixture WM08-unknown-amount-later-start.json input accepted
+  ok  fixture WM09-gross-net-mismatch.json input accepted
+  ok  fixture WM10-housing-only-wealth.json input accepted
+  ok  fixture WM11-pension-double-count.json input accepted
+  ok  fixture WM12-surplus-years.json input accepted
+  ok  fixture WM13-retirement-year-boundary.json input accepted
+  ok  fixture WM14-capital-illustration-r-zero.json input accepted
+  ok  fixture WM15-capital-illustration-growing-annuity.json input accepted
+  ok  fixture WM16-capital-illustration-level-annuity.json input accepted
+  ok  fixture WM17-rounding-half-even.json input accepted
+  ok  fixture WM18-horizon-and-source-end.json input accepted
+  ok  fixture WM19-uncertain-income-labelled-scheduled.json input accepted
+  ok  fixture WM20-timing-unknown.json input accepted
+  ok  fixture WM21-household-timing.json input accepted
+  ok  fixture WM22-price-basis-unknown.json input accepted
+  ok  fixture WM23-tax-basis-unknown.json input accepted
+  ok  fixture WM24-rounding-float-trap.json input accepted
+  ok  clip-rules inputs accepted: 31/31
+== invalid examples: each rejected for the stated reason
+  ok  invalid/already-receiving-with-point.json [START - already receiving has no start point] hit=[{"path":"/chapters/income/sources/0/start","keyword":"not","params":{}}]
+  ok  invalid/coverage-none-with-sources.json [XF-08 - coverage agrees with the source list] hit=[{"path":"/chapters/income/sources","keyword":"maxItems","params":{"limit":0}}]
+  ok  invalid/duplicate-source-id.json [XF-06 - source ids are unique] schema_valid=true semantic=[{"rule":"XF-06","path":"/chapters/income/sources/1/id"}]
+  ok  invalid/end-before-start.json [XF-05 - end is after start] schema_valid=true semantic=[{"rule":"XF-05","path":"/chapters/income/sources/0/end"}]
+  ok  invalid/estimated-without-value.json [STATUS-3 - estimated/confirmed need a value] hit=[{"path":"/chapters/life/spending/amount","keyword":"required","params":{"missingProperty":"value"}}]
+  ok  invalid/estimated-zero-value.json [STATUS-2 - zero has exactly one representation] hit=[{"path":"/chapters/income/sources/0/amount/value","keyword":"minimum","params":{"comparison":">=","limit":1}}]
+  ok  invalid/extra-pii-email.json [PRIVACY - no personal identifier fields (closed shapes)] hit=[{"path":"","keyword":"additionalProperties","params":{"additionalProperty":"email"}}]
+  ok  invalid/float-cents.json [UNITS - money is an integer number of cents] hit=[{"path":"/chapters/life/spending/amount/value","keyword":"type","params":{"type":"integer"}}]
+  ok  invalid/home-counted-spendable.json [ASSET - home/business excluded from spendable] hit=[{"path":"/chapters/savings/home_value/excluded_from_spendable","keyword":"const","params":{"allowedValue":true}}]
+  ok  invalid/horizon-beyond-age-120.json [XF-03 - last illustrated age at most 120] hit=[{"path":"/chapters/timing/planning_horizon_years/value","keyword":"maximum","params":{"comparison":"<=","limit":26}}]
+  ok  invalid/horizon-zero.json [RANGE - planning horizon is at least 1 year] hit=[{"path":"/chapters/timing/planning_horizon_years/value","keyword":"minimum","params":{"comparison":">=","limit":1}},{"path":"/chapters/timing/planning_horizon_years/value","keyword":"minimum","params":{"comparison":">=","limit":1}}]
+  ok  invalid/income-basis-missing.json [BASIS - every income source states gross, net or unknown] hit=[{"path":"/chapters/income/sources/0","keyword":"required","params":{"missingProperty":"tax_basis"}}]
+  ok  invalid/income-guaranteed-label.json [LABEL - no 'guaranteed' dependability] hit=[{"path":"/chapters/income/sources/0/dependability","keyword":"enum","params":{"allowedValues":["scheduled","uncertain"]}}]
+  FAIL invalid/infinity-literal.json [NONFINITE - number must be a finite integer] strict_parse=false lenient schema errors=[{"path":"/chapters/life/spending/amount/value","keyword":"maximum","params":{"comparison":"<=","limit":10000000}},{"path":"/chapters/life/spending/amount/value","keyword":"maximum","params":{"comparison":"<=","limit":9007199254740991}}]
+  ok  invalid/inflation-unknown.json [ASSUMPTION - inflation is an explicit assumption] hit=[{"path":"/chapters/timing/inflation_bp/status","keyword":"enum","params":{"allowedValues":["zero","estimated"]}}]
+  ok  invalid/monthly-spending-over-limit.json [RANGE - monthly spending up to $100,000.00] hit=[{"path":"/chapters/life/spending/amount/value","keyword":"maximum","params":{"comparison":"<=","limit":10000000}}]
+  ok  invalid/nan-as-string.json [NONFINITE - number must be a finite integer] hit=[{"path":"/chapters/life/spending/amount/value","keyword":"type","params":{"type":"integer"}}]
+  ok  invalid/nan-literal.json [NONFINITE - number must be a finite integer] strict_parse=false lenient schema errors=[{"path":"/chapters/life/spending/amount/value","keyword":"maximum","params":{"comparison":"<=","limit":10000000}},{"path":"/chapters/life/spending/amount/value","keyword":"minimum","params":{"comparison":">=","limit":1}},{"path":"/chapters/life/spending/amount/value","keyword":"type","params":{"type":"integer"}},{"path":"/chapters/life/spending/amount/value","keyword":"maximum","params":{"comparison":"<=","limit":9007199254740991}},{"path":"/chapters/life/spending/amount/value","keyword":"minimum","params":{"comparison":">=","limit":0}}]
+  ok  invalid/negative-spending.json [RANGE - money is never negative] hit=[{"path":"/chapters/life/spending/amount/value","keyword":"minimum","params":{"comparison":">=","limit":1}},{"path":"/chapters/life/spending/amount/value","keyword":"minimum","params":{"comparison":">=","limit":0}}]
+  ok  invalid/partner-retirement-before-partner-age.json [XF-02 - partner retirement age not earlier than partner current age] hit=[{"path":"/chapters/timing/household/partner_retirement_age/value","keyword":"minimum","params":{"comparison":">=","limit":60}}]
+  ok  invalid/partner-source-without-household.json [XF-07 - partner-owned source needs household timing] hit=[{"path":"/chapters/timing","keyword":"required","params":{"missingProperty":"household"}}]
+  ok  invalid/pii-label-in-source.json [PRIVACY - no free text anywhere] hit=[{"path":"/chapters/income/sources/0","keyword":"additionalProperties","params":{"additionalProperty":"label"}}]
+  ok  invalid/retirement-before-current-age.json [XF-01 - retirement age not earlier than current age] hit=[{"path":"/chapters/timing/retirement_age/value","keyword":"minimum","params":{"comparison":">=","limit":58}}]
+  ok  invalid/spending-pretax-basis.json [BASIS - spending is after tax (stated)] hit=[{"path":"/chapters/life/spending/tax_basis","keyword":"const","params":{"allowedValue":"after_tax"}}]
+  ok  invalid/spending-status-zero.json [RANGE - household spending cannot be zero] hit=[{"path":"/chapters/life/spending/amount/status","keyword":"enum","params":{"allowedValues":["unknown","estimated","confirmed"]}}]
+  ok  invalid/start-age-already-passed.json [XF-04 - an age-based start is not before the owner's current age] schema_valid=true semantic=[{"rule":"XF-04","path":"/chapters/income/sources/0/start/point/value"}]
+  ok  invalid/unknown-with-value.json [STATUS-1 - unknown carries no value] hit=[{"path":"/chapters/life/spending/amount","keyword":"not","params":{}}]
+== exhaustive sweeps of XF-01 / XF-02 / XF-03 generated clauses
+  ok  XF-01 sweep A=18..100 x R=30..100 (5,893 cases): accept iff R >= A; mismatches=[]
+  ok  XF-03 sweep R=30..100 x H=1..60 (4,260 cases): accept iff R+H-1 <= 120; mismatches=[]
+  ok  XF-02 sweep partner A'=18..100 x R'=30..100 (5,893 cases): accept iff R' >= A'; mismatches=[]
+== quantity status/value matrix on spending.amount and a source amount
+  ok  quantity {"status":"unknown"}: spending accept, source accept
+  ok  quantity {"status":"unknown","value":1}: spending reject, source reject
+  ok  quantity {"status":"zero","value":0}: spending reject, source accept
+  ok  quantity {"status":"zero","value":5}: spending reject, source reject
+  ok  quantity {"status":"estimated","value":0}: spending reject, source reject
+  ok  quantity {"status":"estimated"}: spending reject, source reject
+  ok  quantity {"status":"confirmed","value":1}: spending accept, source accept
+  ok  quantity {"status":"estimated","value":-1}: spending reject, source reject
+  ok  quantity {"status":"estimated","value":"100"}: spending reject, source reject
+  ok  inflation 1001 bp rejected (0..1000)
+  ok  H = 61 rejected
+  ok  annual spending 120,000,001 cents rejected
+  ok  monthly income 5,000,001 cents rejected
+  ok  year_index start 83 rejected (1..82)
+  ok  year_index start {zero,0} rejected
+  ok  escalation unknown rejected
+  ok  return assumption status confirmed rejected
+  ok  XF-07 partner-owned source without household rejected
+  ok  source id src-100 rejected (pattern src-1..src-99)
+  ok  XF-08 not_answered with a listed source rejected
+== summary: 80 passed, 1 failed
+[exit 1]
+
+$ node negative_controls.mjs
+CAUGHT  halfUp                       half-up rounding instead of half-even  -> WM04,WM17
+CAUGHT  float64                      IEEE-754 double growth factors  -> WM02,WM04,WM12,WM13,WM15,WM17,WM22,WM24
+CAUGHT  allowGrossInGap              gross income subtracted from after-tax spending  -> WM09,WM23
+CAUGHT  coverageIgnored              incomplete coverage ignored (unanswered income read as zero)  -> WM07,CS03
+CAUGHT  ignorePriceBasis             today-dollar income treated as nominal start-year amount  -> WM04
+CAUGHT  nettedSurplus                surpluses netted against gaps in C_R  -> WM12
+CAUGHT  taxUnknownAsNet              tax basis "unknown" treated as net  -> WM23,CS04
+CAUGHT  monthlyIncomeNotTimes12      monthly income not multiplied by 12  -> WM03,WM05,WM09,WM19
+CAUGHT  deflateFromRetirement        today-dollar display deflated from t_R instead of t = 0  -> WM02,WM13
+CAUGHT  crStartOfYear                C_R with start-of-year flows (exponent k instead of k+1)  -> WM11,WM15,WM16
+CAUGHT  partnerStartSelfAge          partner-owned age resolved with the participant's age  -> WM21
+CAUGHT  endInclusive                 end index treated as inclusive  -> WM18
+CAUGHT  escalateFromZero             escalation compounded from t = 0 instead of from s_j  -> WM04,WM13
+CAUGHT  windowFromZero               pre-retirement years shown in the window  -> WM02,WM13,WM21
+CAUGHT  precedenceFbeforeM           funding gap ranked before missing income  -> WM08,WM21,WM22,row4,row6,row8,row10,row12,row14,row16
+CAUGHT  precedenceHafterF            household timing ranked after funding gap  -> WM21,row4
+MISSED  unknownSpendingZeroRowsOnly  unknown spending read as 0 in year rows (state and clip unchanged)  -> no fixture detects it
+CAUGHT  unknownStartAsNotPaying      unknown or unresolvable start point read as "not paying" (P = 0, no code)  -> WM20,CS01
+MISSED  unknownEndAsOpen             unknown or unresolvable end point read as "no end"  -> no fixture detects it
+MISSED  crDiscountToBase             C_R discounted to t = 0 instead of valued at the start of year t_R  -> no fixture detects it
+MISSED  ignoreNoPositiveGap          C_R marked display-eligible when no year has G_t > 0 (C_R = 0 displayed)  -> no fixture detects it
+MISSED  unresolvableStartAsNotPayingWindowKnown start_unresolvable (partner age unknown, window known) read as "not paying"  -> no fixture detects it
+MISSED  startPointUnknownAsNotPaying start point with status unknown read as "not paying" (window known)  -> no fixture detects it
+MISSED  startPointUnknownAsAlreadyReceiving start point with status unknown read as already receiving (s_j = 0)  -> no fixture detects it
+
+row 17 (spending unknown) correct first year : {"status":"not_computable","spending_cents":null,"gap_cents":null,"surplus_cents":null}
+row 17 faulty  first year                   : {"status":"computed","spending_cents":0,"gap_cents":0,"surplus_cents":5000000}
+row 17 faulty state/clip/flags              : incomplete_unknown_spending W10 core_inputs_missing []
+[exit 0]
+
+$ node ambiguity_demo.mjs
+input: src-2 start age unknown, end age 62 (e_j = 2 = t_R); schema valid = true ; XF-04..06 errors = []
+reading 1 ("no" first, t >= e_j decides)   {"state":"complete","clip":"W07","reason":"funding_gap","flags":[],"t2":{"status":"computed","gap":1800000,"src2":0}}
+reading 2 ("unknown" first)                {"state":"incomplete_unknown_income","clip":"W06","reason":"missing_income","flags":["incomplete_income"],"t2":{"status":"not_computable","gap":null,"src2":null}}
+[exit 0]
+
+$ node extra_checks.mjs
+== DEMO A: start point unknown (window known) - correct vs two faults that pass every fixture
+  ok  demo A input is schema-valid and semantically valid
+   correct : {"state":"incomplete_unknown_income","clip":"W06","reason":"missing_income","flags":["incomplete_income"]} {"t":2,"status":"not_computable","spending_cents":4800000,"gap_cents":null,"surplus_cents":null,"reasons":["start_unknown:src-2"]}
+   fault 1 : {"state":"complete","clip":"W07","reason":"funding_gap","flags":[]} {"t":2,"status":"computed","spending_cents":4800000,"gap_cents":1800000,"surplus_cents":0,"reasons":[]}
+   fault 2 : {"state":"complete","clip":"W07","reason":"funding_gap","flags":[]} {"t":2,"status":"computed","spending_cents":4800000,"gap_cents":800000,"surplus_cents":0,"reasons":[]}
+  ok  correct model: W06, no gap in any year (unknown is not zero)
+  ok  fault 1 shows a confident 18,000.00 gap and W07
+== DEMO B: end point unknown - correct vs fault that passes every fixture
+  ok  demo B input is schema-valid and semantically valid
+   correct : {"state":"incomplete_unknown_income","clip":"W06","reason":"missing_income","flags":["incomplete_income"]} {"t":2,"status":"not_computable","spending_cents":4800000,"gap_cents":null,"surplus_cents":null,"reasons":["end_unknown:src-2"]}
+   fault   : {"state":"complete","clip":"W07","reason":"funding_gap","flags":[]} {"t":2,"status":"computed","spending_cents":4800000,"gap_cents":600000,"surplus_cents":0,"reasons":[]}
+== DEMO C: spending unknown with a known window - correct vs fault that passes every fixture
+  ok  demo C input is schema-valid
+   correct : {"state":"incomplete_unknown_spending","clip":"W10","reason":"core_inputs_missing","flags":[]} {"t":2,"status":"not_computable","spending_cents":null,"gap_cents":null,"surplus_cents":null,"reasons":["spending_unknown"]}
+   fault   : {"state":"incomplete_unknown_spending","clip":"W10","reason":"core_inputs_missing","flags":[]} {"t":2,"status":"computed","spending_cents":0,"gap_cents":0,"surplus_cents":3000000,"reasons":[]}
+  ok  state, clip and flags are identical, so the clip-rules expectations cannot tell them apart
+== DEMO D: capital illustration with t_R > 0 (no fixture has t_R > 0 and r present)
+  ok  demo D input is schema-valid
+   correct C_R valued at start of t_R=4: 19414275 cents; faulty (discounted to t=0): 16595403 cents; valued_at reported identically: true
+== DEMO E: all-surplus result with r present (C_R = 0 must never be display-eligible)
+   correct: C_R=0 eligible=false reasons=["no_positive_gap"]; fault: eligible=true
+== BOUNDS (workshop-math.md s9 claims largest rounded output ~2.0e12 cents, below 2^53-1)
+  ok  max-spending input schema-valid (A=18, R=61, H=60, i=10%, 1.2M/yr)
+  ok  max-income input schema-valid (8 sources x 600,000/yr, q=10%)
+   max spending_cents 2.0009e+12; max income_net_cents 8.0038e+12; max surplus_cents 6.0028e+12; C_R_cents at r=0 2.1938e+13; 2^53-1 = 9.0072e+15
+  ok  every extreme output is a safe integer (conclusion of s9 holds)
+  ok  but the "largest rounded output ~2.0e12" statement is exceeded (income 8.00e+12, C_R 2.19e+13)
+== PER-SOURCE ROUNDING vs the "at most 1 cent" statement (s9)
+  ok  demo input schema-valid
+   t=1 each source exact 1100004.4 -> row 1100004; sum of rows 8800032; income_net_cents 8800035; spending 10000000; gap 1199965; spending - sum(rows) = 1199968
+  ok  vs the displayed group total the gap is within 1 cent (claim holds)
+  ok  vs the sum of displayed per-source rows the gap differs by 3 cents (claim does not cover this)
+== FORBIDDEN OUTPUTS: scan every fixture expected record and every model output
+  ok  no verdict/readiness/depletion/probability/safe-withdrawal/review key or value in any output record (0 hits)
+  ok  every possible selection is a clip id, never a verdict
+== RANDOMIZED PROPERTIES over schema-valid inputs (seeded)
+   generated 4000, schema+semantic valid 4000
+  ok  C and F never both true (4000/4000)
+  ok  at most one of G,S positive; both present iff computed (4000/4000)
+  ok  every computed year has known D, complete coverage, all P known, only net income (4000/4000)
+  ok  state complete iff window known and every window year computed (4000/4000)
+  ok  all displayed cents are safe integers (4000/4000)
+  ok  monthly/annual spending twins give identical output records (4000/4000)
+  ok  known->unknown source amount never creates a number, and blocks every year it pays (4000/4000)
+  ok  C_R (Horner recursion) equals direct sum of G/(1+r)^(k+1) (323/323)
+== summary: 24 passed, 0 failed
+[exit 0]
+
+$ sha256sum <A6 scripts>
+97d997efc7314045aecb63db9aab35959b76a469b7d4ba5f0103bb0430f27fbc  model.mjs
+6db026be8ab877e8ddf3098d2ab3dc6fd373697b4b51f821e9c5500cdc05b3ec  run_fixtures.mjs
+e6af980d837c829f8062c0e71b86361017f53da5418cda7be54aa6f3adffae72  run_fixtures_lib.mjs
+520c93ac3499d4f54c57248aaec467671ce2a85a8722eca2fa295ca0939dc91c  clip_rules.mjs
+936d75c1cf24b70a3540527c28babfe34ff748bcd23f0ecaf58b323f94210cf0  validate_schema.mjs
+55014859f9e031b9faadb5cac9cacd7b4b086df5004c7fd98d7d62a34dbd423b  negative_controls.mjs
+3d766264e6802f8345a4d82439e91b09fa89bfcba0ef395c2a4bbdaeb6538d74  ambiguity_demo.mjs
+ae17153c24c26e220c82c6ed35695994dacc6533c58f9aca3389d94e49d1f09a  extra_checks.mjs
+418c0b4a5380418fdf04dd7550e138f3e9877c0bbab46e4b558d49d37e9d22a7  run_all.sh
+8763b80211e9438beb60a25f8e364fad6c41f1dfe3ef57754947492406f045a6  package.json
+231cfb658757f61fc4a573932c81300515077d5d28e4019d76270074fd291f93  package-lock.json

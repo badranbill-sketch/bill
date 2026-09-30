@@ -1,0 +1,20 @@
+{
+  "run_id": "wf_5bb05036-e58",
+  "task_ids": [
+    "F00"
+  ],
+  "kind": "workflow",
+  "provider": "Anthropic (Claude Code session)",
+  "model": "claude-opus-5-5 (all 9 agents, per workflow progress record)",
+  "agents": 9,
+  "tool_uses": 657,
+  "subagent_tokens": 2086746,
+  "wall_time_s": 6271,
+  "metered_cost": {
+    "amount": null,
+    "currency": null,
+    "status": "unavailable-not-estimated",
+    "note": "token counts from the workflow harness; no per-token price is assumed"
+  },
+  "external_actions": "read-only connector probes (GitHub, n8n, Google Calendar, Google Drive, Meta Ads via Pipeboard); local dockerd started in the build container"
+}

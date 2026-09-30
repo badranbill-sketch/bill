@@ -1,0 +1,4 @@
+rule: WH-COST-2
+breaks: A provider-metered amount must cite its run record.
+expect_keyword: required
+expect_path: /metered_cost

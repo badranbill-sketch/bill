@@ -1,0 +1,11 @@
+{
+  "schema_version": "1.0",
+  "event_id": "1cf1dc5d-394c-4416-a347-c2923522d124",
+  "type": "meeting.held",
+  "occurred_at": "2026-10-03T20:15:00Z",
+  "subject_id": "con_xsekt13hxv12z5bp4rm4s2f0hw",
+  "locale": "fr",
+  "source": "operator.reconciliation",
+  "resource_id": "bkg_rae93y3txaq788qsh9e7entmfn",
+  "idempotency_key": "ik1_0db149f8f1588985ee0f1a9201d6872ca37cc92f731fef47716482f71b39efa4"
+}

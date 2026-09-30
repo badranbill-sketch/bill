@@ -1,0 +1,4 @@
+rule: OM-DISC-1
+breaks: The book offer must carry the pre-payment disclosure list.
+expect_keyword: required
+expect_path: /offers/book-bundle

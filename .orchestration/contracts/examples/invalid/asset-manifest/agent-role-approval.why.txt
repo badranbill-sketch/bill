@@ -1,0 +1,4 @@
+rule: AM-APPR-2
+breaks: Approvals are recorded by human gate owners only; an agent role cannot approve.
+expect_keyword: enum
+expect_path: /assets/7/approval/approved_by_roles/1

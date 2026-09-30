@@ -1,0 +1,40 @@
+# target=video step=04_typecheck_prebuild
+# cwd=/tmp/claude-0/-home-user/bb8d4187-6ae8-587b-a816-8153faeea853/scratchpad/wt/base01-video
+# sha=fc0044576d851be414d19e2f7a21ca7fd1285eae
+# command=npm run typecheck
+# env: GH_TOKEN/GITHUB_TOKEN unset; NEXT_TELEMETRY_DISABLED=1; PLAYWRIGHT_BROWSERS_PATH=/opt/pw-browsers; PLAYWRIGHT_CHROMIUM_EXECUTABLE=<unset>; GITHUB_REPOSITORY=<unset>
+# node=v22.22.2 npm=10.9.7
+# started=2026-09-30T02:16:40Z
+# ----------------------------------------------------------------
+
+> bill-badran@1.0.0 typecheck
+> tsc --noEmit
+
+film/remotion.config.ts(5,22): error TS2307: Cannot find module '@remotion/cli/config' or its corresponding type declarations.
+film/src/Film.tsx(2,38): error TS2307: Cannot find module 'remotion' or its corresponding type declarations.
+film/src/Root.tsx(2,42): error TS2307: Cannot find module 'remotion' or its corresponding type declarations.
+film/src/audio/Soundtrack.tsx(2,36): error TS2307: Cannot find module 'remotion' or its corresponding type declarations.
+film/src/audio/Soundtrack.tsx(3,21): error TS2307: Cannot find module '@remotion/media' or its corresponding type declarations.
+film/src/audio/Soundtrack.tsx(18,57): error TS7006: Parameter 'f' implicitly has an 'any' type.
+film/src/audio/Soundtrack.tsx(22,106): error TS7006: Parameter 'f' implicitly has an 'any' type.
+film/src/checks/DesignKit.tsx(2,28): error TS2307: Cannot find module 'remotion' or its corresponding type declarations.
+film/src/checks/InkProof.tsx(2,28): error TS2307: Cannot find module 'remotion' or its corresponding type declarations.
+film/src/components/BillShot.tsx(1,21): error TS2307: Cannot find module '@remotion/media' or its corresponding type declarations.
+film/src/components/BillShot.tsx(3,74): error TS2307: Cannot find module 'remotion' or its corresponding type declarations.
+film/src/components/BillShot.tsx(18,72): error TS7006: Parameter 'f' implicitly has an 'any' type.
+film/src/components/CaptionTrack.tsx(2,73): error TS2307: Cannot find module 'remotion' or its corresponding type declarations.
+film/src/components/CaptionTrack.tsx(3,24): error TS2307: Cannot find module '@remotion/captions' or its corresponding type declarations.
+film/src/components/CaptionTrack.tsx(4,28): error TS2307: Cannot find module '@remotion/captions' or its corresponding type declarations.
+film/src/components/InkDrawing.tsx(2,42): error TS2307: Cannot find module 'remotion' or its corresponding type declarations.
+film/src/components/sketch/Ink.tsx(2,55): error TS2307: Cannot find module '@remotion/paths' or its corresponding type declarations.
+film/src/components/sketch/Paperwork.tsx(2,31): error TS2307: Cannot find module 'remotion' or its corresponding type declarations.
+film/src/components/sketch/strokes.ts(1,22): error TS2307: Cannot find module 'remotion' or its corresponding type declarations.
+film/src/components/stage.tsx(2,88): error TS2307: Cannot find module 'remotion' or its corresponding type declarations.
+film/src/design/motion.ts(1,35): error TS2307: Cannot find module 'remotion' or its corresponding type declarations.
+film/src/design/typography.ts(1,24): error TS2307: Cannot find module '@remotion/fonts' or its corresponding type declarations.
+film/src/design/typography.ts(2,26): error TS2307: Cannot find module 'remotion' or its corresponding type declarations.
+film/src/index.ts(1,28): error TS2307: Cannot find module 'remotion' or its corresponding type declarations.
+film/src/scenes/GuideReveal.tsx(2,28): error TS2307: Cannot find module 'remotion' or its corresponding type declarations.
+film/src/scenes/Pieces.tsx(2,28): error TS2307: Cannot find module 'remotion' or its corresponding type declarations.
+# ----------------------------------------------------------------
+# finished=2026-09-30T02:16:45Z exit_code=2 seconds=5.1

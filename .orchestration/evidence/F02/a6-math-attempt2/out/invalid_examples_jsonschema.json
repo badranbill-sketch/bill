@@ -1,0 +1,420 @@
+[
+ {
+  "example": "already-receiving-with-point",
+  "layer": "schema",
+  "strict_parse_ok": true,
+  "schema_errors": [
+   [
+    "not",
+    "/chapters/income/sources/0/start",
+    "{\"required\": [\"point\"]}",
+    "{'reference': 'already_receiving', 'point': {'status': 'estimated', 'value': 3}} should not be valid under {'required': ['point']}"
+   ]
+  ],
+  "semantic_errors": [],
+  "unrelated": []
+ },
+ {
+  "example": "coverage-none-with-sources",
+  "layer": "schema",
+  "strict_parse_ok": true,
+  "schema_errors": [
+   [
+    "maxItems",
+    "/chapters/income/sources",
+    "0",
+    "[{'id': 'src-1', 'kind': 'workplace_pension', 'owner': 'self', 'amount': {'status': 'confirmed', 'value': 2400000}, 'period': 'annual', 'tax_basis': 'net', 'price_basis': 'start_year_dollars', 'start': {'reference': 'age', 'point': {'status': 'estimated', 'value': 62}}, 'escalation_bp': {'status': 'confirmed', 'value': 150}, 'dependability': 'scheduled'}, {'id': 'src-2', 'kind': 'qpp_cpp', 'owner': 'self', 'amount': {'status': 'estimated', 'value': 95000}, 'period': 'monthly', 'tax_basis': 'net', 'price_basis': 'today_dollars', 'start': {'reference': 'age', 'point': {'status': 'estimated', 'value': 65}}, 'escalation_bp': {'status': 'estimated', 'value': 200}, 'dependability': 'scheduled'}] is expected to be empty"
+   ]
+  ],
+  "semantic_errors": [],
+  "unrelated": []
+ },
+ {
+  "example": "duplicate-source-id",
+  "layer": "semantic",
+  "strict_parse_ok": true,
+  "schema_errors": [],
+  "semantic_errors": [
+   [
+    "XF-06",
+    "/chapters/income/sources/1/id"
+   ]
+  ]
+ },
+ {
+  "example": "end-before-start",
+  "layer": "semantic",
+  "strict_parse_ok": true,
+  "schema_errors": [],
+  "semantic_errors": [
+   [
+    "XF-05",
+    "/chapters/income/sources/0/end"
+   ]
+  ]
+ },
+ {
+  "example": "estimated-without-value",
+  "layer": "schema",
+  "strict_parse_ok": true,
+  "schema_errors": [
+   [
+    "required",
+    "/chapters/life/spending/amount",
+    "[\"value\"]",
+    "'value' is a required property"
+   ]
+  ],
+  "semantic_errors": [],
+  "unrelated": []
+ },
+ {
+  "example": "estimated-zero-value",
+  "layer": "schema",
+  "strict_parse_ok": true,
+  "schema_errors": [
+   [
+    "minimum",
+    "/chapters/income/sources/0/amount/value",
+    "1",
+    "0 is less than the minimum of 1"
+   ]
+  ],
+  "semantic_errors": [],
+  "unrelated": []
+ },
+ {
+  "example": "extra-pii-email",
+  "layer": "schema",
+  "strict_parse_ok": true,
+  "schema_errors": [
+   [
+    "additionalProperties",
+    "",
+    "false",
+    "Additional properties are not allowed ('email' was unexpected)"
+   ]
+  ],
+  "semantic_errors": [],
+  "unrelated": []
+ },
+ {
+  "example": "float-cents",
+  "layer": "schema",
+  "strict_parse_ok": true,
+  "schema_errors": [
+   [
+    "type",
+    "/chapters/life/spending/amount/value",
+    "\"integer\"",
+    "450000.5 is not of type 'integer'"
+   ]
+  ],
+  "semantic_errors": [],
+  "unrelated": []
+ },
+ {
+  "example": "home-counted-spendable",
+  "layer": "schema",
+  "strict_parse_ok": true,
+  "schema_errors": [
+   [
+    "const",
+    "/chapters/savings/home_value/excluded_from_spendable",
+    "true",
+    "True was expected"
+   ]
+  ],
+  "semantic_errors": [],
+  "unrelated": []
+ },
+ {
+  "example": "horizon-beyond-age-120",
+  "layer": "schema",
+  "strict_parse_ok": true,
+  "schema_errors": [
+   [
+    "maximum",
+    "/chapters/timing/planning_horizon_years/value",
+    "26",
+    "30 is greater than the maximum of 26"
+   ]
+  ],
+  "semantic_errors": [],
+  "unrelated": []
+ },
+ {
+  "example": "horizon-zero",
+  "layer": "schema",
+  "strict_parse_ok": true,
+  "schema_errors": [
+   [
+    "minimum",
+    "/chapters/timing/planning_horizon_years/value",
+    "1",
+    "0 is less than the minimum of 1"
+   ],
+   [
+    "minimum",
+    "/chapters/timing/planning_horizon_years/value",
+    "1",
+    "0 is less than the minimum of 1"
+   ]
+  ],
+  "semantic_errors": [],
+  "unrelated": []
+ },
+ {
+  "example": "income-basis-missing",
+  "layer": "schema",
+  "strict_parse_ok": true,
+  "schema_errors": [
+   [
+    "required",
+    "/chapters/income/sources/0",
+    "[\"id\", \"kind\", \"owner\", \"amount\", \"period\", \"tax_basis\", \"price_basis\", \"start\", \"escalation_bp\", \"dependability\"]",
+    "'tax_basis' is a required property"
+   ]
+  ],
+  "semantic_errors": [],
+  "unrelated": []
+ },
+ {
+  "example": "income-guaranteed-label",
+  "layer": "schema",
+  "strict_parse_ok": true,
+  "schema_errors": [
+   [
+    "enum",
+    "/chapters/income/sources/0/dependability",
+    "[\"scheduled\", \"uncertain\"]",
+    "'guaranteed' is not one of ['scheduled', 'uncertain']"
+   ]
+  ],
+  "semantic_errors": [],
+  "unrelated": []
+ },
+ {
+  "example": "infinity-literal",
+  "layer": "json-parse",
+  "strict_parse_ok": false,
+  "schema_errors": [
+   [
+    "maximum",
+    "/chapters/life/spending/amount/value",
+    "9007199254740991",
+    "inf is greater than the maximum of 9007199254740991"
+   ],
+   [
+    "maximum",
+    "/chapters/life/spending/amount/value",
+    "10000000",
+    "inf is greater than the maximum of 10000000"
+   ],
+   [
+    "type",
+    "/chapters/life/spending/amount/value",
+    "\"integer\"",
+    "inf is not of type 'integer'"
+   ]
+  ],
+  "semantic_errors": []
+ },
+ {
+  "example": "inflation-unknown",
+  "layer": "schema",
+  "strict_parse_ok": true,
+  "schema_errors": [
+   [
+    "enum",
+    "/chapters/timing/inflation_bp/status",
+    "[\"zero\", \"estimated\"]",
+    "'unknown' is not one of ['zero', 'estimated']"
+   ]
+  ],
+  "semantic_errors": [],
+  "unrelated": []
+ },
+ {
+  "example": "monthly-spending-over-limit",
+  "layer": "schema",
+  "strict_parse_ok": true,
+  "schema_errors": [
+   [
+    "maximum",
+    "/chapters/life/spending/amount/value",
+    "10000000",
+    "10000001 is greater than the maximum of 10000000"
+   ]
+  ],
+  "semantic_errors": [],
+  "unrelated": []
+ },
+ {
+  "example": "nan-as-string",
+  "layer": "schema",
+  "strict_parse_ok": true,
+  "schema_errors": [
+   [
+    "type",
+    "/chapters/life/spending/amount/value",
+    "\"integer\"",
+    "'NaN' is not of type 'integer'"
+   ]
+  ],
+  "semantic_errors": [],
+  "unrelated": []
+ },
+ {
+  "example": "nan-literal",
+  "layer": "json-parse",
+  "strict_parse_ok": false,
+  "schema_errors": [
+   [
+    "type",
+    "/chapters/life/spending/amount/value",
+    "\"integer\"",
+    "nan is not of type 'integer'"
+   ]
+  ],
+  "semantic_errors": []
+ },
+ {
+  "example": "negative-spending",
+  "layer": "schema",
+  "strict_parse_ok": true,
+  "schema_errors": [
+   [
+    "minimum",
+    "/chapters/life/spending/amount/value",
+    "0",
+    "-450000 is less than the minimum of 0"
+   ],
+   [
+    "minimum",
+    "/chapters/life/spending/amount/value",
+    "1",
+    "-450000 is less than the minimum of 1"
+   ]
+  ],
+  "semantic_errors": [],
+  "unrelated": []
+ },
+ {
+  "example": "partner-retirement-before-partner-age",
+  "layer": "schema",
+  "strict_parse_ok": true,
+  "schema_errors": [
+   [
+    "minimum",
+    "/chapters/timing/household/partner_retirement_age/value",
+    "60",
+    "57 is less than the minimum of 60"
+   ]
+  ],
+  "semantic_errors": [],
+  "unrelated": []
+ },
+ {
+  "example": "partner-source-without-household",
+  "layer": "schema",
+  "strict_parse_ok": true,
+  "schema_errors": [
+   [
+    "required",
+    "/chapters/timing",
+    "[\"household\"]",
+    "'household' is a required property"
+   ]
+  ],
+  "semantic_errors": [],
+  "unrelated": []
+ },
+ {
+  "example": "pii-label-in-source",
+  "layer": "schema",
+  "strict_parse_ok": true,
+  "schema_errors": [
+   [
+    "additionalProperties",
+    "/chapters/income/sources/0",
+    "false",
+    "Additional properties are not allowed ('label' was unexpected)"
+   ]
+  ],
+  "semantic_errors": [],
+  "unrelated": []
+ },
+ {
+  "example": "retirement-before-current-age",
+  "layer": "schema",
+  "strict_parse_ok": true,
+  "schema_errors": [
+   [
+    "minimum",
+    "/chapters/timing/retirement_age/value",
+    "58",
+    "55 is less than the minimum of 58"
+   ]
+  ],
+  "semantic_errors": [],
+  "unrelated": []
+ },
+ {
+  "example": "spending-pretax-basis",
+  "layer": "schema",
+  "strict_parse_ok": true,
+  "schema_errors": [
+   [
+    "const",
+    "/chapters/life/spending/tax_basis",
+    "\"after_tax\"",
+    "'after_tax' was expected"
+   ]
+  ],
+  "semantic_errors": [],
+  "unrelated": []
+ },
+ {
+  "example": "spending-status-zero",
+  "layer": "schema",
+  "strict_parse_ok": true,
+  "schema_errors": [
+   [
+    "enum",
+    "/chapters/life/spending/amount/status",
+    "[\"unknown\", \"estimated\", \"confirmed\"]",
+    "'zero' is not one of ['unknown', 'estimated', 'confirmed']"
+   ]
+  ],
+  "semantic_errors": [],
+  "unrelated": []
+ },
+ {
+  "example": "start-age-already-passed",
+  "layer": "semantic",
+  "strict_parse_ok": true,
+  "schema_errors": [],
+  "semantic_errors": [
+   [
+    "XF-04",
+    "/chapters/income/sources/0/start/point/value"
+   ]
+  ]
+ },
+ {
+  "example": "unknown-with-value",
+  "layer": "schema",
+  "strict_parse_ok": true,
+  "schema_errors": [
+   [
+    "not",
+    "/chapters/life/spending/amount",
+    "{\"required\": [\"value\"]}",
+    "{'status': 'unknown', 'value': 450000} should not be valid under {'required': ['value']}"
+   ]
+  ],
+  "semantic_errors": [],
+  "unrelated": []
+ }
+]

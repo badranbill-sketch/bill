@@ -1,0 +1,4 @@
+rule: AM-HASH-1
+breaks: An approved asset must carry the exact review hash its approval binds to.
+expect_keyword: type
+expect_path: /assets/7/review_hash

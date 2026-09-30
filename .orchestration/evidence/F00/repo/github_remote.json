@@ -1,0 +1,17 @@
+{
+  "probed_at_utc": "2026-09-30T01:59Z",
+  "tool": "GitHub MCP (read-only calls)",
+  "get_me": {"login": "arnaudverdier8-svg", "name": "arnaud verdier"},
+  "repos_visible_via_search_user_query": {"total_count": 21, "bill_related_by_name": ["arnaudverdier8-svg/bill (private, default_branch main, open_issues_count 1)", "arnaudverdier8-svg/billsite (public, default_branch main, created 2026-09-29T02:37:20Z)"], "note": "other 19 repos unrelated by name; names not recorded here"},
+  "bill_pull_requests_state_all": [
+    {"number": 1, "state": "open", "draft": true, "merged": false, "title": "Unify the desktop and iPhone retirement experience",
+     "head": "codex/desktop-iphone-unified@66cce52046f535ddc1a90e6f94474877e375860d",
+     "base": "add-ask-bill-section@01e296caf4cb6822c9ccd45642834d69e02334bf",
+     "created_at": "2026-09-29T18:57:52Z", "updated_at": "2026-09-29T19:04:54Z"}
+  ],
+  "bill_branches": {"main": "77de3bd51a8c9cb73aec0b32d27ca0cacb6285cd", "add-ask-bill-section": "01e296caf4cb6822c9ccd45642834d69e02334bf", "claude/bill-centered-homepage": "d63aabd50d0760145208857856f32779b1069e15", "claude/bill-presentation-video": "fc0044576d851be414d19e2f7a21ca7fd1285eae", "codex/desktop-iphone-unified": "66cce52046f535ddc1a90e6f94474877e375860d", "guide/pre-retirement-guide": "749b360f75185041e1aa3408500857605bc4507f", "all_protected": false},
+  "billsite_pull_requests_state_all": [],
+  "billsite_branches": [],
+  "billsite_list_commits": "error: 409 Git Repository is empty",
+  "billsite_local": "/home/user/billsite: branch master, 'No commits yet', git ls-remote origin returned no refs (exit 0)"
+}

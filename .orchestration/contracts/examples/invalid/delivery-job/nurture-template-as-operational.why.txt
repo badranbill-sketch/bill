@@ -1,0 +1,5 @@
+rule: JS-CLASS-3 E03/E04/E05/E11 are promotional (email-eligibility.json); relabelling does not change the purpose
+expect_path: message_class
+expect_keyword: const
+
+E05 (15-minute meeting nurture) relabelled operational to dodge consent (04 §6: a transactional API does not make promotion non-promotional).

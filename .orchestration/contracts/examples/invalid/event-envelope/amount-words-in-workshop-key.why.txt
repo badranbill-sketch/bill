@@ -1,0 +1,5 @@
+rule: EV-ID-2 contact-subject registry codes use a closed key and a hash version: an amount spelled in words is not a workshop key
+expect_path: resource_id
+expect_keyword: pattern
+
+A completion signal whose workshop key spells an amount (review ADV-5a). Only the closed workshop keys are accepted.

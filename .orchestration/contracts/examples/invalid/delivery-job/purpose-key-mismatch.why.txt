@@ -1,0 +1,5 @@
+rule: JS-KEY-1 purpose_key components must equal contact_id, trigger_event_id, template_id, template_version
+expect_path: /
+expect_keyword: semantic:purpose_key
+
+Well-formed key naming a different template (e02) than the job (e01). JSON Schema cannot compare fields; the runtime check (and this harness) must.

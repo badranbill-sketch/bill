@@ -1,0 +1,4 @@
+rule: AM-RIGHTS-2
+breaks: No synthetic voice, avatar or face of Bill in contract 1.0.
+expect_keyword: const
+expect_path: /assets/3/rights/synthetic_bill_likeness

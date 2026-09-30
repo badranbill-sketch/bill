@@ -1,0 +1,4 @@
+rule: OM-DUR-3
+breaks: The bookable meeting type for the book consultation is fixed at 30 minutes.
+expect_keyword: const
+expect_path: /meeting_types/book-consultation-30/duration_minutes

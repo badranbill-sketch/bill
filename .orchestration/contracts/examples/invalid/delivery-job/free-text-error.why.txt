@@ -1,0 +1,5 @@
+rule: JS-ERR-1 last_error is sanitized: code + http_status + at only
+expect_path: last_error
+expect_keyword: additionalProperties
+
+A raw provider error with an address copied into the job (04 §4: redact provider errors).

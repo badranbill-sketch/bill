@@ -1,0 +1,4 @@
+rule: OM-PRICE-1
+breaks: A price value while the price is still pending G0 is an invented price.
+expect_keyword: type
+expect_path: /offers/book-bundle/price/value

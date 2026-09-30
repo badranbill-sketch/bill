@@ -1,0 +1,40 @@
+{
+ "contract": "workshop-inputs",
+ "contract_version": "1.0",
+ "currency": "CAD",
+ "base_year": 2026,
+ "chapters": {
+  "life": {
+   "spending": {
+    "amount": {
+     "status": "unknown"
+    },
+    "period": "monthly",
+    "tax_basis": "after_tax",
+    "price_basis": "today_dollars",
+    "unit": "household"
+   }
+  },
+  "income": {
+   "coverage": "not_answered",
+   "sources": []
+  },
+  "savings": {},
+  "timing": {
+   "current_age": {
+    "status": "unknown"
+   },
+   "retirement_age": {
+    "status": "unknown"
+   },
+   "planning_horizon_years": {
+    "status": "estimated",
+    "value": 25
+   },
+   "inflation_bp": {
+    "status": "estimated",
+    "value": 200
+   }
+  }
+ }
+}

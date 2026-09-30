@@ -1,0 +1,4 @@
+rule: OM-FUNNEL-1
+breaks: No mandatory funnel staircase: the 15-minute meeting has no prerequisite.
+expect_keyword: maxItems
+expect_path: /rules/no_mandatory_funnel_staircase/intro_15_prerequisites

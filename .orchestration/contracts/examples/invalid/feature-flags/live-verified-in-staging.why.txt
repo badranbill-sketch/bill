@@ -1,0 +1,5 @@
+rule: FF-ENV-2 live_verified is a production fact; it is false outside production
+expect_path: capabilities/guide_request_delivery/live_verified/value
+expect_keyword: const
+
+A staging test presented as live verification.

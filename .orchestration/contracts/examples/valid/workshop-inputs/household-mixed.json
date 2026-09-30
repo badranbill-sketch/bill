@@ -1,0 +1,197 @@
+{
+ "contract": "workshop-inputs",
+ "contract_version": "1.0",
+ "currency": "CAD",
+ "base_year": 2026,
+ "chapters": {
+  "life": {
+   "spending": {
+    "amount": {
+     "status": "estimated",
+     "value": 450000
+    },
+    "period": "monthly",
+    "tax_basis": "after_tax",
+    "price_basis": "today_dollars",
+    "unit": "household"
+   },
+   "lifestyle_focus": "family"
+  },
+  "income": {
+   "coverage": "some_sources_may_be_missing",
+   "sources": [
+    {
+     "id": "src-1",
+     "kind": "workplace_pension",
+     "owner": "self",
+     "amount": {
+      "status": "confirmed",
+      "value": 3100000
+     },
+     "period": "annual",
+     "tax_basis": "net",
+     "price_basis": "start_year_dollars",
+     "start": {
+      "reference": "age",
+      "point": {
+       "status": "estimated",
+       "value": 62
+      }
+     },
+     "escalation_bp": {
+      "status": "zero",
+      "value": 0
+     },
+     "dependability": "scheduled"
+    },
+    {
+     "id": "src-2",
+     "kind": "qpp_cpp",
+     "owner": "partner",
+     "amount": {
+      "status": "estimated",
+      "value": 1100000
+     },
+     "period": "annual",
+     "tax_basis": "gross",
+     "price_basis": "today_dollars",
+     "start": {
+      "reference": "age",
+      "point": {
+       "status": "estimated",
+       "value": 65
+      }
+     },
+     "escalation_bp": {
+      "status": "estimated",
+      "value": 200
+     },
+     "dependability": "scheduled"
+    },
+    {
+     "id": "src-3",
+     "kind": "rental",
+     "owner": "joint",
+     "amount": {
+      "status": "estimated",
+      "value": 120000
+     },
+     "period": "monthly",
+     "tax_basis": "unknown",
+     "price_basis": "today_dollars",
+     "start": {
+      "reference": "already_receiving"
+     },
+     "escalation_bp": {
+      "status": "estimated",
+      "value": 100
+     },
+     "dependability": "uncertain"
+    },
+    {
+     "id": "src-4",
+     "kind": "employment",
+     "owner": "partner",
+     "amount": {
+      "status": "unknown"
+     },
+     "period": "monthly",
+     "tax_basis": "net",
+     "price_basis": "unknown",
+     "start": {
+      "reference": "year_index",
+      "point": {
+       "status": "unknown"
+      }
+     },
+     "end": {
+      "reference": "age",
+      "point": {
+       "status": "estimated",
+       "value": 68
+      }
+     },
+     "escalation_bp": {
+      "status": "zero",
+      "value": 0
+     },
+     "dependability": "uncertain"
+    }
+   ]
+  },
+  "savings": {
+   "accounts": {
+    "rrsp_rrif": {
+     "status": "estimated",
+     "value": 41000000
+    },
+    "tfsa": {
+     "status": "confirmed",
+     "value": 9500000
+    },
+    "non_registered": {
+     "status": "zero",
+     "value": 0
+    },
+    "other": {
+     "status": "unknown"
+    },
+    "not_sure": {
+     "status": "estimated",
+     "value": 1500000
+    }
+   },
+   "pension_value": {
+    "amount": {
+     "status": "estimated",
+     "value": 38000000
+    },
+    "also_entered_as_income": "not_sure"
+   },
+   "home_value": {
+    "amount": {
+     "status": "estimated",
+     "value": 82000000
+    }
+   },
+   "business_value": {
+    "amount": {
+     "status": "unknown"
+    },
+    "excluded_from_spendable": true
+   }
+  },
+  "timing": {
+   "current_age": {
+    "status": "confirmed",
+    "value": 58
+   },
+   "retirement_age": {
+    "status": "estimated",
+    "value": 62
+   },
+   "planning_horizon_years": {
+    "status": "estimated",
+    "value": 30
+   },
+   "inflation_bp": {
+    "status": "estimated",
+    "value": 200
+   },
+   "household": {
+    "partner_current_age": {
+     "status": "confirmed",
+     "value": 55
+    },
+    "partner_retirement_age": {
+     "status": "estimated",
+     "value": 64
+    }
+   },
+   "capital_illustration_return_bp": {
+    "status": "estimated",
+    "value": 400
+   }
+  }
+ }
+}

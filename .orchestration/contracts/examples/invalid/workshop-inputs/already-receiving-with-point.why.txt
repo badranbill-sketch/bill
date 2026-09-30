@@ -1,0 +1,6 @@
+rule: START - already receiving has no start point
+layer: schema
+expect_keyword: not
+expect_path: /chapters/income/sources/0/start
+plain_message_en_draft: (internal state error)
+explanation: already_receiving means s_j = 0; a point would be contradictory.

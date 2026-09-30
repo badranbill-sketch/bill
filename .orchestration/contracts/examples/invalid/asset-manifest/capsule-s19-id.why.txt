@@ -1,0 +1,4 @@
+rule: AM-ID-1
+breaks: There are exactly 18 capsules (S01-S18); asset IDs follow the plan inventory.
+expect_keyword: pattern
+expect_path: /assets/0/asset_id

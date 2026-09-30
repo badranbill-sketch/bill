@@ -1,0 +1,4 @@
+rule: WH-REQ-1
+breaks: All 13 fields of the 03 handoff are required.
+expect_keyword: required
+expect_path: 

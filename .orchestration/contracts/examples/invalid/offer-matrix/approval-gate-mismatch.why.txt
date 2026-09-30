@@ -1,0 +1,4 @@
+rule: OM-REF-2
+breaks: The referenced gate record must name the same gate as the approval (harness rule).
+expect_keyword: harness:OM-REF-2
+expect_path: /offers/book-bundle/price/approvals/0/record_id

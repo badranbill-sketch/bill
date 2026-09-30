@@ -1,0 +1,7 @@
+rule: RANGE - monthly spending up to $100,000.00
+layer: schema
+expect_keyword: maximum
+expect_path: /chapters/life/spending/amount/value
+expect_validator_value: 10000000
+plain_message_en_draft: This exercise accepts monthly spending up to $100,000.
+explanation: Period-dependent maximum (monthly 10,000,000 cents).

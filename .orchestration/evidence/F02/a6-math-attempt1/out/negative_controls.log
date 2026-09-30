@@ -1,0 +1,28 @@
+CAUGHT  halfUp                       half-up rounding instead of half-even  -> WM04,WM17
+CAUGHT  float64                      IEEE-754 double growth factors  -> WM02,WM04,WM12,WM13,WM15,WM17,WM22,WM24
+CAUGHT  allowGrossInGap              gross income subtracted from after-tax spending  -> WM09,WM23
+CAUGHT  coverageIgnored              incomplete coverage ignored (unanswered income read as zero)  -> WM07,CS03
+CAUGHT  ignorePriceBasis             today-dollar income treated as nominal start-year amount  -> WM04
+CAUGHT  nettedSurplus                surpluses netted against gaps in C_R  -> WM12
+CAUGHT  taxUnknownAsNet              tax basis "unknown" treated as net  -> WM23,CS04
+CAUGHT  monthlyIncomeNotTimes12      monthly income not multiplied by 12  -> WM03,WM05,WM09,WM19
+CAUGHT  deflateFromRetirement        today-dollar display deflated from t_R instead of t = 0  -> WM02,WM13
+CAUGHT  crStartOfYear                C_R with start-of-year flows (exponent k instead of k+1)  -> WM11,WM15,WM16
+CAUGHT  partnerStartSelfAge          partner-owned age resolved with the participant's age  -> WM21
+CAUGHT  endInclusive                 end index treated as inclusive  -> WM18
+CAUGHT  escalateFromZero             escalation compounded from t = 0 instead of from s_j  -> WM04,WM13
+CAUGHT  windowFromZero               pre-retirement years shown in the window  -> WM02,WM13,WM21
+CAUGHT  precedenceFbeforeM           funding gap ranked before missing income  -> WM08,WM21,WM22,row4,row6,row8,row10,row12,row14,row16
+CAUGHT  precedenceHafterF            household timing ranked after funding gap  -> WM21,row4
+MISSED  unknownSpendingZeroRowsOnly  unknown spending read as 0 in year rows (state and clip unchanged)  -> no fixture detects it
+CAUGHT  unknownStartAsNotPaying      unknown or unresolvable start point read as "not paying" (P = 0, no code)  -> WM20,CS01
+MISSED  unknownEndAsOpen             unknown or unresolvable end point read as "no end"  -> no fixture detects it
+MISSED  crDiscountToBase             C_R discounted to t = 0 instead of valued at the start of year t_R  -> no fixture detects it
+MISSED  ignoreNoPositiveGap          C_R marked display-eligible when no year has G_t > 0 (C_R = 0 displayed)  -> no fixture detects it
+MISSED  unresolvableStartAsNotPayingWindowKnown start_unresolvable (partner age unknown, window known) read as "not paying"  -> no fixture detects it
+MISSED  startPointUnknownAsNotPaying start point with status unknown read as "not paying" (window known)  -> no fixture detects it
+MISSED  startPointUnknownAsAlreadyReceiving start point with status unknown read as already receiving (s_j = 0)  -> no fixture detects it
+
+row 17 (spending unknown) correct first year : {"status":"not_computable","spending_cents":null,"gap_cents":null,"surplus_cents":null}
+row 17 faulty  first year                   : {"status":"computed","spending_cents":0,"gap_cents":0,"surplus_cents":5000000}
+row 17 faulty state/clip/flags              : incomplete_unknown_spending W10 core_inputs_missing []

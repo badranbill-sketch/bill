@@ -1,0 +1,591 @@
+# F00-SPOT-10 claims register re-grep (repair 3) 2026-09-30T03:14:43Z
+# repo HEAD eeb79a9380b297880e8fb530ac1f5b6f2fa7f89d
+## branch origin/main 77de3bd51a8c9cb73aec0b32d27ca0cacb6285cd
+# command=git grep -n -i -E 'ind[ée]pendan|independent|planificat(eur|rice) financi|financial planner|Pl\. ?Fin|CIM|B\.A\.A|mutual.fund|fonds communs|15 ans|15\+|15 years|more than 15|plus de 15|experienceYears' origin/main -- lib/pages.ts lib/copy.ts lib/business.ts components/pages.tsx lib/ask.ts
+origin/main:lib/business.ts:12:  experienceYears: 15,
+origin/main:lib/business.ts:18:      "https://www.linkedin.com/in/bill-badran-pl-fin-cim%C2%AE-b6305b72/",
+origin/main:lib/business.ts:23:    "Pl.Fin.",
+origin/main:lib/business.ts:24:    "CIM",
+origin/main:lib/business.ts:25:    "B.A.A.",
+origin/main:lib/copy.ts:14:      "Bill Badran, planificateur financier à Laval, travaille avec les gens qui prendront leur retraite d’ici 5 à 15 ans.",
+origin/main:lib/copy.ts:72:    experience: "Plus de 15 ans",
+origin/main:lib/copy.ts:73:    experienceSub: "Planificateur financier à Laval · Français et anglais",
+origin/main:lib/copy.ts:114:      "Bill Badran, a financial planner in Laval, works with people 5 to 15 years from retirement.",
+origin/main:lib/copy.ts:172:    experience: "15+ years",
+origin/main:lib/copy.ts:173:    experienceSub: "Financial planner in Laval · French and English",
+origin/main:lib/pages.ts:34:        "Ce qui change de 5 à 15 ans avant la retraite, les questions à régler et comment un planificateur financier coordonne revenu, placements, impôts et succession.",
+origin/main:lib/pages.ts:127:          heading: "Que fait un planificateur financier avant la retraite?",
+origin/main:lib/pages.ts:183:      kicker: "Bill Badran, planificateur financier à Laval",
+origin/main:lib/pages.ts:186:      seoTitle: "Bill Badran, planificateur financier à Laval",
+origin/main:lib/pages.ts:202:            "Depuis plus de 15 ans, Bill travaille avec des gens avant et après la retraite\u00a0: dans les bons marchés comme dans les chutes brutales, au fil des changements de carrière et de famille, et des décisions qui viennent avec chacun.",
+origin/main:lib/pages.ts:209:            "Bill est planificateur financier indépendant. Il regarde le portrait complet (revenu, placements, impôts, assurances et succession) parce qu’à la retraite, tout bouge ensemble.",
+origin/main:lib/pages.ts:216:            "La plupart prendront leur retraite d’ici 5 à 15 ans. Certains l’ont déjà prise.",
+origin/main:lib/pages.ts:227:            "Pl. Fin. (planificateur financier) · CIM® · B.A.A. · Représentant de courtier en épargne collective.",
+origin/main:lib/pages.ts:235:      seoTitle: "Première rencontre avec un planificateur financier à Laval",
+origin/main:lib/pages.ts:348:        "What changes 5 to 15 years before retirement, the questions to answer, and how a financial planner helps you coordinate income, investments, taxes and estate.",
+origin/main:lib/pages.ts:440:          heading: "What does a financial planner do before retirement?",
+origin/main:lib/pages.ts:496:      kicker: "Bill Badran, financial planner in Laval",
+origin/main:lib/pages.ts:498:      seoTitle: "Bill Badran, financial planner in Laval",
+origin/main:lib/pages.ts:514:            "Bill has spent more than 15 years working with people before and after retirement: through strong markets and sharp drops, through career and family changes, and the decisions that come with each.",
+origin/main:lib/pages.ts:521:            "Bill is an independent financial planner. He looks at the whole picture (income, investments, taxes, insurance and estate) because in retirement they move together.",
+origin/main:lib/pages.ts:528:            "Most are 5 to 15 years from retirement. Some have already stopped working.",
+origin/main:lib/pages.ts:539:            "F.Pl. (financial planner) · CIM® · BBA · Dealing representative, mutual fund dealer.",
+origin/main:lib/pages.ts:547:      seoTitle: "A first meeting with a financial planner in Laval",
+# exit_code=0
+## branch origin/add-ask-bill-section 01e296caf4cb6822c9ccd45642834d69e02334bf
+# command=git grep -n -i -E 'ind[ée]pendan|independent|planificat(eur|rice) financi|financial planner|Pl\. ?Fin|CIM|B\.A\.A|mutual.fund|fonds communs|15 ans|15\+|15 years|more than 15|plus de 15|experienceYears' origin/add-ask-bill-section -- lib/pages.ts lib/copy.ts lib/business.ts components/pages.tsx lib/ask.ts
+origin/add-ask-bill-section:lib/business.ts:12:  experienceYears: 15,
+origin/add-ask-bill-section:lib/business.ts:18:      "https://www.linkedin.com/in/bill-badran-pl-fin-cim%C2%AE-b6305b72/",
+origin/add-ask-bill-section:lib/business.ts:23:    "Pl.Fin.",
+origin/add-ask-bill-section:lib/business.ts:24:    "CIM",
+origin/add-ask-bill-section:lib/business.ts:25:    "B.A.A.",
+origin/add-ask-bill-section:lib/copy.ts:14:      "Bill Badran, planificateur financier à Laval, travaille avec les gens qui prendront leur retraite d’ici 5 à 15 ans.",
+origin/add-ask-bill-section:lib/copy.ts:72:    experience: "Plus de 15 ans",
+origin/add-ask-bill-section:lib/copy.ts:73:    experienceSub: "Planificateur financier à Laval · Français et anglais",
+origin/add-ask-bill-section:lib/copy.ts:114:      "Bill Badran, a financial planner in Laval, works with people 5 to 15 years from retirement.",
+origin/add-ask-bill-section:lib/copy.ts:172:    experience: "15+ years",
+origin/add-ask-bill-section:lib/copy.ts:173:    experienceSub: "Financial planner in Laval · French and English",
+origin/add-ask-bill-section:lib/pages.ts:34:        "Ce qui change de 5 à 15 ans avant la retraite, les questions à régler et comment un planificateur financier coordonne revenu, placements, impôts et succession.",
+origin/add-ask-bill-section:lib/pages.ts:127:          heading: "Que fait un planificateur financier avant la retraite?",
+origin/add-ask-bill-section:lib/pages.ts:183:      kicker: "Bill Badran, planificateur financier à Laval",
+origin/add-ask-bill-section:lib/pages.ts:186:      seoTitle: "Bill Badran, planificateur financier à Laval",
+origin/add-ask-bill-section:lib/pages.ts:202:            "Depuis plus de 15 ans, Bill travaille avec des gens avant et après la retraite\u00a0: dans les bons marchés comme dans les chutes brutales, au fil des changements de carrière et de famille, et des décisions qui viennent avec chacun.",
+origin/add-ask-bill-section:lib/pages.ts:209:            "Bill est planificateur financier indépendant. Il regarde le portrait complet (revenu, placements, impôts, assurances et succession) parce qu’à la retraite, tout bouge ensemble.",
+origin/add-ask-bill-section:lib/pages.ts:216:            "La plupart prendront leur retraite d’ici 5 à 15 ans. Certains l’ont déjà prise.",
+origin/add-ask-bill-section:lib/pages.ts:227:            "Pl. Fin. (planificateur financier) · CIM® · B.A.A. · Représentant de courtier en épargne collective.",
+origin/add-ask-bill-section:lib/pages.ts:235:      seoTitle: "Première rencontre avec un planificateur financier à Laval",
+origin/add-ask-bill-section:lib/pages.ts:348:        "What changes 5 to 15 years before retirement, the questions to answer, and how a financial planner helps you coordinate income, investments, taxes and estate.",
+origin/add-ask-bill-section:lib/pages.ts:440:          heading: "What does a financial planner do before retirement?",
+origin/add-ask-bill-section:lib/pages.ts:496:      kicker: "Bill Badran, financial planner in Laval",
+origin/add-ask-bill-section:lib/pages.ts:498:      seoTitle: "Bill Badran, financial planner in Laval",
+origin/add-ask-bill-section:lib/pages.ts:514:            "Bill has spent more than 15 years working with people before and after retirement: through strong markets and sharp drops, through career and family changes, and the decisions that come with each.",
+origin/add-ask-bill-section:lib/pages.ts:521:            "Bill is an independent financial planner. He looks at the whole picture (income, investments, taxes, insurance and estate) because in retirement they move together.",
+origin/add-ask-bill-section:lib/pages.ts:528:            "Most are 5 to 15 years from retirement. Some have already stopped working.",
+origin/add-ask-bill-section:lib/pages.ts:539:            "F.Pl. (financial planner) · CIM® · BBA · Dealing representative, mutual fund dealer.",
+origin/add-ask-bill-section:lib/pages.ts:547:      seoTitle: "A first meeting with a financial planner in Laval",
+# exit_code=0
+## branch origin/codex/desktop-iphone-unified 66cce52046f535ddc1a90e6f94474877e375860d
+# command=git grep -n -i -E 'ind[ée]pendan|independent|planificat(eur|rice) financi|financial planner|Pl\. ?Fin|CIM|B\.A\.A|mutual.fund|fonds communs|15 ans|15\+|15 years|more than 15|plus de 15|experienceYears' origin/codex/desktop-iphone-unified -- lib/pages.ts lib/copy.ts lib/business.ts components/pages.tsx lib/ask.ts
+origin/codex/desktop-iphone-unified:components/pages.tsx:119:                    ? "Planificateur financier · Laval"
+origin/codex/desktop-iphone-unified:components/pages.tsx:120:                    : "Financial planner · Laval"}
+origin/codex/desktop-iphone-unified:lib/business.ts:12:  experienceYears: 15,
+origin/codex/desktop-iphone-unified:lib/business.ts:18:      "https://www.linkedin.com/in/bill-badran-pl-fin-cim%C2%AE-b6305b72/",
+origin/codex/desktop-iphone-unified:lib/business.ts:23:    "Pl.Fin.",
+origin/codex/desktop-iphone-unified:lib/business.ts:24:    "CIM",
+origin/codex/desktop-iphone-unified:lib/business.ts:25:    "B.A.A.",
+origin/codex/desktop-iphone-unified:lib/copy.ts:14:      "Bill Badran, planificateur financier à Laval, travaille avec les gens qui prendront leur retraite d’ici 5 à 15 ans.",
+origin/codex/desktop-iphone-unified:lib/copy.ts:72:    experience: "Plus de 15 ans",
+origin/codex/desktop-iphone-unified:lib/copy.ts:73:    experienceSub: "Planificateur financier à Laval · Français et anglais",
+origin/codex/desktop-iphone-unified:lib/copy.ts:114:      "Bill Badran, a financial planner in Laval, works with people 5 to 15 years from retirement.",
+origin/codex/desktop-iphone-unified:lib/copy.ts:172:    experience: "15+ years",
+origin/codex/desktop-iphone-unified:lib/copy.ts:173:    experienceSub: "Financial planner in Laval · French and English",
+origin/codex/desktop-iphone-unified:lib/pages.ts:34:        "Ce qui change de 5 à 15 ans avant la retraite, les questions à régler et comment un planificateur financier coordonne revenu, placements, impôts et succession.",
+origin/codex/desktop-iphone-unified:lib/pages.ts:127:          heading: "Que fait un planificateur financier avant la retraite?",
+origin/codex/desktop-iphone-unified:lib/pages.ts:183:      kicker: "Bill Badran, planificateur financier à Laval",
+origin/codex/desktop-iphone-unified:lib/pages.ts:186:      seoTitle: "Bill Badran, planificateur financier à Laval",
+origin/codex/desktop-iphone-unified:lib/pages.ts:202:            "Depuis plus de 15 ans, Bill travaille avec des gens avant et après la retraite\u00a0: dans les bons marchés comme dans les chutes brutales, au fil des changements de carrière et de famille, et des décisions qui viennent avec chacun.",
+origin/codex/desktop-iphone-unified:lib/pages.ts:209:            "Bill est planificateur financier indépendant. Il regarde le portrait complet (revenu, placements, impôts, assurances et succession) parce qu’à la retraite, tout bouge ensemble.",
+origin/codex/desktop-iphone-unified:lib/pages.ts:216:            "La plupart prendront leur retraite d’ici 5 à 15 ans. Certains l’ont déjà prise.",
+origin/codex/desktop-iphone-unified:lib/pages.ts:227:            "Pl. Fin. (planificateur financier) · CIM® · B.A.A. · Représentant de courtier en épargne collective.",
+origin/codex/desktop-iphone-unified:lib/pages.ts:235:      seoTitle: "Première rencontre avec un planificateur financier à Laval",
+origin/codex/desktop-iphone-unified:lib/pages.ts:348:        "What changes 5 to 15 years before retirement, the questions to answer, and how a financial planner helps you coordinate income, investments, taxes and estate.",
+origin/codex/desktop-iphone-unified:lib/pages.ts:440:          heading: "What does a financial planner do before retirement?",
+origin/codex/desktop-iphone-unified:lib/pages.ts:496:      kicker: "Bill Badran, financial planner in Laval",
+origin/codex/desktop-iphone-unified:lib/pages.ts:498:      seoTitle: "Bill Badran, financial planner in Laval",
+origin/codex/desktop-iphone-unified:lib/pages.ts:514:            "Bill has spent more than 15 years working with people before and after retirement: through strong markets and sharp drops, through career and family changes, and the decisions that come with each.",
+origin/codex/desktop-iphone-unified:lib/pages.ts:521:            "Bill is an independent financial planner. He looks at the whole picture (income, investments, taxes, insurance and estate) because in retirement they move together.",
+origin/codex/desktop-iphone-unified:lib/pages.ts:528:            "Most are 5 to 15 years from retirement. Some have already stopped working.",
+origin/codex/desktop-iphone-unified:lib/pages.ts:539:            "F.Pl. (financial planner) · CIM® · BBA · Dealing representative, mutual fund dealer.",
+origin/codex/desktop-iphone-unified:lib/pages.ts:547:      seoTitle: "A first meeting with a financial planner in Laval",
+# exit_code=0
+## branch origin/claude/bill-centered-homepage d63aabd50d0760145208857856f32779b1069e15
+# command=git grep -n -i -E 'ind[ée]pendan|independent|planificat(eur|rice) financi|financial planner|Pl\. ?Fin|CIM|B\.A\.A|mutual.fund|fonds communs|15 ans|15\+|15 years|more than 15|plus de 15|experienceYears' origin/claude/bill-centered-homepage -- lib/pages.ts lib/copy.ts lib/business.ts components/pages.tsx lib/ask.ts
+origin/claude/bill-centered-homepage:lib/business.ts:12:  experienceYears: 15,
+origin/claude/bill-centered-homepage:lib/business.ts:18:      "https://www.linkedin.com/in/bill-badran-pl-fin-cim%C2%AE-b6305b72/",
+origin/claude/bill-centered-homepage:lib/business.ts:23:    "Pl.Fin.",
+origin/claude/bill-centered-homepage:lib/business.ts:24:    "CIM",
+origin/claude/bill-centered-homepage:lib/business.ts:25:    "B.A.A.",
+origin/claude/bill-centered-homepage:lib/copy.ts:15:    eyebrow: "Bill Badran · Planificateur financier · Laval",
+origin/claude/bill-centered-homepage:lib/copy.ts:21:      "Bill Badran est planificateur financier à Laval. Il travaille, en français ou en anglais, avec les gens qui prendront leur retraite d’ici 5 à 15\u00a0ans.",
+origin/claude/bill-centered-homepage:lib/copy.ts:51:    experience: "Plus de 15\u00a0ans",
+origin/claude/bill-centered-homepage:lib/copy.ts:52:    experienceSub: "Planificateur financier à Laval · Français et anglais",
+origin/claude/bill-centered-homepage:lib/copy.ts:144:      "Bill Badran, planificateur financier à Laval. Est-ce que j’en ai assez\u00a0? Puis-je prendre ma retraite quand je le veux\u00a0? Il regarde le portrait complet avec vous.",
+origin/claude/bill-centered-homepage:lib/copy.ts:158:    eyebrow: "Bill Badran · Financial planner · Laval",
+origin/claude/bill-centered-homepage:lib/copy.ts:164:      "Bill Badran is a financial planner in Laval. He works, in French or English, with people 5 to 15 years from retirement.",
+origin/claude/bill-centered-homepage:lib/copy.ts:175:          "An independent practice",
+origin/claude/bill-centered-homepage:lib/copy.ts:194:    experience: "More than 15 years",
+origin/claude/bill-centered-homepage:lib/copy.ts:195:    experienceSub: "Financial planner in Laval · French and English",
+origin/claude/bill-centered-homepage:lib/copy.ts:286:      "Bill Badran, financial planner in Laval. Do I have enough? Can I retire when I want to? He looks at the whole picture with you and explains it plainly.",
+origin/claude/bill-centered-homepage:lib/pages.ts:34:        "Ce qui change de 5 à 15 ans avant la retraite, les questions à régler et comment un planificateur financier coordonne revenu, placements, impôts et succession.",
+origin/claude/bill-centered-homepage:lib/pages.ts:129:            "Que fait un planificateur financier avant la retraite\u00a0?",
+origin/claude/bill-centered-homepage:lib/pages.ts:185:      kicker: "Bill Badran, planificateur financier à Laval",
+origin/claude/bill-centered-homepage:lib/pages.ts:188:      seoTitle: "Bill Badran, planificateur financier à Laval",
+origin/claude/bill-centered-homepage:lib/pages.ts:204:            "Depuis plus de 15 ans, Bill travaille avec des gens avant et après la retraite\u00a0: dans les bons marchés comme dans les chutes brutales, au fil des changements de carrière et de famille, et des décisions qui viennent avec chacun.",
+origin/claude/bill-centered-homepage:lib/pages.ts:211:            "Bill est planificateur financier indépendant. Il regarde le portrait complet (revenu, placements, impôts, assurances et succession) parce qu’à la retraite, tout bouge ensemble.",
+origin/claude/bill-centered-homepage:lib/pages.ts:218:            "La plupart prendront leur retraite d’ici 5 à 15 ans. Certains l’ont déjà prise.",
+origin/claude/bill-centered-homepage:lib/pages.ts:229:            "Pl. Fin. (planificateur financier) · CIM® · B.A.A. · Représentant de courtier en épargne collective.",
+origin/claude/bill-centered-homepage:lib/pages.ts:237:      seoTitle: "Première rencontre avec un planificateur financier à Laval",
+origin/claude/bill-centered-homepage:lib/pages.ts:350:        "What changes 5 to 15 years before retirement, the questions to answer, and how a financial planner helps you coordinate income, investments, taxes and estate.",
+origin/claude/bill-centered-homepage:lib/pages.ts:442:          heading: "What does a financial planner do before retirement?",
+origin/claude/bill-centered-homepage:lib/pages.ts:498:      kicker: "Bill Badran, financial planner in Laval",
+origin/claude/bill-centered-homepage:lib/pages.ts:500:      seoTitle: "Bill Badran, financial planner in Laval",
+origin/claude/bill-centered-homepage:lib/pages.ts:516:            "Bill has spent more than 15 years working with people before and after retirement: through strong markets and sharp drops, through career and family changes, and the decisions that come with each.",
+origin/claude/bill-centered-homepage:lib/pages.ts:523:            "Bill is an independent financial planner. He looks at the whole picture (income, investments, taxes, insurance and estate) because in retirement they move together.",
+origin/claude/bill-centered-homepage:lib/pages.ts:530:            "Most are 5 to 15 years from retirement. Some have already stopped working.",
+origin/claude/bill-centered-homepage:lib/pages.ts:541:            "F.Pl. (financial planner) · CIM® · BBA · Dealing representative, mutual fund dealer.",
+origin/claude/bill-centered-homepage:lib/pages.ts:549:      seoTitle: "A first meeting with a financial planner in Laval",
+# exit_code=0
+## branch origin/claude/bill-presentation-video fc0044576d851be414d19e2f7a21ca7fd1285eae
+# command=git grep -n -i -E 'ind[ée]pendan|independent|planificat(eur|rice) financi|financial planner|Pl\. ?Fin|CIM|B\.A\.A|mutual.fund|fonds communs|15 ans|15\+|15 years|more than 15|plus de 15|experienceYears' origin/claude/bill-presentation-video -- lib/pages.ts lib/copy.ts lib/business.ts components/pages.tsx lib/ask.ts
+origin/claude/bill-presentation-video:lib/business.ts:12:  experienceYears: 15,
+origin/claude/bill-presentation-video:lib/business.ts:18:      "https://www.linkedin.com/in/bill-badran-pl-fin-cim%C2%AE-b6305b72/",
+origin/claude/bill-presentation-video:lib/business.ts:23:    "Pl.Fin.",
+origin/claude/bill-presentation-video:lib/business.ts:24:    "CIM",
+origin/claude/bill-presentation-video:lib/business.ts:25:    "B.A.A.",
+origin/claude/bill-presentation-video:lib/copy.ts:14:      "Bill Badran, planificateur financier à Laval, travaille avec les gens qui prendront leur retraite d’ici 5 à 15 ans.",
+origin/claude/bill-presentation-video:lib/copy.ts:72:    experience: "Plus de 15 ans",
+origin/claude/bill-presentation-video:lib/copy.ts:73:    experienceSub: "Planificateur financier à Laval · Français et anglais",
+origin/claude/bill-presentation-video:lib/copy.ts:114:      "Bill Badran, a financial planner in Laval, works with people 5 to 15 years from retirement.",
+origin/claude/bill-presentation-video:lib/copy.ts:172:    experience: "15+ years",
+origin/claude/bill-presentation-video:lib/copy.ts:173:    experienceSub: "Financial planner in Laval · French and English",
+origin/claude/bill-presentation-video:lib/pages.ts:34:        "Ce qui change de 5 à 15 ans avant la retraite, les questions à régler et comment un planificateur financier coordonne revenu, placements, impôts et succession.",
+origin/claude/bill-presentation-video:lib/pages.ts:127:          heading: "Que fait un planificateur financier avant la retraite?",
+origin/claude/bill-presentation-video:lib/pages.ts:183:      kicker: "Bill Badran, planificateur financier à Laval",
+origin/claude/bill-presentation-video:lib/pages.ts:186:      seoTitle: "Bill Badran, planificateur financier à Laval",
+origin/claude/bill-presentation-video:lib/pages.ts:202:            "Depuis plus de 15 ans, Bill travaille avec des gens avant et après la retraite\u00a0: dans les bons marchés comme dans les chutes brutales, au fil des changements de carrière et de famille, et des décisions qui viennent avec chacun.",
+origin/claude/bill-presentation-video:lib/pages.ts:209:            "Bill est planificateur financier indépendant. Il regarde le portrait complet (revenu, placements, impôts, assurances et succession) parce qu’à la retraite, tout bouge ensemble.",
+origin/claude/bill-presentation-video:lib/pages.ts:216:            "La plupart prendront leur retraite d’ici 5 à 15 ans. Certains l’ont déjà prise.",
+origin/claude/bill-presentation-video:lib/pages.ts:227:            "Pl. Fin. (planificateur financier) · CIM® · B.A.A. · Représentant de courtier en épargne collective.",
+origin/claude/bill-presentation-video:lib/pages.ts:235:      seoTitle: "Première rencontre avec un planificateur financier à Laval",
+origin/claude/bill-presentation-video:lib/pages.ts:348:        "What changes 5 to 15 years before retirement, the questions to answer, and how a financial planner helps you coordinate income, investments, taxes and estate.",
+origin/claude/bill-presentation-video:lib/pages.ts:440:          heading: "What does a financial planner do before retirement?",
+origin/claude/bill-presentation-video:lib/pages.ts:496:      kicker: "Bill Badran, financial planner in Laval",
+origin/claude/bill-presentation-video:lib/pages.ts:498:      seoTitle: "Bill Badran, financial planner in Laval",
+origin/claude/bill-presentation-video:lib/pages.ts:514:            "Bill has spent more than 15 years working with people before and after retirement: through strong markets and sharp drops, through career and family changes, and the decisions that come with each.",
+origin/claude/bill-presentation-video:lib/pages.ts:521:            "Bill is an independent financial planner. He looks at the whole picture (income, investments, taxes, insurance and estate) because in retirement they move together.",
+origin/claude/bill-presentation-video:lib/pages.ts:528:            "Most are 5 to 15 years from retirement. Some have already stopped working.",
+origin/claude/bill-presentation-video:lib/pages.ts:539:            "F.Pl. (financial planner) · CIM® · BBA · Dealing representative, mutual fund dealer.",
+origin/claude/bill-presentation-video:lib/pages.ts:547:      seoTitle: "A first meeting with a financial planner in Laval",
+# exit_code=0
+## branch origin/guide/pre-retirement-guide 749b360f75185041e1aa3408500857605bc4507f
+# command=git grep -n -i -E 'ind[ée]pendan|independent|planificat(eur|rice) financi|financial planner|Pl\. ?Fin|CIM|B\.A\.A|mutual.fund|fonds communs|15 ans|15\+|15 years|more than 15|plus de 15|experienceYears' origin/guide/pre-retirement-guide -- lib/pages.ts lib/copy.ts lib/business.ts components/pages.tsx lib/ask.ts
+origin/guide/pre-retirement-guide:lib/business.ts:12:  experienceYears: 15,
+origin/guide/pre-retirement-guide:lib/business.ts:18:      "https://www.linkedin.com/in/bill-badran-pl-fin-cim%C2%AE-b6305b72/",
+origin/guide/pre-retirement-guide:lib/business.ts:23:    "Pl.Fin.",
+origin/guide/pre-retirement-guide:lib/business.ts:24:    "CIM",
+origin/guide/pre-retirement-guide:lib/business.ts:25:    "B.A.A.",
+origin/guide/pre-retirement-guide:lib/copy.ts:14:      "Bill Badran, planificateur financier à Laval, travaille avec les gens qui prendront leur retraite d’ici 5 à 15 ans.",
+origin/guide/pre-retirement-guide:lib/copy.ts:72:    experience: "Plus de 15 ans",
+origin/guide/pre-retirement-guide:lib/copy.ts:73:    experienceSub: "Planificateur financier à Laval · Français et anglais",
+origin/guide/pre-retirement-guide:lib/copy.ts:114:      "Bill Badran, a financial planner in Laval, works with people 5 to 15 years from retirement.",
+origin/guide/pre-retirement-guide:lib/copy.ts:172:    experience: "15+ years",
+origin/guide/pre-retirement-guide:lib/copy.ts:173:    experienceSub: "Financial planner in Laval · French and English",
+origin/guide/pre-retirement-guide:lib/pages.ts:34:        "Ce qui change de 5 à 15 ans avant la retraite, les questions à régler et comment un planificateur financier coordonne revenu, placements, impôts et succession.",
+origin/guide/pre-retirement-guide:lib/pages.ts:127:          heading: "Que fait un planificateur financier avant la retraite?",
+origin/guide/pre-retirement-guide:lib/pages.ts:183:      kicker: "Bill Badran, planificateur financier à Laval",
+origin/guide/pre-retirement-guide:lib/pages.ts:186:      seoTitle: "Bill Badran, planificateur financier à Laval",
+origin/guide/pre-retirement-guide:lib/pages.ts:202:            "Depuis plus de 15 ans, Bill travaille avec des gens avant et après la retraite\u00a0: dans les bons marchés comme dans les chutes brutales, au fil des changements de carrière et de famille, et des décisions qui viennent avec chacun.",
+origin/guide/pre-retirement-guide:lib/pages.ts:209:            "Bill est planificateur financier indépendant. Il regarde le portrait complet (revenu, placements, impôts, assurances et succession) parce qu’à la retraite, tout bouge ensemble.",
+origin/guide/pre-retirement-guide:lib/pages.ts:216:            "La plupart prendront leur retraite d’ici 5 à 15 ans. Certains l’ont déjà prise.",
+origin/guide/pre-retirement-guide:lib/pages.ts:227:            "Pl. Fin. (planificateur financier) · CIM® · B.A.A. · Représentant de courtier en épargne collective.",
+origin/guide/pre-retirement-guide:lib/pages.ts:235:      seoTitle: "Première rencontre avec un planificateur financier à Laval",
+origin/guide/pre-retirement-guide:lib/pages.ts:348:        "What changes 5 to 15 years before retirement, the questions to answer, and how a financial planner helps you coordinate income, investments, taxes and estate.",
+origin/guide/pre-retirement-guide:lib/pages.ts:440:          heading: "What does a financial planner do before retirement?",
+origin/guide/pre-retirement-guide:lib/pages.ts:496:      kicker: "Bill Badran, financial planner in Laval",
+origin/guide/pre-retirement-guide:lib/pages.ts:498:      seoTitle: "Bill Badran, financial planner in Laval",
+origin/guide/pre-retirement-guide:lib/pages.ts:514:            "Bill has spent more than 15 years working with people before and after retirement: through strong markets and sharp drops, through career and family changes, and the decisions that come with each.",
+origin/guide/pre-retirement-guide:lib/pages.ts:521:            "Bill is an independent financial planner. He looks at the whole picture (income, investments, taxes, insurance and estate) because in retirement they move together.",
+origin/guide/pre-retirement-guide:lib/pages.ts:528:            "Most are 5 to 15 years from retirement. Some have already stopped working.",
+origin/guide/pre-retirement-guide:lib/pages.ts:539:            "F.Pl. (financial planner) · CIM® · BBA · Dealing representative, mutual fund dealer.",
+origin/guide/pre-retirement-guide:lib/pages.ts:547:      seoTitle: "A first meeting with a financial planner in Laval",
+# exit_code=0
+
+############ RUN 2 (corrective) 2026-09-30T03:15:23Z
+# Note: run 1 used the bracket [ée]; with LANG/LC_ALL unset (C locale) git grep does not match multibyte é in a bracket, so run 1 missed homepage lib/copy.ts:32 'Une pratique indépendante'. Run 2 uses '.{1,2}' in place of accented chars and widens scope to all tracked files except film/ presentation/ reference/ docs/ public/ *.svg package-lock.json.
+# In RUN 2 and RUN 3 each git grep's output was piped through `cut -c1-240` (display truncation only; it can split a multibyte character, so this file is not strictly valid UTF-8). Exit codes are the git grep's own (PIPESTATUS[0]), except the last RUN 3 command, whose recorded exit code is the second (filtering) grep's (PIPESTATUS[1]).
+## branch origin/main 77de3bd51a8c9cb73aec0b32d27ca0cacb6285cd
+### AFFILIATION
+# command=git grep -n -i -E 'ind.{1,2}pendan|independent' origin/main -- . ':(exclude)film/' ':(exclude)presentation/' ':(exclude)reference/' ':(exclude)docs/' ':(exclude)public/' ':(exclude)*.svg' ':(exclude)package-lock.json'
+origin/main:LAUNCH-CHECKLIST.md:23:- [ ] Confirm exact titles, current registration, permission to use designations and affiliation. The source contains Pl.Fin., CIM, B.A.A., mutual-fund-representative wording and Université du Québec; th
+origin/main:TEST-SUMMARY.md:7:- `npm run test`: **13 tests passed**. Independent iterative fee expectations; zero/maximum/invalid inputs; checklist distinctions; all localized route mappings; draft pairing/exclusion; unsafe/incomplete conte
+origin/main:lib/pages.ts:209:            "Bill est planificateur financier indépendant. Il regarde le portrait complet (revenu, placements, impôts, assurances et succession) parce qu’à la retraite, tout bouge ensemble.",
+origin/main:lib/pages.ts:521:            "Bill is an independent financial planner. He looks at the whole picture (income, investments, taxes, insurance and estate) because in retirement they move together.",
+origin/main:tests/logic.test.ts:44:test("fee comparison against independent iterative expectations", () => {
+# exit_code=0
+### TITLE
+# command=git grep -n -i -E 'planificat(eur|rice) financi|financial planner' origin/main -- . ':(exclude)film/' ':(exclude)presentation/' ':(exclude)reference/' ':(exclude)docs/' ':(exclude)public/' ':(exclude)*.svg' ':(exclude)package-lock.json'
+origin/main:lib/copy.ts:14:      "Bill Badran, planificateur financier à Laval, travaille avec les gens qui prendront leur retraite d’ici 5 à 15 ans.",
+origin/main:lib/copy.ts:73:    experienceSub: "Planificateur financier à Laval · Français et anglais",
+origin/main:lib/copy.ts:114:      "Bill Badran, a financial planner in Laval, works with people 5 to 15 years from retirement.",
+origin/main:lib/copy.ts:173:    experienceSub: "Financial planner in Laval · French and English",
+origin/main:lib/pages.ts:34:        "Ce qui change de 5 à 15 ans avant la retraite, les questions à régler et comment un planificateur financier coordonne revenu, placements, impôts et succession.",
+origin/main:lib/pages.ts:127:          heading: "Que fait un planificateur financier avant la retraite?",
+origin/main:lib/pages.ts:183:      kicker: "Bill Badran, planificateur financier à Laval",
+origin/main:lib/pages.ts:186:      seoTitle: "Bill Badran, planificateur financier à Laval",
+origin/main:lib/pages.ts:209:            "Bill est planificateur financier indépendant. Il regarde le portrait complet (revenu, placements, impôts, assurances et succession) parce qu’à la retraite, tout bouge ensemble.",
+origin/main:lib/pages.ts:227:            "Pl. Fin. (planificateur financier) · CIM® · B.A.A. · Représentant de courtier en épargne collective.",
+origin/main:lib/pages.ts:235:      seoTitle: "Première rencontre avec un planificateur financier à Laval",
+origin/main:lib/pages.ts:348:        "What changes 5 to 15 years before retirement, the questions to answer, and how a financial planner helps you coordinate income, investments, taxes and estate.",
+origin/main:lib/pages.ts:440:          heading: "What does a financial planner do before retirement?",
+origin/main:lib/pages.ts:496:      kicker: "Bill Badran, financial planner in Laval",
+origin/main:lib/pages.ts:498:      seoTitle: "Bill Badran, financial planner in Laval",
+origin/main:lib/pages.ts:521:            "Bill is an independent financial planner. He looks at the whole picture (income, investments, taxes, insurance and estate) because in retirement they move together.",
+origin/main:lib/pages.ts:539:            "F.Pl. (financial planner) · CIM® · BBA · Dealing representative, mutual fund dealer.",
+origin/main:lib/pages.ts:547:      seoTitle: "A first meeting with a financial planner in Laval",
+# exit_code=0
+### YEARS
+# command=git grep -n -i -E 'plus de 15|more than 15|15\+ ?(ans|years)|15.{0,8}(ans|years) d|experienceYears|depuis 20[0-9][0-9]|since 20[0-9][0-9]' origin/main -- . ':(exclude)film/' ':(exclude)presentation/' ':(exclude)reference/' ':(exclude)docs/' ':(exclude)public/' ':(exclude)*.svg' ':(exclude)package-lock.json'
+origin/main:LAUNCH-CHECKLIST.md:22:- [ ] Confirm legal business identity, phone, email, address, intended domain, languages and supplied “more than 15 years” statement.
+origin/main:lib/business.ts:12:  experienceYears: 15,
+origin/main:lib/copy.ts:72:    experience: "Plus de 15 ans",
+origin/main:lib/copy.ts:172:    experience: "15+ years",
+origin/main:lib/pages.ts:202:            "Depuis plus de 15 ans, Bill travaille avec des gens avant et après la retraite\u00a0: dans les bons marchés comme dans les chutes brutales, au fil des changements de carrière et de famille, et de
+origin/main:lib/pages.ts:514:            "Bill has spent more than 15 years working with people before and after retirement: through strong markets and sharp drops, through career and family changes, and the decisions that come with each.",
+# exit_code=0
+### DESIGNATION
+# command=git grep -n -i -E 'Pl\.? ?Fin|F\.Pl|CIM|B\.A\.A|BBA|mutual.fund|pargne collective|dealing representative' origin/main -- . ':(exclude)film/' ':(exclude)presentation/' ':(exclude)reference/' ':(exclude)docs/' ':(exclude)public/' ':(exclude)*.svg' ':(exclude)package-lock.json'
+origin/main:LAUNCH-CHECKLIST.md:23:- [ ] Confirm exact titles, current registration, permission to use designations and affiliation. The source contains Pl.Fin., CIM, B.A.A., mutual-fund-representative wording and Université du Québec; th
+origin/main:lib/business.ts:14:  bookingUrl: "https://calendly.com/bbadran",
+origin/main:lib/business.ts:18:      "https://www.linkedin.com/in/bill-badran-pl-fin-cim%C2%AE-b6305b72/",
+origin/main:lib/business.ts:23:    "Pl.Fin.",
+origin/main:lib/business.ts:24:    "CIM",
+origin/main:lib/business.ts:25:    "B.A.A.",
+origin/main:lib/business.ts:26:    "Représentant en épargne collective",
+origin/main:lib/pages.ts:227:            "Pl. Fin. (planificateur financier) · CIM® · B.A.A. · Représentant de courtier en épargne collective.",
+origin/main:lib/pages.ts:539:            "F.Pl. (financial planner) · CIM® · BBA · Dealing representative, mutual fund dealer.",
+# exit_code=0
+## branch origin/add-ask-bill-section 01e296caf4cb6822c9ccd45642834d69e02334bf
+### AFFILIATION
+# command=git grep -n -i -E 'ind.{1,2}pendan|independent' origin/add-ask-bill-section -- . ':(exclude)film/' ':(exclude)presentation/' ':(exclude)reference/' ':(exclude)docs/' ':(exclude)public/' ':(exclude)*.svg' ':(exclude)package-lock.json'
+origin/add-ask-bill-section:LAUNCH-CHECKLIST.md:23:- [ ] Confirm exact titles, current registration, permission to use designations and affiliation. The source contains Pl.Fin., CIM, B.A.A., mutual-fund-representative wording and Universit�
+origin/add-ask-bill-section:TEST-SUMMARY.md:7:- `npm run test`: **13 tests passed**. Independent iterative fee expectations; zero/maximum/invalid inputs; checklist distinctions; all localized route mappings; draft pairing/exclusion; unsafe/
+origin/add-ask-bill-section:lib/pages.ts:209:            "Bill est planificateur financier indépendant. Il regarde le portrait complet (revenu, placements, impôts, assurances et succession) parce qu’à la retraite, tout bouge ensemble."
+origin/add-ask-bill-section:lib/pages.ts:521:            "Bill is an independent financial planner. He looks at the whole picture (income, investments, taxes, insurance and estate) because in retirement they move together.",
+origin/add-ask-bill-section:tests/logic.test.ts:44:test("fee comparison against independent iterative expectations", () => {
+# exit_code=0
+### TITLE
+# command=git grep -n -i -E 'planificat(eur|rice) financi|financial planner' origin/add-ask-bill-section -- . ':(exclude)film/' ':(exclude)presentation/' ':(exclude)reference/' ':(exclude)docs/' ':(exclude)public/' ':(exclude)*.svg' ':(exclude)package-lock.json'
+origin/add-ask-bill-section:lib/copy.ts:14:      "Bill Badran, planificateur financier à Laval, travaille avec les gens qui prendront leur retraite d’ici 5 à 15 ans.",
+origin/add-ask-bill-section:lib/copy.ts:73:    experienceSub: "Planificateur financier à Laval · Français et anglais",
+origin/add-ask-bill-section:lib/copy.ts:114:      "Bill Badran, a financial planner in Laval, works with people 5 to 15 years from retirement.",
+origin/add-ask-bill-section:lib/copy.ts:173:    experienceSub: "Financial planner in Laval · French and English",
+origin/add-ask-bill-section:lib/pages.ts:34:        "Ce qui change de 5 à 15 ans avant la retraite, les questions à régler et comment un planificateur financier coordonne revenu, placements, impôts et succession.",
+origin/add-ask-bill-section:lib/pages.ts:127:          heading: "Que fait un planificateur financier avant la retraite?",
+origin/add-ask-bill-section:lib/pages.ts:183:      kicker: "Bill Badran, planificateur financier à Laval",
+origin/add-ask-bill-section:lib/pages.ts:186:      seoTitle: "Bill Badran, planificateur financier à Laval",
+origin/add-ask-bill-section:lib/pages.ts:209:            "Bill est planificateur financier indépendant. Il regarde le portrait complet (revenu, placements, impôts, assurances et succession) parce qu’à la retraite, tout bouge ensemble."
+origin/add-ask-bill-section:lib/pages.ts:227:            "Pl. Fin. (planificateur financier) · CIM® · B.A.A. · Représentant de courtier en épargne collective.",
+origin/add-ask-bill-section:lib/pages.ts:235:      seoTitle: "Première rencontre avec un planificateur financier à Laval",
+origin/add-ask-bill-section:lib/pages.ts:348:        "What changes 5 to 15 years before retirement, the questions to answer, and how a financial planner helps you coordinate income, investments, taxes and estate.",
+origin/add-ask-bill-section:lib/pages.ts:440:          heading: "What does a financial planner do before retirement?",
+origin/add-ask-bill-section:lib/pages.ts:496:      kicker: "Bill Badran, financial planner in Laval",
+origin/add-ask-bill-section:lib/pages.ts:498:      seoTitle: "Bill Badran, financial planner in Laval",
+origin/add-ask-bill-section:lib/pages.ts:521:            "Bill is an independent financial planner. He looks at the whole picture (income, investments, taxes, insurance and estate) because in retirement they move together.",
+origin/add-ask-bill-section:lib/pages.ts:539:            "F.Pl. (financial planner) · CIM® · BBA · Dealing representative, mutual fund dealer.",
+origin/add-ask-bill-section:lib/pages.ts:547:      seoTitle: "A first meeting with a financial planner in Laval",
+# exit_code=0
+### YEARS
+# command=git grep -n -i -E 'plus de 15|more than 15|15\+ ?(ans|years)|15.{0,8}(ans|years) d|experienceYears|depuis 20[0-9][0-9]|since 20[0-9][0-9]' origin/add-ask-bill-section -- . ':(exclude)film/' ':(exclude)presentation/' ':(exclude)reference/' ':(exclude)docs/' ':(exclude)public/' ':(exclude)*.svg' ':(exclude)package-lock.json'
+origin/add-ask-bill-section:LAUNCH-CHECKLIST.md:22:- [ ] Confirm legal business identity, phone, email, address, intended domain, languages and supplied “more than 15 years” statement.
+origin/add-ask-bill-section:lib/business.ts:12:  experienceYears: 15,
+origin/add-ask-bill-section:lib/copy.ts:72:    experience: "Plus de 15 ans",
+origin/add-ask-bill-section:lib/copy.ts:172:    experience: "15+ years",
+origin/add-ask-bill-section:lib/pages.ts:202:            "Depuis plus de 15 ans, Bill travaille avec des gens avant et après la retraite\u00a0: dans les bons marchés comme dans les chutes brutales, au fil des changements de carrière et d
+origin/add-ask-bill-section:lib/pages.ts:514:            "Bill has spent more than 15 years working with people before and after retirement: through strong markets and sharp drops, through career and family changes, and the decisions that c
+# exit_code=0
+### DESIGNATION
+# command=git grep -n -i -E 'Pl\.? ?Fin|F\.Pl|CIM|B\.A\.A|BBA|mutual.fund|pargne collective|dealing representative' origin/add-ask-bill-section -- . ':(exclude)film/' ':(exclude)presentation/' ':(exclude)reference/' ':(exclude)docs/' ':(exclude)public/' ':(exclude)*.svg' ':(exclude)package-lock.json'
+origin/add-ask-bill-section:LAUNCH-CHECKLIST.md:23:- [ ] Confirm exact titles, current registration, permission to use designations and affiliation. The source contains Pl.Fin., CIM, B.A.A., mutual-fund-representative wording and Universit�
+origin/add-ask-bill-section:lib/business.ts:14:  bookingUrl: "https://calendly.com/bbadran",
+origin/add-ask-bill-section:lib/business.ts:18:      "https://www.linkedin.com/in/bill-badran-pl-fin-cim%C2%AE-b6305b72/",
+origin/add-ask-bill-section:lib/business.ts:23:    "Pl.Fin.",
+origin/add-ask-bill-section:lib/business.ts:24:    "CIM",
+origin/add-ask-bill-section:lib/business.ts:25:    "B.A.A.",
+origin/add-ask-bill-section:lib/business.ts:26:    "Représentant en épargne collective",
+origin/add-ask-bill-section:lib/pages.ts:227:            "Pl. Fin. (planificateur financier) · CIM® · B.A.A. · Représentant de courtier en épargne collective.",
+origin/add-ask-bill-section:lib/pages.ts:539:            "F.Pl. (financial planner) · CIM® · BBA · Dealing representative, mutual fund dealer.",
+# exit_code=0
+## branch origin/codex/desktop-iphone-unified 66cce52046f535ddc1a90e6f94474877e375860d
+### AFFILIATION
+# command=git grep -n -i -E 'ind.{1,2}pendan|independent' origin/codex/desktop-iphone-unified -- . ':(exclude)film/' ':(exclude)presentation/' ':(exclude)reference/' ':(exclude)docs/' ':(exclude)public/' ':(exclude)*.svg' ':(exclude)package-lock.json'
+origin/codex/desktop-iphone-unified:LAUNCH-CHECKLIST.md:23:- [ ] Confirm exact titles, current registration, permission to use designations and affiliation. The source contains Pl.Fin., CIM, B.A.A., mutual-fund-representative wording and Un
+origin/codex/desktop-iphone-unified:TEST-SUMMARY.md:7:- `npm run test`: **13 tests passed**. Independent iterative fee expectations; zero/maximum/invalid inputs; checklist distinctions; all localized route mappings; draft pairing/exclusion;
+origin/codex/desktop-iphone-unified:lib/pages.ts:209:            "Bill est planificateur financier indépendant. Il regarde le portrait complet (revenu, placements, impôts, assurances et succession) parce qu’à la retraite, tout bouge en
+origin/codex/desktop-iphone-unified:lib/pages.ts:521:            "Bill is an independent financial planner. He looks at the whole picture (income, investments, taxes, insurance and estate) because in retirement they move together.",
+origin/codex/desktop-iphone-unified:tests/logic.test.ts:44:test("fee comparison against independent iterative expectations", () => {
+# exit_code=0
+### TITLE
+# command=git grep -n -i -E 'planificat(eur|rice) financi|financial planner' origin/codex/desktop-iphone-unified -- . ':(exclude)film/' ':(exclude)presentation/' ':(exclude)reference/' ':(exclude)docs/' ':(exclude)public/' ':(exclude)*.svg' ':(exclude)package-lock.json'
+origin/codex/desktop-iphone-unified:components/pages.tsx:119:                    ? "Planificateur financier · Laval"
+origin/codex/desktop-iphone-unified:components/pages.tsx:120:                    : "Financial planner · Laval"}
+origin/codex/desktop-iphone-unified:lib/copy.ts:14:      "Bill Badran, planificateur financier à Laval, travaille avec les gens qui prendront leur retraite d’ici 5 à 15 ans.",
+origin/codex/desktop-iphone-unified:lib/copy.ts:73:    experienceSub: "Planificateur financier à Laval · Français et anglais",
+origin/codex/desktop-iphone-unified:lib/copy.ts:114:      "Bill Badran, a financial planner in Laval, works with people 5 to 15 years from retirement.",
+origin/codex/desktop-iphone-unified:lib/copy.ts:173:    experienceSub: "Financial planner in Laval · French and English",
+origin/codex/desktop-iphone-unified:lib/pages.ts:34:        "Ce qui change de 5 à 15 ans avant la retraite, les questions à régler et comment un planificateur financier coordonne revenu, placements, impôts et succession.",
+origin/codex/desktop-iphone-unified:lib/pages.ts:127:          heading: "Que fait un planificateur financier avant la retraite?",
+origin/codex/desktop-iphone-unified:lib/pages.ts:183:      kicker: "Bill Badran, planificateur financier à Laval",
+origin/codex/desktop-iphone-unified:lib/pages.ts:186:      seoTitle: "Bill Badran, planificateur financier à Laval",
+origin/codex/desktop-iphone-unified:lib/pages.ts:209:            "Bill est planificateur financier indépendant. Il regarde le portrait complet (revenu, placements, impôts, assurances et succession) parce qu’à la retraite, tout bouge en
+origin/codex/desktop-iphone-unified:lib/pages.ts:227:            "Pl. Fin. (planificateur financier) · CIM® · B.A.A. · Représentant de courtier en épargne collective.",
+origin/codex/desktop-iphone-unified:lib/pages.ts:235:      seoTitle: "Première rencontre avec un planificateur financier à Laval",
+origin/codex/desktop-iphone-unified:lib/pages.ts:348:        "What changes 5 to 15 years before retirement, the questions to answer, and how a financial planner helps you coordinate income, investments, taxes and estate.",
+origin/codex/desktop-iphone-unified:lib/pages.ts:440:          heading: "What does a financial planner do before retirement?",
+origin/codex/desktop-iphone-unified:lib/pages.ts:496:      kicker: "Bill Badran, financial planner in Laval",
+origin/codex/desktop-iphone-unified:lib/pages.ts:498:      seoTitle: "Bill Badran, financial planner in Laval",
+origin/codex/desktop-iphone-unified:lib/pages.ts:521:            "Bill is an independent financial planner. He looks at the whole picture (income, investments, taxes, insurance and estate) because in retirement they move together.",
+origin/codex/desktop-iphone-unified:lib/pages.ts:539:            "F.Pl. (financial planner) · CIM® · BBA · Dealing representative, mutual fund dealer.",
+origin/codex/desktop-iphone-unified:lib/pages.ts:547:      seoTitle: "A first meeting with a financial planner in Laval",
+# exit_code=0
+### YEARS
+# command=git grep -n -i -E 'plus de 15|more than 15|15\+ ?(ans|years)|15.{0,8}(ans|years) d|experienceYears|depuis 20[0-9][0-9]|since 20[0-9][0-9]' origin/codex/desktop-iphone-unified -- . ':(exclude)film/' ':(exclude)presentation/' ':(exclude)reference/' ':(exclude)docs/' ':(exclude)public/' ':(exclude)*.svg' ':(exclude)package-lock.json'
+origin/codex/desktop-iphone-unified:LAUNCH-CHECKLIST.md:22:- [ ] Confirm legal business identity, phone, email, address, intended domain, languages and supplied “more than 15 years” statement.
+origin/codex/desktop-iphone-unified:lib/business.ts:12:  experienceYears: 15,
+origin/codex/desktop-iphone-unified:lib/copy.ts:72:    experience: "Plus de 15 ans",
+origin/codex/desktop-iphone-unified:lib/copy.ts:172:    experience: "15+ years",
+origin/codex/desktop-iphone-unified:lib/pages.ts:202:            "Depuis plus de 15 ans, Bill travaille avec des gens avant et après la retraite\u00a0: dans les bons marchés comme dans les chutes brutales, au fil des changements de carri�
+origin/codex/desktop-iphone-unified:lib/pages.ts:514:            "Bill has spent more than 15 years working with people before and after retirement: through strong markets and sharp drops, through career and family changes, and the decision
+# exit_code=0
+### DESIGNATION
+# command=git grep -n -i -E 'Pl\.? ?Fin|F\.Pl|CIM|B\.A\.A|BBA|mutual.fund|pargne collective|dealing representative' origin/codex/desktop-iphone-unified -- . ':(exclude)film/' ':(exclude)presentation/' ':(exclude)reference/' ':(exclude)docs/' ':(exclude)public/' ':(exclude)*.svg' ':(exclude)package-lock.json'
+origin/codex/desktop-iphone-unified:LAUNCH-CHECKLIST.md:23:- [ ] Confirm exact titles, current registration, permission to use designations and affiliation. The source contains Pl.Fin., CIM, B.A.A., mutual-fund-representative wording and Un
+Binary file origin/codex/desktop-iphone-unified:content/guides/retirement-review-en.pdf matches
+origin/codex/desktop-iphone-unified:lib/business.ts:14:  bookingUrl: "https://calendly.com/bbadran",
+origin/codex/desktop-iphone-unified:lib/business.ts:18:      "https://www.linkedin.com/in/bill-badran-pl-fin-cim%C2%AE-b6305b72/",
+origin/codex/desktop-iphone-unified:lib/business.ts:23:    "Pl.Fin.",
+origin/codex/desktop-iphone-unified:lib/business.ts:24:    "CIM",
+origin/codex/desktop-iphone-unified:lib/business.ts:25:    "B.A.A.",
+origin/codex/desktop-iphone-unified:lib/business.ts:26:    "Représentant en épargne collective",
+origin/codex/desktop-iphone-unified:lib/pages.ts:227:            "Pl. Fin. (planificateur financier) · CIM® · B.A.A. · Représentant de courtier en épargne collective.",
+origin/codex/desktop-iphone-unified:lib/pages.ts:539:            "F.Pl. (financial planner) · CIM® · BBA · Dealing representative, mutual fund dealer.",
+origin/codex/desktop-iphone-unified:tests/browser/responsive.spec.ts:74:        page.locator('a[href="https://calendly.com/bbadran"]'),
+# exit_code=0
+## branch origin/claude/bill-centered-homepage d63aabd50d0760145208857856f32779b1069e15
+### AFFILIATION
+# command=git grep -n -i -E 'ind.{1,2}pendan|independent' origin/claude/bill-centered-homepage -- . ':(exclude)film/' ':(exclude)presentation/' ':(exclude)reference/' ':(exclude)docs/' ':(exclude)public/' ':(exclude)*.svg' ':(exclude)package-lock.json'
+origin/claude/bill-centered-homepage:LAUNCH-CHECKLIST.md:24:- [ ] Confirm exact titles, current registration, permission to use designations and affiliation. The source contains Pl.Fin., CIM, B.A.A., mutual-fund-representative wording and U
+origin/claude/bill-centered-homepage:TEST-SUMMARY.md:7:- `npm run test`: **13 tests passed**. Independent iterative fee expectations; zero/maximum/invalid inputs; checklist distinctions; all localized route mappings; draft pairing/exclusion
+origin/claude/bill-centered-homepage:TEST-SUMMARY.md:48:- Copy was drafted by three independent writers, judged for compliance, language and brand, and synthesised; the built site was then reviewed through five lenses (compliance, French, E
+origin/claude/bill-centered-homepage:lib/copy.ts:32:          "Une pratique indépendante",
+origin/claude/bill-centered-homepage:lib/copy.ts:175:          "An independent practice",
+origin/claude/bill-centered-homepage:lib/pages.ts:211:            "Bill est planificateur financier indépendant. Il regarde le portrait complet (revenu, placements, impôts, assurances et succession) parce qu’à la retraite, tout bouge e
+origin/claude/bill-centered-homepage:lib/pages.ts:523:            "Bill is an independent financial planner. He looks at the whole picture (income, investments, taxes, insurance and estate) because in retirement they move together.",
+origin/claude/bill-centered-homepage:tests/logic.test.ts:44:test("fee comparison against independent iterative expectations", () => {
+# exit_code=0
+### TITLE
+# command=git grep -n -i -E 'planificat(eur|rice) financi|financial planner' origin/claude/bill-centered-homepage -- . ':(exclude)film/' ':(exclude)presentation/' ':(exclude)reference/' ':(exclude)docs/' ':(exclude)public/' ':(exclude)*.svg' ':(exclude)package-lock.json'
+origin/claude/bill-centered-homepage:lib/copy.ts:15:    eyebrow: "Bill Badran · Planificateur financier · Laval",
+origin/claude/bill-centered-homepage:lib/copy.ts:21:      "Bill Badran est planificateur financier à Laval. Il travaille, en français ou en anglais, avec les gens qui prendront leur retraite d’ici 5 à 15\u00a0ans.",
+origin/claude/bill-centered-homepage:lib/copy.ts:52:    experienceSub: "Planificateur financier à Laval · Français et anglais",
+origin/claude/bill-centered-homepage:lib/copy.ts:144:      "Bill Badran, planificateur financier à Laval. Est-ce que j’en ai assez\u00a0? Puis-je prendre ma retraite quand je le veux\u00a0? Il regarde le portrait complet avec vous.",
+origin/claude/bill-centered-homepage:lib/copy.ts:158:    eyebrow: "Bill Badran · Financial planner · Laval",
+origin/claude/bill-centered-homepage:lib/copy.ts:164:      "Bill Badran is a financial planner in Laval. He works, in French or English, with people 5 to 15 years from retirement.",
+origin/claude/bill-centered-homepage:lib/copy.ts:195:    experienceSub: "Financial planner in Laval · French and English",
+origin/claude/bill-centered-homepage:lib/copy.ts:286:      "Bill Badran, financial planner in Laval. Do I have enough? Can I retire when I want to? He looks at the whole picture with you and explains it plainly.",
+origin/claude/bill-centered-homepage:lib/pages.ts:34:        "Ce qui change de 5 à 15 ans avant la retraite, les questions à régler et comment un planificateur financier coordonne revenu, placements, impôts et succession.",
+origin/claude/bill-centered-homepage:lib/pages.ts:129:            "Que fait un planificateur financier avant la retraite\u00a0?",
+origin/claude/bill-centered-homepage:lib/pages.ts:185:      kicker: "Bill Badran, planificateur financier à Laval",
+origin/claude/bill-centered-homepage:lib/pages.ts:188:      seoTitle: "Bill Badran, planificateur financier à Laval",
+origin/claude/bill-centered-homepage:lib/pages.ts:211:            "Bill est planificateur financier indépendant. Il regarde le portrait complet (revenu, placements, impôts, assurances et succession) parce qu’à la retraite, tout bouge e
+origin/claude/bill-centered-homepage:lib/pages.ts:229:            "Pl. Fin. (planificateur financier) · CIM® · B.A.A. · Représentant de courtier en épargne collective.",
+origin/claude/bill-centered-homepage:lib/pages.ts:237:      seoTitle: "Première rencontre avec un planificateur financier à Laval",
+origin/claude/bill-centered-homepage:lib/pages.ts:350:        "What changes 5 to 15 years before retirement, the questions to answer, and how a financial planner helps you coordinate income, investments, taxes and estate.",
+origin/claude/bill-centered-homepage:lib/pages.ts:442:          heading: "What does a financial planner do before retirement?",
+origin/claude/bill-centered-homepage:lib/pages.ts:498:      kicker: "Bill Badran, financial planner in Laval",
+origin/claude/bill-centered-homepage:lib/pages.ts:500:      seoTitle: "Bill Badran, financial planner in Laval",
+origin/claude/bill-centered-homepage:lib/pages.ts:523:            "Bill is an independent financial planner. He looks at the whole picture (income, investments, taxes, insurance and estate) because in retirement they move together.",
+origin/claude/bill-centered-homepage:lib/pages.ts:541:            "F.Pl. (financial planner) · CIM® · BBA · Dealing representative, mutual fund dealer.",
+origin/claude/bill-centered-homepage:lib/pages.ts:549:      seoTitle: "A first meeting with a financial planner in Laval",
+# exit_code=0
+### YEARS
+# command=git grep -n -i -E 'plus de 15|more than 15|15\+ ?(ans|years)|15.{0,8}(ans|years) d|experienceYears|depuis 20[0-9][0-9]|since 20[0-9][0-9]' origin/claude/bill-centered-homepage -- . ':(exclude)film/' ':(exclude)presentation/' ':(exclude)reference/' ':(exclude)docs/' ':(exclude)public/' ':(exclude)*.svg' ':(exclude)package-lock.json'
+origin/claude/bill-centered-homepage:LAUNCH-CHECKLIST.md:23:- [ ] Confirm legal business identity, phone, email, address, intended domain, languages and supplied “more than 15 years” statement.
+origin/claude/bill-centered-homepage:lib/business.ts:12:  experienceYears: 15,
+origin/claude/bill-centered-homepage:lib/copy.ts:51:    experience: "Plus de 15\u00a0ans",
+origin/claude/bill-centered-homepage:lib/copy.ts:194:    experience: "More than 15 years",
+origin/claude/bill-centered-homepage:lib/pages.ts:204:            "Depuis plus de 15 ans, Bill travaille avec des gens avant et après la retraite\u00a0: dans les bons marchés comme dans les chutes brutales, au fil des changements de carri
+origin/claude/bill-centered-homepage:lib/pages.ts:516:            "Bill has spent more than 15 years working with people before and after retirement: through strong markets and sharp drops, through career and family changes, and the decisio
+# exit_code=0
+### DESIGNATION
+# command=git grep -n -i -E 'Pl\.? ?Fin|F\.Pl|CIM|B\.A\.A|BBA|mutual.fund|pargne collective|dealing representative' origin/claude/bill-centered-homepage -- . ':(exclude)film/' ':(exclude)presentation/' ':(exclude)reference/' ':(exclude)docs/' ':(exclude)public/' ':(exclude)*.svg' ':(exclude)package-lock.json'
+origin/claude/bill-centered-homepage:LAUNCH-CHECKLIST.md:24:- [ ] Confirm exact titles, current registration, permission to use designations and affiliation. The source contains Pl.Fin., CIM, B.A.A., mutual-fund-representative wording and U
+origin/claude/bill-centered-homepage:lib/business.ts:14:  bookingUrl: "https://calendly.com/bbadran",
+origin/claude/bill-centered-homepage:lib/business.ts:18:      "https://www.linkedin.com/in/bill-badran-pl-fin-cim%C2%AE-b6305b72/",
+origin/claude/bill-centered-homepage:lib/business.ts:23:    "Pl.Fin.",
+origin/claude/bill-centered-homepage:lib/business.ts:24:    "CIM",
+origin/claude/bill-centered-homepage:lib/business.ts:25:    "B.A.A.",
+origin/claude/bill-centered-homepage:lib/business.ts:26:    "Représentant en épargne collective",
+origin/claude/bill-centered-homepage:lib/pages.ts:229:            "Pl. Fin. (planificateur financier) · CIM® · B.A.A. · Représentant de courtier en épargne collective.",
+origin/claude/bill-centered-homepage:lib/pages.ts:541:            "F.Pl. (financial planner) · CIM® · BBA · Dealing representative, mutual fund dealer.",
+# exit_code=0
+## branch origin/claude/bill-presentation-video fc0044576d851be414d19e2f7a21ca7fd1285eae
+### AFFILIATION
+# command=git grep -n -i -E 'ind.{1,2}pendan|independent' origin/claude/bill-presentation-video -- . ':(exclude)film/' ':(exclude)presentation/' ':(exclude)reference/' ':(exclude)docs/' ':(exclude)public/' ':(exclude)*.svg' ':(exclude)package-lock.json'
+origin/claude/bill-presentation-video:LAUNCH-CHECKLIST.md:23:- [ ] Confirm exact titles, current registration, permission to use designations and affiliation. The source contains Pl.Fin., CIM, B.A.A., mutual-fund-representative wording and 
+origin/claude/bill-presentation-video:TEST-SUMMARY.md:7:- `npm run test`: **13 tests passed**. Independent iterative fee expectations; zero/maximum/invalid inputs; checklist distinctions; all localized route mappings; draft pairing/exclusio
+origin/claude/bill-presentation-video:lib/pages.ts:209:            "Bill est planificateur financier indépendant. Il regarde le portrait complet (revenu, placements, impôts, assurances et succession) parce qu’à la retraite, tout bouge 
+origin/claude/bill-presentation-video:lib/pages.ts:521:            "Bill is an independent financial planner. He looks at the whole picture (income, investments, taxes, insurance and estate) because in retirement they move together.",
+origin/claude/bill-presentation-video:tests/logic.test.ts:44:test("fee comparison against independent iterative expectations", () => {
+# exit_code=0
+### TITLE
+# command=git grep -n -i -E 'planificat(eur|rice) financi|financial planner' origin/claude/bill-presentation-video -- . ':(exclude)film/' ':(exclude)presentation/' ':(exclude)reference/' ':(exclude)docs/' ':(exclude)public/' ':(exclude)*.svg' ':(exclude)package-lock.json'
+origin/claude/bill-presentation-video:lib/copy.ts:14:      "Bill Badran, planificateur financier à Laval, travaille avec les gens qui prendront leur retraite d’ici 5 à 15 ans.",
+origin/claude/bill-presentation-video:lib/copy.ts:73:    experienceSub: "Planificateur financier à Laval · Français et anglais",
+origin/claude/bill-presentation-video:lib/copy.ts:114:      "Bill Badran, a financial planner in Laval, works with people 5 to 15 years from retirement.",
+origin/claude/bill-presentation-video:lib/copy.ts:173:    experienceSub: "Financial planner in Laval · French and English",
+origin/claude/bill-presentation-video:lib/pages.ts:34:        "Ce qui change de 5 à 15 ans avant la retraite, les questions à régler et comment un planificateur financier coordonne revenu, placements, impôts et succession.",
+origin/claude/bill-presentation-video:lib/pages.ts:127:          heading: "Que fait un planificateur financier avant la retraite?",
+origin/claude/bill-presentation-video:lib/pages.ts:183:      kicker: "Bill Badran, planificateur financier à Laval",
+origin/claude/bill-presentation-video:lib/pages.ts:186:      seoTitle: "Bill Badran, planificateur financier à Laval",
+origin/claude/bill-presentation-video:lib/pages.ts:209:            "Bill est planificateur financier indépendant. Il regarde le portrait complet (revenu, placements, impôts, assurances et succession) parce qu’à la retraite, tout bouge 
+origin/claude/bill-presentation-video:lib/pages.ts:227:            "Pl. Fin. (planificateur financier) · CIM® · B.A.A. · Représentant de courtier en épargne collective.",
+origin/claude/bill-presentation-video:lib/pages.ts:235:      seoTitle: "Première rencontre avec un planificateur financier à Laval",
+origin/claude/bill-presentation-video:lib/pages.ts:348:        "What changes 5 to 15 years before retirement, the questions to answer, and how a financial planner helps you coordinate income, investments, taxes and estate.",
+origin/claude/bill-presentation-video:lib/pages.ts:440:          heading: "What does a financial planner do before retirement?",
+origin/claude/bill-presentation-video:lib/pages.ts:496:      kicker: "Bill Badran, financial planner in Laval",
+origin/claude/bill-presentation-video:lib/pages.ts:498:      seoTitle: "Bill Badran, financial planner in Laval",
+origin/claude/bill-presentation-video:lib/pages.ts:521:            "Bill is an independent financial planner. He looks at the whole picture (income, investments, taxes, insurance and estate) because in retirement they move together.",
+origin/claude/bill-presentation-video:lib/pages.ts:539:            "F.Pl. (financial planner) · CIM® · BBA · Dealing representative, mutual fund dealer.",
+origin/claude/bill-presentation-video:lib/pages.ts:547:      seoTitle: "A first meeting with a financial planner in Laval",
+# exit_code=0
+### YEARS
+# command=git grep -n -i -E 'plus de 15|more than 15|15\+ ?(ans|years)|15.{0,8}(ans|years) d|experienceYears|depuis 20[0-9][0-9]|since 20[0-9][0-9]' origin/claude/bill-presentation-video -- . ':(exclude)film/' ':(exclude)presentation/' ':(exclude)reference/' ':(exclude)docs/' ':(exclude)public/' ':(exclude)*.svg' ':(exclude)package-lock.json'
+origin/claude/bill-presentation-video:LAUNCH-CHECKLIST.md:22:- [ ] Confirm legal business identity, phone, email, address, intended domain, languages and supplied “more than 15 years” statement.
+origin/claude/bill-presentation-video:lib/business.ts:12:  experienceYears: 15,
+origin/claude/bill-presentation-video:lib/copy.ts:72:    experience: "Plus de 15 ans",
+origin/claude/bill-presentation-video:lib/copy.ts:172:    experience: "15+ years",
+origin/claude/bill-presentation-video:lib/pages.ts:202:            "Depuis plus de 15 ans, Bill travaille avec des gens avant et après la retraite\u00a0: dans les bons marchés comme dans les chutes brutales, au fil des changements de carr
+origin/claude/bill-presentation-video:lib/pages.ts:514:            "Bill has spent more than 15 years working with people before and after retirement: through strong markets and sharp drops, through career and family changes, and the decisi
+# exit_code=0
+### DESIGNATION
+# command=git grep -n -i -E 'Pl\.? ?Fin|F\.Pl|CIM|B\.A\.A|BBA|mutual.fund|pargne collective|dealing representative' origin/claude/bill-presentation-video -- . ':(exclude)film/' ':(exclude)presentation/' ':(exclude)reference/' ':(exclude)docs/' ':(exclude)public/' ':(exclude)*.svg' ':(exclude)package-lock.json'
+origin/claude/bill-presentation-video:LAUNCH-CHECKLIST.md:23:- [ ] Confirm exact titles, current registration, permission to use designations and affiliation. The source contains Pl.Fin., CIM, B.A.A., mutual-fund-representative wording and 
+origin/claude/bill-presentation-video:lib/business.ts:14:  bookingUrl: "https://calendly.com/bbadran",
+origin/claude/bill-presentation-video:lib/business.ts:18:      "https://www.linkedin.com/in/bill-badran-pl-fin-cim%C2%AE-b6305b72/",
+origin/claude/bill-presentation-video:lib/business.ts:23:    "Pl.Fin.",
+origin/claude/bill-presentation-video:lib/business.ts:24:    "CIM",
+origin/claude/bill-presentation-video:lib/business.ts:25:    "B.A.A.",
+origin/claude/bill-presentation-video:lib/business.ts:26:    "Représentant en épargne collective",
+origin/claude/bill-presentation-video:lib/pages.ts:227:            "Pl. Fin. (planificateur financier) · CIM® · B.A.A. · Représentant de courtier en épargne collective.",
+origin/claude/bill-presentation-video:lib/pages.ts:539:            "F.Pl. (financial planner) · CIM® · BBA · Dealing representative, mutual fund dealer.",
+# exit_code=0
+## branch origin/guide/pre-retirement-guide 749b360f75185041e1aa3408500857605bc4507f
+### AFFILIATION
+# command=git grep -n -i -E 'ind.{1,2}pendan|independent' origin/guide/pre-retirement-guide -- . ':(exclude)film/' ':(exclude)presentation/' ':(exclude)reference/' ':(exclude)docs/' ':(exclude)public/' ':(exclude)*.svg' ':(exclude)package-lock.json'
+origin/guide/pre-retirement-guide:LAUNCH-CHECKLIST.md:23:- [ ] Confirm exact titles, current registration, permission to use designations and affiliation. The source contains Pl.Fin., CIM, B.A.A., mutual-fund-representative wording and Univ
+origin/guide/pre-retirement-guide:TEST-SUMMARY.md:7:- `npm run test`: **13 tests passed**. Independent iterative fee expectations; zero/maximum/invalid inputs; checklist distinctions; all localized route mappings; draft pairing/exclusion; u
+origin/guide/pre-retirement-guide:guide/README.md:67:Every factual statement was checked against the official pages listed in `copy.ts` (`sources`) on 2026-09-29, and reviewed independently: QPP 60–72, CPP 60–70, OAS 65–70 and the rec
+origin/guide/pre-retirement-guide:lib/pages.ts:209:            "Bill est planificateur financier indépendant. Il regarde le portrait complet (revenu, placements, impôts, assurances et succession) parce qu’à la retraite, tout bouge ense
+origin/guide/pre-retirement-guide:lib/pages.ts:521:            "Bill is an independent financial planner. He looks at the whole picture (income, investments, taxes, insurance and estate) because in retirement they move together.",
+origin/guide/pre-retirement-guide:tests/logic.test.ts:44:test("fee comparison against independent iterative expectations", () => {
+# exit_code=0
+### TITLE
+# command=git grep -n -i -E 'planificat(eur|rice) financi|financial planner' origin/guide/pre-retirement-guide -- . ':(exclude)film/' ':(exclude)presentation/' ':(exclude)reference/' ':(exclude)docs/' ':(exclude)public/' ':(exclude)*.svg' ':(exclude)package-lock.json'
+origin/guide/pre-retirement-guide:guide/README.md:73:1. **Registration and firm disclosure.** Add Bill's registration category and his firm's required mention to `colophon.disclosure`, as approved by the firm's compliance department. The gu
+origin/guide/pre-retirement-guide:lib/copy.ts:14:      "Bill Badran, planificateur financier à Laval, travaille avec les gens qui prendront leur retraite d’ici 5 à 15 ans.",
+origin/guide/pre-retirement-guide:lib/copy.ts:73:    experienceSub: "Planificateur financier à Laval · Français et anglais",
+origin/guide/pre-retirement-guide:lib/copy.ts:114:      "Bill Badran, a financial planner in Laval, works with people 5 to 15 years from retirement.",
+origin/guide/pre-retirement-guide:lib/copy.ts:173:    experienceSub: "Financial planner in Laval · French and English",
+origin/guide/pre-retirement-guide:lib/pages.ts:34:        "Ce qui change de 5 à 15 ans avant la retraite, les questions à régler et comment un planificateur financier coordonne revenu, placements, impôts et succession.",
+origin/guide/pre-retirement-guide:lib/pages.ts:127:          heading: "Que fait un planificateur financier avant la retraite?",
+origin/guide/pre-retirement-guide:lib/pages.ts:183:      kicker: "Bill Badran, planificateur financier à Laval",
+origin/guide/pre-retirement-guide:lib/pages.ts:186:      seoTitle: "Bill Badran, planificateur financier à Laval",
+origin/guide/pre-retirement-guide:lib/pages.ts:209:            "Bill est planificateur financier indépendant. Il regarde le portrait complet (revenu, placements, impôts, assurances et succession) parce qu’à la retraite, tout bouge ense
+origin/guide/pre-retirement-guide:lib/pages.ts:227:            "Pl. Fin. (planificateur financier) · CIM® · B.A.A. · Représentant de courtier en épargne collective.",
+origin/guide/pre-retirement-guide:lib/pages.ts:235:      seoTitle: "Première rencontre avec un planificateur financier à Laval",
+origin/guide/pre-retirement-guide:lib/pages.ts:348:        "What changes 5 to 15 years before retirement, the questions to answer, and how a financial planner helps you coordinate income, investments, taxes and estate.",
+origin/guide/pre-retirement-guide:lib/pages.ts:440:          heading: "What does a financial planner do before retirement?",
+origin/guide/pre-retirement-guide:lib/pages.ts:496:      kicker: "Bill Badran, financial planner in Laval",
+origin/guide/pre-retirement-guide:lib/pages.ts:498:      seoTitle: "Bill Badran, financial planner in Laval",
+origin/guide/pre-retirement-guide:lib/pages.ts:521:            "Bill is an independent financial planner. He looks at the whole picture (income, investments, taxes, insurance and estate) because in retirement they move together.",
+origin/guide/pre-retirement-guide:lib/pages.ts:539:            "F.Pl. (financial planner) · CIM® · BBA · Dealing representative, mutual fund dealer.",
+origin/guide/pre-retirement-guide:lib/pages.ts:547:      seoTitle: "A first meeting with a financial planner in Laval",
+# exit_code=0
+### YEARS
+# command=git grep -n -i -E 'plus de 15|more than 15|15\+ ?(ans|years)|15.{0,8}(ans|years) d|experienceYears|depuis 20[0-9][0-9]|since 20[0-9][0-9]' origin/guide/pre-retirement-guide -- . ':(exclude)film/' ':(exclude)presentation/' ':(exclude)reference/' ':(exclude)docs/' ':(exclude)public/' ':(exclude)*.svg' ':(exclude)package-lock.json'
+origin/guide/pre-retirement-guide:LAUNCH-CHECKLIST.md:22:- [ ] Confirm legal business identity, phone, email, address, intended domain, languages and supplied “more than 15 years” statement.
+origin/guide/pre-retirement-guide:lib/business.ts:12:  experienceYears: 15,
+origin/guide/pre-retirement-guide:lib/copy.ts:72:    experience: "Plus de 15 ans",
+origin/guide/pre-retirement-guide:lib/copy.ts:172:    experience: "15+ years",
+origin/guide/pre-retirement-guide:lib/pages.ts:202:            "Depuis plus de 15 ans, Bill travaille avec des gens avant et après la retraite\u00a0: dans les bons marchés comme dans les chutes brutales, au fil des changements de carrièr
+origin/guide/pre-retirement-guide:lib/pages.ts:514:            "Bill has spent more than 15 years working with people before and after retirement: through strong markets and sharp drops, through career and family changes, and the decisions 
+# exit_code=0
+### DESIGNATION
+# command=git grep -n -i -E 'Pl\.? ?Fin|F\.Pl|CIM|B\.A\.A|BBA|mutual.fund|pargne collective|dealing representative' origin/guide/pre-retirement-guide -- . ':(exclude)film/' ':(exclude)presentation/' ':(exclude)reference/' ':(exclude)docs/' ':(exclude)public/' ':(exclude)*.svg' ':(exclude)package-lock.json'
+origin/guide/pre-retirement-guide:LAUNCH-CHECKLIST.md:23:- [ ] Confirm exact titles, current registration, permission to use designations and affiliation. The source contains Pl.Fin., CIM, B.A.A., mutual-fund-representative wording and Univ
+origin/guide/pre-retirement-guide:guide/README.md:73:1. **Registration and firm disclosure.** Add Bill's registration category and his firm's required mention to `colophon.disclosure`, as approved by the firm's compliance department. The gu
+origin/guide/pre-retirement-guide:guide/copy.ts:400:        text: "For a mutual fund or an ETF, the management expense ratio (MER): the fund’s yearly costs, as a percentage of what you hold.",
+origin/guide/pre-retirement-guide:lib/business.ts:14:  bookingUrl: "https://calendly.com/bbadran",
+origin/guide/pre-retirement-guide:lib/business.ts:18:      "https://www.linkedin.com/in/bill-badran-pl-fin-cim%C2%AE-b6305b72/",
+origin/guide/pre-retirement-guide:lib/business.ts:23:    "Pl.Fin.",
+origin/guide/pre-retirement-guide:lib/business.ts:24:    "CIM",
+origin/guide/pre-retirement-guide:lib/business.ts:25:    "B.A.A.",
+origin/guide/pre-retirement-guide:lib/business.ts:26:    "Représentant en épargne collective",
+origin/guide/pre-retirement-guide:lib/pages.ts:227:            "Pl. Fin. (planificateur financier) · CIM® · B.A.A. · Représentant de courtier en épargne collective.",
+origin/guide/pre-retirement-guide:lib/pages.ts:539:            "F.Pl. (financial planner) · CIM® · BBA · Dealing representative, mutual fund dealer.",
+# exit_code=0
+
+############ RUN 3 guide/ copy mentions of Bill 2026-09-30T03:19:03Z
+# command=git grep -n -E 'Bill' origin/guide/pre-retirement-guide -- guide/copy.ts
+origin/guide/pre-retirement-guide:guide/copy.ts:4: * Voice: Bill across a table. Short sentences, "you", Canadian terms, no
+origin/guide/pre-retirement-guide:guide/copy.ts:23:      "A practical guide to the questions worth asking before your portfolio becomes your paycheque. Bill Badran.",
+origin/guide/pre-retirement-guide:guide/copy.ts:32:    author: "Bill Badran",
+origin/guide/pre-retirement-guide:guide/copy.ts:42:    sign: "Bill",
+origin/guide/pre-retirement-guide:guide/copy.ts:426:    bill: "What Bill will do for you, and how he is paid, are explained before you commit to anything.",
+origin/guide/pre-retirement-guide:guide/copy.ts:437:      "Simplified, constant assumptions: no taxes, deposits or withdrawals. Not a forecast, and not Bill’s fees. It shows why the question is worth asking, not which answer is right.",
+origin/guide/pre-retirement-guide:guide/copy.ts:537:    bill: "What Bill will do for you, and how he is paid, are explained before you commit to anything.",
+origin/guide/pre-retirement-guide:guide/copy.ts:552:    todo: "To complete before distribution: Bill’s registration category and his firm’s disclosure, reviewed by the firm.",
+origin/guide/pre-retirement-guide:guide/copy.ts:569:      "Un guide pratique des questions à se poser avant que votre portefeuille prenne le relais de votre paie. Bill Badran.",
+origin/guide/pre-retirement-guide:guide/copy.ts:578:    author: "Bill Badran",
+origin/guide/pre-retirement-guide:guide/copy.ts:588:    sign: "Bill",
+origin/guide/pre-retirement-guide:guide/copy.ts:995:    bill: "Ce que Bill fera pour vous, et la façon dont il est rémunéré, vous sont expliqués avant tout engagement.",
+origin/guide/pre-retirement-guide:guide/copy.ts:1006:      "Hypothèses simplifiées et constantes\u00a0: aucun impôt, dépôt ni retrait. Ce n’est ni une prévision ni les frais de Bill. L’illustration montre pourquoi la question mér
+origin/guide/pre-retirement-guide:guide/copy.ts:1108:    bill: "Ce que Bill fera pour vous, et la façon dont il est rémunéré, vous sont expliqués avant tout engagement.",
+origin/guide/pre-retirement-guide:guide/copy.ts:1124:    todo: "À compléter avant diffusion\u00a0: la catégorie d’inscription de Bill et la mention de son cabinet, révisées par le cabinet.",
+# exit_code=0
+# command=git grep -n -E 'Bill' origin/claude/bill-centered-homepage -- lib/copy.ts | grep -i -E 'rémunéré|how he is paid|own practice|propre pratique'
+origin/claude/bill-centered-homepage:lib/copy.ts:33:          "Bill a sa propre pratique et sa manière de travailler. Avant tout engagement, il vous explique ce qu’il fera pour vous et comment il est rémunéré.",
+origin/claude/bill-centered-homepage:lib/copy.ts:176:          "Bill runs his own practice, his own way. What he’ll do for you, and how he is paid, are explained before you commit to anything.",
+# exit_code=0
+
+############ RUN 4 key labels for cited copy.ts lines 2026-09-30T03:21:04Z
+# command=git show origin/main:lib/copy.ts | sed -n '13p;72p;113p;172p'
+    portrait:
+    experience: "Plus de 15 ans",
+    portrait:
+    experience: "15+ years",
+# exit_code=0
+# command=git show origin/claude/bill-centered-homepage:lib/copy.ts | sed -n '15p;20p;51p;143p;158p;163p;194p;285p'
+    eyebrow: "Bill Badran · Planificateur financier · Laval",
+    portrait:
+    experience: "Plus de 15\u00a0ans",
+    seoHomeDescription:
+    eyebrow: "Bill Badran · Financial planner · Laval",
+    portrait:
+    experience: "More than 15 years",
+    seoHomeDescription:
+# exit_code=0
+# command=git grep -n seoHomeDescription origin/claude/bill-centered-homepage -- app/
+origin/claude/bill-centered-homepage:app/[lang]/[[...slug]]/page.tsx:90:      ? c.seoHomeDescription
+# exit_code=0
+# command=lib/ hit identity: for b in add-ask codex video guide: git grep -n -i -E "$P" origin/$b -- lib/ | strip prefix | sha256sum == main's
+# P=ind.{1,2}pendan|independent|planificat(eur|rice) financi|financial planner|plus de 15|more than 15|15\+ ?(ans|years)|experienceYears|Pl\.? ?Fin|F\.Pl|CIM|B\.A\.A|BBA|pargne collective
+add-ask-bill-section lib/ hits identical to main
+codex/desktop-iphone-unified lib/ hits identical to main
+claude/bill-presentation-video lib/ hits identical to main
+guide/pre-retirement-guide lib/ hits identical to main
+
+############ RUN 5 presentation/ (video branch) claim categories 2026-09-30T03:23:08Z
+### AFFILIATION
+# command=git grep -n -i -E 'ind.{1,2}pendan|independent' origin/claude/bill-presentation-video -- presentation/src/ | cut -c1-240
+# exit_code=1
+### TITLE
+# command=git grep -n -i -E 'planificat(eur|rice) financi|financial planner|financial planning' origin/claude/bill-presentation-video -- presentation/src/ | cut -c1-240
+origin/claude/bill-presentation-video:presentation/src/content.ts:226:    profile: { en: 'Bill Badran Financial Planning', fr: '', at: [2.5, 15] },
+# exit_code=0
+### YEARS
+# command=git grep -n -i -E 'plus de 15|more than 15|15\+ ?(ans|years)|15 years|since 20[0-9][0-9]|depuis 20[0-9][0-9]' origin/claude/bill-presentation-video -- presentation/src/ | cut -c1-240
+# exit_code=1
+### DESIGNATION
+# command=git grep -n -i -E 'Pl\.? ?Fin|F\.Pl|CIM|B\.A\.A|BBA|mutual.fund|pargne collective|dealing representative' origin/claude/bill-presentation-video -- presentation/src/ | cut -c1-240
+# exit_code=1

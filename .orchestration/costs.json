@@ -1,0 +1,417 @@
+{
+  "meta": {
+    "task": "F01",
+    "written": "2026-09-30",
+    "base_commit": "5cbbf9b5d21dbf03d2cb44e524a6fcdc10d5515b",
+    "status": "submitted, not accepted",
+    "purpose": "Real cost sheet required by 01 §17. It holds only amounts that are actually known from evidence. Existing subscriptions count as existing costs, not as free.",
+    "rules": [
+      "amount is null unless the value is known from evidence (an invoice, a checkout, provider metering, or a plan rule that fixes it at 0).",
+      "No price is estimated, and earlier CAD estimates are not recycled (01 §2).",
+      "Regional checkout is the price source of truth; some Google pages display USD for a Canadian link (07 S4).",
+      "Nothing is bought, subscribed to or spent before G2 records a cap (01 §4; tasks.json meta.spend_authorization).",
+      "currency is null until an actual invoice or checkout fixes it.",
+      "The director appends each run's usage to measured_usage from .orchestration/runs/*.json. A price is recorded only when the provider meters one."
+    ],
+    "status_legend": {
+      "existing_cost_unknown": "The service or cost already exists, or the existing code or stack already depends on it while its account status is unknown (see account_existence on the item); its actual amount is not recorded yet.",
+      "not_purchased": "A candidate paid item or cost that is not incurred. Incurring it needs the named gate.",
+      "not_selected": "An option not chosen, or one excluded by the plan. It costs nothing unless it is explicitly selected.",
+      "zero_authorized": "The plan's default either has no subscription charge or its spend line is capped at 0 until G2 records a cap. amount 0 means nothing is spent or subscribed, not that the vendor's price will never change.",
+      "measured": "The amount comes from an actual invoice or provider metering. No item has this status yet."
+    },
+    "companion_files": [
+      ".orchestration/decisions.md",
+      ".orchestration/blockers.md"
+    ],
+    "repair": "Attempt 2 after reviews/F01.md: n8n_self_hosted notes that an existing VPS instance is unknown (D-045b); resend_upstash_existing flags unknown account existence; measured_usage holds the F00 run record."
+  },
+  "authorized_caps": {
+    "purchased_api": 0,
+    "ads": 0,
+    "subscriptions": 0,
+    "note": "zero until G2 records a cap"
+  },
+  "items": [
+    {
+      "id": "vps_increment",
+      "item": "Existing VPS: incremental cost of hosting the app, n8n and backup jobs (any resource upgrade included)",
+      "status": "existing_cost_unknown",
+      "amount": null,
+      "currency": null,
+      "source": "01 §2 defaults (reuse the existing VPS), §17 cost sheet; 07 unresolved facts (VPS resources, existing subscription prices); inventory.md §7 (VPS not visible)",
+      "owner": "Arnaud",
+      "approval_gate": "G0 (production host, HB-01); G2 (any upgrade or new subscription)",
+      "note": "The current VPS price, its plan and whether an upgrade is needed are unknown (HB-02). Upgrade only after a measured need."
+    },
+    {
+      "id": "media_storage_egress",
+      "item": "Media origin storage and egress for Bill's approved video encodes",
+      "status": "not_selected",
+      "amount": null,
+      "currency": null,
+      "source": "01 §2 (video delivery row), §7 media; MED02; decisions.md D-026",
+      "owner": "Arnaud (budget); A3 (estimate)",
+      "approval_gate": "G2",
+      "note": "No origin is chosen. The estimate is bytes per completed workshop × completions, plus seeking, reloads and replays, computed from real encode sizes once recordings exist (0 today)."
+    },
+    {
+      "id": "offhost_backup",
+      "item": "Encrypted off-host backup storage (n8n snapshots, Supabase dumps, media manifest; separate copy of the n8n encryption key)",
+      "status": "not_selected",
+      "amount": null,
+      "currency": null,
+      "source": "01 §7, §8 (nightly, 14 daily sets); 06 backup runbook; 07 S2 (Supabase Free has no automatic backups)",
+      "owner": "Arnaud",
+      "approval_gate": "G2",
+      "note": "Destination unknown (HB-10). An existing owner-controlled storage is preferred; buying one needs a G2 cap."
+    },
+    {
+      "id": "google_account_existing",
+      "item": "Bill's existing Google account or Workspace edition",
+      "status": "existing_cost_unknown",
+      "amount": null,
+      "currency": null,
+      "source": "01 §2 unknowns (existing Workspace edition); inventory.md §7, D12 (no Bill Google account visible)",
+      "owner": "Bill",
+      "approval_gate": "G2",
+      "note": "The edition, its payer and its Meet entitlement are unknown (HB-14). It may already suffice for the pilot."
+    },
+    {
+      "id": "workspace_business_standard_candidate",
+      "item": "Google Workspace Business Standard seat(s): the candidate paid tier for Meet recording and 150 participants",
+      "status": "not_purchased",
+      "amount": null,
+      "currency": null,
+      "source": "01 §2 (live event row), 00 launch instruction (candidate, not purchased); 07 S4 (fetched pricing displayed USD; confirm CAD at Bill's checkout)",
+      "owner": "Arnaud (budget); Bill (account)",
+      "approval_gate": "G2 (subscription cap, HB-08)",
+      "note": "Seat count unknown (Bill; possibly the moderator). Buy only if HB-14 shows the existing entitlement is insufficient. A purchase does not authorize MX or mailbox changes."
+    },
+    {
+      "id": "vercel_pro",
+      "item": "Vercel Pro (commercial plan)",
+      "status": "not_selected",
+      "amount": null,
+      "currency": null,
+      "source": "01 §2 (application hosting row); 07 S1; decisions.md D-012, D-019",
+      "owner": "Arnaud",
+      "approval_gate": "G0 (host selection); G2 (subscription)",
+      "note": "Counted only if Arnaud explicitly selects Vercel instead of the VPS. Vercel Hobby is forbidden for commercial production. n8n stays on the VPS either way."
+    },
+    {
+      "id": "brevo_free",
+      "item": "Brevo Free plan (default email delivery)",
+      "status": "zero_authorized",
+      "amount": 0,
+      "currency": null,
+      "source": "01 §2 (email row), §12; 07 S11 (Free: 300 sends/day shared by transactional and marketing traffic)",
+      "owner": "Arnaud",
+      "approval_gate": "G2 (account creation, HB-06)",
+      "note": "No account visible or created (inventory.md §7). amount 0 = no subscription. Recheck the plan limits at signup."
+    },
+    {
+      "id": "brevo_upgrade",
+      "item": "Brevo paid plan",
+      "status": "not_purchased",
+      "amount": null,
+      "currency": null,
+      "source": "01 §2 (email row: change when the daily send forecast exceeds capacity), §17 upgrade triggers",
+      "owner": "Arnaud",
+      "approval_gate": "G2",
+      "note": "Trigger: the forecast busiest-day volume exceeds the safe share of the free daily limit (see proposals.email_capacity_check)."
+    },
+    {
+      "id": "supabase_free",
+      "item": "Supabase Free project (minimal operational records)",
+      "status": "zero_authorized",
+      "amount": 0,
+      "currency": null,
+      "source": "01 §2 (database row), §7; 07 S2, S3",
+      "owner": "Arnaud",
+      "approval_gate": "G2 (account creation, HB-06); G5 (region and processor)",
+      "note": "Limits accepted knowingly: finite quotas, pausing after about 7 days of low activity, no included automatic backups (covered by offhost_backup). No project exists yet."
+    },
+    {
+      "id": "supabase_paid_tier",
+      "item": "Supabase paid tier",
+      "status": "not_purchased",
+      "amount": null,
+      "currency": null,
+      "source": "01 §2 (database row: quota, availability or data-location), §17 upgrade triggers",
+      "owner": "Arnaud",
+      "approval_gate": "G2",
+      "note": "Only on a measured quota, availability or backup need, or an approved data-location requirement (G5)."
+    },
+    {
+      "id": "n8n_self_hosted",
+      "item": "n8n Community, self-hosted on the VPS (Docker, SQLite)",
+      "status": "zero_authorized",
+      "amount": 0,
+      "currency": null,
+      "source": "01 §2 (automations row), §8, §12 (self-hosting removes an n8n subscription); 07 unresolved facts (licence)",
+      "owner": "Arnaud (authorize); A3 (licence verification)",
+      "approval_gate": "G2 (HB-06c)",
+      "licence_status": "to_verify: check the Community licence for this client's internal use against the pinned image (TB-15, D-069)",
+      "note": "amount 0 = the subscription only. Compute and storage fall under vps_increment and offhost_backup. Whether an n8n instance already runs on the VPS is unknown (D-045b, HB-02b); if one exists it is reviewed, not reinstalled, and this line still carries no subscription."
+    },
+    {
+      "id": "n8n_cloud",
+      "item": "n8n Cloud",
+      "status": "not_selected",
+      "amount": null,
+      "currency": null,
+      "source": "00 launch instruction (forbidden); inventory.md §7, D9",
+      "owner": "Arnaud",
+      "approval_gate": "none (forbidden by plan)",
+      "note": "The connected n8n Cloud personal project is not Bill's and is not a project cost."
+    },
+    {
+      "id": "build_assistant_existing",
+      "item": "Build-time coding assistant sessions (existing authorized subscription)",
+      "status": "existing_cost_unknown",
+      "amount": null,
+      "currency": null,
+      "source": "01 §2 (content generation row), §4 (record provider, model, usage and wall time; no price assumptions); measured_usage (F00 run wf_5bb05036-e58, cost unavailable)",
+      "owner": "Arnaud",
+      "approval_gate": "none (existing); unattended API use needs G2",
+      "note": "An existing subscription is not assumed to include unattended API use (01 §4). Token counts are recorded without a price."
+    },
+    {
+      "id": "model_api_weekly_draft",
+      "item": "Purchased model API for the weekly article draft job (WF08)",
+      "status": "zero_authorized",
+      "amount": 0,
+      "currency": null,
+      "source": "01 §2 (content generation row), §4; 06 secrets map (model API credential → weekly drafting runner only, with a budget cap)",
+      "owner": "Arnaud",
+      "approval_gate": "G2 (cap, HB-08)",
+      "note": "Cap 0. N08 can be built and tested with fixtures; a live paid run needs a recorded cap."
+    },
+    {
+      "id": "ads_meta",
+      "item": "Paid advertising (Meta)",
+      "status": "zero_authorized",
+      "amount": 0,
+      "currency": null,
+      "source": "01 §13 (provisional test is a proposal, not an authorization); inventory.md §7, D13 (no Bill ad account visible)",
+      "owner": "Arnaud (budget); Bill (account)",
+      "approval_gate": "G2 (cap); G6 (scope); R02 also needs G3 and G5",
+      "note": "Cap 0. The plan's proposal is under proposals.ads_test and is not authorized."
+    },
+    {
+      "id": "ads_linkedin_paid",
+      "item": "Paid LinkedIn advertising",
+      "status": "not_selected",
+      "amount": null,
+      "currency": null,
+      "source": "01 §13 (LinkedIn organic first; paid LinkedIn is a separate measured decision)",
+      "owner": "Arnaud",
+      "approval_gate": "G2; G6",
+      "note": ""
+    },
+    {
+      "id": "stripe_fees",
+      "item": "Stripe processing fees on book sales (hosted Checkout)",
+      "status": "not_purchased",
+      "amount": null,
+      "currency": null,
+      "source": "01 §2 (book payments row), §11; E/assets/gap-matrix.json (Stripe account, product, price and test keys: blocked_human)",
+      "owner": "Bill (Stripe account owner)",
+      "approval_gate": "G0 (price, HB-20); G2 (account, test mode, HB-06); G6 (live checkout)",
+      "note": "No account visible. Read the per-transaction fee schedule from Bill's own Stripe account or regional pricing at G2; no rate is assumed."
+    },
+    {
+      "id": "book_printing",
+      "item": "Printing of the physical book (first batch)",
+      "status": "not_purchased",
+      "amount": null,
+      "currency": null,
+      "source": "01 §11 (batch capped by real calendar and print/dispatch capacity; actual fulfilment procedure required); E/assets/gap-matrix.json (book terms: blocked_human)",
+      "owner": "Bill",
+      "approval_gate": "G0 (price and cap, HB-20); G2 (spend); G3 (print file)",
+      "note": "Printer, print proof and unit cost unknown. The canonical edition is undecided (HB-04)."
+    },
+    {
+      "id": "book_shipping",
+      "item": "Shipping and packing for physical books",
+      "status": "not_purchased",
+      "amount": null,
+      "currency": null,
+      "source": "01 §1 (disclose shipping before payment), §11",
+      "owner": "Bill",
+      "approval_gate": "G0 (HB-20); G1 (disclosed terms); G5 (fulfilment process, HB-28)",
+      "note": "Carrier, delivery area and who pays shipping are unknown."
+    },
+    {
+      "id": "taxes",
+      "item": "Sales taxes on book sales, and taxes on subscriptions and invoices",
+      "status": "existing_cost_unknown",
+      "amount": null,
+      "currency": null,
+      "source": "01 §11 (hosted checkout with approved tax treatment), §17 cost sheet",
+      "owner": "Bill (with his accountant)",
+      "approval_gate": "G0 (book price, HB-20); G1 (disclosed terms)",
+      "note": "Tax status, registration and treatment are unknown and are not decided by agents. Taxes on existing subscriptions are part of those unknown existing costs."
+    },
+    {
+      "id": "bill_time",
+      "item": "Bill's time: introductions, book consultations, recording sessions, event hosting, reviews",
+      "status": "existing_cost_unknown",
+      "amount": null,
+      "currency": null,
+      "unit": "hours",
+      "source": "01 §17 (capacity), §6 (recording), §10 (event); 06 G0 (approved time allocation)",
+      "owner": "Bill",
+      "approval_gate": "G0 (time allocation, HB-16, HB-19)",
+      "note": "The proposed meeting reservation is under capacity_proposal (unconfirmed). Recording and event time are not estimated."
+    },
+    {
+      "id": "operator_time",
+      "item": "Operator (Arnaud) time: moderation, operations, reconciliation, weekly review, fulfilment",
+      "status": "existing_cost_unknown",
+      "amount": null,
+      "currency": null,
+      "unit": "hours",
+      "source": "01 §10 (Arnaud moderates), §11 (daily reconciliation fallback), §17 (weekly loop); 06 run of show",
+      "owner": "Arnaud",
+      "approval_gate": "G0 (time allocation)",
+      "note": "Not estimated. Record actual hours once operating."
+    },
+    {
+      "id": "calendly_existing",
+      "item": "Existing Calendly (calendly.com/bbadran)",
+      "status": "existing_cost_unknown",
+      "amount": null,
+      "currency": null,
+      "source": "inventory.md §3, §7 (link exists; bookingVerified=true; live read 403); docs/INTEGRATIONS.md on main (three meeting choices seen 2026-09-28); 01 §2 (scheduling row)",
+      "owner": "Bill",
+      "approval_gate": "G0 (scheduling owner, HB-15)",
+      "note": "Plan tier and payer unknown. It may be consolidated into Google appointment schedules only after verified behaviour (01 §11)."
+    },
+    {
+      "id": "domain_dns_existing",
+      "item": "Domain billbadran.com registration and DNS hosting",
+      "status": "existing_cost_unknown",
+      "amount": null,
+      "currency": null,
+      "source": "lib/business.ts (domain); 01 §2 unknowns (DNS ownership); 06 handover (renewals)",
+      "owner": "Bill (owner); Arnaud (to confirm, HB-05)",
+      "approval_gate": "G2",
+      "note": "Registrar, renewal date and cost unknown."
+    },
+    {
+      "id": "current_mail_provider_existing",
+      "item": "Current mailbox provider for contact@billbadran.com",
+      "status": "existing_cost_unknown",
+      "amount": null,
+      "currency": null,
+      "source": "lib/business.ts (email); 06 input sheet (no automatic domain or email migration)",
+      "owner": "Bill",
+      "approval_gate": "G2",
+      "note": "Provider unknown (HB-05). Not migrated or changed by this project."
+    },
+    {
+      "id": "resend_upstash_existing",
+      "item": "Resend and Upstash accounts behind the existing inquiry form",
+      "status": "existing_cost_unknown",
+      "amount": null,
+      "currency": null,
+      "source": "inventory.md §6.4, D8 (lib/contact.ts, docs/INTEGRATIONS.md)",
+      "owner": "Arnaud",
+      "approval_gate": "G2; G5 (processor change)",
+      "note": "The existing inquiry-form code depends on Resend and Upstash, but whether live accounts exist, and who pays, is unknown (HB-06b). They are not extended. Retirement is open: only if they exist, and only after the Brevo path passes MAIL01 and G5 reviews the processor change (D-051).",
+      "account_existence": "unknown"
+    },
+    {
+      "id": "github_existing",
+      "item": "GitHub repository hosting and Actions minutes (arnaudverdier8-svg/bill, private)",
+      "status": "existing_cost_unknown",
+      "amount": null,
+      "currency": null,
+      "source": "inventory.md §1.1 (private repo), §7",
+      "owner": "Arnaud",
+      "approval_gate": "none (existing)",
+      "note": "Plan tier unknown. Used for CI (TB-02, TB-03)."
+    }
+  ],
+  "measured_usage": [
+    {
+      "run_id": "wf_5bb05036-e58",
+      "task_ids": [
+        "F00"
+      ],
+      "kind": "workflow",
+      "provider": "Anthropic (Claude Code session)",
+      "model": "claude-opus-5-5",
+      "agents": 9,
+      "tool_uses": 657,
+      "subagent_tokens": 2086746,
+      "wall_time_s": 6271,
+      "cost_amount": null,
+      "currency": null,
+      "cost_status": "unavailable-not-estimated",
+      "cost_item": "build_assistant_existing",
+      "source": ".orchestration/runs/wf_5bb05036-e58.json",
+      "note": "Copied from the run record. No per-token price is assumed. The director appends later runs (F01 onward) here."
+    }
+  ],
+  "capacity_proposal": {
+    "status": "proposal_unconfirmed",
+    "source": "01 §17",
+    "confirm_by": "Bill (G0 approved time allocation, HB-16)",
+    "intro_15min_per_week": 6,
+    "book_30min_per_week": 2,
+    "buffer_minutes_each": 10,
+    "formula": "(6 × (15 + 10) + 2 × (30 + 10)) / 60",
+    "reserved_minutes_per_week": 230,
+    "reserved_time_per_week": "3 h 50 min",
+    "excludes": [
+      "preparation and follow-up",
+      "recording sessions",
+      "Crossroads hosting and rehearsal",
+      "reviews and approvals"
+    ],
+    "rule": "Cap sales and registrations against actual capacity, not speculative conversion rates."
+  },
+  "proposals": {
+    "book_first_batch_cap": {
+      "status": "proposal_unconfirmed",
+      "value": 8,
+      "unit": "bundles (printed book plus one 30-minute consultation)",
+      "source": "01 §11",
+      "confirm_by": "Bill and Arnaud (G0 book cap, HB-20)",
+      "note": "Limited by real calendar and print/dispatch capacity. No price is proposed."
+    },
+    "ads_test": {
+      "status": "proposal_unconfirmed_not_authorized",
+      "daily": 20,
+      "days": 14,
+      "currency": "CAD",
+      "arithmetic_total": 280,
+      "source": "01 §13 (provisional test only after approval; a proposal, not a benchmark or authorization)",
+      "confirm_by": "Arnaud (G2 cap) and G6 scope, after ADS01 account/category verification",
+      "note": "The authorized ads cap remains 0."
+    },
+    "email_capacity_check": {
+      "status": "proposal_unconfirmed",
+      "source": "01 §12; 04 §6; 07 S11",
+      "daily_provider_limit": 300,
+      "daily_provider_limit_basis": "Brevo Free, all message types share the credits (07 S11; recheck at signup)",
+      "busiest_day_formula": "2 reminders × registrants + guide deliveries + receipts + other operational sends on the same day, plus any nurture",
+      "rule": "Keep a configurable soft daily budget below the provider limit, with capacity reserved for operational messages. Compute it once the event cap (HB-17) is known.",
+      "soft_budget": null
+    }
+  },
+  "upgrade_triggers": {
+    "source": "01 §17",
+    "triggers": [
+      "Expected email volume exceeds safe daily capacity",
+      "Storage or egress reaches the chosen warning band",
+      "Backup or availability requirement is no longer met",
+      "Paid meetings displace valuable client work",
+      "Media quality suffers"
+    ],
+    "never": "Run fake traffic to evade inactivity policies, or split accounts to evade quotas."
+  }
+}

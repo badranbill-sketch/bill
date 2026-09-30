@@ -1,0 +1,32 @@
+{
+  "task_id": "W03",
+  "base_commit": "actual-sha",
+  "result_commit": "actual-sha-or-null",
+  "contract_version": "1.0",
+  "changed_paths": [],
+  "artifacts": [
+    {
+      "path": "actual/path",
+      "sha256": "actual-hash"
+    }
+  ],
+  "tests": [
+    {
+      "id": "WK01",
+      "command": "actual command",
+      "exit_code": 0,
+      "evidence": "actual path",
+      "environment": "local"
+    }
+  ],
+  "assumptions": [],
+  "blocked_checks": [],
+  "human_approvals_required": [],
+  "external_actions_taken": [],
+  "metered_cost": {
+    "amount": null,
+    "currency": null,
+    "status": "unavailable-not-estimated"
+  },
+  "status": "submitted"
+}

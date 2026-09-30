@@ -1,0 +1,4 @@
+rule: WH-COST-1
+breaks: When the cost is unavailable no amount or currency may be written; estimates are forbidden.
+expect_keyword: type
+expect_path: /metered_cost/amount

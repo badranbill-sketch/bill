@@ -1,0 +1,5 @@
+rule: EV-TIME-1 occurred_at is RFC 3339 UTC with a 'Z' suffix
+expect_path: occurred_at
+expect_keyword: pattern
+
+An America/Toronto offset timestamp. Storage is UTC; Toronto time is display only (D-044).

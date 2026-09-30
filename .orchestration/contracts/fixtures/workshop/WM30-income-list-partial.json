@@ -1,0 +1,242 @@
+{
+ "fixture_id": "WM30",
+ "title": "Some income sources may be missing",
+ "contract_version": "1.0",
+ "covers": [
+  "WK01",
+  "WK03"
+ ],
+ "purpose": "A partial source list makes other income unknown: listed amounts are shown per source, the basis groups are null (not the listed subtotal), no gap is computed, reason income_list_partial.",
+ "input": {
+  "contract": "workshop-inputs",
+  "contract_version": "1.0",
+  "currency": "CAD",
+  "base_year": 2026,
+  "chapters": {
+   "life": {
+    "spending": {
+     "amount": {
+      "status": "estimated",
+      "value": 400000
+     },
+     "period": "monthly",
+     "tax_basis": "after_tax",
+     "price_basis": "today_dollars",
+     "unit": "household"
+    }
+   },
+   "income": {
+    "coverage": "some_sources_may_be_missing",
+    "sources": [
+     {
+      "id": "src-1",
+      "kind": "oas",
+      "owner": "self",
+      "amount": {
+       "status": "estimated",
+       "value": 900000
+      },
+      "period": "annual",
+      "tax_basis": "net",
+      "price_basis": "today_dollars",
+      "start": {
+       "reference": "already_receiving"
+      },
+      "escalation_bp": {
+       "status": "zero",
+       "value": 0
+      },
+      "dependability": "scheduled"
+     },
+     {
+      "id": "src-2",
+      "kind": "workplace_pension",
+      "owner": "self",
+      "amount": {
+       "status": "estimated",
+       "value": 2400000
+      },
+      "period": "annual",
+      "tax_basis": "net",
+      "price_basis": "start_year_dollars",
+      "start": {
+       "reference": "already_receiving"
+      },
+      "escalation_bp": {
+       "status": "zero",
+       "value": 0
+      },
+      "dependability": "scheduled"
+     }
+    ]
+   },
+   "savings": {},
+   "timing": {
+    "current_age": {
+     "status": "estimated",
+     "value": 66
+    },
+    "retirement_age": {
+     "status": "estimated",
+     "value": 66
+    },
+    "planning_horizon_years": {
+     "status": "estimated",
+     "value": 3
+    },
+    "inflation_bp": {
+     "status": "zero",
+     "value": 0
+    }
+   }
+  }
+ },
+ "expected": {
+  "contract_version": "1.0",
+  "assumptions_echo": {
+   "base_year": 2026,
+   "inflation_bp": 0,
+   "planning_horizon_years": 3,
+   "capital_illustration_return_bp": null,
+   "year_index": "t=0 is calendar year base_year; annual totals per calendar year",
+   "rounding": "exact rational arithmetic; half-even to whole cents at display only"
+  },
+  "window": {
+   "t_R": 0,
+   "first_t": 0,
+   "last_t": 2,
+   "first_calendar_year": 2026,
+   "last_calendar_year": 2028,
+   "first_age": 66,
+   "last_age": 68
+  },
+  "completeness": {
+   "state": "incomplete_unknown_income",
+   "reasons": [
+    "income_list_partial"
+   ]
+  },
+  "years": [
+   {
+    "t": 0,
+    "calendar_year": 2026,
+    "age": 66,
+    "spending_cents": 4800000,
+    "income_by_source_cents": {
+     "src-1": 900000,
+     "src-2": 2400000
+    },
+    "income_net_cents": null,
+    "income_gross_cents": null,
+    "income_unknown_basis_cents": null,
+    "status": "not_computable",
+    "reasons": [
+     "income_list_partial"
+    ],
+    "gap_cents": null,
+    "surplus_cents": null,
+    "gap_today_dollars_cents": null,
+    "surplus_today_dollars_cents": null,
+    "exact": {
+     "spending": "4800000"
+    }
+   },
+   {
+    "t": 1,
+    "calendar_year": 2027,
+    "age": 67,
+    "spending_cents": 4800000,
+    "income_by_source_cents": {
+     "src-1": 900000,
+     "src-2": 2400000
+    },
+    "income_net_cents": null,
+    "income_gross_cents": null,
+    "income_unknown_basis_cents": null,
+    "status": "not_computable",
+    "reasons": [
+     "income_list_partial"
+    ],
+    "gap_cents": null,
+    "surplus_cents": null,
+    "gap_today_dollars_cents": null,
+    "surplus_today_dollars_cents": null,
+    "exact": {
+     "spending": "4800000"
+    }
+   },
+   {
+    "t": 2,
+    "calendar_year": 2028,
+    "age": 68,
+    "spending_cents": 4800000,
+    "income_by_source_cents": {
+     "src-1": 900000,
+     "src-2": 2400000
+    },
+    "income_net_cents": null,
+    "income_gross_cents": null,
+    "income_unknown_basis_cents": null,
+    "status": "not_computable",
+    "reasons": [
+     "income_list_partial"
+    ],
+    "gap_cents": null,
+    "surplus_cents": null,
+    "gap_today_dollars_cents": null,
+    "surplus_today_dollars_cents": null,
+    "exact": {
+     "spending": "4800000"
+    }
+   }
+  ],
+  "flags": [
+   "incomplete_income"
+  ],
+  "savings_summary": {
+   "accessible_categories_with_positive_value": [],
+   "home_or_business_positive_value": false,
+   "excluded_from_spendable": [],
+   "pension_value_kept_separate": false,
+   "totals_computed": false
+  },
+  "capital_illustration": {
+   "feature_flag": "off",
+   "displayed": false,
+   "state": "disabled_by_flag",
+   "reference_if_enabled": {
+    "r_bp": null,
+    "computable": false,
+    "not_computable_reasons": [
+     "return_assumption_absent",
+     "state_not_complete"
+    ],
+    "display_eligible_if_enabled": false,
+    "ineligible_reasons": [
+     "return_assumption_absent",
+     "state_not_complete"
+    ],
+    "C_R_cents": null,
+    "C_R_exact": null,
+    "valued_at": null,
+    "flow_timing": "end_of_year"
+   }
+  },
+  "clip": {
+   "predicates": {
+    "C": false,
+    "M": true,
+    "X": false,
+    "H": false,
+    "F": false
+   },
+   "selected": "W06",
+   "selection_reason": "missing_income"
+  }
+ },
+ "independent_checks": [
+  "read as complete a runtime would show G = 1,500,000 (wrong)",
+  "groups filled from the listed sources would show income_net_cents 3,300,000 as the year's after-tax income (wrong); the per-source rows carry the listed amounts"
+ ],
+ "tolerance": "exact integer cents after half-even rounding; exact strings must match exactly; no numeric tolerance"
+}

@@ -1,0 +1,6 @@
+rule: ASSET - home/business excluded from spendable
+layer: schema
+expect_keyword: const
+expect_path: /chapters/savings/home_value/excluded_from_spendable
+plain_message_en_draft: (never shown - contract 1.0 has no disposal assumption)
+explanation: A disposal/sale assumption is not modelled in 1.0; only true is accepted.

@@ -1,0 +1,4 @@
+rule: WH-PH-1
+breaks: The 03 example is a template: its placeholder values ('actual-sha', 'actual-hash', 'actual command', 'actual path') are not completion evidence.
+expect_keyword: pattern
+expect_path: /base_commit

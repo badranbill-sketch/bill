@@ -1,0 +1,4 @@
+rule: OM-PRICE-2
+breaks: A recorded price must cite a G0 gate record; without one it is an invented price.
+expect_keyword: minItems
+expect_path: /offers/book-bundle/price/approvals

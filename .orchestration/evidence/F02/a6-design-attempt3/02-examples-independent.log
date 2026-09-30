@@ -1,0 +1,148 @@
+$ PYTHONDONTWRITEBYTECODE=1 /tmp/claude-0/-home-user/bb8d4187-6ae8-587b-a816-8153faeea853/scratchpad/venv-f02/bin/python .orchestration/evidence/F02/a6-design-attempt3/check_examples3.py
+ok   invalid/event-envelope/age-in-guide-version.json: rejected at /resource_id: 'guide.retirement-guide.v65' does not match '^guide\\.(?:retirement-guide)\\.h[0-9a-f]{12,64}$'
+ok   invalid/event-envelope/age-in-resource-id.json: rejected at /resource_id: 'workshop.retire-at-62.v1' is not valid under any of the given schemas
+ok   invalid/event-envelope/amount-words-in-workshop-key.json: rejected at /resource_id: 'workshop.eight-hundred-fifty-thousand.h08faf7e4c314' is not valid under any of the given schemas
+ok   invalid/event-envelope/attendance-from-join-click.json: rejected at /source: 'site.join_redirect' is not one of ['provider.meet_attendance', 'operator.reconciliation']
+ok   invalid/event-envelope/consent-on-guide-request.json: rejected at /consent_reference: 'cev_0rv6kbtcg8zyd6m76tv1pmxp7d' should not be valid under {}
+ok   invalid/event-envelope/consent-wording-mutable-version.json: rejected at /resource_id: 'consent.nurture.v1' is not valid under any of the given schemas
+ok   invalid/event-envelope/diagnosis-in-workshop-key.json: rejected at /resource_id: 'workshop.shortfall-large-warning.h6eb852da44c3' is not valid under any of the given schemas
+ok   invalid/event-envelope/email-as-subject-id.json: rejected at /subject_id: 'jane.fixture@example.com' is not valid under any of the given schemas
+ok   invalid/event-envelope/email-in-idempotency-key.json: rejected at /idempotency_key: 'ik1_jane.fixture@example.com' does not match '^ik1_[0-9a-f]{64}$'
+ok   invalid/event-envelope/extra-property-form-body.json: rejected at /: Additional properties are not allowed ('form' was unexpected)
+ok   invalid/event-envelope/financial-amount-field.json: rejected at /: Additional properties are not allowed ('monthly_spending' was unexpected)
+ok   invalid/event-envelope/locale-es.json: rejected at /locale: 'es' is not one of ['fr', 'en']
+ok   invalid/event-envelope/meeting-confirmed-from-click.json: rejected at /source: 'site.join_redirect' is not one of ['provider.booking_sync', 'operator.reconciliation']
+ok   invalid/event-envelope/missing-idempotency-key.json: rejected at /: 'idempotency_key' is a required property
+ok   invalid/event-envelope/name-as-guide-key.json: rejected at /resource_id: 'guide.jane-fixture.hff247185088b' does not match '^guide\\.(?:retirement-guide)\\.h[0-9a-f]{12,64}$'
+ok   invalid/event-envelope/non-utc-timestamp.json: rejected at /occurred_at: '2026-10-02T10:00:00-04:00' does not match '^[0-9]{4}-(?:0[1-9]|1[0-2])-(?:0[1-9]|[12][0-9]|3[01])T(?:[01][0-9]|2[0-3]):
+ok   invalid/event-envelope/payment-confirmed-by-operator.json: rejected at /source: 'operator.reconciliation' is not one of ['provider.stripe_webhook']
+ok   invalid/event-envelope/schema-version-2.json: rejected at /schema_version: '1.0' was expected
+ok   invalid/event-envelope/unknown-source.json: rejected at /source: 'site.checkout_return' is not one of ['site.guide_request', 'site.consent_capture', 'site.optin_confirmation', 'site.pre
+ok   invalid/event-envelope/unknown-type.json: rejected at /type: 'workshop.gap_calculated' is not one of ['guide.requested', 'marketing.opted_in', 'marketing.withdrawn', 'webinar.regist
+ok   invalid/event-envelope/workshop-completed-with-gap.json: rejected at /: Additional properties are not allowed ('gap' was unexpected)
+ok   invalid/event-envelope/workshop-completed-with-selected-clip.json: rejected at /: Additional properties are not allowed ('selected_clip' was unexpected)
+ok   invalid/event-envelope/workshop-completed-without-consent.json: rejected at /: 'consent_reference' is a required property
+ok   invalid/event-envelope/wrong-subject-kind.json: rejected at /subject_id: 'con_xsekt13hxv12z5bp4rm4s2f0hw' does not match '^job_[0-9a-hjkmnp-tv-z]{26}$'
+ok   invalid/delivery-job/attempt-count-over-ceiling.json: rejected at /attempt_count: 9 is greater than the maximum of 8
+ok   invalid/delivery-job/email-in-purpose-key.json: rejected at /purpose_key: 'pk1:jane.fixture@example.com:guide:e01:v1' does not match '^pk1:con_[0-9a-hjkmnp-tv-z]{26}:[0-9a-f]{8}-[0-9a-f]{4}-[47]
+NOTE invalid/delivery-job/expiry-before-due.json: SCHEMA-VALID (harness rule) why: rule: JS-TIME-2 expires_at is later than due_at
+ok   invalid/delivery-job/financial-field-in-job.json: rejected at /: Additional properties are not allowed ('gap_amount' was unexpected)
+ok   invalid/delivery-job/free-text-error.json: rejected at /last_error: Additional properties are not allowed ('message' was unexpected)
+ok   invalid/delivery-job/leased-with-provider-id.json: rejected at /provider_message_id: 'fixture-msg-1' should not be valid under {}
+ok   invalid/delivery-job/leased-without-lease.json: rejected at /: 'lease' is a required property
+ok   invalid/delivery-job/non-utc-expiry.json: rejected at /expires_at: '2026-10-05T10:00:00-04:00' does not match '^[0-9]{4}-(?:0[1-9]|1[0-2])-(?:0[1-9]|[12][0-9]|3[01])T(?:[01][0-9]|2[0-3]):
+ok   invalid/delivery-job/nurture-template-as-operational.json: rejected at /message_class: 'promotional' was expected
+ok   invalid/delivery-job/promotional-high-priority.json: rejected at /priority: 1 is less than the minimum of 5
+ok   invalid/delivery-job/promotional-without-consent.json: rejected at /: 'consent_reference' is a required property
+NOTE invalid/delivery-job/purpose-key-mismatch.json: SCHEMA-VALID (harness rule) why: rule: JS-KEY-1 purpose_key components must equal contact_id, trigger_event_id, template_id, template_version
+ok   invalid/delivery-job/recipient-email-field.json: rejected at /: Additional properties are not allowed ('recipient_email' was unexpected)
+ok   invalid/delivery-job/reconcile-without-send-started.json: rejected at /: 'send_started_at' is a required property
+NOTE invalid/delivery-job/retry-after-expiry.json: SCHEMA-VALID (harness rule) why: rule: JS-TIME-3 next_attempt_at is earlier than expires_at; otherwise the job moves to expired
+ok   invalid/delivery-job/sent-without-provider-id.json: rejected at /: 'provider_message_id' is a required property
+ok   invalid/delivery-job/suppressed-after-send-started.json: rejected at /send_started_at: '2026-10-02T20:00:03Z' should not be valid under {}
+ok   invalid/delivery-job/unhashed-template-version.json: rejected at /template_version: 'v2' does not match '^h[0-9a-f]{12,64}$'
+ok   invalid/delivery-job/unknown-status-delivered.json: rejected at /status: 'delivered' is not one of ['pending', 'leased', 'sent', 'complete', 'retry_due', 'suppressed', 'expired', 'reconcile_req
+ok   invalid/feature-flags/agent-recorded-approval.json: rejected at /capabilities/guide_request_delivery/approved/recorded_by: 'A0' is not one of ['bill', 'firm_reviewer', 'arnaud', 'privacy_owner', 'account_owner', None]
+ok   invalid/feature-flags/approval-without-scope-hash.json: rejected at /capabilities/guide_request_delivery/approved/scope_hashes: [] should be non-empty
+ok   invalid/feature-flags/enabled-without-controlling-flag.json: rejected at /flags/marketing_dispatch/value: True was expected
+ok   invalid/feature-flags/flag-default-true.json: rejected at /flags/third_party_tracking/default: False was expected
+ok   invalid/feature-flags/flag-on-without-approval.json: rejected at /capabilities/book_checkout/approved/value: True was expected
+ok   invalid/feature-flags/gate-mapping-altered.json: rejected at /flags/paid_ads/enable_gates: ['G2', 'G3', 'G5', 'G6'] was expected
+ok   invalid/feature-flags/live-verified-in-staging.json: rejected at /capabilities/guide_request_delivery/live_verified/value: False was expected
+ok   invalid/feature-flags/live-verified-without-enabled.json: rejected at /capabilities/workshop_access/enabled/value: True was expected
+ok   invalid/feature-flags/marketing-dispatch-without-workshop-followup-ready.json: rejected at /capabilities/workshop_followup/approved/value: True was expected
+ok   invalid/feature-flags/missing-readiness-state.json: rejected at /capabilities/event_lifecycle: 'live_verified' is a required property
+ok   invalid/feature-flags/public-launch-in-staging.json: rejected at /capabilities/public_site/approved/value: True was expected
+ok   invalid/feature-flags/single-boolean-capability.json: rejected at /capabilities/guide_request_delivery: True is not of type 'object'
+ok   invalid/feature-flags/state-true-without-evidence.json: rejected at /capabilities/workshop_access/code_ready/evidence_ref: None is not of type 'string'
+ok   invalid/feature-flags/unknown-flag.json: rejected at /flags: Additional properties are not allowed ('newsletter' was unexpected)
+ok   invalid/offer-matrix/agent-recorded-gate.json: rejected at /gate_records/0/recorded_by_role: 'A0' is not one of ['arnaud', 'bill', 'firm_reviewer', 'privacy_owner', 'account_owner']
+NOTE invalid/offer-matrix/approval-gate-mismatch.json: SCHEMA-VALID (harness rule) why: rule: OM-REF-2
+NOTE invalid/offer-matrix/approval-record-missing.json: SCHEMA-VALID (harness rule) why: rule: OM-REF-1
+ok   invalid/offer-matrix/book-consultation-60-minutes.json: rejected at /offers/book-bundle/included_consultation/duration_minutes: 30 was expected
+ok   invalid/offer-matrix/cap-recorded-without-approval.json: rejected at /offers/book-bundle/cap/approvals: [] should be non-empty
+ok   invalid/offer-matrix/extra-one-hour-offer.json: rejected at /offers: Additional properties are not allowed ('one-hour-session' was unexpected)
+ok   invalid/offer-matrix/fit-screen-removes-consultation.json: rejected at /offers/book-bundle/included_consultation/removable_by_fit_screen: False was expected
+ok   invalid/offer-matrix/fixture-ref-in-authoritative.json: rejected at /gate_records/0/record_ref: 'fixture:g3-01' does not match '^\\.orchestration/(?:decisions\\.md#D-[0-9]{3}[a-z]?|approval-packets/[A-Za-z0-9._-]+(?:
+ok   invalid/offer-matrix/funnel-prerequisite.json: rejected at /rules/no_mandatory_funnel_staircase/intro_15_prerequisites: ['workshop_completed'] is expected to be empty
+ok   invalid/offer-matrix/guide-requires-consent.json: rejected at /offers/guide-pdf/access: {'requires_marketing_consent': False, 'requires_email': False, 'download_fallback_when_email_fails': True} was expected
+ok   invalid/offer-matrix/in-person-without-confirmed-location.json: rejected at /offers/intro-15/in_person_location/status: 'recorded' was expected
+ok   invalid/offer-matrix/intro-60-minutes.json: rejected at /offers/intro-15/duration_minutes: 15 was expected
+ok   invalid/offer-matrix/invented-price-while-pending.json: rejected at /offers/book-bundle/price/value: {'amount_minor': 2995, 'currency': 'CAD'} is not of type 'null'
+ok   invalid/offer-matrix/meeting-type-60-minutes.json: rejected at /meeting_types/book-consultation-30/duration_minutes: 30 was expected
+ok   invalid/offer-matrix/missing-cancellation-disclosure.json: rejected at /offers/book-bundle/prepayment_disclosures: 'cancellation' is a required property
+ok   invalid/offer-matrix/missing-disclosure-list.json: rejected at /offers/book-bundle: 'prepayment_disclosures' is a required property
+ok   invalid/offer-matrix/on-sale-with-pending-terms.json: rejected at /offers/book-bundle/approved_print_editions: [] should be non-empty
+ok   invalid/offer-matrix/online-without-recorded-service.json: rejected at /offers/book-bundle/included_consultation/online_service/status: 'recorded' was expected
+ok   invalid/offer-matrix/price-recorded-without-g0-approval.json: rejected at /offers/book-bundle/price/approvals: [] should be non-empty
+ok   invalid/offer-matrix/separately-priced-consultation.json: rejected at /offers/book-bundle/included_consultation/separately_priced: False was expected
+ok   invalid/offer-matrix/two-rights-per-order.json: rejected at /offers/book-bundle/entitlement/rights_per_verified_paid_order: 1 was expected
+ok   invalid/offer-matrix/zoom-online-service.json: rejected at /offers/intro-15/online_service/value: 'zoom_meetings' is not valid under any of the given schemas
+ok   invalid/asset-manifest/agent-role-approval.json: rejected at /assets/7/approval: {'gates': ['G1', 'G3'], 'approved_by_roles': ['bill', 'A5'], 'approved_on': '2026-09-30', 'record_ref': 'fixture:packet-
+ok   invalid/asset-manifest/approval-on-draft.json: rejected at /assets/1/approval: {'gates': ['G3'], 'approved_by_roles': ['bill'], 'approved_on': '2026-09-30', 'record_ref': 'fixture:premature'} is not 
+ok   invalid/asset-manifest/approval-without-g3.json: rejected at /assets/6/approval/gates: ['G0'] does not contain items matching the given schema
+ok   invalid/asset-manifest/approved-with-pending-rights.json: rejected at /assets/6/rights/status: 'pending' should not be valid under {'const': 'pending'}
+ok   invalid/asset-manifest/approved-without-review-hash.json: rejected at /assets/7/review_hash: None is not of type 'object'
+ok   invalid/asset-manifest/capsule-s19-id.json: rejected at /assets/0/asset_id: 'capsule.s19' does not match '^(?:capsule\\.s(?:0[1-9]|1[0-8])|companion\\.s(?:0[1-9]|1[0-8])|clip\\.w(?:0[0-9]|1[01])|c
+ok   invalid/asset-manifest/captions-only-marked-recorded.json: rejected at /assets/4/language_availability: 'language_recorded' was expected
+ok   invalid/asset-manifest/cta-offer-not-referenced.json: rejected at /assets/2/offer_refs: [] does not contain items matching the given schema
+NOTE invalid/asset-manifest/duplicate-entry.json: SCHEMA-VALID (harness rule) why: rule: AM-HARN-2
+ok   invalid/asset-manifest/factual-claims-without-sources.json: rejected at /assets/2/factual_claims/sources: [] should be non-empty
+ok   invalid/asset-manifest/fixture-publication-id-in-authoritative.json: rejected at /assets/0/publication_id: 'fixture:site-deploy-0001' is not valid under any of the given schemas
+ok   invalid/asset-manifest/fixture-ref-in-authoritative.json: rejected at /assets/0/approval: {'gates': ['G3'], 'approved_by_roles': ['bill', 'arnaud'], 'approved_on': '2026-09-30', 'record_ref': 'fixture:packet-in
+ok   invalid/asset-manifest/offer-copy-approved-without-g1.json: rejected at /assets/7/approval/gates: ['G3'] does not contain items matching the given schema
+NOTE invalid/asset-manifest/publication-hash-mismatch.json: SCHEMA-VALID (harness rule) why: rule: AM-HARN-1
+ok   invalid/asset-manifest/publication-id-on-draft.json: rejected at /assets/1/publication_id: 'fixture:not-really-published' is not of type 'null'
+ok   invalid/asset-manifest/published-without-publication-id.json: rejected at /assets/9/publication_id: None is not of type 'string'
+ok   invalid/asset-manifest/recorded-without-consent.json: rejected at /assets/3/recording: {'master_ref': 'fixture:master-w00-en', 'master_sha256': '4bbd1dd6debcad45385811d2d39bc6ee4f3d862f473e78fa553c681dd94a14
+ok   invalid/asset-manifest/recording-approved-without-g4.json: rejected at /assets/8/approval/gates: ['G1', 'G3'] does not contain items matching the given schema
+ok   invalid/asset-manifest/reviewed-claim-without-access-date.json: rejected at /assets/2/factual_claims/sources/0/accessed: None is not of type 'string'
+ok   invalid/asset-manifest/synthetic-bill-likeness.json: rejected at /assets/3/rights/synthetic_bill_likeness: False was expected
+ok   invalid/asset-manifest/text-asset-marked-recorded.json: rejected at /assets/2/language_availability: 'language_recorded' was expected
+ok   invalid/asset-manifest/unknown-status-ready.json: rejected at /assets/0/status: 'ready' is not one of ['brief', 'draft', 'reviewed', 'recorded', 'edited', 'approved', 'published']
+ok   invalid/worker-handoff/absolute-changed-path.json: rejected at /changed_paths/0: '/home/user/bill/.orchestration/inventory.md' does not match '^(?![/~])(?!.*(?:^|/)\\.\\.(?:/|$))[^\\s]+$'
+ok   invalid/worker-handoff/annotated-changed-path.json: rejected at /changed_paths/0: '.orchestration/evidence/F00/ (untracked; written by three lanes)' does not match '^(?![/~])(?!.*(?:^|/)\\.\\.(?:/|$))[^
+ok   invalid/worker-handoff/blocked-check-not-visible.json: rejected at /blocked_checks/0/status: 'not_visible' is not one of ['blocked', 'not_run']
+ok   invalid/worker-handoff/empty-artifacts.json: rejected at /artifacts: [] should be non-empty
+ok   invalid/worker-handoff/environment-unlabelled.json: rejected at /tests/0/environment: 'my laptop' does not match '^(?:local|ci|staging|provider-sandbox|production)(?:[ :].{1,200})?$'
+ok   invalid/worker-handoff/estimated-cost.json: rejected at /metered_cost/amount: 12.5 is not of type 'null'
+ok   invalid/worker-handoff/exit-code-string.json: rejected at /tests/0/exit_code: '0' is not valid under any of the given schemas
+ok   invalid/worker-handoff/extra-accepted-by-field.json: rejected at /: Additional properties are not allowed ('accepted_by' was unexpected)
+ok   invalid/worker-handoff/metered-cost-without-source.json: rejected at /metered_cost: 'source' is a required property
+ok   invalid/worker-handoff/missing-metered-cost.json: rejected at /: 'metered_cost' is a required property
+ok   invalid/worker-handoff/placeholder-artifact-hash.json: rejected at /artifacts/0/sha256: 'actual-hash' does not match '^[0-9a-f]{64}$'
+ok   invalid/worker-handoff/placeholder-command.json: rejected at /tests/0/command: 'actual command' should not be valid under {'anyOf': [{'enum': ['actual-sha', 'actual-sha-or-null', 'actual-hash', 'actu
+ok   invalid/worker-handoff/short-result-commit.json: rejected at /result_commit: '5cbbf9b' is not valid under any of the given schemas
+ok   invalid/worker-handoff/side-effect-without-authorization.json: rejected at /external_actions_taken/0: 'authorization' is a required property
+ok   invalid/worker-handoff/status-accepted.json: rejected at /status: 'submitted' was expected
+ok   invalid/worker-handoff/unknown-task-id.json: rejected at /task_id: 'W99' does not match '^(?:F0[0-3]|D0[0-2]|P0[0-5]|W0[0-4]|C(?:0[0-9]|1[01])|U0[0-5]|N(?:0[0-9]|10)|R0[0-2]|H0[01]|L0[0-6
+ok   invalid/worker-handoff/verbatim-03-example.json: rejected at /artifacts/0/path: 'actual/path' should not be valid under {'anyOf': [{'enum': ['actual-sha', 'actual-sha-or-null', 'actual-hash', 'actual 
+ok   invalid/workshop-inputs/already-receiving-with-point.json: rejected at /chapters/income/sources/0/start: {'reference': 'already_receiving', 'point': {'status': 'estimated', 'value': 3}} should not be valid under {'required': 
+ok   invalid/workshop-inputs/coverage-none-with-sources.json: rejected at /chapters/income/sources: [{'id': 'src-1', 'kind': 'workplace_pension', 'owner': 'self', 'amount': {'status': 'confirmed', 'value': 2400000}, 'per
+NOTE invalid/workshop-inputs/duplicate-source-id.json: SCHEMA-VALID (harness rule) why: rule: XF-06 - source ids are unique
+NOTE invalid/workshop-inputs/end-before-start.json: SCHEMA-VALID (harness rule) why: rule: XF-05 - end is after start
+ok   invalid/workshop-inputs/estimated-without-value.json: rejected at /chapters/life/spending/amount: 'value' is a required property
+ok   invalid/workshop-inputs/estimated-zero-value.json: rejected at /chapters/income/sources/0/amount/value: 0 is less than the minimum of 1
+ok   invalid/workshop-inputs/extra-pii-email.json: rejected at /: Additional properties are not allowed ('email' was unexpected)
+ok   invalid/workshop-inputs/float-cents.json: rejected at /chapters/life/spending/amount/value: 450000.5 is not of type 'integer'
+ok   invalid/workshop-inputs/home-counted-spendable.json: rejected at /chapters/savings/home_value/excluded_from_spendable: True was expected
+ok   invalid/workshop-inputs/horizon-beyond-age-120.json: rejected at /chapters/timing/planning_horizon_years/value: 30 is greater than the maximum of 26
+ok   invalid/workshop-inputs/horizon-zero.json: rejected at /chapters/timing/planning_horizon_years/value: 0 is less than the minimum of 1
+ok   invalid/workshop-inputs/income-basis-missing.json: rejected at /chapters/income/sources/0: 'tax_basis' is a required property
+ok   invalid/workshop-inputs/income-guaranteed-label.json: rejected at /chapters/income/sources/0/dependability: 'guaranteed' is not one of ['scheduled', 'uncertain']
+ok   invalid/workshop-inputs/infinity-literal.json: rejected at /chapters/life/spending/amount/value: inf is not of type 'integer'
+ok   invalid/workshop-inputs/inflation-unknown.json: rejected at /chapters/timing/inflation_bp/status: 'unknown' is not one of ['zero', 'estimated']
+ok   invalid/workshop-inputs/monthly-spending-over-limit.json: rejected at /chapters/life/spending/amount/value: 10000001 is greater than the maximum of 10000000
+ok   invalid/workshop-inputs/nan-as-string.json: rejected at /chapters/life/spending/amount/value: 'NaN' is not of type 'integer'
+ok   invalid/workshop-inputs/nan-literal.json: rejected at /chapters/life/spending/amount/value: nan is not of type 'integer'
+ok   invalid/workshop-inputs/negative-spending.json: rejected at /chapters/life/spending/amount/value: -450000 is less than the minimum of 0
+ok   invalid/workshop-inputs/partner-retirement-before-partner-age.json: rejected at /chapters/timing/household/partner_retirement_age/value: 57 is less than the minimum of 60
+ok   invalid/workshop-inputs/partner-source-without-household.json: rejected at /chapters/timing: 'household' is a required property
+ok   invalid/workshop-inputs/pii-label-in-source.json: rejected at /chapters/income/sources/0: Additional properties are not allowed ('label' was unexpected)
+ok   invalid/workshop-inputs/retirement-before-current-age.json: rejected at /chapters/timing/retirement_age/value: 55 is less than the minimum of 58
+ok   invalid/workshop-inputs/spending-pretax-basis.json: rejected at /chapters/life/spending/tax_basis: 'after_tax' was expected
+ok   invalid/workshop-inputs/spending-status-zero.json: rejected at /chapters/life/spending/amount/status: 'zero' is not one of ['unknown', 'estimated', 'confirmed']
+NOTE invalid/workshop-inputs/start-age-already-passed.json: SCHEMA-VALID (harness rule) why: rule: XF-04 - an age-based start is not before the owner's current age
+ok   invalid/workshop-inputs/unknown-with-value.json: rejected at /chapters/life/spending/amount: {'status': 'unknown', 'value': 450000} should not be valid under {'required': ['value']}
+{"valid_ok": 55, "valid_bad": 0, "invalid_rejected": 135, "invalid_accepted": 10, "strict_diff": 0}
+exit=0

@@ -1,0 +1,377 @@
+[
+ {
+  "fault": "half_up",
+  "caught_by": [
+   "WM04",
+   "WM17"
+  ]
+ },
+ {
+  "fault": "float64",
+  "caught_by": [
+   "WM17"
+  ]
+ },
+ {
+  "fault": "window_off_by_one",
+  "caught_by": [
+   "WM01",
+   "WM02",
+   "WM03",
+   "WM04",
+   "WM05",
+   "WM06",
+   "WM07",
+   "WM08",
+   "WM09",
+   "WM10",
+   "WM11",
+   "WM12",
+   "WM13",
+   "WM14",
+   "WM15",
+   "WM16",
+   "WM17",
+   "WM18",
+   "WM19",
+   "WM21",
+   "WM22",
+   "WM23",
+   "WM24",
+   "WM25",
+   "WM26",
+   "WM27",
+   "WM28",
+   "WM29",
+   "WM30",
+   "WM32",
+   "WM33",
+   "WM34",
+   "WM35",
+   "WM36"
+  ]
+ },
+ {
+  "fault": "spending_unknown_zero",
+  "caught_by": [
+   "WM25"
+  ]
+ },
+ {
+  "fault": "coverage_incomplete_as_complete",
+  "caught_by": [
+   "WM07",
+   "WM30",
+   "CS03"
+  ]
+ },
+ {
+  "fault": "joint_uses_partner",
+  "caught_by": []
+ },
+ {
+  "fault": "income_monthly_no_x12",
+  "caught_by": [
+   "WM03",
+   "WM05",
+   "WM09",
+   "WM19"
+  ]
+ },
+ {
+  "fault": "today_dollars_as_nominal",
+  "caught_by": [
+   "WM04"
+  ]
+ },
+ {
+  "fault": "today_dollars_uses_q",
+  "caught_by": []
+ },
+ {
+  "fault": "price_basis_unknown_as_start_year",
+  "caught_by": [
+   "WM22",
+   "WM34"
+  ]
+ },
+ {
+  "fault": "pbu_even_at_zero",
+  "caught_by": [
+   "WM22",
+   "WM34"
+  ]
+ },
+ {
+  "fault": "gross_compared",
+  "caught_by": [
+   "WM09",
+   "WM20",
+   "WM34",
+   "TT5",
+   "TT6",
+   "TT7",
+   "TT8",
+   "TT13",
+   "TT14",
+   "TT15",
+   "TT16",
+   "TT21",
+   "TT23",
+   "TT29",
+   "TT31",
+   "CS01"
+  ]
+ },
+ {
+  "fault": "tax_unknown_as_net",
+  "caught_by": [
+   "WM23",
+   "CS04"
+  ]
+ },
+ {
+  "fault": "unknown_first",
+  "caught_by": [
+   "WM32",
+   "WM33"
+  ]
+ },
+ {
+  "fault": "unknown_start_not_paying",
+  "caught_by": [
+   "WM26",
+   "WM33",
+   "WM34"
+  ]
+ },
+ {
+  "fault": "unknown_start_already_receiving",
+  "caught_by": [
+   "WM22(throw)",
+   "WM26",
+   "WM33",
+   "WM34"
+  ]
+ },
+ {
+  "fault": "unresolvable_start_not_paying",
+  "caught_by": [
+   "WM20",
+   "WM29",
+   "WM34",
+   "CS01"
+  ]
+ },
+ {
+  "fault": "unknown_end_no_end",
+  "caught_by": [
+   "WM27",
+   "WM28"
+  ]
+ },
+ {
+  "fault": "end_inclusive",
+  "caught_by": [
+   "WM18",
+   "WM32",
+   "WM33"
+  ]
+ },
+ {
+  "fault": "xf05_inference",
+  "caught_by": [
+   "WM27",
+   "WM28"
+  ]
+ },
+ {
+  "fault": "unknown_amount_zero",
+  "caught_by": [
+   "WM08",
+   "WM34"
+  ]
+ },
+ {
+  "fault": "escalate_from_zero",
+  "caught_by": [
+   "WM04",
+   "WM13"
+  ]
+ },
+ {
+  "fault": "one_code_per_source",
+  "caught_by": [
+   "WM20",
+   "WM34",
+   "CS01"
+  ]
+ },
+ {
+  "fault": "groups_as_listed_when_incomplete",
+  "caught_by": [
+   "WM07",
+   "WM30"
+  ]
+ },
+ {
+  "fault": "group_from_rounded_rows",
+  "caught_by": []
+ },
+ {
+  "fault": "surplus_netted",
+  "caught_by": [
+   "WM12"
+  ]
+ },
+ {
+  "fault": "deflate_rounded_gap",
+  "caught_by": []
+ },
+ {
+  "fault": "partner_age_null_key",
+  "caught_by": [
+   "WM28",
+   "WM29",
+   "WM34"
+  ]
+ },
+ {
+  "fault": "H_by_age",
+  "caught_by": [
+   "CS06"
+  ]
+ },
+ {
+  "fault": "home_spendable",
+  "caught_by": [
+   "WM10"
+  ]
+ },
+ {
+  "fault": "horizon_flag_known_amount_only",
+  "caught_by": []
+ },
+ {
+  "fault": "horizon_flag_strict",
+  "caught_by": [
+   "WM18"
+  ]
+ },
+ {
+  "fault": "uncertain_flag_any",
+  "caught_by": []
+ },
+ {
+  "fault": "employment_uncertain_kind",
+  "caught_by": [
+   "WM32"
+  ]
+ },
+ {
+  "fault": "cr_start_of_year_flows",
+  "caught_by": [
+   "WM11",
+   "WM15",
+   "WM16",
+   "WM35"
+  ]
+ },
+ {
+  "fault": "cr_discount_to_base",
+  "caught_by": [
+   "WM35"
+  ]
+ },
+ {
+  "fault": "ignore_no_positive_gap",
+  "caught_by": [
+   "WM36"
+  ]
+ },
+ {
+  "fault": "ineligible_adds_flags",
+  "caught_by": [
+   "WM07",
+   "WM08",
+   "WM09",
+   "WM20",
+   "WM22",
+   "WM23",
+   "WM26",
+   "WM27",
+   "WM28",
+   "WM29",
+   "WM30",
+   "WM31",
+   "WM33",
+   "WM34"
+  ]
+ },
+ {
+  "fault": "X_before_M",
+  "caught_by": [
+   "WM34",
+   "TT13",
+   "TT14",
+   "TT15",
+   "TT16"
+  ]
+ },
+ {
+  "fault": "F_before_H",
+  "caught_by": [
+   "WM21",
+   "TT4"
+  ]
+ },
+ {
+  "fault": "estimated_triggers_M",
+  "caught_by": [
+   "WM01",
+   "WM03",
+   "WM04",
+   "WM05",
+   "WM09",
+   "WM10",
+   "WM11",
+   "WM12",
+   "WM13",
+   "WM14",
+   "WM16",
+   "WM17",
+   "WM18",
+   "WM19",
+   "WM21",
+   "WM23",
+   "WM25",
+   "WM32",
+   "WM36",
+   "TT1",
+   "TT2",
+   "TT3",
+   "TT4",
+   "TT5",
+   "TT6",
+   "TT7",
+   "TT8",
+   "TT17",
+   "TT19",
+   "TT21",
+   "TT23",
+   "CS02",
+   "CS04",
+   "CS05",
+   "CS06",
+   "CS07"
+  ]
+ },
+ {
+  "fault": "R_code_only_if_A_known",
+  "caught_by": []
+ },
+ {
+  "fault": "no_global_codes_without_window",
+  "caught_by": []
+ }
+]

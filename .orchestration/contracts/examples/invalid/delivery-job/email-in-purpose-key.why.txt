@@ -1,0 +1,5 @@
+rule: JS-KEY-1 purpose_key = pk1:contact_id:trigger_event_id:template_id:template_version (IDs only)
+expect_path: purpose_key
+expect_keyword: pattern
+
+A purpose key built from an email address.

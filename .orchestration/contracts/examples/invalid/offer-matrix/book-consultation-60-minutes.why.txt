@@ -1,0 +1,4 @@
+rule: OM-DUR-2
+breaks: The consultation included with the book is exactly 30 minutes; 60 minutes is impossible.
+expect_keyword: const
+expect_path: /offers/book-bundle/included_consultation/duration_minutes

@@ -1,0 +1,891 @@
+{
+  "schema_version": "1.0",
+  "environment": "staging",
+  "recorded_at": "2026-10-01T12:00:00Z",
+  "flags": {
+    "public_launch": {
+      "value": true,
+      "default": false,
+      "env_var": "PUBLIC_LAUNCH",
+      "controls": [
+        "public_site",
+        "preferences_unsubscribe"
+      ],
+      "enable_gates": [
+        "G1",
+        "G3",
+        "G5",
+        "G6"
+      ],
+      "enable_evidence_ref": "fixture:release.json#x"
+    },
+    "checkout_live": {
+      "value": false,
+      "default": false,
+      "env_var": "CHECKOUT_LIVE",
+      "controls": [
+        "book_checkout",
+        "book_fulfilment_messages",
+        "consultation_redemption"
+      ],
+      "enable_gates": [
+        "G0",
+        "G1",
+        "G2",
+        "G3",
+        "G5",
+        "G6"
+      ],
+      "enable_evidence_ref": null
+    },
+    "marketing_dispatch": {
+      "value": false,
+      "default": false,
+      "env_var": "MARKETING_DISPATCH",
+      "controls": [
+        "marketing_nurture",
+        "workshop_followup",
+        "preferences_unsubscribe"
+      ],
+      "enable_gates": [
+        "G2",
+        "G3",
+        "G5",
+        "G6"
+      ],
+      "enable_evidence_ref": null
+    },
+    "automatic_publication": {
+      "value": false,
+      "default": false,
+      "env_var": "AUTOMATIC_PUBLICATION",
+      "controls": [
+        "publication_handoff"
+      ],
+      "enable_gates": [
+        "G2",
+        "G3",
+        "G6"
+      ],
+      "enable_evidence_ref": null
+    },
+    "paid_ads": {
+      "value": false,
+      "default": false,
+      "env_var": "PAID_ADS",
+      "controls": [
+        "ad_campaigns"
+      ],
+      "enable_gates": [
+        "G2",
+        "G3",
+        "G5",
+        "G6"
+      ],
+      "enable_evidence_ref": null
+    },
+    "third_party_tracking": {
+      "value": false,
+      "default": false,
+      "env_var": "THIRD_PARTY_TRACKING",
+      "controls": [
+        "third_party_measurement"
+      ],
+      "enable_gates": [
+        "G5",
+        "G6"
+      ],
+      "enable_evidence_ref": null
+    }
+  },
+  "capabilities": {
+    "public_site": {
+      "controlling_flags": [
+        "public_launch"
+      ],
+      "templates": [],
+      "provider_required": false,
+      "enable_gates": [
+        "G1",
+        "G3",
+        "G5",
+        "G6"
+      ],
+      "code_ready": {
+        "value": false,
+        "evidence_ref": null,
+        "recorded_at": null,
+        "recorded_by": null
+      },
+      "provider_tested": {
+        "value": false,
+        "evidence_ref": null,
+        "recorded_at": null,
+        "recorded_by": null
+      },
+      "approved": {
+        "value": false,
+        "evidence_ref": null,
+        "recorded_at": null,
+        "recorded_by": null,
+        "gate_refs": [],
+        "scope_hashes": []
+      },
+      "enabled": {
+        "value": false,
+        "evidence_ref": null,
+        "recorded_at": null,
+        "recorded_by": null
+      },
+      "live_verified": {
+        "value": false,
+        "evidence_ref": null,
+        "recorded_at": null,
+        "recorded_by": null
+      }
+    },
+    "preferences_unsubscribe": {
+      "controlling_flags": [],
+      "templates": [],
+      "provider_required": true,
+      "enable_gates": [
+        "G3",
+        "G5"
+      ],
+      "code_ready": {
+        "value": true,
+        "evidence_ref": "fixture:reviews/preferences_unsubscribe-code.md",
+        "recorded_at": "2026-10-01T12:00:00Z",
+        "recorded_by": "A0"
+      },
+      "provider_tested": {
+        "value": true,
+        "evidence_ref": "fixture:provider-evidence/preferences_unsubscribe.md",
+        "recorded_at": "2026-10-01T12:00:00Z",
+        "recorded_by": "A6"
+      },
+      "approved": {
+        "value": true,
+        "evidence_ref": "fixture:approval-packets/preferences_unsubscribe.md",
+        "recorded_at": "2026-10-01T12:00:00Z",
+        "recorded_by": "arnaud",
+        "gate_refs": [
+          "G2"
+        ],
+        "scope_hashes": [
+          "283192c2a0c7570ea61a914fc9af77b0182863f90f75177ffd86eeece28853da"
+        ]
+      },
+      "enabled": {
+        "value": true,
+        "evidence_ref": "fixture:release.json#preferences_unsubscribe",
+        "recorded_at": "2026-10-01T12:00:00Z",
+        "recorded_by": "operator"
+      },
+      "live_verified": {
+        "value": false,
+        "evidence_ref": null,
+        "recorded_at": null,
+        "recorded_by": null
+      }
+    },
+    "guide_request_delivery": {
+      "controlling_flags": [
+        "public_launch"
+      ],
+      "templates": [
+        "e01"
+      ],
+      "provider_required": true,
+      "enable_gates": [
+        "G1",
+        "G3",
+        "G5",
+        "G6"
+      ],
+      "code_ready": {
+        "value": true,
+        "evidence_ref": "fixture:reviews/guide_request_delivery-code.md",
+        "recorded_at": "2026-10-01T12:00:00Z",
+        "recorded_by": "A0"
+      },
+      "provider_tested": {
+        "value": true,
+        "evidence_ref": "fixture:provider-evidence/guide_request_delivery.md",
+        "recorded_at": "2026-10-01T12:00:00Z",
+        "recorded_by": "A6"
+      },
+      "approved": {
+        "value": true,
+        "evidence_ref": "fixture:approval-packets/guide_request_delivery.md",
+        "recorded_at": "2026-10-01T12:00:00Z",
+        "recorded_by": "arnaud",
+        "gate_refs": [
+          "G2"
+        ],
+        "scope_hashes": [
+          "8b3535672ec82d92a3c2a35a957d0910ad208e5b80b38713ec0ab4bbcd6228c4"
+        ]
+      },
+      "enabled": {
+        "value": true,
+        "evidence_ref": "fixture:release.json#guide_request_delivery",
+        "recorded_at": "2026-10-01T12:00:00Z",
+        "recorded_by": "operator"
+      },
+      "live_verified": {
+        "value": false,
+        "evidence_ref": null,
+        "recorded_at": null,
+        "recorded_by": null
+      }
+    },
+    "workshop_access": {
+      "controlling_flags": [
+        "public_launch"
+      ],
+      "templates": [
+        "e10"
+      ],
+      "provider_required": true,
+      "enable_gates": [
+        "G3",
+        "G5",
+        "G6"
+      ],
+      "code_ready": {
+        "value": false,
+        "evidence_ref": null,
+        "recorded_at": null,
+        "recorded_by": null
+      },
+      "provider_tested": {
+        "value": false,
+        "evidence_ref": null,
+        "recorded_at": null,
+        "recorded_by": null
+      },
+      "approved": {
+        "value": false,
+        "evidence_ref": null,
+        "recorded_at": null,
+        "recorded_by": null,
+        "gate_refs": [],
+        "scope_hashes": []
+      },
+      "enabled": {
+        "value": false,
+        "evidence_ref": null,
+        "recorded_at": null,
+        "recorded_by": null
+      },
+      "live_verified": {
+        "value": false,
+        "evidence_ref": null,
+        "recorded_at": null,
+        "recorded_by": null
+      }
+    },
+    "workshop_completion_signal": {
+      "controlling_flags": [
+        "public_launch"
+      ],
+      "templates": [],
+      "provider_required": false,
+      "enable_gates": [
+        "G3",
+        "G5",
+        "G6"
+      ],
+      "code_ready": {
+        "value": false,
+        "evidence_ref": null,
+        "recorded_at": null,
+        "recorded_by": null
+      },
+      "provider_tested": {
+        "value": false,
+        "evidence_ref": null,
+        "recorded_at": null,
+        "recorded_by": null
+      },
+      "approved": {
+        "value": false,
+        "evidence_ref": null,
+        "recorded_at": null,
+        "recorded_by": null,
+        "gate_refs": [],
+        "scope_hashes": []
+      },
+      "enabled": {
+        "value": false,
+        "evidence_ref": null,
+        "recorded_at": null,
+        "recorded_by": null
+      },
+      "live_verified": {
+        "value": false,
+        "evidence_ref": null,
+        "recorded_at": null,
+        "recorded_by": null
+      }
+    },
+    "event_lifecycle": {
+      "controlling_flags": [
+        "public_launch"
+      ],
+      "templates": [
+        "e06",
+        "e07",
+        "e08",
+        "e09"
+      ],
+      "provider_required": true,
+      "enable_gates": [
+        "G0",
+        "G3",
+        "G4",
+        "G5",
+        "G6"
+      ],
+      "code_ready": {
+        "value": false,
+        "evidence_ref": null,
+        "recorded_at": null,
+        "recorded_by": null
+      },
+      "provider_tested": {
+        "value": false,
+        "evidence_ref": null,
+        "recorded_at": null,
+        "recorded_by": null
+      },
+      "approved": {
+        "value": false,
+        "evidence_ref": null,
+        "recorded_at": null,
+        "recorded_by": null,
+        "gate_refs": [],
+        "scope_hashes": []
+      },
+      "enabled": {
+        "value": false,
+        "evidence_ref": null,
+        "recorded_at": null,
+        "recorded_by": null
+      },
+      "live_verified": {
+        "value": false,
+        "evidence_ref": null,
+        "recorded_at": null,
+        "recorded_by": null
+      }
+    },
+    "booking_reconciliation": {
+      "controlling_flags": [
+        "public_launch"
+      ],
+      "templates": [],
+      "provider_required": true,
+      "enable_gates": [
+        "G0",
+        "G2",
+        "G5",
+        "G6"
+      ],
+      "code_ready": {
+        "value": false,
+        "evidence_ref": null,
+        "recorded_at": null,
+        "recorded_by": null
+      },
+      "provider_tested": {
+        "value": false,
+        "evidence_ref": null,
+        "recorded_at": null,
+        "recorded_by": null
+      },
+      "approved": {
+        "value": false,
+        "evidence_ref": null,
+        "recorded_at": null,
+        "recorded_by": null,
+        "gate_refs": [],
+        "scope_hashes": []
+      },
+      "enabled": {
+        "value": false,
+        "evidence_ref": null,
+        "recorded_at": null,
+        "recorded_by": null
+      },
+      "live_verified": {
+        "value": false,
+        "evidence_ref": null,
+        "recorded_at": null,
+        "recorded_by": null
+      }
+    },
+    "meeting_messages": {
+      "controlling_flags": [
+        "public_launch"
+      ],
+      "templates": [
+        "e15",
+        "e16"
+      ],
+      "provider_required": true,
+      "enable_gates": [
+        "G3",
+        "G5",
+        "G6"
+      ],
+      "code_ready": {
+        "value": false,
+        "evidence_ref": null,
+        "recorded_at": null,
+        "recorded_by": null
+      },
+      "provider_tested": {
+        "value": false,
+        "evidence_ref": null,
+        "recorded_at": null,
+        "recorded_by": null
+      },
+      "approved": {
+        "value": false,
+        "evidence_ref": null,
+        "recorded_at": null,
+        "recorded_by": null,
+        "gate_refs": [],
+        "scope_hashes": []
+      },
+      "enabled": {
+        "value": false,
+        "evidence_ref": null,
+        "recorded_at": null,
+        "recorded_by": null
+      },
+      "live_verified": {
+        "value": false,
+        "evidence_ref": null,
+        "recorded_at": null,
+        "recorded_by": null
+      }
+    },
+    "book_checkout": {
+      "controlling_flags": [
+        "public_launch",
+        "checkout_live"
+      ],
+      "templates": [],
+      "provider_required": true,
+      "enable_gates": [
+        "G0",
+        "G1",
+        "G2",
+        "G3",
+        "G5",
+        "G6"
+      ],
+      "code_ready": {
+        "value": true,
+        "evidence_ref": "fixture:reviews/book_checkout-code.md",
+        "recorded_at": "2026-10-01T12:00:00Z",
+        "recorded_by": "A0"
+      },
+      "provider_tested": {
+        "value": false,
+        "evidence_ref": null,
+        "recorded_at": null,
+        "recorded_by": null
+      },
+      "approved": {
+        "value": false,
+        "evidence_ref": null,
+        "recorded_at": null,
+        "recorded_by": null,
+        "gate_refs": [],
+        "scope_hashes": []
+      },
+      "enabled": {
+        "value": false,
+        "evidence_ref": null,
+        "recorded_at": null,
+        "recorded_by": null
+      },
+      "live_verified": {
+        "value": false,
+        "evidence_ref": null,
+        "recorded_at": null,
+        "recorded_by": null
+      }
+    },
+    "book_fulfilment_messages": {
+      "controlling_flags": [
+        "public_launch",
+        "checkout_live"
+      ],
+      "templates": [
+        "e12",
+        "e13",
+        "e14"
+      ],
+      "provider_required": true,
+      "enable_gates": [
+        "G3",
+        "G5",
+        "G6"
+      ],
+      "code_ready": {
+        "value": false,
+        "evidence_ref": null,
+        "recorded_at": null,
+        "recorded_by": null
+      },
+      "provider_tested": {
+        "value": false,
+        "evidence_ref": null,
+        "recorded_at": null,
+        "recorded_by": null
+      },
+      "approved": {
+        "value": false,
+        "evidence_ref": null,
+        "recorded_at": null,
+        "recorded_by": null,
+        "gate_refs": [],
+        "scope_hashes": []
+      },
+      "enabled": {
+        "value": false,
+        "evidence_ref": null,
+        "recorded_at": null,
+        "recorded_by": null
+      },
+      "live_verified": {
+        "value": false,
+        "evidence_ref": null,
+        "recorded_at": null,
+        "recorded_by": null
+      }
+    },
+    "consultation_redemption": {
+      "controlling_flags": [
+        "public_launch",
+        "checkout_live"
+      ],
+      "templates": [],
+      "provider_required": true,
+      "enable_gates": [
+        "G1",
+        "G5",
+        "G6"
+      ],
+      "code_ready": {
+        "value": false,
+        "evidence_ref": null,
+        "recorded_at": null,
+        "recorded_by": null
+      },
+      "provider_tested": {
+        "value": false,
+        "evidence_ref": null,
+        "recorded_at": null,
+        "recorded_by": null
+      },
+      "approved": {
+        "value": false,
+        "evidence_ref": null,
+        "recorded_at": null,
+        "recorded_by": null,
+        "gate_refs": [],
+        "scope_hashes": []
+      },
+      "enabled": {
+        "value": false,
+        "evidence_ref": null,
+        "recorded_at": null,
+        "recorded_by": null
+      },
+      "live_verified": {
+        "value": false,
+        "evidence_ref": null,
+        "recorded_at": null,
+        "recorded_by": null
+      }
+    },
+    "marketing_nurture": {
+      "controlling_flags": [
+        "public_launch",
+        "marketing_dispatch"
+      ],
+      "templates": [
+        "e02",
+        "e03",
+        "e04",
+        "e05"
+      ],
+      "provider_required": true,
+      "enable_gates": [
+        "G2",
+        "G3",
+        "G5",
+        "G6"
+      ],
+      "code_ready": {
+        "value": false,
+        "evidence_ref": null,
+        "recorded_at": null,
+        "recorded_by": null
+      },
+      "provider_tested": {
+        "value": false,
+        "evidence_ref": null,
+        "recorded_at": null,
+        "recorded_by": null
+      },
+      "approved": {
+        "value": false,
+        "evidence_ref": null,
+        "recorded_at": null,
+        "recorded_by": null,
+        "gate_refs": [],
+        "scope_hashes": []
+      },
+      "enabled": {
+        "value": false,
+        "evidence_ref": null,
+        "recorded_at": null,
+        "recorded_by": null
+      },
+      "live_verified": {
+        "value": false,
+        "evidence_ref": null,
+        "recorded_at": null,
+        "recorded_by": null
+      }
+    },
+    "workshop_followup": {
+      "controlling_flags": [
+        "public_launch",
+        "marketing_dispatch"
+      ],
+      "templates": [
+        "e11"
+      ],
+      "provider_required": true,
+      "enable_gates": [
+        "G3",
+        "G5",
+        "G6"
+      ],
+      "code_ready": {
+        "value": false,
+        "evidence_ref": null,
+        "recorded_at": null,
+        "recorded_by": null
+      },
+      "provider_tested": {
+        "value": false,
+        "evidence_ref": null,
+        "recorded_at": null,
+        "recorded_by": null
+      },
+      "approved": {
+        "value": false,
+        "evidence_ref": null,
+        "recorded_at": null,
+        "recorded_by": null,
+        "gate_refs": [],
+        "scope_hashes": []
+      },
+      "enabled": {
+        "value": false,
+        "evidence_ref": null,
+        "recorded_at": null,
+        "recorded_by": null
+      },
+      "live_verified": {
+        "value": false,
+        "evidence_ref": null,
+        "recorded_at": null,
+        "recorded_by": null
+      }
+    },
+    "publication_handoff": {
+      "controlling_flags": [
+        "automatic_publication"
+      ],
+      "templates": [],
+      "provider_required": true,
+      "enable_gates": [
+        "G2",
+        "G3",
+        "G6"
+      ],
+      "code_ready": {
+        "value": false,
+        "evidence_ref": null,
+        "recorded_at": null,
+        "recorded_by": null
+      },
+      "provider_tested": {
+        "value": false,
+        "evidence_ref": null,
+        "recorded_at": null,
+        "recorded_by": null
+      },
+      "approved": {
+        "value": false,
+        "evidence_ref": null,
+        "recorded_at": null,
+        "recorded_by": null,
+        "gate_refs": [],
+        "scope_hashes": []
+      },
+      "enabled": {
+        "value": false,
+        "evidence_ref": null,
+        "recorded_at": null,
+        "recorded_by": null
+      },
+      "live_verified": {
+        "value": false,
+        "evidence_ref": null,
+        "recorded_at": null,
+        "recorded_by": null
+      }
+    },
+    "ad_campaigns": {
+      "controlling_flags": [
+        "public_launch",
+        "paid_ads"
+      ],
+      "templates": [],
+      "provider_required": true,
+      "enable_gates": [
+        "G2",
+        "G3",
+        "G5",
+        "G6"
+      ],
+      "code_ready": {
+        "value": false,
+        "evidence_ref": null,
+        "recorded_at": null,
+        "recorded_by": null
+      },
+      "provider_tested": {
+        "value": false,
+        "evidence_ref": null,
+        "recorded_at": null,
+        "recorded_by": null
+      },
+      "approved": {
+        "value": false,
+        "evidence_ref": null,
+        "recorded_at": null,
+        "recorded_by": null,
+        "gate_refs": [],
+        "scope_hashes": []
+      },
+      "enabled": {
+        "value": false,
+        "evidence_ref": null,
+        "recorded_at": null,
+        "recorded_by": null
+      },
+      "live_verified": {
+        "value": false,
+        "evidence_ref": null,
+        "recorded_at": null,
+        "recorded_by": null
+      }
+    },
+    "third_party_measurement": {
+      "controlling_flags": [
+        "public_launch",
+        "third_party_tracking"
+      ],
+      "templates": [],
+      "provider_required": true,
+      "enable_gates": [
+        "G5",
+        "G6"
+      ],
+      "code_ready": {
+        "value": false,
+        "evidence_ref": null,
+        "recorded_at": null,
+        "recorded_by": null
+      },
+      "provider_tested": {
+        "value": false,
+        "evidence_ref": null,
+        "recorded_at": null,
+        "recorded_by": null
+      },
+      "approved": {
+        "value": false,
+        "evidence_ref": null,
+        "recorded_at": null,
+        "recorded_by": null,
+        "gate_refs": [],
+        "scope_hashes": []
+      },
+      "enabled": {
+        "value": false,
+        "evidence_ref": null,
+        "recorded_at": null,
+        "recorded_by": null
+      },
+      "live_verified": {
+        "value": false,
+        "evidence_ref": null,
+        "recorded_at": null,
+        "recorded_by": null
+      }
+    },
+    "editorial_draft_job": {
+      "controlling_flags": [],
+      "templates": [],
+      "provider_required": true,
+      "enable_gates": [
+        "G2"
+      ],
+      "code_ready": {
+        "value": false,
+        "evidence_ref": null,
+        "recorded_at": null,
+        "recorded_by": null
+      },
+      "provider_tested": {
+        "value": false,
+        "evidence_ref": null,
+        "recorded_at": null,
+        "recorded_by": null
+      },
+      "approved": {
+        "value": false,
+        "evidence_ref": null,
+        "recorded_at": null,
+        "recorded_by": null,
+        "gate_refs": [],
+        "scope_hashes": []
+      },
+      "enabled": {
+        "value": false,
+        "evidence_ref": null,
+        "recorded_at": null,
+        "recorded_by": null
+      },
+      "live_verified": {
+        "value": false,
+        "evidence_ref": null,
+        "recorded_at": null,
+        "recorded_by": null
+      }
+    }
+  }
+}

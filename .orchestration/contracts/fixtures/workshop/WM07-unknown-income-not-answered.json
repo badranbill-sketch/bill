@@ -1,0 +1,191 @@
+{
+ "fixture_id": "WM07",
+ "title": "Income not answered (unknown, not zero)",
+ "contract_version": "1.0",
+ "covers": [
+  "WK01",
+  "WK03"
+ ],
+ "purpose": "Same spending as WM06 but income not answered: no gap is computed and the income groups are null, never the 0 of WM06; nothing is treated as zero.",
+ "input": {
+  "contract": "workshop-inputs",
+  "contract_version": "1.0",
+  "currency": "CAD",
+  "base_year": 2026,
+  "chapters": {
+   "life": {
+    "spending": {
+     "amount": {
+      "status": "estimated",
+      "value": 250000
+     },
+     "period": "monthly",
+     "tax_basis": "after_tax",
+     "price_basis": "today_dollars",
+     "unit": "household"
+    }
+   },
+   "income": {
+    "coverage": "not_answered",
+    "sources": []
+   },
+   "savings": {},
+   "timing": {
+    "current_age": {
+     "status": "estimated",
+     "value": 70
+    },
+    "retirement_age": {
+     "status": "estimated",
+     "value": 70
+    },
+    "planning_horizon_years": {
+     "status": "estimated",
+     "value": 3
+    },
+    "inflation_bp": {
+     "status": "zero",
+     "value": 0
+    }
+   }
+  }
+ },
+ "expected": {
+  "contract_version": "1.0",
+  "assumptions_echo": {
+   "base_year": 2026,
+   "inflation_bp": 0,
+   "planning_horizon_years": 3,
+   "capital_illustration_return_bp": null,
+   "year_index": "t=0 is calendar year base_year; annual totals per calendar year",
+   "rounding": "exact rational arithmetic; half-even to whole cents at display only"
+  },
+  "window": {
+   "t_R": 0,
+   "first_t": 0,
+   "last_t": 2,
+   "first_calendar_year": 2026,
+   "last_calendar_year": 2028,
+   "first_age": 70,
+   "last_age": 72
+  },
+  "completeness": {
+   "state": "incomplete_unknown_income",
+   "reasons": [
+    "income_not_answered"
+   ]
+  },
+  "years": [
+   {
+    "t": 0,
+    "calendar_year": 2026,
+    "age": 70,
+    "spending_cents": 3000000,
+    "income_by_source_cents": {},
+    "income_net_cents": null,
+    "income_gross_cents": null,
+    "income_unknown_basis_cents": null,
+    "status": "not_computable",
+    "reasons": [
+     "income_not_answered"
+    ],
+    "gap_cents": null,
+    "surplus_cents": null,
+    "gap_today_dollars_cents": null,
+    "surplus_today_dollars_cents": null,
+    "exact": {
+     "spending": "3000000"
+    }
+   },
+   {
+    "t": 1,
+    "calendar_year": 2027,
+    "age": 71,
+    "spending_cents": 3000000,
+    "income_by_source_cents": {},
+    "income_net_cents": null,
+    "income_gross_cents": null,
+    "income_unknown_basis_cents": null,
+    "status": "not_computable",
+    "reasons": [
+     "income_not_answered"
+    ],
+    "gap_cents": null,
+    "surplus_cents": null,
+    "gap_today_dollars_cents": null,
+    "surplus_today_dollars_cents": null,
+    "exact": {
+     "spending": "3000000"
+    }
+   },
+   {
+    "t": 2,
+    "calendar_year": 2028,
+    "age": 72,
+    "spending_cents": 3000000,
+    "income_by_source_cents": {},
+    "income_net_cents": null,
+    "income_gross_cents": null,
+    "income_unknown_basis_cents": null,
+    "status": "not_computable",
+    "reasons": [
+     "income_not_answered"
+    ],
+    "gap_cents": null,
+    "surplus_cents": null,
+    "gap_today_dollars_cents": null,
+    "surplus_today_dollars_cents": null,
+    "exact": {
+     "spending": "3000000"
+    }
+   }
+  ],
+  "flags": [
+   "incomplete_income"
+  ],
+  "savings_summary": {
+   "accessible_categories_with_positive_value": [],
+   "home_or_business_positive_value": false,
+   "excluded_from_spendable": [],
+   "pension_value_kept_separate": false,
+   "totals_computed": false
+  },
+  "capital_illustration": {
+   "feature_flag": "off",
+   "displayed": false,
+   "state": "disabled_by_flag",
+   "reference_if_enabled": {
+    "r_bp": null,
+    "computable": false,
+    "not_computable_reasons": [
+     "return_assumption_absent",
+     "state_not_complete"
+    ],
+    "display_eligible_if_enabled": false,
+    "ineligible_reasons": [
+     "return_assumption_absent",
+     "state_not_complete"
+    ],
+    "C_R_cents": null,
+    "C_R_exact": null,
+    "valued_at": null,
+    "flow_timing": "end_of_year"
+   }
+  },
+  "clip": {
+   "predicates": {
+    "C": false,
+    "M": true,
+    "X": false,
+    "H": false,
+    "F": false
+   },
+   "selected": "W06",
+   "selection_reason": "missing_income"
+  }
+ },
+ "independent_checks": [
+  "contrast with WM06: identical input except coverage; WM06 shows income groups 0/0/0, WM07 shows null/null/null (s5), gap null, reason income_not_answered"
+ ],
+ "tolerance": "exact integer cents after half-even rounding; exact strings must match exactly; no numeric tolerance"
+}

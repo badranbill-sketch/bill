@@ -1,0 +1,182 @@
+=== add-ask-bill-section
+01e296caf4cb6822c9ccd45642834d69e02334bf | Claude <noreply@anthropic.com> | 2026-09-29 18:21:02 +0000 | 2026-09-29 18:21:02 +0000 | Add journey, guide, Ask Bill and conversation section after the ride
+--- name-status vs merge-base
+M	app/[lang]/layout.tsx
+A	app/features.css
+A	app/ink-hiker.css
+A	components/features.tsx
+A	components/ink/hiker.tsx
+M	components/journey/world.tsx
+M	components/pages.tsx
+A	lib/features.ts
+M	lib/ink-files.json
+A	public/assets/ink/hiker.7cb9a1198d.svg
+M	scripts/build-ink.tsx
+ 11 files changed, 960 insertions(+), 4 deletions(-)
+=== claude/bill-centered-homepage
+d63aabd50d0760145208857856f32779b1069e15 | Claude <noreply@anthropic.com> | 2026-09-29 14:52:37 +0000 | 2026-09-29 14:52:37 +0000 | Put Bill at the centre; add Ask Bill and the Before You Retire guide
+--- name-status vs merge-base
+M	.prettierignore
+M	LAUNCH-CHECKLIST.md
+M	README.md
+M	TEST-SUMMARY.md
+M	app/[lang]/[[...slug]]/page.tsx
+M	app/globals.css
+M	app/ride.css
+A	components/ask.tsx
+A	components/booklet.tsx
+M	components/ink/desk.tsx
+M	components/journey/ride.tsx
+M	components/navigation.tsx
+M	components/pages.tsx
+M	components/resources.tsx
+M	components/shell.tsx
+M	docs/ART-DIRECTION.md
+A	docs/ASK-BILL.md
+M	docs/COPY-STRATEGY.md
+M	docs/INTEGRATIONS.md
+M	eslint.config.mjs
+A	lib/ask.ts
+M	lib/business.ts
+M	lib/copy.ts
+M	lib/ink-files.json
+M	lib/journey.ts
+M	lib/pages.ts
+M	lib/ride.ts
+M	lib/routes.ts
+D	public/assets/ink/desk-caption-en.6834acbe8c.svg
+D	public/assets/ink/desk-caption-fr.15f201593d.svg
+D	public/assets/ink/dock.ccd6542ba7.svg
+M	scripts/build-ink.tsx
+M	scripts/capture.mjs
+M	scripts/launch.ts
+A	tests/ask.test.ts
+M	tests/browser/site.spec.ts
+M	tsconfig.json
+ 37 files changed, 2177 insertions(+), 615 deletions(-)
+=== claude/bill-presentation-video
+fc0044576d851be414d19e2f7a21ca7fd1285eae | Claude <noreply@anthropic.com> | 2026-09-29 13:50:10 -0400 | 2026-09-29 13:50:10 -0400 | Add the presentation video "The other side of the table" (Remotion)
+--- name-status vs merge-base
+M	.prettierignore
+M	eslint.config.mjs
+A	presentation/.gitignore
+A	presentation/README.md
+A	presentation/package-lock.json
+A	presentation/package.json
+A	presentation/public/fonts/caveat-latin-400-normal.woff2
+A	presentation/public/fonts/caveat-latin-500-normal.woff2
+A	presentation/public/fonts/newsreader-latin-300-italic.woff2
+A	presentation/public/fonts/newsreader-latin-300-normal.woff2
+A	presentation/public/fonts/newsreader-latin-400-italic.woff2
+A	presentation/public/fonts/newsreader-latin-400-normal.woff2
+A	presentation/public/fonts/source-sans-3-latin-400-italic.woff2
+A	presentation/public/fonts/source-sans-3-latin-400-normal.woff2
+A	presentation/public/fonts/source-sans-3-latin-600-normal.woff2
+A	presentation/public/ink/chairs-table.full.svg
+A	presentation/public/ink/chairs-table.ink.svg
+A	presentation/public/ink/chairs-table.wash.svg
+A	presentation/public/ink/left-chair.full.svg
+A	presentation/public/ink/left-chair.ink.svg
+A	presentation/public/ink/left-chair.wash.svg
+A	presentation/public/ink/path.full.svg
+A	presentation/public/ink/path.ink.svg
+A	presentation/public/ink/path.wash.svg
+A	presentation/public/ink/sailboat.full.svg
+A	presentation/public/ink/sailboat.ink.svg
+A	presentation/public/ink/sailboat.wash.svg
+A	presentation/public/ink/two-chairs.full.svg
+A	presentation/public/ink/two-chairs.ink.svg
+A	presentation/public/ink/two-chairs.wash.svg
+A	presentation/public/photos/bill-portrait.jpg
+A	presentation/public/plates/canoe.svg
+A	presentation/public/plates/containers.svg
+A	presentation/public/plates/cover-art.svg
+A	presentation/public/plates/harbour.svg
+A	presentation/public/plates/horizons.svg
+A	presentation/public/plates/plates.json
+A	presentation/public/plates/porch.svg
+A	presentation/public/plates/spending.svg
+A	presentation/public/plates/storm.svg
+A	presentation/public/plates/table-plan.svg
+A	presentation/public/textures/grain-1920.png
+A	presentation/remotion.config.ts
+A	presentation/scripts/qa.mjs
+A	presentation/scripts/split-ink.mjs
+A	presentation/scripts/stills.mjs
+A	presentation/src/Presentation.tsx
+A	presentation/src/Root.tsx
+A	presentation/src/assets.ts
+A	presentation/src/brand.ts
+A	presentation/src/content.ts
+A	presentation/src/data/ink.json
+A	presentation/src/fonts.ts
+A	presentation/src/index.ts
+A	presentation/src/primitives/basics.tsx
+A	presentation/src/primitives/objects.tsx
+A	presentation/src/primitives/pen.ts
+A	presentation/src/primitives/time.tsx
+A	presentation/src/scenes/Asks.tsx
+A	presentation/src/scenes/Audience.tsx
+A	presentation/src/scenes/Close.tsx
+A	presentation/src/scenes/Identity.tsx
+A	presentation/src/scenes/Journey.tsx
+A	presentation/src/scenes/Opening.tsx
+A	presentation/tools/plates.tsx
+A	presentation/tsconfig.json
+M	tsconfig.json
+ 67 files changed, 7378 insertions(+), 1 deletion(-)
+=== codex/desktop-iphone-unified
+66cce52046f535ddc1a90e6f94474877e375860d | arnaud verdier <arnaudverdier8@gmail.com> | 2026-09-29 15:00:31 -0400 | 2026-09-29 15:00:31 -0400 | Keep website checks scoped to the Next.js application
+d8ce2ef99f52553cbfa52d845003f4fb8480e982 | arnaud verdier <arnaudverdier8@gmail.com> | 2026-09-29 14:57:27 -0400 | 2026-09-29 14:57:27 -0400 | Unify the desktop and iPhone retirement experience
+01e296caf4cb6822c9ccd45642834d69e02334bf | Claude <noreply@anthropic.com> | 2026-09-29 18:21:02 +0000 | 2026-09-29 18:21:02 +0000 | Add journey, guide, Ask Bill and conversation section after the ride
+--- name-status vs merge-base
+M	app/[lang]/layout.tsx
+A	app/api/guide/route.ts
+A	app/features.css
+A	app/ink-hiker.css
+A	app/responsive.css
+A	components/features.tsx
+A	components/ink/hiker.tsx
+M	components/journey/ride-motion.tsx
+M	components/journey/world.tsx
+M	components/pages.tsx
+A	components/question-carousel.tsx
+A	content/guides/retirement-review-en.pdf
+A	docs/RESPONSIVE-REVIEW.md
+M	eslint.config.mjs
+M	lib/copy.ts
+A	lib/features.ts
+M	lib/ink-files.json
+M	next.config.ts
+A	public/assets/ink/hiker.7cb9a1198d.svg
+A	public/assets/retirement-guide-cover.jpg
+M	scripts/build-ink.tsx
+A	tests/browser/responsive.spec.ts
+M	tests/browser/site.spec.ts
+M	tsconfig.json
+ 24 files changed, 1728 insertions(+), 132 deletions(-)
+=== guide/pre-retirement-guide
+749b360f75185041e1aa3408500857605bc4507f | Claude <noreply@anthropic.com> | 2026-09-29 09:30:00 -0400 | 2026-09-29 09:30:06 -0400 | Add the pre-retirement guide (EN/FR print and screen PDFs)
+--- name-status vs merge-base
+M	.gitignore
+A	guide/README.md
+A	guide/art/charts.tsx
+A	guide/art/containers.tsx
+A	guide/art/cover.tsx
+A	guide/art/harbour.tsx
+A	guide/art/horizons.tsx
+A	guide/art/index.tsx
+A	guide/art/kit.tsx
+A	guide/art/plans.tsx
+A	guide/art/porch.tsx
+A	guide/art/spending.tsx
+A	guide/art/storm.tsx
+A	guide/assets/grain.png
+A	guide/build.tsx
+A	guide/copy.ts
+A	guide/layout.tsx
+A	guide/marks.tsx
+A	guide/style.css
+M	package.json
+A	scripts/ink-sheet.tsx
+ 21 files changed, 8304 insertions(+), 1 deletion(-)

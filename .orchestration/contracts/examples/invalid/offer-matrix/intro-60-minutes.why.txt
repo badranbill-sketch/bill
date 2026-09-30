@@ -1,0 +1,4 @@
+rule: OM-DUR-1
+breaks: The free introduction is exactly 15 minutes; 60 minutes is impossible.
+expect_keyword: const
+expect_path: /offers/intro-15/duration_minutes

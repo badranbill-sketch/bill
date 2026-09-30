@@ -1,0 +1,398 @@
+{
+ "contract_version": "1.0",
+ "status": "proposed - subject to A6 math review and professional review (G3)",
+ "generator": ".orchestration/evidence/F02/math/compute_fixtures.py (exact fractions.Fraction; reference model workshop_reference.py)",
+ "tolerance_policy": "exact integer cents after half-even rounding; exact strings must match exactly; no numeric tolerance",
+ "base_year": 2026,
+ "fixtures": [
+  {
+   "fixture_id": "WM01",
+   "file": "WM01-zero-inflation-zero-escalation.json",
+   "title": "Zero inflation and zero escalation",
+   "covers": [
+    "WK02"
+   ],
+   "selected_clip": "W07",
+   "completeness_state": "complete"
+  },
+  {
+   "fixture_id": "WM02",
+   "file": "WM02-geometric-growth-closed-form.json",
+   "title": "Geometric spending growth (closed form)",
+   "covers": [
+    "WK02"
+   ],
+   "selected_clip": "W07",
+   "completeness_state": "complete"
+  },
+  {
+   "fixture_id": "WM03",
+   "file": "WM03-later-income-start.json",
+   "title": "Income that starts after retirement",
+   "covers": [
+    "WK02"
+   ],
+   "selected_clip": "W07",
+   "completeness_state": "complete"
+  },
+  {
+   "fixture_id": "WM04",
+   "file": "WM04-price-basis-today-vs-start-year.json",
+   "title": "Today's dollars vs start-year dollars",
+   "covers": [
+    "WK02"
+   ],
+   "selected_clip": "W07",
+   "completeness_state": "complete"
+  },
+  {
+   "fixture_id": "WM05",
+   "file": "WM05-month-to-year-conversion.json",
+   "title": "Monthly to annual conversion",
+   "covers": [
+    "WK01"
+   ],
+   "selected_clip": "W07",
+   "completeness_state": "complete"
+  },
+  {
+   "fixture_id": "WM06",
+   "file": "WM06-zero-income-declared.json",
+   "title": "Declared zero planned income",
+   "covers": [
+    "WK01"
+   ],
+   "selected_clip": "W07",
+   "completeness_state": "complete"
+  },
+  {
+   "fixture_id": "WM07",
+   "file": "WM07-unknown-income-not-answered.json",
+   "title": "Income not answered (unknown, not zero)",
+   "covers": [
+    "WK01",
+    "WK03"
+   ],
+   "selected_clip": "W06",
+   "completeness_state": "incomplete_unknown_income"
+  },
+  {
+   "fixture_id": "WM08",
+   "file": "WM08-unknown-amount-later-start.json",
+   "title": "Unknown amount on a later source",
+   "covers": [
+    "WK01",
+    "WK06"
+   ],
+   "selected_clip": "W06",
+   "completeness_state": "incomplete_unknown_income"
+  },
+  {
+   "fixture_id": "WM09",
+   "file": "WM09-gross-net-mismatch.json",
+   "title": "Gross income against after-tax spending",
+   "covers": [
+    "WK03"
+   ],
+   "selected_clip": "W08",
+   "completeness_state": "basis_mismatch"
+  },
+  {
+   "fixture_id": "WM10",
+   "file": "WM10-housing-only-wealth.json",
+   "title": "Home is the only wealth entered",
+   "covers": [
+    "WK03"
+   ],
+   "selected_clip": "W07",
+   "completeness_state": "complete"
+  },
+  {
+   "fixture_id": "WM11",
+   "file": "WM11-pension-double-count.json",
+   "title": "Pension counted as asset and income",
+   "covers": [
+    "WK03"
+   ],
+   "selected_clip": "W07",
+   "completeness_state": "complete"
+  },
+  {
+   "fixture_id": "WM12",
+   "file": "WM12-surplus-years.json",
+   "title": "Surplus years then gap years",
+   "covers": [
+    "WK02",
+    "WK03"
+   ],
+   "selected_clip": "W07",
+   "completeness_state": "complete"
+  },
+  {
+   "fixture_id": "WM13",
+   "file": "WM13-retirement-year-boundary.json",
+   "title": "Window starts at t = R - A",
+   "covers": [
+    "WK02"
+   ],
+   "selected_clip": "W07",
+   "completeness_state": "complete"
+  },
+  {
+   "fixture_id": "WM14",
+   "file": "WM14-capital-illustration-r-zero.json",
+   "title": "Capital illustration with r = 0 (feature OFF)",
+   "covers": [
+    "WK02"
+   ],
+   "selected_clip": "W07",
+   "completeness_state": "complete"
+  },
+  {
+   "fixture_id": "WM15",
+   "file": "WM15-capital-illustration-growing-annuity.json",
+   "title": "Capital illustration, r > 0, growing gap (feature OFF)",
+   "covers": [
+    "WK02"
+   ],
+   "selected_clip": "W07",
+   "completeness_state": "complete"
+  },
+  {
+   "fixture_id": "WM16",
+   "file": "WM16-capital-illustration-level-annuity.json",
+   "title": "Capital illustration, r > 0, level gap (feature OFF)",
+   "covers": [
+    "WK02"
+   ],
+   "selected_clip": "W07",
+   "completeness_state": "complete"
+  },
+  {
+   "fixture_id": "WM17",
+   "file": "WM17-rounding-half-even.json",
+   "title": "Half-even rounding at exactly half a cent",
+   "covers": [
+    "WK01",
+    "WK02"
+   ],
+   "selected_clip": "W10",
+   "completeness_state": "complete"
+  },
+  {
+   "fixture_id": "WM18",
+   "file": "WM18-horizon-and-source-end.json",
+   "title": "Source that ends; source beyond the horizon",
+   "covers": [
+    "WK02",
+    "WK03"
+   ],
+   "selected_clip": "W07",
+   "completeness_state": "complete"
+  },
+  {
+   "fixture_id": "WM19",
+   "file": "WM19-uncertain-income-labelled-scheduled.json",
+   "title": "Rental income labelled scheduled",
+   "covers": [
+    "WK03"
+   ],
+   "selected_clip": "W07",
+   "completeness_state": "complete"
+  },
+  {
+   "fixture_id": "WM20",
+   "file": "WM20-timing-unknown.json",
+   "title": "Current age unknown",
+   "covers": [
+    "WK01",
+    "WK06"
+   ],
+   "selected_clip": "W10",
+   "completeness_state": "incomplete_unknown_timing"
+  },
+  {
+   "fixture_id": "WM21",
+   "file": "WM21-household-timing.json",
+   "title": "Partner retires later",
+   "covers": [
+    "WK02",
+    "WK06"
+   ],
+   "selected_clip": "W09",
+   "completeness_state": "complete"
+  },
+  {
+   "fixture_id": "WM22",
+   "file": "WM22-price-basis-unknown.json",
+   "title": "Price basis unknown on a future source",
+   "covers": [
+    "WK01",
+    "WK02"
+   ],
+   "selected_clip": "W06",
+   "completeness_state": "incomplete_unknown_income"
+  },
+  {
+   "fixture_id": "WM23",
+   "file": "WM23-tax-basis-unknown.json",
+   "title": "Tax basis unknown",
+   "covers": [
+    "WK03",
+    "WK06"
+   ],
+   "selected_clip": "W08",
+   "completeness_state": "basis_unknown"
+  },
+  {
+   "fixture_id": "WM24",
+   "file": "WM24-rounding-float-trap.json",
+   "title": "Exact tie that IEEE doubles miss",
+   "covers": [
+    "WK01",
+    "WK02"
+   ],
+   "selected_clip": "W07",
+   "completeness_state": "complete"
+  },
+  {
+   "fixture_id": "WM25",
+   "file": "WM25-spending-unknown-window-known.json",
+   "title": "Spending unknown, window known",
+   "covers": [
+    "WK01",
+    "WK03"
+   ],
+   "selected_clip": "W10",
+   "completeness_state": "incomplete_unknown_spending"
+  },
+  {
+   "fixture_id": "WM26",
+   "file": "WM26-start-point-unknown.json",
+   "title": "Start point unknown, window known",
+   "covers": [
+    "WK01",
+    "WK06"
+   ],
+   "selected_clip": "W06",
+   "completeness_state": "incomplete_unknown_income"
+  },
+  {
+   "fixture_id": "WM27",
+   "file": "WM27-end-point-unknown.json",
+   "title": "End point unknown",
+   "covers": [
+    "WK01",
+    "WK02"
+   ],
+   "selected_clip": "W06",
+   "completeness_state": "incomplete_unknown_income"
+  },
+  {
+   "fixture_id": "WM28",
+   "file": "WM28-end-unresolvable.json",
+   "title": "Partner-owned end age with the partner's age unknown",
+   "covers": [
+    "WK01",
+    "WK02"
+   ],
+   "selected_clip": "W06",
+   "completeness_state": "incomplete_unknown_income"
+  },
+  {
+   "fixture_id": "WM29",
+   "file": "WM29-start-unresolvable-window-known.json",
+   "title": "Partner-owned start age with the partner's age unknown",
+   "covers": [
+    "WK01",
+    "WK06"
+   ],
+   "selected_clip": "W06",
+   "completeness_state": "incomplete_unknown_income"
+  },
+  {
+   "fixture_id": "WM30",
+   "file": "WM30-income-list-partial.json",
+   "title": "Some income sources may be missing",
+   "covers": [
+    "WK01",
+    "WK03"
+   ],
+   "selected_clip": "W06",
+   "completeness_state": "incomplete_unknown_income"
+  },
+  {
+   "fixture_id": "WM31",
+   "file": "WM31-retirement-age-unknown.json",
+   "title": "Retirement age unknown, current age known",
+   "covers": [
+    "WK01",
+    "WK06"
+   ],
+   "selected_clip": "W10",
+   "completeness_state": "incomplete_unknown_timing"
+  },
+  {
+   "fixture_id": "WM32",
+   "file": "WM32-unresolved-start-end-at-retirement.json",
+   "title": "Unknown start, known end at the retirement year",
+   "covers": [
+    "WK02",
+    "WK06"
+   ],
+   "selected_clip": "W07",
+   "completeness_state": "complete"
+  },
+  {
+   "fixture_id": "WM33",
+   "file": "WM33-unresolved-start-end-inside-window.json",
+   "title": "Unknown start, known end inside the window",
+   "covers": [
+    "WK01",
+    "WK02"
+   ],
+   "selected_clip": "W06",
+   "completeness_state": "incomplete_unknown_income"
+  },
+  {
+   "fixture_id": "WM34",
+   "file": "WM34-combined-unknowns-code-sets.json",
+   "title": "Several unknowns on one source: every applicable code",
+   "covers": [
+    "WK01",
+    "WK03"
+   ],
+   "selected_clip": "W06",
+   "completeness_state": "incomplete_unknown_income"
+  },
+  {
+   "fixture_id": "WM35",
+   "file": "WM35-capital-illustration-deferred-retirement.json",
+   "title": "Capital illustration with t_R > 0 (feature OFF)",
+   "covers": [
+    "WK02"
+   ],
+   "selected_clip": "W07",
+   "completeness_state": "complete"
+  },
+  {
+   "fixture_id": "WM36",
+   "file": "WM36-capital-illustration-all-surplus.json",
+   "title": "Capital illustration when every year is a surplus (feature OFF)",
+   "covers": [
+    "WK02",
+    "WK03"
+   ],
+   "selected_clip": "W10",
+   "completeness_state": "complete"
+  },
+  {
+   "fixture_id": "CLIP",
+   "file": "clip-rules.json",
+   "title": "Clip rule truth table, supplementary and media cases",
+   "covers": [
+    "WK06"
+   ]
+  }
+ ]
+}

@@ -1,0 +1,35 @@
+https://registry.npmjs.org/ HEAD=200 GET=200
+https://registry-1.docker.io/v2/ HEAD=401 GET=401
+https://hub.docker.com/ HEAD=200 GET=200
+https://docs.n8n.io/ HEAD=curl: (56) CONNECT tunnel failed, response 403
+000 GET=curl: (56) CONNECT tunnel failed, response 403
+000
+https://api.github.com/ HEAD=400 GET=200
+https://supabase.com/ HEAD=curl: (56) CONNECT tunnel failed, response 403
+000 GET=curl: (56) CONNECT tunnel failed, response 403
+000
+https://api.brevo.com/ HEAD=curl: (56) CONNECT tunnel failed, response 403
+000 GET=curl: (56) CONNECT tunnel failed, response 403
+000
+https://api.stripe.com/ HEAD=curl: (56) CONNECT tunnel failed, response 403
+000 GET=curl: (56) CONNECT tunnel failed, response 403
+000
+https://www.googleapis.com/ HEAD=404 GET=404
+--- extra (context for later tasks)
+https://docker.n8n.io/v2/ GET=curl: (56) CONNECT tunnel failed, response 403
+000
+https://ghcr.io/v2/ GET=401
+https://cdn.playwright.dev/ GET=curl: (56) CONNECT tunnel failed, response 403
+000
+https://playwright.download.prss.microsoft.com/ GET=curl: (56) CONNECT tunnel failed, response 403
+000
+https://registry-1.docker.io/v2/library/hello-world/manifests/latest GET=401
+$ anonymous Docker Hub token + HEAD manifest (token not printed)
+token_obtained=yes
+HTTP/1.1 200 Connection Established
+HTTP/2 200 
+docker-ratelimit-source: 160.79.106.24
+x-ratelimit-limit: 100;w=3600
+ratelimit-limit: 100;w=3600
+x-ratelimit-remaining: 98;w=3600
+ratelimit-remaining: 98;w=3600

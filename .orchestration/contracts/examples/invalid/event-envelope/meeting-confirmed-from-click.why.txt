@@ -1,0 +1,5 @@
+rule: EV-AUTH-BOOK meeting.confirmed only from provider.booking_sync or operator.reconciliation; a click is not a booking
+expect_path: source
+expect_keyword: enum
+
+A booking-link click presented as a confirmed meeting (AM-BOOK-1).

@@ -1,0 +1,5 @@
+rule: JS-CLASS-2 promotional jobs require consent_reference (AM-CONSENT-1)
+expect_path: /
+expect_keyword: required
+
+A nurture message with no recorded consent.

@@ -1,0 +1,28 @@
+## tests/browser/site.spec.ts on codex (non-static requests, storage)
+45:      expect(errors).toEqual([]);
+49:      expect(scan.violations).toEqual([]);
+53:    request,
+84:      const r = await request.get(href);
+157:  const requests: string[] = [];
+158:  page.on("request", (r) => {
+159:    if (!/^\/(assets|_next\/static)\//.test(new URL(r.url()).pathname))
+160:      requests.push(`${r.method()} ${r.url()}`);
+173:  expect(requests).toEqual([]);
+176:      local: localStorage.length,
+177:      session: sessionStorage.length,
+205:test("protected review, public draft exclusions and assets", async ({
+206:  request,
+213:  expect((await request.get("http://127.0.0.1:3101/en")).status()).toBe(401);
+214:  const publicView = await request.get(
+222:      await request.get(
+230:      await request.get(
+236:    (await request.get("/en/revision/five-years-before-retirement")).status(),
+238:  const sitemap = await request.get("/sitemap.xml");
+240:  expect(await (await request.get("/robots.txt")).text()).toContain(
+main: c38937c
+## docs/INTEGRATIONS.md cookie / events
+13:The site does not log inquiry bodies, email addresses or IP addresses in application logs. Review hosting access-log and provider retention policies; this does not prevent providers from processing technical logs. The privacy draft states the implementation but leaves operational policy approval open. Never use process memory or local disk for production lead storage.
+17:The supplied `https://calendly.com/bbadran` was inspected read-only on 2026-09-28. It displayed Bill Badran and three meeting choices, including remote and Laval options. No event was selected and no booking submitted. The site links to the supplied profile only, not an inferred event URL. Recheck ownership, choices, availability and terms before launch. No Calendly embed is used; cookies are not loaded by this site. Users complete and confirm appointments on Calendly.
+27:No analytics package, third-party tracking, cookie banner or marketing cookies are loaded. Configure an approved provider and consent approach before any measurement work. Allowed events only: meeting CTA activation, provider-accepted contact, actual guide-link activation and verified booking confirmation. Do not send checklist answers, balances, email, names, messages or URLs containing personal data. A booking click is not a confirmed booking.
+## lib/contact.ts requestId
+12:    requestId: z.uuid(),

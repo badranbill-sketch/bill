@@ -1,0 +1,5 @@
+rule: FF-STATE-2 a true state needs an evidence reference
+expect_path: capabilities/workshop_access/code_ready/evidence_ref
+expect_keyword: type
+
+code_ready claimed with no evidence (self-report).

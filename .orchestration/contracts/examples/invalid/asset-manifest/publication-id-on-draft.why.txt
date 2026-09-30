@@ -1,0 +1,4 @@
+rule: AM-PUB-2
+breaks: publication_id exists only when the status is 'published'.
+expect_keyword: type
+expect_path: /assets/1/publication_id

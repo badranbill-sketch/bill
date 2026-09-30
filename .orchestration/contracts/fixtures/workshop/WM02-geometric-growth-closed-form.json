@@ -1,0 +1,343 @@
+{
+ "fixture_id": "WM02",
+ "title": "Geometric spending growth (closed form)",
+ "contract_version": "1.0",
+ "covers": [
+  "WK02"
+ ],
+ "purpose": "D_t = a(1+i)^t checked against the closed form and the geometric-series sum; deflated gap is constant.",
+ "input": {
+  "contract": "workshop-inputs",
+  "contract_version": "1.0",
+  "currency": "CAD",
+  "base_year": 2026,
+  "chapters": {
+   "life": {
+    "spending": {
+     "amount": {
+      "status": "estimated",
+      "value": 5000000
+     },
+     "period": "annual",
+     "tax_basis": "after_tax",
+     "price_basis": "today_dollars",
+     "unit": "household"
+    }
+   },
+   "income": {
+    "coverage": "no_planned_income",
+    "sources": []
+   },
+   "savings": {},
+   "timing": {
+    "current_age": {
+     "status": "estimated",
+     "value": 55
+    },
+    "retirement_age": {
+     "status": "estimated",
+     "value": 60
+    },
+    "planning_horizon_years": {
+     "status": "estimated",
+     "value": 10
+    },
+    "inflation_bp": {
+     "status": "estimated",
+     "value": 200
+    }
+   }
+  }
+ },
+ "expected": {
+  "contract_version": "1.0",
+  "assumptions_echo": {
+   "base_year": 2026,
+   "inflation_bp": 200,
+   "planning_horizon_years": 10,
+   "capital_illustration_return_bp": null,
+   "year_index": "t=0 is calendar year base_year; annual totals per calendar year",
+   "rounding": "exact rational arithmetic; half-even to whole cents at display only"
+  },
+  "window": {
+   "t_R": 5,
+   "first_t": 5,
+   "last_t": 14,
+   "first_calendar_year": 2031,
+   "last_calendar_year": 2040,
+   "first_age": 60,
+   "last_age": 69
+  },
+  "completeness": {
+   "state": "complete",
+   "reasons": []
+  },
+  "years": [
+   {
+    "t": 5,
+    "calendar_year": 2031,
+    "age": 60,
+    "spending_cents": 5520404,
+    "income_by_source_cents": {},
+    "income_net_cents": 0,
+    "income_gross_cents": 0,
+    "income_unknown_basis_cents": 0,
+    "status": "computed",
+    "reasons": [],
+    "gap_cents": 5520404,
+    "surplus_cents": 0,
+    "gap_today_dollars_cents": 5000000,
+    "surplus_today_dollars_cents": 0,
+    "exact": {
+     "spending": "5520404.016",
+     "income_compared": "0",
+     "gap": "5520404.016",
+     "surplus": "0"
+    }
+   },
+   {
+    "t": 6,
+    "calendar_year": 2032,
+    "age": 61,
+    "spending_cents": 5630812,
+    "income_by_source_cents": {},
+    "income_net_cents": 0,
+    "income_gross_cents": 0,
+    "income_unknown_basis_cents": 0,
+    "status": "computed",
+    "reasons": [],
+    "gap_cents": 5630812,
+    "surplus_cents": 0,
+    "gap_today_dollars_cents": 5000000,
+    "surplus_today_dollars_cents": 0,
+    "exact": {
+     "spending": "5630812.09632",
+     "income_compared": "0",
+     "gap": "5630812.09632",
+     "surplus": "0"
+    }
+   },
+   {
+    "t": 7,
+    "calendar_year": 2033,
+    "age": 62,
+    "spending_cents": 5743428,
+    "income_by_source_cents": {},
+    "income_net_cents": 0,
+    "income_gross_cents": 0,
+    "income_unknown_basis_cents": 0,
+    "status": "computed",
+    "reasons": [],
+    "gap_cents": 5743428,
+    "surplus_cents": 0,
+    "gap_today_dollars_cents": 5000000,
+    "surplus_today_dollars_cents": 0,
+    "exact": {
+     "spending": "5743428.3382464",
+     "income_compared": "0",
+     "gap": "5743428.3382464",
+     "surplus": "0"
+    }
+   },
+   {
+    "t": 8,
+    "calendar_year": 2034,
+    "age": 63,
+    "spending_cents": 5858297,
+    "income_by_source_cents": {},
+    "income_net_cents": 0,
+    "income_gross_cents": 0,
+    "income_unknown_basis_cents": 0,
+    "status": "computed",
+    "reasons": [],
+    "gap_cents": 5858297,
+    "surplus_cents": 0,
+    "gap_today_dollars_cents": 5000000,
+    "surplus_today_dollars_cents": 0,
+    "exact": {
+     "spending": "5858296.905011328",
+     "income_compared": "0",
+     "gap": "5858296.905011328",
+     "surplus": "0"
+    }
+   },
+   {
+    "t": 9,
+    "calendar_year": 2035,
+    "age": 64,
+    "spending_cents": 5975463,
+    "income_by_source_cents": {},
+    "income_net_cents": 0,
+    "income_gross_cents": 0,
+    "income_unknown_basis_cents": 0,
+    "status": "computed",
+    "reasons": [],
+    "gap_cents": 5975463,
+    "surplus_cents": 0,
+    "gap_today_dollars_cents": 5000000,
+    "surplus_today_dollars_cents": 0,
+    "exact": {
+     "spending": "5975462.84311155456",
+     "income_compared": "0",
+     "gap": "5975462.84311155456",
+     "surplus": "0"
+    }
+   },
+   {
+    "t": 10,
+    "calendar_year": 2036,
+    "age": 65,
+    "spending_cents": 6094972,
+    "income_by_source_cents": {},
+    "income_net_cents": 0,
+    "income_gross_cents": 0,
+    "income_unknown_basis_cents": 0,
+    "status": "computed",
+    "reasons": [],
+    "gap_cents": 6094972,
+    "surplus_cents": 0,
+    "gap_today_dollars_cents": 5000000,
+    "surplus_today_dollars_cents": 0,
+    "exact": {
+     "spending": "6094972.0999737856512",
+     "income_compared": "0",
+     "gap": "6094972.0999737856512",
+     "surplus": "0"
+    }
+   },
+   {
+    "t": 11,
+    "calendar_year": 2037,
+    "age": 66,
+    "spending_cents": 6216872,
+    "income_by_source_cents": {},
+    "income_net_cents": 0,
+    "income_gross_cents": 0,
+    "income_unknown_basis_cents": 0,
+    "status": "computed",
+    "reasons": [],
+    "gap_cents": 6216872,
+    "surplus_cents": 0,
+    "gap_today_dollars_cents": 5000000,
+    "surplus_today_dollars_cents": 0,
+    "exact": {
+     "spending": "6216871.541973261364224",
+     "income_compared": "0",
+     "gap": "6216871.541973261364224",
+     "surplus": "0"
+    }
+   },
+   {
+    "t": 12,
+    "calendar_year": 2038,
+    "age": 67,
+    "spending_cents": 6341209,
+    "income_by_source_cents": {},
+    "income_net_cents": 0,
+    "income_gross_cents": 0,
+    "income_unknown_basis_cents": 0,
+    "status": "computed",
+    "reasons": [],
+    "gap_cents": 6341209,
+    "surplus_cents": 0,
+    "gap_today_dollars_cents": 5000000,
+    "surplus_today_dollars_cents": 0,
+    "exact": {
+     "spending": "6341208.97281272659150848",
+     "income_compared": "0",
+     "gap": "6341208.97281272659150848",
+     "surplus": "0"
+    }
+   },
+   {
+    "t": 13,
+    "calendar_year": 2039,
+    "age": 68,
+    "spending_cents": 6468033,
+    "income_by_source_cents": {},
+    "income_net_cents": 0,
+    "income_gross_cents": 0,
+    "income_unknown_basis_cents": 0,
+    "status": "computed",
+    "reasons": [],
+    "gap_cents": 6468033,
+    "surplus_cents": 0,
+    "gap_today_dollars_cents": 5000000,
+    "surplus_today_dollars_cents": 0,
+    "exact": {
+     "spending": "6468033.1522689811233386496",
+     "income_compared": "0",
+     "gap": "6468033.1522689811233386496",
+     "surplus": "0"
+    }
+   },
+   {
+    "t": 14,
+    "calendar_year": 2040,
+    "age": 69,
+    "spending_cents": 6597394,
+    "income_by_source_cents": {},
+    "income_net_cents": 0,
+    "income_gross_cents": 0,
+    "income_unknown_basis_cents": 0,
+    "status": "computed",
+    "reasons": [],
+    "gap_cents": 6597394,
+    "surplus_cents": 0,
+    "gap_today_dollars_cents": 5000000,
+    "surplus_today_dollars_cents": 0,
+    "exact": {
+     "spending": "6597393.815314360745805422592",
+     "income_compared": "0",
+     "gap": "6597393.815314360745805422592",
+     "surplus": "0"
+    }
+   }
+  ],
+  "flags": [],
+  "savings_summary": {
+   "accessible_categories_with_positive_value": [],
+   "home_or_business_positive_value": false,
+   "excluded_from_spendable": [],
+   "pension_value_kept_separate": false,
+   "totals_computed": false
+  },
+  "capital_illustration": {
+   "feature_flag": "off",
+   "displayed": false,
+   "state": "disabled_by_flag",
+   "reference_if_enabled": {
+    "r_bp": null,
+    "computable": false,
+    "not_computable_reasons": [
+     "return_assumption_absent"
+    ],
+    "display_eligible_if_enabled": false,
+    "ineligible_reasons": [
+     "return_assumption_absent"
+    ],
+    "C_R_cents": null,
+    "C_R_exact": null,
+    "valued_at": null,
+    "flow_timing": "end_of_year"
+   }
+  },
+  "clip": {
+   "predicates": {
+    "C": false,
+    "M": false,
+    "X": false,
+    "H": false,
+    "F": true
+   },
+   "selected": "W07",
+   "selection_reason": "funding_gap"
+  }
+ },
+ "independent_checks": [
+  "closed form D_t = a(1+i)^t",
+  "geometric series identity",
+  "deflated gap constant = a"
+ ],
+ "tolerance": "exact integer cents after half-even rounding; exact strings must match exactly; no numeric tolerance"
+}

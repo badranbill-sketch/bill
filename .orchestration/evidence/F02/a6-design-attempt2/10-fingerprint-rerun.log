@@ -1,0 +1,19 @@
+$ cd <scratchpad>/wt/base01-codex (HEAD 66cce52, lib/articles.ts blob df24ccb) && node --import tsx /home/user/bill/.orchestration/evidence/F02/offers/fingerprint_order_repro.ts
+baseline (file in schema order): 0b5b51f292f4fec1fc0fa8af3b07562664c2288ef5e6030e3a14e4b581d23f67
+PASS  top-level keys reversed                                    SAME hash (expected same)
+PASS  keys inside each source object reordered                   SAME hash (expected same)
+PASS  frontmatter compact (no indentation) instead of pretty     SAME hash (expected same)
+PASS  status/reviewer/3 dates changed (excluded fields)          SAME hash (expected same)
+PASS  unknown key added inside a source object (stripped)        SAME hash (expected same)
+PASS  title changed (control)                                    different hash (expected different)
+PASS  sources array order swapped                                different hash (expected different)
+PASS  relatedArticles order swapped                              different hash (expected different)
+PASS  relatedServices order swapped                              different hash (expected different)
+PASS  body: one trailing space added                             different hash (expected different)
+PASS  source url letter case changed                             different hash (expected different)
+PASS  unknown top-level key rejected by articleSchema.strict() (no hash)
+articleSchema key order: language,translationGroup,slug,title,description,topic,sources,author,reviewer,status,publicationDate,substantiveReviewDate,nextReviewDate,relatedServices,relatedArticles,generation,firmApprovalRequired
+PASS  reference definition (schema order, then body) equals contentFingerprint for a reversed-key file
+PASS  fr: displayed title has NBSP typography, hash is over the raw title
+failures=0
+exit=0

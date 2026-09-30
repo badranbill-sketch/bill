@@ -1,0 +1,15 @@
+$ python .orchestration/evidence/F02/a6-design-attempt2/route_collisions2.py
+origin/main 9 ['about', 'fees', 'home', 'investments', 'legal', 'meeting', 'privacy', 'resources', 'retirement']
+origin/codex/desktop-iphone-unified 9 ['about', 'fees', 'home', 'investments', 'legal', 'meeting', 'privacy', 'resources', 'retirement']
+origin/claude/bill-centered-homepage 10 ['about', 'ask', 'fees', 'home', 'investments', 'legal', 'meeting', 'privacy', 'resources', 'retirement']
+origin/guide/pre-retirement-guide 9 ['about', 'fees', 'home', 'investments', 'legal', 'meeting', 'privacy', 'resources', 'retirement']
+origin/claude/bill-presentation-video 9 ['about', 'fees', 'home', 'investments', 'legal', 'meeting', 'privacy', 'resources', 'retirement']
+origin/add-ask-bill-section 9 ['about', 'fees', 'home', 'investments', 'legal', 'meeting', 'privacy', 'resources', 'retirement']
+
+proposed keys 10 {"crossroads": ["carrefour-retraite", "retirement-crossroads"], "crossroadsConfirmed": ["carrefour-retraite/inscription-confirmee", "retirement-crossroads/registered"], "crossroadsJoin": ["carrefour-retraite/rejoindre", "retirement-crossroads/join"], "crossroadsReplay": ["carrefour-retraite/rediffusion", "retirement-crossroads/replay"], "workshop": ["atelier-retraite", "retirement-workshop"], "book": ["livre-imprime", "printed-book"], "bookOrderStatus": ["livre-imprime/commande", "printed-book/order"], "bookConsultation": ["livre-imprime/consultation", "printed-book/consultation"], "emailPreferences": ["preferences-courriel", "email-preferences"], "unsubscribe": ["desabonnement", "unsubscribe"]}
+
+asset-manifest intended_route_key: {"enum": ["home", "retirement", "investments", "about", "resources", "meeting", "fees", "privacy", "legal", "ask", "workshop", "crossroads", "crossroadsConfirmed", "crossroadsJoin", "crossroadsReplay", "book", "bookOrderStatus", "bookConsultation", "emailPreferences", "unsubscribe", null]}
+route union minus manifest enum: [] | manifest enum minus union: [None]
+
+problems: none
+exit=0

@@ -1,0 +1,5 @@
+rule: FF-INV-1 in production a capability is enabled only when all its controlling flags are true
+expect_path: flags/marketing_dispatch/value
+expect_keyword: const
+
+Nurture enabled while marketing_dispatch is off.

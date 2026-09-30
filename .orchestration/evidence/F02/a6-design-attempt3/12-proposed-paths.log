@@ -1,0 +1,60 @@
+$ python3 .orchestration/evidence/F02/a6-design-attempt3/paths3.py   (rerun after fixing an lstrip bug in the first draft; bases include contracts/examples, fixtures, evidence lane dirs, source, reviews and the F00 codex worktree for node_modules docs)
+present references: 366
+absent, labelled proposed in context: 49
+  L README.md 59 content/asset-approvals.json
+  L approval-scopes.md 15 content/asset-approvals.json
+  L approval-scopes.md 18 .orchestration/release.json
+  L approval-scopes.md 56 scripts/verify-assets.ts
+  L approval-scopes.md 95 content/asset-approvals.json
+  L approval-scopes.md 102 .orchestration/approval-packets/
+  L approval-scopes.md 115 scripts/verify-assets.ts
+  L approval-scopes.md 115 verify-publication.ts
+  L approval-scopes.md 126 content/asset-approvals.json
+  L approval-scopes.md 126 release.json
+  L approval-scopes.md 128 content/asset-approvals.json
+  L approval-scopes.md 128 .orchestration/approval-packets/
+  L approval-scopes.md 128 .orchestration/release.json
+  L approval-scopes.md 182 actual/path
+  L asset-manifest.md 6 content/marketing/asset-manifest.json
+  L asset-manifest.md 6 docs/marketing/media-manifest-first-release.json
+  L asset-manifest.md 6 docs/marketing/media-manifest-quarter.json
+  L asset-manifest.md 85 scripts/verify-assets.ts
+  L event-envelope.md 4 lib/marketing/
+  L event-envelope.md 4 app/api/marketing/
+  L event-envelope.md 4 app/api/internal/automation/
+  L event-envelope.md 133 app/api/marketing/
+  L feature-flags.md 104 .orchestration/release.json
+  L feature-flags.md 105 infra/deployment/
+  L operational-data-model.md 3 supabase/migrations/
+  L operational-data-model.md 3 tests/security/
+  L operational-data-model.md 242 app/api/internal/automation/
+  L routes.md 80 carrefour-retraite/inscription-confirmee
+  L routes.md 80 retirement-crossroads/registered
+  L routes.md 81 carrefour-retraite/rejoindre
+  L routes.md 81 retirement-crossroads/join
+  L routes.md 82 carrefour-retraite/rediffusion
+  L routes.md 82 retirement-crossroads/replay
+  L routes.md 86 livre-imprime/commande
+  L routes.md 86 printed-book/order
+  L routes.md 87 livre-imprime/consultation
+  L routes.md 87 printed-book/consultation
+  L routes.md 110 app/operations/
+  L routes.md 113 public/guides/
+  L routes.md 122 robots.ts
+  L routes.md 130 proxyClientMaxBodySize.md
+  L routes.md 138 sitemap.ts
+  L routes.md 138 sitemap.ts
+  L workshop-inputs.md 37 lib/workshop/model/
+  L workshop-inputs.md 37 tests/workshop/math/
+  L workshop-inputs.md 37 lib/workshop/state/
+  L workshop-inputs.md 37 components/workshop/
+  L workshop-inputs.md 37 lib/workshop/clips/
+  L workshop-inputs.md 37 components/workshop/media/
+absent, NOT labelled in line/heading/paragraph lead: 6
+  U approval-scopes.md 169 release.json :: | Evidence location | `reviews/<task>.md`, test logs, hashes | ledger entry, approval packet, `release.json` G6 record |
+  U routes.md 29 outils/frais-placement :: 2. The slug segments are joined with `/`, and `keyFor(lang, slug)` looks them up in the map. Multi-segment slugs work (for example `outils/frais-placement`).
+  U routes.md 45 middleware.ts :: `proxy.ts` is identical on all six branches (inventory §3). In Next 16.3.6 `proxy.ts` replaces `middleware.ts`; see the bundled `node_modules/next/dist/docs/01-app/03-api
+  U routes.md 57 _next/static :: | Phase | `/<lang>/revision/*` | Other matched routes (pages, `/api/*`, `public/` outside `/assets/`) | `/assets/*`, `_next/static`, robots, sitemap |
+  U workshop-math.md 184 p/q :: - **Arithmetic.** Arithmetic must be exact. The normative choice is BigInt numerator and denominator pairs. D_t, P_j,t, G_t and S_t are finite decimals with denominator 1
+  U workshop-math.md 341 p/q :: 5. **Exact strings.** A finite decimal uses the shortest plain form: no exponent, no trailing zeros, no trailing point, and `"0"` for zero. Any other rational is written 
+exit=0

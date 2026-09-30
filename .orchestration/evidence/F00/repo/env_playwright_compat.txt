@@ -1,0 +1,12 @@
+$ /opt/pw-browsers/chromium-1194/chrome-linux/chrome --version
+Chromium 141.0.7390.37 
+exit=0
+18c9d769acf247b3cfc7e10e1d2c10f7c5decf5f
+$ npm pack playwright-core@1.63.0 (to read browsers.json)
+playwright-core-1.63.0.tgz
+exit=0
+chromium revision 1243 browserVersion 153.0.8010.12
+chromium-headless-shell revision 1243 browserVersion 153.0.8010.12
+$ which playwright-core version expects chromium 1194? (check 1.56.1, 1.57.0)
+1.56.1 [('chromium', '1194'), ('chromium-headless-shell', '1194'), ('chromium-tip-of-tree', '1371'), ('chromium-tip-of-tree-headless-shell', '1371')]
+1.57.0 [('chromium', '1200'), ('chromium-headless-shell', '1200'), ('chromium-tip-of-tree', '1380'), ('chromium-tip-of-tree-headless-shell', '1380')]

@@ -1,0 +1,146 @@
+{
+ "fixture_id": "WM20",
+ "title": "Current age unknown",
+ "contract_version": "1.0",
+ "covers": [
+  "WK01",
+  "WK06"
+ ],
+ "purpose": "Without current age there is no window; nothing is projected; core-missing selects W10.",
+ "input": {
+  "contract": "workshop-inputs",
+  "contract_version": "1.0",
+  "currency": "CAD",
+  "base_year": 2026,
+  "chapters": {
+   "life": {
+    "spending": {
+     "amount": {
+      "status": "estimated",
+      "value": 400000
+     },
+     "period": "monthly",
+     "tax_basis": "after_tax",
+     "price_basis": "today_dollars",
+     "unit": "household"
+    }
+   },
+   "income": {
+    "coverage": "all_known_sources_listed",
+    "sources": [
+     {
+      "id": "src-1",
+      "kind": "qpp_cpp",
+      "owner": "self",
+      "amount": {
+       "status": "estimated",
+       "value": 1000000
+      },
+      "period": "annual",
+      "tax_basis": "gross",
+      "price_basis": "today_dollars",
+      "start": {
+       "reference": "age",
+       "point": {
+        "status": "estimated",
+        "value": 65
+       }
+      },
+      "escalation_bp": {
+       "status": "zero",
+       "value": 0
+      },
+      "dependability": "scheduled"
+     }
+    ]
+   },
+   "savings": {},
+   "timing": {
+    "current_age": {
+     "status": "unknown"
+    },
+    "retirement_age": {
+     "status": "estimated",
+     "value": 65
+    },
+    "planning_horizon_years": {
+     "status": "estimated",
+     "value": 25
+    },
+    "inflation_bp": {
+     "status": "estimated",
+     "value": 200
+    }
+   }
+  }
+ },
+ "expected": {
+  "contract_version": "1.0",
+  "assumptions_echo": {
+   "base_year": 2026,
+   "inflation_bp": 200,
+   "planning_horizon_years": 25,
+   "capital_illustration_return_bp": null,
+   "year_index": "t=0 is calendar year base_year; annual totals per calendar year",
+   "rounding": "exact rational arithmetic; half-even to whole cents at display only"
+  },
+  "window": null,
+  "completeness": {
+   "state": "incomplete_unknown_timing",
+   "reasons": [
+    "current_age_unknown",
+    "gross:src-1",
+    "start_unresolvable:src-1"
+   ]
+  },
+  "years": [],
+  "flags": [
+   "gross_net_mismatch",
+   "incomplete_income"
+  ],
+  "savings_summary": {
+   "accessible_categories_with_positive_value": [],
+   "home_or_business_positive_value": false,
+   "excluded_from_spendable": [],
+   "pension_value_kept_separate": false,
+   "totals_computed": false
+  },
+  "capital_illustration": {
+   "feature_flag": "off",
+   "displayed": false,
+   "state": "disabled_by_flag",
+   "reference_if_enabled": {
+    "r_bp": null,
+    "computable": false,
+    "not_computable_reasons": [
+     "return_assumption_absent",
+     "state_not_complete"
+    ],
+    "display_eligible_if_enabled": false,
+    "ineligible_reasons": [
+     "return_assumption_absent",
+     "state_not_complete"
+    ],
+    "C_R_cents": null,
+    "C_R_exact": null,
+    "valued_at": null,
+    "flow_timing": "end_of_year"
+   }
+  },
+  "clip": {
+   "predicates": {
+    "C": true,
+    "M": true,
+    "X": true,
+    "H": false,
+    "F": false
+   },
+   "selected": "W10",
+   "selection_reason": "core_inputs_missing"
+  }
+ },
+ "independent_checks": [
+  "propagation of unknown age"
+ ],
+ "tolerance": "exact integer cents after half-even rounding; exact strings must match exactly; no numeric tolerance"
+}

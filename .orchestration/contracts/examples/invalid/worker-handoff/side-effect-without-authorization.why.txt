@@ -1,0 +1,4 @@
+rule: WH-EXT-1
+breaks: A side effect must name the gate authorization that allowed it.
+expect_keyword: required
+expect_path: /external_actions_taken/0

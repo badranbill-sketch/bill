@@ -1,0 +1,6 @@
+rule: UNITS - money is an integer number of cents
+layer: schema
+expect_keyword: type
+expect_path: /chapters/life/spending/amount/value
+plain_message_en_draft: Enter an amount in dollars and cents.
+explanation: 450000.5 cents is a fraction of a cent. (JSON Schema treats 450000.0 as an integer; the runtime must also require Number.isSafeInteger after parsing.)

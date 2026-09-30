@@ -1,0 +1,4 @@
+rule: OM-MOD-2
+breaks: Zoom is forbidden as the online meeting service (D-008).
+expect_keyword: not
+expect_path: /offers/intro-15/online_service/value

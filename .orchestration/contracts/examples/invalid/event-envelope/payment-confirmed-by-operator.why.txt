@@ -1,0 +1,5 @@
+rule: EV-AUTH-PAY book.payment_confirmed only from provider.stripe_webhook (verified signature)
+expect_path: source
+expect_keyword: enum
+
+An operator (for example reading an email) cannot declare payment. Only the verified Stripe webhook can (AM-PAY-1).

@@ -1,0 +1,6 @@
+# F00-SPOT-06_dockerd  2026-09-30T02:52:01Z  cwd=/home/user/bill
+$ ps -p 3134 -o pid,comm,etime; docker images --format '{{.Repository}}:{{.Tag}}'
+  PID COMMAND             ELAPSED
+ 3134 dockerd               52:52
+hello-world:latest
+exit_code=0

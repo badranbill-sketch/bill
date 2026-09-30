@@ -1,0 +1,4 @@
+rule: AM-APPR-5
+breaks: A draft carries no approval; approvals bind a finished version.
+expect_keyword: type
+expect_path: /assets/1/approval

@@ -1,0 +1,4 @@
+rule: OM-MOD-3
+breaks: Online may be offered only after G0 records the online meeting service.
+expect_keyword: const
+expect_path: /offers/book-bundle/included_consultation/online_service/status

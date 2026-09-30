@@ -1,0 +1,5 @@
+rule: EV-ID-3 idempotency_key is ik1_ + 64 lowercase hex; an email address (or any '@') is impossible
+expect_path: idempotency_key
+expect_keyword: pattern
+
+The key embeds a (fictional) email address. Keys are HMACs over internal IDs, never raw personal data (04 §3).

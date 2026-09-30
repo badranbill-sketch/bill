@@ -1,0 +1,2091 @@
+{
+  "meta": {
+    "source": "operator handoff v1.0 (2026-09-29), transcribed 2026-09-30",
+    "source_files": {
+      "01_MASTER_PLAN.md": "cb8eb0664199c631a0bbee02762fbff1a0c2a622ed84cf794789dacab7ab1d78",
+      "03_AGENT_PROMPTS.md": "e756e2b928787ba21b9715c8ce4f5f557d49e5d35a3dc91f357928be0ec05fe0",
+      "04_CONTRACTS_AND_TESTS.md": "1fcda074d888e5eb3bbcf737b3887e4b00989d1d04da8dea247407a8e8f76a7b",
+      "05_CONTENT_AND_ART_BRIEFS.md": "5f9888c6ce5fec2fa1d5039a292a4ad29875913bd29a5a2bfcd82540ffe63da8",
+      "06_HUMAN_GATES_AND_RUNBOOK.md": "ec47ca74756f7cbbf857b04e44bb4114609dde8130c31c8d6c2000fe5b33848f",
+      "07_SOURCE_REGISTER.md": "f0dc42d6beb7f05a11b298e44082cfab951b0941b7ac889099153e063c808167",
+      "TASK_LEDGER.md": "2f9f175c37ac50c6f4caa6567be94fed1f6d3dca05e5cba6d88f1d1dbb34420f"
+    },
+    "generator": ".orchestration/scripts/build_graph.py",
+    "states": [
+      "planned",
+      "ready",
+      "running",
+      "submitted",
+      "verifying",
+      "accepted",
+      "needs_changes",
+      "blocked_human",
+      "blocked_technical",
+      "cancelled_by_owner"
+    ],
+    "task_count": 63,
+    "check_count": 62,
+    "topological_order": [
+      "F00",
+      "F01",
+      "F02",
+      "F03",
+      "D00",
+      "D01",
+      "D02",
+      "P00",
+      "P01",
+      "P02",
+      "P03",
+      "P04",
+      "P05",
+      "W00",
+      "W01",
+      "W02",
+      "C00",
+      "C02",
+      "W03",
+      "W04",
+      "C01",
+      "C03",
+      "C04",
+      "C05",
+      "C06",
+      "C07",
+      "C08",
+      "C09",
+      "H00",
+      "C10",
+      "C11",
+      "U00",
+      "U01",
+      "U02",
+      "U03",
+      "U04",
+      "U05",
+      "N00",
+      "N01",
+      "N02",
+      "N03",
+      "N04",
+      "N05",
+      "N06",
+      "N07",
+      "N08",
+      "N09",
+      "N10",
+      "R00",
+      "R01",
+      "L00",
+      "L01",
+      "L02",
+      "L03",
+      "L04",
+      "L05",
+      "L06",
+      "R02",
+      "O00",
+      "O01",
+      "H01",
+      "O02"
+    ],
+    "longest_dependency_chain": [
+      "F00",
+      "F01",
+      "F02",
+      "F03",
+      "P00",
+      "P03",
+      "N00",
+      "N01",
+      "N03",
+      "L00",
+      "L01",
+      "L02",
+      "L04",
+      "L05",
+      "L06",
+      "O00",
+      "O01",
+      "O02"
+    ],
+    "catalog_checks_not_referenced_by_any_task": [],
+    "accepted_source_commit": "77de3bd51a8c9cb73aec0b32d27ca0cacb6285cd",
+    "accepted_source_commit_note": "origin/main at copy time; integration baseline is selected by F03 and recorded here on acceptance",
+    "state_writer": "A0 only",
+    "concurrency_cap": "1 director + <=3 active workers (verifier included)",
+    "spend_authorization": {
+      "purchased_api": 0,
+      "ads": 0,
+      "subscriptions": 0,
+      "note": "zero until G2 records a cap"
+    },
+    "amendments": [
+      {
+        "at": "2026-09-30",
+        "by": "A0",
+        "change": "F02a added by split of F02; W00 and C02 depend on it (D-072)"
+      }
+    ]
+  },
+  "tasks": [
+    {
+      "id": "F00",
+      "title": "Verify repository, branches, existing assets and available tools",
+      "owner": "A0",
+      "reviewer": "A6",
+      "phase": "foundation",
+      "acceptance_stage": "design_or_audit",
+      "dependencies": [],
+      "required_gates": [],
+      "deliverables": [
+        ".orchestration/inventory.md"
+      ],
+      "acceptance": "Identify exact file/commit provenance and missing assets. Preserve current work; report actual tools and account visibility, not guessed access.",
+      "check_refs": [
+        "BASE01"
+      ],
+      "max_attempts": 3,
+      "state": "accepted",
+      "attempts": 3,
+      "accepted_at_stage": "design_or_audit",
+      "evidence": [
+        ".orchestration/inventory.md",
+        ".orchestration/handoffs/F00.json",
+        ".orchestration/reviews/F00.md",
+        ".orchestration/reviews/F00-attempt2.md",
+        ".orchestration/reviews/F00-attempt3.md",
+        ".orchestration/evidence/F00/"
+      ],
+      "history": [
+        {
+          "at": "2026-09-30",
+          "from": "planned",
+          "to": "running",
+          "by": "A0",
+          "note": "no deps, no gates; dispatched as workflow f00-inventory"
+        },
+        {
+          "at": "2026-09-30",
+          "from": "running",
+          "to": "accepted",
+          "by": "A0",
+          "note": "A6 attempt 3 verdict pass (3 open P3: connector table omits Claude_Docs/Claude_Code_Remote; Drive statement scoped to title searches; residual third-party identifier since redacted by A0). BASE01 evidence recorded; check status set per target."
+        }
+      ]
+    },
+    {
+      "id": "F01",
+      "title": "Consolidate decisions, human blockers and real cost assumptions",
+      "owner": "A0",
+      "reviewer": "A6",
+      "phase": "foundation",
+      "acceptance_stage": "design_or_audit",
+      "dependencies": [
+        "F00"
+      ],
+      "required_gates": [],
+      "deliverables": [
+        ".orchestration/decisions.md",
+        ".orchestration/blockers.md",
+        ".orchestration/costs.json"
+      ],
+      "acceptance": "Use final 15-minute/30-minute offers. Batch unresolved non-secret inputs once; no purchases or stack drift.",
+      "check_refs": [
+        "artifact/design review"
+      ],
+      "max_attempts": 3,
+      "state": "accepted",
+      "attempts": 2,
+      "accepted_at_stage": "design_or_audit",
+      "evidence": [
+        ".orchestration/decisions.md",
+        ".orchestration/blockers.md",
+        ".orchestration/costs.json",
+        ".orchestration/reviews/F01.md",
+        ".orchestration/reviews/F01-attempt2.md"
+      ],
+      "history": [
+        {
+          "at": "2026-09-30",
+          "from": "planned",
+          "to": "running",
+          "by": "A0",
+          "note": "dep F00 accepted; no gates"
+        },
+        {
+          "at": "2026-09-30",
+          "from": "running",
+          "to": "accepted",
+          "by": "A0",
+          "note": "A6 attempt 2 pass; 5 P3 applied by A0 as a post-acceptance patch to blockers.md, reviewed by A6 within F02a"
+        }
+      ]
+    },
+    {
+      "id": "F02",
+      "title": "Freeze interfaces, privacy boundary, math units and offer matrix",
+      "owner": "A0",
+      "reviewer": "A6",
+      "phase": "foundation",
+      "acceptance_stage": "design_or_audit",
+      "dependencies": [
+        "F01"
+      ],
+      "required_gates": [],
+      "deliverables": [
+        ".orchestration/contracts/"
+      ],
+      "acceptance": "Publish versioned input/event/offer contracts before parallel build. Document approval scopes and no-financial-data marketing boundary. Provide schema examples/negative examples and independent design review; runtime checks are owned by downstream tasks.",
+      "check_refs": [
+        "artifact/design review"
+      ],
+      "max_attempts": 3,
+      "state": "accepted",
+      "attempts": 3,
+      "accepted_at_stage": "design_or_audit",
+      "evidence": [
+        ".orchestration/contracts/",
+        ".orchestration/handoffs/F02.json",
+        ".orchestration/evidence/F02/",
+        ".orchestration/reviews/F02-design*.md",
+        ".orchestration/reviews/F02-math*.md"
+      ],
+      "history": [
+        {
+          "at": "2026-09-30",
+          "from": "running",
+          "to": "accepted",
+          "by": "A0",
+          "note": "Max attempts reached. Design review pass (P3 only). Math review: formulas and fixtures correct, but 2 P2 conformance-coverage gaps (today-dollar pre-start factor; joint-owner age) — not wrong math. Per 01 §5 A0 splits once: F02 accepted at design_or_audit for all contracts; the two coverage gaps move to split task F02a, which W00 and C02 now depend on (decision D-072)."
+        }
+      ]
+    },
+    {
+      "id": "F02a",
+      "title": "Pin today-dollar pre-start factor and joint-owner age in workshop conformance fixtures (split from F02)",
+      "owner": "A2",
+      "reviewer": "A6",
+      "phase": "foundation",
+      "acceptance_stage": "design_or_audit",
+      "dependencies": [
+        "F02"
+      ],
+      "required_gates": [],
+      "deliverables": [
+        ".orchestration/contracts/fixtures/workshop/"
+      ],
+      "acceptance": "Add fixtures so that a runtime using (1+q_j)^{s_j} instead of (1+i)^{s_j} for today-dollar sources, and a runtime resolving joint sources against the partner age, each fail at least one fixture; expected values computed exactly; A6 mutation evidence. Contract semantics unchanged (version 1.0 stays; fixtures are additive).",
+      "check_refs": [
+        "WK02"
+      ],
+      "max_attempts": 3,
+      "state": "running",
+      "attempts": 1,
+      "accepted_at_stage": null,
+      "evidence": [],
+      "split_from": "F02",
+      "history": [
+        {
+          "at": "2026-09-30",
+          "from": null,
+          "to": "running",
+          "by": "A0",
+          "note": "created by split of F02 (decision D-072)"
+        }
+      ]
+    },
+    {
+      "id": "F03",
+      "title": "Establish integration baseline and reproducible check suite",
+      "owner": "A3",
+      "reviewer": "A6",
+      "phase": "foundation",
+      "acceptance_stage": "local_implementation_tested",
+      "dependencies": [
+        "F00",
+        "F02"
+      ],
+      "required_gates": [],
+      "deliverables": [
+        ".orchestration/baseline.md",
+        "tests/baseline/"
+      ],
+      "acceptance": "Select baseline by explicit branch reconciliation. Run existing checks; report pre-existing failures without weakening release guards.",
+      "check_refs": [
+        "BASE01",
+        "BASE02"
+      ],
+      "max_attempts": 3,
+      "state": "running",
+      "attempts": 1,
+      "accepted_at_stage": null,
+      "evidence": [],
+      "history": [
+        {
+          "at": "2026-09-30",
+          "from": "planned",
+          "to": "running",
+          "by": "A0",
+          "note": "deps F00, F02 accepted"
+        }
+      ]
+    },
+    {
+      "id": "D00",
+      "title": "Create and verify one branded workshop design slice",
+      "owner": "A1",
+      "reviewer": "A6",
+      "phase": "pilot",
+      "acceptance_stage": "design_or_audit",
+      "dependencies": [
+        "F02",
+        "F03"
+      ],
+      "required_gates": [],
+      "deliverables": [
+        "components/workshop/design-slice/",
+        "docs/marketing/workshop-layout.md"
+      ],
+      "acceptance": "Real desktop/mobile render using approved palette and one custom illustration. Bill-left/tool-right desktop becomes a readable mobile stack.",
+      "check_refs": [
+        "UX01",
+        "UX03"
+      ],
+      "max_attempts": 3,
+      "state": "planned",
+      "attempts": 0,
+      "accepted_at_stage": null,
+      "evidence": [],
+      "history": []
+    },
+    {
+      "id": "D01",
+      "title": "Create eight professional ink assets and manifests",
+      "owner": "A1",
+      "reviewer": "A6",
+      "phase": "pilot",
+      "acceptance_stage": "actual_asset_produced",
+      "dependencies": [
+        "D00"
+      ],
+      "required_gates": [],
+      "deliverables": [
+        "components/ink/workshop/",
+        "public/assets/workshop-ink/",
+        "docs/marketing/art-manifest.json"
+      ],
+      "acceptance": "Eight actual sources and contextual renders, not only generation prompts. Rights, alt text, crops, checksums and no misleading artist attribution.",
+      "check_refs": [
+        "UX03",
+        "CNT01"
+      ],
+      "max_attempts": 3,
+      "state": "planned",
+      "attempts": 0,
+      "accepted_at_stage": null,
+      "evidence": [],
+      "history": []
+    },
+    {
+      "id": "D02",
+      "title": "Apply reusable visual and accessibility rules to landing/deck assets",
+      "owner": "A1",
+      "reviewer": "A6",
+      "phase": "pilot",
+      "acceptance_stage": "design_or_audit",
+      "dependencies": [
+        "D00"
+      ],
+      "required_gates": [],
+      "deliverables": [
+        "docs/marketing/design-system.md",
+        "components/marketing/"
+      ],
+      "acceptance": "No forked brand or duplicate design system. Forms, states, reduced motion and readable chart labels match the site.",
+      "check_refs": [
+        "UX01",
+        "BASE02"
+      ],
+      "max_attempts": 3,
+      "state": "planned",
+      "attempts": 0,
+      "accepted_at_stage": null,
+      "evidence": [],
+      "history": []
+    },
+    {
+      "id": "P00",
+      "title": "Prepare selected deployment profile and environment boundaries",
+      "owner": "A3",
+      "reviewer": "A6",
+      "phase": "pilot",
+      "acceptance_stage": "design_or_audit",
+      "dependencies": [
+        "F01",
+        "F03"
+      ],
+      "required_gates": [],
+      "deliverables": [
+        "infra/deployment/",
+        "docs/ops/environments.md"
+      ],
+      "acceptance": "One selected production hosting target; safe previews. No DNS/MX/firewall mutation without authorization.",
+      "check_refs": [
+        "AUTH02",
+        "AUTH04"
+      ],
+      "max_attempts": 3,
+      "state": "planned",
+      "attempts": 0,
+      "accepted_at_stage": null,
+      "evidence": [],
+      "history": []
+    },
+    {
+      "id": "P01",
+      "title": "Implement minimal Supabase schema, grants and RLS",
+      "owner": "A3",
+      "reviewer": "A6",
+      "phase": "pilot",
+      "acceptance_stage": "local_implementation_tested",
+      "dependencies": [
+        "F02",
+        "F03"
+      ],
+      "required_gates": [],
+      "deliverables": [
+        "supabase/migrations/",
+        "tests/security/"
+      ],
+      "acceptance": "No financial-profile tables or anonymous access to operating records. Consent/events/jobs/orders support unique keys and scoped server operations.",
+      "check_refs": [
+        "AUTH01",
+        "AUTH02"
+      ],
+      "max_attempts": 3,
+      "state": "planned",
+      "attempts": 0,
+      "accepted_at_stage": null,
+      "evidence": [],
+      "history": []
+    },
+    {
+      "id": "P02",
+      "title": "Build validated server ingress and durable jobs/outbox",
+      "owner": "A4",
+      "reviewer": "A6",
+      "phase": "pilot",
+      "acceptance_stage": "local_implementation_tested",
+      "dependencies": [
+        "P01",
+        "F03"
+      ],
+      "required_gates": [],
+      "deliverables": [
+        "lib/marketing/",
+        "app/api/marketing/",
+        "app/api/internal/automation/"
+      ],
+      "acceptance": "Atomic accepted record plus job; truthful success/failure. Stable IDs, leases, retry/expiry and uncertain-outcome reconciliation.",
+      "check_refs": [
+        "AUTH03",
+        "AUTO02",
+        "OPS01"
+      ],
+      "max_attempts": 3,
+      "state": "planned",
+      "attempts": 0,
+      "accepted_at_stage": null,
+      "evidence": [],
+      "history": []
+    },
+    {
+      "id": "P03",
+      "title": "Prepare self-hosted pinned n8n/SQLite Docker stack",
+      "owner": "A3",
+      "reviewer": "A6",
+      "phase": "pilot",
+      "acceptance_stage": "local_implementation_tested",
+      "dependencies": [
+        "P00"
+      ],
+      "required_gates": [],
+      "deliverables": [
+        "infra/n8n/compose.yaml",
+        "infra/n8n/.env.example",
+        "infra/n8n/reverse-proxy/"
+      ],
+      "acceptance": "Official verified image, SQLite volume, loopback, owner bootstrap and explicit key. No latest tag, broad editor access or extra database for n8n.",
+      "check_refs": [
+        "INF01",
+        "INF02",
+        "INF07"
+      ],
+      "max_attempts": 3,
+      "state": "planned",
+      "attempts": 0,
+      "accepted_at_stage": null,
+      "evidence": [],
+      "history": []
+    },
+    {
+      "id": "P04",
+      "title": "Implement and prove backup/update/isolated restore routines",
+      "owner": "A3",
+      "reviewer": "A6",
+      "phase": "pilot",
+      "acceptance_stage": "local_implementation_tested",
+      "dependencies": [
+        "P03",
+        "P01"
+      ],
+      "required_gates": [],
+      "deliverables": [
+        "infra/n8n/scripts/",
+        "infra/backups/",
+        "docs/ops/recovery.md"
+      ],
+      "acceptance": "Fourteen successful daily snapshots, key separately and encrypted off-host copy. Restore/update drill cannot send real messages or overwrite production silently.",
+      "check_refs": [
+        "INF03",
+        "INF04",
+        "INF05",
+        "INF06"
+      ],
+      "max_attempts": 3,
+      "state": "planned",
+      "attempts": 0,
+      "accepted_at_stage": null,
+      "evidence": [],
+      "history": []
+    },
+    {
+      "id": "P05",
+      "title": "Connect approved provider credentials and verify actual features",
+      "owner": "A4",
+      "reviewer": "A6",
+      "phase": "pilot",
+      "acceptance_stage": "provider_or_human_tested",
+      "dependencies": [
+        "P00",
+        "F01"
+      ],
+      "required_gates": [
+        "G0",
+        "G2"
+      ],
+      "deliverables": [
+        "docs/ops/provider-capabilities.md",
+        ".orchestration/provider-evidence/"
+      ],
+      "acceptance": "Confirm Bill tenant/calendar, sender, payment mode and permission scopes. Do not promise unavailable attendance/booking/LinkedIn features.",
+      "check_refs": [
+        "AUTH04",
+        "EV03",
+        "BOOK01"
+      ],
+      "max_attempts": 3,
+      "state": "planned",
+      "attempts": 0,
+      "accepted_at_stage": null,
+      "evidence": [],
+      "history": []
+    },
+    {
+      "id": "W00",
+      "title": "Implement independently tested educational calculation core",
+      "owner": "A2",
+      "reviewer": "A6",
+      "phase": "pilot",
+      "acceptance_stage": "local_implementation_tested",
+      "dependencies": [
+        "F02",
+        "F03",
+        "F02a"
+      ],
+      "required_gates": [],
+      "deliverables": [
+        "lib/workshop/model/",
+        "tests/workshop/math/"
+      ],
+      "acceptance": "Explicit timing/tax/price basis; missing values not zero. Capital illustration disabled unless its limitations and validation meet contract.",
+      "check_refs": [
+        "WK01",
+        "WK02",
+        "WK03"
+      ],
+      "max_attempts": 3,
+      "state": "planned",
+      "attempts": 0,
+      "accepted_at_stage": null,
+      "evidence": [],
+      "history": [
+        {
+          "at": "2026-09-30",
+          "by": "A0",
+          "note": "dependency F02a added (split of F02, D-072)"
+        }
+      ]
+    },
+    {
+      "id": "W01",
+      "title": "Build four-chapter custom workshop state and forms",
+      "owner": "A2",
+      "reviewer": "A6",
+      "phase": "pilot",
+      "acceptance_stage": "local_implementation_tested",
+      "dependencies": [
+        "W00",
+        "D00"
+      ],
+      "required_gates": [],
+      "deliverables": [
+        "components/workshop/",
+        "lib/workshop/state/"
+      ],
+      "acceptance": "Back/edit/skip/reset work with usable mobile layout. No LMS service, document uploads or mandatory financial disclosure.",
+      "check_refs": [
+        "WK01",
+        "WK05",
+        "UX01"
+      ],
+      "max_attempts": 3,
+      "state": "planned",
+      "attempts": 0,
+      "accepted_at_stage": null,
+      "evidence": [],
+      "history": []
+    },
+    {
+      "id": "W02",
+      "title": "Build accessible live charts and local milestone export",
+      "owner": "A2",
+      "reviewer": "A6",
+      "phase": "pilot",
+      "acceptance_stage": "local_implementation_tested",
+      "dependencies": [
+        "W01"
+      ],
+      "required_gates": [],
+      "deliverables": [
+        "components/workshop/summary/",
+        "lib/workshop/export/"
+      ],
+      "acceptance": "Useful summary available without email/booking. Local export includes assumptions/incompleteness and accessible values.",
+      "check_refs": [
+        "WK02",
+        "WK03",
+        "WK07"
+      ],
+      "max_attempts": 3,
+      "state": "planned",
+      "attempts": 0,
+      "accepted_at_stage": null,
+      "evidence": [],
+      "history": []
+    },
+    {
+      "id": "W03",
+      "title": "Implement prerecorded clip rules and honest media states",
+      "owner": "A2",
+      "reviewer": "A6",
+      "phase": "pilot",
+      "acceptance_stage": "local_implementation_tested",
+      "dependencies": [
+        "W01",
+        "C02"
+      ],
+      "required_gates": [],
+      "deliverables": [
+        "lib/workshop/clips/",
+        "components/workshop/media/"
+      ],
+      "acceptance": "All branch combinations and fallback tested. Automated selection disclosed; no fake recording/personal-review claim. Local rule tests may use labelled test media. Real recordings and final media acceptance occur at C10/L02; no public placeholder release.",
+      "check_refs": [
+        "WK06"
+      ],
+      "max_attempts": 3,
+      "state": "planned",
+      "attempts": 0,
+      "accepted_at_stage": null,
+      "evidence": [],
+      "history": []
+    },
+    {
+      "id": "W04",
+      "title": "Verify full workshop privacy and interaction boundary",
+      "owner": "A2",
+      "reviewer": "A6",
+      "phase": "pilot",
+      "acceptance_stage": "local_implementation_tested",
+      "dependencies": [
+        "W02",
+        "W03",
+        "D01"
+      ],
+      "required_gates": [],
+      "deliverables": [
+        "tests/workshop/browser/",
+        "docs/marketing/workshop-evidence.md"
+      ],
+      "acceptance": "Synthetic distinctive financial inputs appear in no outbound payload. No nonessential tracking leaks from the calculator routes.",
+      "check_refs": [
+        "WK04",
+        "WK05",
+        "WK06",
+        "WK07",
+        "UX01"
+      ],
+      "max_attempts": 3,
+      "state": "planned",
+      "attempts": 0,
+      "accepted_at_stage": null,
+      "evidence": [],
+      "history": []
+    },
+    {
+      "id": "C00",
+      "title": "Obtain authentic Bill voice reference and factual claim ledger",
+      "owner": "A5",
+      "reviewer": "A6",
+      "phase": "pilot",
+      "acceptance_stage": "draft_or_review_package",
+      "dependencies": [
+        "F01"
+      ],
+      "required_gates": [],
+      "deliverables": [
+        "docs/content/bill-voice.md",
+        "docs/content/claims.json"
+      ],
+      "acceptance": "Actual approved source/voice material, no invented autobiography or clients. Unknown credentials/claims remain pending rather than becoming copy facts.",
+      "check_refs": [
+        "CNT02",
+        "CNT04"
+      ],
+      "max_attempts": 3,
+      "state": "planned",
+      "attempts": 0,
+      "accepted_at_stage": null,
+      "evidence": [],
+      "history": []
+    },
+    {
+      "id": "C01",
+      "title": "Write 18 main capsules and 18 companion briefs in FR/EN",
+      "owner": "A5",
+      "reviewer": "A6",
+      "phase": "complete",
+      "acceptance_stage": "draft_or_review_package",
+      "dependencies": [
+        "C00",
+        "F02"
+      ],
+      "required_gates": [],
+      "deliverables": [
+        "content/marketing/capsules/"
+      ],
+      "acceptance": "Recordable scripts, visual cues, CTA, duration estimate and source/review fields. Different useful angles; no repetitive artificial cliffhangers.",
+      "check_refs": [
+        "CNT01",
+        "CNT02",
+        "CNT03",
+        "CNT04"
+      ],
+      "max_attempts": 3,
+      "state": "planned",
+      "attempts": 0,
+      "accepted_at_stage": null,
+      "evidence": [],
+      "history": []
+    },
+    {
+      "id": "C02",
+      "title": "Write all 12 workshop clips and exact interface copy",
+      "owner": "A5",
+      "reviewer": "A6",
+      "phase": "pilot",
+      "acceptance_stage": "draft_or_review_package",
+      "dependencies": [
+        "C00",
+        "W00",
+        "F02a"
+      ],
+      "required_gates": [],
+      "deliverables": [
+        "content/marketing/workshop-clips/"
+      ],
+      "acceptance": "Scripts match final units/inputs/privacy and branch meanings. Approved statement of 15-minute next step and no individualized review fiction.",
+      "check_refs": [
+        "CNT01",
+        "CNT02",
+        "CNT03",
+        "CNT04"
+      ],
+      "max_attempts": 3,
+      "state": "planned",
+      "attempts": 0,
+      "accepted_at_stage": null,
+      "evidence": [],
+      "history": [
+        {
+          "at": "2026-09-30",
+          "by": "A0",
+          "note": "dependency F02a added (split of F02, D-072)"
+        }
+      ]
+    },
+    {
+      "id": "C03",
+      "title": "Produce 10 fictional Crossroads cases and complete host/deck kit",
+      "owner": "A5",
+      "reviewer": "A6",
+      "phase": "pilot",
+      "acceptance_stage": "draft_or_review_package",
+      "dependencies": [
+        "C00",
+        "F02"
+      ],
+      "required_gates": [],
+      "deliverables": [
+        "content/marketing/crossroads/"
+      ],
+      "acceptance": "Case facts/options/answers/explanations are complete and fair. Host, moderator, scorecard, Q&A and outage/recording notices included.",
+      "check_refs": [
+        "EV02",
+        "CNT02",
+        "CNT03",
+        "CNT04"
+      ],
+      "max_attempts": 3,
+      "state": "planned",
+      "attempts": 0,
+      "accepted_at_stage": null,
+      "evidence": [],
+      "history": []
+    },
+    {
+      "id": "C04",
+      "title": "Write first two complete article/LinkedIn packages",
+      "owner": "A5",
+      "reviewer": "A6",
+      "phase": "pilot",
+      "acceptance_stage": "draft_or_review_package",
+      "dependencies": [
+        "C00",
+        "F02"
+      ],
+      "required_gates": [],
+      "deliverables": [
+        "content/marketing/articles/first-release/"
+      ],
+      "acceptance": "Useful sourced articles with real attribution and metadata. No automatic publication or fabricated approval.",
+      "check_refs": [
+        "CNT02",
+        "CNT03",
+        "CNT04"
+      ],
+      "max_attempts": 3,
+      "state": "planned",
+      "attempts": 0,
+      "accepted_at_stage": null,
+      "evidence": [],
+      "history": []
+    },
+    {
+      "id": "C05",
+      "title": "Finish remaining eleven article packages and freshness queue",
+      "owner": "A5",
+      "reviewer": "A6",
+      "phase": "complete",
+      "acceptance_stage": "draft_or_review_package",
+      "dependencies": [
+        "C04"
+      ],
+      "required_gates": [],
+      "deliverables": [
+        "content/marketing/articles/quarter-bank/"
+      ],
+      "acceptance": "Thirteen total core packages with review-due dates and separate locales. Recheck date-sensitive facts before actual publication.",
+      "check_refs": [
+        "CNT01",
+        "CNT03",
+        "CNT04"
+      ],
+      "max_attempts": 3,
+      "state": "planned",
+      "attempts": 0,
+      "accepted_at_stage": null,
+      "evidence": [],
+      "history": []
+    },
+    {
+      "id": "C06",
+      "title": "Write 16 email templates and all offer/error/confirmation copy",
+      "owner": "A5",
+      "reviewer": "A6",
+      "phase": "pilot",
+      "acceptance_stage": "draft_or_review_package",
+      "dependencies": [
+        "F02",
+        "C00"
+      ],
+      "required_gates": [],
+      "deliverables": [
+        "content/marketing/emails/",
+        "content/marketing/offers/"
+      ],
+      "acceptance": "Purpose/consent/timing/suppression fields and FR/EN versions. No one-hour book promise or unapproved advice guarantee.",
+      "check_refs": [
+        "CNT01",
+        "MAIL02",
+        "CNT04"
+      ],
+      "max_attempts": 3,
+      "state": "planned",
+      "attempts": 0,
+      "accepted_at_stage": null,
+      "evidence": [],
+      "history": []
+    },
+    {
+      "id": "C07",
+      "title": "Create six static ad concepts and three retargeting edit plans",
+      "owner": "A5",
+      "reviewer": "A6",
+      "phase": "complete",
+      "acceptance_stage": "draft_or_review_package",
+      "dependencies": [
+        "D00",
+        "C01"
+      ],
+      "required_gates": [],
+      "deliverables": [
+        "content/marketing/ads/"
+      ],
+      "acceptance": "Two copy variants per concept, route/CTA mapping and live/prelaunch distinction. No fabricated performance or personal-attribute assertion.",
+      "check_refs": [
+        "CNT01",
+        "CNT02",
+        "ADS01"
+      ],
+      "max_attempts": 3,
+      "state": "planned",
+      "attempts": 0,
+      "accepted_at_stage": null,
+      "evidence": [],
+      "history": []
+    },
+    {
+      "id": "C08",
+      "title": "Build exact 90-day calendar and asset-status manifest",
+      "owner": "A5",
+      "reviewer": "A6",
+      "phase": "complete",
+      "acceptance_stage": "draft_or_review_package",
+      "dependencies": [
+        "C01",
+        "C03",
+        "C04"
+      ],
+      "required_gates": [],
+      "deliverables": [
+        "content/marketing/calendar.json",
+        "content/marketing/asset-manifest.json"
+      ],
+      "acceptance": "26 posts, 13 article packages, ten reserve companions. Actual event dates/language and hashes govern publication.",
+      "check_refs": [
+        "CNT01",
+        "CNT06"
+      ],
+      "max_attempts": 3,
+      "state": "planned",
+      "attempts": 0,
+      "accepted_at_stage": null,
+      "evidence": [],
+      "history": []
+    },
+    {
+      "id": "C09",
+      "title": "Revise book offer/QR/print and fulfilment copy for 30-minute benefit",
+      "owner": "A5",
+      "reviewer": "A6",
+      "phase": "pilot",
+      "acceptance_stage": "draft_or_review_package",
+      "dependencies": [
+        "C00",
+        "F02"
+      ],
+      "required_gates": [],
+      "deliverables": [
+        "docs/marketing/book-release/"
+      ],
+      "acceptance": "Preserve real book, change only approved necessary material. Review markers removed only after real approval; actual print proof/terms required.",
+      "check_refs": [
+        "CNT02",
+        "CNT03",
+        "PAY03"
+      ],
+      "max_attempts": 3,
+      "state": "planned",
+      "attempts": 0,
+      "accepted_at_stage": null,
+      "evidence": [],
+      "history": []
+    },
+    {
+      "id": "C10",
+      "title": "Record/edit approved workshop clips and first six social capsules",
+      "owner": "A5",
+      "reviewer": "A6",
+      "phase": "pilot",
+      "acceptance_stage": "actual_asset_produced",
+      "dependencies": [
+        "C01",
+        "C02",
+        "C03",
+        "H00"
+      ],
+      "required_gates": [
+        "G3",
+        "G4"
+      ],
+      "deliverables": [
+        "docs/marketing/media-manifest-first-release.json"
+      ],
+      "acceptance": "Actual Bill files with rights, transcripts/captions and approved versions. Missing recordings remain blocked, not synthetic substitutes.",
+      "check_refs": [
+        "MED01",
+        "MED02",
+        "CNT04"
+      ],
+      "max_attempts": 3,
+      "state": "planned",
+      "attempts": 0,
+      "accepted_at_stage": null,
+      "evidence": [],
+      "history": []
+    },
+    {
+      "id": "C11",
+      "title": "Finish remaining capsule recordings/edits and reserve cuts",
+      "owner": "A5",
+      "reviewer": "A6",
+      "phase": "complete",
+      "acceptance_stage": "actual_asset_produced",
+      "dependencies": [
+        "C10"
+      ],
+      "required_gates": [
+        "G3",
+        "G4"
+      ],
+      "deliverables": [
+        "docs/marketing/media-manifest-quarter.json"
+      ],
+      "acceptance": "Complete 18 original recordings/edits and companion deliverable bank in approved available languages. No unrecorded language labelled as complete.",
+      "check_refs": [
+        "MED01",
+        "CNT01",
+        "CNT04"
+      ],
+      "max_attempts": 3,
+      "state": "planned",
+      "attempts": 0,
+      "accepted_at_stage": null,
+      "evidence": [],
+      "history": []
+    },
+    {
+      "id": "U00",
+      "title": "Build guide access/optional fulfilment path",
+      "owner": "A2",
+      "reviewer": "A6",
+      "phase": "pilot",
+      "acceptance_stage": "local_implementation_tested",
+      "dependencies": [
+        "D02",
+        "F03",
+        "C09"
+      ],
+      "required_gates": [],
+      "deliverables": [
+        "components/marketing/guide/",
+        "lib/guide-delivery/"
+      ],
+      "acceptance": "Approved PDF accessible without compulsory nurture opt-in. Download fallback works when email is delayed.",
+      "check_refs": [
+        "MAIL02",
+        "BASE02",
+        "SEO01"
+      ],
+      "max_attempts": 3,
+      "state": "planned",
+      "attempts": 0,
+      "accepted_at_stage": null,
+      "evidence": [],
+      "history": []
+    },
+    {
+      "id": "U01",
+      "title": "Build Crossroads registration/join/replay surfaces",
+      "owner": "A2",
+      "reviewer": "A6",
+      "phase": "pilot",
+      "acceptance_stage": "local_implementation_tested",
+      "dependencies": [
+        "D02",
+        "F03",
+        "C03"
+      ],
+      "required_gates": [],
+      "deliverables": [
+        "components/marketing/crossroads/",
+        "lib/event-registration/"
+      ],
+      "acceptance": "Actual date/cap/timezone/individual link behavior and explicit unavailable replay states. No assumed Google Meet iframe or exposed guest email list.",
+      "check_refs": [
+        "EV01",
+        "EV04",
+        "UX01"
+      ],
+      "max_attempts": 3,
+      "state": "planned",
+      "attempts": 0,
+      "accepted_at_stage": null,
+      "evidence": [],
+      "history": []
+    },
+    {
+      "id": "U02",
+      "title": "Implement exact meeting offer and proven scheduler handoff",
+      "owner": "A2",
+      "reviewer": "A6",
+      "phase": "pilot",
+      "acceptance_stage": "local_implementation_tested",
+      "dependencies": [
+        "F03",
+        "C06"
+      ],
+      "required_gates": [],
+      "deliverables": [
+        "components/marketing/meeting/",
+        "lib/booking/"
+      ],
+      "acceptance": "15-minute intro and 30-minute book entitlement are distinct. Keep existing scheduler until chosen replacement proves conflicts/cancellation behavior.",
+      "check_refs": [
+        "BOOK01",
+        "BOOK02",
+        "CNT04"
+      ],
+      "max_attempts": 3,
+      "state": "planned",
+      "attempts": 0,
+      "accepted_at_stage": null,
+      "evidence": [],
+      "history": []
+    },
+    {
+      "id": "U03",
+      "title": "Build book hosted-checkout, order and entitlement endpoints",
+      "owner": "A4",
+      "reviewer": "A6",
+      "phase": "pilot",
+      "acceptance_stage": "local_implementation_tested",
+      "dependencies": [
+        "P02",
+        "C09"
+      ],
+      "required_gates": [],
+      "deliverables": [
+        "app/api/book/",
+        "lib/book/",
+        "components/marketing/book/"
+      ],
+      "acceptance": "Only verified paid state issues one right; signed webhook and caps. Human-approved shipping/refund/consultation terms before live sales.",
+      "check_refs": [
+        "PAY01",
+        "PAY02",
+        "PAY03"
+      ],
+      "max_attempts": 3,
+      "state": "planned",
+      "attempts": 0,
+      "accepted_at_stage": null,
+      "evidence": [],
+      "history": []
+    },
+    {
+      "id": "U04",
+      "title": "Build preferences, consent and unsubscribe surfaces",
+      "owner": "A4",
+      "reviewer": "A6",
+      "phase": "pilot",
+      "acceptance_stage": "local_implementation_tested",
+      "dependencies": [
+        "P02",
+        "C06"
+      ],
+      "required_gates": [],
+      "deliverables": [
+        "app/api/preferences/",
+        "components/marketing/preferences/"
+      ],
+      "acceptance": "Unsubscribe immediate in application; no automatic unblocking by upsert. Separate requested service and optional nurture purposes.",
+      "check_refs": [
+        "MAIL02",
+        "MAIL03",
+        "OPS03"
+      ],
+      "max_attempts": 3,
+      "state": "planned",
+      "attempts": 0,
+      "accepted_at_stage": null,
+      "evidence": [],
+      "history": []
+    },
+    {
+      "id": "U05",
+      "title": "Build minimal authenticated operations view",
+      "owner": "A4",
+      "reviewer": "A6",
+      "phase": "pilot",
+      "acceptance_stage": "local_implementation_tested",
+      "dependencies": [
+        "P02"
+      ],
+      "required_gates": [],
+      "deliverables": [
+        "components/operations/",
+        "app/api/operations/"
+      ],
+      "acceptance": "Visible failed jobs, book rights/fulfilment and confirmed meeting state. No CRM rebuild or workshop financial details.",
+      "check_refs": [
+        "AUTH01",
+        "OPS02"
+      ],
+      "max_attempts": 3,
+      "state": "planned",
+      "attempts": 0,
+      "accepted_at_stage": null,
+      "evidence": [],
+      "history": []
+    },
+    {
+      "id": "N00",
+      "title": "Implement authenticated n8n/application job adapter",
+      "owner": "A4",
+      "reviewer": "A6",
+      "phase": "pilot",
+      "acceptance_stage": "local_implementation_tested",
+      "dependencies": [
+        "P03",
+        "P02"
+      ],
+      "required_gates": [],
+      "deliverables": [
+        "automations/shared/"
+      ],
+      "acceptance": "Jobs claimed atomically with lease and identity; no arbitrary URLs/commands. n8n is not the authoritative consent/payment database.",
+      "check_refs": [
+        "AUTO01",
+        "AUTO02",
+        "AUTH03"
+      ],
+      "max_attempts": 3,
+      "state": "planned",
+      "attempts": 0,
+      "accepted_at_stage": null,
+      "evidence": [],
+      "history": []
+    },
+    {
+      "id": "N01",
+      "title": "Implement contact/consent sync workflow",
+      "owner": "A4",
+      "reviewer": "A6",
+      "phase": "pilot",
+      "acceptance_stage": "local_implementation_tested",
+      "dependencies": [
+        "N00",
+        "U04",
+        "C06"
+      ],
+      "required_gates": [],
+      "deliverables": [
+        "automations/contacts/"
+      ],
+      "acceptance": "Idempotent upsert preserves provider suppressions. Language and consent provenance synchronized minimally.",
+      "check_refs": [
+        "MAIL02",
+        "MAIL03",
+        "AUTO01"
+      ],
+      "max_attempts": 3,
+      "state": "planned",
+      "attempts": 0,
+      "accepted_at_stage": null,
+      "evidence": [],
+      "history": []
+    },
+    {
+      "id": "N02",
+      "title": "Implement shared due-message dispatcher and daily send budget",
+      "owner": "A4",
+      "reviewer": "A6",
+      "phase": "pilot",
+      "acceptance_stage": "local_implementation_tested",
+      "dependencies": [
+        "N00",
+        "C06"
+      ],
+      "required_gates": [],
+      "deliverables": [
+        "automations/dispatch/"
+      ],
+      "acceptance": "Operational priority, cap reservation, expiry, reconciliation and retry limits. Before-send eligibility is checked after lease, not only when queued.",
+      "check_refs": [
+        "MAIL03",
+        "MAIL04",
+        "MAIL05",
+        "AUTO02"
+      ],
+      "max_attempts": 3,
+      "state": "planned",
+      "attempts": 0,
+      "accepted_at_stage": null,
+      "evidence": [],
+      "history": []
+    },
+    {
+      "id": "N03",
+      "title": "Implement guide and workshop-access/follow-up workflows",
+      "owner": "A4",
+      "reviewer": "A6",
+      "phase": "pilot",
+      "acceptance_stage": "local_implementation_tested",
+      "dependencies": [
+        "N01",
+        "N02",
+        "U00",
+        "W03"
+      ],
+      "required_gates": [],
+      "deliverables": [
+        "automations/guide-workshop/"
+      ],
+      "acceptance": "Deliver requested links without financial summaries. Nurture only for eligible consented contacts; no fake completion attribution.",
+      "check_refs": [
+        "MAIL01",
+        "MAIL02",
+        "WK04",
+        "AUTO01"
+      ],
+      "max_attempts": 3,
+      "state": "planned",
+      "attempts": 0,
+      "accepted_at_stage": null,
+      "evidence": [],
+      "history": []
+    },
+    {
+      "id": "N04",
+      "title": "Implement event lifecycle/reminder/replay workflows",
+      "owner": "A4",
+      "reviewer": "A6",
+      "phase": "pilot",
+      "acceptance_stage": "local_implementation_tested",
+      "dependencies": [
+        "N01",
+        "N02",
+        "U01"
+      ],
+      "required_gates": [],
+      "deliverables": [
+        "automations/crossroads/"
+      ],
+      "acceptance": "Correct actual times, cancellation and expiry handling. Attendance unknown has truthful neutral follow-up.",
+      "check_refs": [
+        "EV01",
+        "EV04",
+        "MAIL04",
+        "AUTO01"
+      ],
+      "max_attempts": 3,
+      "state": "planned",
+      "attempts": 0,
+      "accepted_at_stage": null,
+      "evidence": [],
+      "history": []
+    },
+    {
+      "id": "N05",
+      "title": "Implement verified purchase/rights/fulfilment workflows",
+      "owner": "A4",
+      "reviewer": "A6",
+      "phase": "pilot",
+      "acceptance_stage": "local_implementation_tested",
+      "dependencies": [
+        "N00",
+        "N02",
+        "U03"
+      ],
+      "required_gates": [],
+      "deliverables": [
+        "automations/book/"
+      ],
+      "acceptance": "Duplicate payment events never issue duplicate entitlement/fulfilment. Shipping and 30-minute redemption messages reflect actual state.",
+      "check_refs": [
+        "PAY01",
+        "PAY02",
+        "PAY03",
+        "AUTO01"
+      ],
+      "max_attempts": 3,
+      "state": "planned",
+      "attempts": 0,
+      "accepted_at_stage": null,
+      "evidence": [],
+      "history": []
+    },
+    {
+      "id": "N06",
+      "title": "Implement meeting reconciliation and acquisition suppression",
+      "owner": "A4",
+      "reviewer": "A6",
+      "phase": "pilot",
+      "acceptance_stage": "local_implementation_tested",
+      "dependencies": [
+        "N00",
+        "U02"
+      ],
+      "required_gates": [],
+      "deliverables": [
+        "automations/meetings/"
+      ],
+      "acceptance": "Actual provider/operator record triggers booked state. Documented daily manual fallback if callbacks/access unavailable.",
+      "check_refs": [
+        "BOOK01",
+        "BOOK02",
+        "AUTO04"
+      ],
+      "max_attempts": 3,
+      "state": "planned",
+      "attempts": 0,
+      "accepted_at_stage": null,
+      "evidence": [],
+      "history": []
+    },
+    {
+      "id": "N07",
+      "title": "Implement unsubscribes, replies and global suppression routine",
+      "owner": "A4",
+      "reviewer": "A6",
+      "phase": "pilot",
+      "acceptance_stage": "local_implementation_tested",
+      "dependencies": [
+        "N01",
+        "N02",
+        "N06"
+      ],
+      "required_gates": [],
+      "deliverables": [
+        "automations/suppression/"
+      ],
+      "acceptance": "Queued marketing stops on withdrawal; meaningful reply triggers human follow-up. Cancellation/no-show does not automatically restart aggressive nurture.",
+      "check_refs": [
+        "MAIL03",
+        "OPS03",
+        "AUTO01"
+      ],
+      "max_attempts": 3,
+      "state": "planned",
+      "attempts": 0,
+      "accepted_at_stage": null,
+      "evidence": [],
+      "history": []
+    },
+    {
+      "id": "N08",
+      "title": "Implement weekly article draft/review/publish handoff",
+      "owner": "A4",
+      "reviewer": "A6",
+      "phase": "complete",
+      "acceptance_stage": "local_implementation_tested",
+      "dependencies": [
+        "N00",
+        "C04",
+        "C08"
+      ],
+      "required_gates": [],
+      "deliverables": [
+        "automations/editorial/"
+      ],
+      "acceptance": "One idempotent weekly draft/package; human-gated publication. Authorized LinkedIn posting or explicit manual package, never scraping.",
+      "check_refs": [
+        "CNT05",
+        "CNT06",
+        "AUTO01"
+      ],
+      "max_attempts": 3,
+      "state": "planned",
+      "attempts": 0,
+      "accepted_at_stage": null,
+      "evidence": [],
+      "history": []
+    },
+    {
+      "id": "N09",
+      "title": "Implement health, quota, backup and dead-letter monitoring",
+      "owner": "A3",
+      "reviewer": "A6",
+      "phase": "pilot",
+      "acceptance_stage": "local_implementation_tested",
+      "dependencies": [
+        "N00",
+        "P04"
+      ],
+      "required_gates": [],
+      "deliverables": [
+        "automations/operations/",
+        "docs/ops/monitoring.md"
+      ],
+      "acceptance": "Independent backup-age/health monitoring and actionable deduplicated alerts. No financial/credential payload in alert channels.",
+      "check_refs": [
+        "OPS01",
+        "OPS02",
+        "INF04"
+      ],
+      "max_attempts": 3,
+      "state": "planned",
+      "attempts": 0,
+      "accepted_at_stage": null,
+      "evidence": [],
+      "history": []
+    },
+    {
+      "id": "N10",
+      "title": "Import/test RSS-email and webhook-Telegram smoke workflows",
+      "owner": "A4",
+      "reviewer": "A6",
+      "phase": "pilot",
+      "acceptance_stage": "provider_or_human_tested",
+      "dependencies": [
+        "P03"
+      ],
+      "required_gates": [
+        "G2"
+      ],
+      "deliverables": [
+        "automations/smoke/"
+      ],
+      "acceptance": "Disabled importable JSON plus actual import/delivery to allowlisted targets. Authenticated webhook, bounded message and RSS/SMTP failure tests.",
+      "check_refs": [
+        "AUTO03",
+        "AUTH03"
+      ],
+      "max_attempts": 3,
+      "state": "planned",
+      "attempts": 0,
+      "accepted_at_stage": null,
+      "evidence": [],
+      "history": []
+    },
+    {
+      "id": "R00",
+      "title": "Implement technical SEO/GEO publication hygiene",
+      "owner": "A3",
+      "reviewer": "A6",
+      "phase": "complete",
+      "acceptance_stage": "local_implementation_tested",
+      "dependencies": [
+        "U00",
+        "U01",
+        "C04"
+      ],
+      "required_gates": [],
+      "deliverables": [
+        "docs/marketing/search-checklist.md",
+        "tests/search/"
+      ],
+      "acceptance": "Public reviewed pages crawlable; protected drafts stay private. Truthful structured data; no promised AI ranking/citation mechanism.",
+      "check_refs": [
+        "SEO01",
+        "CNT05"
+      ],
+      "max_attempts": 3,
+      "state": "planned",
+      "attempts": 0,
+      "accepted_at_stage": null,
+      "evidence": [],
+      "history": []
+    },
+    {
+      "id": "R01",
+      "title": "Prepare local profile/review/partner distribution kit",
+      "owner": "A5",
+      "reviewer": "A6",
+      "phase": "complete",
+      "acceptance_stage": "draft_or_review_package",
+      "dependencies": [
+        "C07",
+        "C09"
+      ],
+      "required_gates": [],
+      "deliverables": [
+        "content/marketing/local-partners/"
+      ],
+      "acceptance": "Owner-approved factual profile fields, genuine review request and partner invitation. No fabricated reviews or harvested outreach lists.",
+      "check_refs": [
+        "CNT02",
+        "CNT04",
+        "ADS01"
+      ],
+      "max_attempts": 3,
+      "state": "planned",
+      "attempts": 0,
+      "accepted_at_stage": null,
+      "evidence": [],
+      "history": []
+    },
+    {
+      "id": "H00",
+      "title": "Assemble human-readable approval packets bound to versions",
+      "owner": "A0",
+      "reviewer": "A6",
+      "phase": "pilot",
+      "acceptance_stage": "design_or_audit",
+      "dependencies": [
+        "C02",
+        "C03",
+        "C06",
+        "C09",
+        "W00"
+      ],
+      "required_gates": [],
+      "deliverables": [
+        ".orchestration/approval-packets/"
+      ],
+      "acceptance": "Record actual reviewer decisions separately from agent checks. Permit recording/publication only for approved asset scope.",
+      "check_refs": [
+        "CNT02",
+        "CNT03",
+        "CNT05"
+      ],
+      "max_attempts": 3,
+      "state": "planned",
+      "attempts": 0,
+      "accepted_at_stage": null,
+      "evidence": [],
+      "history": []
+    },
+    {
+      "id": "L00",
+      "title": "Run independent complete local regression/security/contract review",
+      "owner": "A6",
+      "reviewer": "A0",
+      "phase": "pilot",
+      "acceptance_stage": "local_implementation_tested",
+      "dependencies": [
+        "W04",
+        "U00",
+        "U01",
+        "U02",
+        "U03",
+        "U04",
+        "U05",
+        "N03",
+        "N04",
+        "N05",
+        "N06",
+        "N07",
+        "N09"
+      ],
+      "required_gates": [],
+      "deliverables": [
+        ".orchestration/reviews/local-system.md"
+      ],
+      "acceptance": "Reproduce behavior in fresh context; no self-report acceptance. Return specific P0/P1 defects to owners with bounded repair.",
+      "check_refs": [
+        "BASE02",
+        "AUTH01",
+        "AUTH02",
+        "AUTH03",
+        "AUTH04",
+        "AUTH05",
+        "WK04",
+        "AUTO02",
+        "OPS01"
+      ],
+      "max_attempts": 3,
+      "state": "planned",
+      "attempts": 0,
+      "accepted_at_stage": null,
+      "evidence": [],
+      "history": []
+    },
+    {
+      "id": "L01",
+      "title": "Run authorized staging provider and recovery tests",
+      "owner": "A6",
+      "reviewer": "A0",
+      "phase": "pilot",
+      "acceptance_stage": "provider_or_human_tested",
+      "dependencies": [
+        "L00",
+        "P05",
+        "N10",
+        "P04"
+      ],
+      "required_gates": [
+        "G2"
+      ],
+      "deliverables": [
+        ".orchestration/reviews/staging-providers.md"
+      ],
+      "acceptance": "Real allowlisted receipt, test payments and calendar events observed. Mock versus provider versus production evidence explicitly separated.",
+      "check_refs": [
+        "MAIL01",
+        "MAIL05",
+        "PAY01",
+        "PAY02",
+        "BOOK01",
+        "INF05",
+        "INF06",
+        "AUTO04"
+      ],
+      "max_attempts": 3,
+      "state": "planned",
+      "attempts": 0,
+      "accepted_at_stage": null,
+      "evidence": [],
+      "history": []
+    },
+    {
+      "id": "L02",
+      "title": "Run external phone/desktop usability walkthrough with real media",
+      "owner": "A6",
+      "reviewer": "A0",
+      "phase": "pilot",
+      "acceptance_stage": "provider_or_human_tested",
+      "dependencies": [
+        "L01",
+        "C10"
+      ],
+      "required_gates": [
+        "G2",
+        "G4"
+      ],
+      "deliverables": [
+        ".orchestration/reviews/usability.md"
+      ],
+      "acceptance": "Actual device checks; unavailable physical Safari test is blocked/not run. Tester can complete exercise and find next step without financial disclosure.",
+      "check_refs": [
+        "UX01",
+        "UX02",
+        "MED01",
+        "MED02",
+        "WK07"
+      ],
+      "max_attempts": 3,
+      "state": "planned",
+      "attempts": 0,
+      "accepted_at_stage": null,
+      "evidence": [],
+      "history": []
+    },
+    {
+      "id": "L03",
+      "title": "Rehearse complete Crossroads event with moderator",
+      "owner": "A6",
+      "reviewer": "A0",
+      "phase": "pilot",
+      "acceptance_stage": "provider_or_human_tested",
+      "dependencies": [
+        "C03",
+        "C10",
+        "U01",
+        "P05",
+        "N04"
+      ],
+      "required_gates": [
+        "G2",
+        "G4"
+      ],
+      "deliverables": [
+        ".orchestration/reviews/event-rehearsal.md"
+      ],
+      "acceptance": "Timed ten-case/Q&A show works for external guest. Recording/privacy/outage procedure and native-feature fallback rehearsed.",
+      "check_refs": [
+        "EV01",
+        "EV02",
+        "EV03",
+        "EV04"
+      ],
+      "max_attempts": 3,
+      "state": "planned",
+      "attempts": 0,
+      "accepted_at_stage": null,
+      "evidence": [],
+      "history": []
+    },
+    {
+      "id": "L04",
+      "title": "Compile tested release manifest and unresolved gate report",
+      "owner": "A0",
+      "reviewer": "A6",
+      "phase": "pilot",
+      "acceptance_stage": "design_or_audit",
+      "dependencies": [
+        "L01",
+        "L02",
+        "L03",
+        "H00"
+      ],
+      "required_gates": [],
+      "deliverables": [
+        ".orchestration/release.json",
+        ".orchestration/release-readiness.md"
+      ],
+      "acceptance": "Exact source/media/workflow/migration versions and safe rollback. Missing human approvals remain blockers, not toggled booleans.",
+      "check_refs": [
+        "REL01"
+      ],
+      "max_attempts": 3,
+      "state": "planned",
+      "attempts": 0,
+      "accepted_at_stage": null,
+      "evidence": [],
+      "history": []
+    },
+    {
+      "id": "L05",
+      "title": "Conduct controlled invited pilot after scoped authorization",
+      "owner": "A0",
+      "reviewer": "A6",
+      "phase": "pilot",
+      "acceptance_stage": "public_live",
+      "dependencies": [
+        "L04"
+      ],
+      "required_gates": [
+        "G0",
+        "G1",
+        "G3",
+        "G4",
+        "G5",
+        "G6"
+      ],
+      "deliverables": [
+        ".orchestration/reviews/invited-pilot.md"
+      ],
+      "acceptance": "Invited people actually complete agreed journeys; reconcile outcomes. P0/P1 fixed before public activation; failures are recorded truthfully.",
+      "check_refs": [
+        "REL02",
+        "GROW01"
+      ],
+      "max_attempts": 3,
+      "state": "planned",
+      "attempts": 0,
+      "accepted_at_stage": null,
+      "evidence": [],
+      "history": []
+    },
+    {
+      "id": "L06",
+      "title": "Activate approved public customer paths gradually",
+      "owner": "A3",
+      "reviewer": "A6",
+      "phase": "release",
+      "acceptance_stage": "public_live",
+      "dependencies": [
+        "L05"
+      ],
+      "required_gates": [
+        "G2",
+        "G3",
+        "G5",
+        "G6"
+      ],
+      "deliverables": [
+        "docs/ops/production-release.md"
+      ],
+      "acceptance": "Only approved feature flags and artifact set go live. Live smoke proof, fallback and rollback/reconciliation owner present.",
+      "check_refs": [
+        "REL01",
+        "OPS01",
+        "MAIL01",
+        "BOOK01"
+      ],
+      "max_attempts": 3,
+      "state": "planned",
+      "attempts": 0,
+      "accepted_at_stage": null,
+      "evidence": [],
+      "history": []
+    },
+    {
+      "id": "R02",
+      "title": "Launch only the approved capped advertising experiment",
+      "owner": "A5",
+      "reviewer": "A6",
+      "phase": "release",
+      "acceptance_stage": "public_live",
+      "dependencies": [
+        "L06",
+        "C07",
+        "R00"
+      ],
+      "required_gates": [
+        "G3",
+        "G5",
+        "G6"
+      ],
+      "deliverables": [
+        "docs/marketing/ad-experiment-01.md"
+      ],
+      "acceptance": "Account/category/targeting verified and destination working. Approved cap and actual campaign IDs; no automatic increase. If paid ads are not authorized, remain blocked_human; do not prevent organically acquired cohorts from weekly reporting.",
+      "check_refs": [
+        "ADS01",
+        "ADS02",
+        "ADS03"
+      ],
+      "max_attempts": 3,
+      "state": "planned",
+      "attempts": 0,
+      "accepted_at_stage": null,
+      "evidence": [],
+      "history": []
+    },
+    {
+      "id": "O00",
+      "title": "Operate weekly delivery/content/metrics loop",
+      "owner": "A4",
+      "reviewer": "A6",
+      "phase": "operate",
+      "acceptance_stage": "recurring_operation",
+      "dependencies": [
+        "L06",
+        "N08",
+        "N09",
+        "C08"
+      ],
+      "required_gates": [
+        "G3",
+        "G5",
+        "G6"
+      ],
+      "deliverables": [
+        "docs/ops/weekly-reports/"
+      ],
+      "acceptance": "Actual booked/held outcomes with unknowns preserved. One useful weekly content package and one bounded improvement proposal.",
+      "check_refs": [
+        "OPS02",
+        "CNT06",
+        "GROW01"
+      ],
+      "max_attempts": 3,
+      "state": "planned",
+      "attempts": 0,
+      "accepted_at_stage": null,
+      "evidence": [],
+      "history": []
+    },
+    {
+      "id": "O01",
+      "title": "Review cohorts, economics and capacity at days 30/60/90",
+      "owner": "A0",
+      "reviewer": "A6",
+      "phase": "operate",
+      "acceptance_stage": "recurring_operation",
+      "dependencies": [
+        "O00"
+      ],
+      "required_gates": [
+        "G6"
+      ],
+      "deliverables": [
+        "docs/marketing/checkpoints/"
+      ],
+      "acceptance": "Use actual software/ad/time/print costs and held-meeting cohorts. Keep/pause/adjust decisions approved, no invented forecasts. Include paid cohorts only if R02 ran; otherwise report organic cohorts and zero authorized ad spend.",
+      "check_refs": [
+        "GROW02"
+      ],
+      "max_attempts": 3,
+      "state": "planned",
+      "attempts": 0,
+      "accepted_at_stage": null,
+      "evidence": [],
+      "history": []
+    },
+    {
+      "id": "H01",
+      "title": "Complete inventory and owner-operated handover",
+      "owner": "A0",
+      "reviewer": "A6",
+      "phase": "complete",
+      "acceptance_stage": "owner_handover",
+      "dependencies": [
+        "L06",
+        "P04",
+        "C05",
+        "C08",
+        "C11",
+        "N08",
+        "R01",
+        "R00"
+      ],
+      "required_gates": [
+        "G4",
+        "G5",
+        "G6"
+      ],
+      "deliverables": [
+        "docs/ops/HANDOVER.md",
+        "docs/marketing/final-inventory.json"
+      ],
+      "acceptance": "All promised inventory substantive, rights/review states clear. Owner walkthrough, secret-location map, costs and recovery tested.",
+      "check_refs": [
+        "CNT01",
+        "HAND01"
+      ],
+      "max_attempts": 3,
+      "state": "planned",
+      "attempts": 0,
+      "accepted_at_stage": null,
+      "evidence": [],
+      "history": []
+    },
+    {
+      "id": "O02",
+      "title": "Close quarter and select next operating cycle",
+      "owner": "A0",
+      "reviewer": "A6",
+      "phase": "operate",
+      "acceptance_stage": "recurring_operation",
+      "dependencies": [
+        "O01",
+        "H01"
+      ],
+      "required_gates": [
+        "G6"
+      ],
+      "deliverables": [
+        "docs/marketing/quarter-close.md"
+      ],
+      "acceptance": "Report real quarter outcomes, unresolved obligations and retained content bank. Renewal/scale decisions require explicit owner approval.",
+      "check_refs": [
+        "GROW01",
+        "GROW02",
+        "HAND01"
+      ],
+      "max_attempts": 3,
+      "state": "planned",
+      "attempts": 0,
+      "accepted_at_stage": null,
+      "evidence": [],
+      "history": []
+    }
+  ]
+}

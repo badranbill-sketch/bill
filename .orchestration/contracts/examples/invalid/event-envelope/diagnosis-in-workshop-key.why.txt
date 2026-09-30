@@ -1,0 +1,5 @@
+rule: EV-ID-2 contact-subject registry codes use a closed key and a hash version: a diagnosis is not a workshop key
+expect_path: resource_id
+expect_keyword: pattern
+
+A completion signal whose workshop key carries a derived diagnosis (review ADV-5b), which PB-FIN-7 forbids.

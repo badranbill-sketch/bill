@@ -1,0 +1,5 @@
+rule: EV-ID-2 contact-subject registry codes use a closed key and a hash version: the version slot cannot hold a readable number
+expect_path: resource_id
+expect_keyword: pattern
+
+A retirement age (65) written in the version slot (review ADV-5c). Guide, workshop and consent codes accept only h + sha256 prefix.

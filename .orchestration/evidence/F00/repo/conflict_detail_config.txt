@@ -1,0 +1,68 @@
+### codex + presentation
+## eslint.config.mjs
+<<<<<<< HEAD
+      // The standalone Remotion project has its own ESLint config and dependencies.
+      "film/**",
+=======
+      "presentation/**",
+>>>>>>> origin/claude/bill-presentation-video
+## tsconfig.json
+<<<<<<< HEAD
+  "exclude": ["node_modules", "film"]
+=======
+  "exclude": ["node_modules", "presentation"]
+>>>>>>> origin/claude/bill-presentation-video
+## merged .prettierignore
+.next
+node_modules
+reference
+content
+public
+playwright-report
+test-results
+presentation
+
+### homepage + presentation
+## .prettierignore
+<<<<<<< HEAD
+film
+=======
+presentation
+>>>>>>> origin/claude/bill-presentation-video
+## tsconfig.json
+<<<<<<< HEAD
+  "exclude": ["node_modules", "film"]
+=======
+  "exclude": ["node_modules", "presentation"]
+>>>>>>> origin/claude/bill-presentation-video
+## merged eslint ignores
+    ignores: [
+      ".next/**",
+      "reference/**",
+      // The explainer film is its own Remotion project (film/package.json).
+      "film/**",
+      "test-results/**",
+      "playwright-report/**",
+      "presentation/**",
+    ],
+  },
+
+### codex + guide: merged package.json scripts tail and .gitignore
+18:    "format": "prettier --write .",
+19:    "guide": "node --import tsx guide/build.tsx"
+node_modules/
+.next/
+.env*
+!.env.example
+test-results/
+playwright-report/
+*.tsbuildinfo
+work/
+guide/dist/
+
+### does any branch touch package-lock.json at root?
+add-ask-bill-section: 
+claude/bill-centered-homepage: 
+claude/bill-presentation-video: 
+codex/desktop-iphone-unified: 
+guide/pre-retirement-guide: package.json 

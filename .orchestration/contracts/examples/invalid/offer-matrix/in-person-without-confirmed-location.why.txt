@@ -1,0 +1,4 @@
+rule: OM-MOD-1
+breaks: In person may be offered only after G0 records Bill's location and room.
+expect_keyword: const
+expect_path: /offers/intro-15/in_person_location/status

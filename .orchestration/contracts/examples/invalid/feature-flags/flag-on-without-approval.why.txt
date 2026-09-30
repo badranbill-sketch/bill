@@ -1,0 +1,5 @@
+rule: FF-INV-3 a flag can be true only when every capability it controls is code_ready, provider_tested and approved
+expect_path: capabilities/book_checkout/approved/value
+expect_keyword: const
+
+checkout_live switched on while book_checkout has no recorded approval (G0 price, G1 wording, G5 process...).

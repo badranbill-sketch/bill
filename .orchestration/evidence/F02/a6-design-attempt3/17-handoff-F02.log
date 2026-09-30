@@ -1,0 +1,20 @@
+$ PYTHONDONTWRITEBYTECODE=1 /tmp/claude-0/-home-user/bb8d4187-6ae8-587b-a816-8153faeea853/scratchpad/venv-f02/bin/python .orchestration/contracts/validate.py --handoff .orchestration/handoffs/F02.json
+# F02 contract set validation (validate.py)
+utc_now: 2026-09-30T08:29:54Z
+python: 3.11.15  jsonschema: 4.26.0
+repo: /home/user/bill  branch: claude/orchestration-foundation  HEAD: 5cbbf9b5d21dbf03d2cb44e524a6fcdc10d5515b
+contracts dir: /home/user/bill/.orchestration/contracts
+contract set version: 1.0  frozen for build on: 2026-09-30
+environment: local container; fixture evidence only (no browser, no network, no provider)
+
+## Handoff check: /home/user/bill/.orchestration/handoffs/F02.json
+PASS  F02.json: schema-valid; base_commit = HEAD; 431 artifact hashes match; changed paths and 6 evidence paths exist
+
+## Summary
+pass: 1  fail: 0  known: 0  info: 0
+exit_code=0
+exit=0
+
+# independent recount of handoff artifact hashes
+artifacts: 431 mismatched: [] contract files not listed: []
+base_commit == HEAD: True | status: submitted

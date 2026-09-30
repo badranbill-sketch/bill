@@ -1,0 +1,4 @@
+rule: AM-LANG-1
+breaks: Captions in another language are not a recording in that language; captions_only can never be 'recorded'.
+expect_keyword: not
+expect_path: /assets/4/status

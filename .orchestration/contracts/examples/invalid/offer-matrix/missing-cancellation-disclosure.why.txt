@@ -1,0 +1,4 @@
+rule: OM-DISC-2
+breaks: Every mandatory pre-payment disclosure is present; cancellation cannot be dropped.
+expect_keyword: required
+expect_path: /offers/book-bundle/prepayment_disclosures

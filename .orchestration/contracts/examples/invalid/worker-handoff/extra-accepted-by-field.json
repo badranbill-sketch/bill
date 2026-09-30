@@ -1,0 +1,89 @@
+{
+  "task_id": "F00",
+  "base_commit": "eeb79a9380b297880e8fb530ac1f5b6f2fa7f89d",
+  "result_commit": null,
+  "contract_version": "1.0",
+  "changed_paths": [
+    ".orchestration/inventory.md",
+    ".orchestration/handoffs/F00.json",
+    ".orchestration/evidence/F00/"
+  ],
+  "artifacts": [
+    {
+      "path": ".orchestration/inventory.md",
+      "sha256": "f9f8b9395c6b3b691523e1a936b790bdf3ecb7c720597f4242a1f939c442b855"
+    },
+    {
+      "path": ".orchestration/evidence/F00/assets/gap-matrix.json",
+      "sha256": "76272615ad043513ebf87397af8265aeeaa6a7ecb05c5b6255f8e27ed1822108"
+    },
+    {
+      "path": ".orchestration/evidence/F00/checks/assemble.py",
+      "sha256": "3bb212b0bdf1df5e82da844be9d5bc22988c3919eefb8dc54a46ce0e9f0dcc3e"
+    }
+  ],
+  "tests": [
+    {
+      "id": "BASE01",
+      "command": "(cwd scratchpad/wt/base01-main @ 77de3bd51a8c9cb73aec0b32d27ca0cacb6285cd) npm ci",
+      "exit_code": 0,
+      "evidence": ".orchestration/evidence/F00/checks/main/01_npm_ci.log",
+      "environment": "local container"
+    },
+    {
+      "id": "BASE01",
+      "command": "(cwd scratchpad/wt/base01-main @ 77de3bd51a8c9cb73aec0b32d27ca0cacb6285cd) npm run lint",
+      "exit_code": 1,
+      "evidence": ".orchestration/evidence/F00/checks/main/02_lint.log",
+      "environment": "local container"
+    },
+    {
+      "id": "BASE01",
+      "command": "(cwd scratchpad/wt/base01-main @ 77de3bd51a8c9cb73aec0b32d27ca0cacb6285cd) npm test",
+      "exit_code": 0,
+      "evidence": ".orchestration/evidence/F00/checks/main/03_test.log",
+      "environment": "local container"
+    }
+  ],
+  "assumptions": [
+    "Rights, provenance and approval statuses are quoted from repository docs, not independently verified.",
+    "Gap-matrix partial/missing split is the assets lane's judgement; each row carries its basis.",
+    "Shape example built from real F00 values by the F02 offers lane; the submitted F00.json is unchanged."
+  ],
+  "blocked_checks": [
+    {
+      "check": "npm run protections:check with real GitHub auth",
+      "status": "blocked",
+      "reason": "gh CLI not installed (spawnSync gh ENOENT); token deliberately withheld"
+    },
+    {
+      "check": "e2e under Playwright-pinned chromium rev 1243 (CI browser)",
+      "status": "blocked",
+      "reason": "browser CDNs return CONNECT 403; only chromium-1194 (Chromium 141) installed"
+    },
+    {
+      "check": "Live Brevo/Supabase/Stripe/n8n-docs/n8n-image reachability or account checks",
+      "status": "blocked",
+      "reason": "egress CONNECT 403; no connectors; no accounts supplied (G2)"
+    }
+  ],
+  "human_approvals_required": [
+    "G0: canonical branch / design direction (codex vs homepage vs manual merge); production host (VPS default); book edition choice",
+    "G1: designations, 'more than 15 years', firm affiliation, reviewer identity; 15-minute and book/30-minute offer wording; provenance of quoted voices"
+  ],
+  "external_actions_taken": [
+    {
+      "actor": "repo lane",
+      "type": "read-only connector probe",
+      "target": "GitHub MCP: get_me; search repositories (user); list pull requests (bill, billsite; state all); list branches (bill, billsite); list_commits billsite (409 empty)",
+      "effect": "read_only"
+    }
+  ],
+  "metered_cost": {
+    "amount": null,
+    "currency": null,
+    "status": "unavailable-not-estimated"
+  },
+  "status": "submitted",
+  "accepted_by": "A0"
+}

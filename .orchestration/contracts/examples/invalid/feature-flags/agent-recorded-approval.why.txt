@@ -1,0 +1,5 @@
+rule: FF-APPR-1 only human gate owners record approved (D-043)
+expect_path: capabilities/guide_request_delivery/approved/recorded_by
+expect_keyword: enum
+
+An agent recorded an approval.

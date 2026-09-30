@@ -1,0 +1,7 @@
+rule: RANGE - planning horizon is at least 1 year
+layer: schema
+expect_keyword: minimum
+expect_path: /chapters/timing/planning_horizon_years/value
+expect_validator_value: 1
+plain_message_en_draft: Choose how many years of retirement to illustrate (1 to 60).
+explanation: H = 0 would illustrate no year at all.

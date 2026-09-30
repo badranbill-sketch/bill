@@ -1,0 +1,178 @@
+## lib/articles.ts (codex blob df24ccb)
+     1	import fs from "node:fs";
+     2	import path from "node:path";
+     3	import { createHash } from "node:crypto";
+     4	import { z } from "zod";
+     5	import type { Language } from "./business";
+     6	import { routes } from "./routes";
+     7	const date = z
+     8	  .string()
+     9	  .regex(/^\d{4}-\d{2}-\d{2}$/)
+    10	  .nullable();
+    11	export const articleSchema = z
+    12	  .object({
+    13	    language: z.enum(["fr", "en"]),
+    14	    translationGroup: z.string().regex(/^[a-z0-9-]+$/),
+    15	    slug: z.string().regex(/^[a-z0-9-]+$/),
+    16	    title: z.string().min(10),
+    17	    description: z.string().min(20),
+    18	    topic: z.enum(["retirement", "investments"]),
+    19	    sources: z
+    20	      .array(
+    21	        z.object({
+    22	          title: z.string(),
+    23	          url: z.url().refine((v) => v.startsWith("https://")),
+    24	          accessed: date,
+    25	        }),
+    26	      )
+    27	      .min(1),
+    28	    author: z.string().nullable(),
+    29	    reviewer: z.string().nullable(),
+    30	    status: z.enum(["draft", "published"]),
+    31	    publicationDate: date,
+    32	    substantiveReviewDate: date,
+    33	    nextReviewDate: date,
+    34	    relatedServices: z.array(z.enum(["retirement", "investments"])),
+    35	    relatedArticles: z.array(z.string()),
+    36	    generation: z.enum(["ai-assisted", "human"]),
+    37	    firmApprovalRequired: z.boolean(),
+    38	  })
+    39	  .strict();
+    40	export type Article = z.infer<typeof articleSchema> & {
+    41	  body: string;
+    42	  filename: string;
+    43	  hash: string;
+    44	};
+    45	export function contentFingerprint(
+    46	  data: z.infer<typeof articleSchema>,
+    47	  body: string,
+    48	) {
+    49	  const {
+    50	    status,
+    51	    reviewer,
+    52	    publicationDate,
+    53	    substantiveReviewDate,
+    54	    nextReviewDate,
+    55	    ...substance
+    56	  } = data;
+    57	  void [
+    58	    status,
+    59	    reviewer,
+    60	    publicationDate,
+    61	    substantiveReviewDate,
+    62	    nextReviewDate,
+    63	  ];
+    64	  return createHash("sha256")
+    65	    .update(JSON.stringify({ ...substance, body }))
+    66	    .digest("hex");
+    67	}
+    68	export function parseArticle(raw: string, filename: string): Article {
+    69	  const match = raw.match(/^---\n([\s\S]*?)\n---\n([\s\S]*)$/);
+    70	  if (!match) throw Error(`Invalid frontmatter: ${filename}`);
+    71	  const data = articleSchema.parse(JSON.parse(match[1]));
+    72	  if (match[2].trim().split(/\s+/).length < 220)
+    73	    throw Error(`Article too short: ${filename}`);
+    74	  if (/<\/?(?:script|iframe)|javascript:/i.test(match[2]))
+    75	    throw Error(`Unsafe content: ${filename}`);
+    76	  // French spacing is applied for display only, so the approved fingerprint
+    77	  // stays that of the file as written.
+    78	  const typo = (text: string) =>
+    79	    data.language === "fr"
+    80	      ? text.replace(/ ([:;!?»])/g, "\u00a0$1").replace(/« /g, "«\u00a0")
+    81	      : text;
+    82	  return {
+    83	    ...data,
+    84	    title: typo(data.title),
+    85	    description: typo(data.description),
+    86	    body: typo(match[2]),
+    87	    filename,
+    88	    hash: contentFingerprint(data, match[2]),
+    89	  };
+    90	}
+    91	export function articles() {
+    92	  return fs
+    93	    .readdirSync(path.join(process.cwd(), "content"))
+    94	    .filter((f) => f.endsWith(".md"))
+    95	    .map((f) =>
+    96	      parseArticle(
+    97	        fs.readFileSync(path.join(process.cwd(), "content", f), "utf8"),
+    98	        f,
+    99	      ),
+   100	    );
+   101	}
+   102	export type Approval = {
+   103	  sha256: string;
+   104	  pullRequest: string;
+   105	  humanReview: string;
+   106	  firmApproval: string | null;
+   107	};
+   108	export function approvals(): Record<string, Approval> {
+   109	  return JSON.parse(
+   110	    fs.readFileSync(path.join(process.cwd(), "content/approvals.json"), "utf8"),
+   111	  );
+   112	}
+   113	export function approvedArticle(a: Article) {
+   114	  const evidence = approvals()[a.filename];
+   115	  return (
+   116	    a.status === "published" &&
+   117	    !!a.author &&
+   118	    !!a.reviewer &&
+   119	    !!a.publicationDate &&
+   120	    !!a.substantiveReviewDate &&
+   121	    !!a.nextReviewDate &&
+   122	    !!evidence &&
+   123	    evidence.sha256 === a.hash &&
+   124	    /^https:\/\/github.com\/[^/]+\/[^/]+\/pull\/\d+$/.test(
+   125	      evidence.pullRequest,
+   126	    ) &&
+   127	    !!evidence.humanReview &&
+   128	    (!a.firmApprovalRequired || !!evidence.firmApproval)
+   129	  );
+   130	}
+   131	export function visibleArticles(lang: Language, review = false) {
+   132	  return articles().filter(
+   133	    (a) => a.language === lang && (review || approvedArticle(a)),
+   134	  );
+   135	}
+   136	export const articlePath = (a: Article, review = false) =>
+   137	  `/${a.language}/${review ? "revision" : routes.resources[a.language]}/${a.slug}`;
+## scripts/content.ts key guards
+1:import fs from "node:fs";
+2:import path from "node:path";
+3:import { execFileSync } from "node:child_process";
+4:import { z } from "zod";
+5:import { articles, approvedArticle, parseArticle } from "../lib/articles";
+12:function validate() {
+24:      a.status === "draft" &&
+44:      a.nextReviewDate &&
+45:      a.nextReviewDate < new Date().toISOString().slice(0, 10)
+53:if (command === "validate" || command === "review-due") validate();
+54:else if (command === "import") {
+56:    draftPath = value("--draft"),
+58:  if (!briefPath || !draftPath || !notesPath)
+60:      "Use import --brief file.json --draft file.md --notes file.txt [--dry-run]",
+72:  const raw = fs.readFileSync(draftPath, "utf8"),
+73:    draft = parseArticle(raw, path.basename(draftPath));
+75:    draft.status !== "draft" ||
+76:    draft.reviewer ||
+77:    draft.publicationDate ||
+78:    draft.substantiveReviewDate
+80:    throw Error("Import only unreviewed drafts");
+81:  if (!draft.sources.every((s) => brief.sources.includes(s.url)))
+85:    `${draft.language}-${draft.slug}.md`,
+88:    if (fs.existsSync(destination))
+90:        "Will not overwrite existing content; edit on a review branch",
+95:    `${args.includes("--dry-run") ? "Dry run: would import" : "Imported"} ${destination}. Notes read as data only. No model, Git or publishing operation performed.`,
+98:  if (process.env.ALLOW_CONTENT_PR !== "true")
+100:      "Set ALLOW_CONTENT_PR=true only after authorizing a review pull request.",
+102:  validate();
+111:    throw Error("Commit the intended draft changes before creating the PR");
+## scripts/protections.ts checks
+12:  reviews.required_approving_review_count < 1 ||
+13:  !reviews.dismiss_stale_reviews ||
+14:  !reviews.require_code_owner_reviews ||
+15:  !reviews.require_last_push_approval ||
+16:  !protection.enforce_admins?.enabled
+22:  !protection.required_status_checks?.strict ||
+23:  !protection.required_status_checks.contexts?.includes("verify")
+25:  throw Error("Require up-to-date branches and verify status check.");

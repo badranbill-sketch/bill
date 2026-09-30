@@ -1,0 +1,4 @@
+rule: AM-CLAIM-1
+breaks: An asset with factual claims must list at least one source.
+expect_keyword: minItems
+expect_path: /assets/2/factual_claims/sources

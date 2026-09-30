@@ -1,0 +1,5 @@
+rule: JS-TIME-1 all timestamps are UTC with 'Z'
+expect_path: expires_at
+expect_keyword: pattern
+
+Offset timestamp.

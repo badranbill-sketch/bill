@@ -1,0 +1,5 @@
+rule: JS-SENT-1 sent requires the provider's acceptance ID
+expect_path: /
+expect_keyword: required
+
+'Sent' without provider evidence is a fabricated result.

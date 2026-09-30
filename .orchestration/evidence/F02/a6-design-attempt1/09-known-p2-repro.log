@@ -1,0 +1,15 @@
+$ $VENV/bin/python .orchestration/evidence/F02/a6-design-attempt1/known_p2_repro.py
+# XL-01: content.approved for asset kinds that asset-manifest 1.0 defines
+  REJECTED  content.approved resource_id=ink.a01.h1f10e4f87273
+  REJECTED  content.approved resource_id=companion.s01.v1
+  REJECTED  content.approved resource_id=book.printed-guide.v1
+  REJECTED  content.approved resource_id=event.crossroads-kit.v1
+  REJECTED  content.approved resource_id=copy.price-disclosure.v1
+  ACCEPTED  content.approved resource_id=article.five-years-before-retirement.v1
+  asset-manifest asset_id schema: {"type": "string", "pattern": "^(?:capsule\\.s(?:0[1-9]|1[0-8])|companion\\.s(?:0[1-9]|1[0-8])|clip\\.w(?:0[0-9]|1[01])|case\\.c(?:0[1-9]|10)|ink\\.a0[1-8]|template\\.e(?:0[1-9]|1[0-6])|ad\\.(?:ad0[1-6]|rt0[1-3])|(?:article|page|guide|book|event|copy)\\.[a-z]+(?:-[a-z]+){0,7})$", "description": "Pla
+# XL-11(c): a promotional E09 job is schema-valid, and its owning capability (event_lifecycle) is controlled only by public_launch
+  promotional e09 job: ACCEPTED (schema)
+  event_lifecycle.controlling_flags = ['public_launch']
+  PSC-3 = PSC-3: the capability that owns the template is enabled and its controlling flags are on (feature-flags.json); otherwise release with defer_reason capability_disabled
+  => with public_launch=true and marketing_dispatch=false (the kill switch), PSC-3 passes for a promotional E09; only prose (feature-flags.md §4, E09 notes) says otherwise.
+exit=0

@@ -1,0 +1,79 @@
+## .github/workflows/verify.yml
+name: Verify site and content
+on:
+  pull_request:
+  push:
+    branches: [main]
+permissions:
+  contents: read
+  pull-requests: read
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+          cache: npm
+      - run: npm ci
+      - run: npm run lint && npm run test && npm run build && npm run typecheck
+      - run: node --import tsx scripts/verify-publication.ts
+        env:
+          GH_TOKEN: ${{ github.token }}
+          GITHUB_REPOSITORY: ${{ github.repository }}
+          CONTENT_REVIEWERS: ${{ vars.CONTENT_REVIEWERS }}
+          FIRM_REVIEWERS: ${{ vars.FIRM_REVIEWERS }}
+      - run: npx playwright install --with-deps chromium
+      - run: npm run test:e2e
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: browser-evidence
+          path: test-results/
+## lib/articles.ts (approvedArticle, contentFingerprint, parseArticle, schema)
+11:export const articleSchema = z
+29:    reviewer: z.string().nullable(),
+30:    status: z.enum(["draft", "published"]),
+31:    publicationDate: date,
+32:    substantiveReviewDate: date,
+33:    nextReviewDate: date,
+37:    firmApprovalRequired: z.boolean(),
+39:  .strict();
+40:export type Article = z.infer<typeof articleSchema> & {
+45:export function contentFingerprint(
+46:  data: z.infer<typeof articleSchema>,
+50:    status,
+51:    reviewer,
+52:    publicationDate,
+53:    substantiveReviewDate,
+54:    nextReviewDate,
+58:    status,
+59:    reviewer,
+60:    publicationDate,
+61:    substantiveReviewDate,
+62:    nextReviewDate,
+64:  return createHash("sha256")
+71:  const data = articleSchema.parse(JSON.parse(match[1]));
+88:    hash: contentFingerprint(data, match[2]),
+103:  sha256: string;
+104:  pullRequest: string;
+105:  humanReview: string;
+106:  firmApproval: string | null;
+113:export function approvedArticle(a: Article) {
+116:    a.status === "published" &&
+118:    !!a.reviewer &&
+119:    !!a.publicationDate &&
+120:    !!a.substantiveReviewDate &&
+121:    !!a.nextReviewDate &&
+123:    evidence.sha256 === a.hash &&
+125:      evidence.pullRequest,
+127:    !!evidence.humanReview &&
+128:    (!a.firmApprovalRequired || !!evidence.firmApproval)
+133:    (a) => a.language === lang && (review || approvedArticle(a)),
+## content/approvals.json
+{}
+## verify.yml main blob
+main=9eb5e13 codex=9eb5e13
+CODEOWNERS on codex: none
+CODEOWNERS on main: none

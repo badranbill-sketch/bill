@@ -1,0 +1,7 @@
+rule: STATUS-2 - zero has exactly one representation
+layer: schema
+expect_keyword: minimum
+expect_path: /chapters/income/sources/0/amount/value
+expect_validator_value: 1
+plain_message_en_draft: (internal state error - a stated zero is recorded as status zero)
+explanation: 0 is recorded only as {status: zero, value: 0}; estimated/confirmed values are >= 1.

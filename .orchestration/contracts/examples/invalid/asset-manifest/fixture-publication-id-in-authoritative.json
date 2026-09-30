@@ -1,0 +1,63 @@
+{
+  "contract": "asset-manifest",
+  "contract_version": "1.0",
+  "manifest_kind": "authoritative",
+  "generated_at": "2026-09-30T12:00:00Z",
+  "assets": [
+    {
+      "asset_id": "article.fixture-sample",
+      "locale": "en",
+      "version": 2,
+      "title_internal": "Published article (fixture)",
+      "owner_role": "A5",
+      "medium": "text",
+      "status": "published",
+      "language_availability": "text_only",
+      "captions_source_locale": null,
+      "source_path": "content/fixture-sample.md",
+      "factual_claims": {
+        "present": true,
+        "sources": [
+          {
+            "title": "FCAC — Retirement planning",
+            "url": "https://www.canada.ca/en/financial-consumer-agency/services/retirement-planning.html",
+            "accessed": "2026-09-28"
+          }
+        ]
+      },
+      "offer_refs": [
+        "intro-15"
+      ],
+      "credential_claims": false,
+      "rights": {
+        "status": "created_for_project",
+        "holder": null,
+        "evidence_ref": null,
+        "synthetic_bill_likeness": false
+      },
+      "recording": null,
+      "review_hash": {
+        "method": "articles-contentFingerprint-v1",
+        "sha256": "d1775f88da79613c663e02c412832a88c7118ea393e96ef4d8649d3e5c0e7476"
+      },
+      "approval": {
+        "gates": [
+          "G1",
+          "G3"
+        ],
+        "approved_by_roles": [
+          "bill",
+          "firm_reviewer"
+        ],
+        "approved_on": "2026-09-30",
+        "record_ref": "content/approvals.json#fixture-sample.md"
+      },
+      "intended_route_key": "resources",
+      "cta": "intro-15",
+      "primary_channel": "site",
+      "publication_id": "fixture:site-deploy-0001",
+      "published_at": "2026-09-30T15:00:00Z",
+      "published_content_sha256": "d1775f88da79613c663e02c412832a88c7118ea393e96ef4d8649d3e5c0e7476"
+    }
+  ]
+}

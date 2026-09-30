@@ -1,0 +1,263 @@
+{
+ "fixture_id": "WM19",
+ "title": "Rental income labelled scheduled",
+ "contract_version": "1.0",
+ "covers": [
+  "WK03"
+ ],
+ "purpose": "Rent labelled scheduled is warned; uncertain business income is included but labelled uncertain.",
+ "input": {
+  "contract": "workshop-inputs",
+  "contract_version": "1.0",
+  "currency": "CAD",
+  "base_year": 2026,
+  "chapters": {
+   "life": {
+    "spending": {
+     "amount": {
+      "status": "estimated",
+      "value": 400000
+     },
+     "period": "monthly",
+     "tax_basis": "after_tax",
+     "price_basis": "today_dollars",
+     "unit": "household"
+    }
+   },
+   "income": {
+    "coverage": "all_known_sources_listed",
+    "sources": [
+     {
+      "id": "src-1",
+      "kind": "rental",
+      "owner": "self",
+      "amount": {
+       "status": "estimated",
+       "value": 150000
+      },
+      "period": "monthly",
+      "tax_basis": "net",
+      "price_basis": "today_dollars",
+      "start": {
+       "reference": "already_receiving"
+      },
+      "escalation_bp": {
+       "status": "zero",
+       "value": 0
+      },
+      "dependability": "scheduled"
+     },
+     {
+      "id": "src-2",
+      "kind": "workplace_pension",
+      "owner": "self",
+      "amount": {
+       "status": "estimated",
+       "value": 2400000
+      },
+      "period": "annual",
+      "tax_basis": "net",
+      "price_basis": "start_year_dollars",
+      "start": {
+       "reference": "already_receiving"
+      },
+      "escalation_bp": {
+       "status": "zero",
+       "value": 0
+      },
+      "dependability": "scheduled"
+     },
+     {
+      "id": "src-3",
+      "kind": "business",
+      "owner": "self",
+      "amount": {
+       "status": "estimated",
+       "value": 100000
+      },
+      "period": "annual",
+      "tax_basis": "net",
+      "price_basis": "today_dollars",
+      "start": {
+       "reference": "already_receiving"
+      },
+      "escalation_bp": {
+       "status": "zero",
+       "value": 0
+      },
+      "dependability": "uncertain"
+     }
+    ]
+   },
+   "savings": {},
+   "timing": {
+    "current_age": {
+     "status": "estimated",
+     "value": 63
+    },
+    "retirement_age": {
+     "status": "estimated",
+     "value": 63
+    },
+    "planning_horizon_years": {
+     "status": "estimated",
+     "value": 3
+    },
+    "inflation_bp": {
+     "status": "zero",
+     "value": 0
+    }
+   }
+  }
+ },
+ "expected": {
+  "contract_version": "1.0",
+  "assumptions_echo": {
+   "base_year": 2026,
+   "inflation_bp": 0,
+   "planning_horizon_years": 3,
+   "capital_illustration_return_bp": null,
+   "year_index": "t=0 is calendar year base_year; annual totals per calendar year",
+   "rounding": "exact rational arithmetic; half-even to whole cents at display only"
+  },
+  "window": {
+   "t_R": 0,
+   "first_t": 0,
+   "last_t": 2,
+   "first_calendar_year": 2026,
+   "last_calendar_year": 2028,
+   "first_age": 63,
+   "last_age": 65
+  },
+  "completeness": {
+   "state": "complete",
+   "reasons": []
+  },
+  "years": [
+   {
+    "t": 0,
+    "calendar_year": 2026,
+    "age": 63,
+    "spending_cents": 4800000,
+    "income_by_source_cents": {
+     "src-1": 1800000,
+     "src-2": 2400000,
+     "src-3": 100000
+    },
+    "income_net_cents": 4300000,
+    "income_gross_cents": 0,
+    "income_unknown_basis_cents": 0,
+    "status": "computed",
+    "reasons": [],
+    "gap_cents": 500000,
+    "surplus_cents": 0,
+    "gap_today_dollars_cents": 500000,
+    "surplus_today_dollars_cents": 0,
+    "exact": {
+     "spending": "4800000",
+     "income_compared": "4300000",
+     "gap": "500000",
+     "surplus": "0"
+    }
+   },
+   {
+    "t": 1,
+    "calendar_year": 2027,
+    "age": 64,
+    "spending_cents": 4800000,
+    "income_by_source_cents": {
+     "src-1": 1800000,
+     "src-2": 2400000,
+     "src-3": 100000
+    },
+    "income_net_cents": 4300000,
+    "income_gross_cents": 0,
+    "income_unknown_basis_cents": 0,
+    "status": "computed",
+    "reasons": [],
+    "gap_cents": 500000,
+    "surplus_cents": 0,
+    "gap_today_dollars_cents": 500000,
+    "surplus_today_dollars_cents": 0,
+    "exact": {
+     "spending": "4800000",
+     "income_compared": "4300000",
+     "gap": "500000",
+     "surplus": "0"
+    }
+   },
+   {
+    "t": 2,
+    "calendar_year": 2028,
+    "age": 65,
+    "spending_cents": 4800000,
+    "income_by_source_cents": {
+     "src-1": 1800000,
+     "src-2": 2400000,
+     "src-3": 100000
+    },
+    "income_net_cents": 4300000,
+    "income_gross_cents": 0,
+    "income_unknown_basis_cents": 0,
+    "status": "computed",
+    "reasons": [],
+    "gap_cents": 500000,
+    "surplus_cents": 0,
+    "gap_today_dollars_cents": 500000,
+    "surplus_today_dollars_cents": 0,
+    "exact": {
+     "spending": "4800000",
+     "income_compared": "4300000",
+     "gap": "500000",
+     "surplus": "0"
+    }
+   }
+  ],
+  "flags": [
+   "includes_uncertain_income",
+   "uncertain_kind_labelled_scheduled"
+  ],
+  "savings_summary": {
+   "accessible_categories_with_positive_value": [],
+   "home_or_business_positive_value": false,
+   "excluded_from_spendable": [],
+   "pension_value_kept_separate": false,
+   "totals_computed": false
+  },
+  "capital_illustration": {
+   "feature_flag": "off",
+   "displayed": false,
+   "state": "disabled_by_flag",
+   "reference_if_enabled": {
+    "r_bp": null,
+    "computable": false,
+    "not_computable_reasons": [
+     "return_assumption_absent"
+    ],
+    "display_eligible_if_enabled": false,
+    "ineligible_reasons": [
+     "return_assumption_absent"
+    ],
+    "C_R_cents": null,
+    "C_R_exact": null,
+    "valued_at": null,
+    "flow_timing": "end_of_year"
+   }
+  },
+  "clip": {
+   "predicates": {
+    "C": false,
+    "M": false,
+    "X": false,
+    "H": false,
+    "F": true
+   },
+   "selected": "W07",
+   "selection_reason": "funding_gap"
+  }
+ },
+ "independent_checks": [
+  "hand subtraction"
+ ],
+ "tolerance": "exact integer cents after half-even rounding; exact strings must match exactly; no numeric tolerance"
+}

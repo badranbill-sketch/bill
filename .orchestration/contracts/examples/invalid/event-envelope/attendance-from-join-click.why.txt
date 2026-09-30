@@ -1,0 +1,5 @@
+rule: EV-AUTH-ATT attendance only from provider attendance evidence or operator record; a Join click is not attendance
+expect_path: source
+expect_keyword: enum
+
+A Join click presented as verified attendance (AM-ATT-1, EV04).

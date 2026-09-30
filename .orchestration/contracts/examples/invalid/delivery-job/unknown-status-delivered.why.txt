@@ -1,0 +1,5 @@
+rule: JS-STATE-1 status is one of the nine states; HTTP acceptance is not inbox delivery
+expect_path: status
+expect_keyword: enum
+
+An invented 'delivered' state. Delivery evidence is delivery_status on a complete job.
