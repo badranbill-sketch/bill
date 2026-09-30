@@ -1,0 +1,4 @@
+$ git -C /home/user/bill diff --stat HEAD -- .orchestration/contracts
+ .../contracts/fixtures/workshop/index.json         | 42 ++++++++++++++++++++++
+ 1 file changed, 42 insertions(+)
+[exit 0]

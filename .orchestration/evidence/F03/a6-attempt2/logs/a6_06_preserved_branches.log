@@ -1,0 +1,47 @@
+### command: echo '# F00 branch_heads.txt'; cat .orchestration/evidence/F00/repo/branch_heads.txt; echo '# local remote-tracking refs'; git for-each-ref --format='%(objectname) %(refname)' refs/remotes refs/heads; echo '# git ls-remote origin (read-only)'; env -u GH_TOKEN -u GITHUB_TOKEN git ls-remote origin 2>&1; echo '# reason docs'; grep -n 'HB-03' .orchestration/blockers.md | head -5; grep -n 'HB-12' .orchestration/blockers.md | head -5; grep -n 'D-073' .orchestration/decisions.md | head -5
+### cwd: /home/user/bill
+### start: 2026-09-30T10:29:59Z
+--- output ---
+# F00 branch_heads.txt
+main head=77de3bd51a8c9cb73aec0b32d27ca0cacb6285cd mergebase_main=77de3bd51a8c9cb73aec0b32d27ca0cacb6285cd behind_ahead(main...b)=0	0
+add-ask-bill-section head=01e296caf4cb6822c9ccd45642834d69e02334bf mergebase_main=77de3bd51a8c9cb73aec0b32d27ca0cacb6285cd behind_ahead(main...b)=0	1
+claude/bill-centered-homepage head=d63aabd50d0760145208857856f32779b1069e15 mergebase_main=77de3bd51a8c9cb73aec0b32d27ca0cacb6285cd behind_ahead(main...b)=0	1
+claude/bill-presentation-video head=fc0044576d851be414d19e2f7a21ca7fd1285eae mergebase_main=77de3bd51a8c9cb73aec0b32d27ca0cacb6285cd behind_ahead(main...b)=0	1
+codex/desktop-iphone-unified head=66cce52046f535ddc1a90e6f94474877e375860d mergebase_main=77de3bd51a8c9cb73aec0b32d27ca0cacb6285cd behind_ahead(main...b)=0	3
+guide/pre-retirement-guide head=749b360f75185041e1aa3408500857605bc4507f mergebase_main=77de3bd51a8c9cb73aec0b32d27ca0cacb6285cd behind_ahead(main...b)=0	1
+# local remote-tracking refs
+cb3becf25ed042b977d4864ae71e74d13829320f refs/heads/claude/orchestration-foundation
+b0bc6cf634b0b5498cc335da4d2d15da04276e3a refs/heads/integration
+77de3bd51a8c9cb73aec0b32d27ca0cacb6285cd refs/heads/main
+01e296caf4cb6822c9ccd45642834d69e02334bf refs/remotes/origin/add-ask-bill-section
+d63aabd50d0760145208857856f32779b1069e15 refs/remotes/origin/claude/bill-centered-homepage
+fc0044576d851be414d19e2f7a21ca7fd1285eae refs/remotes/origin/claude/bill-presentation-video
+cb3becf25ed042b977d4864ae71e74d13829320f refs/remotes/origin/claude/orchestration-foundation
+66cce52046f535ddc1a90e6f94474877e375860d refs/remotes/origin/codex/desktop-iphone-unified
+749b360f75185041e1aa3408500857605bc4507f refs/remotes/origin/guide/pre-retirement-guide
+77de3bd51a8c9cb73aec0b32d27ca0cacb6285cd refs/remotes/origin/main
+# git ls-remote origin (read-only)
+77de3bd51a8c9cb73aec0b32d27ca0cacb6285cd	HEAD
+01e296caf4cb6822c9ccd45642834d69e02334bf	refs/heads/add-ask-bill-section
+d63aabd50d0760145208857856f32779b1069e15	refs/heads/claude/bill-centered-homepage
+fc0044576d851be414d19e2f7a21ca7fd1285eae	refs/heads/claude/bill-presentation-video
+cb3becf25ed042b977d4864ae71e74d13829320f	refs/heads/claude/orchestration-foundation
+66cce52046f535ddc1a90e6f94474877e375860d	refs/heads/codex/desktop-iphone-unified
+749b360f75185041e1aa3408500857605bc4507f	refs/heads/guide/pre-retirement-guide
+77de3bd51a8c9cb73aec0b32d27ca0cacb6285cd	refs/heads/main
+66cce52046f535ddc1a90e6f94474877e375860d	refs/pull/1/head
+a8e6b332e147027e28da0845a5f7a1557de43cf5	refs/pull/1/merge
+# reason docs
+6:- A0 post-acceptance patch (2026-09-30, from `reviews/F01-attempt2.md` P3-1…P3-5): HB-08 proposal made single-outcome and (b) existing-cost question added; HB-22 asks about the AI-assisted cover/likeness; HB-03 keeps presentation/ outside the baseline; G2 'not askable yet' and G5 rows corrected; three backup/media secret rows added. Pre-patch copy retained by A0 in its scratchpad; this patch is reviewed by A6 in F02a.
+51:**HB-03. Canonical branch and design direction** (G0; Bill for the design)
+245:- Blocks: C00, R01, the homepage port (HB-03).
+307:| G0 | Arnaud (+ Bill) | HB-01, HB-02, HB-03, HB-04, HB-14, HB-15, HB-16, HB-17, HB-18, HB-20 | — |
+348:- **F03**: the technical baseline reconciliation and check suite. Only the canonical-branch record waits for HB-03.
+54:- PROPOSAL: A as the technical integration baseline, because it is the only target green on the full CI sequence, plus guide (merges clean). presentation/ stays preserved on its own branch, outside the baseline, pending HB-12. homepage stays preserved on its branch. Its Ask Bill content is ported only after its provenance is confirmed (HB-23), and you decide the hero. PR #1 is closed or retargeted after F03. This is a proposal; G0 decides.
+136:**HB-12. Repository scope** (Arnaud; no gate)
+368:| TB-01 | main, guide and video fail lint (2 errors), typecheck (26 errors) and build, so e2e cannot start. All errors are in film/. Lint fails because main's `eslint.config.mjs` ignore list does not exclude film/; typecheck and build fail because the root `tsconfig.json` excludes only `node_modules`. codex and homepage exclude film/ in both files (`inventory.md §2.1, §8`; D-048) | A3 (F03) | Resolve in F03 by baseline choice, or by a shared-config patch proposed to A0 that covers both the ESLint ignore list and the tsconfig exclude. Never weaken a guard. Scope question in HB-12 | F03 |
+183:| D-073 | **Integration baseline scope for F03.** F03 builds the integration baseline from codex `66cce52` + guide (clean merge) + the orchestration record. homepage (design conflict, HB-03) and presentation (internal pitch with superseded offers, HB-12) stay preserved, unmerged, on their own branches. This is the technical baseline for local work, not the canonical production branch, which G0 records (HB-03). | resolved-by-A0 (technical); canonical pending-G0 | inventory.md §2; blockers.md HB-03, HB-12 | Arnaud via HB-03/HB-12 | F03 and every code task |
+--- end ---
+### exit: 0
+### wall_s: 0.83
+

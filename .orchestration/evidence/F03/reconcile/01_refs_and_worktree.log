@@ -1,0 +1,51 @@
+### command: git ls-remote origin; for b in codex/desktop-iphone-unified guide/pre-retirement-guide claude/bill-presentation-video claude/bill-centered-homepage add-ask-bill-section main claude/orchestration-foundation; do echo "origin/$b $(git rev-parse origin/$b)"; done; git rev-parse HEAD; git status --porcelain; git worktree list
+### cwd: /home/user/bill
+### start: 2026-09-30T08:50:49Z
+77de3bd51a8c9cb73aec0b32d27ca0cacb6285cd	HEAD
+01e296caf4cb6822c9ccd45642834d69e02334bf	refs/heads/add-ask-bill-section
+d63aabd50d0760145208857856f32779b1069e15	refs/heads/claude/bill-centered-homepage
+fc0044576d851be414d19e2f7a21ca7fd1285eae	refs/heads/claude/bill-presentation-video
+cb3becf25ed042b977d4864ae71e74d13829320f	refs/heads/claude/orchestration-foundation
+66cce52046f535ddc1a90e6f94474877e375860d	refs/heads/codex/desktop-iphone-unified
+749b360f75185041e1aa3408500857605bc4507f	refs/heads/guide/pre-retirement-guide
+77de3bd51a8c9cb73aec0b32d27ca0cacb6285cd	refs/heads/main
+66cce52046f535ddc1a90e6f94474877e375860d	refs/pull/1/head
+a8e6b332e147027e28da0845a5f7a1557de43cf5	refs/pull/1/merge
+origin/codex/desktop-iphone-unified 66cce52046f535ddc1a90e6f94474877e375860d
+origin/guide/pre-retirement-guide 749b360f75185041e1aa3408500857605bc4507f
+origin/claude/bill-presentation-video fc0044576d851be414d19e2f7a21ca7fd1285eae
+origin/claude/bill-centered-homepage d63aabd50d0760145208857856f32779b1069e15
+origin/add-ask-bill-section 01e296caf4cb6822c9ccd45642834d69e02334bf
+origin/main 77de3bd51a8c9cb73aec0b32d27ca0cacb6285cd
+origin/claude/orchestration-foundation cb3becf25ed042b977d4864ae71e74d13829320f
+cb3becf25ed042b977d4864ae71e74d13829320f
+?? .orchestration/evidence/F03/
+/home/user/bill                                                                                        cb3becf [claude/orchestration-foundation]
+/tmp/claude-0/-home-user/bb8d4187-6ae8-587b-a816-8153faeea853/scratchpad/wt/base01-codex               66cce52 (detached HEAD)
+/tmp/claude-0/-home-user/bb8d4187-6ae8-587b-a816-8153faeea853/scratchpad/wt/base01-diag-main-filmdeps  77de3bd (detached HEAD)
+/tmp/claude-0/-home-user/bb8d4187-6ae8-587b-a816-8153faeea853/scratchpad/wt/base01-guide               749b360 (detached HEAD)
+/tmp/claude-0/-home-user/bb8d4187-6ae8-587b-a816-8153faeea853/scratchpad/wt/base01-homepage            d63aabd (detached HEAD)
+/tmp/claude-0/-home-user/bb8d4187-6ae8-587b-a816-8153faeea853/scratchpad/wt/base01-main                77de3bd (detached HEAD)
+/tmp/claude-0/-home-user/bb8d4187-6ae8-587b-a816-8153faeea853/scratchpad/wt/base01-video               fc00445 (detached HEAD)
+### end: 2026-09-30T08:50:50Z
+### exit: 0
+### wall_s: 0.85
+
+### command: git worktree add -b integration /tmp/claude-0/-home-user/bb8d4187-6ae8-587b-a816-8153faeea853/scratchpad/wt/integration origin/codex/desktop-iphone-unified
+### cwd: /home/user/bill
+### start: 2026-09-30T08:50:50Z
+Preparing worktree (new branch 'integration')
+branch 'integration' set up to track 'origin/codex/desktop-iphone-unified'.
+HEAD is now at 66cce52 Keep website checks scoped to the Next.js application
+### end: 2026-09-30T08:50:51Z
+### exit: 0
+### wall_s: 0.92
+
+### command: git branch --unset-upstream integration; git branch -vv | grep "^\* integration"
+### cwd: /tmp/claude-0/-home-user/bb8d4187-6ae8-587b-a816-8153faeea853/scratchpad/wt/integration
+### start: 2026-09-30T08:51:08Z
+* integration                     66cce52 Keep website checks scoped to the Next.js application
+### end: 2026-09-30T08:51:08Z
+### exit: 0
+### wall_s: 0.01
+

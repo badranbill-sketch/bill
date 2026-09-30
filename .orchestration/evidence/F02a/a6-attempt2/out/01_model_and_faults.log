@@ -1,0 +1,44 @@
+$ /tmp/claude-0/-home-user/bb8d4187-6ae8-587b-a816-8153faeea853/scratchpad/venv-f02/bin/python /home/user/bill/.orchestration/evidence/F02a/a6-attempt2/run_model.py /home/user/bill/.orchestration/contracts
+contracts dir: /home/user/bill/.orchestration/contracts
+WM fixtures found: 40; truth-table possible rows: 24; supplementary: 7
+inputs schema+XF-04..06 valid: 71/71
+contract reading: 71/71 cases reproduced exactly
+impossible rows (C and F, no input, precedence W10): 8/8
+media-state cases: 6/6
+index.json WM entries consistent with files and model: 40/40 (index has 41 entries: ['WM36', 'CLIP', 'WM37', 'WM38', 'WM39', 'WM40'] ...)
+
+fault | caught by (all cases) | caught by WM01-WM36 + clip cases only
+today_dollars_uses_q | WM37 | MISSED   # REQUIRED (1): pre-start growth of a today-dollar amount by (1+q_j)^{s_j}
+joint_uses_partner | WM38 | MISSED   # REQUIRED (2): joint source ages resolved against the partner
+group_from_rounded_rows | WM37,WM39 | MISSED   # P3-1 group reading (WM39 target)
+deflate_rounded_gap | WM40 | MISSED   # P3-1 deflation reading (WM40 target)
+joint_start_uses_partner | WM38 | MISSED   # variant: joint START only against the partner
+joint_end_uses_partner | WM38 | MISSED   # variant: joint END only against the partner
+joint_uses_older | MISSED | MISSED   # variant: joint against max(A, A')
+joint_uses_younger | WM38 | MISSED   # variant: joint against min(A, A')
+today_dollars_one_year_short | WM04,WM37 | WM04   # variant: carried s_j-1 years
+today_dollars_to_tR | WM04,WM37 | WM04   # variant: carried only to t_R (WM37 purpose claim)
+today_dollars_as_nominal | WM04,WM37 | WM04   # variant: today dollars treated as nominal
+today_dollars_indexed_at_i_after_start | WM37 | MISSED   # variant: escalates at i after start
+gap_from_rounded_rows | WM02,WM04,WM12,WM13,WM15,WM17,WM24,WM35,WM37,WM39,WM40 | WM02,WM04,WM12,WM13,WM15,WM17,WM24,WM35   # control: gap from rounded rows
+half_up | WM04 | WM04   # control: half-up rounding
+cr_discount_to_t0 | WM35 | WM35   # control: C_R discounted to t=0
+cr_zero_eligible | WM36 | WM36   # control: C_R = 0 display-eligible
+
+today_dollars_uses_q on WM37: state complete flags [] clip W07
+  t=10: contract gap 2995900 src {'src-1': 2925587, 'src-2': 0, 'src-3': 1392480} | fault gap 3588420 src {'src-1': 2400000, 'src-2': 0, 'src-3': 1325547} | overstated by 592520
+  t=11: contract gap 3128254 src {'src-1': 2925587, 'src-2': 0, 'src-3': 1406405} | fault gap 3721444 src {'src-1': 2400000, 'src-2': 0, 'src-3': 1338802} | overstated by 593190
+  t=12: contract gap 2502450 src {'src-1': 2925587, 'src-2': 760945, 'src-3': 1420469} | fault gap 3001804 src {'src-1': 2400000, 'src-2': 855457, 'src-3': 1352190} | overstated by 499354
+  t=13: contract gap 2617606 src {'src-1': 2925587, 'src-2': 783773, 'src-3': 1434674} | fault gap 3114808 src {'src-1': 2400000, 'src-2': 881120, 'src-3': 1365712} | overstated by 497202
+  t=14: contract gap 2734979 src {'src-1': 2925587, 'src-2': 807287, 'src-3': 1449020} | fault gap 3229950 src {'src-1': 2400000, 'src-2': 907554, 'src-3': 1379369} | overstated by 494971
+
+joint_uses_partner on WM38: state complete flags ['horizon_shorter_than_timeline'] clip W07
+  t=2: contract gap 4200000 src {'src-1': 0, 'src-2': 600000} | fault gap 4200000 src {'src-1': 0, 'src-2': 600000} | overstated by 0
+  t=3: contract gap 4200000 src {'src-1': 0, 'src-2': 600000} | fault gap 4200000 src {'src-1': 0, 'src-2': 600000} | overstated by 0
+  t=4: contract gap 4800000 src {'src-1': 0, 'src-2': 0} | fault gap 4200000 src {'src-1': 0, 'src-2': 600000} | overstated by -600000
+  t=5: contract gap 3600000 src {'src-1': 1200000, 'src-2': 0} | fault gap 4200000 src {'src-1': 0, 'src-2': 600000} | overstated by 600000
+  t=6: contract gap 3600000 src {'src-1': 1200000, 'src-2': 0} | fault gap 4200000 src {'src-1': 0, 'src-2': 600000} | overstated by 600000
+  t=7: contract gap 3600000 src {'src-1': 1200000, 'src-2': 0} | fault gap 4200000 src {'src-1': 0, 'src-2': 600000} | overstated by 600000
+
+RESULT: PASS
+[exit 0]

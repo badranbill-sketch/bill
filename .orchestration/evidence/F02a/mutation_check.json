@@ -1,0 +1,110 @@
+[
+ {
+  "fault": "today_dollars_uses_q",
+  "required": true,
+  "target": "WM37",
+  "caught_by": [
+   "WM37"
+  ],
+  "caught_by_WM01_WM36": [],
+  "target_first_difference": "/years/0/exact/gap: expected \"2995899.88763830938048\" got \"3588419.969475097369428\""
+ },
+ {
+  "fault": "today_dollars_as_nominal",
+  "required": false,
+  "target": "WM37",
+  "caught_by": [
+   "WM04",
+   "WM37"
+  ],
+  "caught_by_WM01_WM36": [
+   "WM04"
+  ],
+  "target_first_difference": "/years/0/exact/gap: expected \"2995899.88763830938048\" got \"3652754.45984854278144\""
+ },
+ {
+  "fault": "today_dollars_carried_to_t_R",
+  "required": false,
+  "target": "WM37",
+  "caught_by": [
+   "WM04",
+   "WM37"
+  ],
+  "caught_by_WM01_WM36": [
+   "WM04"
+  ],
+  "target_first_difference": "/years/0/exact/gap: expected \"2995899.88763830938048\" got \"2850969.4482647535090349504499712\""
+ },
+ {
+  "fault": "today_dollars_one_year_short",
+  "required": false,
+  "target": "WM37",
+  "caught_by": [
+   "WM04",
+   "WM37"
+  ],
+  "caught_by_WM01_WM36": [
+   "WM04"
+  ],
+  "target_first_difference": "/years/0/exact/gap: expected \"2995899.88763830938048\" got \"3080567.86082125513344\""
+ },
+ {
+  "fault": "today_dollars_indexed_at_i",
+  "required": false,
+  "target": "WM37",
+  "caught_by": [
+   "WM37"
+  ],
+  "caught_by_WM01_WM36": [],
+  "target_first_difference": "/years/0/exact/gap: expected \"2995899.88763830938048\" got \"2925586.607987417112576\""
+ },
+ {
+  "fault": "joint_uses_partner",
+  "required": true,
+  "target": "WM38",
+  "caught_by": [
+   "WM38"
+  ],
+  "caught_by_WM01_WM36": [],
+  "target_first_difference": "/flags: length 0 vs 1"
+ },
+ {
+  "fault": "joint_uses_younger",
+  "required": false,
+  "target": "WM38",
+  "caught_by": [
+   "WM38"
+  ],
+  "caught_by_WM01_WM36": [],
+  "target_first_difference": "/flags: length 0 vs 1"
+ },
+ {
+  "fault": "joint_uses_older",
+  "required": false,
+  "target": "WM38",
+  "caught_by": [],
+  "caught_by_WM01_WM36": [],
+  "target_first_difference": null
+ },
+ {
+  "fault": "group_from_rounded_rows",
+  "required": true,
+  "target": "WM39",
+  "caught_by": [
+   "WM37",
+   "WM39"
+  ],
+  "caught_by_WM01_WM36": [],
+  "target_first_difference": "/years/1/income_net_cents: expected 2020101 got 2020100"
+ },
+ {
+  "fault": "deflate_rounded_gap",
+  "required": true,
+  "target": "WM40",
+  "caught_by": [
+   "WM40"
+  ],
+  "caught_by_WM01_WM36": [],
+  "target_first_difference": "/years/2/gap_today_dollars_cents: expected 1029265 got 1029264"
+ }
+]

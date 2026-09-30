@@ -1,0 +1,174 @@
+$ /tmp/claude-0/-home-user/bb8d4187-6ae8-587b-a816-8153faeea853/scratchpad/venv-f02/bin/python .orchestration/evidence/F02/math/validate.py
+# utc 2026-09-30T09:15:51Z; cwd /home/user/bill
+python 3.11.15; jsonschema 4.26.0
+== 1. schema
+PASS workshop-inputs.schema.json is a valid JSON Schema 2020-12 document
+PASS $schema = https://json-schema.org/draft/2020-12/schema
+PASS $id = https://bill.contracts.local/workshop-inputs/1.0
+PASS build_schema.py --check: schema on disk matches builder: True
+== 2. valid examples
+PASS already-retired-zeros.json: valid (schema + semantic); model state=complete clip=W07
+PASS complete-single.json: valid (schema + semantic); model state=complete clip=W07
+PASS household-mixed.json: valid (schema + semantic); model state=incomplete_unknown_income clip=W06
+PASS minimal-all-unknown.json: valid (schema + semantic); model state=incomplete_unknown_timing clip=W10
+PASS range-limits.json: valid (schema + semantic); model state=complete clip=W07
+== 3. invalid examples
+PASS 27 invalid examples, 27 .why.txt files
+PASS already-receiving-with-point.json [START - already receiving has no start point]: schema 'not' at /chapters/income/sources/0/start - {'reference': 'already_receiving', 'point': {'status': 'estimated', 'value': 3}} should no
+PASS coverage-none-with-sources.json [XF-08 - coverage agrees with the source list]: schema 'maxItems' at /chapters/income/sources (validator value 0) - [{'id': 'src-1', 'kind': 'workplace_pension', 'owner': 'self', 'amount': {'status': 'confi
+PASS duplicate-source-id.json [XF-06 - source ids are unique]: schema-valid, semantic rule XF-06 at /chapters/income/sources/1/id - source id src-1 repeats index 0
+PASS end-before-start.json [XF-05 - end is after start]: schema-valid, semantic rule XF-05 at /chapters/income/sources/0/end - end index 3 is not after start index 4
+PASS estimated-without-value.json [STATUS-3 - estimated/confirmed need a value]: schema 'required' at /chapters/life/spending/amount (validator value ['value']) - 'value' is a required property
+PASS estimated-zero-value.json [STATUS-2 - zero has exactly one representation]: schema 'minimum' at /chapters/income/sources/0/amount/value (validator value 1) - 0 is less than the minimum of 1
+PASS extra-pii-email.json [PRIVACY - no personal identifier fields (closed shapes)]: schema 'additionalProperties' at (root) - Additional properties are not allowed ('email' was unexpected)
+PASS float-cents.json [UNITS - money is an integer number of cents]: schema 'type' at /chapters/life/spending/amount/value - 450000.5 is not of type 'integer'
+PASS home-counted-spendable.json [ASSET - home/business excluded from spendable]: schema 'const' at /chapters/savings/home_value/excluded_from_spendable - True was expected
+PASS horizon-beyond-age-120.json [XF-03 - last illustrated age at most 120]: schema 'maximum' at /chapters/timing/planning_horizon_years/value (validator value 26) - 30 is greater than the maximum of 26
+PASS horizon-zero.json [RANGE - planning horizon is at least 1 year]: schema 'minimum' at /chapters/timing/planning_horizon_years/value (validator value 1) - 0 is less than the minimum of 1
+PASS income-basis-missing.json [BASIS - every income source states gross, net or unknown]: schema 'required' at /chapters/income/sources/0 - 'tax_basis' is a required property
+PASS income-guaranteed-label.json [LABEL - no 'guaranteed' dependability]: schema 'enum' at /chapters/income/sources/0/dependability - 'guaranteed' is not one of ['scheduled', 'uncertain']
+PASS infinity-literal.json [NONFINITE - number must be a finite integer]: strict parse rejected (non-standard JSON constant Infinity); lenient parse -> schema 'type' at /chapters/life/spending/amount/value
+PASS inflation-unknown.json [ASSUMPTION - inflation is an explicit assumption]: schema 'enum' at /chapters/timing/inflation_bp/status - 'unknown' is not one of ['zero', 'estimated']
+PASS monthly-spending-over-limit.json [RANGE - monthly spending up to $100,000.00]: schema 'maximum' at /chapters/life/spending/amount/value (validator value 10000000) - 10000001 is greater than the maximum of 10000000
+PASS nan-as-string.json [NONFINITE - number must be a finite integer]: schema 'type' at /chapters/life/spending/amount/value - 'NaN' is not of type 'integer'
+PASS nan-literal.json [NONFINITE - number must be a finite integer]: strict parse rejected (non-standard JSON constant NaN); lenient parse -> schema 'type' at /chapters/life/spending/amount/value
+PASS negative-spending.json [RANGE - money is never negative]: schema 'minimum' at /chapters/life/spending/amount/value (validator value 0) - -450000 is less than the minimum of 0
+PASS partner-retirement-before-partner-age.json [XF-02 - partner retirement age not earlier than partner current age]: schema 'minimum' at /chapters/timing/household/partner_retirement_age/value (validator value 60) - 57 is less than the minimum of 60
+PASS partner-source-without-household.json [XF-07 - partner-owned source needs household timing]: schema 'required' at /chapters/timing (validator value ['household']) - 'household' is a required property
+PASS pii-label-in-source.json [PRIVACY - no free text anywhere]: schema 'additionalProperties' at /chapters/income/sources/0 - Additional properties are not allowed ('label' was unexpected)
+PASS retirement-before-current-age.json [XF-01 - retirement age not earlier than current age]: schema 'minimum' at /chapters/timing/retirement_age/value (validator value 58) - 55 is less than the minimum of 58
+PASS spending-pretax-basis.json [BASIS - spending is after tax (stated)]: schema 'const' at /chapters/life/spending/tax_basis - 'after_tax' was expected
+PASS spending-status-zero.json [RANGE - household spending cannot be zero]: schema 'enum' at /chapters/life/spending/amount/status - 'zero' is not one of ['unknown', 'estimated', 'confirmed']
+PASS start-age-already-passed.json [XF-04 - an age-based start is not before the owner's current age]: schema-valid, semantic rule XF-04 at /chapters/income/sources/0/start/point/value - start age 55 is before the owner's current age 58
+PASS unknown-with-value.json [STATUS-1 - unknown carries no value]: schema 'not' at /chapters/life/spending/amount - {'status': 'unknown', 'value': 450000} should not be valid under {'required': ['value']}
+== 4/5. fixtures
+PASS WM01-zero-inflation-zero-escalation.json: input valid; expected == recomputation (state=complete, clip=W07)
+PASS WM02-geometric-growth-closed-form.json: input valid; expected == recomputation (state=complete, clip=W07)
+PASS WM03-later-income-start.json: input valid; expected == recomputation (state=complete, clip=W07)
+PASS WM04-price-basis-today-vs-start-year.json: input valid; expected == recomputation (state=complete, clip=W07)
+PASS WM05-month-to-year-conversion.json: input valid; expected == recomputation (state=complete, clip=W07)
+PASS WM06-zero-income-declared.json: input valid; expected == recomputation (state=complete, clip=W07)
+PASS WM07-unknown-income-not-answered.json: input valid; expected == recomputation (state=incomplete_unknown_income, clip=W06)
+PASS WM08-unknown-amount-later-start.json: input valid; expected == recomputation (state=incomplete_unknown_income, clip=W06)
+PASS WM09-gross-net-mismatch.json: input valid; expected == recomputation (state=basis_mismatch, clip=W08)
+PASS WM10-housing-only-wealth.json: input valid; expected == recomputation (state=complete, clip=W07)
+PASS WM11-pension-double-count.json: input valid; expected == recomputation (state=complete, clip=W07)
+PASS WM12-surplus-years.json: input valid; expected == recomputation (state=complete, clip=W07)
+PASS WM13-retirement-year-boundary.json: input valid; expected == recomputation (state=complete, clip=W07)
+PASS WM14-capital-illustration-r-zero.json: input valid; expected == recomputation (state=complete, clip=W07)
+PASS WM15-capital-illustration-growing-annuity.json: input valid; expected == recomputation (state=complete, clip=W07)
+PASS WM16-capital-illustration-level-annuity.json: input valid; expected == recomputation (state=complete, clip=W07)
+PASS WM17-rounding-half-even.json: input valid; expected == recomputation (state=complete, clip=W10)
+PASS WM18-horizon-and-source-end.json: input valid; expected == recomputation (state=complete, clip=W07)
+PASS WM19-uncertain-income-labelled-scheduled.json: input valid; expected == recomputation (state=complete, clip=W07)
+PASS WM20-timing-unknown.json: input valid; expected == recomputation (state=incomplete_unknown_timing, clip=W10)
+PASS WM21-household-timing.json: input valid; expected == recomputation (state=complete, clip=W09)
+PASS WM22-price-basis-unknown.json: input valid; expected == recomputation (state=incomplete_unknown_income, clip=W06)
+PASS WM23-tax-basis-unknown.json: input valid; expected == recomputation (state=basis_unknown, clip=W08)
+PASS WM24-rounding-float-trap.json: input valid; expected == recomputation (state=complete, clip=W07)
+PASS WM25-spending-unknown-window-known.json: input valid; expected == recomputation (state=incomplete_unknown_spending, clip=W10)
+PASS WM26-start-point-unknown.json: input valid; expected == recomputation (state=incomplete_unknown_income, clip=W06)
+PASS WM27-end-point-unknown.json: input valid; expected == recomputation (state=incomplete_unknown_income, clip=W06)
+PASS WM28-end-unresolvable.json: input valid; expected == recomputation (state=incomplete_unknown_income, clip=W06)
+PASS WM29-start-unresolvable-window-known.json: input valid; expected == recomputation (state=incomplete_unknown_income, clip=W06)
+PASS WM30-income-list-partial.json: input valid; expected == recomputation (state=incomplete_unknown_income, clip=W06)
+PASS WM31-retirement-age-unknown.json: input valid; expected == recomputation (state=incomplete_unknown_timing, clip=W10)
+PASS WM32-unresolved-start-end-at-retirement.json: input valid; expected == recomputation (state=complete, clip=W07)
+PASS WM33-unresolved-start-end-inside-window.json: input valid; expected == recomputation (state=incomplete_unknown_income, clip=W06)
+PASS WM34-combined-unknowns-code-sets.json: input valid; expected == recomputation (state=incomplete_unknown_income, clip=W06)
+PASS WM35-capital-illustration-deferred-retirement.json: input valid; expected == recomputation (state=complete, clip=W07)
+PASS WM36-capital-illustration-all-surplus.json: input valid; expected == recomputation (state=complete, clip=W10)
+PASS clip-rules.json truth table: 32 rows, 24 possible rows valid and recomputed, 8 impossible rows documented
+PASS clip-rules CS01: C via unknown current age with M and X also true -> W10
+PASS clip-rules CS02: C via unknown retirement age only -> W10
+PASS clip-rules CS03: M via partial source list: no year computed, so F is false -> W06
+PASS clip-rules CS04: X via unknown tax basis (not gross) -> W08
+PASS clip-rules CS05: Household present but partner age unknown: H false, neutral -> W10
+PASS clip-rules CS06: Same retirement year for both (t_R' = 2 = t_R): H false -> W10
+PASS clip-rules CS07: Uncertain income does not change selection by itself -> W07
+PASS clip-rules MS01: Nothing recorded yet (today's real state) -> unavailable (release pass)
+PASS clip-rules MS02: Recorded and approved in active locale -> play (release pass)
+PASS clip-rules MS03: Recorded only in the other language -> other_locale_only (release pass)
+PASS clip-rules MS04: Labelled test media in a local test build -> play_test_media_labelled (release pass)
+PASS clip-rules MS05: Test media referenced by a production build -> unavailable (release fail_test_media_referenced)
+PASS clip-rules MS06: Another branch clip exists but the selected one does not: no substitution -> unavailable (release pass)
+PASS WM37-today-dollar-pre-start-factor.json: input valid; expected == recomputation (state=complete, clip=W07)
+PASS WM38-joint-owner-participant-age.json: input valid; expected == recomputation (state=complete, clip=W07)
+PASS WM39-group-total-from-exact-values.json: input valid; expected == recomputation (state=complete, clip=W07)
+PASS WM40-today-dollar-display-from-exact-gap.json: input valid; expected == recomputation (state=complete, clip=W07)
+FAIL compute_fixtures.py --check:   info WM17 float64 contrast: round(1000050*1.01) in IEEE double = 1010050; 1000050*1.01 = 1010050.5 (exact value 1010050.5) |   info WM24 float64 contrast: 1000800*1.025*1.025 = 1051465.4999999998; any float rounding gives 1051465 (wrong) | == check: 38 fixture files regenerated; differing: ['index.json']; unexpected files: ['WM37-today-dollar-pre-start-factor.json', 'WM38-joint-owner-participant-age.json', 'WM39-group-total-from-exact-values.json', 'WM40-today-dollar-display-from-exact-gap.json']
+== 6. negative controls: injected implementation errors must be caught by the fixtures
+PASS half-up rounding (JS Math.round behaviour) is caught by WM17
+PASS float64 growth factors are caught by WM24
+PASS treating unanswered income as zero is caught by WM07
+PASS subtracting gross income from after-tax spending is caught by WM09
+PASS ignoring the today-dollar price basis (real/nominal confusion) is caught by WM04
+PASS counting the home as spendable money is caught by WM10
+PASS a confident gap outranking missing income (F before M) is caught by WM08
+PASS household timing ranked after the funding gap is caught by WM21
+PASS fault matrix covers every fault hook in workshop_reference.FAULTS (11)
+PASS unknown_spending_zero_rows: unknown spending read as 0 in the year rows only -> caught by WM25 (required: WM25)
+PASS start_unknown_as_not_paying: start point with status unknown read as 'not paying' -> caught by WM26,WM33,WM34 (required: WM26,WM33)
+PASS start_unknown_as_already_receiving: start point with status unknown read as already receiving (s_j = 0) -> caught by WM26,WM33,WM34 (required: WM26,WM33)
+PASS start_unresolvable_as_not_paying: partner-owned age start (partner age unknown, window known) read as 'not paying' -> caught by WM20,WM29,WM34 (required: WM29)
+PASS unresolved_end_as_open: unknown or unresolvable end read as 'no end' -> caught by WM27,WM28,WM34 (required: WM27,WM28)
+PASS unknown_first: s4 read with 'unresolved start' before 't >= e_j' (the other literal reading) -> caught by WM32,WM33,WM34 (required: WM32,WM33)
+PASS first_code_only: only the first unresolved input reported per (j, t) -> caught by WM34 (required: WM34)
+PASS retirement_unknown_blocks_age_starts: R unknown treated as making self age starts unresolvable -> caught by WM31 (required: WM31)
+PASS cr_discount_to_base: C_R discounted to t = 0 instead of the start of year t_R -> caught by WM35 (required: WM35)
+PASS ignore_no_positive_gap: C_R = 0 treated as display-eligible -> caught by WM36 (required: WM36)
+PASS incomplete_coverage_groups_as_listed: income not answered shown as 0 income, or a partial list's subtotal shown as the year's income, in the display groups -> caught by WM07,WM30 (required: WM07,WM30)
+PASS partial_list_as_complete (input transform): a partial source list read as complete -> caught by WM30 (required: WM30)
+PASS income display groups: WM06 (no planned income) (0, 0, 0) vs WM07 (not answered) (None, None, None) in every row
+PASS income display groups: WM30 (partial list) (None, None, None) in every row, never the listed subtotal
+PASS netting surpluses against gaps (would give -526361 at r=0) is caught by WM12 (expects 339132)
+PASS matcher is not vacuous: no invalid-example rule matches the valid base instance
+== artifact hashes (sha256) for approval binding
+20df5bc3a360a70d2cbaef2d980d72181a938571f9c602f4377d135fcca3775e  .orchestration/contracts/workshop-inputs.schema.json
+ba3da0b8de3f41929452cf705f9bbd71a2171d52d93dbb4bb3bd6cb7081d5757  .orchestration/contracts/workshop-inputs.md
+583bd20434605b5dc5aa48288f706c0af9014607536f1ccac026fa501a260fbf  .orchestration/contracts/workshop-math.md
+f6b78b9e4db2108a53154bebe6344c6bde62b7b2e163c9d610e9912902429aff  .orchestration/contracts/workshop-clip-rules.md
+2855ae7c6330777a343cc7e2757d6016b9977b0fa39a981a26028a0ab38dc644  .orchestration/contracts/fixtures/workshop/WM01-zero-inflation-zero-escalation.json
+03765112fb6102f81d9b43ef3f0cc0edc08b0ca307b8d5c75e686baea5e7e579  .orchestration/contracts/fixtures/workshop/WM02-geometric-growth-closed-form.json
+ea0b927c60e9d6b5489292ee5678620254f8225b2001c212e40e654e7e42c64d  .orchestration/contracts/fixtures/workshop/WM03-later-income-start.json
+e531e1178ce646fae13071e7b9210861ccf3c418b1985a72950bd41e9acc83ff  .orchestration/contracts/fixtures/workshop/WM04-price-basis-today-vs-start-year.json
+d1da16c8459ff366ae7110403559ba87f9f1de1bbe63183b61492bbb7d0eef85  .orchestration/contracts/fixtures/workshop/WM05-month-to-year-conversion.json
+e10ea13688e4098609d4aa9af5157421ea9496bf96c2d3bcde83de75168d40e5  .orchestration/contracts/fixtures/workshop/WM06-zero-income-declared.json
+37d6c8b8ceb916752690aadbe897f2fb93cde49d0d7b3e0c6cbd86ba5dae9a5d  .orchestration/contracts/fixtures/workshop/WM07-unknown-income-not-answered.json
+83b4a8e586b3b6df2af5ed40b759a6399650bfa129c64c8adba73b7d1932d4b6  .orchestration/contracts/fixtures/workshop/WM08-unknown-amount-later-start.json
+60bb6d1e72bbc52027bba096e5699df67e019c734f0fae7aa1c7f4373f31fedc  .orchestration/contracts/fixtures/workshop/WM09-gross-net-mismatch.json
+8abb0c7e7f1a933b252a0ac3e9db52da8b67b1d9243180d05ba30f0f74123585  .orchestration/contracts/fixtures/workshop/WM10-housing-only-wealth.json
+6e73333f4231d36d403949fa216097358f28fbf8b1465637df6f5753d82ab4bf  .orchestration/contracts/fixtures/workshop/WM11-pension-double-count.json
+fa98b2d3610d7a3e1e1d7a2f8f00d60582d9488197eda1cf91f6ad5c416d740d  .orchestration/contracts/fixtures/workshop/WM12-surplus-years.json
+514274b3dbebb38a19dc4b285dc1bfee856ba6e80b330637f31dc6e23a8980bd  .orchestration/contracts/fixtures/workshop/WM13-retirement-year-boundary.json
+b260add745e16e0e0f407bebe1173be066ea1fab20f3657f18220ac968847dde  .orchestration/contracts/fixtures/workshop/WM14-capital-illustration-r-zero.json
+346c0e24d4f0ab71e36eedcf572697c3592337ddad303a3038564ff92bbd1a89  .orchestration/contracts/fixtures/workshop/WM15-capital-illustration-growing-annuity.json
+58707dc6fe47704f695f5d5c3a223a5aaf0c68d62e0a34c3cc279054db3560c8  .orchestration/contracts/fixtures/workshop/WM16-capital-illustration-level-annuity.json
+6d90881b23d6c19ab965bb38a78314a2bc229fa7f83048098bd0ce24fd4fd143  .orchestration/contracts/fixtures/workshop/WM17-rounding-half-even.json
+162a9081e2661e3ccbb0d799d50e53388763779f4a3e23c457662295cab9ed5a  .orchestration/contracts/fixtures/workshop/WM18-horizon-and-source-end.json
+24c12cdb2492d9bd6c9f8b3c7b7d7e5d558da5fd5f89536e557a12d946f05fc2  .orchestration/contracts/fixtures/workshop/WM19-uncertain-income-labelled-scheduled.json
+2e1f29dad9fb8f01ca75d247727dc3bd3c76df274ef30c620c3047253e9be1cf  .orchestration/contracts/fixtures/workshop/WM20-timing-unknown.json
+d6a54dfa6fb6dc71719230b2f521167e84542fe66e5d9e0d4dadd1a7b5a423d8  .orchestration/contracts/fixtures/workshop/WM21-household-timing.json
+0e4160acae3c0573f690c8205822c0ecba5d992675125782e7e1f56b25016435  .orchestration/contracts/fixtures/workshop/WM22-price-basis-unknown.json
+3f0ce5b39653e49a0acfde40b2b161de2896c4e3a1cb254c57faeda5f211734c  .orchestration/contracts/fixtures/workshop/WM23-tax-basis-unknown.json
+8ac57927c0bb64faf9f438cd0f3b168a15344fe1eaa81a6284b5b3804b427cfa  .orchestration/contracts/fixtures/workshop/WM24-rounding-float-trap.json
+26a5756e50448e2e41b1d4bc4225d4895c6f06da26f5a102454829892ab42bf3  .orchestration/contracts/fixtures/workshop/WM25-spending-unknown-window-known.json
+9cca05ce86d0cfc823ca8c54ce12e32682cf4b73cd0e62558b963a8f2270bfd9  .orchestration/contracts/fixtures/workshop/WM26-start-point-unknown.json
+3f4110d401a9d33e9cb50039afdd550da8b9be6dc719d8bd9c487167048d61c5  .orchestration/contracts/fixtures/workshop/WM27-end-point-unknown.json
+39ecb8401f24c156299991e032737bd4b79b58a12cee7d1555ecaa00a2ef58e8  .orchestration/contracts/fixtures/workshop/WM28-end-unresolvable.json
+c95f5107560ff7966defda511254de6a1b4bf95382e5b86c741978d8785c3fe9  .orchestration/contracts/fixtures/workshop/WM29-start-unresolvable-window-known.json
+413bb5be1e5babcaedb67e54143434aa53bb889f6033a3066c96bcc1c0a3fd49  .orchestration/contracts/fixtures/workshop/WM30-income-list-partial.json
+81229cb5f092c51313f7fbbc33b2ec490e524f30a88b24f01a8ee364dcc43732  .orchestration/contracts/fixtures/workshop/WM31-retirement-age-unknown.json
+53a377db66ed8b9ef9f2f534e56841db94c2170230d00b50de088ecef9856f73  .orchestration/contracts/fixtures/workshop/WM32-unresolved-start-end-at-retirement.json
+b27ce57c1ebcbe5aae2e1ed1af0d444b38a2be194c34a1e7c247c9d920f382ed  .orchestration/contracts/fixtures/workshop/WM33-unresolved-start-end-inside-window.json
+2b7a10afdc06c30b3023a85a12428738e217de6734d23f6082abb14836ac9675  .orchestration/contracts/fixtures/workshop/WM34-combined-unknowns-code-sets.json
+677c38d48e1c45d09c1f0b802d417415ce1abc1fbaecade97a9e98a5a842d437  .orchestration/contracts/fixtures/workshop/WM35-capital-illustration-deferred-retirement.json
+baccacfa1a78bc18572e7b47b06787ca1c66de2bf2822dafe74fac458434dec6  .orchestration/contracts/fixtures/workshop/WM36-capital-illustration-all-surplus.json
+e2afa56e528fff82ed2cff6e5e01bad4916bb6d0a859de126c7a7941096ca876  .orchestration/contracts/fixtures/workshop/WM37-today-dollar-pre-start-factor.json
+b27eaf5f6b9b40dae43763dc1ec5fe8f66c1ad312d493079fb26883fa5433f35  .orchestration/contracts/fixtures/workshop/WM38-joint-owner-participant-age.json
+fee6cc8372e2e571dabc32400fcf2dc11e50f64974aabab03bb035dd770bb9f5  .orchestration/contracts/fixtures/workshop/WM39-group-total-from-exact-values.json
+9653eda5f2360416a428aa08a89aae63c3f4923fc2eba6f6bac0f966f7f50e95  .orchestration/contracts/fixtures/workshop/WM40-today-dollar-display-from-exact-gap.json
+c8201bc12d53855c251ab2d5583673683940aeecaf327467d239a4ad5bc03071  .orchestration/contracts/fixtures/workshop/clip-rules.json
+ebb7cee73c786222fdadccec1eaa6ac215599badc4bbfdb67fa1af875ef4c380  .orchestration/contracts/fixtures/workshop/index.json
+== summary: 116 passed, 1 failed
+[exit 1]

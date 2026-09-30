@@ -1,0 +1,63 @@
+### command: node /tmp/claude-0/-home-user/bb8d4187-6ae8-587b-a816-8153faeea853/scratchpad/f03/vh.mjs /tmp/claude-0/-home-user/bb8d4187-6ae8-587b-a816-8153faeea853/scratchpad/wt/integration; PYTHONDONTWRITEBYTECODE=1 /tmp/claude-0/-home-user/bb8d4187-6ae8-587b-a816-8153faeea853/scratchpad/venv-f02/bin/python /tmp/claude-0/-home-user/bb8d4187-6ae8-587b-a816-8153faeea853/scratchpad/f03/vh.py
+### cwd: /tmp/claude-0/-home-user/bb8d4187-6ae8-587b-a816-8153faeea853/scratchpad/wt/integration
+### start: 2026-09-30T10:27:04Z
+ajv worker-handoff 1.0: VALID []
+validate.py handoff_problems(deep=False) [schema, ECMA patterns]: none
+OK  tests/baseline/run.mjs (result_commit blob)
+OK  tests/baseline/runner-lib.mjs (result_commit blob)
+OK  tests/baseline/runner.test.mjs (result_commit blob)
+OK  tests/baseline/contracts.test.ts (result_commit blob)
+OK  tests/baseline/screens.spec.ts (result_commit blob)
+OK  tests/baseline/playwright.baseline.config.ts (result_commit blob)
+OK  tests/baseline/compare-screens.mjs (result_commit blob)
+OK  tests/baseline/README.md (result_commit blob)
+OK  package.json (result_commit blob)
+OK  package-lock.json (result_commit blob)
+OK  .orchestration/baseline.md (main path)
+OK  .orchestration/evidence/F03/repair2/suite-full-b0bc6cf/results.json (main path)
+OK  .orchestration/evidence/F03/repair2/01_suite_full_b0bc6cf.log (main path)
+OK  .orchestration/evidence/F03/repair2/02_base02_codex_before_vs_b0bc6cf.log (main path)
+OK  .orchestration/evidence/F03/repair2/base02-diff-codex-vs-b0bc6cf/report.json (main path)
+OK  .orchestration/evidence/F03/repair2/03_partial_runs.log (main path)
+OK  .orchestration/evidence/F03/repair2/04_compare_screens_controls.log (main path)
+OK  .orchestration/evidence/F03/repair2/05_selftest_mutations.log (main path)
+OK  .orchestration/evidence/F03/repair2/06_final_state.log (main path)
+OK  .orchestration/evidence/F03/suite/final-5545c2a/results.json (main path)
+OK  .orchestration/evidence/F03/base02/diff/report.json (main path)
+OK  .orchestration/evidence/F03/base02/determinism_suite_vs_after.report.json (main path)
+OK  .orchestration/evidence/F03/reconcile/02_trial_merges.log (main path)
+OK  .orchestration/evidence/F03/reconcile/03_merges.log (main path)
+OK  .orchestration/evidence/F03/reconcile/04_preserved_branch_deltas.log (main path)
+OK  .orchestration/evidence/F03/reconcile/05_homepage_conflict_hunks.log (main path)
+OK  .orchestration/evidence/F03/reconcile/06_final_state.log (main path)
+OK  .orchestration/evidence/F03/suite/00_dev_setup.log (main path)
+OK  .orchestration/evidence/F03/suite/02_suite_integration_final.log (main path)
+OK  .orchestration/evidence/F03/suite/preexisting_validate_py_at_cb3becf.log (main path)
+OK  .orchestration/evidence/F03/suite/contracts_negative_controls.log (main path)
+OK  .orchestration/evidence/F03/suite/03_guide_generator_integration.log (main path)
+OK  .orchestration/evidence/F03/base02/before_capture.log (main path)
+OK  .orchestration/evidence/F03/base02/after_capture.log (main path)
+OK  .orchestration/evidence/F03/base02/compare_before_after.log (main path)
+OK  .orchestration/evidence/F03/base02/compare_negative_control.log (main path)
+hash/evidence problems: 0
+### end: 2026-09-30T10:27:04Z
+### exit: 0
+### wall_s: 0.54
+
+### note: deep check below is informative only: by design it hashes every artifact in the tree it runs in, so the result-commit paths (tests/baseline/*) are missing from /home/user/bill and package.json/lock differ there
+### command: PYTHONDONTWRITEBYTECODE=1 /tmp/claude-0/-home-user/bb8d4187-6ae8-587b-a816-8153faeea853/scratchpad/venv-f02/bin/python .orchestration/contracts/validate.py --handoff .orchestration/handoffs/F03.json 2>&1 | tail -8
+### cwd: /home/user/bill
+### start: 2026-09-30T10:27:04Z
+## Handoff check: /home/user/bill/.orchestration/handoffs/F03.json
+FAIL  F03.json: schema-valid; base_commit = HEAD; 36 artifact hashes match; changed paths and 42 evidence paths exist :: ['artifact missing tests/baseline/run.mjs', 'artifact missing tests/baseline/runner-lib.mjs', 'artifact missing tests/baseline/runner.test.mjs', 'artifact missing tests/baseline/contracts.test.ts', 'artifact missing tests/baseline/screens.spec.ts', 'artifact missing tests/baseline/playwright.baseline.config.ts', 'artifact missing tests/baseline/compare-screens.mjs', 'artifact missing tests/baseline/README.md', 'artifact hash differs package.json', 'artifact hash differs package-lock.json', 'changed path missing app/api/guide/route.ts', 'changed path missing app/features.css']
+
+## Summary
+pass: 0  fail: 1  known: 0  info: 0
+unexpected results:
+  - F03.json: schema-valid; base_commit = HEAD; 36 artifact hashes match; changed paths and 42 evidence paths exist :: ['artifact missing tests/baseline/run.mjs', 'artifact missing tests/baseline/runner-lib.mjs', 'artifact missing tests/baseline/runner.test.mjs', 'artifact missing tests/baseline/contrac
+exit_code=1
+### end: 2026-09-30T10:27:05Z
+### exit: 0
+### wall_s: 0.30
+
+### note: the record's exit 0 is that of tail; validate.py itself printed exit_code=1 for the expected reasons above (result-commit artifacts and codex-only changed paths are not in the main-path tree).

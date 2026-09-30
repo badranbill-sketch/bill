@@ -1,0 +1,10 @@
+# step: verify_publication - Hash-bound publication check (verify.yml)
+# command: node --import tsx scripts/verify-publication.ts
+# cwd: /tmp/claude-0/-home-user/bb8d4187-6ae8-587b-a816-8153faeea853/scratchpad/wt/integration
+# started: 2026-09-30T10:17:59.427Z
+# env overrides: {"NEXT_TELEMETRY_DISABLED":"1"}
+
+
+# finished: 2026-09-30T10:17:59.888Z
+# exit: 0
+# seconds: 0.46

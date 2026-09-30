@@ -1,0 +1,22 @@
+### command: bash /tmp/claude-0/-home-user/bb8d4187-6ae8-587b-a816-8153faeea853/scratchpad/a6f03/trials.sh
+### cwd: /tmp/claude-0/-home-user/bb8d4187-6ae8-587b-a816-8153faeea853/scratchpad/wt/a6-f03-1
+### start: 2026-09-30T09:54:22Z
+HEAD=5545c2aeb3249e19e5f328c86fa7d264c04ec0d2 status_lines=0
+== trial: integration <- origin/guide/pre-retirement-guide (749b360) ==
+merge_exit=0
+conflicted: 
+staged deletions: 
+after abort status_lines=0
+== trial: integration <- origin/claude/bill-presentation-video (fc00445) ==
+merge_exit=1
+conflicted: eslint.config.mjs tsconfig.json 
+staged deletions: 
+after abort status_lines=0
+== trial: integration <- origin/claude/bill-centered-homepage (d63aabd) ==
+merge_exit=1
+conflicted: components/pages.tsx lib/copy.ts lib/ink-files.json scripts/build-ink.tsx tests/browser/site.spec.ts 
+staged deletions: public/assets/ink/desk-caption-en.6834acbe8c.svg public/assets/ink/desk-caption-fr.15f201593d.svg public/assets/ink/dock.ccd6542ba7.svg 
+after abort status_lines=0
+### exit: 0
+### wall_s: .224555182
+

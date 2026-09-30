@@ -1,0 +1,31 @@
+### command: node tests/baseline/compare-screens.mjs --before /home/user/bill/.orchestration/evidence/F03/base02/before --after /home/user/bill/.orchestration/evidence/F03/a6-attempt1/base02 --diff /home/user/bill/.orchestration/evidence/F03/a6-attempt1/base02-diff-vs-builder-before
+### cwd: /tmp/claude-0/-home-user/bb8d4187-6ae8-587b-a816-8153faeea853/scratchpad/wt/a6-f03-1
+### start: 2026-09-30T09:50:48Z
+en-home-1440             identical      0% 1440x6598
+en-home-320              identical      0% 320x8553
+en-home-390              identical      0% 390x8517
+en-home-768              identical      0% 768x7317
+en-meeting-1440          identical      0% 1440x3324
+en-meeting-320           identical      0% 320x4631
+en-meeting-390           identical      0% 390x4399
+en-meeting-768           identical      0% 768x3957
+en-resources-1440        identical      0% 1440x3503
+en-resources-320         identical      0% 320x5272
+en-resources-390         identical      0% 390x5058
+en-resources-768         identical      0% 768x4441
+fr-home-1440             identical      0% 1440x6574
+fr-home-320              identical      0% 320x9122
+fr-home-390              identical      0% 390x8603
+fr-home-768              identical      0% 768x7437
+fr-meeting-1440          identical      0% 1440x3346
+fr-meeting-320           identical      0% 320x4881
+fr-meeting-390           identical      0% 390x4703
+fr-meeting-768           identical      0% 768x4047
+fr-resources-1440        identical      0% 1440x3608
+fr-resources-320         identical      0% 320x5991
+fr-resources-390         identical      0% 390x5314
+fr-resources-768         identical      0% 768x4608
+{"screenshots":24,"identical":24,"changed":0,"missing_before":0,"missing_after":0,"record_differences":0}
+### exit: 0
+### wall_s: 9.035583927
+

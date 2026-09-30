@@ -1,0 +1,111 @@
+$ node /home/user/bill/.orchestration/evidence/F02a/a6-attempt3/run_suite.mjs /home/user/bill/.orchestration/contracts/fixtures/workshop
+# contract reading (no fault) over 40 WM fixtures, 31 clip cases with input
+PASS WM01
+PASS WM02
+PASS WM03
+PASS WM04
+PASS WM05
+PASS WM06
+PASS WM07
+PASS WM08
+PASS WM09
+PASS WM10
+PASS WM11
+PASS WM12
+PASS WM13
+PASS WM14
+PASS WM15
+PASS WM16
+PASS WM17
+PASS WM18
+PASS WM19
+PASS WM20
+PASS WM21
+PASS WM22
+PASS WM23
+PASS WM24
+PASS WM25
+PASS WM26
+PASS WM27
+PASS WM28
+PASS WM29
+PASS WM30
+PASS WM31
+PASS WM32
+PASS WM33
+PASS WM34
+PASS WM35
+PASS WM36
+PASS WM37
+PASS WM38
+PASS WM39
+PASS WM40
+PASS TT01
+PASS TT02
+PASS TT03
+PASS TT04
+PASS TT05
+PASS TT06
+PASS TT07
+PASS TT08
+PASS TT09
+PASS TT10
+PASS TT11
+PASS TT12
+PASS TT13
+PASS TT14
+PASS TT15
+PASS TT16
+PASS TT17
+PASS TT19
+PASS TT21
+PASS TT23
+PASS TT25
+PASS TT27
+PASS TT29
+PASS TT31
+PASS CS01
+PASS CS02
+PASS CS03
+PASS CS04
+PASS CS05
+PASS CS06
+PASS CS07
+PASS impossible rows: 8 rows, all C and F, input null, precedence W10
+PASS MS01
+PASS MS02
+PASS MS03
+PASS MS04
+PASS MS05
+PASS MS06
+semantic XF-04..06: 71/71 inputs clean
+index.json: 40 WM entries, 0 problems; non-WM entries: CLIP
+CONTRACT READING: ALL PASS
+
+# faulty runtimes: caught_by (all cases) | caught_by restricted to WM01-WM36 + clip cases
+today_dollars_uses_q: caught_by=[WM37] | old_suite=MISSED
+    WM37: first diff /years/0/exact/gap: model="3588419.969475097369428" expected="2995899.88763830938048"
+joint_uses_partner: caught_by=[WM38] | old_suite=MISSED
+    WM38: first diff /flags/0: extra in model
+joint_start_partner: caught_by=[WM38] | old_suite=MISSED
+    WM38: first diff /flags/0: extra in model
+joint_end_partner: caught_by=[WM38] | old_suite=MISSED
+    WM38: first diff /years/2/exact/gap: model="4200000" expected="4800000"
+joint_uses_younger: caught_by=[WM38] | old_suite=MISSED
+    WM38: first diff /flags/0: extra in model
+joint_uses_older: caught_by=[NONE] | old_suite=MISSED
+joint_needs_partner_age: caught_by=[NONE] | old_suite=MISSED
+group_from_rounded_rows: caught_by=[WM37,WM39] | old_suite=MISSED
+    WM37: first diff /years/1/income_net_cents: model=4331992 expected=4331991
+    WM39: first diff /years/1/income_net_cents: model=2020100 expected=2020101
+deflate_rounded_gap: caught_by=[WM40] | old_suite=MISSED
+    WM40: first diff /years/2/gap_today_dollars_cents: model=1029264 expected=1029265
+gap_from_rounded_rows: caught_by=[WM17,WM39] | old_suite=[WM17]
+    WM39: first diff /years/1/gap_cents: model=1009900 expected=1009899
+half_up: caught_by=[WM04,WM17,WM39] | old_suite=[WM04,WM17]
+    WM39: first diff /years/1/income_by_source_cents/src-1: model=1010051 expected=1010050
+today_dollars_nominal: caught_by=[WM04,WM37] | old_suite=[WM04]
+    WM37: first diff /years/0/exact/gap: model="3652754.45984854278144" expected="2995899.88763830938048"
+today_dollars_i_after: caught_by=[WM37] | old_suite=MISSED
+    WM37: first diff /years/0/exact/gap: model="2925586.607987417112576" expected="2995899.88763830938048"
+[exit 0]

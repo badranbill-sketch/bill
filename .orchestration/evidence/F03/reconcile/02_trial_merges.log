@@ -1,0 +1,706 @@
+### command: git worktree add --detach /tmp/claude-0/-home-user/bb8d4187-6ae8-587b-a816-8153faeea853/scratchpad/wt/f03-trial origin/codex/desktop-iphone-unified
+### cwd: /home/user/bill
+### start: 2026-09-30T08:51:08Z
+Preparing worktree (detached HEAD 66cce52)
+HEAD is now at 66cce52 Keep website checks scoped to the Next.js application
+### end: 2026-09-30T08:51:09Z
+### exit: 0
+### wall_s: 0.87
+
+### command: echo TRIAL codex@$(git rev-parse HEAD) <- origin/guide/pre-retirement-guide@$(git rev-parse origin/guide/pre-retirement-guide); git merge --no-commit --no-ff origin/guide/pre-retirement-guide; echo merge_exit=$?; git status --porcelain | head -80; echo conflicted:; git diff --name-only --diff-filter=U; git merge --abort; echo abort_exit=$?; echo clean_after=$(git status --porcelain | wc -l)
+### cwd: /tmp/claude-0/-home-user/bb8d4187-6ae8-587b-a816-8153faeea853/scratchpad/wt/f03-trial
+### start: 2026-09-30T08:51:18Z
+bash: line 1: -: No such file or directory
+Automatic merge went well; stopped before committing as requested
+merge_exit=0
+M  .gitignore
+A  guide/README.md
+A  guide/art/charts.tsx
+A  guide/art/containers.tsx
+A  guide/art/cover.tsx
+A  guide/art/harbour.tsx
+A  guide/art/horizons.tsx
+A  guide/art/index.tsx
+A  guide/art/kit.tsx
+A  guide/art/plans.tsx
+A  guide/art/porch.tsx
+A  guide/art/spending.tsx
+A  guide/art/storm.tsx
+A  guide/assets/grain.png
+A  guide/build.tsx
+A  guide/copy.ts
+A  guide/layout.tsx
+A  guide/marks.tsx
+A  guide/style.css
+M  package.json
+A  scripts/ink-sheet.tsx
+conflicted:
+abort_exit=0
+clean_after=0
+### end: 2026-09-30T08:51:18Z
+### exit: 0
+### wall_s: 0.20
+
+### command: echo TRIAL codex@$(git rev-parse HEAD) <- origin/claude/bill-presentation-video@$(git rev-parse origin/claude/bill-presentation-video); git merge --no-commit --no-ff origin/claude/bill-presentation-video; echo merge_exit=$?; git status --porcelain | head -80; echo conflicted:; git diff --name-only --diff-filter=U; git merge --abort; echo abort_exit=$?; echo clean_after=$(git status --porcelain | wc -l)
+### cwd: /tmp/claude-0/-home-user/bb8d4187-6ae8-587b-a816-8153faeea853/scratchpad/wt/f03-trial
+### start: 2026-09-30T08:51:18Z
+bash: line 1: -: No such file or directory
+Auto-merging eslint.config.mjs
+CONFLICT (content): Merge conflict in eslint.config.mjs
+Auto-merging tsconfig.json
+CONFLICT (content): Merge conflict in tsconfig.json
+Automatic merge failed; fix conflicts and then commit the result.
+merge_exit=1
+M  .prettierignore
+UU eslint.config.mjs
+A  presentation/.gitignore
+A  presentation/README.md
+A  presentation/package-lock.json
+A  presentation/package.json
+A  presentation/public/fonts/caveat-latin-400-normal.woff2
+A  presentation/public/fonts/caveat-latin-500-normal.woff2
+A  presentation/public/fonts/newsreader-latin-300-italic.woff2
+A  presentation/public/fonts/newsreader-latin-300-normal.woff2
+A  presentation/public/fonts/newsreader-latin-400-italic.woff2
+A  presentation/public/fonts/newsreader-latin-400-normal.woff2
+A  presentation/public/fonts/source-sans-3-latin-400-italic.woff2
+A  presentation/public/fonts/source-sans-3-latin-400-normal.woff2
+A  presentation/public/fonts/source-sans-3-latin-600-normal.woff2
+A  presentation/public/ink/chairs-table.full.svg
+A  presentation/public/ink/chairs-table.ink.svg
+A  presentation/public/ink/chairs-table.wash.svg
+A  presentation/public/ink/left-chair.full.svg
+A  presentation/public/ink/left-chair.ink.svg
+A  presentation/public/ink/left-chair.wash.svg
+A  presentation/public/ink/path.full.svg
+A  presentation/public/ink/path.ink.svg
+A  presentation/public/ink/path.wash.svg
+A  presentation/public/ink/sailboat.full.svg
+A  presentation/public/ink/sailboat.ink.svg
+A  presentation/public/ink/sailboat.wash.svg
+A  presentation/public/ink/two-chairs.full.svg
+A  presentation/public/ink/two-chairs.ink.svg
+A  presentation/public/ink/two-chairs.wash.svg
+A  presentation/public/photos/bill-portrait.jpg
+A  presentation/public/plates/canoe.svg
+A  presentation/public/plates/containers.svg
+A  presentation/public/plates/cover-art.svg
+A  presentation/public/plates/harbour.svg
+A  presentation/public/plates/horizons.svg
+A  presentation/public/plates/plates.json
+A  presentation/public/plates/porch.svg
+A  presentation/public/plates/spending.svg
+A  presentation/public/plates/storm.svg
+A  presentation/public/plates/table-plan.svg
+A  presentation/public/textures/grain-1920.png
+A  presentation/remotion.config.ts
+A  presentation/scripts/qa.mjs
+A  presentation/scripts/split-ink.mjs
+A  presentation/scripts/stills.mjs
+A  presentation/src/Presentation.tsx
+A  presentation/src/Root.tsx
+A  presentation/src/assets.ts
+A  presentation/src/brand.ts
+A  presentation/src/content.ts
+A  presentation/src/data/ink.json
+A  presentation/src/fonts.ts
+A  presentation/src/index.ts
+A  presentation/src/primitives/basics.tsx
+A  presentation/src/primitives/objects.tsx
+A  presentation/src/primitives/pen.ts
+A  presentation/src/primitives/time.tsx
+A  presentation/src/scenes/Asks.tsx
+A  presentation/src/scenes/Audience.tsx
+A  presentation/src/scenes/Close.tsx
+A  presentation/src/scenes/Identity.tsx
+A  presentation/src/scenes/Journey.tsx
+A  presentation/src/scenes/Opening.tsx
+A  presentation/tools/plates.tsx
+A  presentation/tsconfig.json
+UU tsconfig.json
+conflicted:
+eslint.config.mjs
+tsconfig.json
+abort_exit=0
+clean_after=0
+### end: 2026-09-30T08:51:18Z
+### exit: 0
+### wall_s: 0.09
+
+### command: echo TRIAL codex@$(git rev-parse HEAD) <- origin/claude/bill-centered-homepage@$(git rev-parse origin/claude/bill-centered-homepage); git merge --no-commit --no-ff origin/claude/bill-centered-homepage; echo merge_exit=$?; git status --porcelain | head -80; echo conflicted:; git diff --name-only --diff-filter=U; git merge --abort; echo abort_exit=$?; echo clean_after=$(git status --porcelain | wc -l)
+### cwd: /tmp/claude-0/-home-user/bb8d4187-6ae8-587b-a816-8153faeea853/scratchpad/wt/f03-trial
+### start: 2026-09-30T08:51:18Z
+bash: line 1: -: No such file or directory
+Auto-merging components/pages.tsx
+CONFLICT (content): Merge conflict in components/pages.tsx
+Auto-merging eslint.config.mjs
+Auto-merging lib/copy.ts
+CONFLICT (content): Merge conflict in lib/copy.ts
+Auto-merging lib/ink-files.json
+CONFLICT (content): Merge conflict in lib/ink-files.json
+Auto-merging scripts/build-ink.tsx
+CONFLICT (content): Merge conflict in scripts/build-ink.tsx
+Auto-merging tests/browser/site.spec.ts
+CONFLICT (content): Merge conflict in tests/browser/site.spec.ts
+Automatic merge failed; fix conflicts and then commit the result.
+merge_exit=1
+M  .prettierignore
+M  LAUNCH-CHECKLIST.md
+M  README.md
+M  TEST-SUMMARY.md
+M  app/[lang]/[[...slug]]/page.tsx
+M  app/globals.css
+M  app/ride.css
+A  components/ask.tsx
+A  components/booklet.tsx
+M  components/ink/desk.tsx
+M  components/journey/ride.tsx
+M  components/navigation.tsx
+UU components/pages.tsx
+M  components/resources.tsx
+M  components/shell.tsx
+M  docs/ART-DIRECTION.md
+A  docs/ASK-BILL.md
+M  docs/COPY-STRATEGY.md
+M  docs/INTEGRATIONS.md
+M  eslint.config.mjs
+A  lib/ask.ts
+M  lib/business.ts
+UU lib/copy.ts
+UU lib/ink-files.json
+M  lib/journey.ts
+M  lib/pages.ts
+M  lib/ride.ts
+M  lib/routes.ts
+D  public/assets/ink/desk-caption-en.6834acbe8c.svg
+D  public/assets/ink/desk-caption-fr.15f201593d.svg
+D  public/assets/ink/dock.ccd6542ba7.svg
+UU scripts/build-ink.tsx
+M  scripts/capture.mjs
+M  scripts/launch.ts
+A  tests/ask.test.ts
+UU tests/browser/site.spec.ts
+conflicted:
+components/pages.tsx
+lib/copy.ts
+lib/ink-files.json
+scripts/build-ink.tsx
+tests/browser/site.spec.ts
+abort_exit=0
+clean_after=0
+### end: 2026-09-30T08:51:18Z
+### exit: 0
+### wall_s: 0.07
+
+### command: echo TRIAL codex <- cb3becf; git merge --no-commit --no-ff cb3becf25ed042b977d4864ae71e74d13829320f; echo merge_exit=$?; git diff --cached --name-only | grep -v '^.orchestration/' | head; echo staged_total=$(git diff --cached --name-only | wc -l) staged_outside_orchestration=$(git diff --cached --name-only | grep -vc '^.orchestration/'); git merge --abort; echo abort_exit=$?; echo clean_after=$(git status --porcelain | wc -l)
+### cwd: /tmp/claude-0/-home-user/bb8d4187-6ae8-587b-a816-8153faeea853/scratchpad/wt/f03-trial
+### start: 2026-09-30T08:51:18Z
+bash: line 1: -: No such file or directory
+Automatic merge went well; stopped before committing as requested
+merge_exit=0
+staged_total=789 staged_outside_orchestration=0
+abort_exit=0
+clean_after=0
+### end: 2026-09-30T08:51:18Z
+### exit: 0
+### wall_s: 0.19
+
+### command: git checkout --detach 1316ebe10fe9ff753c3ce42151018ae3cebcc163 && git rev-parse HEAD
+### cwd: /tmp/claude-0/-home-user/bb8d4187-6ae8-587b-a816-8153faeea853/scratchpad/wt/f03-trial
+### start: 2026-09-30T08:51:42Z
+Previous HEAD position was 66cce52 Keep website checks scoped to the Next.js application
+HEAD is now at 1316ebe Merge guide/pre-retirement-guide into integration (F03)
+1316ebe10fe9ff753c3ce42151018ae3cebcc163
+### end: 2026-09-30T08:51:42Z
+### exit: 0
+### wall_s: 0.02
+
+### command: echo TRIAL integration-after-guide@$(git rev-parse HEAD) <- origin/claude/bill-presentation-video@$(git rev-parse origin/claude/bill-presentation-video); git merge --no-commit --no-ff origin/claude/bill-presentation-video; echo merge_exit=$?; echo conflicted:; git diff --name-only --diff-filter=U; for f in $(git diff --name-only --diff-filter=U); do echo "== $f markers: $(grep -c '^<<<<<<<' $f)"; done; git diff --diff-filter=U | head -400; git status --porcelain | grep -E '^(D |UD|DU| D)' ; git merge --abort; echo abort_exit=$?; echo clean_after=$(git status --porcelain | wc -l)
+### cwd: /tmp/claude-0/-home-user/bb8d4187-6ae8-587b-a816-8153faeea853/scratchpad/wt/f03-trial
+### start: 2026-09-30T08:51:42Z
+bash: line 1: -: No such file or directory
+Auto-merging eslint.config.mjs
+CONFLICT (content): Merge conflict in eslint.config.mjs
+Auto-merging tsconfig.json
+CONFLICT (content): Merge conflict in tsconfig.json
+Automatic merge failed; fix conflicts and then commit the result.
+merge_exit=1
+conflicted:
+eslint.config.mjs
+tsconfig.json
+== eslint.config.mjs markers: 1
+== tsconfig.json markers: 1
+diff --cc eslint.config.mjs
+index 2eedc18,28867c7..0000000
+--- a/eslint.config.mjs
++++ b/eslint.config.mjs
+@@@ -9,8 -9,7 +9,12 @@@ const config = 
+        "reference/**",
+        "test-results/**",
+        "playwright-report/**",
+++<<<<<<< HEAD
+ +      // The standalone Remotion project has its own ESLint config and dependencies.
+ +      "film/**",
+++=======
++       "presentation/**",
+++>>>>>>> origin/claude/bill-presentation-video
+      ],
+    },
+  ];
+diff --cc tsconfig.json
+index 9541807,73931f8..0000000
+--- a/tsconfig.json
++++ b/tsconfig.json
+@@@ -23,5 -23,5 +23,9 @@@
+      ".next/types/**/*.ts",
+      ".next/dev/types/**/*.ts"
+    ],
+++<<<<<<< HEAD
+ +  "exclude": ["node_modules", "film"]
+++=======
++   "exclude": ["node_modules", "presentation"]
+++>>>>>>> origin/claude/bill-presentation-video
+  }
+abort_exit=0
+clean_after=0
+### end: 2026-09-30T08:51:42Z
+### exit: 0
+### wall_s: 0.13
+
+### command: echo TRIAL integration-after-guide@$(git rev-parse HEAD) <- origin/claude/bill-centered-homepage@$(git rev-parse origin/claude/bill-centered-homepage); git merge --no-commit --no-ff origin/claude/bill-centered-homepage; echo merge_exit=$?; echo conflicted:; git diff --name-only --diff-filter=U; for f in $(git diff --name-only --diff-filter=U); do echo "== $f markers: $(grep -c '^<<<<<<<' $f)"; done; git diff --diff-filter=U | head -400; git status --porcelain | grep -E '^(D |UD|DU| D)' ; git merge --abort; echo abort_exit=$?; echo clean_after=$(git status --porcelain | wc -l)
+### cwd: /tmp/claude-0/-home-user/bb8d4187-6ae8-587b-a816-8153faeea853/scratchpad/wt/f03-trial
+### start: 2026-09-30T08:51:42Z
+bash: line 1: -: No such file or directory
+Auto-merging components/pages.tsx
+CONFLICT (content): Merge conflict in components/pages.tsx
+Auto-merging eslint.config.mjs
+Auto-merging lib/copy.ts
+CONFLICT (content): Merge conflict in lib/copy.ts
+Auto-merging lib/ink-files.json
+CONFLICT (content): Merge conflict in lib/ink-files.json
+Auto-merging scripts/build-ink.tsx
+CONFLICT (content): Merge conflict in scripts/build-ink.tsx
+Auto-merging tests/browser/site.spec.ts
+CONFLICT (content): Merge conflict in tests/browser/site.spec.ts
+Automatic merge failed; fix conflicts and then commit the result.
+merge_exit=1
+conflicted:
+components/pages.tsx
+lib/copy.ts
+lib/ink-files.json
+scripts/build-ink.tsx
+tests/browser/site.spec.ts
+== components/pages.tsx markers: 3
+== lib/copy.ts markers: 2
+== lib/ink-files.json markers: 1
+== scripts/build-ink.tsx markers: 2
+== tests/browser/site.spec.ts markers: 1
+diff --cc components/pages.tsx
+index 3f59ac9,9e42cba..0000000
+--- a/components/pages.tsx
++++ b/components/pages.tsx
+@@@ -12,13 -12,19 +12,20 @@@ import { Inquiry } from "./inquiry"
+  import { Fees } from "./fees";
+  import { Resources } from "./resources";
+  import { Ride } from "./journey/ride";
+ +import { Features, Conversation } from "./features";
+  import { Reveal } from "./reveal";
+- import { DESK } from "./ink/desk";
++ import { Booklet } from "./booklet";
++ import {
++   AskCards,
++   AskList,
++   AskOwn,
++   GuideContents,
++   arrow,
++   askMail,
++ } from "./ask";
++ import { askGroups } from "@/lib/ask";
+  import { InkFile } from "./ink/file";
+  
+- const pct = (v: number, of: number) => `${((v / of) * 100).toFixed(3)}%`;
+- 
+  export function Contact({
+    lang,
+    meeting = true,
+@@@ -86,12 -92,16 +93,21 @@@ function Invitation({ lang }: { lang: L
+  }
+  
+  /**
+++<<<<<<< HEAD
+ + * One reading and focus order on every screen: introduction, guide and
+ + * questions, Bill, the journey, then a first conversation.
+++=======
++  * The homepage, as a sequence of pages from Bill's notebook: Bill himself,
++  * why he works the way he does, the questions people bring him, his guide,
++  * then the first meeting (content, guide, meeting). The mountain ride comes
++  * after, as a short epilogue, not in the way. The hero drawing and the ride
++  * carry the only motion; everything else is still, apart from drawings
++  * appearing once.
+++>>>>>>> origin/claude/bill-centered-homepage
+   */
+- export function Home({ lang, review }: { lang: Language; review: boolean }) {
++ export function Home({ lang }: { lang: Language }) {
+    const c = t(lang);
+-   const { photo } = DESK;
++   const pdf = business.guide.pdf[lang];
+    return (
+      <>
+        <section className="hero" id="intro">
+@@@ -104,110 -117,170 +123,251 @@@
+              <p className="lede">{c.intro}</p>
+              <div className="hero-actions">
+                <MeetingLink lang={lang} />
+ -              <Link
+ -                className="text-link"
+ -                href={`${pathFor(lang, "meeting")}#deroulement`}
+ -              >
+ -                {c.how}
+ +              <Link className="text-link" href="#guide">
+ +                {lang === "fr"
+ +                  ? "Commencer par le guide"
+ +                  : "Start with the guide"}
+                </Link>
+              </div>
+ -            <p className="hero-who">{c.portrait}</p>
+ +            <div className="hero-person">
+ +              <Portrait lang={lang} sizes="48px" />
+ +              <p>
+ +                <strong>Bill Badran</strong>
+ +                <span>
+ +                  {lang === "fr"
+ +                    ? "Planificateur financier · Laval"
+ +                    : "Financial planner · Laval"}
+ +                </span>
+ +              </p>
+ +            </div>
+ +          </div>
+ +          <div className="hero-mobile-art">
+ +            <InkFile name="hiker" lang={lang} priority />
+            </div>
+-           <figure className="hero-art">
+-             <InkFile name="desk" lang={lang} priority />
+-             <div
+-               className="hero-photo"
+-               style={{
+-                 left: pct(photo.x, DESK.w),
+-                 top: pct(photo.y, DESK.h),
+-                 width: pct(photo.w, DESK.w),
+-                 height: pct(photo.h, DESK.h),
+-                 transform: `rotate(${photo.rotate}deg)`,
+-               }}
+-             >
++           <div className="hero-art">
++             <div className="hero-notebook">
++               <InkFile name="questions-notebook" lang={lang} priority />
++             </div>
++             {c.heroNote && <p className="hero-note hand">{c.heroNote}</p>}
++             <figure className="hero-print">
+                <Portrait
+                  lang={lang}
+                  priority
+-                 sizes="(max-width: 900px) 150px, 17vw"
++                 sizes="(max-width: 600px) 96px, (max-width: 900px) 180px, 26vw"
+                />
+++<<<<<<< HEAD
+ +            </div>
+ +            <div className="overlay">
+ +              <InkFile name="desk-caption" lang={lang} priority />
+ +            </div>
+ +          </figure>
+ +        </div>
+ +      </section>
+ +      <div className="home-flow">
+ +        <Features lang={lang} review={review} />
+ +        <section className="section philosophy" id="about-bill">
+ +          <div className="wrap">
+ +            <div>
+ +              <p className="eyebrow">{c.philosophyLabel}</p>
+ +              <Reveal>
+ +                <InkFile name="letter" lang={lang} />
+ +              </Reveal>
+ +            </div>
+ +            <div>
+ +              <h2>
+ +                {c.philosophy} <em>{c.philosophyAccent}</em>
+ +              </h2>
+ +              <p className="body">{c.philosophyBody}</p>
+ +              <Link className="text-link" href={pathFor(lang, "about")}>
+ +                {c.meetBill}
+++=======
++               <figcaption className="hand">{c.photoCaption}</figcaption>
++             </figure>
++           </div>
++         </div>
++       </section>
++       <section className="section ivory why" id="pourquoi-bill">
++         <div className="wrap">
++           <div className="why-aside">
++             <p className="eyebrow">{c.why.label}</p>
++             <Reveal>
++               <InkFile name="letter" lang={lang} />
++             </Reveal>
++             <p className="hand">{c.why.note}</p>
++           </div>
++           <div>
++             <h2>
++               {c.why.title} <em>{c.why.accent}</em>
++             </h2>
++             <p className="body">{c.why.intro}</p>
++             <ul className="why-points">
++               {c.why.points.map(([title, body]) => (
++                 <li key={title}>
++                   <h3>{title}</h3>
++                   <p>{body}</p>
++                 </li>
++               ))}
++             </ul>
++             <p className="credibility">
++               <strong>{c.experience}</strong>
++               <span>{c.experienceSub}</span>
++             </p>
++             <Link className="text-link" href={pathFor(lang, "about")}>
++               {c.why.aboutLink}
++             </Link>
++           </div>
++         </div>
++       </section>
++       <section className="section" id="demandez-a-bill">
++         <div className="wrap spread">
++           <div className="spread-aside">
++             <p className="eyebrow">{c.ask.label}</p>
++             <h2>{c.ask.title}</h2>
++             <p className="aside-intro">{c.ask.intro}</p>
++             <p className="hand">{c.ask.note}</p>
++             <Reveal>
++               <InkFile name="lighthouse" lang={lang} />
++             </Reveal>
++           </div>
++           <div>
++             <AskCards lang={lang} />
++             <div className="ask-actions">
++               <Link className="text-link" href={pathFor(lang, "ask")}>
++                 {c.ask.allLink}
++                 {arrow}
++               </Link>
++             </div>
++             <AskOwn lang={lang} />
++           </div>
++         </div>
++       </section>
++       <section className="section ivory" id="guide">
++         <div className="wrap guide-teaser">
++           <div className="guide-cover">
++             <Reveal>
++               <Booklet lang={lang} />
++             </Reveal>
++           </div>
++           <div>
++             <p className="eyebrow">{c.booklet.label}</p>
++             <h2>{c.booklet.title}</h2>
++             <p className="body">{c.booklet.body}</p>
++             <p className="contents-label">{c.booklet.contentsLabel}</p>
++             <ol className="booklet-contents">
++               {askGroups(lang).map((g) => (
++                 <li key={g.key}>{g.title}</li>
++               ))}
++             </ol>
++             <div className="guide-actions">
++               <Link className="text-link" href={pathFor(lang, "resources")}>
++                 {c.booklet.read}
++                 {arrow}
++               </Link>
++               {pdf?.approved && (
++                 <a className="text-link" href={pdf.path} download>
++                   {c.booklet.download}
++                 </a>
++               )}
++               {business.guide.printedCopies && (
++                 <a className="text-link" href={bookletMail(lang)}>
++                   {c.booklet.requestCopy}
++                 </a>
++               )}
++             </div>
++             <p className="bring-it">
++               {/* "Bring it along" only once there is something to bring. */}
++               {pdf?.approved || business.guide.printedCopies
++                 ? c.booklet.bringIt
++                 : c.booklet.bringQuestions}{" "}
++               <Link href={pathFor(lang, "meeting")}>
++                 {c.meeting}
++                 {arrow}
++               </Link>
++             </p>
++           </div>
++         </div>
++       </section>
++       <section className="open-door">
++         <div className="wrap">
++           <p>{c.openDoor}</p>
++         </div>
++       </section>
++       <section className="section ivory" id="rencontre">
++         <div className="wrap meet">
++           <Reveal>
++             <InkFile name="two-chairs" lang={lang} />
++           </Reveal>
++           <div>
++             <p className="eyebrow">{c.processLabel}</p>
++             <h2>{c.processTitle}</h2>
++             <p className="intro">{c.processIntro}</p>
++             <ol className="steps">
++               {c.steps.map(([title, body], i) => (
++                 <li key={title}>
++                   <span className="number" aria-hidden="true">
++                     {i + 1}.
++                   </span>
++                   <div>
++                     <h3>{title}</h3>
++                     <p>{body}</p>
++                   </div>
++                 </li>
++               ))}
++             </ol>
++             <div className="meet-actions">
++               <MeetingLink lang={lang} />
++               <Link className="text-link" href={pathFor(lang, "meeting")}>
++                 {c.howLink}
+++>>>>>>> origin/claude/bill-centered-homepage
+                </Link>
+ +              <p className="credibility">
+ +                <strong>{c.experience}</strong>
+ +                <span>{c.experienceSub}</span>
+ +              </p>
+              </div>
+            </div>
+++<<<<<<< HEAD
+ +        </section>
+ +        <Ride lang={lang} />
+ +        <section className="section ivory" id="rencontre">
+ +          <div className="wrap meet">
+ +            <Reveal>
+ +              <InkFile name="two-chairs" lang={lang} />
+ +            </Reveal>
+ +            <div>
+ +              <p className="eyebrow">{c.processLabel}</p>
+ +              <h2>{c.processTitle}</h2>
+ +              <p className="intro">{c.processIntro}</p>
+ +              <ol className="steps">
+ +                {c.steps.map(([title, body], i) => (
+ +                  <li key={title}>
+ +                    <span className="number" aria-hidden="true">
+ +                      {i + 1}.
+ +                    </span>
+ +                    <div>
+ +                      <h3>{title}</h3>
+ +                      <p>{body}</p>
+ +                    </div>
+ +                  </li>
+ +                ))}
+ +              </ol>
+ +              <div className="meet-actions">
+ +                <MeetingLink lang={lang} />
+ +                <Link className="text-link" href={pathFor(lang, "meeting")}>
+ +                  {c.howLink}
+ +                </Link>
+ +              </div>
+ +            </div>
+ +          </div>
+ +        </section>
+ +        <Conversation lang={lang} />
+ +      </div>
+++=======
++         </div>
++       </section>
++       <Ride lang={lang} />
++       <Contact lang={lang} />
+++>>>>>>> origin/claude/bill-centered-homepage
+      </>
+    );
+  }
+diff --cc lib/copy.ts
+index f8e2c8d,ad81271..0000000
+--- a/lib/copy.ts
++++ b/lib/copy.ts
+@@@ -1,84 -1,124 +1,133 @@@
+  import type { Language } from "./business";
+  export const copy = {
+    fr: {
+++<<<<<<< HEAD
+ +    nav: ["Retraite", "Placements", "La démarche", "À propos", "Guide"],
+ +    meeting: "Planifier une première rencontre",
+ +    shortMeeting: "Première rencontre",
+ +    eyebrow: "Placements et retraite · Laval",
+ +    hero: "Un nouveau chapitre.",
+ +    heroAccent: "Un chemin plus clair.",
+++=======
++     nav: {
++       retirement: "Retraite",
++       investments: "Placements",
++       ask: "Demandez à Bill",
++       about: "À propos",
++       guide: "Le guide",
++       meeting: "Première rencontre",
++     },
++     meeting: "Faire le point avec Bill",
++     shortMeeting: "Rencontrer Bill",
++     how: "Comment se passe une première rencontre",
++     eyebrow: "Bill Badran · Planificateur financier · Laval",
++     hero: "Vous avez travaillé fort. Vous avez épargné.",
++     heroAccent: "Voyons maintenant où vous en êtes.",
+++>>>>>>> origin/claude/bill-centered-homepage
+      intro:
+-       "Vos placements ne sont qu’une partie de l’histoire. L’objectif est de comprendre comment votre épargne, vos revenus et vos projets peuvent fonctionner ensemble.",
+-     how: "Découvrir l’approche",
++       "Est-ce que j’en ai assez\u00a0? Est-ce que je peux arrêter quand je le veux\u00a0? Comment tirer un revenu de ce que j’ai bâti\u00a0? Qu’est-ce qui m’échappe\u00a0? Bill regarde le portrait complet avec vous et vous l’explique simplement. Les décisions restent les vôtres.",
+      portrait:
+-       "Bill Badran, planificateur financier à Laval, travaille avec les gens qui prendront leur retraite d’ici 5 à 15 ans.",
++       "Bill Badran est planificateur financier à Laval. Il travaille, en français ou en anglais, avec les gens qui prendront leur retraite d’ici 5 à 15\u00a0ans.",
++     photoCaption: "Bonjour, moi c’est Bill.",
++     heroNote: "Vos questions d’abord, les chiffres ensuite.",
++     why: {
++       label: "Pourquoi parler à Bill",
++       title: "Les chiffres sont importants.",
++       accent: "Mais ce sont vos projets qui leur donnent un sens.",
++       intro:
++         "À l’approche de la retraite, la plupart des gens n’ont pas besoin d’un produit de plus. Ils ont besoin de comprendre où ils en sont. Bill commence donc par écouter\u00a0: ce que vous avez bâti, la vie que vous voulez mener, ce qui vous inquiète. Les chiffres viennent ensuite.",
++       points: [
++         [
++           "Une pratique indépendante",
++           "Bill a sa propre pratique et sa manière de travailler. Avant tout engagement, il vous explique ce qu’il fera pour vous et comment il est rémunéré.",
++         ],
++         [
++           "Toutes les pièces ensemble",
++           "Revenu, placements, impôts, assurances et succession, réunis dans un même portrait, parce qu’à la retraite tout bouge ensemble. Quand un notaire ou un comptable doit intervenir, le plan leur fait une place.",
++         ],
++         [
++           "Il explique. Vous décidez.",
++           "En français ou en anglais, sans jargon. Bill vous montre les options et ce que chacune change. Ensuite, c’est vous qui décidez, sans pression.",
++         ],
++         [
++           "Quelqu’un à appeler quand la vie change",
++           "Une retraite plus tôt que prévu, une baisse des marchés, un ennui de santé, un changement dans la famille\u00a0: vous savez à qui en parler. Bill garde une vue d’ensemble de votre situation.",
++         ],
++       ],
++       note: "Écouter d’abord.",
++       aboutLink: "Connaître Bill",
++     },
++     experience: "Plus de 15\u00a0ans",
++     experienceSub: "Planificateur financier à Laval · Français et anglais",
+      openDoor:
+        "Vous n’avez pas besoin de tout comprendre avant de venir. On va y voir clair ensemble.",
+-     questionsLabel: "Avant la retraite",
+-     questionsTitle: "Les questions qu’on regarde ensemble.",
+-     questionsNote: "Des décisions qui se répondent.",
+-     questions: [
+-       [
+-         "Quand pourrai-je prendre ma retraite, confortablement?",
+D  public/assets/ink/desk-caption-en.6834acbe8c.svg
+D  public/assets/ink/desk-caption-fr.15f201593d.svg
+D  public/assets/ink/dock.ccd6542ba7.svg
+abort_exit=0
+clean_after=0
+### end: 2026-09-30T08:51:42Z
+### exit: 0
+### wall_s: 0.11
+

@@ -1,0 +1,56 @@
+### command: npx prettier --check tests/baseline; echo exit=$?; npx prettier tests/baseline/README.md | diff tests/baseline/README.md - | head -20; echo; echo '== app files failing prettier (excl .orchestration, tests/baseline) =='; grep '^\[warn\]' /tmp/claude-0/-home-user/bb8d4187-6ae8-587b-a816-8153faeea853/scratchpad/a6f03/prettier2.out | grep -v 'tests/baseline' | head -30
+### cwd: /tmp/claude-0/-home-user/bb8d4187-6ae8-587b-a816-8153faeea853/scratchpad/wt/a6-f03-1
+### start: 2026-09-30T09:58:33Z
+Checking formatting...
+[warn] tests/baseline/README.md
+[warn] Code style issues found in the above file. Run Prettier with --write to fix.
+exit=1
+32,47c32,47
+< | id | command | source |
+< |---|---|---|
+< | `npm_ci` | `npm ci` | `.github/workflows/verify.yml` |
+< | `lint` | `npm run lint` | verify.yml |
+< | `test` | `npm test` | verify.yml |
+< | `typecheck` | `npm run typecheck` | before the build |
+< | `build` | `npm run build` | verify.yml |
+< | `typecheck_after_build` | `npm run typecheck` | verify.yml order (lint, test, build, typecheck) |
+< | `protections_check` | `npm run protections:check` | `docs/CONTENT-WORKFLOW.md`, `LAUNCH-CHECKLIST.md` |
+< | `launch_check` | `npm run launch:check` (strict) | `LAUNCH-CHECKLIST.md` |
+< | `verify_publication` | `node --import tsx scripts/verify-publication.ts` | verify.yml (with whatever env is present) |
+< | `test_e2e` | `npm run test:e2e` | verify.yml (`playwright.config.ts`) |
+< | `contracts_ajv` | `npm run test:contracts` | this folder, `contracts.test.ts` |
+< | `contracts_validate_py` | `<python> .orchestration/contracts/validate.py` | `.orchestration/contracts/README.md` §7 |
+< | `build_graph_check` | `python3 .orchestration/scripts/build_graph.py --check` | `.orchestration/scripts/build_graph.py` |
+< | `base02_capture` | `npm run test:base02` | this folder, `screens.spec.ts` |
+---
+> | id                      | command                                                 | source                                            |
+> | ----------------------- | ------------------------------------------------------- | ------------------------------------------------- |
+
+== app files failing prettier (excl .orchestration, tests/baseline) ==
+[warn] film/assets/illustrations/prompts.json
+[warn] film/assets/illustrations/spec.json
+[warn] film/docs/storyboard.md
+[warn] film/eslint.config.mjs
+[warn] film/README.md
+[warn] film/script/script.json
+[warn] film/script/voice-seeds.json
+[warn] film/src/checks/DesignKit.tsx
+[warn] film/src/components/BillShot.tsx
+[warn] film/src/components/sketch/Ink.tsx
+[warn] film/src/components/sketch/Paperwork.tsx
+[warn] film/src/components/stage.tsx
+[warn] film/src/data/timing.json
+[warn] film/src/design/copy.ts
+[warn] film/src/scenes/BlindSpots.tsx
+[warn] film/src/scenes/Closing.tsx
+[warn] film/src/scenes/GuideReveal.tsx
+[warn] film/src/scenes/IntroBill.tsx
+[warn] film/src/scenes/Pieces.tsx
+[warn] film/src/scenes/SimpleGuide.tsx
+[warn] film/tools/render.mjs
+[warn] film/tools/scene-stills.mjs
+[warn] film/tsconfig.json
+[warn] Code style issues found in 24 files. Run Prettier with --write to fix.
+### exit: 0
+### wall_s: 1.899700436
+

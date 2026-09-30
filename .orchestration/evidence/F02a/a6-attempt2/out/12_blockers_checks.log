@@ -1,0 +1,68 @@
+$ python3 /home/user/bill/.orchestration/evidence/F02a/a6-attempt2/blockers_checks.py /tmp/claude-0/-home-user/bb8d4187-6ae8-587b-a816-8153faeea853/scratchpad/blockers.f01-accepted.md
+added lines: 10; removed lines: 5
+[pre-patch] HB titles parsed: 29; gate rows: ['G0', 'G1', 'G2', 'G3', 'G4', 'G5', 'G6']; title->row mismatches: 1
+    HB-20 title names G5 but the G5 row does not list it
+[current] HB titles parsed: 29; gate rows: ['G0', 'G1', 'G2', 'G3', 'G4', 'G5', 'G6']; title->row mismatches: 0
+
+added lines that ask for a secret value: none
+'Secrets: never in chat' heading present: True
+HB-07 block:
+   **HB-07. Secret store and authorized operator** (G2)
+   - Question: Which password manager or vault holds project secrets? Who is the "authorized operator" who enters secrets on the server and in n8n? Do you confirm the destinations proposed for the secrets and logins outside the 06 map (Secrets table, D-070)?
+   - Why: The 06 secrets map assigns most secrets to the authorized operator. The n8n encryption key must be backed up off-host before any credential exists (01 §8).
+   - PROPOSAL: one named operator, with Bill as the account owner. No tool is proposed. The D-070 destinations as written.
+   - Blocks: live parts of P03, P04, P05, N10, L01.
+   - Friday: HARD for any staging integration.
+   - Provide: reply with the tool's name and the person's name only, never a secret.
+
+added lines with a money amount or a non-zero cap:
+   'CAD 2' in: - PROPOSAL: keep all three caps at 0 through the pilot. If HB-14 shows Bill's existing account cannot host Meet, the director comes back with one Workspace line
+removed lines with a money amount: ['CAD 2']
+costs.json authorized_caps: {"purchased_api": 0, "ads": 0, "subscriptions": 0, "note": "zero until G2 records a cap"}
+
+D-073 says presentation stays preserved, unmerged: True
+HB-03 proposal now: - PROPOSAL: A as the technical integration baseline, because it is the only target green on the full CI sequence, plus guide (merges clean). presentation/ stays preserved on its own branch, outside the baseline, pending HB-12. homepage stays preserved on its b
+HB-03 still mentions 'presentation ignore-list union': False
+HB-12 block:
+   **HB-12. Repository scope** (Arnaud; no gate)
+   - Question: Should film/ and presentation/ stay out of the production build (kept in history and on their branches as internal material)? Should the empty `billsite` repository be ignored or archived?
+   - Why: film/ breaks main's build (TB-01) and holds non-commercial audio and quarantined claims (D-052, D-053). presentation/ holds superseded offers (D-049).
+   - PROPOSAL: exclude both from the production build and deploy artifact, and keep them in git. Leave `billsite` untouched.
+D-064 (caps): | D-064 | **Spend is zero until G2.** Authorized caps: purchased API 0, ads 0, subscriptions 0. Nothing is bought. Earlier CAD estimates are not recycled; regional checkout is the price source of truth. `costs.json` holds only real amounts. Every run records provider, model, usage and wall time in `
+D-022 (Workspace): | D-022 | Live event | Google Meet through an approved paid Workspace tier; Business Standard is only the candidate. Bill's existing account may already suffice; verify entitlement and billing before any purchase. Native attendance reports are not listed for Business Standard, so attendance defaults
+D-070 mentions 'backup': True
+D-070 mentions 'encryption': False
+D-070 mentions 'media-master': False
+D-070 mentions 'media master': False
+D-070 'Status' column: open (proposal; Arnaud confirms)
+HB-07 PROPOSAL: ['- PROPOSAL: one named operator, with Bill as the account owner. No tool is proposed. The D-070 destinations as written.']
+Outside-the-06-map note: ['**Outside the 06 map.** The controlling `source/06` file is not edited. These rows go into the secret-location map that the 06 handover standard requires (names and locations only), proposed in D-070 for Arnaud to confirm (HB-07). The same rules apply: never in chat, task JSON, git, screenshots, prompts or general backups.']
+
+costs.json notes citing HB items for existing costs:
+   .items[0].note: The current VPS price, its plan and whether an upgrade is needed are unknown (HB-02). Upgrade only after a measured need.
+   .items[3].note: The edition, its payer and its Meet entitlement are unknown (HB-14). It may already suffice for the pilot.
+   .items[4].note: Seat count unknown (Bill; possibly the moderator). Buy only if HB-14 shows the existing entitlement is insufficient. A purchase does not authorize MX or mailbox changes.
+   .items[16].approval_gate: G0 (price, HB-20); G2 (account, test mode, HB-06); G6 (live checkout)
+   .items[17].note: Printer, print proof and unit cost unknown. The canonical edition is undecided (HB-04).
+   .items[24].note: Provider unknown (HB-05). Not migrated or changed by this project.
+items with status existing_cost_unknown: 11
+costs.json strings citing HB-08: 2 ['.items[4].approval_gate', '.items[13].approval_gate']
+HB-08 block:
+   **HB-08. Spending caps and subscriptions** (G2)
+   - Question: What are the caps for purchased model API, ads and subscriptions? If Bill's current Google account lacks what Meet needs, may we buy a Workspace tier, and how many seats?
+   - Why: Nothing may be bought before G2 records a cap (D-064). Workspace is a candidate, not a purchase (D-022).
+   - PROPOSAL: keep all three caps at 0 through the pilot. If HB-14 shows Bill's existing account cannot host Meet, the director comes back with one Workspace line item (tier, seats, the price shown at Bill's own checkout) for an explicit yes/no; nothing is bought under a 0 cap. The CAD 20/day × 14 days ad test stays a proposal (D-066).
+   - (b) For `costs.json` (01 §17 real cost sheet; 06 handover renewals): for each existing paid item (VPS, domain/registrar, mailbox, Calendly, Google, GitHub, and Resend/Upstash if they exist), what is the current plan, amount, currency and renewal date? "Don't know" is fine; nothing here blocks the pilot.
+   - Blocks: a paid model in N08; R02; any purchase.
+   - Friday: nothing, if the caps stay 0 and Bill's existing account can host Meet.
+   - Provide: reply to the director → D-064 and `costs.json` `authorized_caps`.
+   
+
+blockers.md line 3: - Task: F01. Owner A0 (delegate), reviewer A6, stage design_or_audit. Status: **submitted, not accepted**.
+decisions.md line 3: - Task: F01 "Consolidate decisions, human blockers and real cost assumptions". Owner A0 (delegate), reviewer A6, stage design_or_audit. Status: **submitted, not accepted**.
+
+inventory lines mentioning retirement-guide-cover or AI-assisted editorial artwork:
+   inventory.md:99: | Review-guide cover | 1 (534×800) | `public/assets/retirement-guide-cover.jpg` | codex | AI-assisted sketch portrait with the text "BILL BADRAN FINANCIAL PLANNING" and a script signature; no approval | candidate only |
+   inventory.md:100: | 40-page review book (EN) | 1 PDF, 912,448 B, sha256 `9dc48a1fbda787268d63d64f3d18b6da88a49c596a1824fcd62453d54d10f8bf` | `content/guides/retirement-review-en.pdf` | codex | 40 pp, 432×648 pt (6×9 in). Title "Build a Better Retirement Together". p.39: "Illust
+   inventory.md:279: | F00-SPOT-01 | `git show origin/codex/desktop-iphone-unified:content/guides/retirement-review-en.pdf` → `sha256sum`, `stat`, pypdf | `9dc48a1f…10f8bf`, 912,448 B, 40 pp, 432×648; p.39 contains "AI-assisted editorial artwork" and "REVIEW COPY - NOT APPROVED FO
+[exit 0]

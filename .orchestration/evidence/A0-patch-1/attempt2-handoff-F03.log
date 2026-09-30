@@ -1,0 +1,20 @@
+# A0 patch 1 attempt 2 AFTER: validate.py --handoff handoffs/F03.json. date (UTC): 2026-09-30T11:37:10Z
+
+$ /tmp/claude-0/-home-user/bb8d4187-6ae8-587b-a816-8153faeea853/scratchpad/venv-f02/bin/python .orchestration/contracts/validate.py --handoff .orchestration/handoffs/F03.json
+# F02 contract set validation (validate.py)
+utc_now: 2026-09-30T11:37:10Z
+python: 3.11.15  jsonschema: 4.26.0
+repo: /home/user/bill  branch: claude/orchestration-foundation  HEAD: d1a37cf3c17953529774e7801af8f0c16eedb925
+contracts dir: /home/user/bill/.orchestration/contracts
+contract set version: 1.1  frozen for build on: 2026-09-30
+environment: local container; fixture evidence only (no browser, no network, no provider)
+
+## Handoff check: /home/user/bill/.orchestration/handoffs/F03.json
+FAIL  F03.json: schema-valid; base_commit = HEAD; 36 artifact hashes match; changed paths and 42 evidence paths exist :: ['base_commit cb3becf25ed042b977d4864ae71e74d13829320f != HEAD d1a37cf3c17953529774e7801af8f0c16eedb925', 'artifact missing tests/baseline/run.mjs', 'artifact missing tests/baseline/runner-lib.mjs', 'artifact missing tests/baseline/runner.test.mjs', 'artifact missing tests/baseline/contracts.test.ts', 'artifact missing tests/baseline/screens.spec.ts', 'artifact missing tests/baseline/playwright.baseline.config.ts', 'artifact missing tests/baseline/compare-screens.mjs', 'artifact missing tests/baseline/README.md', 'artifact hash differs package.json', 'artifact hash differs package-lock.json', 'changed path missing app/api/guide/route.ts']
+
+## Summary
+pass: 0  fail: 1  known: 0  info: 0
+unexpected results:
+  - F03.json: schema-valid; base_commit = HEAD; 36 artifact hashes match; changed paths and 42 evidence paths exist :: ['base_commit cb3becf25ed042b977d4864ae71e74d13829320f != HEAD d1a37cf3c17953529774e7801af8f0c16eedb925', 'artifact missing tests/baseline/run.mjs', 'artifact missing tests/baseline/run
+exit_code=1
+[exit 1]

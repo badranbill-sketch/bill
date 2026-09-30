@@ -1,0 +1,62 @@
+### command: cd /home/user/bill/.orchestration/evidence/F03/base02 && for f in before/*.png; do n=$(basename $f); a=$(sha256sum before/$n | cut -c1-64); b=$(sha256sum after/$n | cut -c1-64); [ "$a" = "$b" ] && echo "SAME $n $a" || echo "DIFF $n $a $b"; done; echo; python3 -c "
+import struct,glob,os
+for f in sorted(glob.glob('before/*.png')):
+    d=open(f,'rb').read(32); w,h=struct.unpack('>II',d[16:24]); print(os.path.basename(f),w,h)
+"; ls records | head; ls records | wc -l
+### cwd: /home/user/bill
+### start: 2026-09-30T09:47:44Z
+SAME en-home-1440.png b03de88a488d28039ddad1b3d20df0769aa1d75262a803f43c5c9093d47456cc
+SAME en-home-320.png be5833da96ff38ddcce89b30845556dcb3ed6268df1621e37f2b283a28d2a394
+SAME en-home-390.png 5f8a23a74fb5c840143115c4a632bcaabf2f40a63f9b261a94add96365b6f827
+SAME en-home-768.png da2494776a30fbddc2c4e49f03f62aedb36f57bb648590db00c8075910381864
+SAME en-meeting-1440.png 28ccdef4a970dff3382ea57dd29e90d1a232a4cbfd359ed696a6882b2b2afaa0
+SAME en-meeting-320.png 059785367421d931849c3ba8e3dfb502aab8af0bc2117ba08528cda05dcd3ca4
+SAME en-meeting-390.png 869e509a35f8b3a650ffb3c0b190e2fbdd3935f4bc47542a885661278b6dfb40
+SAME en-meeting-768.png 8fc9d90d055d9bc7955119b79fda2ce8b723c0917ca9cfa8c5ed574aae33c44b
+SAME en-resources-1440.png db0f58185f8f8b69d8c46735383a668bd655870f3dc79b7a4c681bc635eda8ee
+SAME en-resources-320.png 9f84ee0bd69152e79cc8af6e1ba48832c8619af1d181558863a0852e9acf848b
+SAME en-resources-390.png 05c0bc705e8b2f031c52e39e1c1057ca3192f079d9a38a14c4bf2c71fc6814d8
+SAME en-resources-768.png a3d23103fd8bfcc1f8e46f37c3bf1b0ea702e3391feb48d52caac39866f1026f
+SAME fr-home-1440.png e42b51800d41a025587bc36fafe40f31d6b1169bcc10dd0da232efffa667e222
+SAME fr-home-320.png 1122eb0d65c9c2bad460a7286c63bcd92e82e7cca957bc7fd87d6f0b6d4d2f44
+SAME fr-home-390.png 84b9ddbc94d06505b21f0cc22edc305c04aac390e3ddb4e1b0324ef7ad094dd2
+SAME fr-home-768.png 4fb8117c9722a4040cef7e3f4cd7f04df47c33c9af8b3281ffc22066e62190c2
+SAME fr-meeting-1440.png 4dab9112b6f37db0cd213b4f33ad16614a27c78a088103ae002ccadbe133e2a1
+SAME fr-meeting-320.png f45954344782fe61ed1ee62426198e91289939bd80146cc2a84267046459fd8c
+SAME fr-meeting-390.png f22c5c3459270d6614bad75d302b8313ce4c505146584e404594be4207bedfb0
+SAME fr-meeting-768.png 9fcdc64393d8ea39c8815c4336d2e4def208a0cdd607e41a4f0560a5e72b35e8
+SAME fr-resources-1440.png 6828d4396556a9a817fe448ac63e74774fe019386b8b02057bc4555d9c55e60a
+SAME fr-resources-320.png 6fb6b70fd042cca6a5db2a9b4d180b0da7947389a3c67ead3b15123afe4aa78f
+SAME fr-resources-390.png dd39a41fb054f8b9c154e95fb9c90f5e42b99b74100b26191fe054f9705637ba
+SAME fr-resources-768.png 2207e50062bb9b458497dc5d32e33365d4947379eedd4c1bcc5232d8562747a5
+
+en-home-1440.png 1440 6598
+en-home-320.png 320 8553
+en-home-390.png 390 8517
+en-home-768.png 768 7317
+en-meeting-1440.png 1440 3324
+en-meeting-320.png 320 4631
+en-meeting-390.png 390 4399
+en-meeting-768.png 768 3957
+en-resources-1440.png 1440 3503
+en-resources-320.png 320 5272
+en-resources-390.png 390 5058
+en-resources-768.png 768 4441
+fr-home-1440.png 1440 6574
+fr-home-320.png 320 9122
+fr-home-390.png 390 8603
+fr-home-768.png 768 7437
+fr-meeting-1440.png 1440 3346
+fr-meeting-320.png 320 4881
+fr-meeting-390.png 390 4703
+fr-meeting-768.png 768 4047
+fr-resources-1440.png 1440 3608
+fr-resources-320.png 320 5991
+fr-resources-390.png 390 5314
+fr-resources-768.png 768 4608
+ls: cannot access 'records': No such file or directory
+ls: cannot access 'records': No such file or directory
+0
+### exit: 0
+### wall_s: .579089086
+

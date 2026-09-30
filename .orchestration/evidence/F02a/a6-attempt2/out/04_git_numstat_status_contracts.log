@@ -1,0 +1,10 @@
+$ bash -c git -C /home/user/bill diff --numstat HEAD -- .orchestration/contracts; git -C /home/user/bill status --porcelain --untracked-files=all -- .orchestration/contracts; echo 'removed lines in index.json diff:'; git -C /home/user/bill diff HEAD -- .orchestration/contracts/fixtures/workshop/index.json | grep -c '^-[^-]'
+42	0	.orchestration/contracts/fixtures/workshop/index.json
+ M .orchestration/contracts/fixtures/workshop/index.json
+?? .orchestration/contracts/fixtures/workshop/WM37-today-dollar-pre-start-factor.json
+?? .orchestration/contracts/fixtures/workshop/WM38-joint-owner-participant-age.json
+?? .orchestration/contracts/fixtures/workshop/WM39-group-total-from-exact-values.json
+?? .orchestration/contracts/fixtures/workshop/WM40-today-dollar-display-from-exact-gap.json
+removed lines in index.json diff:
+0
+[exit 1]

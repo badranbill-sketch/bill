@@ -1,0 +1,31 @@
+{
+  "id": "fr-home-390",
+  "kind": "screenshot",
+  "lang": "fr",
+  "key": "home",
+  "label": "home (journey #parcours)",
+  "width": 390,
+  "url": "/fr",
+  "final_url": "/fr",
+  "http_status": 200,
+  "console_errors": [],
+  "page_errors": [],
+  "failed_requests": [],
+  "bad_responses": [],
+  "aborted_requests": 8,
+  "horizontal_overflow": false,
+  "scroll_width": 390,
+  "page_height": 8603,
+  "journey": "static",
+  "inquiry_form": false,
+  "contact_section": false,
+  "images_incomplete": [
+    "/assets/ink/lighthouse.b6b8127f9b.svg"
+  ],
+  "screenshot": "fr-home-390.png",
+  "screenshot_sha256": "84b9ddbc94d06505b21f0cc22edc305c04aac390e3ddb4e1b0324ef7ad094dd2",
+  "browser": "chromium 141.0.7390.37",
+  "app_dir": "/tmp/claude-0/-home-user/bb8d4187-6ae8-587b-a816-8153faeea853/scratchpad/wt/integration",
+  "reduced_motion": true,
+  "captured_at": "2026-09-30T10:14:26.114Z"
+}

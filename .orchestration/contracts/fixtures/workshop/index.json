@@ -393,6 +393,48 @@
    "covers": [
     "WK06"
    ]
+  },
+  {
+   "fixture_id": "WM37",
+   "file": "WM37-today-dollar-pre-start-factor.json",
+   "title": "Today-dollar amounts carried to their start at i, not at their own escalation",
+   "covers": [
+    "WK02"
+   ],
+   "selected_clip": "W07",
+   "completeness_state": "complete"
+  },
+  {
+   "fixture_id": "WM38",
+   "file": "WM38-joint-owner-participant-age.json",
+   "title": "Joint-owned age start and end resolve against the participant's age",
+   "covers": [
+    "WK02"
+   ],
+   "selected_clip": "W07",
+   "completeness_state": "complete"
+  },
+  {
+   "fixture_id": "WM39",
+   "file": "WM39-group-total-from-exact-values.json",
+   "title": "Income group total rounded once from exact values, not summed from rounded rows",
+   "covers": [
+    "WK01",
+    "WK02"
+   ],
+   "selected_clip": "W07",
+   "completeness_state": "complete"
+  },
+  {
+   "fixture_id": "WM40",
+   "file": "WM40-today-dollar-display-from-exact-gap.json",
+   "title": "Today-dollar gap deflated from the exact gap, not from the rounded gap",
+   "covers": [
+    "WK01",
+    "WK02"
+   ],
+   "selected_clip": "W07",
+   "completeness_state": "complete"
   }
  ]
 }

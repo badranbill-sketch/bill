@@ -174,13 +174,13 @@ The principle stays the same: a canonical fingerprint, a human-reviewed ledger e
 - **AS-SEP-2.** A6 findings on factual accuracy (CNT02, CNT03) inform the reviewer; they are not the approval.
 - **AS-SEP-3.** A green CI run, a passed schema or a merged PR is never a G3 record (authority-matrix.md, "Content approval").
 
-## 8. Worker handoff 1.0 (`worker-handoff.schema.json`)
+## 8. Worker handoff 1.1 (`worker-handoff.schema.json`)
 
 The worker handoff is a **submission**, not an approval. Its schema lives in this lane; this section gives its semantics.
 - **WH-ST-1.** `status` is always `submitted`. Workers cannot mark work accepted; A0 writes acceptance separately after A6 evidence (03, D-037).
 - **WH-SHAPE-1, WH-REQ-1.** The object has exactly the 13 fields of the 03 example, all required, and nothing else. For example, no `accepted_by` field.
 - **WH-PH-1, WH-PH-2.** No placeholders. `base_commit` is 40 lowercase hex. `result_commit` is 40 lowercase hex or `null` when uncommitted (WH-SHA-1). Artifact `sha256` is 64 lowercase hex (WH-SHA-2). The 03 example strings (`actual-sha`, `actual-hash`, `actual command`, `actual path`, `actual/path`), `TODO`, `TBD`, `xxx` and `<…>` are refused. The 03 example submitted verbatim fails.
-- **WH-ID-1.** `task_id` is one of the 62 IDs in `tasks.json`. A split task needs a contract minor version.
+- **WH-ID-1.** `task_id` is one of the 63 IDs in `tasks.json`: the 62 planned IDs and the split task F02a (D-072), which worker handoff 1.1 lists explicitly (A0 patch 1, D-074). A split task needs a contract minor version, and its ID is listed explicitly; no generic suffix is accepted.
 - **WH-PATH-1, WH-PATH-2.** `changed_paths`, artifact paths and evidence paths are repo-relative POSIX paths with no leading `/`, no `..` segment and no whitespace. Parentheses are allowed, as in `app/(entry)/page.tsx`. Notes go in `assumptions`, not in paths.
 - **WH-ART-1.** At least one artifact is listed with its hash.
 - **WH-TEST-1.** `exit_code` is an integer from 0 to 255, or `null` when the exit status was not captured (explain it in `assumptions`).
@@ -189,7 +189,7 @@ The worker handoff is a **submission**, not an approval. Its schema lives in thi
 - **WH-EXT-1.** An `external_actions_taken[]` entry with `effect: side_effect` must carry `authorization: G<n>:<record path>`, pointing at decisions.md or an approval packet.
 - **WH-COST-1, WH-COST-2.** `metered_cost.status` is `unavailable-not-estimated` (amount and currency `null`: no estimate is ever written) or `provider-metered` (a number, an ISO currency and a `source` run record). This matches `costs.json`.
 
-**`handoffs/F00.json` result** (validation log §4, F00.json unchanged): **does not conform to 1.0**, with 6 mismatches, both shape problems rather than wrong evidence:
+**`handoffs/F00.json` result** (validation log §4, F00.json unchanged): **does not conform to 1.0 or 1.1**, with 6 mismatches, both shape problems rather than wrong evidence:
 1. `changed_paths[2..5]` carry prose notes such as `".orchestration/evidence/F00/ (untracked; …)"` (WH-PATH-2).
 2. `blocked_checks[5]` and `blocked_checks[6]` use `status: "not_visible"`, which is outside the D-038 vocabulary (WH-BLK-1). `blocked` fits both.
 

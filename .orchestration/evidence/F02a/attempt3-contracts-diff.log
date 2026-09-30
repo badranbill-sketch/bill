@@ -1,0 +1,9 @@
+# F02a repair attempt 3: contract-directory changes against HEAD (expected: index.json +42/-0 and the four untracked WM37-WM40 files only). date (UTC): 2026-09-30T09:59:00Z; cwd /home/user/bill; HEAD cb3becf25ed042b977d4864ae71e74d13829320f
+$ git diff --numstat HEAD -- .orchestration/contracts && git status --short -- .orchestration/contracts
+42	0	.orchestration/contracts/fixtures/workshop/index.json
+ M .orchestration/contracts/fixtures/workshop/index.json
+?? .orchestration/contracts/fixtures/workshop/WM37-today-dollar-pre-start-factor.json
+?? .orchestration/contracts/fixtures/workshop/WM38-joint-owner-participant-age.json
+?? .orchestration/contracts/fixtures/workshop/WM39-group-total-from-exact-values.json
+?? .orchestration/contracts/fixtures/workshop/WM40-today-dollar-display-from-exact-gap.json
+[exit 0]

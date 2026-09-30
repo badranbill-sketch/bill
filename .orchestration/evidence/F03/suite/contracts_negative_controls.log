@@ -1,0 +1,69 @@
+### command: bash /tmp/claude-0/-home-user/bb8d4187-6ae8-587b-a816-8153faeea853/scratchpad/f03/nc.sh
+### cwd: /tmp/claude-0/-home-user/bb8d4187-6ae8-587b-a816-8153faeea853/scratchpad/wt/integration
+### start: 2026-09-30T09:01:48Z
+== NC-A: drop idempotency_key from event-envelope required
+exit=1 (expected 1)
+# tests 240
+# pass 239
+# fail 1
+not ok 42 - invalid event-envelope/missing-idempotency-key.json is rejected for its stated reason
+== NC-B: add an unknown property to a valid delivery-job example
+exit=1 (expected 1)
+# tests 240
+# pass 239
+# fail 1
+not ok 57 - valid delivery-job/pending-e01-guide-delivery.json passes delivery-job.schema.json
+== NC-C: make a harness-layer invalid example schema-invalid (asset-manifest AM-HARN)
+exit=1 (expected 1)
+# tests 240
+# pass 239
+# fail 1
+not ok 143 - invalid asset-manifest/publication-hash-mismatch.json is rejected for its stated reason
+== NC-D: drop one fixture from fixtures/workshop/index.json
+exit=1 (expected 1)
+# tests 240
+# pass 239
+# fail 1
+not ok 203 - fixtures/workshop/index.json lists exactly the fixture files on disk
+== NC-E: loosen workshop-inputs planning_horizon minimum to 0
+exit=0 (expected 1)
+# tests 240
+# pass 240
+# fail 0
+### end: 2026-09-30T09:01:57Z
+### exit: 0
+### wall_s: 8.48
+
+### note: NC-E above matched no schema node (its walk looked for type=integer with min 1/max 60 on one object); it mutated nothing, so its exit 0 is not a control result. Replaced by NC-E2, which edits the exact node.
+### command: bash /tmp/claude-0/-home-user/bb8d4187-6ae8-587b-a816-8153faeea853/scratchpad/f03/nc.sh e2only
+### cwd: /tmp/claude-0/-home-user/bb8d4187-6ae8-587b-a816-8153faeea853/scratchpad/wt/integration
+### start: 2026-09-30T09:02:14Z
+== NC-E2: loosen workshop-inputs planning_horizon_years minimum 1 -> 0
+exit=0 (expected 1)
+# tests 240
+# pass 240
+# fail 0
+### end: 2026-09-30T09:02:16Z
+### exit: 0
+### wall_s: 1.70
+
+### note: NC-E2 exit 0 is explained, not a test defect: workshop-inputs.schema.json has a second, independent minimum-1 rule at $defs/quantity/allOf/2/then/properties/value (known quantities are >= 1). Ajv still reports minimum (schema value 1) at /chapters/timing/planning_horizon_years/value from that rule (probe: tests schemaPath #/allOf/2/then/properties/value/minimum). NC-F loosens both rules.
+### command: bash /tmp/claude-0/-home-user/bb8d4187-6ae8-587b-a816-8153faeea853/scratchpad/f03/nc.sh e2only
+### cwd: /tmp/claude-0/-home-user/bb8d4187-6ae8-587b-a816-8153faeea853/scratchpad/wt/integration
+### start: 2026-09-30T09:02:41Z
+== NC-E2: loosen workshop-inputs planning_horizon_years minimum 1 -> 0
+exit=0 (expected 1)
+# tests 240
+# pass 240
+# fail 0
+== NC-F: loosen both minimum-1 rules on planning_horizon_years (chapterTiming and quantity allOf/2 then)
+exit=1 (expected 1)
+# tests 240
+# pass 238
+# fail 2
+not ok 181 - invalid workshop-inputs/estimated-zero-value.json is rejected for its stated reason
+not ok 186 - invalid workshop-inputs/horizon-zero.json is rejected for its stated reason
+### end: 2026-09-30T09:02:44Z
+### exit: 0
+### wall_s: 3.59
+

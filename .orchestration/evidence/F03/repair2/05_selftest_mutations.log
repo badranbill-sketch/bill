@@ -1,0 +1,105 @@
+### note: mutation M1: requested not_run no longer makes the run incomplete (attempt-1 behaviour) (runner-lib.mjs in the worktree; reverted with git checkout afterwards)
+### command: git diff --stat; node --test tests/baseline/runner.test.mjs 2>&1 | grep -E '^not ok|^# (tests|pass|fail)'
+### cwd: /tmp/claude-0/-home-user/bb8d4187-6ae8-587b-a816-8153faeea853/scratchpad/wt/integration
+### start: 2026-09-30T10:22:01Z
+ next-env.d.ts                 | 4 ++--
+ tests/baseline/runner-lib.mjs | 2 +-
+ 2 files changed, 3 insertions(+), 3 deletions(-)
+not ok 9 - summarize: fail beats incomplete; requested not_run is incomplete; exclusions alone are not
+not ok 11 - run.mjs: --only test_e2e without build is incomplete (exit 3), never 0
+not ok 12 - run.mjs: skipping every step is incomplete (exit 3)
+# tests 13
+# pass 10
+# fail 3
+### end: 2026-09-30T10:22:02Z
+### exit: 0
+### wall_s: 1.40
+
+### command: node --test tests/baseline/runner.test.mjs > /dev/null 2>&1
+### cwd: /tmp/claude-0/-home-user/bb8d4187-6ae8-587b-a816-8153faeea853/scratchpad/wt/integration
+### start: 2026-09-30T10:22:02Z
+### end: 2026-09-30T10:22:03Z
+### exit: 1
+### wall_s: 1.38
+
+### note: mutation M2: an excluded prerequisite is treated as met without the install check (runner-lib.mjs in the worktree; reverted with git checkout afterwards)
+### command: git diff --stat; node --test tests/baseline/runner.test.mjs 2>&1 | grep -E '^not ok|^# (tests|pass|fail)'
+### cwd: /tmp/claude-0/-home-user/bb8d4187-6ae8-587b-a816-8153faeea853/scratchpad/wt/integration
+### start: 2026-09-30T10:22:04Z
+ next-env.d.ts                 | 4 ++--
+ tests/baseline/runner-lib.mjs | 2 +-
+ 2 files changed, 3 insertions(+), 3 deletions(-)
+not ok 5 - resolveNeeds: an excluded npm_ci counts only when the install is verified
+not ok 6 - resolveNeeds: an excluded build is never assumed; a failed prerequisite is unmet
+not ok 11 - run.mjs: --only test_e2e without build is incomplete (exit 3), never 0
+# tests 13
+# pass 10
+# fail 3
+### end: 2026-09-30T10:22:38Z
+### exit: 0
+### wall_s: 34.40
+
+### command: node --test tests/baseline/runner.test.mjs > /dev/null 2>&1
+### cwd: /tmp/claude-0/-home-user/bb8d4187-6ae8-587b-a816-8153faeea853/scratchpad/wt/integration
+### start: 2026-09-30T10:22:38Z
+### end: 2026-09-30T10:23:12Z
+### exit: 1
+### wall_s: 34.49
+
+### note: mutation M3: any launch error in the log makes the browser step blocked (attempt-1 classifier) (runner-lib.mjs in the worktree; reverted with git checkout afterwards)
+### command: git diff --stat; node --test tests/baseline/runner.test.mjs 2>&1 | grep -E '^not ok|^# (tests|pass|fail)'
+### cwd: /tmp/claude-0/-home-user/bb8d4187-6ae8-587b-a816-8153faeea853/scratchpad/wt/integration
+### start: 2026-09-30T10:23:13Z
+ next-env.d.ts                 | 4 ++--
+ tests/baseline/runner-lib.mjs | 2 +-
+ 2 files changed, 3 insertions(+), 3 deletions(-)
+not ok 7 - classifyBrowserRun: blocked only when every failure is a browser launch error
+not ok 8 - classifyBrowserRun on the recorded F00 default-browser log (when present)
+# tests 13
+# pass 11
+# fail 2
+### end: 2026-09-30T10:23:14Z
+### exit: 0
+### wall_s: 1.42
+
+### command: node --test tests/baseline/runner.test.mjs > /dev/null 2>&1
+### cwd: /tmp/claude-0/-home-user/bb8d4187-6ae8-587b-a816-8153faeea853/scratchpad/wt/integration
+### start: 2026-09-30T10:23:14Z
+### end: 2026-09-30T10:23:15Z
+### exit: 1
+### wall_s: 1.49
+
+### note: mutation M4: the install check ignores packages missing on disk (runner-lib.mjs in the worktree; reverted with git checkout afterwards)
+### command: git diff --stat; node --test tests/baseline/runner.test.mjs 2>&1 | grep -E '^not ok|^# (tests|pass|fail)'
+### cwd: /tmp/claude-0/-home-user/bb8d4187-6ae8-587b-a816-8153faeea853/scratchpad/wt/integration
+### start: 2026-09-30T10:23:15Z
+ next-env.d.ts                 | 4 ++--
+ tests/baseline/runner-lib.mjs | 2 +-
+ 2 files changed, 3 insertions(+), 3 deletions(-)
+not ok 4 - installState refuses a missing, stale or drifted install
+# tests 13
+# pass 12
+# fail 1
+### end: 2026-09-30T10:23:17Z
+### exit: 0
+### wall_s: 1.44
+
+### command: node --test tests/baseline/runner.test.mjs > /dev/null 2>&1
+### cwd: /tmp/claude-0/-home-user/bb8d4187-6ae8-587b-a816-8153faeea853/scratchpad/wt/integration
+### start: 2026-09-30T10:23:17Z
+### end: 2026-09-30T10:23:19Z
+### exit: 1
+### wall_s: 2.00
+
+### note: control after all mutations are reverted
+### command: git status --porcelain; node --test tests/baseline/runner.test.mjs 2>&1 | grep -E '^not ok|^# (tests|pass|fail)'
+### cwd: /tmp/claude-0/-home-user/bb8d4187-6ae8-587b-a816-8153faeea853/scratchpad/wt/integration
+### start: 2026-09-30T10:23:19Z
+ M next-env.d.ts
+# tests 13
+# pass 13
+# fail 0
+### end: 2026-09-30T10:23:21Z
+### exit: 0
+### wall_s: 1.56
+

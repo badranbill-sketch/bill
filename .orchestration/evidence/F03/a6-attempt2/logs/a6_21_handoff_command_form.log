@@ -1,0 +1,13 @@
+### command: env -u PLAYWRIGHT_CHROMIUM_EXECUTABLE bash -c 'PLAYWRIGHT_CHROMIUM_EXECUTABLE=/opt/pw-browsers/chromium-1194/chrome-linux/chrome cd /tmp && echo "H-form: var seen by next command = [${PLAYWRIGHT_CHROMIUM_EXECUTABLE:-unset}]"'; bash -c 'env -u PLAYWRIGHT_CHROMIUM_EXECUTABLE cd /tmp && echo I-form-continued; echo "I-form: exit of env-cd = $?"'; type -a cd; ls -l /usr/bin/cd 2>&1
+### cwd: /tmp
+### start: 2026-09-30T10:38:50Z
+--- output ---
+H-form: var seen by next command = [unset]
+env: 'cd': No such file or directory
+I-form: exit of env-cd = 127
+cd is a shell builtin
+ls: cannot access '/usr/bin/cd': No such file or directory
+--- end ---
+### exit: 2
+### wall_s: 0.02
+

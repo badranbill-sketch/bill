@@ -1,6 +1,6 @@
 # Consolidated blockers (F01)
 
-- Task: F01. Owner A0 (delegate), reviewer A6, stage design_or_audit. Status: **submitted, not accepted**.
+- Task: F01. Owner A0 (delegate), reviewer A6, stage design_or_audit. Status: **accepted**. A0 accepted F01 on 2026-09-30 after the A6 attempt-2 pass (`reviews/F01-attempt2.md`), recorded at `cb3becf`. The post-acceptance patch below was reviewed by A6 in F02a attempt 3, part B (`reviews/F02a-attempt3.md`: pass). A0 patch 1 (`evidence/A0-patch-1/`) then updated this header and HB-08's "Provide" line, from F02A-A6R3-P3-4 and P3-5.
 - Written 2026-09-30 against HEAD `5cbbf9b5d21dbf03d2cb44e524a6fcdc10d5515b`. Decision IDs (D-xxx) refer to `decisions.md`.
 - This is the **one** human-input batch required by the 00 launch instruction and the 06 "One input sheet". It merges the 06 sheet, the 01 §2 unknowns, F00 questions Q1–Q15 (`inventory.md §10`) and the inputs that later gated tasks need (for example N10's smoke targets and G4's replay policy), without duplicates, so no second ask is needed when those tasks start. Nothing here is an approval.
 - A0 post-acceptance patch (2026-09-30, from `reviews/F01-attempt2.md` P3-1…P3-5): HB-08 proposal made single-outcome and (b) existing-cost question added; HB-22 asks about the AI-assisted cover/likeness; HB-03 keeps presentation/ outside the baseline; G2 'not askable yet' and G5 rows corrected; three backup/media secret rows added. Pre-patch copy retained by A0 in its scratchpad; this patch is reviewed by A6 in F02a.
@@ -21,7 +21,7 @@
 
 ## Pilot status on the evidence (2026-09-30)
 
-- Tasks: F00 accepted, F01 running, 60 of 62 planned (`tasks.json`).
+- Tasks, as a snapshot taken when F01 was written at `5cbbf9b`: F00 accepted, F01 running, 60 of 62 planned. `tasks.json` holds the current states. At A0 patch 1 they are: F00, F01, F02 and F03 accepted, F02a running, and 58 of 63 planned.
 - L05, the controlled invited pilot, needs gates G0, G1, G3, G4, G5 and G6 recorded (TASK_LEDGER). **None is recorded.** It is task 14 on the 18-task longest dependency chain (`tasks.json` meta).
 - 0 Bill video recordings exist, and no approved book PDF (`inventory.md §4`). No Bill Google, Brevo, Supabase, Stripe or ad account is visible (§7). The VPS is not visible (§7).
 - So on the current evidence, Friday October 2 can only be a **clearly labelled protected rehearsal** of whatever passes locally, using fictional data. That changes only if the gates are recorded and the recordings exist. Items marked HARD are what closes that gap. This is a statement of the plan's rules applied to the evidence, not a request to drop scope.
@@ -103,7 +103,7 @@
 - (b) For `costs.json` (01 §17 real cost sheet; 06 handover renewals): for each existing paid item (VPS, domain/registrar, mailbox, Calendly, Google, GitHub, and Resend/Upstash if they exist), what is the current plan, amount, currency and renewal date? "Don't know" is fine; nothing here blocks the pilot.
 - Blocks: a paid model in N08; R02; any purchase.
 - Friday: nothing, if the caps stay 0 and Bill's existing account can host Meet.
-- Provide: reply to the director → D-064 and `costs.json` `authorized_caps`.
+- Provide: reply to the director → D-064 and `costs.json` `authorized_caps`. The (b) answers go to the matching `existing_cost_unknown` items of `costs.json`, with the plan and renewal date in the item's note. `amount` and `currency` stay `null` until an invoice or checkout fixes them (`costs.json` rules).
 
 **HB-09. Test recipient allowlist and smoke-test targets** (G2)
 - Questions:

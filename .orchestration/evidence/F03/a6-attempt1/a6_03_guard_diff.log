@@ -1,0 +1,111 @@
+### command: git diff --stat origin/codex/desktop-iphone-unified..integration -- package.json .github scripts proxy.ts tests/browser eslint.config.mjs tsconfig.json playwright.config.ts next.config.ts; git diff origin/codex/desktop-iphone-unified..integration -- package.json .github scripts proxy.ts tests/browser eslint.config.mjs tsconfig.json playwright.config.ts next.config.ts
+### cwd: /home/user/bill
+### start: 2026-09-30T09:45:53Z
+ package.json          | 10 +++++++-
+ scripts/ink-sheet.tsx | 65 +++++++++++++++++++++++++++++++++++++++++++++++++++
+ 2 files changed, 74 insertions(+), 1 deletion(-)
+diff --git a/package.json b/package.json
+index bf5917e..d57adef 100644
+--- a/package.json
++++ b/package.json
+@@ -15,7 +15,11 @@
+     "content": "node --import tsx scripts/content.ts",
+     "launch:check": "node --import tsx scripts/launch.ts --strict",
+     "protections:check": "node --import tsx scripts/protections.ts",
+-    "format": "prettier --write ."
++    "format": "prettier --write .",
++    "guide": "node --import tsx guide/build.tsx",
++    "test:baseline": "node tests/baseline/run.mjs",
++    "test:contracts": "node --import tsx --test tests/baseline/contracts.test.ts",
++    "test:base02": "playwright test --config tests/baseline/playwright.baseline.config.ts"
+   },
+   "dependencies": {
+     "@fontsource/caveat": "^5.3.0",
+@@ -35,9 +39,13 @@
+     "@types/react": "^19",
+     "@types/react-dom": "^19",
+     "agent-browser": "latest",
++    "ajv": "8.20.0",
++    "ajv-formats": "3.0.1",
+     "eslint": "^9.39.0",
+     "eslint-config-next": "16.3.6",
+     "opentype.js": "^2.0.0",
++    "pixelmatch": "7.2.0",
++    "pngjs": "7.0.0",
+     "prettier": "^3.9.9",
+     "tsx": "^4.21.0",
+     "typescript": "^5.9.3"
+diff --git a/scripts/ink-sheet.tsx b/scripts/ink-sheet.tsx
+new file mode 100644
+index 0000000..c302446
+--- /dev/null
++++ b/scripts/ink-sheet.tsx
+@@ -0,0 +1,65 @@
++/**
++ * Render several illustration components side by side into one PNG, to
++ * compare drawings while working on them.
++ *
++ *   node --import tsx scripts/ink-sheet.tsx out.png [cols] [zoom] module:Export[:lang] …
++ *
++ * Same fonts, ink styles and paper as scripts/ink-preview.tsx.
++ * PLAYWRIGHT_CHROMIUM_EXECUTABLE picks the browser.
++ */
++import fs from "node:fs";
++import path from "node:path";
++import { pathToFileURL } from "node:url";
++import { createElement, type ComponentType } from "react";
++import { renderToStaticMarkup } from "react-dom/server";
++import { chromium } from "@playwright/test";
++import { InkDefs } from "../components/ink/primitives";
++
++const [out, cols = "3", zoom = "1", ...specs] = process.argv.slice(2);
++if (!out || !specs.length) {
++  console.error(
++    "usage: ink-sheet.tsx <out.png> [cols] [zoom] module:Export[:lang] …",
++  );
++  process.exit(1);
++}
++const cells: string[] = [];
++for (const spec of specs) {
++  const [file, name, lang] = spec.split(":");
++  const mod = (await import(pathToFileURL(path.resolve(file)).href)) as Record<
++    string,
++    ComponentType<Record<string, unknown>>
++  >;
++  const Comp = mod[name];
++  if (!Comp) throw new Error(`${file} has no export ${name}`);
++  cells.push(
++    `<figure><figcaption>${name}${lang ? ` (${lang})` : ""}</figcaption>${renderToStaticMarkup(
++      createElement(Comp, lang ? { lang } : {}),
++    )}</figure>`,
++  );
++}
++const font = (pkg: string, f: string) =>
++  "data:font/woff2;base64," +
++  fs
++    .readFileSync(path.resolve("node_modules/@fontsource", pkg, "files", f))
++    .toString("base64");
++const css = fs.readFileSync(path.resolve("app/ink.css"), "utf8");
++const width = 1400;
++const html = `<!doctype html><html><head><meta charset="utf-8"><style>
++@font-face{font-family:Caveat;src:url(${font("caveat", "caveat-latin-400-normal.woff2")})}
++@font-face{font-family:Newsreader;font-style:italic;src:url(${font("newsreader", "newsreader-latin-400-italic.woff2")})}
++:root{--hand:Caveat;--serif:Newsreader}
++body{margin:0;padding:24px;background:#faf9f5;width:${width}px;display:grid;grid-template-columns:repeat(${cols},1fr);gap:24px;font:12px sans-serif;color:#4e5b68}
++figure{margin:0}
++${css}</style></head><body>${renderToStaticMarkup(createElement(InkDefs))}${cells.join("")}</body></html>`;
++const browser = await chromium.launch({
++  executablePath: process.env.PLAYWRIGHT_CHROMIUM_EXECUTABLE || undefined,
++});
++const page = await browser.newPage({
++  viewport: { width: width + 48, height: 400 },
++  deviceScaleFactor: Number(zoom),
++});
++await page.setContent(html);
++await page.evaluate(() => document.fonts.ready);
++await page.screenshot({ path: out, fullPage: true });
++await browser.close();
++console.log(out);
+### exit: 0
+### wall_s: .016740939
+

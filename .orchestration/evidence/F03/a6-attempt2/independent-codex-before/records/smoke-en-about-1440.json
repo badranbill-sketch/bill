@@ -1,0 +1,20 @@
+{
+  "id": "smoke-en-about-1440",
+  "kind": "smoke",
+  "lang": "en",
+  "key": "about",
+  "width": 1440,
+  "url": "/en/about",
+  "final_url": "/en/about",
+  "http_status": 200,
+  "console_errors": [],
+  "page_errors": [],
+  "failed_requests": [],
+  "bad_responses": [],
+  "aborted_requests": 7,
+  "horizontal_overflow": false,
+  "scroll_width": 1440,
+  "browser": "chromium 141.0.7390.37",
+  "app_dir": "/tmp/claude-0/-home-user/bb8d4187-6ae8-587b-a816-8153faeea853/scratchpad/wt/a6-f03-2-codex",
+  "captured_at": "2026-09-30T10:36:58.196Z"
+}

@@ -1,0 +1,62 @@
+# F02a: index.json is append-only. date (UTC): 2026-09-30T08:57:40Z; cwd /home/user/bill
+# index.base.json = compute_fixtures.render_all()['index.json'] written to the scratchpad; its sha256 must equal the pre-F02a hash in before-hashes.log (e2c690ff...)
+$ sha256sum /tmp/claude-0/-home-user/bb8d4187-6ae8-587b-a816-8153faeea853/scratchpad/index.base.json
+e2c690ff8cc11b85182e29b721aff9a08c845f1044abe01c65112087f8c11c8b  /tmp/claude-0/-home-user/bb8d4187-6ae8-587b-a816-8153faeea853/scratchpad/index.base.json
+$ grep index.json .orchestration/evidence/F02a/before-hashes.log
+$ sha256sum .orchestration/contracts/workshop-math.md .orchestration/contracts/workshop-inputs.md .orchestration/contracts/workshop-inputs.schema.json .orchestration/contracts/workshop-clip-rules.md .orchestration/contracts/validate.py .orchestration/contracts/worker-handoff.schema.json .orchestration/contracts/fixtures/workshop/WM01-zero-inflation-zero-escalation.json .orchestration/contracts/fixtures/workshop/WM02-geometric-growth-closed-form.json .orchestration/contracts/fixtures/workshop/WM03-later-income-start.json .orchestration/contracts/fixtures/workshop/WM04-price-basis-today-vs-start-year.json .orchestration/contracts/fixtures/workshop/WM05-month-to-year-conversion.json .orchestration/contracts/fixtures/workshop/WM06-zero-income-declared.json .orchestration/contracts/fixtures/workshop/WM07-unknown-income-not-answered.json .orchestration/contracts/fixtures/workshop/WM08-unknown-amount-later-start.json .orchestration/contracts/fixtures/workshop/WM09-gross-net-mismatch.json .orchestration/contracts/fixtures/workshop/WM10-housing-only-wealth.json .orchestration/contracts/fixtures/workshop/WM11-pension-double-count.json .orchestration/contracts/fixtures/workshop/WM12-surplus-years.json .orchestration/contracts/fixtures/workshop/WM13-retirement-year-boundary.json .orchestration/contracts/fixtures/workshop/WM14-capital-illustration-r-zero.json .orchestration/contracts/fixtures/workshop/WM15-capital-illustration-growing-annuity.json .orchestration/contracts/fixtures/workshop/WM16-capital-illustration-level-annuity.json .orchestration/contracts/fixtures/workshop/WM17-rounding-half-even.json .orchestration/contracts/fixtures/workshop/WM18-horizon-and-source-end.json .orchestration/contracts/fixtures/workshop/WM19-uncertain-income-labelled-scheduled.json .orchestration/contracts/fixtures/workshop/WM20-timing-unknown.json .orchestration/contracts/fixtures/workshop/WM21-household-timing.json .orchestration/contracts/fixtures/workshop/WM22-price-basis-unknown.json .orchestration/contracts/fixtures/workshop/WM23-tax-basis-unknown.json .orchestration/contracts/fixtures/workshop/WM24-rounding-float-trap.json .orchestration/contracts/fixtures/workshop/WM25-spending-unknown-window-known.json .orchestration/contracts/fixtures/workshop/WM26-start-point-unknown.json .orchestration/contracts/fixtures/workshop/WM27-end-point-unknown.json .orchestration/contracts/fixtures/workshop/WM28-end-unresolvable.json .orchestration/contracts/fixtures/workshop/WM29-start-unresolvable-window-known.json .orchestration/contracts/fixtures/workshop/WM30-income-list-partial.json .orchestration/contracts/fixtures/workshop/WM31-retirement-age-unknown.json .orchestration/contracts/fixtures/workshop/WM32-unresolved-start-end-at-retirement.json .orchestration/contracts/fixtures/workshop/WM33-unresolved-start-end-inside-window.json .orchestration/contracts/fixtures/workshop/WM34-combined-unknowns-code-sets.json .orchestration/contracts/fixtures/workshop/WM35-capital-illustration-deferred-retirement.json .orchestration/contracts/fixtures/workshop/WM36-capital-illustration-all-surplus.json .orchestration/contracts/fixtures/workshop/clip-rules.json .orchestration/contracts/fixtures/workshop/index.json
+e2c690ff8cc11b85182e29b721aff9a08c845f1044abe01c65112087f8c11c8b  .orchestration/contracts/fixtures/workshop/index.json
+$ diff -u index.base.json .orchestration/contracts/fixtures/workshop/index.json
+--- /tmp/claude-0/-home-user/bb8d4187-6ae8-587b-a816-8153faeea853/scratchpad/index.base.json	2026-09-30 08:57:40.695672742 +0000
++++ .orchestration/contracts/fixtures/workshop/index.json	2026-09-30 08:57:28.514926928 +0000
+@@ -393,6 +393,48 @@
+    "covers": [
+     "WK06"
+    ]
++  },
++  {
++   "fixture_id": "WM37",
++   "file": "WM37-today-dollar-pre-start-factor.json",
++   "title": "Today-dollar amounts carried to their start at i, not at their own escalation",
++   "covers": [
++    "WK02"
++   ],
++   "selected_clip": "W07",
++   "completeness_state": "complete"
++  },
++  {
++   "fixture_id": "WM38",
++   "file": "WM38-joint-owner-participant-age.json",
++   "title": "Joint-owned age start and end resolve against the participant's age",
++   "covers": [
++    "WK02"
++   ],
++   "selected_clip": "W07",
++   "completeness_state": "complete"
++  },
++  {
++   "fixture_id": "WM39",
++   "file": "WM39-group-total-from-exact-values.json",
++   "title": "Income group total rounded once from exact values, not summed from rounded rows",
++   "covers": [
++    "WK01",
++    "WK02"
++   ],
++   "selected_clip": "W07",
++   "completeness_state": "complete"
++  },
++  {
++   "fixture_id": "WM40",
++   "file": "WM40-today-dollar-display-from-exact-gap.json",
++   "title": "Today-dollar gap deflated from the exact gap, not from the rounded gap",
++   "covers": [
++    "WK01",
++    "WK02"
++   ],
++   "selected_clip": "W07",
++   "completeness_state": "complete"
+   }
+  ]
+ }
+[exit 1]  (1 = files differ; every changed line above is an addition after the CLIP entry)
+$ diff <removed or changed lines only>
+0

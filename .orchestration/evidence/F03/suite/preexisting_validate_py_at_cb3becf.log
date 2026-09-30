@@ -1,0 +1,18 @@
+### command: git checkout --detach cb3becf25ed042b977d4864ae71e74d13829320f -q && git rev-parse HEAD && PYTHONDONTWRITEBYTECODE=1 /tmp/claude-0/-home-user/bb8d4187-6ae8-587b-a816-8153faeea853/scratchpad/venv-f02/bin/python .orchestration/contracts/validate.py | tail -6; echo "validate_exit=${PIPESTATUS[0]}"; grep -c "\"id\": \"F02a\"" .orchestration/tasks.json; grep -o "\"pattern\": \"\^(?:F0\[0-3\][^\"]*" .orchestration/contracts/worker-handoff.schema.json; git log -1 --format="%H %s" -- .orchestration/tasks.json
+### cwd: /tmp/claude-0/-home-user/bb8d4187-6ae8-587b-a816-8153faeea853/scratchpad/wt/f03-trial
+### start: 2026-09-30T09:06:57Z
+cb3becf25ed042b977d4864ae71e74d13829320f
+
+## Summary
+pass: 350  fail: 1  known: 16  info: 2
+unexpected results:
+  - CX-18 check IDs, fixture coverage and the handoff task_id pattern match the catalog and tasks.json [task_id pattern accepts exactly 62 IDs] :: ["worker-handoff task_id pattern vs tasks.json: ['F02a']"]
+exit_code=1
+validate_exit=1
+1
+"pattern": "^(?:F0[0-3]|D0[0-2]|P0[0-5]|W0[0-4]|C(?:0[0-9]|1[01])|U0[0-5]|N(?:0[0-9]|10)|R0[0-2]|H0[01]|L0[0-6]|O0[0-2])$
+cb3becf25ed042b977d4864ae71e74d13829320f Accept F01 decisions/blockers and F02 contracts; split F02a
+### end: 2026-09-30T09:07:02Z
+### exit: 0
+### wall_s: 4.94
+

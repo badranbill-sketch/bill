@@ -1,0 +1,44 @@
+# A0 patch 1 CX-29 record: worker handoff 1.1 (schema, examples, approval-scopes.md s8 semantics) and the offers-lane scripts that
+# generate and check it. Supersedes .orchestration/evidence/F02/offers/validation.log for these files. date (UTC): 2026-09-30T11:03:57Z; HEAD d1a37cf3c17953529774e7801af8f0c16eedb925 plus the uncommitted A0 patch 1 working tree
+$ sha256sum .orchestration/contracts/worker-handoff.schema.json .orchestration/contracts/approval-scopes.md .orchestration/contracts/examples/{valid,invalid}/worker-handoff/* .orchestration/evidence/F02/offers/gen_offers.py .orchestration/evidence/F02/offers/validate_offers.py
+11853fe1551f6e69f765ab13bb5878f246ea196692295e1719c04e95666c831d  .orchestration/contracts/worker-handoff.schema.json
+2a5f7b4482e8aa83e842f7ce2f1e2b46320d7272ec6bad3334430d36971cdc1c  .orchestration/contracts/approval-scopes.md
+d656ce07e363493a73ef013328ba60203261f257f468bfe69c3874e804bcdb8a  .orchestration/contracts/examples/valid/worker-handoff/fixture-side-effect-metered.json
+5007780cdcfafe277b021792530942c2551e830fe64b345e015e7c6b247cd2a1  .orchestration/contracts/examples/valid/worker-handoff/normalized-f00-subset.json
+d1083cabf0abba3d41bac108a85a9837839ea61d0e1c7ccfa80943d827bf7b3f  .orchestration/contracts/examples/invalid/worker-handoff/absolute-changed-path.json
+5fe0ea85e7754f8f531e3304725f2b622376323e18b69fa0e5325d743507b019  .orchestration/contracts/examples/invalid/worker-handoff/absolute-changed-path.why.txt
+9e215a2a5874cf83891afe1fec622ce4ecb66dd9819e6094e44206e4d7db499c  .orchestration/contracts/examples/invalid/worker-handoff/annotated-changed-path.json
+6274c3d86fc5c47a3f416f61b9168602bbcb596ed5e9cd6bfd9fe8101650e93f  .orchestration/contracts/examples/invalid/worker-handoff/annotated-changed-path.why.txt
+f8a7517b2d6e71d7343977ac27e27925a6109ebfe58fe0aebb5b20745ff88108  .orchestration/contracts/examples/invalid/worker-handoff/blocked-check-not-visible.json
+bc6db6ffb8a0e94fadff95484f0f3c010e7358c46c5de68f7d3eb43277d852c5  .orchestration/contracts/examples/invalid/worker-handoff/blocked-check-not-visible.why.txt
+03dda44ce240afc54d1b04cfdd8fd3e3d5f921d13508efc6f2d136f79fab572e  .orchestration/contracts/examples/invalid/worker-handoff/empty-artifacts.json
+d2e2d07c44b113dbdc7ab8db97c5a5c7f34bb2ca2c7e4a1a9318f44302e77915  .orchestration/contracts/examples/invalid/worker-handoff/empty-artifacts.why.txt
+112029929a5a26b5235e54423f5394f90481b593b49a071de403e28dd9994980  .orchestration/contracts/examples/invalid/worker-handoff/environment-unlabelled.json
+8b15223e06aa3a9aa87c9eec66198d69c5a00e7130c43301ba525cf853f80371  .orchestration/contracts/examples/invalid/worker-handoff/environment-unlabelled.why.txt
+270ab183e161faaed308436c3e18a2f884ed5827b290ed0f57aba69cae366b0c  .orchestration/contracts/examples/invalid/worker-handoff/estimated-cost.json
+ece6d575c8e6376b9f19d327f543054c5e101ec8747c0e4abbfc7d31d0d53fb9  .orchestration/contracts/examples/invalid/worker-handoff/estimated-cost.why.txt
+7291485a8f737cd7c1f1d69abf8be93708a194e49cc3a82c02c4b060b982014b  .orchestration/contracts/examples/invalid/worker-handoff/exit-code-string.json
+625877b143e2022c40fb29cda99f947be4527e375dea76ccae617e79d56110d9  .orchestration/contracts/examples/invalid/worker-handoff/exit-code-string.why.txt
+ac65364a1fb8ea21b78f5a33078b90447b970fa16007e483e1ee3574c2efae64  .orchestration/contracts/examples/invalid/worker-handoff/extra-accepted-by-field.json
+de61953007795bcfb3b2157ca055853e0296e8dbf0fc4bb38b6badc755e721fd  .orchestration/contracts/examples/invalid/worker-handoff/extra-accepted-by-field.why.txt
+78787288fdb35e59bdaa6569cad6e4f5204f7fcb15ae6c84cadd365192a6fb19  .orchestration/contracts/examples/invalid/worker-handoff/metered-cost-without-source.json
+7a49d93de84037477eb3bab622c9f12e9f3cc7bc4a386bba9c39c8a3143510bd  .orchestration/contracts/examples/invalid/worker-handoff/metered-cost-without-source.why.txt
+dade1d24f226c4647a832975247c3a60ca036eb62120fdd413de18f5f2ad6c37  .orchestration/contracts/examples/invalid/worker-handoff/missing-metered-cost.json
+f735e032f927fdc9b41e8abeea5c71120910283664a36e2b422d46dc501e0643  .orchestration/contracts/examples/invalid/worker-handoff/missing-metered-cost.why.txt
+b73ccc74e1ec38b4510c9ca937dad02be67783b45b83251b10c7021637609e1a  .orchestration/contracts/examples/invalid/worker-handoff/placeholder-artifact-hash.json
+6358a07fbf316c18bce08347c15850662ffe002a2438d8c1a7af009d09eb8c8b  .orchestration/contracts/examples/invalid/worker-handoff/placeholder-artifact-hash.why.txt
+3d78008094d24f0fb23e2aa4379d0b2a392f5fed156b94c6cf339b28646935be  .orchestration/contracts/examples/invalid/worker-handoff/placeholder-command.json
+c71b21f3036de355ca0bf284d52359fa31001f37b3bfbc74fc10a14996c1c830  .orchestration/contracts/examples/invalid/worker-handoff/placeholder-command.why.txt
+3a85fc7f28ccf99c0894c0e1b0acb594c45c5bc5cbc84966211c14f481ee8c0a  .orchestration/contracts/examples/invalid/worker-handoff/short-result-commit.json
+a13abb7d8ab827e9ad78d97158a12c217ac1dcbec604a8932cad940c8aa12910  .orchestration/contracts/examples/invalid/worker-handoff/short-result-commit.why.txt
+023c8fbd4146e3982c8b669a02dabee1db2b745cf6ae35a649ee5667ee8d869a  .orchestration/contracts/examples/invalid/worker-handoff/side-effect-without-authorization.json
+5ea1f97a05c30a398016036d9c6e71024a562f507d3670eab3f96dafb76dfbd7  .orchestration/contracts/examples/invalid/worker-handoff/side-effect-without-authorization.why.txt
+88e34f65e04b8ad9f6c1da2a8a02209769f2494205eced3431a0a4f742c0a8a1  .orchestration/contracts/examples/invalid/worker-handoff/status-accepted.json
+e5dd60ac9e90fbf4d62e082f6c1b6979ab08764f100e7d458e90e0b973f84481  .orchestration/contracts/examples/invalid/worker-handoff/status-accepted.why.txt
+5bc721998a63a68cf596494d6458e6c4126097bca6bbc185cf0611b0af883c64  .orchestration/contracts/examples/invalid/worker-handoff/unknown-task-id.json
+4c93d741f40096aae7f0f8c9a2ce2e7367509714aa9b09b61acb0cabb9dca9c0  .orchestration/contracts/examples/invalid/worker-handoff/unknown-task-id.why.txt
+68c5f75532aa2908fc0f06f001101b9402778204452f448c1baf66bdac8f75f7  .orchestration/contracts/examples/invalid/worker-handoff/verbatim-03-example.json
+fbc69c86f0fc03d246b8d2d2879631025bca5c22951cd9eea5603de8b39d2a4b  .orchestration/contracts/examples/invalid/worker-handoff/verbatim-03-example.why.txt
+d0b6d93c4a8f13a2e568eb92fbbae93385e5b52e0767fd87933c087e385c1d71  .orchestration/evidence/F02/offers/gen_offers.py
+f99e7300d64f2ebb2f5395611412f93e8d83b3f1509080fa7256c75c1b7f294f  .orchestration/evidence/F02/offers/validate_offers.py
+[exit 0]

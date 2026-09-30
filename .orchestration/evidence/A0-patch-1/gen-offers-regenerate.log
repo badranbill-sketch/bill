@@ -1,0 +1,58 @@
+# A0 patch 1: regenerate the offers-lane outputs with the edited gen_offers.py (worker handoff 1.1), 2026-09-30T10:56:32Z, cwd /home/user/bill
+$ PYTHONDONTWRITEBYTECODE=1 /tmp/claude-0/-home-user/bb8d4187-6ae8-587b-a816-8153faeea853/scratchpad/venv-f02/bin/python .orchestration/evidence/F02/offers/gen_offers.py
+generated: 22 offer-matrix invalid, 22 asset-manifest invalid, 17 worker-handoff invalid
+[exit 0]
+$ sha256sum -c --quiet .orchestration/evidence/A0-patch-1/gen-offers-outputs.before.sha256   # expected: exactly the two intended files differ
+.orchestration/contracts/examples/invalid/worker-handoff/unknown-task-id.why.txt: FAILED
+.orchestration/contracts/worker-handoff.schema.json: FAILED
+sha256sum: WARNING: 2 computed checksums did NOT match
+[exit 1]
+$ (generated file list) | xargs sha256sum > .orchestration/evidence/A0-patch-1/gen-offers-outputs.after.sha256; wc -l
+132
+$ diff <(cut -c67- before) <(cut -c67- after)   # same file set
+[exit 0]
+$ git diff --stat -- .orchestration/contracts
+ .../examples/invalid/worker-handoff/unknown-task-id.why.txt       | 2 +-
+ .orchestration/contracts/worker-handoff.schema.json               | 8 ++++----
+ 2 files changed, 5 insertions(+), 5 deletions(-)
+[exit 0]
+$ git diff -- .orchestration/contracts/worker-handoff.schema.json .orchestration/contracts/examples/invalid/worker-handoff/unknown-task-id.why.txt
+diff --git a/.orchestration/contracts/examples/invalid/worker-handoff/unknown-task-id.why.txt b/.orchestration/contracts/examples/invalid/worker-handoff/unknown-task-id.why.txt
+index f7db890..67f0409 100644
+--- a/.orchestration/contracts/examples/invalid/worker-handoff/unknown-task-id.why.txt
++++ b/.orchestration/contracts/examples/invalid/worker-handoff/unknown-task-id.why.txt
+@@ -1,4 +1,4 @@
+ rule: WH-ID-1
+-breaks: task_id is one of the 62 task IDs in tasks.json.
++breaks: task_id is one of the 63 task IDs in tasks.json (the 62 planned IDs and the split task F02a).
+ expect_keyword: pattern
+ expect_path: /task_id
+diff --git a/.orchestration/contracts/worker-handoff.schema.json b/.orchestration/contracts/worker-handoff.schema.json
+index 819f406..ed6351f 100644
+--- a/.orchestration/contracts/worker-handoff.schema.json
++++ b/.orchestration/contracts/worker-handoff.schema.json
+@@ -1,7 +1,7 @@
+ {
+   "$schema": "https://json-schema.org/draft/2020-12/schema",
+-  "$id": "https://bill.contracts.local/worker-handoff/1.0",
+-  "title": "Worker handoff 1.0",
++  "$id": "https://bill.contracts.local/worker-handoff/1.1",
++  "title": "Worker handoff 1.1",
+   "description": "The worker handoff of 03 ('Worker handoff schema'), closed. A worker submits it and stops; status can only be 'submitted' because A0 writes acceptance separately after A6 verification. Placeholders are rejected: commits are 40 lowercase hex, artifact hashes 64 lowercase hex, and the 03 example strings are refused. exit_code null means the exit status was not captured (say so in assumptions). blocked_checks use the evidence vocabulary blocked | not_run (D-038). A side effect needs a gate authorization. metered_cost never carries an estimate. Semantics: approval-scopes.md §8. Status: proposed, submitted, not accepted.",
+   "type": "object",
+   "additionalProperties": false,
+@@ -23,8 +23,8 @@
+   "properties": {
+     "task_id": {
+       "type": "string",
+-      "pattern": "^(?:F0[0-3]|D0[0-2]|P0[0-5]|W0[0-4]|C(?:0[0-9]|1[01])|U0[0-5]|N(?:0[0-9]|10)|R0[0-2]|H0[01]|L0[0-6]|O0[0-2])$",
+-      "description": "One of the 62 task IDs in .orchestration/tasks.json. A split task needs a contract minor version."
++      "pattern": "^(?:F0[0-3]|F02a|D0[0-2]|P0[0-5]|W0[0-4]|C(?:0[0-9]|1[01])|U0[0-5]|N(?:0[0-9]|10)|R0[0-2]|H0[01]|L0[0-6]|O0[0-2])$",
++      "description": "One of the 63 task IDs in .orchestration/tasks.json: the 62 planned IDs and the split task F02a (D-072), listed explicitly, not as a generic suffix. A further split task needs a new contract minor version (WH-ID-1)."
+     },
+     "base_commit": {
+       "type": "string",
+[exit 0]
+$ PYTHONDONTWRITEBYTECODE=1 /tmp/claude-0/-home-user/bb8d4187-6ae8-587b-a816-8153faeea853/scratchpad/venv-f02/bin/python .orchestration/evidence/F02/offers/gen_offers.py && sha256sum -c --quiet .orchestration/evidence/A0-patch-1/gen-offers-outputs.after.sha256   # determinism of the edited generator
+generated: 22 offer-matrix invalid, 22 asset-manifest invalid, 17 worker-handoff invalid
+[exit 0]

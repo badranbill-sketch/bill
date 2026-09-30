@@ -1,0 +1,822 @@
+$ /tmp/claude-0/-home-user/bb8d4187-6ae8-587b-a816-8153faeea853/scratchpad/venv-f02/bin/python .orchestration/contracts/validate.py --contracts-dir /tmp/claude-0/-home-user/bb8d4187-6ae8-587b-a816-8153faeea853/scratchpad/a6-f02a-attempt3-head/.orchestration/contracts
+# F02 contract set validation (validate.py)
+utc_now: 2026-09-30T10:12:16Z
+python: 3.11.15  jsonschema: 4.26.0
+repo: /home/user/bill  branch: claude/orchestration-foundation  HEAD: cb3becf25ed042b977d4864ae71e74d13829320f
+contracts dir: /tmp/claude-0/-home-user/bb8d4187-6ae8-587b-a816-8153faeea853/scratchpad/a6-f02a-attempt3-head/.orchestration/contracts
+contract set version: 1.0  frozen for build on: 2026-09-30
+environment: local container; fixture evidence only (no browser, no network, no provider)
+
+## S1. README index and contract inventory
+PASS  README declares contract_set_version 1.0
+PASS  README declares frozen_for_build_on 2026-09-30
+PASS  README index has one row per contract (16 rows)
+PASS  every path in the README index exists
+PASS  every file under contracts/ is covered by the README index (407 files)
+inventory: 407 files under /tmp/claude-0/-home-user/bb8d4187-6ae8-587b-a816-8153faeea853/scratchpad/a6-f02a-attempt3-head/.orchestration/contracts (sha256, path relative to contracts/)
+  e0aa064aca63f5cbaa91cb9f8c6a56cea0fa778f4a367e2303734ef6b88a74b3  README.md
+  f649807ff34d55573c1d2a5d06a4a95d24eba8beaba2c3cc66f6ea4badf10c91  approval-scopes.md
+  c5bcba0c552cd97251daf2d877a1ab0cbe58ec17a143e157567e51c4b10ebb07  asset-manifest.md
+  e949655168ddffeaa6a4ac36c3853b1a159004d02b961ee5586f1a6e324b054b  asset-manifest.schema.json
+  a95da08655a148f34d4438c599da796043b5fe31c79bb4fad54c93fe6569f89b  authority-matrix.md
+  9c4fade8d62799d123a120a4b2bc10f453d1efd80f69de5da494b3d652c57e0e  data-flow-register.json
+  d618e085346879038020a290e62f7d978dd9ada69befe3b2e46e35d3d04a122d  delivery-job.schema.json
+  8c3ac4336a4216396ded574ab1c57c3891c57a57a3e34487c4e6388b0c63f065  email-eligibility.json
+  d5a89c845272dbaebf2703dd485c71949d8ce1c57094f1883c19a74119df9d11  event-envelope.md
+  580ba2d8160df281ab5da4ea250c716d6166e6f9c03170deeb412c7aef38f253  event-envelope.schema.json
+  63f203383e97c59be0a633bff7af50352151dcab4c1abec2a3c8cea7c78abe8c  examples/invalid/asset-manifest/agent-role-approval.json
+  48d7174571a0bd27634571bfeea37fd76cec57a93add4bf997ad369f8de02e82  examples/invalid/asset-manifest/agent-role-approval.why.txt
+  fba9cb8da0be822616e60f0960d3147c5b35a1d5ab9e47566a7714e9e65480f6  examples/invalid/asset-manifest/approval-on-draft.json
+  80df01d959f55f4ead5b06e0f0f68013ec0ef945a49cfccff7b198a3d7e20087  examples/invalid/asset-manifest/approval-on-draft.why.txt
+  b0ed86c7a57d22f8898d2528adb13099f1e706c3134d161a8b50b4958b96debb  examples/invalid/asset-manifest/approval-without-g3.json
+  7a657690d2e6328224545b2bf9a10389178f7366f54e0698ef3bac0e85a0e84a  examples/invalid/asset-manifest/approval-without-g3.why.txt
+  04a81fb771d49a39c0be02ff92c83cf41d73a1cb88390ce4add2b3ea0058b0e5  examples/invalid/asset-manifest/approved-with-pending-rights.json
+  a69896830b679e31d68dad3d911a3ca6b5fbab77c7fff5a723311c5c7b92453d  examples/invalid/asset-manifest/approved-with-pending-rights.why.txt
+  5a1348ee945b1b711f1d432d4b250c45dff7c7e112e31f687061d2c308d910a3  examples/invalid/asset-manifest/approved-without-review-hash.json
+  f479799de2391add51716d2d14def72b55215bcbe307e6b1809cddfbe9d1648b  examples/invalid/asset-manifest/approved-without-review-hash.why.txt
+  fe33d5c116e9c4dfe919d7a1b1de79a0533d9512d8516d9d243ac2a03cc915d0  examples/invalid/asset-manifest/capsule-s19-id.json
+  b58ef8b79de1a867c88f862b160ef0cb39ff442fd48d63c53569cf3e51dca265  examples/invalid/asset-manifest/capsule-s19-id.why.txt
+  9ed316c219abdc67e50c3f9697dfc790f811838a309411d500e048f76d6a87bc  examples/invalid/asset-manifest/captions-only-marked-recorded.json
+  c173b81ddc505cfdb46307e011f5117a72691bee67e9049b3c4029cb6375ee66  examples/invalid/asset-manifest/captions-only-marked-recorded.why.txt
+  1814f2cdfcbcf0ebae4dc9533e0d3579763392970a658ac531c82c1d32d361f0  examples/invalid/asset-manifest/cta-offer-not-referenced.json
+  20635646734e94cc75fbc2160d168ef61a221808bb9c14876db87e53e13adf7e  examples/invalid/asset-manifest/cta-offer-not-referenced.why.txt
+  654b3be1873934a119b797f797e4546c28b62e6452d32c5e7a3ba50d978a5852  examples/invalid/asset-manifest/duplicate-entry.json
+  4c6ce0d71e221be648deaa05960a24548dfab570db67d5885b72566afcf73e68  examples/invalid/asset-manifest/duplicate-entry.why.txt
+  51c96d716ef16ca883a404d9c90049be8c6a7e6dd5a766e240fac6927803f91a  examples/invalid/asset-manifest/factual-claims-without-sources.json
+  973b5f0bdc16a607a0920c0db802ab289ba294f78cb88e14d11777dcbbe3eb21  examples/invalid/asset-manifest/factual-claims-without-sources.why.txt
+  b69ac23915f85c6f2c4aee23855fb22ec3d4d72253a7a77903a7b356f3bbd88b  examples/invalid/asset-manifest/fixture-publication-id-in-authoritative.json
+  a96cc32338b48a5b875b4879319684fc2ad5842fba773ce18e7f840efb780fff  examples/invalid/asset-manifest/fixture-publication-id-in-authoritative.why.txt
+  6af0aa31428ca76f5285f4e04ee16bd512d2e2e81bef563f02eca810e438d540  examples/invalid/asset-manifest/fixture-ref-in-authoritative.json
+  237946c9d5bbfc3b1f24209c78b9f7889c2934b1464e4415a7d63fa4852a1a68  examples/invalid/asset-manifest/fixture-ref-in-authoritative.why.txt
+  cc981b0225ffa141d2b7cb75fdbb569a0999202e522a51957125e727006f8cb3  examples/invalid/asset-manifest/offer-copy-approved-without-g1.json
+  04e504ae3fe68da85ae78ae6fe507a391336d4e708997c8cc967bacdc2374e45  examples/invalid/asset-manifest/offer-copy-approved-without-g1.why.txt
+  cbd283d97e5d292e135192c5e3315299bd892823c109091d2346a09034bb05d8  examples/invalid/asset-manifest/publication-hash-mismatch.json
+  e46d64f7de155c90a4ada47ee090b7e04cddc31f17186ad19421bcd5657dc62f  examples/invalid/asset-manifest/publication-hash-mismatch.why.txt
+  cf46e2aac63cad9c37018fb5d862e0f1b6ae2f568c17babae6278c34d00c5504  examples/invalid/asset-manifest/publication-id-on-draft.json
+  6f3831578177f10d196a1adfc6b3d28f3199cc182ccf565f6764f7d1d5ce6711  examples/invalid/asset-manifest/publication-id-on-draft.why.txt
+  21983626ec8bdbd8a8bea886c2f09a87ecda38c3ddcaa0177ef8e9d3fbc22e61  examples/invalid/asset-manifest/published-without-publication-id.json
+  e4f549e681b7e76a59fc46b4f28b7fb42ee144d7b5c672615a7b14f9beda8d77  examples/invalid/asset-manifest/published-without-publication-id.why.txt
+  d7c89ad88ad94fa30124caeb6b3abf2c871ec0e4b9ce29874ab21bde05dd61e2  examples/invalid/asset-manifest/recorded-without-consent.json
+  6332ed7a701c538972e70214dd451667fca6295cf2a628a4f308097a5b7be801  examples/invalid/asset-manifest/recorded-without-consent.why.txt
+  1f65ef7ff5b8878e21ffdd7280c53a2a22f6bcea2c5fde157460630a6611798b  examples/invalid/asset-manifest/recording-approved-without-g4.json
+  0e4bc580a058b02db89710c8fcba832e66cd5723255300782f996ac013950846  examples/invalid/asset-manifest/recording-approved-without-g4.why.txt
+  837c285261b1338157cf9ef8fdf9a1fe766819e99a3cc5dd8e084653ef6a0780  examples/invalid/asset-manifest/reviewed-claim-without-access-date.json
+  ecd97ad054a6a9e4ebc67332f2350f76f5a79f66d9e66cf08243fda479e20218  examples/invalid/asset-manifest/reviewed-claim-without-access-date.why.txt
+  187cf57a104e8a4e010e360138f7071a51c2bba6cbc249dedff730d57dc60aa3  examples/invalid/asset-manifest/synthetic-bill-likeness.json
+  b4de27d69f5ab530674ecc8aff6b9f427d7f749b1f00eeda735f27c72d784c91  examples/invalid/asset-manifest/synthetic-bill-likeness.why.txt
+  41d1f23e23bab5e4944efe175e0825ecbf086a2c3d66ffefb7bab89a509ae31b  examples/invalid/asset-manifest/text-asset-marked-recorded.json
+  0b6116770615ae3b43cc840a1fa77f73c5cc5a42505b79c2de050dd6a1352fe2  examples/invalid/asset-manifest/text-asset-marked-recorded.why.txt
+  a69e980a37c9dd47eb154f0ea4383bb6ffac8fa6a2ce2527d33ce68016da0882  examples/invalid/asset-manifest/unknown-status-ready.json
+  26adc434b881fc124346fd08621fddef24012d5c88668df9d035cc2d2576e837  examples/invalid/asset-manifest/unknown-status-ready.why.txt
+  421d14a1fbdbae8119aa4c6d2afdd40052c86a8426ba2399eb50362c5cfeca45  examples/invalid/delivery-job/attempt-count-over-ceiling.json
+  bd6c1826597d6d8eee92859b9044d7b57f0f31fbe34f9e55083328fe146e87a3  examples/invalid/delivery-job/attempt-count-over-ceiling.why.txt
+  9acf7cb26d185ce0283a5b18e61c75c52aba8489f96ccb3d1aa68b5f6f513fce  examples/invalid/delivery-job/email-in-purpose-key.json
+  9051be5ebf6b4bd8cd6c8bf65f137194a402ae7dba42aa75c4b7b36f371c2067  examples/invalid/delivery-job/email-in-purpose-key.why.txt
+  4acc3949ed2b2148a83ceda50240295118b25645703467ee4a1ee7263968c8bc  examples/invalid/delivery-job/expiry-before-due.json
+  3594fef730c688896dcc5778b09ba419ff3499867fcce57c90d5f9e49dea08ea  examples/invalid/delivery-job/expiry-before-due.why.txt
+  9867786d35500c684458c418624d807cac929376da907a0a580d7af353d04472  examples/invalid/delivery-job/financial-field-in-job.json
+  2c1a40aa2f7cf4e23026fd3c424969e43eedf5814283a0d7a319cc0c5ea29f6e  examples/invalid/delivery-job/financial-field-in-job.why.txt
+  05bea1110d8917edb438ad68bff03d7522e3fcf1ce2fd23dd1b61296e043f027  examples/invalid/delivery-job/free-text-error.json
+  69f0271c36083f67f99039b4fd6758abd5a779e918acf3d597f45677ba7d2307  examples/invalid/delivery-job/free-text-error.why.txt
+  8628b96dc8069b2860863b072193497d4c3290be0382c4f104c6b39a27905bb0  examples/invalid/delivery-job/leased-with-provider-id.json
+  e31e70096e94176e5d3a07b85ec5932aa348a4bd4c6070f7c2f28a6c3736dbea  examples/invalid/delivery-job/leased-with-provider-id.why.txt
+  6088f9c098e53c692c8aaa031f8e93342a345667462e2c913d24d06a427ada1c  examples/invalid/delivery-job/leased-without-lease.json
+  f1a8a2415431a5fac346d57be0b99ed63949d418bf65c95caa7b6e190e5b71b8  examples/invalid/delivery-job/leased-without-lease.why.txt
+  91a3f9676cc6edf647482b05074b44caa87db8e76f40f0bdb326a7b850f73944  examples/invalid/delivery-job/non-utc-expiry.json
+  842772592d00a9057aed9718fcb580943bc6fe25017fbd77e5a31cf90797dd3e  examples/invalid/delivery-job/non-utc-expiry.why.txt
+  1b511fc402d8c2674920a5ec0dd17ab2d8ddc48d9a418ab3004143ddbf3655ac  examples/invalid/delivery-job/nurture-template-as-operational.json
+  7723789cb5457cc4f86a7235235afa60998d6e9f1a12c7d98b36c0b069209f0e  examples/invalid/delivery-job/nurture-template-as-operational.why.txt
+  50414fbc658e002c88c24d4515d51f7cfe547ec8d5938086b78fdbc7ffb1d9dc  examples/invalid/delivery-job/promotional-high-priority.json
+  8e1cc556e2c65a858d6b8a1612935234922d6dc8d605b87a3f255883a14b9867  examples/invalid/delivery-job/promotional-high-priority.why.txt
+  2427b623d10399a2dccb6ae5d61cfde3bbce22158a58ea1cae5df63f62168ca7  examples/invalid/delivery-job/promotional-without-consent.json
+  636c1ada883898744ef24a38dfd4bac973dd7de20c44d795dbc6a943c1c57e7a  examples/invalid/delivery-job/promotional-without-consent.why.txt
+  3ca08c1d42c4301d204b649233ba716ff4b6bf3176e5d725ac30d4839b112766  examples/invalid/delivery-job/purpose-key-mismatch.json
+  69965d805832a25976789b4a286368677351fa6dd78fa688f123763c975f6022  examples/invalid/delivery-job/purpose-key-mismatch.why.txt
+  18ae3f3e97b259ac31e71cb7e34c3a89b1b868d37d4105ebee72cec1406a7717  examples/invalid/delivery-job/recipient-email-field.json
+  3da73f6ce8a021aa5b9f5648b59a821fa835c1571b8f151d9d79e3dcb57ed81f  examples/invalid/delivery-job/recipient-email-field.why.txt
+  3e082a80f065fdbe4c1dbcfa38523dd3c45f6fbdb1180377b71f4c70081f5d1c  examples/invalid/delivery-job/reconcile-without-send-started.json
+  1573585afa2a01117b3ac6c81a0305d7b778ccde4d00962a867b7dd38010d61e  examples/invalid/delivery-job/reconcile-without-send-started.why.txt
+  11941f056ee92eb7db63f174c9b68d6747ca19cba6e68d303d5299ac6cb92494  examples/invalid/delivery-job/retry-after-expiry.json
+  7212cf281b54f7f0560827213ca9e4d7216dee233101cc84455f4469ef84f67c  examples/invalid/delivery-job/retry-after-expiry.why.txt
+  74c31e120c53ed39ba5de9a2524bd884f54a5553c5254a401462966dd9de78e3  examples/invalid/delivery-job/sent-without-provider-id.json
+  19d3cbc370e4870eaa8494b236f7ce3946714329b544758fd696241c33d950cf  examples/invalid/delivery-job/sent-without-provider-id.why.txt
+  3e26dd7785b55de87744dafdfea4bde9957d9776b24a24ab29031f61ade0d5e2  examples/invalid/delivery-job/suppressed-after-send-started.json
+  da6d5d3c5e8d8fa0cb95bb81352cdb892c25062cfdbfc866b8693c0a84885b0f  examples/invalid/delivery-job/suppressed-after-send-started.why.txt
+  211e7ef3eebea7e1d9d5179ff89e2387ff23ac0a945dbf5a7aeb23f22793b966  examples/invalid/delivery-job/unhashed-template-version.json
+  e300751316d2e83904e63d0acaa0d041135b07c1216157cdf8d550446d5c5d7d  examples/invalid/delivery-job/unhashed-template-version.why.txt
+  3e95940d6c4d379b3c0fbd48d213e940eb7d00214fe37f7275482033e1289f06  examples/invalid/delivery-job/unknown-status-delivered.json
+  a18f3d9964ecdbb5a7f429c3c31d070f54962bf65ba2255ff4290406d5192bcc  examples/invalid/delivery-job/unknown-status-delivered.why.txt
+  33ab2838822a295b60ae919911323c28d009b49b96816d4e26bfda769c6ddba5  examples/invalid/event-envelope/age-in-guide-version.json
+  6e769e86338801adf3ad7759036a79edfd1c71aa58602123e40c6d4bd2b3629c  examples/invalid/event-envelope/age-in-guide-version.why.txt
+  bde127e23ee2510a13e72728e42dff765ab6201e816ecb65b9f37a020e0eeeb9  examples/invalid/event-envelope/age-in-resource-id.json
+  58e0609d280b1ab903200e38409cb4f4b129310d11c185e76eb62fb44fce8930  examples/invalid/event-envelope/age-in-resource-id.why.txt
+  f2f54ba7ef7c86b10d38a25e98231a833c4bd63253b09a3e82c79dd5134258f8  examples/invalid/event-envelope/amount-words-in-workshop-key.json
+  393bde3e0f1772cbac71be7ffaf9f4924707fd93eae076729bf628c5a069b015  examples/invalid/event-envelope/amount-words-in-workshop-key.why.txt
+  abd2759e7b808f6cbff39edcc81719e68f296211c623e6ee51064fcce81a3653  examples/invalid/event-envelope/attendance-from-join-click.json
+  3303b3ade5db4de5ee138573cda8b8149bef4355cb3a868dcf9b2f4be5110921  examples/invalid/event-envelope/attendance-from-join-click.why.txt
+  af30e12efa0c18b41ed0bc2ea7ff8e163ad438126ec928433c6a4e5cbd205a97  examples/invalid/event-envelope/consent-on-guide-request.json
+  4b37f7b09bb922245a94338da555b09d9e48e9a8ef43fd0b005735028ea49a59  examples/invalid/event-envelope/consent-on-guide-request.why.txt
+  94f1d8177b9872febebf6d7596dc06e964dc00079c879ec7ace40a959983959a  examples/invalid/event-envelope/consent-wording-mutable-version.json
+  00469536d90a3eae416c31b2973f9fef225f8c8bb256e463d20397088214ed1c  examples/invalid/event-envelope/consent-wording-mutable-version.why.txt
+  6a1e7906e0d2e5497a18a6f632666ce46331dda32ff037294308dcad79458d43  examples/invalid/event-envelope/diagnosis-in-workshop-key.json
+  4c99f4e199b911e9fb1951145437224e6f34ff2c989ced32bd9b23671544d406  examples/invalid/event-envelope/diagnosis-in-workshop-key.why.txt
+  d99954b2141f09dfbffee3ab4525453ed590b64cd28dccdd12e17b7d427fde96  examples/invalid/event-envelope/email-as-subject-id.json
+  188288a68e82ab68caafa872029255f2604230e74a216b47edc2e7c938676a25  examples/invalid/event-envelope/email-as-subject-id.why.txt
+  0c0783f592481338f1689807abaac521eec04d143664f300c0982086ef5e2749  examples/invalid/event-envelope/email-in-idempotency-key.json
+  38ce1b2c796a2d7705448de7c2d8450c02789be924956719fcf6f16579de2362  examples/invalid/event-envelope/email-in-idempotency-key.why.txt
+  92e07b9fbd240085b149e18cc2ac643f0ac960f41addad89b01e4e053ee25c74  examples/invalid/event-envelope/extra-property-form-body.json
+  e685511d72592a5bd0c8b14932a679f3c9f7b303d33a01f5295f40ac40667d08  examples/invalid/event-envelope/extra-property-form-body.why.txt
+  c3e4473ab938db366294f39e3de7eb6f7718e5aeada4f655e3a3739fd5718e68  examples/invalid/event-envelope/financial-amount-field.json
+  aa86b72973d4cbd0672f7b8989d1c4d73886841888f7b19971e27b1b49e97751  examples/invalid/event-envelope/financial-amount-field.why.txt
+  74d961fa12bf10b600f707850b3e7160624adbe54102da7d964628bd5e46d07e  examples/invalid/event-envelope/locale-es.json
+  2ecd1354332d97456d4834be61e6c5864f921badfb03d06eea5589e04a875c2f  examples/invalid/event-envelope/locale-es.why.txt
+  0229e4dd855c2b015a1fe1df28d38e233762684c66f9d54f19655d7223e9f2c1  examples/invalid/event-envelope/meeting-confirmed-from-click.json
+  89b6b18ba6f7ec8f7123d22681970fc81defc7bd4eae895638df284e5a361235  examples/invalid/event-envelope/meeting-confirmed-from-click.why.txt
+  284185c4959215502c9361b0a04d0d5eb8bab202afd34c25bea7297eb029225e  examples/invalid/event-envelope/missing-idempotency-key.json
+  0ce6bb846e39bb16b1b19e24eec4948477298e4518bf3dd745f5b390829e911c  examples/invalid/event-envelope/missing-idempotency-key.why.txt
+  a629e5567e9d1d34ff4a0b66af4d3d0281aab5a2db478e03791212fd781d1c92  examples/invalid/event-envelope/name-as-guide-key.json
+  52f434bc79966c6514dd3d024edad4a43866f27b825b6ee77b85269163d0d34d  examples/invalid/event-envelope/name-as-guide-key.why.txt
+  d3cc4b5f8986daa455d0b5a72dfb2fc24406c88478ca129f95b1ab5e04481fba  examples/invalid/event-envelope/non-utc-timestamp.json
+  a60659a76ba6525b196f47d3f778d6028077aeb345842916d6b4d1ac65bde2e7  examples/invalid/event-envelope/non-utc-timestamp.why.txt
+  1f488909d98b658f12bb91e448766bff76775658ee3b45534ae43a59d77c0ec2  examples/invalid/event-envelope/payment-confirmed-by-operator.json
+  28c80529dd127e6830d636518435c26a6c6c741c1b667573104aa262d39809b8  examples/invalid/event-envelope/payment-confirmed-by-operator.why.txt
+  3c64aafd4d808ccec9ff53143d949a9580192b02c6f7d4210296bc01d4d89346  examples/invalid/event-envelope/schema-version-2.json
+  d4f15b8b6e4914988a95268918090c7dbe117233670d5af193a7bce4094d1547  examples/invalid/event-envelope/schema-version-2.why.txt
+  64e995c30dbd2e848c8eb2b46852e7b12ca9e8c6e1e45b9ca5677a09a71b8046  examples/invalid/event-envelope/unknown-source.json
+  3d49f6175ac9f100176e3e852e13ce8d487e659c049971bbce271906d68d9e61  examples/invalid/event-envelope/unknown-source.why.txt
+  5de905741368911baff6f9e49b329cc87c6083458932b0d4ec35159a68167225  examples/invalid/event-envelope/unknown-type.json
+  6299c089f1a30f34320747303a34bcad550ebd8c6561a0748aaec97b283a50ae  examples/invalid/event-envelope/unknown-type.why.txt
+  25a0d512184ae430544be3a06251f1905b63c46260e17fbfdfd04493c213eba5  examples/invalid/event-envelope/workshop-completed-with-gap.json
+  ddab37e695a87f51c9ba6e4a524170d62d20233bfe99cd7ab911b9097cff8036  examples/invalid/event-envelope/workshop-completed-with-gap.why.txt
+  1de6310423ac79852537c9625379ff616ab599047c946fffffc284b9a2329fff  examples/invalid/event-envelope/workshop-completed-with-selected-clip.json
+  2fc0e1a33365ff760f623de5a452e15d9bf1fd3a19f6ec10398ec0fd6b8ba2e2  examples/invalid/event-envelope/workshop-completed-with-selected-clip.why.txt
+  6559fdca7f00456df9c91d5a4c19510592388df462309ef0edf3fcb2b4aeb538  examples/invalid/event-envelope/workshop-completed-without-consent.json
+  2a57accf07fbab7848e22e2e58a115fea1b9176a0fac9daf744b8abaa31cf2dc  examples/invalid/event-envelope/workshop-completed-without-consent.why.txt
+  93e7d50acecb9e02314ee1c121a2f18171b0b4a221217a9a9b65537c63c6dc0f  examples/invalid/event-envelope/wrong-subject-kind.json
+  85e61984e4016f1631d24d7833f1d19ba2c319ffbfe58d24ee36c544e8365927  examples/invalid/event-envelope/wrong-subject-kind.why.txt
+  1887496d705a5e9f0147d62272626395c28bc24f4c7065b05f5825c2faed470a  examples/invalid/feature-flags/agent-recorded-approval.json
+  072a65482e9a35970e6d2491089df6d548f6e5dce8f2130cc6a6e0119e37e39a  examples/invalid/feature-flags/agent-recorded-approval.why.txt
+  704334c367d00dffb02e8bd65675fc760d6749ace1389239b1870c45df5a64ec  examples/invalid/feature-flags/approval-without-scope-hash.json
+  34fbf35234454a219cbad2d0fd18a3734b0f90ffbaf46c79cf19814a642621e3  examples/invalid/feature-flags/approval-without-scope-hash.why.txt
+  ab064348a6929ca4ac9649935a6bd0fb921f52fa05f80ab71268e6bd7d63ca3f  examples/invalid/feature-flags/enabled-without-controlling-flag.json
+  7d19a70f57be193289d9e767f4fc9ab892b3521b7f818f300d47b613c2da2425  examples/invalid/feature-flags/enabled-without-controlling-flag.why.txt
+  1d4101bc382aec3b0ca64b072cd6bb1f144eb2cdc9828d71296ad4ec4ff90ab5  examples/invalid/feature-flags/flag-default-true.json
+  6e6a7db1ab0529027db7d1eba77e29747f407c5841621112899b4c353c2f753f  examples/invalid/feature-flags/flag-default-true.why.txt
+  fd531cf0f8a4fb2260fac45071e6d439bfeb138c5693b636cc928d59e525a0c5  examples/invalid/feature-flags/flag-on-without-approval.json
+  9d0b1cfc1c62147e10e3c4dacf7f9e549edeb4cb615ae44329083fdd7b2013e2  examples/invalid/feature-flags/flag-on-without-approval.why.txt
+  055237b9d80bfcc8ffe6a7057383ff07baaf4c7d4e5bf065c4ed23975119d232  examples/invalid/feature-flags/gate-mapping-altered.json
+  b090e84807cafc327a5ceb516235f9c99fa06c4c9db41ebcde6cb9355bcea11a  examples/invalid/feature-flags/gate-mapping-altered.why.txt
+  1decdd72d2b8f851f355d014d50e08b191769034cf99238a0c7d746aea277435  examples/invalid/feature-flags/live-verified-in-staging.json
+  7ab762e4bda66d3a5a21955e66123f39fce0812efe419b427cd5ab092894b0df  examples/invalid/feature-flags/live-verified-in-staging.why.txt
+  ffd1a4917c63a98d6a8b74972cb352fe918d4812f25c6d265a8b2c8d8f8090b0  examples/invalid/feature-flags/live-verified-without-enabled.json
+  e06938ff818844d8fd91342945894d340ac187c97d759da774de37836c6c8fad  examples/invalid/feature-flags/live-verified-without-enabled.why.txt
+  98b677562e9d857a1db7e1481aa4c1a2c6eebec871977c80f336e140cd55926e  examples/invalid/feature-flags/marketing-dispatch-without-workshop-followup-ready.json
+  b8ddfd485dd28ecf17611fceab3354a0d3c3ded7194277f6e0a389e0547c0759  examples/invalid/feature-flags/marketing-dispatch-without-workshop-followup-ready.why.txt
+  80d74ac3e1098f4896608bd7c83bd8814b90de343f4d2fa53a5e1635db4cb015  examples/invalid/feature-flags/missing-readiness-state.json
+  b89250425ad3e5791d93a20d7f436c69d338f2e59a8b889b8c490f64d1366888  examples/invalid/feature-flags/missing-readiness-state.why.txt
+  19c6ff729753af339137def61db4546c4b918d75252db4a3c72f76ee35b7869e  examples/invalid/feature-flags/public-launch-in-staging.json
+  533a119b41bf4e40fcbb3507895220587934323e81288c415c9af309c2e42298  examples/invalid/feature-flags/public-launch-in-staging.why.txt
+  e689ea45137b4d4a1fcc39d05631da86f77bbf28a0984f59c94db8f1402a55a7  examples/invalid/feature-flags/single-boolean-capability.json
+  fa2f8b45402f6c82d360d014965794e5bec11f61d14a1116426e66a27af15118  examples/invalid/feature-flags/single-boolean-capability.why.txt
+  2db029504c614e5cf1c232bce738fc7b6f130706dd0ec31f521420910b3fc813  examples/invalid/feature-flags/state-true-without-evidence.json
+  cb5e6751fdf7ce02f47c18b910de84b217c70461dc9be169207a1c8ad98619cc  examples/invalid/feature-flags/state-true-without-evidence.why.txt
+  68f15b2a1d1b3befe5965d288d1bf5bd2406b69c41ed685a2448ca5951b71fef  examples/invalid/feature-flags/unknown-flag.json
+  6126b714fda38fdb8ab4cfff4e96efdda3d1fc0b671eaf9edc49649514ae6816  examples/invalid/feature-flags/unknown-flag.why.txt
+  1f20cf14d70cf8d22d7b7d61d8968aabf5c63dd316289e3159dba751dac7e195  examples/invalid/offer-matrix/agent-recorded-gate.json
+  f38d40806967e19271cfa3de41a665d7b6ec323aaf7a03c99602eb93f8eb5229  examples/invalid/offer-matrix/agent-recorded-gate.why.txt
+  1768f6ba2c47ec5f3cd6d9cb4cd76b39e81702e80bb1b6074509b3ac636220c3  examples/invalid/offer-matrix/approval-gate-mismatch.json
+  a28fcc202ebd56c13eb4adabe8340b34e1102c3701864f16c75635e05e82dfd1  examples/invalid/offer-matrix/approval-gate-mismatch.why.txt
+  8e2354b582711e3e77d96e5cafd0608aefb6f5976f87314cf816d7c23206cf08  examples/invalid/offer-matrix/approval-record-missing.json
+  d92faf896dc6a240bbcde4742720423734fb986b076391fec96082d55a908bfa  examples/invalid/offer-matrix/approval-record-missing.why.txt
+  fb1a44abd078cd194db02f7c007a70f48c4310995bd22081c763e27f320c17e1  examples/invalid/offer-matrix/book-consultation-60-minutes.json
+  0b415ed08551092e7de96f372abdaa6afa4bb8e77fcc3fb257651a04d7696c5f  examples/invalid/offer-matrix/book-consultation-60-minutes.why.txt
+  c54beaee144155cdc45bd09568b7c0a2b2cc4a91778071e60a1e286c26199058  examples/invalid/offer-matrix/cap-recorded-without-approval.json
+  67febe4e8811b5936bc2b59205ea2d81e6833eee789cfdc9f67e9930c945a9a9  examples/invalid/offer-matrix/cap-recorded-without-approval.why.txt
+  dee4dbc4de1e4e12cf32b41730bde9e27976788c0c77934f2c8d2ea3082cb6a7  examples/invalid/offer-matrix/extra-one-hour-offer.json
+  7b3930405d8e402958ad65237c0311596482092c3910b11135a323e2a8e0329d  examples/invalid/offer-matrix/extra-one-hour-offer.why.txt
+  a4135cd92acc0d18547e1e8e853246818b26079f65a3722a0b22907bb3b9619d  examples/invalid/offer-matrix/fit-screen-removes-consultation.json
+  28a5bcd9d252914f68235045299c5ba6f6176b783c093ad89f04ac4c714805e0  examples/invalid/offer-matrix/fit-screen-removes-consultation.why.txt
+  6e53c5afdd88ef100813efc50558b9af4572396879539e947e921649f35efc76  examples/invalid/offer-matrix/fixture-ref-in-authoritative.json
+  78c249f4c103549dcf331d362946fd7b138dc481d466ead6aba67ce4d5dc5fb8  examples/invalid/offer-matrix/fixture-ref-in-authoritative.why.txt
+  88dad5ed6ff6ce96430d42dba3a56c8ca590636e97c28912e2deaf8286c062bc  examples/invalid/offer-matrix/funnel-prerequisite.json
+  8294a7fe0bba3f1f0391f10a89d6d1d2ea6e983fc78692e2ad8386092f04e860  examples/invalid/offer-matrix/funnel-prerequisite.why.txt
+  5b15054ab84ded2bf2414b7cdd0e63f4c90d2edc392309e6962ac882f700ecc8  examples/invalid/offer-matrix/guide-requires-consent.json
+  405c0d566e7b95da27bf536e5ba4d5fdc504bb1a057421aefd13e5dd29d11cb0  examples/invalid/offer-matrix/guide-requires-consent.why.txt
+  91a7a9bee10e7bb97ec125985e10ec5106cbfdaaf2122c6a0c92dd9194ccddaf  examples/invalid/offer-matrix/in-person-without-confirmed-location.json
+  36e58aaa98f26732f12bfb9b6e8363619353394eb468fc83a09d99d64908bcc6  examples/invalid/offer-matrix/in-person-without-confirmed-location.why.txt
+  298f3069d5813287c3395e90af2e98592d82e3b95fdd3f19c40f276827412c66  examples/invalid/offer-matrix/intro-60-minutes.json
+  c09b9869fa29815863186a8862eb9a23a7f8e6b7781c4c560fbeda10507e51f0  examples/invalid/offer-matrix/intro-60-minutes.why.txt
+  d79086aba1a416d278264bb064f5b6674e857cb4a60e7ab5ff3bfd428c58e435  examples/invalid/offer-matrix/invented-price-while-pending.json
+  a996f907c0b0bea9cefb14e7ddf90643c455956064e6da1e5e82034f1d5b2a84  examples/invalid/offer-matrix/invented-price-while-pending.why.txt
+  757824f00317e11bf7fdf8f5650ca45bc0539285081fde502a0bddaf45e0a152  examples/invalid/offer-matrix/meeting-type-60-minutes.json
+  70ddc9587088c3cf41e944143c050e90e0fb6d48281c463a72fc14936a01d913  examples/invalid/offer-matrix/meeting-type-60-minutes.why.txt
+  531e6920ceebb267e6722b0dff7e78dc803633daad5549d0d2e20dc72f2aedb6  examples/invalid/offer-matrix/missing-cancellation-disclosure.json
+  bf4750676b7eb57445b0519532173cb0620747b03d1baa8e7517314fd4997243  examples/invalid/offer-matrix/missing-cancellation-disclosure.why.txt
+  2331b20ab5f6e4605a6191612827f2755d0efbc78fe6d19bc1ab3f71edab052c  examples/invalid/offer-matrix/missing-disclosure-list.json
+  f64cf8ca649d09e410b45140685b276936a2f98f3cc7f0970f140a9133fe429c  examples/invalid/offer-matrix/missing-disclosure-list.why.txt
+  ff6a506d1d7aa12d11187c41191b0736a8f7620dd78feb7a5fac8a0a602c1844  examples/invalid/offer-matrix/on-sale-with-pending-terms.json
+  a558ef995f8343f2d3eab2cc355bfc0e0f66f52412510d3d3e49c9c302937f77  examples/invalid/offer-matrix/on-sale-with-pending-terms.why.txt
+  ad03bf19c61c093589afbff4f29366bef52b0343f9b2c495b431e77fbfc4ee44  examples/invalid/offer-matrix/online-without-recorded-service.json
+  4279fd774fa84faa54f849f59db7e200efca7bb12d8d36cd57ca22d0d640c444  examples/invalid/offer-matrix/online-without-recorded-service.why.txt
+  2665d436125f0934df0fd6f04dee7a6a938c059ece98e4732b94a3c304cbb90d  examples/invalid/offer-matrix/price-recorded-without-g0-approval.json
+  4c3d696c85ab3d01e185614e37ffc78bd238cc1ed6525308b60c64c9b358b9db  examples/invalid/offer-matrix/price-recorded-without-g0-approval.why.txt
+  54bcfb7856b39d7ac7b292d0462c803cb78cd616009182df22f7080aaaa48454  examples/invalid/offer-matrix/separately-priced-consultation.json
+  3d964bbc337c69326bcce6a6d5f2db7271457882df669f649f08026f5c102fd2  examples/invalid/offer-matrix/separately-priced-consultation.why.txt
+  591cf2fc6fe3b043a60d141ac474fe0c0110f3a274008df974f0d59c727d9e44  examples/invalid/offer-matrix/two-rights-per-order.json
+  32300f61947dc637de5fea569ef05b546568a15eb2d5756b5425453d26d1deb9  examples/invalid/offer-matrix/two-rights-per-order.why.txt
+  dfc0ab4d3ae919aad0cc41710edf412c9f6c3de20bb69268131aad3c73ca4ff8  examples/invalid/offer-matrix/zoom-online-service.json
+  7c0ec225258b4a2aa37b02fac15996d66ea37c972349121787fabf5e9932a090  examples/invalid/offer-matrix/zoom-online-service.why.txt
+  d1083cabf0abba3d41bac108a85a9837839ea61d0e1c7ccfa80943d827bf7b3f  examples/invalid/worker-handoff/absolute-changed-path.json
+  5fe0ea85e7754f8f531e3304725f2b622376323e18b69fa0e5325d743507b019  examples/invalid/worker-handoff/absolute-changed-path.why.txt
+  9e215a2a5874cf83891afe1fec622ce4ecb66dd9819e6094e44206e4d7db499c  examples/invalid/worker-handoff/annotated-changed-path.json
+  6274c3d86fc5c47a3f416f61b9168602bbcb596ed5e9cd6bfd9fe8101650e93f  examples/invalid/worker-handoff/annotated-changed-path.why.txt
+  f8a7517b2d6e71d7343977ac27e27925a6109ebfe58fe0aebb5b20745ff88108  examples/invalid/worker-handoff/blocked-check-not-visible.json
+  bc6db6ffb8a0e94fadff95484f0f3c010e7358c46c5de68f7d3eb43277d852c5  examples/invalid/worker-handoff/blocked-check-not-visible.why.txt
+  03dda44ce240afc54d1b04cfdd8fd3e3d5f921d13508efc6f2d136f79fab572e  examples/invalid/worker-handoff/empty-artifacts.json
+  d2e2d07c44b113dbdc7ab8db97c5a5c7f34bb2ca2c7e4a1a9318f44302e77915  examples/invalid/worker-handoff/empty-artifacts.why.txt
+  112029929a5a26b5235e54423f5394f90481b593b49a071de403e28dd9994980  examples/invalid/worker-handoff/environment-unlabelled.json
+  8b15223e06aa3a9aa87c9eec66198d69c5a00e7130c43301ba525cf853f80371  examples/invalid/worker-handoff/environment-unlabelled.why.txt
+  270ab183e161faaed308436c3e18a2f884ed5827b290ed0f57aba69cae366b0c  examples/invalid/worker-handoff/estimated-cost.json
+  ece6d575c8e6376b9f19d327f543054c5e101ec8747c0e4abbfc7d31d0d53fb9  examples/invalid/worker-handoff/estimated-cost.why.txt
+  7291485a8f737cd7c1f1d69abf8be93708a194e49cc3a82c02c4b060b982014b  examples/invalid/worker-handoff/exit-code-string.json
+  625877b143e2022c40fb29cda99f947be4527e375dea76ccae617e79d56110d9  examples/invalid/worker-handoff/exit-code-string.why.txt
+  ac65364a1fb8ea21b78f5a33078b90447b970fa16007e483e1ee3574c2efae64  examples/invalid/worker-handoff/extra-accepted-by-field.json
+  de61953007795bcfb3b2157ca055853e0296e8dbf0fc4bb38b6badc755e721fd  examples/invalid/worker-handoff/extra-accepted-by-field.why.txt
+  78787288fdb35e59bdaa6569cad6e4f5204f7fcb15ae6c84cadd365192a6fb19  examples/invalid/worker-handoff/metered-cost-without-source.json
+  7a49d93de84037477eb3bab622c9f12e9f3cc7bc4a386bba9c39c8a3143510bd  examples/invalid/worker-handoff/metered-cost-without-source.why.txt
+  dade1d24f226c4647a832975247c3a60ca036eb62120fdd413de18f5f2ad6c37  examples/invalid/worker-handoff/missing-metered-cost.json
+  f735e032f927fdc9b41e8abeea5c71120910283664a36e2b422d46dc501e0643  examples/invalid/worker-handoff/missing-metered-cost.why.txt
+  b73ccc74e1ec38b4510c9ca937dad02be67783b45b83251b10c7021637609e1a  examples/invalid/worker-handoff/placeholder-artifact-hash.json
+  6358a07fbf316c18bce08347c15850662ffe002a2438d8c1a7af009d09eb8c8b  examples/invalid/worker-handoff/placeholder-artifact-hash.why.txt
+  3d78008094d24f0fb23e2aa4379d0b2a392f5fed156b94c6cf339b28646935be  examples/invalid/worker-handoff/placeholder-command.json
+  c71b21f3036de355ca0bf284d52359fa31001f37b3bfbc74fc10a14996c1c830  examples/invalid/worker-handoff/placeholder-command.why.txt
+  3a85fc7f28ccf99c0894c0e1b0acb594c45c5bc5cbc84966211c14f481ee8c0a  examples/invalid/worker-handoff/short-result-commit.json
+  a13abb7d8ab827e9ad78d97158a12c217ac1dcbec604a8932cad940c8aa12910  examples/invalid/worker-handoff/short-result-commit.why.txt
+  023c8fbd4146e3982c8b669a02dabee1db2b745cf6ae35a649ee5667ee8d869a  examples/invalid/worker-handoff/side-effect-without-authorization.json
+  5ea1f97a05c30a398016036d9c6e71024a562f507d3670eab3f96dafb76dfbd7  examples/invalid/worker-handoff/side-effect-without-authorization.why.txt
+  88e34f65e04b8ad9f6c1da2a8a02209769f2494205eced3431a0a4f742c0a8a1  examples/invalid/worker-handoff/status-accepted.json
+  e5dd60ac9e90fbf4d62e082f6c1b6979ab08764f100e7d458e90e0b973f84481  examples/invalid/worker-handoff/status-accepted.why.txt
+  5bc721998a63a68cf596494d6458e6c4126097bca6bbc185cf0611b0af883c64  examples/invalid/worker-handoff/unknown-task-id.json
+  32a02788ad8310e281ce3701476c354dbad692e65046cc0509f8c9635509d0e6  examples/invalid/worker-handoff/unknown-task-id.why.txt
+  68c5f75532aa2908fc0f06f001101b9402778204452f448c1baf66bdac8f75f7  examples/invalid/worker-handoff/verbatim-03-example.json
+  fbc69c86f0fc03d246b8d2d2879631025bca5c22951cd9eea5603de8b39d2a4b  examples/invalid/worker-handoff/verbatim-03-example.why.txt
+  970777c85e994631fdb94f9b1cb5a01ab5216b78ca5800027287499f2a86eca4  examples/invalid/workshop-inputs/already-receiving-with-point.json
+  260687e10bc7a6ac1ae594d96c7988f9f382f2f62ea5f1a4f2b5d9534389ca13  examples/invalid/workshop-inputs/already-receiving-with-point.why.txt
+  6f6d0bac424665f18cb8d015a19892451f157db06cea3506e5efd6819ba70f00  examples/invalid/workshop-inputs/coverage-none-with-sources.json
+  78990e2a721774410443d707831340eb4feb2e2ae871f38f6bee7065e96e38ef  examples/invalid/workshop-inputs/coverage-none-with-sources.why.txt
+  c8041f325354933494bf13b28fcfff394e7490aa83bd864267fdee488d57dba2  examples/invalid/workshop-inputs/duplicate-source-id.json
+  9d203c2bc4d41c62220c0591eebd13d0c8623c5ad91a1761acbe3afe0d213443  examples/invalid/workshop-inputs/duplicate-source-id.why.txt
+  592591ae9da410d876d2e1cb507b4b3da21cd86e3792c371f805e141e4aac2b6  examples/invalid/workshop-inputs/end-before-start.json
+  72140153f51d9e06cc7f9f0640880241d5aa746bf0daf5409e48d7b3d4681906  examples/invalid/workshop-inputs/end-before-start.why.txt
+  d7b7f3b0853a6cdb07a9a1cd1ef89e7342e42b1f48ee76144475580c80fc69e1  examples/invalid/workshop-inputs/estimated-without-value.json
+  b292c0faee0821876f75ecdf6f1b5a287fc363936a018e4e11220b532363e869  examples/invalid/workshop-inputs/estimated-without-value.why.txt
+  28797942df26c34725986943f1067d6ecfe6849c783f76b8ae9e33d4d9001ac0  examples/invalid/workshop-inputs/estimated-zero-value.json
+  1cc3cedb1f341366360c1bbe779b6f2616a1c77043da0a382fc62ea4ae270c19  examples/invalid/workshop-inputs/estimated-zero-value.why.txt
+  bbcc96ad90d0e0c96a167991b48259e3bc329cb996630f81babd8c2fcaa7eb7f  examples/invalid/workshop-inputs/extra-pii-email.json
+  20507f7b084bd9ca2bde68dbacbe36a736223c2c1ecb12447f62de6570479eb3  examples/invalid/workshop-inputs/extra-pii-email.why.txt
+  aec850e3e3a72f27db0f5422cdc2d4870332e4b0f474c1dfcf8541d98c541a6f  examples/invalid/workshop-inputs/float-cents.json
+  7d32cf635b74bcb684d26daf0be0060f4c215ecab745ccc7f33c87db7075fbdf  examples/invalid/workshop-inputs/float-cents.why.txt
+  2426b835ba02014d7094c5e4b5f7c3d6bb79d4ac216b4846da1d6cffe908591b  examples/invalid/workshop-inputs/home-counted-spendable.json
+  f8dc25dd70b3e713d4f63728e4c9d8926b83b402124edd0b4db170359dfb7faa  examples/invalid/workshop-inputs/home-counted-spendable.why.txt
+  872ef4d0f0073ed7958fde20d0595afac731689954e5f91b435309a2588a490c  examples/invalid/workshop-inputs/horizon-beyond-age-120.json
+  04525f1aec32f18e08a9bd905d8871d30388d4412842085db0853a2c47f4a7ad  examples/invalid/workshop-inputs/horizon-beyond-age-120.why.txt
+  9a68f8ff2c48864c160ccd26187b4ff949aa6a04e31bf0ac4cb28d2706a52f61  examples/invalid/workshop-inputs/horizon-zero.json
+  462e7ae2997057ef6ab9e8ccd0bae4bbbe2280b2832805b5dc71188ab946ea5a  examples/invalid/workshop-inputs/horizon-zero.why.txt
+  c6cc2ca42141ecb68064e5ff637e984096a2ab3cdf675e7f609fc8ec152a0c1d  examples/invalid/workshop-inputs/income-basis-missing.json
+  72c98a5777c7138c82e5dd13af9b9788ceb8d57fad05cadbd5e8ef17864ab329  examples/invalid/workshop-inputs/income-basis-missing.why.txt
+  1dd3b05a3075929203ff62539285e6192bf0fae986e16163f350dce74df1d94f  examples/invalid/workshop-inputs/income-guaranteed-label.json
+  4b61292c1704a4980d532b8b8c0e3491860e3d3c8e651570bd4f1fa4792bfe2a  examples/invalid/workshop-inputs/income-guaranteed-label.why.txt
+  71faa39f30a932984d36ea525425963d9743155837dd6439532fd55fc628826b  examples/invalid/workshop-inputs/infinity-literal.json
+  d7b827c156ed29411ee6fde41f05bf57cc31ef9dd8fd1cdbf4a084a85e9eeac4  examples/invalid/workshop-inputs/infinity-literal.why.txt
+  057052fa0f55b0fe29fe0960a1550d0ba3e381b141362abac947d2633ff89fbd  examples/invalid/workshop-inputs/inflation-unknown.json
+  4a204eaff73287bc9db61d50ce745c92c5f177e7bf8c091124f00ffdb0b18248  examples/invalid/workshop-inputs/inflation-unknown.why.txt
+  2751917bddc3360abd94ddbf832a8f90927bf9449c495fc02ecf67c67d5f12e6  examples/invalid/workshop-inputs/monthly-spending-over-limit.json
+  878c8fe8aa35ee7ea29c7a1e82152da8ec513ec401a4eb8f6ef90415eb03fce7  examples/invalid/workshop-inputs/monthly-spending-over-limit.why.txt
+  fd1446ba3d6902f5bd86e501c847cdaa9703708ec9716ecb999e128326798fb0  examples/invalid/workshop-inputs/nan-as-string.json
+  18504e7946e53a8fb94e366ba42a74d5e1339c88bb6f127bae9275462ef6578d  examples/invalid/workshop-inputs/nan-as-string.why.txt
+  5798937f3dfedff7a6f3df8e6dfd44c51041506cd312aa888901468bdfa41f07  examples/invalid/workshop-inputs/nan-literal.json
+  d78099cc9b842175ae4ab92b23bb0bc1b07d0da8020a905df280a6ed727e8cb6  examples/invalid/workshop-inputs/nan-literal.why.txt
+  dd5dea38029268793ad0e7b6fbcfe264907cac57948e3961545e44ee161e5a17  examples/invalid/workshop-inputs/negative-spending.json
+  f85ab2aed9c50e7fd4c2e35e40ad03d9782f673dd94ab872f1ca0355b78c1699  examples/invalid/workshop-inputs/negative-spending.why.txt
+  daf8a3f2324b91ce9e8393a1144a7b34460149a256b88a4ea16e5da8a09fec73  examples/invalid/workshop-inputs/partner-retirement-before-partner-age.json
+  5be926adfb3e10912931425f8f1ef9943196790a95fe51288cfc861e7850f918  examples/invalid/workshop-inputs/partner-retirement-before-partner-age.why.txt
+  ec33f945f88d55eebd0308faedf4fb80339628c2f5082a02e0bbece3ddc51e56  examples/invalid/workshop-inputs/partner-source-without-household.json
+  a11ccb21f6ada7c8cca1601a7f05461e784f57156f97e46a5e9daf9df7e82027  examples/invalid/workshop-inputs/partner-source-without-household.why.txt
+  43be36b6ebabb4e113922dd2d16206b42019c4dcac31c54a131c516f5b6b88d3  examples/invalid/workshop-inputs/pii-label-in-source.json
+  7b1916cb3ec4838e00c9879d01da31feb555c9ae103e22c76dc131e7f4b57b0b  examples/invalid/workshop-inputs/pii-label-in-source.why.txt
+  3ef318ae19dd05691fa921a385e3abd09c72dde57eac6d8cebc13d6d0d523dae  examples/invalid/workshop-inputs/retirement-before-current-age.json
+  d5e84cac67510b7b59a6b526e1dba8596e31c5765bcaf09a6f8ada597a36e401  examples/invalid/workshop-inputs/retirement-before-current-age.why.txt
+  002887b44f37524600cf722d258896604825fabf27a3254adca6350f007f086a  examples/invalid/workshop-inputs/spending-pretax-basis.json
+  71d8a9df64d91d924743ee8ed95f5311c95119abdaf9453b54b6799f74eac8c8  examples/invalid/workshop-inputs/spending-pretax-basis.why.txt
+  3edbc434e2483320813c764b4f58232b816108dbafdee037f9e1822d0afbb3a0  examples/invalid/workshop-inputs/spending-status-zero.json
+  c2c8c03dc4219b3a5d2324b77d8f455e5d9583454b1146f1a9bd6794e3dc21ab  examples/invalid/workshop-inputs/spending-status-zero.why.txt
+  d450196d8af73a23611883f3584e4dfa1619456b02491f3e7cfa782de9caeecd  examples/invalid/workshop-inputs/start-age-already-passed.json
+  b860cc843ae2e75b969fec9f37bdebabf806f1a5ebe8682e519f5b6b268ffe1b  examples/invalid/workshop-inputs/start-age-already-passed.why.txt
+  1d69c04e07344c4e1d27f016816d52f26352d13d06ac1e7f8f45dfcc729a5396  examples/invalid/workshop-inputs/unknown-with-value.json
+  6ac28f6eb64f71d13ee721df8553de11421a8274ad5dbc9be2c6e92fded12d10  examples/invalid/workshop-inputs/unknown-with-value.why.txt
+  eae611a34750bbca4cdc0022b0635d6cba087bcb16a3c670f037c4c5006c218d  examples/valid/asset-manifest/authoritative-empty-2026-09-30.json
+  4ab17a10fcde403c98bad98c9c2eeeb56678f62174efc1ef82ab11b53497bd8d  examples/valid/asset-manifest/fixture-lifecycle.json
+  2f1cc333a1bf699acccaddce08e328e2a6e5666edb850e9d49b820f25b055c02  examples/valid/delivery-job/complete-e03-nurture-delivery-unknown.json
+  195b29da7191524a03a784ed595539aeb708daf6c6890a2af6ec9bd0164940ad  examples/valid/delivery-job/dead-letter-e14-input-rejected.json
+  ae96cdebba0b48ea9f4c334e4c539f6d3425da19ebcf7d32795de8f9b8928623  examples/valid/delivery-job/expired-e08-reminder-past-event.json
+  06890bcf10e120139f95d5ed4265602eabf2dd709f5533325b859f6b7f3faf7d  examples/valid/delivery-job/leased-e07-reminder.json
+  7972d371636c9a29a5c835157a0994baba9786aedda3611f14af690e1973e5ce  examples/valid/delivery-job/pending-e01-guide-delivery.json
+  b7ce11543def203ba46c2cc069260d41eebe19818cd097352f2da6b2fe98063f  examples/valid/delivery-job/pending-e09-replay-promotional-variant.json
+  6037aafcf77fbe540423156fa4999e2dfd00a7faf0a1373d91a1c7fbf7d72674  examples/valid/delivery-job/reconcile-required-e13-timeout-after-send.json
+  d2a90cd0197831f97b871324b12eb64292f041144271d39e55b7b8bd24f485b8  examples/valid/delivery-job/retry-due-e04-deferred-daily-budget.json
+  48938663d040a5ce205b8e67a4f28c91ceced0921ef85c7cc59e1196158325b5  examples/valid/delivery-job/retry-due-e10-rate-limited.json
+  c6c40b8a98b5b02a9a46425450aee02a4bc388feb188698bcd1db34ce05bf573  examples/valid/delivery-job/sent-e12-purchase-confirmation.json
+  36baf505a49984cff2d44620fcfc5aaedf75da6b3e3253f3833ad377132c6754  examples/valid/delivery-job/suppressed-e05-already-booked.json
+  18cd6d1fa502f096c01367c66aab119a77b804a5ae8b63a73bb1a0ac0473ae48  examples/valid/delivery-job/suppressed-e11-consent-withdrawn-at-presend.json
+  1a29387ebf2e3a30d949a5bc50e62ab3df9b5a4cda863bab45607cf76b5ccd87  examples/valid/event-envelope/book-dispatched.json
+  37d7a73a132f8c707880cab01e4b0b4d96ca4dec0c105341988ec19bb521ef34  examples/valid/event-envelope/book-payment_confirmed.json
+  a2b219e4ad0211154a61c4b123e588b9a68a716d4926f191601996a6bd07d922  examples/valid/event-envelope/book-refunded.json
+  4e4568977ee7ad51e6629ebd46e7edb0214305f5d2d8d0f4fa88291e858f84f2  examples/valid/event-envelope/consultation-redeemed.json
+  92844567a380c393788c4393f28e74d2a0ed1dd24b86171789916f42eaf22a57  examples/valid/event-envelope/content-approved-book.json
+  92ffe465d4906a53385a3092bf56edd7b28e80eb59b2d52ba27157da0c9e18e4  examples/valid/event-envelope/content-approved-copy.json
+  92c0754aed815d436773ab57c1708d6ed935b3663d7765ad9fecd9d46b5dd9b2  examples/valid/event-envelope/content-approved-ink.json
+  9c60ce45f2b56128f893b4048f3f20b75ee923c757e04f6ac1a0ba9bb071606d  examples/valid/event-envelope/content-approved.json
+  c95d54614ae124c4ed049f5fb2650776d325e0d275edbbde5dceb3e5cd20818a  examples/valid/event-envelope/content-draft_created-companion.json
+  99c4c4d1d46cb095642de3716f640310ff1498974a8a683deaca9ab7017e897a  examples/valid/event-envelope/content-draft_created.json
+  b614362a7f85025b4f1901067bb08d24af7ff029e55e04f834d8f1fcc84b1d6f  examples/valid/event-envelope/content-published-event.json
+  c545ec0b1030b8b93d1324a5c11a1e839559fd06da6b680bd3fee863710dec54  examples/valid/event-envelope/content-published.json
+  c09d19f1ab623870bedb2ad7654edddf413b9f8616c4a951d12722166ec199b4  examples/valid/event-envelope/delivery-failed.json
+  053c6e025196196b2d98b2bb98f2865581b2c8ee51ab009eddd358c86e0b8cf3  examples/valid/event-envelope/guide-requested.json
+  10a0c695fe0048c3ad8b141950485e6a68f77bbdbd304533f01094f0725042d2  examples/valid/event-envelope/marketing-opted_in.json
+  31ae6d6fcb1c2d84afae4f393f908a74538babc73bb78e1a7a28c8591874d563  examples/valid/event-envelope/marketing-withdrawn.json
+  5ea18e2ec55be4f64c702f8aafdeb9652c69e5f5688b8a02bc3e82b4699bf3ee  examples/valid/event-envelope/meeting-cancelled.json
+  98bf62c27cefe503bb8a871bf0b42e4ce7595208edef1c0dd584c469667c3917  examples/valid/event-envelope/meeting-confirmed-operator-reconciliation.json
+  597a1c2fceccda120bb830cd914cad3eb9f8b00917342ae59f55980f7b1c142f  examples/valid/event-envelope/meeting-confirmed.json
+  c5a73b6f522be26e920eb03c69d5063999cc3b72c5a254449b6e1b00325f07ff  examples/valid/event-envelope/meeting-held.json
+  e0c9eba117bf3332e392c38ce9a8f5ffaebfe98803bc752e27f43152af5dd6eb  examples/valid/event-envelope/webinar-attendance_verified.json
+  6533c20e81c8d8d054138d7a37c1c9a40d226250fdb6e35d3dc33aae3c7b9e87  examples/valid/event-envelope/webinar-cancelled.json
+  e8284cd3bc91627c63592703d330dda68184a954aa9344b9ea991eb12f4b7f35  examples/valid/event-envelope/webinar-join_clicked.json
+  960e37e49c639a42b7375acad1866cdef16f113efd4d31754606484c9226254e  examples/valid/event-envelope/webinar-registered.json
+  0e316bbdeb00fb90f1e1ed3270cbfd8760c6a2ee0a86e34551a86402080346f9  examples/valid/event-envelope/workshop-access_requested.json
+  47959852eeed00a90fc7f425c2006c893614475eea79f132bf530887fbc4ba27  examples/valid/event-envelope/workshop-completed.json
+  4f2ee5b47f962e9f1c20ee38f0d00cd93504e42cceecf475d11bcc1533f0f8b2  examples/valid/feature-flags/defaults-production.json
+  54f875ee68bfb69d3150e4df0e55eaac07d14d67c1bcfeb1c817338b43de9bff  examples/valid/feature-flags/defaults-staging.json
+  00f01f0be555e99614aa79f5684fbed242bcfdb102f5fdd274c26f9e9824c3a2  examples/valid/feature-flags/production-marketing-dispatch-fictional.json
+  4963044eeee6e73c535486f44b06a6d9b008051a0db1502505e3637039d0a626  examples/valid/feature-flags/production-public-guide-step-fictional.json
+  5480264cb23e7d2598fad7cd77eca4eb701a909207fd3376a6d3b2d9ff56a969  examples/valid/feature-flags/staging-guide-delivery-allowlist-test.json
+  bd20d5d9781da8a4b1b82b0584cfa44924e905584b9c3a8037d6be95ecb1e555  examples/valid/offer-matrix/authoritative-2026-09-30.json
+  cad159be0e3d549c8e0ed5a9b0c7adef83b41eaa5b19c23aa23545ba01057218  examples/valid/offer-matrix/fixture-all-gates-recorded-fictional.json
+  018d8793a1c0b586741b0c2e12591f83f98f0acb948da4010dc0771ae7b04122  examples/valid/offer-matrix/fixture-test-mode-only.json
+  d656ce07e363493a73ef013328ba60203261f257f468bfe69c3874e804bcdb8a  examples/valid/worker-handoff/fixture-side-effect-metered.json
+  5007780cdcfafe277b021792530942c2551e830fe64b345e015e7c6b247cd2a1  examples/valid/worker-handoff/normalized-f00-subset.json
+  1710b2698e7e876b87f5c4fd6d8f46570229a056f0765864b62aa6c7d6f779c1  examples/valid/workshop-inputs/already-retired-zeros.json
+  bf9a5e15455ad79037da18dd6e5968082ac1cb359f6a2f184b849fcb27b7394c  examples/valid/workshop-inputs/complete-single.json
+  b6e91d042afcd062178ac192e1e7c8f7983b443bb145e0f9dc4a568c2f97136e  examples/valid/workshop-inputs/household-mixed.json
+  bd291955eb5a037b682124877f7adf7d19a1fcffe7e3ef7894cefa4f1199ee21  examples/valid/workshop-inputs/minimal-all-unknown.json
+  0d88523d0d1c19a3ebc6b6a97b9cd08a677c3fc7d1e2c81c3f1fbeaf26b54021  examples/valid/workshop-inputs/range-limits.json
+  b0caf5163958280b6d443589b8b8ed48ab4f9a2061219a791ec5bfd0947d2d2a  feature-flags.json
+  01ab0e8d14d4a69d9ab6a5a9bce7052c6b34bb55f6a0bedbd01bc7ccd47fe792  feature-flags.md
+  2855ae7c6330777a343cc7e2757d6016b9977b0fa39a981a26028a0ab38dc644  fixtures/workshop/WM01-zero-inflation-zero-escalation.json
+  03765112fb6102f81d9b43ef3f0cc0edc08b0ca307b8d5c75e686baea5e7e579  fixtures/workshop/WM02-geometric-growth-closed-form.json
+  ea0b927c60e9d6b5489292ee5678620254f8225b2001c212e40e654e7e42c64d  fixtures/workshop/WM03-later-income-start.json
+  e531e1178ce646fae13071e7b9210861ccf3c418b1985a72950bd41e9acc83ff  fixtures/workshop/WM04-price-basis-today-vs-start-year.json
+  d1da16c8459ff366ae7110403559ba87f9f1de1bbe63183b61492bbb7d0eef85  fixtures/workshop/WM05-month-to-year-conversion.json
+  e10ea13688e4098609d4aa9af5157421ea9496bf96c2d3bcde83de75168d40e5  fixtures/workshop/WM06-zero-income-declared.json
+  37d6c8b8ceb916752690aadbe897f2fb93cde49d0d7b3e0c6cbd86ba5dae9a5d  fixtures/workshop/WM07-unknown-income-not-answered.json
+  83b4a8e586b3b6df2af5ed40b759a6399650bfa129c64c8adba73b7d1932d4b6  fixtures/workshop/WM08-unknown-amount-later-start.json
+  60bb6d1e72bbc52027bba096e5699df67e019c734f0fae7aa1c7f4373f31fedc  fixtures/workshop/WM09-gross-net-mismatch.json
+  8abb0c7e7f1a933b252a0ac3e9db52da8b67b1d9243180d05ba30f0f74123585  fixtures/workshop/WM10-housing-only-wealth.json
+  6e73333f4231d36d403949fa216097358f28fbf8b1465637df6f5753d82ab4bf  fixtures/workshop/WM11-pension-double-count.json
+  fa98b2d3610d7a3e1e1d7a2f8f00d60582d9488197eda1cf91f6ad5c416d740d  fixtures/workshop/WM12-surplus-years.json
+  514274b3dbebb38a19dc4b285dc1bfee856ba6e80b330637f31dc6e23a8980bd  fixtures/workshop/WM13-retirement-year-boundary.json
+  b260add745e16e0e0f407bebe1173be066ea1fab20f3657f18220ac968847dde  fixtures/workshop/WM14-capital-illustration-r-zero.json
+  346c0e24d4f0ab71e36eedcf572697c3592337ddad303a3038564ff92bbd1a89  fixtures/workshop/WM15-capital-illustration-growing-annuity.json
+  58707dc6fe47704f695f5d5c3a223a5aaf0c68d62e0a34c3cc279054db3560c8  fixtures/workshop/WM16-capital-illustration-level-annuity.json
+  6d90881b23d6c19ab965bb38a78314a2bc229fa7f83048098bd0ce24fd4fd143  fixtures/workshop/WM17-rounding-half-even.json
+  162a9081e2661e3ccbb0d799d50e53388763779f4a3e23c457662295cab9ed5a  fixtures/workshop/WM18-horizon-and-source-end.json
+  24c12cdb2492d9bd6c9f8b3c7b7d7e5d558da5fd5f89536e557a12d946f05fc2  fixtures/workshop/WM19-uncertain-income-labelled-scheduled.json
+  2e1f29dad9fb8f01ca75d247727dc3bd3c76df274ef30c620c3047253e9be1cf  fixtures/workshop/WM20-timing-unknown.json
+  d6a54dfa6fb6dc71719230b2f521167e84542fe66e5d9e0d4dadd1a7b5a423d8  fixtures/workshop/WM21-household-timing.json
+  0e4160acae3c0573f690c8205822c0ecba5d992675125782e7e1f56b25016435  fixtures/workshop/WM22-price-basis-unknown.json
+  3f0ce5b39653e49a0acfde40b2b161de2896c4e3a1cb254c57faeda5f211734c  fixtures/workshop/WM23-tax-basis-unknown.json
+  8ac57927c0bb64faf9f438cd0f3b168a15344fe1eaa81a6284b5b3804b427cfa  fixtures/workshop/WM24-rounding-float-trap.json
+  26a5756e50448e2e41b1d4bc4225d4895c6f06da26f5a102454829892ab42bf3  fixtures/workshop/WM25-spending-unknown-window-known.json
+  9cca05ce86d0cfc823ca8c54ce12e32682cf4b73cd0e62558b963a8f2270bfd9  fixtures/workshop/WM26-start-point-unknown.json
+  3f4110d401a9d33e9cb50039afdd550da8b9be6dc719d8bd9c487167048d61c5  fixtures/workshop/WM27-end-point-unknown.json
+  39ecb8401f24c156299991e032737bd4b79b58a12cee7d1555ecaa00a2ef58e8  fixtures/workshop/WM28-end-unresolvable.json
+  c95f5107560ff7966defda511254de6a1b4bf95382e5b86c741978d8785c3fe9  fixtures/workshop/WM29-start-unresolvable-window-known.json
+  413bb5be1e5babcaedb67e54143434aa53bb889f6033a3066c96bcc1c0a3fd49  fixtures/workshop/WM30-income-list-partial.json
+  81229cb5f092c51313f7fbbc33b2ec490e524f30a88b24f01a8ee364dcc43732  fixtures/workshop/WM31-retirement-age-unknown.json
+  53a377db66ed8b9ef9f2f534e56841db94c2170230d00b50de088ecef9856f73  fixtures/workshop/WM32-unresolved-start-end-at-retirement.json
+  b27ce57c1ebcbe5aae2e1ed1af0d444b38a2be194c34a1e7c247c9d920f382ed  fixtures/workshop/WM33-unresolved-start-end-inside-window.json
+  2b7a10afdc06c30b3023a85a12428738e217de6734d23f6082abb14836ac9675  fixtures/workshop/WM34-combined-unknowns-code-sets.json
+  677c38d48e1c45d09c1f0b802d417415ce1abc1fbaecade97a9e98a5a842d437  fixtures/workshop/WM35-capital-illustration-deferred-retirement.json
+  baccacfa1a78bc18572e7b47b06787ca1c66de2bf2822dafe74fac458434dec6  fixtures/workshop/WM36-capital-illustration-all-surplus.json
+  c8201bc12d53855c251ab2d5583673683940aeecaf327467d239a4ad5bc03071  fixtures/workshop/clip-rules.json
+  e2c690ff8cc11b85182e29b721aff9a08c845f1044abe01c65112087f8c11c8b  fixtures/workshop/index.json
+  5eced180781ec0d4c59855e652af6a57ca7cb05c2453422d1ba33db3bb4e650e  job-state-machine.md
+  137e01e6c7cb4679e5217b5119b5bc77997f3bfe2bc6950eb2b728d03e9297b3  offer-matrix.json
+  c221f885ddbb25bec1f7fa75774fc36d978706126722d5fba0d30403ebc97b7e  offer-matrix.md
+  7a21f633aa9a4615c42ccdfd4866603806f5ef9052dbbf687b19bc7c88435a43  operational-data-model.md
+  1d432a07cfa904e9ad4c15f51351390d8512eb04fe2bd88e17ce2b1461d68fa3  privacy-boundary.md
+  6505ebaedfdf20bc26a17e13de59aed87443f27b0dc374527766725e87ebcadf  routes.md
+  143f118a0a7133e20eb105eeb4af2d1a280c53c80df2261fe5bc1373defe0f70  validate.py
+  b9203fc88e1f2aa4d8365ad56038265de6aa4203850e90b6e32f646f78111c62  worker-handoff.schema.json
+  f6b78b9e4db2108a53154bebe6344c6bde62b7b2e163c9d610e9912902429aff  workshop-clip-rules.md
+  ba3da0b8de3f41929452cf705f9bbd71a2171d52d93dbb4bb3bd6cb7081d5757  workshop-inputs.md
+  20df5bc3a360a70d2cbaef2d980d72181a938571f9c602f4377d135fcca3775e  workshop-inputs.schema.json
+  583bd20434605b5dc5aa48288f706c0af9014607536f1ccac026fa501a260fbf  workshop-math.md
+PASS  CX-28 every contract file is UTF-8, LF line endings, no BOM
+
+## S2. Schemas (draft 2020-12, $id, closed shapes)
+PASS  event-envelope.schema.json is a valid draft 2020-12 schema
+PASS  event-envelope.schema.json declares $schema draft 2020-12
+PASS  event-envelope.schema.json $id = https://bill.contracts.local/event-envelope/1.0
+PASS  event-envelope.schema.json root is closed
+PASS  event-envelope.schema.json closed-shape audit: no open object schema
+PASS  delivery-job.schema.json is a valid draft 2020-12 schema
+PASS  delivery-job.schema.json declares $schema draft 2020-12
+PASS  delivery-job.schema.json $id = https://bill.contracts.local/delivery-job/1.0
+PASS  delivery-job.schema.json root is closed
+PASS  delivery-job.schema.json closed-shape audit: no open object schema
+PASS  feature-flags.json is a valid draft 2020-12 schema
+PASS  feature-flags.json declares $schema draft 2020-12
+PASS  feature-flags.json $id = https://bill.contracts.local/feature-flags/1.0
+PASS  feature-flags.json root is closed
+PASS  feature-flags.json closed-shape audit: no open object schema
+PASS  offer-matrix.json is a valid draft 2020-12 schema
+PASS  offer-matrix.json declares $schema draft 2020-12
+PASS  offer-matrix.json $id = https://bill.contracts.local/offer-matrix/1.0
+PASS  offer-matrix.json root is closed
+PASS  offer-matrix.json closed-shape audit: no open object schema
+PASS  asset-manifest.schema.json is a valid draft 2020-12 schema
+PASS  asset-manifest.schema.json declares $schema draft 2020-12
+PASS  asset-manifest.schema.json $id = https://bill.contracts.local/asset-manifest/1.0
+PASS  asset-manifest.schema.json root is closed
+PASS  asset-manifest.schema.json closed-shape audit: no open object schema
+PASS  worker-handoff.schema.json is a valid draft 2020-12 schema
+PASS  worker-handoff.schema.json declares $schema draft 2020-12
+PASS  worker-handoff.schema.json $id = https://bill.contracts.local/worker-handoff/1.0
+PASS  worker-handoff.schema.json root is closed
+PASS  worker-handoff.schema.json closed-shape audit: no open object schema
+PASS  workshop-inputs.schema.json is a valid draft 2020-12 schema
+PASS  workshop-inputs.schema.json declares $schema draft 2020-12
+PASS  workshop-inputs.schema.json $id = https://bill.contracts.local/workshop-inputs/1.0
+PASS  workshop-inputs.schema.json root is closed
+PASS  workshop-inputs.schema.json closed-shape audit: no open object schema
+PASS  email-eligibility.registry.schema.json is a valid draft 2020-12 schema
+PASS  email-eligibility.registry.schema.json $id is versioned 1.0
+INFO  email-eligibility.registry.schema.json (evidence-located registry schema) has 3 open object schemas: ['#/properties/budget/properties/provider_daily_quota', '#/properties/budget/properties/approval', '#/$defs/proposed_number']
+PASS  data-flow-register.registry.schema.json is a valid draft 2020-12 schema
+PASS  data-flow-register.registry.schema.json $id is versioned 1.0
+PASS  A6D2-04 ECMA-262 pattern semantics: 93 schema patterns translated ($ = end of input only); no patternProperties or unevaluatedProperties
+
+## S3. Examples (valid pass; invalid fail for the stated reason)
+PASS  event-envelope: 26 valid and 24 invalid examples present
+PASS  valid   examples/valid/event-envelope/book-dispatched.json
+PASS  valid   examples/valid/event-envelope/book-payment_confirmed.json
+PASS  valid   examples/valid/event-envelope/book-refunded.json
+PASS  valid   examples/valid/event-envelope/consultation-redeemed.json
+PASS  valid   examples/valid/event-envelope/content-approved-book.json
+PASS  valid   examples/valid/event-envelope/content-approved-copy.json
+PASS  valid   examples/valid/event-envelope/content-approved-ink.json
+PASS  valid   examples/valid/event-envelope/content-approved.json
+PASS  valid   examples/valid/event-envelope/content-draft_created-companion.json
+PASS  valid   examples/valid/event-envelope/content-draft_created.json
+PASS  valid   examples/valid/event-envelope/content-published-event.json
+PASS  valid   examples/valid/event-envelope/content-published.json
+PASS  valid   examples/valid/event-envelope/delivery-failed.json
+PASS  valid   examples/valid/event-envelope/guide-requested.json
+PASS  valid   examples/valid/event-envelope/marketing-opted_in.json
+PASS  valid   examples/valid/event-envelope/marketing-withdrawn.json
+PASS  valid   examples/valid/event-envelope/meeting-cancelled.json
+PASS  valid   examples/valid/event-envelope/meeting-confirmed-operator-reconciliation.json
+PASS  valid   examples/valid/event-envelope/meeting-confirmed.json
+PASS  valid   examples/valid/event-envelope/meeting-held.json
+PASS  valid   examples/valid/event-envelope/webinar-attendance_verified.json
+PASS  valid   examples/valid/event-envelope/webinar-cancelled.json
+PASS  valid   examples/valid/event-envelope/webinar-join_clicked.json
+PASS  valid   examples/valid/event-envelope/webinar-registered.json
+PASS  valid   examples/valid/event-envelope/workshop-access_requested.json
+PASS  valid   examples/valid/event-envelope/workshop-completed.json
+PASS  invalid examples/invalid/event-envelope/age-in-guide-version.json [EV-ID-2]: fails pattern at /resource_id
+PASS  invalid examples/invalid/event-envelope/age-in-resource-id.json [EV-ID-2]: fails pattern at /resource_id
+PASS  invalid examples/invalid/event-envelope/amount-words-in-workshop-key.json [EV-ID-2]: fails pattern at /resource_id
+PASS  invalid examples/invalid/event-envelope/attendance-from-join-click.json [EV-AUTH-ATT]: fails enum at /source
+PASS  invalid examples/invalid/event-envelope/consent-on-guide-request.json [EV-CONSENT-1]: fails not at /consent_reference
+PASS  invalid examples/invalid/event-envelope/consent-wording-mutable-version.json [EV-ID-2]: fails pattern at /resource_id
+PASS  invalid examples/invalid/event-envelope/diagnosis-in-workshop-key.json [EV-ID-2]: fails pattern at /resource_id
+PASS  invalid examples/invalid/event-envelope/email-as-subject-id.json [EV-ID-1]: fails pattern at /subject_id
+PASS  invalid examples/invalid/event-envelope/email-in-idempotency-key.json [EV-ID-3]: fails pattern at /idempotency_key
+PASS  invalid examples/invalid/event-envelope/extra-property-form-body.json [EV-SHAPE-1]: fails additionalProperties at /
+PASS  invalid examples/invalid/event-envelope/financial-amount-field.json [EV-SHAPE-1]: fails additionalProperties at /
+PASS  invalid examples/invalid/event-envelope/locale-es.json [EV-LOC-1]: fails enum at /locale
+PASS  invalid examples/invalid/event-envelope/meeting-confirmed-from-click.json [EV-AUTH-BOOK]: fails enum at /source
+PASS  invalid examples/invalid/event-envelope/missing-idempotency-key.json [EV-ID-3]: fails required at /
+PASS  invalid examples/invalid/event-envelope/name-as-guide-key.json [EV-ID-2]: fails pattern at /resource_id
+PASS  invalid examples/invalid/event-envelope/non-utc-timestamp.json [EV-TIME-1]: fails pattern at /occurred_at
+PASS  invalid examples/invalid/event-envelope/payment-confirmed-by-operator.json [EV-AUTH-PAY]: fails enum at /source
+PASS  invalid examples/invalid/event-envelope/schema-version-2.json [EV-VER-1]: fails const at /schema_version
+PASS  invalid examples/invalid/event-envelope/unknown-source.json [EV-SRC-1]: fails enum at /source
+PASS  invalid examples/invalid/event-envelope/unknown-type.json [EV-TYPE-1]: fails enum at /type
+PASS  invalid examples/invalid/event-envelope/workshop-completed-with-gap.json [EV-WS-1]: fails additionalProperties at /
+PASS  invalid examples/invalid/event-envelope/workshop-completed-with-selected-clip.json [EV-WS-1]: fails additionalProperties at /
+PASS  invalid examples/invalid/event-envelope/workshop-completed-without-consent.json [EV-CONSENT-2]: fails required at /
+PASS  invalid examples/invalid/event-envelope/wrong-subject-kind.json [EV-TYPE-2]: fails pattern at /subject_id
+PASS  delivery-job: 12 valid and 19 invalid examples present
+PASS  valid   examples/valid/delivery-job/complete-e03-nurture-delivery-unknown.json
+PASS  valid   examples/valid/delivery-job/dead-letter-e14-input-rejected.json
+PASS  valid   examples/valid/delivery-job/expired-e08-reminder-past-event.json
+PASS  valid   examples/valid/delivery-job/leased-e07-reminder.json
+PASS  valid   examples/valid/delivery-job/pending-e01-guide-delivery.json
+PASS  valid   examples/valid/delivery-job/pending-e09-replay-promotional-variant.json
+PASS  valid   examples/valid/delivery-job/reconcile-required-e13-timeout-after-send.json
+PASS  valid   examples/valid/delivery-job/retry-due-e04-deferred-daily-budget.json
+PASS  valid   examples/valid/delivery-job/retry-due-e10-rate-limited.json
+PASS  valid   examples/valid/delivery-job/sent-e12-purchase-confirmation.json
+PASS  valid   examples/valid/delivery-job/suppressed-e05-already-booked.json
+PASS  valid   examples/valid/delivery-job/suppressed-e11-consent-withdrawn-at-presend.json
+PASS  invalid examples/invalid/delivery-job/attempt-count-over-ceiling.json [JS-RETRY-1]: fails maximum at /attempt_count
+PASS  invalid examples/invalid/delivery-job/email-in-purpose-key.json [JS-KEY-1]: fails pattern at /purpose_key
+PASS  invalid examples/invalid/delivery-job/expiry-before-due.json [JS-TIME-2]: schema-valid, rejected by harness semantic:due_before_expiry at /
+PASS  invalid examples/invalid/delivery-job/financial-field-in-job.json [JS-SHAPE-1]: fails additionalProperties at /
+PASS  invalid examples/invalid/delivery-job/free-text-error.json [JS-ERR-1]: fails additionalProperties at /last_error
+PASS  invalid examples/invalid/delivery-job/leased-with-provider-id.json [JS-SENT-2]: fails not at /provider_message_id
+PASS  invalid examples/invalid/delivery-job/leased-without-lease.json [JS-LEASE-1]: fails required at /
+PASS  invalid examples/invalid/delivery-job/non-utc-expiry.json [JS-TIME-1]: fails pattern at /expires_at
+PASS  invalid examples/invalid/delivery-job/nurture-template-as-operational.json [JS-CLASS-3]: fails const at /message_class
+PASS  invalid examples/invalid/delivery-job/promotional-high-priority.json [JS-PRIO-1]: fails minimum at /priority
+PASS  invalid examples/invalid/delivery-job/promotional-without-consent.json [JS-CLASS-2]: fails required at /
+PASS  invalid examples/invalid/delivery-job/purpose-key-mismatch.json [JS-KEY-1]: schema-valid, rejected by harness semantic:purpose_key at /
+PASS  invalid examples/invalid/delivery-job/recipient-email-field.json [JS-SHAPE-1]: fails additionalProperties at /
+PASS  invalid examples/invalid/delivery-job/reconcile-without-send-started.json [JS-RECON-1]: fails required at /
+PASS  invalid examples/invalid/delivery-job/retry-after-expiry.json [JS-TIME-3]: schema-valid, rejected by harness semantic:retry_before_expiry at /
+PASS  invalid examples/invalid/delivery-job/sent-without-provider-id.json [JS-SENT-1]: fails required at /
+PASS  invalid examples/invalid/delivery-job/suppressed-after-send-started.json [JS-SUPP-1]: fails not at /send_started_at
+PASS  invalid examples/invalid/delivery-job/unhashed-template-version.json [JS-VER-1]: fails pattern at /template_version
+PASS  invalid examples/invalid/delivery-job/unknown-status-delivered.json [JS-STATE-1]: fails enum at /status
+PASS  feature-flags: 5 valid and 14 invalid examples present
+PASS  valid   examples/valid/feature-flags/defaults-production.json
+PASS  valid   examples/valid/feature-flags/defaults-staging.json
+PASS  valid   examples/valid/feature-flags/production-marketing-dispatch-fictional.json
+PASS  valid   examples/valid/feature-flags/production-public-guide-step-fictional.json
+PASS  valid   examples/valid/feature-flags/staging-guide-delivery-allowlist-test.json
+PASS  invalid examples/invalid/feature-flags/agent-recorded-approval.json [FF-APPR-1]: fails enum at /capabilities/guide_request_delivery/approved/recorded_by
+PASS  invalid examples/invalid/feature-flags/approval-without-scope-hash.json [FF-APPR-2]: fails minItems at /capabilities/guide_request_delivery/approved/scope_hashes
+PASS  invalid examples/invalid/feature-flags/enabled-without-controlling-flag.json [FF-INV-1]: fails const at /flags/marketing_dispatch/value
+PASS  invalid examples/invalid/feature-flags/flag-default-true.json [FF-DEF-1]: fails const at /flags/third_party_tracking/default
+PASS  invalid examples/invalid/feature-flags/flag-on-without-approval.json [FF-INV-3]: fails const at /capabilities/book_checkout/approved/value
+PASS  invalid examples/invalid/feature-flags/gate-mapping-altered.json [FF-GATE-1]: fails const at /flags/paid_ads/enable_gates
+PASS  invalid examples/invalid/feature-flags/live-verified-in-staging.json [FF-ENV-2]: fails const at /capabilities/guide_request_delivery/live_verified/value
+PASS  invalid examples/invalid/feature-flags/live-verified-without-enabled.json [FF-INV-2]: fails const at /capabilities/workshop_access/enabled/value
+PASS  invalid examples/invalid/feature-flags/marketing-dispatch-without-workshop-followup-ready.json [FF-INV-3]: fails const at /capabilities/workshop_followup/approved/value
+PASS  invalid examples/invalid/feature-flags/missing-readiness-state.json [FF-STATE-1]: fails required at /capabilities/event_lifecycle
+PASS  invalid examples/invalid/feature-flags/public-launch-in-staging.json [FF-ENV-1]: fails const at /flags/public_launch/value
+PASS  invalid examples/invalid/feature-flags/single-boolean-capability.json [FF-STATE-1]: fails type at /capabilities/guide_request_delivery
+PASS  invalid examples/invalid/feature-flags/state-true-without-evidence.json [FF-STATE-2]: fails type at /capabilities/workshop_access/code_ready/evidence_ref
+PASS  invalid examples/invalid/feature-flags/unknown-flag.json [FF-SHAPE-1]: fails additionalProperties at /flags
+PASS  offer-matrix: 3 valid and 22 invalid examples present
+PASS  valid   examples/valid/offer-matrix/authoritative-2026-09-30.json
+PASS  valid   examples/valid/offer-matrix/fixture-all-gates-recorded-fictional.json
+PASS  valid   examples/valid/offer-matrix/fixture-test-mode-only.json
+PASS  invalid examples/invalid/offer-matrix/agent-recorded-gate.json [OM-DOC-2]: fails enum at /gate_records/0/recorded_by_role
+PASS  invalid examples/invalid/offer-matrix/approval-gate-mismatch.json [OM-REF-2]: schema-valid, rejected by harness OM-REF-2 at /offers/book-bundle/price/approvals/0/record_id
+PASS  invalid examples/invalid/offer-matrix/approval-record-missing.json [OM-REF-1]: schema-valid, rejected by harness OM-REF-1 at /offers/intro-15/online_service/approvals/0/record_id
+PASS  invalid examples/invalid/offer-matrix/book-consultation-60-minutes.json [OM-DUR-2]: fails const at /offers/book-bundle/included_consultation/duration_minutes
+PASS  invalid examples/invalid/offer-matrix/cap-recorded-without-approval.json [OM-CAP-1]: fails minItems at /offers/book-bundle/cap/approvals
+PASS  invalid examples/invalid/offer-matrix/extra-one-hour-offer.json [OM-SHAPE-1]: fails additionalProperties at /offers
+PASS  invalid examples/invalid/offer-matrix/fit-screen-removes-consultation.json [OM-BOOK-3]: fails const at /offers/book-bundle/included_consultation/removable_by_fit_screen
+PASS  invalid examples/invalid/offer-matrix/fixture-ref-in-authoritative.json [OM-DOC-1]: fails pattern at /gate_records/0/record_ref
+PASS  invalid examples/invalid/offer-matrix/funnel-prerequisite.json [OM-FUNNEL-1]: fails maxItems at /rules/no_mandatory_funnel_staircase/intro_15_prerequisites
+PASS  invalid examples/invalid/offer-matrix/guide-requires-consent.json [OM-PDF-1]: fails const at /offers/guide-pdf/access
+PASS  invalid examples/invalid/offer-matrix/in-person-without-confirmed-location.json [OM-MOD-1]: fails const at /offers/intro-15/in_person_location/status
+PASS  invalid examples/invalid/offer-matrix/intro-60-minutes.json [OM-DUR-1]: fails const at /offers/intro-15/duration_minutes
+PASS  invalid examples/invalid/offer-matrix/invented-price-while-pending.json [OM-PRICE-1]: fails type at /offers/book-bundle/price/value
+PASS  invalid examples/invalid/offer-matrix/meeting-type-60-minutes.json [OM-DUR-3]: fails const at /meeting_types/book-consultation-30/duration_minutes
+PASS  invalid examples/invalid/offer-matrix/missing-cancellation-disclosure.json [OM-DISC-2]: fails required at /offers/book-bundle/prepayment_disclosures
+PASS  invalid examples/invalid/offer-matrix/missing-disclosure-list.json [OM-DISC-1]: fails required at /offers/book-bundle
+PASS  invalid examples/invalid/offer-matrix/on-sale-with-pending-terms.json [OM-SALE-1]: fails const at /offers/book-bundle/price/status
+PASS  invalid examples/invalid/offer-matrix/online-without-recorded-service.json [OM-MOD-3]: fails const at /offers/book-bundle/included_consultation/online_service/status
+PASS  invalid examples/invalid/offer-matrix/price-recorded-without-g0-approval.json [OM-PRICE-2]: fails minItems at /offers/book-bundle/price/approvals
+PASS  invalid examples/invalid/offer-matrix/separately-priced-consultation.json [OM-BOOK-1]: fails const at /offers/book-bundle/included_consultation/separately_priced
+PASS  invalid examples/invalid/offer-matrix/two-rights-per-order.json [OM-BOOK-2]: fails const at /offers/book-bundle/entitlement/rights_per_verified_paid_order
+PASS  invalid examples/invalid/offer-matrix/zoom-online-service.json [OM-MOD-2]: fails not at /offers/intro-15/online_service/value
+PASS  asset-manifest: 2 valid and 22 invalid examples present
+PASS  valid   examples/valid/asset-manifest/authoritative-empty-2026-09-30.json
+PASS  valid   examples/valid/asset-manifest/fixture-lifecycle.json
+PASS  invalid examples/invalid/asset-manifest/agent-role-approval.json [AM-APPR-2]: fails enum at /assets/7/approval/approved_by_roles/1
+PASS  invalid examples/invalid/asset-manifest/approval-on-draft.json [AM-APPR-5]: fails type at /assets/1/approval
+PASS  invalid examples/invalid/asset-manifest/approval-without-g3.json [AM-APPR-1]: fails contains at /assets/6/approval/gates
+PASS  invalid examples/invalid/asset-manifest/approved-with-pending-rights.json [AM-RIGHTS-1]: fails not at /assets/6/rights/status
+PASS  invalid examples/invalid/asset-manifest/approved-without-review-hash.json [AM-HASH-1]: fails type at /assets/7/review_hash
+PASS  invalid examples/invalid/asset-manifest/capsule-s19-id.json [AM-ID-1]: fails pattern at /assets/0/asset_id
+PASS  invalid examples/invalid/asset-manifest/captions-only-marked-recorded.json [AM-LANG-1]: fails not at /assets/4/status
+PASS  invalid examples/invalid/asset-manifest/cta-offer-not-referenced.json [AM-CTA-1]: fails contains at /assets/2/offer_refs
+PASS  invalid examples/invalid/asset-manifest/duplicate-entry.json [AM-HARN-2]: schema-valid, rejected by harness AM-HARN-2 at /assets/10
+PASS  invalid examples/invalid/asset-manifest/factual-claims-without-sources.json [AM-CLAIM-1]: fails minItems at /assets/2/factual_claims/sources
+PASS  invalid examples/invalid/asset-manifest/fixture-publication-id-in-authoritative.json [AM-KIND-2]: fails not at /assets/0/publication_id
+PASS  invalid examples/invalid/asset-manifest/fixture-ref-in-authoritative.json [AM-KIND-1]: fails pattern at /assets/0/approval/record_ref
+PASS  invalid examples/invalid/asset-manifest/offer-copy-approved-without-g1.json [AM-APPR-3]: fails contains at /assets/7/approval/gates
+PASS  invalid examples/invalid/asset-manifest/publication-hash-mismatch.json [AM-HARN-1]: schema-valid, rejected by harness AM-HARN-1 at /assets/9/published_content_sha256
+PASS  invalid examples/invalid/asset-manifest/publication-id-on-draft.json [AM-PUB-2]: fails type at /assets/1/publication_id
+PASS  invalid examples/invalid/asset-manifest/published-without-publication-id.json [AM-PUB-1]: fails type at /assets/9/publication_id
+PASS  invalid examples/invalid/asset-manifest/recorded-without-consent.json [AM-REC-1]: fails required at /assets/3/recording
+PASS  invalid examples/invalid/asset-manifest/recording-approved-without-g4.json [AM-APPR-4]: fails contains at /assets/8/approval/gates
+PASS  invalid examples/invalid/asset-manifest/reviewed-claim-without-access-date.json [AM-CLAIM-2]: fails type at /assets/2/factual_claims/sources/0/accessed
+PASS  invalid examples/invalid/asset-manifest/synthetic-bill-likeness.json [AM-RIGHTS-2]: fails const at /assets/3/rights/synthetic_bill_likeness
+PASS  invalid examples/invalid/asset-manifest/text-asset-marked-recorded.json [AM-LANG-2]: fails enum at /assets/2/medium
+PASS  invalid examples/invalid/asset-manifest/unknown-status-ready.json [AM-ST-1]: fails enum at /assets/0/status
+PASS  worker-handoff: 2 valid and 17 invalid examples present
+PASS  valid   examples/valid/worker-handoff/fixture-side-effect-metered.json
+PASS  valid   examples/valid/worker-handoff/normalized-f00-subset.json
+PASS  invalid examples/invalid/worker-handoff/absolute-changed-path.json [WH-PATH-1]: fails pattern at /changed_paths/0
+PASS  invalid examples/invalid/worker-handoff/annotated-changed-path.json [WH-PATH-2]: fails pattern at /changed_paths/0
+PASS  invalid examples/invalid/worker-handoff/blocked-check-not-visible.json [WH-BLK-1]: fails enum at /blocked_checks/0/status
+PASS  invalid examples/invalid/worker-handoff/empty-artifacts.json [WH-ART-1]: fails minItems at /artifacts
+PASS  invalid examples/invalid/worker-handoff/environment-unlabelled.json [WH-ENV-1]: fails pattern at /tests/0/environment
+PASS  invalid examples/invalid/worker-handoff/estimated-cost.json [WH-COST-1]: fails type at /metered_cost/amount
+PASS  invalid examples/invalid/worker-handoff/exit-code-string.json [WH-TEST-1]: fails anyOf at /tests/0/exit_code
+PASS  invalid examples/invalid/worker-handoff/extra-accepted-by-field.json [WH-SHAPE-1]: fails additionalProperties at /
+PASS  invalid examples/invalid/worker-handoff/metered-cost-without-source.json [WH-COST-2]: fails required at /metered_cost
+PASS  invalid examples/invalid/worker-handoff/missing-metered-cost.json [WH-REQ-1]: fails required at /
+PASS  invalid examples/invalid/worker-handoff/placeholder-artifact-hash.json [WH-SHA-2]: fails pattern at /artifacts/0/sha256
+PASS  invalid examples/invalid/worker-handoff/placeholder-command.json [WH-PH-2]: fails not at /tests/0/command
+PASS  invalid examples/invalid/worker-handoff/short-result-commit.json [WH-SHA-1]: fails anyOf at /result_commit
+PASS  invalid examples/invalid/worker-handoff/side-effect-without-authorization.json [WH-EXT-1]: fails required at /external_actions_taken/0
+PASS  invalid examples/invalid/worker-handoff/status-accepted.json [WH-ST-1]: fails const at /status
+PASS  invalid examples/invalid/worker-handoff/unknown-task-id.json [WH-ID-1]: fails pattern at /task_id
+PASS  invalid examples/invalid/worker-handoff/verbatim-03-example.json [WH-PH-1]: fails pattern at /base_commit
+PASS  workshop-inputs: 5 valid and 27 invalid examples present
+PASS  valid   examples/valid/workshop-inputs/already-retired-zeros.json
+PASS  valid   examples/valid/workshop-inputs/complete-single.json
+PASS  valid   examples/valid/workshop-inputs/household-mixed.json
+PASS  valid   examples/valid/workshop-inputs/minimal-all-unknown.json
+PASS  valid   examples/valid/workshop-inputs/range-limits.json
+PASS  invalid examples/invalid/workshop-inputs/already-receiving-with-point.json [START]: fails not at /chapters/income/sources/0/start
+PASS  invalid examples/invalid/workshop-inputs/coverage-none-with-sources.json [XF-08]: fails maxItems at /chapters/income/sources (value 0)
+PASS  invalid examples/invalid/workshop-inputs/duplicate-source-id.json [XF-06]: schema-valid, rejected by harness XF-06 at /chapters/income/sources/1/id
+PASS  invalid examples/invalid/workshop-inputs/end-before-start.json [XF-05]: schema-valid, rejected by harness XF-05 at /chapters/income/sources/0/end
+PASS  invalid examples/invalid/workshop-inputs/estimated-without-value.json [STATUS-3]: fails required at /chapters/life/spending/amount (value ['value'])
+PASS  invalid examples/invalid/workshop-inputs/estimated-zero-value.json [STATUS-2]: fails minimum at /chapters/income/sources/0/amount/value (value 1)
+PASS  invalid examples/invalid/workshop-inputs/extra-pii-email.json [PRIVACY]: fails additionalProperties at /
+PASS  invalid examples/invalid/workshop-inputs/float-cents.json [UNITS]: fails type at /chapters/life/spending/amount/value
+PASS  invalid examples/invalid/workshop-inputs/home-counted-spendable.json [ASSET]: fails const at /chapters/savings/home_value/excluded_from_spendable
+PASS  invalid examples/invalid/workshop-inputs/horizon-beyond-age-120.json [XF-03]: fails maximum at /chapters/timing/planning_horizon_years/value (value 26)
+PASS  invalid examples/invalid/workshop-inputs/horizon-zero.json [RANGE]: fails minimum at /chapters/timing/planning_horizon_years/value (value 1)
+PASS  invalid examples/invalid/workshop-inputs/income-basis-missing.json [BASIS]: fails required at /chapters/income/sources/0
+PASS  invalid examples/invalid/workshop-inputs/income-guaranteed-label.json [LABEL]: fails enum at /chapters/income/sources/0/dependability
+PASS  invalid examples/invalid/workshop-inputs/infinity-literal.json [NONFINITE]: strict parse rejected (non-standard JSON constant Infinity); lenient parse fails type at /chapters/life/spending/amount/value
+PASS  invalid examples/invalid/workshop-inputs/inflation-unknown.json [ASSUMPTION]: fails enum at /chapters/timing/inflation_bp/status
+PASS  invalid examples/invalid/workshop-inputs/monthly-spending-over-limit.json [RANGE]: fails maximum at /chapters/life/spending/amount/value (value 10000000)
+PASS  invalid examples/invalid/workshop-inputs/nan-as-string.json [NONFINITE]: fails type at /chapters/life/spending/amount/value
+PASS  invalid examples/invalid/workshop-inputs/nan-literal.json [NONFINITE]: strict parse rejected (non-standard JSON constant NaN); lenient parse fails type at /chapters/life/spending/amount/value
+PASS  invalid examples/invalid/workshop-inputs/negative-spending.json [RANGE]: fails minimum at /chapters/life/spending/amount/value (value 0)
+PASS  invalid examples/invalid/workshop-inputs/partner-retirement-before-partner-age.json [XF-02]: fails minimum at /chapters/timing/household/partner_retirement_age/value (value 60)
+PASS  invalid examples/invalid/workshop-inputs/partner-source-without-household.json [XF-07]: fails required at /chapters/timing (value ['household'])
+PASS  invalid examples/invalid/workshop-inputs/pii-label-in-source.json [PRIVACY]: fails additionalProperties at /chapters/income/sources/0
+PASS  invalid examples/invalid/workshop-inputs/retirement-before-current-age.json [XF-01]: fails minimum at /chapters/timing/retirement_age/value (value 58)
+PASS  invalid examples/invalid/workshop-inputs/spending-pretax-basis.json [BASIS]: fails const at /chapters/life/spending/tax_basis
+PASS  invalid examples/invalid/workshop-inputs/spending-status-zero.json [RANGE]: fails enum at /chapters/life/spending/amount/status
+PASS  invalid examples/invalid/workshop-inputs/start-age-already-passed.json [XF-04]: schema-valid, rejected by harness XF-04 at /chapters/income/sources/0/start/point/value
+PASS  invalid examples/invalid/workshop-inputs/unknown-with-value.json [STATUS-1]: fails not at /chapters/life/spending/amount
+  .why.txt dialects seen: {'data': 57, 'offers': 61, 'math': 27}
+PASS  valid event-envelope examples: event_id and idempotency_key unique across the set
+PASS  offer-matrix: exactly one authoritative instance among the valid examples
+PASS  asset-manifest: exactly one authoritative instance among the valid examples
+
+## S4. Registries against their registry schemas
+PASS  email-eligibility.json matches email-eligibility.registry.schema.json
+PASS  email-eligibility.json contract_version and contract_id are 1.0
+PASS  data-flow-register.json matches data-flow-register.registry.schema.json
+PASS  data-flow-register.json contract_version and contract_id are 1.0
+
+## S5. Workshop fixtures (shape, inputs, index, clip precedence, media states)
+PASS  workshop vocabulary parsed from the md files (6 states, 9 flags, 5 precedence rules)
+PASS  fixtures/workshop/index.json contract_version 1.0
+PASS  index.json lists exactly the fixture files on disk
+PASS  WM01-zero-inflation-zero-escalation.json: input valid; output shape of workshop-math.md s12; clip W07
+PASS  WM02-geometric-growth-closed-form.json: input valid; output shape of workshop-math.md s12; clip W07
+PASS  WM03-later-income-start.json: input valid; output shape of workshop-math.md s12; clip W07
+PASS  WM04-price-basis-today-vs-start-year.json: input valid; output shape of workshop-math.md s12; clip W07
+PASS  WM05-month-to-year-conversion.json: input valid; output shape of workshop-math.md s12; clip W07
+PASS  WM06-zero-income-declared.json: input valid; output shape of workshop-math.md s12; clip W07
+PASS  WM07-unknown-income-not-answered.json: input valid; output shape of workshop-math.md s12; clip W06
+PASS  WM08-unknown-amount-later-start.json: input valid; output shape of workshop-math.md s12; clip W06
+PASS  WM09-gross-net-mismatch.json: input valid; output shape of workshop-math.md s12; clip W08
+PASS  WM10-housing-only-wealth.json: input valid; output shape of workshop-math.md s12; clip W07
+PASS  WM11-pension-double-count.json: input valid; output shape of workshop-math.md s12; clip W07
+PASS  WM12-surplus-years.json: input valid; output shape of workshop-math.md s12; clip W07
+PASS  WM13-retirement-year-boundary.json: input valid; output shape of workshop-math.md s12; clip W07
+PASS  WM14-capital-illustration-r-zero.json: input valid; output shape of workshop-math.md s12; clip W07
+PASS  WM15-capital-illustration-growing-annuity.json: input valid; output shape of workshop-math.md s12; clip W07
+PASS  WM16-capital-illustration-level-annuity.json: input valid; output shape of workshop-math.md s12; clip W07
+PASS  WM17-rounding-half-even.json: input valid; output shape of workshop-math.md s12; clip W10
+PASS  WM18-horizon-and-source-end.json: input valid; output shape of workshop-math.md s12; clip W07
+PASS  WM19-uncertain-income-labelled-scheduled.json: input valid; output shape of workshop-math.md s12; clip W07
+PASS  WM20-timing-unknown.json: input valid; output shape of workshop-math.md s12; clip W10
+PASS  WM21-household-timing.json: input valid; output shape of workshop-math.md s12; clip W09
+PASS  WM22-price-basis-unknown.json: input valid; output shape of workshop-math.md s12; clip W06
+PASS  WM23-tax-basis-unknown.json: input valid; output shape of workshop-math.md s12; clip W08
+PASS  WM24-rounding-float-trap.json: input valid; output shape of workshop-math.md s12; clip W07
+PASS  WM25-spending-unknown-window-known.json: input valid; output shape of workshop-math.md s12; clip W10
+PASS  WM26-start-point-unknown.json: input valid; output shape of workshop-math.md s12; clip W06
+PASS  WM27-end-point-unknown.json: input valid; output shape of workshop-math.md s12; clip W06
+PASS  WM28-end-unresolvable.json: input valid; output shape of workshop-math.md s12; clip W06
+PASS  WM29-start-unresolvable-window-known.json: input valid; output shape of workshop-math.md s12; clip W06
+PASS  WM30-income-list-partial.json: input valid; output shape of workshop-math.md s12; clip W06
+PASS  WM31-retirement-age-unknown.json: input valid; output shape of workshop-math.md s12; clip W10
+PASS  WM32-unresolved-start-end-at-retirement.json: input valid; output shape of workshop-math.md s12; clip W07
+PASS  WM33-unresolved-start-end-inside-window.json: input valid; output shape of workshop-math.md s12; clip W06
+PASS  WM34-combined-unknowns-code-sets.json: input valid; output shape of workshop-math.md s12; clip W06
+PASS  WM35-capital-illustration-deferred-retirement.json: input valid; output shape of workshop-math.md s12; clip W07
+PASS  WM36-capital-illustration-all-surplus.json: input valid; output shape of workshop-math.md s12; clip W10
+PASS  clip-rules.json: 32-row truth table, 7 supplementary and 6 media cases re-derived
+
+## S6. Cross-contract invariants (README 'Cross-contract invariants')
+PASS  CX-01 one contract version 1.0 across schemas, registries and fixtures
+PASS  CX-02 the same five human approver roles everywhere; no agent role can approve
+PASS  CX-03 one gate vocabulary G0-G6
+PASS  CX-04 locales are fr or en (asset-manifest adds zxx, see XL-02)
+PASS  CX-05 event types = 04 s3; md job map = registry triggers; suppressions follow their events [20 md rows, 16 trigger links]
+PASS  CX-06 per-type subject, resource, sources and consent: md = schema; authority sources fixed [20 md rows, 10 authority rules, 116 source mentions scanned]
+PASS  CX-07 consent binding: consent types, promotional templates and purposes agree [promotional ['e03', 'e04', 'e05', 'e11']; purposes ['nurture', 'workshop-followup']]
+PASS  CX-08 templates e01-e16: job enum = registry = capability union = envelope = asset IDs
+PASS  CX-09 six flags and seventeen capabilities: feature-flags.md tables = JSON consts; no stray flag [md s2 rows 6, md s4 rows 17]
+PASS  CX-10 job states, error, defer and suppression codes, op_* names and audit actions agree [9 states, 9 error codes, 10 ops, 17 audit actions]
+PASS  CX-11 four offers; meeting types 15 and 30 minutes everywhere; no 60-minute const
+PASS  CX-12 route keys: lib/routes.ts = routes.md = asset-manifest = offer-matrix meeting-link lists [9 existing + 10 proposed keys; must_link 12, exempt 8]
+PASS  CX-13 resource codes: no digit in registry keys; contact-subject codes closed (PB-ID-3) and hash-only; PB-ID-5 mapped to tests [closed keys guide ['retirement-guide'], workshop ['retirement-workshop'], consent ['nurture', 'workshop-followup']; h-form only]
+PASS  CX-14 internal ID prefixes and alphabet agree; purpose_key embeds the template_version form [declared ['aud', 'bkg', 'cev', 'cnt', 'con', 'job', 'opr', 'ord', 'reg', 'rgt', 'wev']; schemas use ['bkg', 'cev', 'cnt', 'con', 'job', 'ord', 'rgt', 'wev']]
+PASS  CX-15 review-hash methods: asset-manifest enum = approval-scopes s4.2
+    authoritative offer matrix: 18 gated fields, 0 recorded, 0 gate records
+    authoritative asset manifest: 0 entries
+PASS  CX-16 authoritative instances cite only real, recorded human answers for the named gate; fixtures only fixture: refs
+PASS  CX-17 no-financial-data boundary: PB-SCAN lists, schemas, examples, fixtures, data model, register [67 tokens, 16+14 whole keys; 41 workshop states caught; 133 columns; 10 addresses all on reserved domains]
+FAIL  CX-18 check IDs, fixture coverage and the handoff task_id pattern match the catalog and tasks.json [task_id pattern accepts exactly 62 IDs] :: ["worker-handoff task_id pattern vs tasks.json: ['F02a']"]
+PASS  CX-19 every cited check, decision, blocker and task ID exists [16 files, 305 distinct check/decision/blocker references resolved]
+PASS  CX-20 Brevo budget ordering and priority bands
+PASS  CX-21 example and fixture counts stated in the md files match the files [10 stated example counts + fixture and clip counts]
+PASS  CX-22 workshop clip IDs are expressible in asset-manifest and envelope
+PASS  CX-23 no credential-shaped string in any contract file [406 files scanned]
+PASS  CX-24 frozen offers and forbidden stack appear only as prohibitions
+PASS  CX-25 README lists exactly the CX and XL ids this harness implements
+PASS  CX-26 every normative md file states it is proposed
+PASS  CX-27 clip availability can be derived from asset-manifest 1.0
+PASS  CX-30 every workshop reason code is pinned by a fixture with null values, never 0; s6 fixture references exist [13 reason codes pinned; s6 rows 13; end_unknown:WM27/WM34, end_unresolvable:WM28/WM34, income_list_partial:WM30, retirement_age_unknown:WM31, spending_unknown:WM25, start_unknown:WM26/WM33/WM34, start_unresolvable:WM29/WM34]
+PASS  CX-31 README workflow trace: the 14 workflows of 04 s5, every cited name exists, every event, template and operation traced [14 workflows; 20 event types, 16 templates, 10 operations traced; 8 section citations and 105 rule IDs resolved; activation gates checked]
+
+## S7. Cross-lane items (README s5): open items must still reproduce; resolved items must stay resolved
+KNOWN XL-02 asset-manifest locale zxx has no event-envelope locale (asset locale zxx has no envelope locale)
+KNOWN XL-03 workshop_capital_illustration flag is named but absent from feature-flags 1.0 (workshop_capital_illustration is named but not a flag)
+KNOWN XL-04 version field is schema_version in three schemas, contract_version in the others (version field names ['contract_version', 'schema_version'])
+KNOWN XL-05 offer-matrix.json and feature-flags.json are schemas; the authoritative offer matrix is under examples/valid/ (offer-matrix.json/feature-flags.json are schemas; authoritative instance under examples/valid/)
+KNOWN XL-06 registry schemas live under evidence/, not contracts/ (registry schemas under evidence/)
+KNOWN XL-07 three .why.txt dialects (.why dialects {'data': 57, 'offers': 61, 'math': 27})
+KNOWN XL-08 Wnn clip IDs collide with Wnn task IDs; workshop-inputs.md cites a non-existent task W05 (workshop-inputs.md cites task W05, which does not exist)
+KNOWN XL-10 media-manifest shape has two proposed owners (W03/C10 vs asset-manifest 1.0) (two owners for the media manifest shape)
+KNOWN XL-12 offer-matrix meeting-link lists use pseudo-key 'articles' and omit 'ask' (pseudo-key 'articles'; 'ask' unlisted)
+KNOWN XL-13 privacy sink matrix and data-flow register draw the DC-CONTACT/Stripe boundary differently (sink matrix C vs register allowed_sinks for DC-CONTACT/Stripe)
+KNOWN XL-14 handoffs/F00.json does not conform to worker-handoff 1.0 (6 errors) (F00.json has 6 top-level errors against worker-handoff 1.0)
+KNOWN XL-15 math-lane .why.txt rule labels are not defined as rule IDs in workshop-inputs.md (undefined rule labels ['ASSET', 'ASSUMPTION', 'BASIS', 'LABEL', 'NONFINITE', 'PRIVACY', 'RANGE', 'START', 'UNITS'])
+KNOWN XL-16 delivery.failed resource may carry a v-form template version; jobs only hold h-form (delivery.failed may cite a v-form template version jobs never hold)
+KNOWN XL-18 04 s4 and s5 runtime rules (truthful queued state; one dispatcher, no per-person Wait node) restated in no contract (04 s4 truthful-state rule and 04 s5 dispatcher rules appear in no contract file)
+KNOWN XL-19 guide key closed by PB-ID-3 but free and unnamed in asset manifest 1.0 (PB-ID-3 guide key retirement-guide is closed; asset-manifest accepts guide.pre-retirement-guide and names no guide key)
+KNOWN XL-20 the data model's bookings.offer_id holds offer-matrix meeting-type IDs, not offer IDs (bookings.offer_id values ['book-consultation-30', 'intro-15']; not offer IDs: ['book-consultation-30'])
+PASS  XL-01 resolved and still resolved: envelope resource_content_version accepts every asset-manifest 1.0 asset ID (data lane, A6D-06) (content kinds rejected []; envelope ID alternation copies asset_id pattern: True)
+PASS  XL-09 resolved and still resolved: AM-CONSENT-4 and the data model's remade_as comment cite the right places (data lane) (AM-CONSENT-4 cites PSC-1 to PSC-7 (7 defined): True; remade_as cites job-state-machine.md §5: True)
+PASS  XL-11 resolved and still resolved: marketing_dispatch controls workshop_followup and stops every promotional job, E09 included (data lane, A6D-07) (marketing_dispatch controls workshop_followup: True; FF-GATE-2 gaps []; E02 and promotional E09 documented in the flag row: True; E09 alternate class and PSC-3 carry marketing_dispatch: True)
+PASS  XL-17 resolved and still resolved: the data model's PB-SCAN-1 lists equal privacy-boundary.md s5 (data lane, A6D-05) (PB-SCAN-1 lists differing between operational-data-model.md s3 and privacy-boundary.md s5: [])
+
+## S7b. Lane evidence drift: sha256 recorded in the three lane logs vs current bytes
+PASS  CX-29 .orchestration/evidence/F02/data/validation.log: 16 recorded hashes match current files
+PASS  CX-29 .orchestration/evidence/F02/math/validation.log: 49 recorded hashes match current files
+PASS  CX-29 .orchestration/evidence/F02/offers/validation.log: 139 recorded hashes match current files
+
+## S8. Negative controls (injected defects must be caught)
+PASS  NC-1 a 60-minute book consultation is rejected by offer-matrix 1.0
+PASS  NC-2 an invented price while pending is rejected (OM-PRICE-1)
+PASS  NC-3 dropping already_booked from E05 is caught by CX-05
+PASS  NC-4 a fixture whose clip ignores precedence (W07 over W06) is caught
+PASS  NC-5 an unknown gap written as 0 is caught
+PASS  NC-6 a workshop.completed carrying a gap is rejected by the schema and caught by PB-SCAN
+PASS  NC-7 a flag env_var differing from feature-flags.md is caught by CX-09
+PASS  NC-8 a handoff that marks itself accepted is rejected
+    authoritative offer matrix: 18 gated fields, 1 recorded, 1 gate records
+    authoritative asset manifest: 0 entries
+    authoritative offer matrix: 18 gated fields, 1 recorded, 1 gate records
+    authoritative asset manifest: 0 entries
+PASS  NC-9 a recorded price citing D-032 (a pending row) or a missing D-099 is caught by CX-16, without relying on CX-29
+PASS  NC-10 an unknown start written as a gap of 0 in every fixture is caught by CX-30 (coverage lost)
+PASS  NC-11 a workflow row with an undefined operation and a renamed workflow are caught by CX-31
+PASS  NC-12 an age in the guide version, a name as guide key and an amount in words as workshop key are rejected by event-envelope 1.0
+PASS  NC-13 a trailing newline in resource_id (guide, wev_) or occurred_at is rejected under ECMA-262 semantics (plain jsonschema accepts: [True, True, True])
+PASS  NC-14 a wrong section citation (retention in data model §6), an undefined rule ID (PB-CAL-9) and an activation gate without G6 are caught by CX-31
+
+## S9. Handoffs against worker-handoff 1.0
+INFO  F00.json is tracked as XL-14 (written before worker-handoff 1.0 existed)
+PASS  handoffs/F02.json conforms to worker-handoff 1.0 (schema only; --handoff for hashes)
+FAIL  handoffs/F02a.json conforms to worker-handoff 1.0 (schema only; --handoff for hashes) :: ["schema pattern@/task_id: 'F02a' does not match '^(?:F0[0-3]|D0[0-2]|P0[0-5]|W0[0-4]|C(?:0[0-9]|1[01])|U0[0-5]|N(?:0[0-9]|10)|"]
+PASS  handoffs/F03.json conforms to worker-handoff 1.0 (schema only; --handoff for hashes)
+
+## Summary
+pass: 351  fail: 2  known: 16  info: 2
+unexpected results:
+  - CX-18 check IDs, fixture coverage and the handoff task_id pattern match the catalog and tasks.json [task_id pattern accepts exactly 62 IDs] :: ["worker-handoff task_id pattern vs tasks.json: ['F02a']"]
+  - handoffs/F02a.json conforms to worker-handoff 1.0 (schema only; --handoff for hashes) :: ["schema pattern@/task_id: 'F02a' does not match '^(?:F0[0-3]|D0[0-2]|P0[0-5]|W0[0-4]|C(?:0[0-9]|1[01])|U0[0-5]|N(?:0[0-9]|10)|"]
+exit_code=1
+[exit 1]

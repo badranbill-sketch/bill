@@ -1,0 +1,31 @@
+$ node /home/user/bill/.orchestration/evidence/F02a/a6-attempt3/perturb.mjs /home/user/bill/.orchestration/contracts/fixtures/workshop
+DETECTED WM37: gap_cents +1 in last row
+DETECTED WM37: gap_today_dollars_cents -1 in last row
+DETECTED WM37: income_net_cents +1 in row 1
+DETECTED WM37: first income_by_source value +1 in row 0
+DETECTED WM37: exact.gap last digit changed in last row
+DETECTED WM37: extra flag
+DETECTED WM37: window last_t +1
+DETECTED WM38: gap_cents +1 in last row
+DETECTED WM38: gap_today_dollars_cents -1 in last row
+DETECTED WM38: income_net_cents +1 in row 1
+DETECTED WM38: first income_by_source value +1 in row 0
+DETECTED WM38: exact.gap last digit changed in last row
+DETECTED WM38: extra flag
+DETECTED WM38: window last_t +1
+DETECTED WM39: gap_cents +1 in last row
+DETECTED WM39: gap_today_dollars_cents -1 in last row
+DETECTED WM39: income_net_cents +1 in row 1
+DETECTED WM39: first income_by_source value +1 in row 0
+DETECTED WM39: exact.gap last digit changed in last row
+DETECTED WM39: extra flag
+DETECTED WM39: window last_t +1
+DETECTED WM40: gap_cents +1 in last row
+DETECTED WM40: gap_today_dollars_cents -1 in last row
+DETECTED WM40: income_net_cents +1 in row 1
+DETECTED WM40: first income_by_source value +1 in row 0
+DETECTED WM40: exact.gap last digit changed in last row
+DETECTED WM40: extra flag
+DETECTED WM40: window last_t +1
+PERTURBATION: 28/28 detected
+[exit 0]

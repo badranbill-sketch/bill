@@ -1,0 +1,7 @@
+$ bash -c sha256sum /tmp/claude-0/-home-user/bb8d4187-6ae8-587b-a816-8153faeea853/scratchpad/blockers.f01-accepted.md /home/user/bill/.orchestration/evidence/F02a/a6-attempt1/blockers.f01-accepted.md /home/user/bill/.orchestration/blockers.md; git -C /home/user/bill show HEAD:.orchestration/blockers.md | sha256sum; git -C /home/user/bill status --porcelain -- .orchestration/blockers.md .orchestration/decisions.md .orchestration/costs.json .orchestration/tasks.json; echo '(empty status = identical to HEAD)'
+486adbde15cabbcef222fa2e186a98382608c69a044a429e20b56cacf500a303  /tmp/claude-0/-home-user/bb8d4187-6ae8-587b-a816-8153faeea853/scratchpad/blockers.f01-accepted.md
+486adbde15cabbcef222fa2e186a98382608c69a044a429e20b56cacf500a303  /home/user/bill/.orchestration/evidence/F02a/a6-attempt1/blockers.f01-accepted.md
+a163bc5bcf3b79306a53fa111fd6d8ca31eca0b6a467bacc0edb716a0bb3ee12  /home/user/bill/.orchestration/blockers.md
+a163bc5bcf3b79306a53fa111fd6d8ca31eca0b6a467bacc0edb716a0bb3ee12  -
+(empty status = identical to HEAD)
+[exit 0]

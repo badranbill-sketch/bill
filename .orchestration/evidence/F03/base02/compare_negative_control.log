@@ -1,0 +1,12 @@
+### command: rm -rf /tmp/claude-0/-home-user/bb8d4187-6ae8-587b-a816-8153faeea853/scratchpad/f03/nc-b02 /tmp/claude-0/-home-user/bb8d4187-6ae8-587b-a816-8153faeea853/scratchpad/f03/nc-b02diff; cp -r /home/user/bill/.orchestration/evidence/F03/base02/before /tmp/claude-0/-home-user/bb8d4187-6ae8-587b-a816-8153faeea853/scratchpad/f03/nc-b02; node /tmp/claude-0/-home-user/bb8d4187-6ae8-587b-a816-8153faeea853/scratchpad/f03/mutate.mjs /tmp/claude-0/-home-user/bb8d4187-6ae8-587b-a816-8153faeea853/scratchpad/wt/integration /tmp/claude-0/-home-user/bb8d4187-6ae8-587b-a816-8153faeea853/scratchpad/f03/nc-b02; node tests/baseline/compare-screens.mjs --before /home/user/bill/.orchestration/evidence/F03/base02/before --after /tmp/claude-0/-home-user/bb8d4187-6ae8-587b-a816-8153faeea853/scratchpad/f03/nc-b02 --diff /tmp/claude-0/-home-user/bb8d4187-6ae8-587b-a816-8153faeea853/scratchpad/f03/nc-b02diff | grep -v ' identical '; echo compare_exit=${PIPESTATUS[0]}; rm -rf /tmp/claude-0/-home-user/bb8d4187-6ae8-587b-a816-8153faeea853/scratchpad/f03/nc-b02 /tmp/claude-0/-home-user/bb8d4187-6ae8-587b-a816-8153faeea853/scratchpad/f03/nc-b02diff
+### cwd: /tmp/claude-0/-home-user/bb8d4187-6ae8-587b-a816-8153faeea853/scratchpad/wt/integration
+### start: 2026-09-30T09:23:59Z
+mutated /tmp/claude-0/-home-user/bb8d4187-6ae8-587b-a816-8153faeea853/scratchpad/f03/nc-b02/en-meeting-390.png and /tmp/claude-0/-home-user/bb8d4187-6ae8-587b-a816-8153faeea853/scratchpad/f03/nc-b02/records/fr-home-768.json
+en-meeting-390           changed        0.0917% 390x4399
+record fr-home-768 console_errors: [] -> ["injected error"]
+{"screenshots":24,"identical":23,"changed":1,"missing_before":0,"missing_after":0,"record_differences":1}
+compare_exit=1
+### end: 2026-09-30T09:24:10Z
+### exit: 0
+### wall_s: 10.64
+

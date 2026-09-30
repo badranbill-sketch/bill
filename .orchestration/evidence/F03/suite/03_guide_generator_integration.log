@@ -1,0 +1,31 @@
+### command: git rev-parse HEAD; env -u GH_TOKEN -u GITHUB_TOKEN PLAYWRIGHT_CHROMIUM_EXECUTABLE=/opt/pw-browsers/chromium-1194/chrome-linux/chrome npm run guide 2>&1 | tail -25; echo "guide_exit=${PIPESTATUS[0]}"; ls -la guide/dist; for f in guide/dist/*.pdf; do echo "$f pages(regex /Type /Page)=$(grep -a -c -E "/Type ?/Page[^s]" $f) sha256=$(sha256sum $f | cut -c1-64)"; done; git status --porcelain
+### cwd: /tmp/claude-0/-home-user/bb8d4187-6ae8-587b-a816-8153faeea853/scratchpad/wt/integration
+### start: 2026-09-30T09:36:34Z
+5545c2aeb3249e19e5f328c86fa7d264c04ec0d2
+
+> bill-badran@1.0.0 guide
+> node --import tsx guide/build.tsx
+
+guide/dist/bill-badran-before-retirement-guide-en.pdf  32 pages, 1.3 MB
+guide/dist/bill-badran-before-retirement-guide-en-print.pdf  32 pages, 1.1 MB
+guide/dist/bill-badran-guide-avant-la-retraite-fr.pdf  32 pages, 1.3 MB
+guide/dist/bill-badran-guide-avant-la-retraite-fr-print.pdf  32 pages, 1.1 MB
+guide_exit=0
+total 7252
+drwxr-xr-x 2 root root    4096 Sep 30 09:36 .
+drwxr-xr-x 5 root root    4096 Sep 30 09:36 ..
+-rw-r--r-- 1 root root 1184020 Sep 30 09:36 bill-badran-before-retirement-guide-en-print.pdf
+-rw-r--r-- 1 root root 1181119 Sep 30 09:36 bill-badran-before-retirement-guide-en.html
+-rw-r--r-- 1 root root 1324690 Sep 30 09:36 bill-badran-before-retirement-guide-en.pdf
+-rw-r--r-- 1 root root 1193996 Sep 30 09:36 bill-badran-guide-avant-la-retraite-fr-print.pdf
+-rw-r--r-- 1 root root 1185963 Sep 30 09:36 bill-badran-guide-avant-la-retraite-fr.html
+-rw-r--r-- 1 root root 1334625 Sep 30 09:36 bill-badran-guide-avant-la-retraite-fr.pdf
+guide/dist/bill-badran-before-retirement-guide-en-print.pdf pages(regex /Type /Page)=0 sha256=352c8fd6784fe7b9511988ff746acc14da9ea51cab8d828ad77e419e0c6e623f
+guide/dist/bill-badran-before-retirement-guide-en.pdf pages(regex /Type /Page)=0 sha256=8ef7175172dc37b5711187907358443579842c034a19dc0d64cdb87af64b69fa
+guide/dist/bill-badran-guide-avant-la-retraite-fr-print.pdf pages(regex /Type /Page)=0 sha256=0759a6ea5e4e0a315ab1f1578dc61a39ebefaedb9bd071f64848396212f7fa09
+guide/dist/bill-badran-guide-avant-la-retraite-fr.pdf pages(regex /Type /Page)=0 sha256=12f832872a8f89cbebf68f5bf7d8d28dd5d8a862f96b45f38b4aeda8825c2fa8
+ M next-env.d.ts
+### end: 2026-09-30T09:36:58Z
+### exit: 0
+### wall_s: 24.65
+

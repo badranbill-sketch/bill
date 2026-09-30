@@ -1,0 +1,55 @@
+$ /tmp/claude-0/-home-user/bb8d4187-6ae8-587b-a816-8153faeea853/scratchpad/venv-f02/bin/python /home/user/bill/.orchestration/evidence/F02a/a6-attempt1/check_handoff_a6.py
+# utc 2026-09-30T09:15:59Z; cwd /home/user/bill
+schema errors as submitted: ["task_id: pattern: 'F02a' does not match '^(?:F0[0-3]|D0[0-2]|P0[0-5]|W0[0-4]|C(?:0[0-9]|1[01])|U0[0-5]|N(?:0"]
+schema errors with task_id replaced in memory by a pattern-valid id: none
+  OK  .orchestration/contracts/fixtures/workshop/WM37-today-dollar-pre-start-factor.json e2afa56e528fff82
+  OK  .orchestration/contracts/fixtures/workshop/WM38-joint-owner-participant-age.json b27eaf5f6b9b40da
+  OK  .orchestration/contracts/fixtures/workshop/WM39-group-total-from-exact-values.json fee6cc8372e2e571
+  OK  .orchestration/contracts/fixtures/workshop/WM40-today-dollar-display-from-exact-gap.json 9653eda5f2360416
+  OK  .orchestration/contracts/fixtures/workshop/index.json ebb7cee73c786222
+  OK  .orchestration/evidence/F02a/compute_f02a_fixtures.py 0884dd227fd52bf3
+  OK  .orchestration/evidence/F02a/mutation_check.py 3d914ae61047640b
+  OK  .orchestration/evidence/F02a/check_handoff.py e2241db18890d314
+  OK  .orchestration/evidence/F02a/make_handoff.py 24ae02bd8d4ee750
+  OK  .orchestration/evidence/F02a/run_f02a.sh 3ae31cc428a91de9
+  OK  .orchestration/evidence/F02a/mutation_check.json a52a0ec7876e353f
+  OK  .orchestration/evidence/F02a/before-hashes.log f0de490d13859c55
+  OK  .orchestration/evidence/F02a/before-contracts-validate.log 21a85928eddf9447
+  OK  .orchestration/evidence/F02a/before-lane-validate.log b026147b26234fd8
+  OK  .orchestration/evidence/F02a/before-a6-faults_run.log e0720a83c9cdcdb0
+  OK  .orchestration/evidence/F02a/before-a6-run_fixtures.log 817d7336c8c4d539
+  OK  .orchestration/evidence/F02a/generate.log fa9dc7ee91e0facd
+  OK  .orchestration/evidence/F02a/index-append-diff.log 259787016152eddc
+  OK  .orchestration/evidence/F02a/after-generate-check.log 0723b89aad371197
+  OK  .orchestration/evidence/F02a/mutation_check.log 67a8cc3c1580fccb
+  OK  .orchestration/evidence/F02a/after-a6-copy-integrity.log 3d3ae4547a72cf6c
+  OK  .orchestration/evidence/F02a/after-a6-faults_run.log 2c01167aa397443b
+  OK  .orchestration/evidence/F02a/after-a6-run_fixtures.log 4a74b53d2726e256
+  OK  .orchestration/evidence/F02a/after-lane-validate.log aa0900a31c1479fa
+  OK  .orchestration/evidence/F02a/after-contracts-validate.log 0894dd1ead8efc20
+  OK  .orchestration/evidence/F02a/after-hashes.log 4eb22f88d3f9256a
+  OK  .orchestration/evidence/F02a/before-after.diff.log 99bcc59dde24b69b
+artifacts: 27, sha256 mismatches: 0
+  changed_path exists: True .orchestration/contracts/fixtures/workshop/WM37-today-dollar-pre-start-factor.json
+  changed_path exists: True .orchestration/contracts/fixtures/workshop/WM38-joint-owner-participant-age.json
+  changed_path exists: True .orchestration/contracts/fixtures/workshop/WM39-group-total-from-exact-values.json
+  changed_path exists: True .orchestration/contracts/fixtures/workshop/WM40-today-dollar-display-from-exact-gap.json
+  changed_path exists: True .orchestration/contracts/fixtures/workshop/index.json
+  changed_path exists: True .orchestration/evidence/F02a/
+  changed_path exists: True .orchestration/handoffs/F02a.json
+  test F02A-before-validate: declared exit 1; evidence exists True; last exit marker in log: 1
+  test F02A-before-lane: declared exit 0; evidence exists True; last exit marker in log: 0
+  test F02A-before-A6faults: declared exit 0; evidence exists True; last exit marker in log: 0
+  test WK02-F02a-generate: declared exit 0; evidence exists True; last exit marker in log: 0
+  test WK02-F02a-generate-check: declared exit 0; evidence exists True; last exit marker in log: 0
+  test WK02-F02a-mutation: declared exit 0; evidence exists True; last exit marker in log: 0
+  test WK02-A6-faults-after: declared exit 0; evidence exists True; last exit marker in log: 0
+  test WK02-A6-fixtures-after: declared exit 0; evidence exists True; last exit marker in log: 0
+  test WK02-lane-validate-after: declared exit 1; evidence exists True; last exit marker in log: 1
+  test F02A-validate-after: declared exit 1; evidence exists True; last exit marker in log: 1
+  test F02A-handoff-check: declared exit 1; evidence exists True; last exit marker in log: 1
+  test F02A-handoff-validate: declared exit 1; evidence exists True; last exit marker in log: 1
+  test F02A-validate-final: declared exit 1; evidence exists True; last exit marker in log: 1
+evidence files not hashed in artifacts: ['.orchestration/evidence/F02a/final-contracts-validate.log', '.orchestration/evidence/F02a/handoff-check.log', '.orchestration/evidence/F02a/handoff-validate.log']
+base_commit: cb3becf25ed042b977d4864ae71e74d13829320f result_commit: None
+[exit 0]

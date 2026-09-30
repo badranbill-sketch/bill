@@ -1,0 +1,15 @@
+$ /tmp/claude-0/-home-user/bb8d4187-6ae8-587b-a816-8153faeea853/scratchpad/venv-f02/bin/python gate_map_check.py /home/user/bill/.orchestration/evidence/F02a/a6-attempt1/blockers.f01-accepted.md /home/user/bill/.orchestration/blockers.md
+# utc 2026-09-30T09:15:59Z; cwd /home/user/bill/.orchestration/evidence/F02a/a6-attempt1
+/home/user/bill/.orchestration/evidence/F02a/a6-attempt1/blockers.f01-accepted.md: 29 HB titles, 7 gate rows; mismatches (title gates vs mapping): [('HB-20', ['G0', 'G1', 'G5'], ['G0', 'G1'])]
+   grep -c 'least-privilege': 0
+   grep -c 'least privilege': 0
+   grep -c 'live-test': 0
+   grep -c 'live calendar': 0
+   grep -c 'Per-action test scopes': 0
+/home/user/bill/.orchestration/blockers.md: 29 HB titles, 7 gate rows; mismatches (title gates vs mapping): none
+   grep -c 'least-privilege': 0
+   grep -c 'least privilege': 0
+   grep -c 'live-test': 0
+   grep -c 'live calendar': 1
+   grep -c 'Per-action test scopes': 1
+[exit 0]

@@ -1,0 +1,16 @@
+$ bash -c cd /home/user/bill/.orchestration/contracts; for f in README.md validate.py workshop-math.md workshop-inputs.md workshop-clip-rules.md workshop-inputs.schema.json worker-handoff.schema.json fixtures/workshop/clip-rules.json fixtures/workshop/index.json; do a=$(sha256sum $f|cut -c1-64); b=$(git -C /home/user/bill show HEAD:.orchestration/contracts/$f|sha256sum|cut -c1-64); [ "$a" = "$b" ] && s=same || s=CHANGED; echo "$s $a $f"; done; for f in fixtures/workshop/WM*.json; do git -C /home/user/bill cat-file -e HEAD:.orchestration/contracts/$f 2>/dev/null && { a=$(sha256sum $f|cut -c1-64); b=$(git -C /home/user/bill show HEAD:.orchestration/contracts/$f|sha256sum|cut -c1-64); [ "$a" = "$b" ] || echo CHANGED $f; } || echo "NEW $(sha256sum $f)"; done; echo 'tracked WM01-WM36: any CHANGED line above would list them'
+same e0aa064aca63f5cbaa91cb9f8c6a56cea0fa778f4a367e2303734ef6b88a74b3 README.md
+same 143f118a0a7133e20eb105eeb4af2d1a280c53c80df2261fe5bc1373defe0f70 validate.py
+same 583bd20434605b5dc5aa48288f706c0af9014607536f1ccac026fa501a260fbf workshop-math.md
+same ba3da0b8de3f41929452cf705f9bbd71a2171d52d93dbb4bb3bd6cb7081d5757 workshop-inputs.md
+same f6b78b9e4db2108a53154bebe6344c6bde62b7b2e163c9d610e9912902429aff workshop-clip-rules.md
+same 20df5bc3a360a70d2cbaef2d980d72181a938571f9c602f4377d135fcca3775e workshop-inputs.schema.json
+same b9203fc88e1f2aa4d8365ad56038265de6aa4203850e90b6e32f646f78111c62 worker-handoff.schema.json
+same c8201bc12d53855c251ab2d5583673683940aeecaf327467d239a4ad5bc03071 fixtures/workshop/clip-rules.json
+CHANGED ebb7cee73c786222fdadccec1eaa6ac215599badc4bbfdb67fa1af875ef4c380 fixtures/workshop/index.json
+NEW e2afa56e528fff82ed2cff6e5e01bad4916bb6d0a859de126c7a7941096ca876  fixtures/workshop/WM37-today-dollar-pre-start-factor.json
+NEW b27eaf5f6b9b40dae43763dc1ec5fe8f66c1ad312d493079fb26883fa5433f35  fixtures/workshop/WM38-joint-owner-participant-age.json
+NEW fee6cc8372e2e571dabc32400fcf2dc11e50f64974aabab03bb035dd770bb9f5  fixtures/workshop/WM39-group-total-from-exact-values.json
+NEW 9653eda5f2360416a428aa08a89aae63c3f4923fc2eba6f6bac0f966f7f50e95  fixtures/workshop/WM40-today-dollar-display-from-exact-gap.json
+tracked WM01-WM36: any CHANGED line above would list them
+[exit 0]

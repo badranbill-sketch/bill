@@ -1,0 +1,43 @@
+# F02a generator --check (WM37-WM40 + appended index.json; WM01-WM36 and clip-rules.json unchanged). date (UTC): 2026-09-30T08:59:03Z; cwd /home/user/bill
+$ /tmp/claude-0/-home-user/bb8d4187-6ae8-587b-a816-8153faeea853/scratchpad/venv-f02/bin/python .orchestration/evidence/F02a/compute_f02a_fixtures.py --check
+== F02a math fixtures (additive)
+  ok  WM37 t_R = 65 - 55 = 10; window t = 10..14
+  ok  WM37 src-1: P_t = 2,400,000 x 1.02^10 x (1 + 0bp)^(t-10) for t >= 10 (s4, b_j carried at i)
+  ok  WM37 src-2: P_t = 600,000 x 1.02^12 x (1 + 300bp)^(t-12) for t >= 12 (s4, b_j carried at i)
+  ok  WM37 src-3: P_t = 1,200,000 x 1.02^5 x (1 + 100bp)^(t-5) for t >= 5 (s4, b_j carried at i)
+  ok  WM37 hand: 1.02^10 = 1.21899441999475713024
+  ok  WM37 hand: P_1 = 2,400,000 x 1.21899441999475713024 = 2,925,586.607987417112576 -> 2,925,587 in every window year (q = 0); growing at q before the start would give 2,400,000
+  ok  WM37 hand: P_2 = 0 at t = 10, 11 (t < s = 12); P_2,12 = 600,000 x 1.02^12 = 760,945.0767... -> 760,945 (growing at q = 3% before the start would give 600,000 x 1.03^12 = 855,456.53... -> 855,457)
+  ok  WM37 hand: P_3,10 = 1,200,000 x 1.02^5 x 1.01^5 = 1,392,480.0243... -> 1,392,480 (growing at q = 1% from t = 0 would give 1,200,000 x 1.01^10 = 1,325,546.55... -> 1,325,547)
+  ok  WM37 D_t = 6,000,000 x 1.02^t (s3)
+  ok  WM37 I^net_t = rounded exact sum of the three P_j,t
+  ok  WM37 G_t = D_t - sum P_j,t > 0 in every window year (s5)
+  ok  WM37 exact gap strings equal the hand closed form character for character
+  ok  WM37 today-dollar gap = exact G_t / 1.02^t
+  ok  WM37 complete; no flag; W07 funding_gap
+  ok  WM37 input passes semantic rules
+  ok  WM38 t_R = 62 - 60 = 2; window t = 2..7
+  ok  WM38 joint start at age 65 -> s = 65 - 60 = 5: 0 at t = 2..4, 1,200,000 at t = 5..7 (partner reading s = 65 - 55 = 10: 0 in every window year)
+  ok  WM38 joint end at age 64 -> e = 64 - 60 = 4 (exclusive): 600,000 at t = 2, 3, then 0 (partner reading e = 64 - 55 = 9: 600,000 in every window year)
+  ok  WM38 G = 4,800,000 - 600,000 = 4,200,000 (t = 2, 3); 4,800,000 (t = 4); 4,800,000 - 1,200,000 = 3,600,000 (t = 5..7) (partner reading: 4,200,000 in every year)
+  ok  WM38 rows carry partner_age 55 + t (household present, partner age known)
+  ok  WM38 partner retirement index 57 - 55 = 2 = t_R: H false, no flag (the partner reading would add horizon_shorter_than_timeline, s = 10 >= t_R + H = 8); W07
+  ok  WM38 complete
+  ok  WM38 input passes semantic rules
+  ok  WM39 hand: P_j,1 = 1,000,050 x 1.01 = 1,010,050.5 -> 1,010,050 (tie to even)
+  ok  WM39 t=1 per-source rows 1,010,050 each
+  ok  WM39 t=1 I^net = round(2,020,101 exact) = 2,020,101; the sum of the displayed rows would be 2,020,100
+  ok  WM39 t=1 G = 3,030,000 - 2,020,101 = 1,009,899 (from the rounded rows it would be 1,009,900)
+  ok  WM39 I^net = 2,000,100; 2,020,101; round(2,040,302.01)
+  ok  WM39 complete; W07
+  ok  WM39 input passes semantic rules
+  ok  WM40 hand: 1.015^2 = 1.030225; G_2 = 2,060,451.030225 - 1,000,077 = 1,060,374.030225
+  ok  WM40 t=2 exact gap string and displayed gap 1,060,374
+  ok  WM40 t=2 today-dollar gap = round(1,060,374.030225 / 1.030225) = round(1,029,264.5104...) = 1,029,265
+  ok  WM40 double-rounding contrast: round(1,060,374 / 1.030225) = round(1,029,264.4810...) = 1,029,264 (not conformant)
+  ok  WM40 every today-dollar gap is the exact G_t / 1.015^t, rounded once
+  ok  WM40 complete; W07
+  ok  WM40 input passes semantic rules
+== check F02a: 5 files regenerated (4 fixtures + appended index.json); differing: none
+== check lane: 37 WM01-WM36 + clip-rules.json files regenerate byte for byte from compute_fixtures.render_all(); differing: none; unexpected files: none
+[exit 0]

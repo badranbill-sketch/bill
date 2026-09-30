@@ -3,7 +3,7 @@
     "task": "F01",
     "written": "2026-09-30",
     "base_commit": "5cbbf9b5d21dbf03d2cb44e524a6fcdc10d5515b",
-    "status": "submitted, not accepted",
+    "status": "accepted (F01; A0 accepted it on 2026-09-30 after the A6 attempt-2 pass, reviews/F01-attempt2.md, recorded at cb3becf). A0 patch 1 (evidence/A0-patch-1/) added where each existing_cost_unknown amount and renewal is collected (HB-08(b)); every amount stays null.",
     "purpose": "Real cost sheet required by 01 §17. It holds only amounts that are actually known from evidence. Existing subscriptions count as existing costs, not as free.",
     "rules": [
       "amount is null unless the value is known from evidence (an invoice, a checkout, provider metering, or a plan rule that fixes it at 0).",
@@ -42,7 +42,7 @@
       "source": "01 §2 defaults (reuse the existing VPS), §17 cost sheet; 07 unresolved facts (VPS resources, existing subscription prices); inventory.md §7 (VPS not visible)",
       "owner": "Arnaud",
       "approval_gate": "G0 (production host, HB-01); G2 (any upgrade or new subscription)",
-      "note": "The current VPS price, its plan and whether an upgrade is needed are unknown (HB-02). Upgrade only after a measured need."
+      "note": "The current VPS plan, amount, currency and renewal date are collected by HB-08(b). Whether an upgrade is needed depends on the VPS resources asked in HB-02. amount and currency stay null until an invoice or checkout fixes them. Upgrade only after a measured need."
     },
     {
       "id": "media_storage_egress",
@@ -75,7 +75,7 @@
       "source": "01 §2 unknowns (existing Workspace edition); inventory.md §7, D12 (no Bill Google account visible)",
       "owner": "Bill",
       "approval_gate": "G2",
-      "note": "The edition, its payer and its Meet entitlement are unknown (HB-14). It may already suffice for the pilot."
+      "note": "The edition, its payer and its Meet entitlement are unknown (HB-14). It may already suffice for the pilot. The plan, amount, currency and renewal date are asked in HB-08(b); amount and currency stay null until an invoice or checkout fixes them."
     },
     {
       "id": "workspace_business_standard_candidate",
@@ -175,7 +175,7 @@
       "source": "01 §2 (content generation row), §4 (record provider, model, usage and wall time; no price assumptions); measured_usage (F00 run wf_5bb05036-e58, cost unavailable)",
       "owner": "Arnaud",
       "approval_gate": "none (existing); unattended API use needs G2",
-      "note": "An existing subscription is not assumed to include unattended API use (01 §4). Token counts are recorded without a price."
+      "note": "An existing subscription is not assumed to include unattended API use (01 §4). Token counts are recorded without a price. HB-08(b) does not ask for it: it is Arnaud's build-time subscription, recorded from its own invoice. Per-run usage goes to measured_usage without a price."
     },
     {
       "id": "model_api_weekly_draft",
@@ -252,7 +252,7 @@
       "source": "01 §11 (hosted checkout with approved tax treatment), §17 cost sheet",
       "owner": "Bill (with his accountant)",
       "approval_gate": "G0 (book price, HB-20); G1 (disclosed terms)",
-      "note": "Tax status, registration and treatment are unknown and are not decided by agents. Taxes on existing subscriptions are part of those unknown existing costs."
+      "note": "Tax status, registration and treatment are unknown and are not decided by agents. Taxes on existing subscriptions are part of those unknown existing costs. HB-08(b) does not ask for it: taxes are Bill's to confirm with his accountant (HB-20 for the book)."
     },
     {
       "id": "bill_time",
@@ -264,7 +264,7 @@
       "source": "01 §17 (capacity), §6 (recording), §10 (event); 06 G0 (approved time allocation)",
       "owner": "Bill",
       "approval_gate": "G0 (time allocation, HB-16, HB-19)",
-      "note": "The proposed meeting reservation is under capacity_proposal (unconfirmed). Recording and event time are not estimated."
+      "note": "The proposed meeting reservation is under capacity_proposal (unconfirmed). Recording and event time are not estimated. HB-08(b) does not ask for it: time is allocated at G0 (HB-16, HB-19) and recorded in hours, not money."
     },
     {
       "id": "operator_time",
@@ -276,7 +276,7 @@
       "source": "01 §10 (Arnaud moderates), §11 (daily reconciliation fallback), §17 (weekly loop); 06 run of show",
       "owner": "Arnaud",
       "approval_gate": "G0 (time allocation)",
-      "note": "Not estimated. Record actual hours once operating."
+      "note": "Not estimated. Record actual hours once operating. HB-08(b) does not ask for it: operator time is recorded in hours once operating, not as an amount."
     },
     {
       "id": "calendly_existing",
@@ -287,7 +287,7 @@
       "source": "inventory.md §3, §7 (link exists; bookingVerified=true; live read 403); docs/INTEGRATIONS.md on main (three meeting choices seen 2026-09-28); 01 §2 (scheduling row)",
       "owner": "Bill",
       "approval_gate": "G0 (scheduling owner, HB-15)",
-      "note": "Plan tier and payer unknown. It may be consolidated into Google appointment schedules only after verified behaviour (01 §11)."
+      "note": "Plan tier and payer unknown. It may be consolidated into Google appointment schedules only after verified behaviour (01 §11). The plan, amount, currency and renewal date are asked in HB-08(b); amount and currency stay null until an invoice or checkout fixes them."
     },
     {
       "id": "domain_dns_existing",
@@ -298,7 +298,7 @@
       "source": "lib/business.ts (domain); 01 §2 unknowns (DNS ownership); 06 handover (renewals)",
       "owner": "Bill (owner); Arnaud (to confirm, HB-05)",
       "approval_gate": "G2",
-      "note": "Registrar, renewal date and cost unknown."
+      "note": "Registrar, renewal date and cost unknown. The plan, amount, currency and renewal date are asked in HB-08(b); amount and currency stay null until an invoice or checkout fixes them."
     },
     {
       "id": "current_mail_provider_existing",
@@ -309,7 +309,7 @@
       "source": "lib/business.ts (email); 06 input sheet (no automatic domain or email migration)",
       "owner": "Bill",
       "approval_gate": "G2",
-      "note": "Provider unknown (HB-05). Not migrated or changed by this project."
+      "note": "Provider unknown (HB-05). Not migrated or changed by this project. The plan, amount, currency and renewal date are asked in HB-08(b); amount and currency stay null until an invoice or checkout fixes them."
     },
     {
       "id": "resend_upstash_existing",
@@ -320,7 +320,7 @@
       "source": "inventory.md §6.4, D8 (lib/contact.ts, docs/INTEGRATIONS.md)",
       "owner": "Arnaud",
       "approval_gate": "G2; G5 (processor change)",
-      "note": "The existing inquiry-form code depends on Resend and Upstash, but whether live accounts exist, and who pays, is unknown (HB-06b). They are not extended. Retirement is open: only if they exist, and only after the Brevo path passes MAIL01 and G5 reviews the processor change (D-051).",
+      "note": "The existing inquiry-form code depends on Resend and Upstash, but whether live accounts exist, and who pays, is unknown (HB-06b). They are not extended. Retirement is open: only if they exist, and only after the Brevo path passes MAIL01 and G5 reviews the processor change (D-051). If the accounts exist, their plan, amount, currency and renewal date are asked in HB-08(b); amount and currency stay null until an invoice or checkout fixes them.",
       "account_existence": "unknown"
     },
     {
@@ -332,7 +332,7 @@
       "source": "inventory.md §1.1 (private repo), §7",
       "owner": "Arnaud",
       "approval_gate": "none (existing)",
-      "note": "Plan tier unknown. Used for CI (TB-02, TB-03)."
+      "note": "Plan tier unknown. Used for CI (TB-02, TB-03). The plan, amount, currency and renewal date are asked in HB-08(b); amount and currency stay null until an invoice or checkout fixes them."
     }
   ],
   "measured_usage": [

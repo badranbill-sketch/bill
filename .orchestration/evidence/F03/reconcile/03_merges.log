@@ -1,0 +1,151 @@
+### command: echo "HEAD before: $(git rev-parse HEAD)"; git merge --no-ff -F /tmp/claude-0/-home-user/bb8d4187-6ae8-587b-a816-8153faeea853/scratchpad/f03/msg1.txt origin/guide/pre-retirement-guide; echo "HEAD after: $(git rev-parse HEAD)"; git show --stat --format="%H%n%P%n%s" HEAD | head -40
+### cwd: /tmp/claude-0/-home-user/bb8d4187-6ae8-587b-a816-8153faeea853/scratchpad/wt/integration
+### start: 2026-09-30T08:51:31Z
+HEAD before: 66cce52046f535ddc1a90e6f94474877e375860d
+Merge made by the 'ort' strategy.
+ .gitignore               |    1 +
+ guide/README.md          |   79 +++
+ guide/art/charts.tsx     |  454 +++++++++++++++++
+ guide/art/containers.tsx |  295 +++++++++++
+ guide/art/cover.tsx      |  304 ++++++++++++
+ guide/art/harbour.tsx    |  330 +++++++++++++
+ guide/art/horizons.tsx   |  308 ++++++++++++
+ guide/art/index.tsx      |   77 +++
+ guide/art/kit.tsx        |  994 +++++++++++++++++++++++++++++++++++++
+ guide/art/plans.tsx      |  322 ++++++++++++
+ guide/art/porch.tsx      |  716 +++++++++++++++++++++++++++
+ guide/art/spending.tsx   |  450 +++++++++++++++++
+ guide/art/storm.tsx      |  271 ++++++++++
+ guide/assets/grain.png   |  Bin 0 -> 48238 bytes
+ guide/build.tsx          |  264 ++++++++++
+ guide/copy.ts            | 1222 ++++++++++++++++++++++++++++++++++++++++++++++
+ guide/layout.tsx         | 1215 +++++++++++++++++++++++++++++++++++++++++++++
+ guide/marks.tsx          |  112 +++++
+ guide/style.css          |  823 +++++++++++++++++++++++++++++++
+ package.json             |    3 +-
+ scripts/ink-sheet.tsx    |   65 +++
+ 21 files changed, 8304 insertions(+), 1 deletion(-)
+ create mode 100644 guide/README.md
+ create mode 100644 guide/art/charts.tsx
+ create mode 100644 guide/art/containers.tsx
+ create mode 100644 guide/art/cover.tsx
+ create mode 100644 guide/art/harbour.tsx
+ create mode 100644 guide/art/horizons.tsx
+ create mode 100644 guide/art/index.tsx
+ create mode 100644 guide/art/kit.tsx
+ create mode 100644 guide/art/plans.tsx
+ create mode 100644 guide/art/porch.tsx
+ create mode 100644 guide/art/spending.tsx
+ create mode 100644 guide/art/storm.tsx
+ create mode 100644 guide/assets/grain.png
+ create mode 100644 guide/build.tsx
+ create mode 100644 guide/copy.ts
+ create mode 100644 guide/layout.tsx
+ create mode 100644 guide/marks.tsx
+ create mode 100644 guide/style.css
+ create mode 100644 scripts/ink-sheet.tsx
+HEAD after: 1316ebe10fe9ff753c3ce42151018ae3cebcc163
+1316ebe10fe9ff753c3ce42151018ae3cebcc163
+66cce52046f535ddc1a90e6f94474877e375860d 749b360f75185041e1aa3408500857605bc4507f
+Merge guide/pre-retirement-guide into integration (F03)
+
+ .gitignore               |    1 +
+ guide/README.md          |   79 +++
+ guide/art/charts.tsx     |  454 +++++++++++++++++
+ guide/art/containers.tsx |  295 +++++++++++
+ guide/art/cover.tsx      |  304 ++++++++++++
+ guide/art/harbour.tsx    |  330 +++++++++++++
+ guide/art/horizons.tsx   |  308 ++++++++++++
+ guide/art/index.tsx      |   77 +++
+ guide/art/kit.tsx        |  994 +++++++++++++++++++++++++++++++++++++
+ guide/art/plans.tsx      |  322 ++++++++++++
+ guide/art/porch.tsx      |  716 +++++++++++++++++++++++++++
+ guide/art/spending.tsx   |  450 +++++++++++++++++
+ guide/art/storm.tsx      |  271 ++++++++++
+ guide/assets/grain.png   |  Bin 0 -> 48238 bytes
+ guide/build.tsx          |  264 ++++++++++
+ guide/copy.ts            | 1222 ++++++++++++++++++++++++++++++++++++++++++++++
+ guide/layout.tsx         | 1215 +++++++++++++++++++++++++++++++++++++++++++++
+ guide/marks.tsx          |  112 +++++
+ guide/style.css          |  823 +++++++++++++++++++++++++++++++
+ package.json             |    3 +-
+ scripts/ink-sheet.tsx    |   65 +++
+ 21 files changed, 8304 insertions(+), 1 deletion(-)
+### end: 2026-09-30T08:51:31Z
+### exit: 0
+### wall_s: 0.25
+
+### command: echo "HEAD before: $(git rev-parse HEAD)"; git merge --no-ff -F /tmp/claude-0/-home-user/bb8d4187-6ae8-587b-a816-8153faeea853/scratchpad/f03/msg2.txt cb3becf25ed042b977d4864ae71e74d13829320f > /tmp/claude-0/-home-user/bb8d4187-6ae8-587b-a816-8153faeea853/scratchpad/f03/merge2.out; rc=$?; tail -3 /tmp/claude-0/-home-user/bb8d4187-6ae8-587b-a816-8153faeea853/scratchpad/f03/merge2.out; echo merge_exit=$rc; echo "HEAD after: $(git rev-parse HEAD)"; git log -1 --format="%H%n%P%n%s"; echo changed_outside_orchestration=$(git diff --name-only HEAD^1 HEAD | grep -vc "^.orchestration/"); echo changed_total=$(git diff --name-only HEAD^1 HEAD | wc -l); git status --porcelain | wc -l; exit $rc
+### cwd: /tmp/claude-0/-home-user/bb8d4187-6ae8-587b-a816-8153faeea853/scratchpad/wt/integration
+### start: 2026-09-30T08:52:16Z
+HEAD before: 1316ebe10fe9ff753c3ce42151018ae3cebcc163
+ create mode 100644 .orchestration/source/TASK_LEDGER.md
+ create mode 100644 .orchestration/source/acceptance_catalog.json
+ create mode 100644 .orchestration/tasks.json
+merge_exit=0
+HEAD after: 67ba636cee04e8b0839d9c7b028a77d2791e32ff
+67ba636cee04e8b0839d9c7b028a77d2791e32ff
+1316ebe10fe9ff753c3ce42151018ae3cebcc163 cb3becf25ed042b977d4864ae71e74d13829320f
+Merge orchestration record cb3becf into integration (F03)
+changed_outside_orchestration=0
+changed_total=789
+0
+### end: 2026-09-30T08:52:17Z
+### exit: 0
+### wall_s: 0.29
+
+### command: git checkout -- next-env.d.ts; git status --porcelain; git add package.json package-lock.json tests/baseline; git status --porcelain; git diff --cached --stat; git commit -q -F /tmp/claude-0/-home-user/bb8d4187-6ae8-587b-a816-8153faeea853/scratchpad/f03/msg3.txt; echo commit_exit=$?; git log -1 --format="%H%n%P%n%an <%ae>%n%s"; git status --porcelain | wc -l; git log --oneline --graph -6
+### cwd: /tmp/claude-0/-home-user/bb8d4187-6ae8-587b-a816-8153faeea853/scratchpad/wt/integration
+### start: 2026-09-30T09:22:58Z
+ M package-lock.json
+ M package.json
+?? tests/baseline/
+M  package-lock.json
+M  package.json
+A  tests/baseline/README.md
+A  tests/baseline/compare-screens.mjs
+A  tests/baseline/contracts.test.ts
+A  tests/baseline/playwright.baseline.config.ts
+A  tests/baseline/run.mjs
+A  tests/baseline/screens.spec.ts
+ package-lock.json                            | 140 ++++++-
+ package.json                                 |   9 +-
+ tests/baseline/README.md                     | 142 +++++++
+ tests/baseline/compare-screens.mjs           | 190 +++++++++
+ tests/baseline/contracts.test.ts             | 334 ++++++++++++++++
+ tests/baseline/playwright.baseline.config.ts |  74 ++++
+ tests/baseline/run.mjs                       | 577 +++++++++++++++++++++++++++
+ tests/baseline/screens.spec.ts               | 246 ++++++++++++
+ 8 files changed, 1701 insertions(+), 11 deletions(-)
+commit_exit=0
+6b095fbc8033b51cbe92f044f310f5d8c27659cd
+67ba636cee04e8b0839d9c7b028a77d2791e32ff
+Claude <noreply@anthropic.com>
+Add reproducible baseline check suite (F03)
+0
+* 6b095fb Add reproducible baseline check suite (F03)
+*   67ba636 Merge orchestration record cb3becf into integration (F03)
+|\  
+| * cb3becf Accept F01 decisions/blockers and F02 contracts; split F02a
+| * 5cbbf9b Accept F00 inventory with independent review evidence
+| * eeb79a9 Record execution spec, task graph and acceptance catalog (orchestration)
+* |   1316ebe Merge guide/pre-retirement-guide into integration (F03)
+|\ \  
+### end: 2026-09-30T09:22:59Z
+### exit: 0
+### wall_s: 0.21
+
+### command: echo "Amending the unpushed local suite commit 6b095fbc8033b51cbe92f044f310f5d8c27659cd (created in this task, never pushed) so the suite stays one commit: run.mjs re-reads the browser expectation after npm ci and names a missing gh in the protections reason."; git checkout -- next-env.d.ts; git add tests/baseline/run.mjs; git commit -q --amend -F /tmp/claude-0/-home-user/bb8d4187-6ae8-587b-a816-8153faeea853/scratchpad/f03/msg3.txt; echo amend_exit=$?; git log -1 --format="%H%n%P%n%s"; git status --porcelain | wc -l; git branch -r --contains HEAD | wc -l
+### cwd: /tmp/claude-0/-home-user/bb8d4187-6ae8-587b-a816-8153faeea853/scratchpad/wt/integration
+### start: 2026-09-30T09:28:37Z
+Amending the unpushed local suite commit 6b095fbc8033b51cbe92f044f310f5d8c27659cd (created in this task, never pushed) so the suite stays one commit: run.mjs re-reads the browser expectation after npm ci and names a missing gh in the protections reason.
+amend_exit=0
+5545c2aeb3249e19e5f328c86fa7d264c04ec0d2
+67ba636cee04e8b0839d9c7b028a77d2791e32ff
+Add reproducible baseline check suite (F03)
+0
+0
+### end: 2026-09-30T09:28:37Z
+### exit: 0
+### wall_s: 0.13
+

@@ -1,0 +1,54 @@
+### command: echo '== README example: --only lint,test (unmodified tree) =='; node tests/baseline/run.mjs --only lint,test --out /tmp/claude-0/-home-user/bb8d4187-6ae8-587b-a816-8153faeea853/scratchpad/a6f03/only1; echo runner_exit=$?; python3 -c "import json;r=json.load(open('/tmp/claude-0/-home-user/bb8d4187-6ae8-587b-a816-8153faeea853/scratchpad/a6f03/only1/results.json'));[print(s['id'],s['classification'],s.get('reason')) for s in r['steps'] if s['id'] in ('npm_ci','lint','test')];print('overall',r['overall'],'exit',r['exit_code'])"; echo '== --only with a deliberately broken lint target: inject a lint error file then --only lint,test =='; printf 'const x = ;\n' > app/__a6_broken.ts; node tests/baseline/run.mjs --only lint,test --out /tmp/claude-0/-home-user/bb8d4187-6ae8-587b-a816-8153faeea853/scratchpad/a6f03/only2 | tail -2; echo runner_exit=$?; echo '== same, direct npm run lint =='; npm run -s lint > /dev/null 2>&1; echo lint_exit=$?; rm -f app/__a6_broken.ts; git status --porcelain; echo '== --only npm_ci,lint,test (prerequisite included) =='; node tests/baseline/run.mjs --only npm_ci,lint,test --out /tmp/claude-0/-home-user/bb8d4187-6ae8-587b-a816-8153faeea853/scratchpad/a6f03/only3 | tail -1; echo runner_exit=$?
+### cwd: /tmp/claude-0/-home-user/bb8d4187-6ae8-587b-a816-8153faeea853/scratchpad/wt/a6-f03-1
+### start: 2026-09-30T09:52:31Z
+== README example: --only lint,test (unmodified tree) ==
+[npm_ci] not_run: excluded by --only/--skip
+[lint] not_run: prerequisite npm_ci=not_run
+[test] not_run: prerequisite npm_ci=not_run
+[typecheck] not_run: excluded by --only/--skip
+[build] not_run: excluded by --only/--skip
+[typecheck_after_build] not_run: excluded by --only/--skip
+[protections_check] not_run: excluded by --only/--skip
+[launch_check] not_run: excluded by --only/--skip
+[verify_publication] not_run: excluded by --only/--skip
+[test_e2e] not_run: excluded by --only/--skip
+[contracts_ajv] not_run: excluded by --only/--skip
+[contracts_validate_py] not_run: excluded by --only/--skip
+[build_graph_check] not_run: excluded by --only/--skip
+[base02_capture] not_run: excluded by --only/--skip
+
+step                     class                    exit  seconds
+npm_ci                   not_run                  -     -  (excluded by --only/--skip)
+lint                     not_run                  -     -  (prerequisite npm_ci=not_run)
+test                     not_run                  -     -  (prerequisite npm_ci=not_run)
+typecheck                not_run                  -     -  (excluded by --only/--skip)
+build                    not_run                  -     -  (excluded by --only/--skip)
+typecheck_after_build    not_run                  -     -  (excluded by --only/--skip)
+protections_check        not_run                  -     -  (excluded by --only/--skip)
+launch_check             not_run                  -     -  (excluded by --only/--skip)
+verify_publication       not_run                  -     -  (excluded by --only/--skip)
+test_e2e                 not_run                  -     -  (excluded by --only/--skip)
+contracts_ajv            not_run                  -     -  (excluded by --only/--skip)
+contracts_validate_py    not_run                  -     -  (excluded by --only/--skip)
+build_graph_check        not_run                  -     -  (excluded by --only/--skip)
+base02_capture           not_run                  -     -  (excluded by --only/--skip)
+
+overall: pass_with_exceptions {"not_run":14}; results: /tmp/claude-0/-home-user/bb8d4187-6ae8-587b-a816-8153faeea853/scratchpad/a6f03/only1/results.json
+runner_exit=0
+npm_ci not_run excluded by --only/--skip
+lint not_run prerequisite npm_ci=not_run
+test not_run prerequisite npm_ci=not_run
+overall pass_with_exceptions exit 0
+== --only with a deliberately broken lint target: inject a lint error file then --only lint,test ==
+
+overall: pass_with_exceptions {"not_run":14}; results: /tmp/claude-0/-home-user/bb8d4187-6ae8-587b-a816-8153faeea853/scratchpad/a6f03/only2/results.json
+runner_exit=0
+== same, direct npm run lint ==
+lint_exit=1
+ M next-env.d.ts
+== --only npm_ci,lint,test (prerequisite included) ==
+overall: pass_with_exceptions {"pass":3,"not_run":11}; results: /tmp/claude-0/-home-user/bb8d4187-6ae8-587b-a816-8153faeea853/scratchpad/a6f03/only3/results.json
+runner_exit=0
+### exit: 0
+### wall_s: 54.296023169
+

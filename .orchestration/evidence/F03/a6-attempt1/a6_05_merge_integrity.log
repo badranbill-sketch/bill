@@ -1,0 +1,87 @@
+### command: bash /tmp/claude-0/-home-user/bb8d4187-6ae8-587b-a816-8153faeea853/scratchpad/a6f03/merge_integrity.sh
+### cwd: /home/user/bill
+### start: 2026-09-30T09:46:22Z
+== guide: merge-base with codex ==
+77de3bd51a8c9cb73aec0b32d27ca0cacb6285cd
+== guide: files it changed vs merge-base ==
+     19 A
+      2 M
+== guide: git diff origin/guide/pre-retirement-guide integration -- <paths guide touched> (stat) ==
+ package.json | 9 ++++++++-
+ 1 file changed, 8 insertions(+), 1 deletion(-)
+== guide: per-path blob compare ==
+DIFF package.json guide=3b4b19633cb648925c7c092f778cbc7e98589dfc integration=d57adef5093cbcbceab65dff39cfda5b69b3e94b
+guide paths identical=20 differing=1
+== package.json: guide-side change present in merge 1316ebe? ==
+(empty above = 1316ebe package.json/.gitignore identical to guide's? no: codex side changes may appear)
+== package.json 3-way: diff merge-base..guide ==
+diff --git a/package.json b/package.json
+index bf5917e..3b4b196 100644
+--- a/package.json
++++ b/package.json
+@@ -15,7 +15,8 @@
+     "content": "node --import tsx scripts/content.ts",
+     "launch:check": "node --import tsx scripts/launch.ts --strict",
+     "protections:check": "node --import tsx scripts/protections.ts",
+-    "format": "prettier --write ."
++    "format": "prettier --write .",
++    "guide": "node --import tsx guide/build.tsx"
+   },
+   "dependencies": {
+     "@fontsource/caveat": "^5.3.0",
+== package.json: 1316ebe vs integration (suite commit delta) ==
+diff --git a/package.json b/package.json
+index 3b4b196..d57adef 100644
+--- a/package.json
++++ b/package.json
+@@ -16,7 +16,10 @@
+     "launch:check": "node --import tsx scripts/launch.ts --strict",
+     "protections:check": "node --import tsx scripts/protections.ts",
+     "format": "prettier --write .",
+-    "guide": "node --import tsx guide/build.tsx"
++    "guide": "node --import tsx guide/build.tsx",
++    "test:baseline": "node tests/baseline/run.mjs",
++    "test:contracts": "node --import tsx --test tests/baseline/contracts.test.ts",
++    "test:base02": "playwright test --config tests/baseline/playwright.baseline.config.ts"
+   },
+   "dependencies": {
+     "@fontsource/caveat": "^5.3.0",
+@@ -36,9 +39,13 @@
+     "@types/react": "^19",
+     "@types/react-dom": "^19",
+     "agent-browser": "latest",
++    "ajv": "8.20.0",
++    "ajv-formats": "3.0.1",
+     "eslint": "^9.39.0",
+     "eslint-config-next": "16.3.6",
+     "opentype.js": "^2.0.0",
++    "pixelmatch": "7.2.0",
++    "pngjs": "7.0.0",
+     "prettier": "^3.9.9",
+     "tsx": "^4.21.0",
+     "typescript": "^5.9.3"
+== orchestration: files cb3becf changed vs merge-base with 1316ebe ==
+merge-base=77de3bd51a8c9cb73aec0b32d27ca0cacb6285cd
+789
+0
+== orchestration: git diff cb3becf25ed042b977d4864ae71e74d13829320f integration -- .orchestration (stat) ==
+== orchestration: tree compare of .orchestration subtree ==
+cb3becf:.orchestration  558fdacf184b31cf7c3db62c820aeccf851b579d
+67ba636:.orchestration  558fdacf184b31cf7c3db62c820aeccf851b579d
+integration:.orchestration  558fdacf184b31cf7c3db62c820aeccf851b579d
+== 67ba636 vs integration: non-.orchestration delta (suite commit) ==
+M	package-lock.json
+M	package.json
+A	tests/baseline/README.md
+A	tests/baseline/compare-screens.mjs
+A	tests/baseline/contracts.test.ts
+A	tests/baseline/playwright.baseline.config.ts
+A	tests/baseline/run.mjs
+A	tests/baseline/screens.spec.ts
+== codex-side files unchanged by merges? codex files differing in integration (excluding paths added) ==
+M	.gitignore
+M	package-lock.json
+M	package.json
+### exit: 0
+### wall_s: .232481871
+

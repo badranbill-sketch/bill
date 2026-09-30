@@ -1,0 +1,58 @@
+# step: lint - ESLint (verify.yml)
+# command: npm run lint
+# cwd: /tmp/claude-0/-home-user/bb8d4187-6ae8-587b-a816-8153faeea853/scratchpad/wt/integration
+# started: 2026-09-30T09:23:36.614Z
+# env overrides: {"NEXT_TELEMETRY_DISABLED":"1"}
+
+
+> bill-badran@1.0.0 lint
+> eslint .
+
+
+/tmp/claude-0/-home-user/bb8d4187-6ae8-587b-a816-8153faeea853/scratchpad/wt/integration/.orchestration/evidence/F02/a6-math-attempt1/model.mjs
+   69:7   warning  'X_CODES' is assigned a value but never used  @typescript-eslint/no-unused-vars
+  344:36  warning  '_G' is assigned a value but never used       @typescript-eslint/no-unused-vars
+  344:40  warning  '_S' is assigned a value but never used       @typescript-eslint/no-unused-vars
+  344:44  warning  '_D' is assigned a value but never used       @typescript-eslint/no-unused-vars
+  344:48  warning  '_sum' is assigned a value but never used     @typescript-eslint/no-unused-vars
+
+/tmp/claude-0/-home-user/bb8d4187-6ae8-587b-a816-8153faeea853/scratchpad/wt/integration/.orchestration/evidence/F02/a6-math-attempt1/negative_controls.mjs
+  58:64  warning  'e' is defined but never used  @typescript-eslint/no-unused-vars
+
+/tmp/claude-0/-home-user/bb8d4187-6ae8-587b-a816-8153faeea853/scratchpad/wt/integration/.orchestration/evidence/F02/a6-math-attempt1/run_fixtures.mjs
+  6:27  warning  'factor' is defined but never used  @typescript-eslint/no-unused-vars
+
+/tmp/claude-0/-home-user/bb8d4187-6ae8-587b-a816-8153faeea853/scratchpad/wt/integration/.orchestration/evidence/F02/a6-math-attempt3/closed_forms.mjs
+   4:13  warning  'factor' is defined but never used        @typescript-eslint/no-unused-vars
+  53:22  warning  'net' is assigned a value but never used  @typescript-eslint/no-unused-vars
+
+/tmp/claude-0/-home-user/bb8d4187-6ae8-587b-a816-8153faeea853/scratchpad/wt/integration/.orchestration/evidence/F02/a6-math-attempt3/faults_run.mjs
+  11:166  warning  'e' is defined but never used  @typescript-eslint/no-unused-vars
+  14:159  warning  'e' is defined but never used  @typescript-eslint/no-unused-vars
+
+/tmp/claude-0/-home-user/bb8d4187-6ae8-587b-a816-8153faeea853/scratchpad/wt/integration/.orchestration/evidence/F02/a6-math-attempt3/metamorphic.mjs
+  13:76  warning  'partner_age' is assigned a value but never used  @typescript-eslint/no-unused-vars
+
+/tmp/claude-0/-home-user/bb8d4187-6ae8-587b-a816-8153faeea853/scratchpad/wt/integration/.orchestration/evidence/F02/a6-math-attempt3/model.mjs
+  292:39  warning  '_G' is assigned a value but never used  @typescript-eslint/no-unused-vars
+  296:46  warning  '_V' is assigned a value but never used  @typescript-eslint/no-unused-vars
+
+/tmp/claude-0/-home-user/bb8d4187-6ae8-587b-a816-8153faeea853/scratchpad/wt/integration/.orchestration/evidence/F02/a6-math-attempt3/model_faults.mjs
+  309:39  warning  '_G' is assigned a value but never used  @typescript-eslint/no-unused-vars
+  313:46  warning  '_V' is assigned a value but never used  @typescript-eslint/no-unused-vars
+
+/tmp/claude-0/-home-user/bb8d4187-6ae8-587b-a816-8153faeea853/scratchpad/wt/integration/.orchestration/evidence/F02/a6-math-attempt3/run_fixtures.mjs
+   43:3  warning  Expected an assignment or function call and instead saw an expression  @typescript-eslint/no-unused-expressions
+   89:3  warning  Expected an assignment or function call and instead saw an expression  @typescript-eslint/no-unused-expressions
+   97:3  warning  Expected an assignment or function call and instead saw an expression  @typescript-eslint/no-unused-expressions
+  116:3  warning  Expected an assignment or function call and instead saw an expression  @typescript-eslint/no-unused-expressions
+
+/tmp/claude-0/-home-user/bb8d4187-6ae8-587b-a816-8153faeea853/scratchpad/wt/integration/.orchestration/evidence/F02/a6-math-attempt3/validate_examples_ajv.mjs
+  11:1  warning  Expected an assignment or function call and instead saw an expression  @typescript-eslint/no-unused-expressions
+
+✖ 21 problems (0 errors, 21 warnings)
+
+
+# finished: 2026-09-30T09:23:54.070Z
+# exit: 0
+# seconds: 17.46

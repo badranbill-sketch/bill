@@ -1,0 +1,464 @@
+### command: git rev-parse HEAD; git status --porcelain
+### cwd: /tmp/claude-0/-home-user/bb8d4187-6ae8-587b-a816-8153faeea853/scratchpad/wt/integration
+### start: 2026-09-30T10:16:59Z
+b0bc6cf634b0b5498cc335da4d2d15da04276e3a
+ M next-env.d.ts
+### end: 2026-09-30T10:16:59Z
+### exit: 0
+### wall_s: 0.03
+
+### note: a) the A6 reproduction, fixed: --only lint,test in a worktree after npm ci (expect lint+test run and pass, exit 0)
+### command: env -u GH_TOKEN -u GITHUB_TOKEN node tests/baseline/run.mjs --python /tmp/claude-0/-home-user/bb8d4187-6ae8-587b-a816-8153faeea853/scratchpad/venv-f02/bin/python --only lint,test --out /tmp/claude-0/-home-user/bb8d4187-6ae8-587b-a816-8153faeea853/scratchpad/f03r2/partial/a_only_lint_test
+### cwd: /tmp/claude-0/-home-user/bb8d4187-6ae8-587b-a816-8153faeea853/scratchpad/wt/integration
+### start: 2026-09-30T10:16:59Z
+[npm_ci] not_run: excluded by --only/--skip
+[lint] prerequisite npm_ci excluded: node_modules matches package-lock.json (450 installed packages checked on disk, 82 optional platform packages absent)
+[lint] npm run lint ... pass (exit 0, 15.96s)
+[test] prerequisite npm_ci excluded: node_modules matches package-lock.json (450 installed packages checked on disk, 82 optional platform packages absent)
+[test] npm test ... pass (exit 0, 0.79s)
+[typecheck] not_run: excluded by --only/--skip
+[build] not_run: excluded by --only/--skip
+[typecheck_after_build] not_run: excluded by --only/--skip
+[protections_check] not_run: excluded by --only/--skip
+[launch_check] not_run: excluded by --only/--skip
+[verify_publication] not_run: excluded by --only/--skip
+[test_e2e] not_run: excluded by --only/--skip
+[contracts_ajv] not_run: excluded by --only/--skip
+[contracts_validate_py] not_run: excluded by --only/--skip
+[build_graph_check] not_run: excluded by --only/--skip
+[base02_capture] not_run: excluded by --only/--skip
+[runner_selftest] not_run: excluded by --only/--skip
+
+step                     class                    exit  seconds
+npm_ci                   not_run                  -     -  (excluded by --only/--skip)
+lint                     pass                     0     15.96
+test                     pass                     0     0.79
+typecheck                not_run                  -     -  (excluded by --only/--skip)
+build                    not_run                  -     -  (excluded by --only/--skip)
+typecheck_after_build    not_run                  -     -  (excluded by --only/--skip)
+protections_check        not_run                  -     -  (excluded by --only/--skip)
+launch_check             not_run                  -     -  (excluded by --only/--skip)
+verify_publication       not_run                  -     -  (excluded by --only/--skip)
+test_e2e                 not_run                  -     -  (excluded by --only/--skip)
+contracts_ajv            not_run                  -     -  (excluded by --only/--skip)
+contracts_validate_py    not_run                  -     -  (excluded by --only/--skip)
+build_graph_check        not_run                  -     -  (excluded by --only/--skip)
+base02_capture           not_run                  -     -  (excluded by --only/--skip)
+runner_selftest          not_run                  -     -  (excluded by --only/--skip)
+
+overall: pass_with_exceptions {"not_run":13,"pass":2}; exit 0; results: /tmp/claude-0/-home-user/bb8d4187-6ae8-587b-a816-8153faeea853/scratchpad/f03r2/partial/a_only_lint_test/results.json
+### end: 2026-09-30T10:17:16Z
+### exit: 0
+### wall_s: 17.09
+
+### note: b) the same with a lint error in the tree (app/__a6_broken.ts, 'const x = ;'); expect lint fail, exit 1; file removed afterwards
+### command: env -u GH_TOKEN -u GITHUB_TOKEN node tests/baseline/run.mjs --python /tmp/claude-0/-home-user/bb8d4187-6ae8-587b-a816-8153faeea853/scratchpad/venv-f02/bin/python --only lint,test --out /tmp/claude-0/-home-user/bb8d4187-6ae8-587b-a816-8153faeea853/scratchpad/f03r2/partial/b_only_lint_test_broken
+### cwd: /tmp/claude-0/-home-user/bb8d4187-6ae8-587b-a816-8153faeea853/scratchpad/wt/integration
+### start: 2026-09-30T10:17:16Z
+[npm_ci] not_run: excluded by --only/--skip
+[lint] prerequisite npm_ci excluded: node_modules matches package-lock.json (450 installed packages checked on disk, 82 optional platform packages absent)
+[lint] npm run lint ... fail (exit 1, 16.04s)
+[test] prerequisite npm_ci excluded: node_modules matches package-lock.json (450 installed packages checked on disk, 82 optional platform packages absent)
+[test] npm test ... pass (exit 0, 0.88s)
+[typecheck] not_run: excluded by --only/--skip
+[build] not_run: excluded by --only/--skip
+[typecheck_after_build] not_run: excluded by --only/--skip
+[protections_check] not_run: excluded by --only/--skip
+[launch_check] not_run: excluded by --only/--skip
+[verify_publication] not_run: excluded by --only/--skip
+[test_e2e] not_run: excluded by --only/--skip
+[contracts_ajv] not_run: excluded by --only/--skip
+[contracts_validate_py] not_run: excluded by --only/--skip
+[build_graph_check] not_run: excluded by --only/--skip
+[base02_capture] not_run: excluded by --only/--skip
+[runner_selftest] not_run: excluded by --only/--skip
+
+step                     class                    exit  seconds
+npm_ci                   not_run                  -     -  (excluded by --only/--skip)
+lint                     fail                     1     16.04
+test                     pass                     0     0.88
+typecheck                not_run                  -     -  (excluded by --only/--skip)
+build                    not_run                  -     -  (excluded by --only/--skip)
+typecheck_after_build    not_run                  -     -  (excluded by --only/--skip)
+protections_check        not_run                  -     -  (excluded by --only/--skip)
+launch_check             not_run                  -     -  (excluded by --only/--skip)
+verify_publication       not_run                  -     -  (excluded by --only/--skip)
+test_e2e                 not_run                  -     -  (excluded by --only/--skip)
+contracts_ajv            not_run                  -     -  (excluded by --only/--skip)
+contracts_validate_py    not_run                  -     -  (excluded by --only/--skip)
+build_graph_check        not_run                  -     -  (excluded by --only/--skip)
+base02_capture           not_run                  -     -  (excluded by --only/--skip)
+runner_selftest          not_run                  -     -  (excluded by --only/--skip)
+
+overall: fail {"not_run":13,"fail":1,"pass":1}; exit 1; results: /tmp/claude-0/-home-user/bb8d4187-6ae8-587b-a816-8153faeea853/scratchpad/f03r2/partial/b_only_lint_test_broken/results.json
+### end: 2026-09-30T10:17:33Z
+### exit: 1
+### wall_s: 17.25
+
+### command: git status --porcelain
+### cwd: /tmp/claude-0/-home-user/bb8d4187-6ae8-587b-a816-8153faeea853/scratchpad/wt/integration
+### start: 2026-09-30T10:17:33Z
+ M next-env.d.ts
+### end: 2026-09-30T10:17:33Z
+### exit: 0
+### wall_s: 0.01
+
+### note: c) --only contracts_ajv (expect run and pass, exit 0)
+### command: env -u GH_TOKEN -u GITHUB_TOKEN node tests/baseline/run.mjs --python /tmp/claude-0/-home-user/bb8d4187-6ae8-587b-a816-8153faeea853/scratchpad/venv-f02/bin/python --only contracts_ajv --out /tmp/claude-0/-home-user/bb8d4187-6ae8-587b-a816-8153faeea853/scratchpad/f03r2/partial/c_only_contracts_ajv
+### cwd: /tmp/claude-0/-home-user/bb8d4187-6ae8-587b-a816-8153faeea853/scratchpad/wt/integration
+### start: 2026-09-30T10:17:33Z
+[npm_ci] not_run: excluded by --only/--skip
+[lint] not_run: excluded by --only/--skip
+[test] not_run: excluded by --only/--skip
+[typecheck] not_run: excluded by --only/--skip
+[build] not_run: excluded by --only/--skip
+[typecheck_after_build] not_run: excluded by --only/--skip
+[protections_check] not_run: excluded by --only/--skip
+[launch_check] not_run: excluded by --only/--skip
+[verify_publication] not_run: excluded by --only/--skip
+[test_e2e] not_run: excluded by --only/--skip
+[contracts_ajv] prerequisite npm_ci excluded: node_modules matches package-lock.json (450 installed packages checked on disk, 82 optional platform packages absent)
+[contracts_ajv] npm run test:contracts ... pass (exit 0, 2.02s)
+[contracts_validate_py] not_run: excluded by --only/--skip
+[build_graph_check] not_run: excluded by --only/--skip
+[base02_capture] not_run: excluded by --only/--skip
+[runner_selftest] not_run: excluded by --only/--skip
+
+step                     class                    exit  seconds
+npm_ci                   not_run                  -     -  (excluded by --only/--skip)
+lint                     not_run                  -     -  (excluded by --only/--skip)
+test                     not_run                  -     -  (excluded by --only/--skip)
+typecheck                not_run                  -     -  (excluded by --only/--skip)
+build                    not_run                  -     -  (excluded by --only/--skip)
+typecheck_after_build    not_run                  -     -  (excluded by --only/--skip)
+protections_check        not_run                  -     -  (excluded by --only/--skip)
+launch_check             not_run                  -     -  (excluded by --only/--skip)
+verify_publication       not_run                  -     -  (excluded by --only/--skip)
+test_e2e                 not_run                  -     -  (excluded by --only/--skip)
+contracts_ajv            pass                     0     2.02
+contracts_validate_py    not_run                  -     -  (excluded by --only/--skip)
+build_graph_check        not_run                  -     -  (excluded by --only/--skip)
+base02_capture           not_run                  -     -  (excluded by --only/--skip)
+runner_selftest          not_run                  -     -  (excluded by --only/--skip)
+
+overall: pass_with_exceptions {"not_run":14,"pass":1}; exit 0; results: /tmp/claude-0/-home-user/bb8d4187-6ae8-587b-a816-8153faeea853/scratchpad/f03r2/partial/c_only_contracts_ajv/results.json
+### end: 2026-09-30T10:17:36Z
+### exit: 0
+### wall_s: 2.34
+
+### note: d) --skip npm_ci (plus build, the two browser steps and validate.py): expect every other step to run; exit 0 (pass_with_exceptions)
+### command: env -u GH_TOKEN -u GITHUB_TOKEN node tests/baseline/run.mjs --python /tmp/claude-0/-home-user/bb8d4187-6ae8-587b-a816-8153faeea853/scratchpad/venv-f02/bin/python --skip npm_ci,build,test_e2e,base02_capture,contracts_validate_py --out /tmp/claude-0/-home-user/bb8d4187-6ae8-587b-a816-8153faeea853/scratchpad/f03r2/partial/d_skip_npm_ci
+### cwd: /tmp/claude-0/-home-user/bb8d4187-6ae8-587b-a816-8153faeea853/scratchpad/wt/integration
+### start: 2026-09-30T10:17:36Z
+[npm_ci] not_run: excluded by --only/--skip
+[lint] prerequisite npm_ci excluded: node_modules matches package-lock.json (450 installed packages checked on disk, 82 optional platform packages absent)
+[lint] npm run lint ... pass (exit 0, 15.88s)
+[test] prerequisite npm_ci excluded: node_modules matches package-lock.json (450 installed packages checked on disk, 82 optional platform packages absent)
+[test] npm test ... pass (exit 0, 0.75s)
+[typecheck] prerequisite npm_ci excluded: node_modules matches package-lock.json (450 installed packages checked on disk, 82 optional platform packages absent)
+[typecheck] npm run typecheck ... pass (exit 0, 2.48s)
+[build] not_run: excluded by --only/--skip
+[typecheck_after_build] prerequisite npm_ci excluded: node_modules matches package-lock.json (450 installed packages checked on disk, 82 optional platform packages absent)
+[typecheck_after_build] npm run typecheck ... pass (exit 0, 2.45s)
+[protections_check] prerequisite npm_ci excluded: node_modules matches package-lock.json (450 installed packages checked on disk, 82 optional platform packages absent)
+[protections_check] npm run protections:check ... blocked (exit 1, 0.57s)
+[launch_check] prerequisite npm_ci excluded: node_modules matches package-lock.json (450 installed packages checked on disk, 82 optional platform packages absent)
+[launch_check] npm run launch:check ... expected_fail_by_design (exit 1, 0.61s)
+[verify_publication] prerequisite npm_ci excluded: node_modules matches package-lock.json (450 installed packages checked on disk, 82 optional platform packages absent)
+[verify_publication] node --import tsx scripts/verify-publication.ts ... pass (exit 0, 0.46s)
+[test_e2e] not_run: excluded by --only/--skip
+[contracts_ajv] prerequisite npm_ci excluded: node_modules matches package-lock.json (450 installed packages checked on disk, 82 optional platform packages absent)
+[contracts_ajv] npm run test:contracts ... pass (exit 0, 1.68s)
+[contracts_validate_py] not_run: excluded by --only/--skip
+[build_graph_check] python3 .orchestration/scripts/build_graph.py --check ... pass (exit 0, 0.06s)
+[base02_capture] not_run: excluded by --only/--skip
+[runner_selftest] node --test tests/baseline/runner.test.mjs ... pass (exit 0, 1.45s)
+
+step                     class                    exit  seconds
+npm_ci                   not_run                  -     -  (excluded by --only/--skip)
+lint                     pass                     0     15.88
+test                     pass                     0     0.75
+typecheck                pass                     0     2.48
+build                    not_run                  -     -  (excluded by --only/--skip)
+typecheck_after_build    pass                     0     2.45
+protections_check        blocked                  1     0.57  (GITHUB_REPOSITORY is not set; the audit needs the repository name and an authenticated gh CLI (gh is also not installed here))
+launch_check             expected_fail_by_design  1     0.61
+verify_publication       pass                     0     0.46
+test_e2e                 not_run                  -     -  (excluded by --only/--skip)
+contracts_ajv            pass                     0     1.68
+contracts_validate_py    not_run                  -     -  (excluded by --only/--skip)
+build_graph_check        pass                     0     0.06
+base02_capture           not_run                  -     -  (excluded by --only/--skip)
+runner_selftest          pass                     0     1.45
+
+overall: pass_with_exceptions {"not_run":5,"pass":8,"blocked":1,"expected_fail_by_design":1}; exit 0; results: /tmp/claude-0/-home-user/bb8d4187-6ae8-587b-a816-8153faeea853/scratchpad/f03r2/partial/d_skip_npm_ci/results.json
+### end: 2026-09-30T10:18:03Z
+### exit: 0
+### wall_s: 27.49
+
+### note: e) --only test_e2e: build excluded and never assumed; expect not_run, overall incomplete, exit 3
+### command: PLAYWRIGHT_CHROMIUM_EXECUTABLE=/opt/pw-browsers/chromium-1194/chrome-linux/chrome env -u GH_TOKEN -u GITHUB_TOKEN node tests/baseline/run.mjs --python /tmp/claude-0/-home-user/bb8d4187-6ae8-587b-a816-8153faeea853/scratchpad/venv-f02/bin/python --only test_e2e --out /tmp/claude-0/-home-user/bb8d4187-6ae8-587b-a816-8153faeea853/scratchpad/f03r2/partial/e_only_test_e2e
+### cwd: /tmp/claude-0/-home-user/bb8d4187-6ae8-587b-a816-8153faeea853/scratchpad/wt/integration
+### start: 2026-09-30T10:18:03Z
+[npm_ci] not_run: excluded by --only/--skip
+[lint] not_run: excluded by --only/--skip
+[test] not_run: excluded by --only/--skip
+[typecheck] not_run: excluded by --only/--skip
+[build] not_run: excluded by --only/--skip
+[typecheck_after_build] not_run: excluded by --only/--skip
+[protections_check] not_run: excluded by --only/--skip
+[launch_check] not_run: excluded by --only/--skip
+[verify_publication] not_run: excluded by --only/--skip
+[test_e2e] not_run: prerequisite build excluded by --only/--skip and its result cannot be verified from the working tree (include it in the run)
+[contracts_ajv] not_run: excluded by --only/--skip
+[contracts_validate_py] not_run: excluded by --only/--skip
+[build_graph_check] not_run: excluded by --only/--skip
+[base02_capture] not_run: excluded by --only/--skip
+[runner_selftest] not_run: excluded by --only/--skip
+
+step                     class                    exit  seconds
+npm_ci                   not_run                  -     -  (excluded by --only/--skip)
+lint                     not_run                  -     -  (excluded by --only/--skip)
+test                     not_run                  -     -  (excluded by --only/--skip)
+typecheck                not_run                  -     -  (excluded by --only/--skip)
+build                    not_run                  -     -  (excluded by --only/--skip)
+typecheck_after_build    not_run                  -     -  (excluded by --only/--skip)
+protections_check        not_run                  -     -  (excluded by --only/--skip)
+launch_check             not_run                  -     -  (excluded by --only/--skip)
+verify_publication       not_run                  -     -  (excluded by --only/--skip)
+test_e2e                 not_run                  -     -  (prerequisite build excluded by --only/--skip and its result cannot be verified from the working tree (include it in the run))
+contracts_ajv            not_run                  -     -  (excluded by --only/--skip)
+contracts_validate_py    not_run                  -     -  (excluded by --only/--skip)
+build_graph_check        not_run                  -     -  (excluded by --only/--skip)
+base02_capture           not_run                  -     -  (excluded by --only/--skip)
+runner_selftest          not_run                  -     -  (excluded by --only/--skip)
+
+requested but not run: test_e2e (overall "incomplete" unless a step failed)
+
+overall: incomplete {"not_run":15}; exit 3; results: /tmp/claude-0/-home-user/bb8d4187-6ae8-587b-a816-8153faeea853/scratchpad/f03r2/partial/e_only_test_e2e/results.json
+### end: 2026-09-30T10:18:04Z
+### exit: 3
+### wall_s: 0.35
+
+### note: f) --only lnt (typo): expect usage error, exit 2, nothing run
+### command: env -u GH_TOKEN -u GITHUB_TOKEN node tests/baseline/run.mjs --python /tmp/claude-0/-home-user/bb8d4187-6ae8-587b-a816-8153faeea853/scratchpad/venv-f02/bin/python --only lnt --out /tmp/claude-0/-home-user/bb8d4187-6ae8-587b-a816-8153faeea853/scratchpad/f03r2/partial/f_only_typo; ls /tmp/claude-0/-home-user/bb8d4187-6ae8-587b-a816-8153faeea853/scratchpad/f03r2/partial/f_only_typo 2>&1 | head -3
+### cwd: /tmp/claude-0/-home-user/bb8d4187-6ae8-587b-a816-8153faeea853/scratchpad/wt/integration
+### start: 2026-09-30T10:18:04Z
+run.mjs: unknown step id(s) in --only: lnt (known: npm_ci, lint, test, typecheck, build, typecheck_after_build, protections_check, launch_check, verify_publication, test_e2e, contracts_ajv, contracts_validate_py, build_graph_check, base02_capture, runner_selftest)
+usage: node tests/baseline/run.mjs [--out DIR] [--only id,id] [--skip id,id] [--python BIN] [--list]
+ls: cannot access '/tmp/claude-0/-home-user/bb8d4187-6ae8-587b-a816-8153faeea853/scratchpad/f03r2/partial/f_only_typo': No such file or directory
+### end: 2026-09-30T10:18:04Z
+### exit: 0
+### wall_s: 0.07
+
+### note: g) stale node_modules: node_modules/pngjs moved aside; --only lint,test must not run on it (expect not_run, exit 3); restored afterwards
+### command: env -u GH_TOKEN -u GITHUB_TOKEN node tests/baseline/run.mjs --python /tmp/claude-0/-home-user/bb8d4187-6ae8-587b-a816-8153faeea853/scratchpad/venv-f02/bin/python --only lint,test --out /tmp/claude-0/-home-user/bb8d4187-6ae8-587b-a816-8153faeea853/scratchpad/f03r2/partial/g_stale_node_modules
+### cwd: /tmp/claude-0/-home-user/bb8d4187-6ae8-587b-a816-8153faeea853/scratchpad/wt/integration
+### start: 2026-09-30T10:18:04Z
+[npm_ci] not_run: excluded by --only/--skip
+[lint] not_run: prerequisite npm_ci excluded by --only/--skip and node_modules does not match package-lock.json: node_modules/pngjs missing on disk
+[test] not_run: prerequisite npm_ci excluded by --only/--skip and node_modules does not match package-lock.json: node_modules/pngjs missing on disk
+[typecheck] not_run: excluded by --only/--skip
+[build] not_run: excluded by --only/--skip
+[typecheck_after_build] not_run: excluded by --only/--skip
+[protections_check] not_run: excluded by --only/--skip
+[launch_check] not_run: excluded by --only/--skip
+[verify_publication] not_run: excluded by --only/--skip
+[test_e2e] not_run: excluded by --only/--skip
+[contracts_ajv] not_run: excluded by --only/--skip
+[contracts_validate_py] not_run: excluded by --only/--skip
+[build_graph_check] not_run: excluded by --only/--skip
+[base02_capture] not_run: excluded by --only/--skip
+[runner_selftest] not_run: excluded by --only/--skip
+
+step                     class                    exit  seconds
+npm_ci                   not_run                  -     -  (excluded by --only/--skip)
+lint                     not_run                  -     -  (prerequisite npm_ci excluded by --only/--skip and node_modules does not match package-lock.json: node_modules/pngjs missing on disk)
+test                     not_run                  -     -  (prerequisite npm_ci excluded by --only/--skip and node_modules does not match package-lock.json: node_modules/pngjs missing on disk)
+typecheck                not_run                  -     -  (excluded by --only/--skip)
+build                    not_run                  -     -  (excluded by --only/--skip)
+typecheck_after_build    not_run                  -     -  (excluded by --only/--skip)
+protections_check        not_run                  -     -  (excluded by --only/--skip)
+launch_check             not_run                  -     -  (excluded by --only/--skip)
+verify_publication       not_run                  -     -  (excluded by --only/--skip)
+test_e2e                 not_run                  -     -  (excluded by --only/--skip)
+contracts_ajv            not_run                  -     -  (excluded by --only/--skip)
+contracts_validate_py    not_run                  -     -  (excluded by --only/--skip)
+build_graph_check        not_run                  -     -  (excluded by --only/--skip)
+base02_capture           not_run                  -     -  (excluded by --only/--skip)
+runner_selftest          not_run                  -     -  (excluded by --only/--skip)
+
+requested but not run: lint, test (overall "incomplete" unless a step failed)
+
+overall: incomplete {"not_run":15}; exit 3; results: /tmp/claude-0/-home-user/bb8d4187-6ae8-587b-a816-8153faeea853/scratchpad/f03r2/partial/g_stale_node_modules/results.json
+### end: 2026-09-30T10:18:04Z
+### exit: 3
+### wall_s: 0.28
+
+### command: node --input-type=module -e "import {installState} from './tests/baseline/runner-lib.mjs'; console.log(JSON.stringify(installState(process.cwd())))"
+### cwd: /tmp/claude-0/-home-user/bb8d4187-6ae8-587b-a816-8153faeea853/scratchpad/wt/integration
+### start: 2026-09-30T10:18:04Z
+{"ok":true,"detail":"node_modules matches package-lock.json (450 installed packages checked on disk, 82 optional platform packages absent)"}
+### end: 2026-09-30T10:18:04Z
+### exit: 0
+### wall_s: 0.11
+
+### note: h) --only build,test_e2e with the substitute browser (the documented form): expect both pass, exit 0
+### command: PLAYWRIGHT_CHROMIUM_EXECUTABLE=/opt/pw-browsers/chromium-1194/chrome-linux/chrome env -u GH_TOKEN -u GITHUB_TOKEN node tests/baseline/run.mjs --python /tmp/claude-0/-home-user/bb8d4187-6ae8-587b-a816-8153faeea853/scratchpad/venv-f02/bin/python --only build,test_e2e --out /tmp/claude-0/-home-user/bb8d4187-6ae8-587b-a816-8153faeea853/scratchpad/f03r2/partial/h_only_build_e2e_substitute
+### cwd: /tmp/claude-0/-home-user/bb8d4187-6ae8-587b-a816-8153faeea853/scratchpad/wt/integration
+### start: 2026-09-30T10:18:04Z
+[npm_ci] not_run: excluded by --only/--skip
+[lint] not_run: excluded by --only/--skip
+[test] not_run: excluded by --only/--skip
+[typecheck] not_run: excluded by --only/--skip
+[build] prerequisite npm_ci excluded: node_modules matches package-lock.json (450 installed packages checked on disk, 82 optional platform packages absent)
+[build] npm run build ... pass (exit 0, 7.42s)
+[typecheck_after_build] not_run: excluded by --only/--skip
+[protections_check] not_run: excluded by --only/--skip
+[launch_check] not_run: excluded by --only/--skip
+[verify_publication] not_run: excluded by --only/--skip
+[test_e2e] npm run test:e2e ... pass (exit 0, 84.58s)
+[contracts_ajv] not_run: excluded by --only/--skip
+[contracts_validate_py] not_run: excluded by --only/--skip
+[build_graph_check] not_run: excluded by --only/--skip
+[base02_capture] not_run: excluded by --only/--skip
+[runner_selftest] not_run: excluded by --only/--skip
+
+step                     class                    exit  seconds
+npm_ci                   not_run                  -     -  (excluded by --only/--skip)
+lint                     not_run                  -     -  (excluded by --only/--skip)
+test                     not_run                  -     -  (excluded by --only/--skip)
+typecheck                not_run                  -     -  (excluded by --only/--skip)
+build                    pass                     0     7.42
+typecheck_after_build    not_run                  -     -  (excluded by --only/--skip)
+protections_check        not_run                  -     -  (excluded by --only/--skip)
+launch_check             not_run                  -     -  (excluded by --only/--skip)
+verify_publication       not_run                  -     -  (excluded by --only/--skip)
+test_e2e                 pass                     0     84.58
+contracts_ajv            not_run                  -     -  (excluded by --only/--skip)
+contracts_validate_py    not_run                  -     -  (excluded by --only/--skip)
+build_graph_check        not_run                  -     -  (excluded by --only/--skip)
+base02_capture           not_run                  -     -  (excluded by --only/--skip)
+runner_selftest          not_run                  -     -  (excluded by --only/--skip)
+
+overall: pass_with_exceptions {"not_run":13,"pass":2}; exit 0; results: /tmp/claude-0/-home-user/bb8d4187-6ae8-587b-a816-8153faeea853/scratchpad/f03r2/partial/h_only_build_e2e_substitute/results.json
+### end: 2026-09-30T10:19:36Z
+### exit: 0
+### wall_s: 92.45
+
+### note: i) --only build,test_e2e with the lockfile default browser (rev 1243 absent): expect every failing test to be a launch error, test_e2e blocked, exit 0
+### command: env -u PLAYWRIGHT_CHROMIUM_EXECUTABLE env -u GH_TOKEN -u GITHUB_TOKEN node tests/baseline/run.mjs --python /tmp/claude-0/-home-user/bb8d4187-6ae8-587b-a816-8153faeea853/scratchpad/venv-f02/bin/python --only build,test_e2e --out /tmp/claude-0/-home-user/bb8d4187-6ae8-587b-a816-8153faeea853/scratchpad/f03r2/partial/i_default_browser
+### cwd: /tmp/claude-0/-home-user/bb8d4187-6ae8-587b-a816-8153faeea853/scratchpad/wt/integration
+### start: 2026-09-30T10:19:37Z
+[npm_ci] not_run: excluded by --only/--skip
+[lint] not_run: excluded by --only/--skip
+[test] not_run: excluded by --only/--skip
+[typecheck] not_run: excluded by --only/--skip
+[build] prerequisite npm_ci excluded: node_modules matches package-lock.json (450 installed packages checked on disk, 82 optional platform packages absent)
+[build] npm run build ... pass (exit 0, 8.12s)
+[typecheck_after_build] not_run: excluded by --only/--skip
+[protections_check] not_run: excluded by --only/--skip
+[launch_check] not_run: excluded by --only/--skip
+[verify_publication] not_run: excluded by --only/--skip
+[test_e2e] npm run test:e2e ... blocked (exit 1, 34.9s)
+[contracts_ajv] not_run: excluded by --only/--skip
+[contracts_validate_py] not_run: excluded by --only/--skip
+[build_graph_check] not_run: excluded by --only/--skip
+[base02_capture] not_run: excluded by --only/--skip
+[runner_selftest] not_run: excluded by --only/--skip
+
+step                     class                    exit  seconds
+npm_ci                   not_run                  -     -  (excluded by --only/--skip)
+lint                     not_run                  -     -  (excluded by --only/--skip)
+test                     not_run                  -     -  (excluded by --only/--skip)
+typecheck                not_run                  -     -  (excluded by --only/--skip)
+build                    pass                     0     8.12
+typecheck_after_build    not_run                  -     -  (excluded by --only/--skip)
+protections_check        not_run                  -     -  (excluded by --only/--skip)
+launch_check             not_run                  -     -  (excluded by --only/--skip)
+verify_publication       not_run                  -     -  (excluded by --only/--skip)
+test_e2e                 blocked                  1     34.9  (Playwright browser build not installed: all 38 failing test(s) failed to launch the browser (set PLAYWRIGHT_CHROMIUM_EXECUTABLE or run npx playwright install chromium))
+contracts_ajv            not_run                  -     -  (excluded by --only/--skip)
+contracts_validate_py    not_run                  -     -  (excluded by --only/--skip)
+build_graph_check        not_run                  -     -  (excluded by --only/--skip)
+base02_capture           not_run                  -     -  (excluded by --only/--skip)
+runner_selftest          not_run                  -     -  (excluded by --only/--skip)
+
+overall: pass_with_exceptions {"not_run":13,"pass":1,"blocked":1}; exit 0; results: /tmp/claude-0/-home-user/bb8d4187-6ae8-587b-a816-8153faeea853/scratchpad/f03r2/partial/i_default_browser/results.json
+### end: 2026-09-30T10:20:20Z
+### exit: 0
+### wall_s: 43.35
+
+### note: j) as i, with one browser-free API test made to fail (responsive.spec.ts 'review PDF…' expects 418 instead of 404); expect test_e2e fail, exit 1; mutation reverted with git checkout
+### command: git diff --stat; env -u PLAYWRIGHT_CHROMIUM_EXECUTABLE env -u GH_TOKEN -u GITHUB_TOKEN node tests/baseline/run.mjs --python /tmp/claude-0/-home-user/bb8d4187-6ae8-587b-a816-8153faeea853/scratchpad/venv-f02/bin/python --only build,test_e2e --out /tmp/claude-0/-home-user/bb8d4187-6ae8-587b-a816-8153faeea853/scratchpad/f03r2/partial/j_default_browser_api_fail
+### cwd: /tmp/claude-0/-home-user/bb8d4187-6ae8-587b-a816-8153faeea853/scratchpad/wt/integration
+### start: 2026-09-30T10:20:20Z
+ next-env.d.ts                    | 4 ++--
+ tests/browser/responsive.spec.ts | 2 +-
+ 2 files changed, 3 insertions(+), 3 deletions(-)
+[npm_ci] not_run: excluded by --only/--skip
+[lint] not_run: excluded by --only/--skip
+[test] not_run: excluded by --only/--skip
+[typecheck] not_run: excluded by --only/--skip
+[build] prerequisite npm_ci excluded: node_modules matches package-lock.json (450 installed packages checked on disk, 82 optional platform packages absent)
+[build] npm run build ... pass (exit 0, 8.26s)
+[typecheck_after_build] not_run: excluded by --only/--skip
+[protections_check] not_run: excluded by --only/--skip
+[launch_check] not_run: excluded by --only/--skip
+[verify_publication] not_run: excluded by --only/--skip
+[test_e2e] npm run test:e2e ... fail (exit 1, 35.85s)
+[contracts_ajv] not_run: excluded by --only/--skip
+[contracts_validate_py] not_run: excluded by --only/--skip
+[build_graph_check] not_run: excluded by --only/--skip
+[base02_capture] not_run: excluded by --only/--skip
+[runner_selftest] not_run: excluded by --only/--skip
+
+step                     class                    exit  seconds
+npm_ci                   not_run                  -     -  (excluded by --only/--skip)
+lint                     not_run                  -     -  (excluded by --only/--skip)
+test                     not_run                  -     -  (excluded by --only/--skip)
+typecheck                not_run                  -     -  (excluded by --only/--skip)
+build                    pass                     0     8.26
+typecheck_after_build    not_run                  -     -  (excluded by --only/--skip)
+protections_check        not_run                  -     -  (excluded by --only/--skip)
+launch_check             not_run                  -     -  (excluded by --only/--skip)
+verify_publication       not_run                  -     -  (excluded by --only/--skip)
+test_e2e                 fail                     1     35.85  (38 of 39 failing test(s) could not launch the browser, but 1 failed for another reason)
+contracts_ajv            not_run                  -     -  (excluded by --only/--skip)
+contracts_validate_py    not_run                  -     -  (excluded by --only/--skip)
+build_graph_check        not_run                  -     -  (excluded by --only/--skip)
+base02_capture           not_run                  -     -  (excluded by --only/--skip)
+runner_selftest          not_run                  -     -  (excluded by --only/--skip)
+
+overall: fail {"not_run":13,"pass":1,"fail":1}; exit 1; results: /tmp/claude-0/-home-user/bb8d4187-6ae8-587b-a816-8153faeea853/scratchpad/f03r2/partial/j_default_browser_api_fail/results.json
+### end: 2026-09-30T10:21:04Z
+### exit: 1
+### wall_s: 44.54
+
+### command: git status --porcelain; git rev-parse HEAD
+### cwd: /tmp/claude-0/-home-user/bb8d4187-6ae8-587b-a816-8153faeea853/scratchpad/wt/integration
+### start: 2026-09-30T10:21:04Z
+ M next-env.d.ts
+b0bc6cf634b0b5498cc335da4d2d15da04276e3a
+### end: 2026-09-30T10:21:04Z
+### exit: 0
+### wall_s: 0.02
+
+### note: f2) f re-run without the trailing ls, so the record carries run.mjs's own exit code (expect 2); then the out dir is listed separately (expect absent)
+### command: env -u GH_TOKEN -u GITHUB_TOKEN node tests/baseline/run.mjs --only lnt --out /tmp/claude-0/-home-user/bb8d4187-6ae8-587b-a816-8153faeea853/scratchpad/f03r2/partial/f2_only_typo
+### cwd: /tmp/claude-0/-home-user/bb8d4187-6ae8-587b-a816-8153faeea853/scratchpad/wt/integration
+### start: 2026-09-30T10:21:16Z
+run.mjs: unknown step id(s) in --only: lnt (known: npm_ci, lint, test, typecheck, build, typecheck_after_build, protections_check, launch_check, verify_publication, test_e2e, contracts_ajv, contracts_validate_py, build_graph_check, base02_capture, runner_selftest)
+usage: node tests/baseline/run.mjs [--out DIR] [--only id,id] [--skip id,id] [--python BIN] [--list]
+### end: 2026-09-30T10:21:16Z
+### exit: 2
+### wall_s: 0.09
+
+### command: test -e /tmp/claude-0/-home-user/bb8d4187-6ae8-587b-a816-8153faeea853/scratchpad/f03r2/partial/f2_only_typo && echo present || echo absent
+### cwd: /tmp/claude-0/-home-user/bb8d4187-6ae8-587b-a816-8153faeea853/scratchpad/wt/integration
+### start: 2026-09-30T10:21:16Z
+absent
+### end: 2026-09-30T10:21:16Z
+### exit: 0
+### wall_s: 0.01
+

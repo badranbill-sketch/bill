@@ -1,0 +1,105 @@
+### command: mv .orchestration/contracts/examples/invalid/workshop-inputs/extra-pii-email.json .orchestration/contracts/examples/valid/workshop-inputs/; env -u GH_TOKEN -u GITHUB_TOKEN node tests/baseline/run.mjs --python /tmp/claude-0/-home-user/bb8d4187-6ae8-587b-a816-8153faeea853/scratchpad/venv-f02/bin/python --only contracts_ajv --out /tmp/claude-0/-home-user/bb8d4187-6ae8-587b-a816-8153faeea853/scratchpad/a6f03-2/partial/r1_contracts_mutated | tail -4; ec=${PIPESTATUS[0]}; git checkout -- .orchestration/contracts && git clean -fdq .orchestration/contracts; echo porcelain_orch=$(git status --porcelain .orchestration | wc -l); python3 -c "import json;r=json.load(open('/tmp/claude-0/-home-user/bb8d4187-6ae8-587b-a816-8153faeea853/scratchpad/a6f03-2/partial/r1_contracts_mutated/results.json'));print('overall',r['overall'],'exit',r['exit_code'],[ (s['id'],s['classification']) for s in r['steps'] if not s.get('excluded')])"
+### cwd: /tmp/claude-0/-home-user/bb8d4187-6ae8-587b-a816-8153faeea853/scratchpad/wt/a6-f03-2
+### start: 2026-09-30T10:35:52Z
+--- output ---
+base02_capture           not_run                  -     -  (excluded by --only/--skip)
+runner_selftest          not_run                  -     -  (excluded by --only/--skip)
+
+overall: fail {"not_run":14,"fail":1}; exit 1; results: /tmp/claude-0/-home-user/bb8d4187-6ae8-587b-a816-8153faeea853/scratchpad/a6f03-2/partial/r1_contracts_mutated/results.json
+porcelain_orch=0
+overall fail exit 1 [('contracts_ajv', 'fail')]
+--- end ---
+### exit: 0
+### wall_s: 2.3
+
+### command: env -u GH_TOKEN -u GITHUB_TOKEN node tests/baseline/run.mjs --python /tmp/claude-0/-home-user/bb8d4187-6ae8-587b-a816-8153faeea853/scratchpad/venv-f02/bin/python --only lint,test --out /tmp/claude-0/-home-user/bb8d4187-6ae8-587b-a816-8153faeea853/scratchpad/a6f03-2/partial/r2_only_lint_test | tail -3; python3 -c "import json;r=json.load(open('/tmp/claude-0/-home-user/bb8d4187-6ae8-587b-a816-8153faeea853/scratchpad/a6f03-2/partial/r2_only_lint_test/results.json'));print('overall',r['overall'],'exit',r['exit_code'],[ (s['id'],s['classification'],s.get('exit_code')) for s in r['steps'] if not s.get('excluded')])"
+### cwd: /tmp/claude-0/-home-user/bb8d4187-6ae8-587b-a816-8153faeea853/scratchpad/wt/a6-f03-2
+### start: 2026-09-30T10:35:54Z
+--- output ---
+runner_selftest          not_run                  -     -  (excluded by --only/--skip)
+
+overall: pass_with_exceptions {"not_run":13,"pass":2}; exit 0; results: /tmp/claude-0/-home-user/bb8d4187-6ae8-587b-a816-8153faeea853/scratchpad/a6f03-2/partial/r2_only_lint_test/results.json
+overall pass_with_exceptions exit 0 [('lint', 'pass', 0), ('test', 'pass', 0)]
+--- end ---
+### exit: 0
+### wall_s: 22.05
+
+### command: printf 'const x = ;\n' > app/__a6v2_broken.ts; env -u GH_TOKEN -u GITHUB_TOKEN node tests/baseline/run.mjs --python /tmp/claude-0/-home-user/bb8d4187-6ae8-587b-a816-8153faeea853/scratchpad/venv-f02/bin/python --only lint,test --out /tmp/claude-0/-home-user/bb8d4187-6ae8-587b-a816-8153faeea853/scratchpad/a6f03-2/partial/r3_only_lint_test_broken | tail -3; rm -f app/__a6v2_broken.ts; python3 -c "import json;r=json.load(open('/tmp/claude-0/-home-user/bb8d4187-6ae8-587b-a816-8153faeea853/scratchpad/a6f03-2/partial/r3_only_lint_test_broken/results.json'));print('overall',r['overall'],'exit',r['exit_code'],[ (s['id'],s['classification'],s.get('exit_code')) for s in r['steps'] if not s.get('excluded')])"
+### cwd: /tmp/claude-0/-home-user/bb8d4187-6ae8-587b-a816-8153faeea853/scratchpad/wt/a6-f03-2
+### start: 2026-09-30T10:36:16Z
+--- output ---
+runner_selftest          not_run                  -     -  (excluded by --only/--skip)
+
+overall: fail {"not_run":13,"fail":1,"pass":1}; exit 1; results: /tmp/claude-0/-home-user/bb8d4187-6ae8-587b-a816-8153faeea853/scratchpad/a6f03-2/partial/r3_only_lint_test_broken/results.json
+overall fail exit 1 [('lint', 'fail', 1), ('test', 'pass', 0)]
+--- end ---
+### exit: 0
+### wall_s: 19.02
+
+### command: env -u GH_TOKEN -u GITHUB_TOKEN node tests/baseline/run.mjs --python /tmp/claude-0/-home-user/bb8d4187-6ae8-587b-a816-8153faeea853/scratchpad/venv-f02/bin/python --only test_e2e --out /tmp/claude-0/-home-user/bb8d4187-6ae8-587b-a816-8153faeea853/scratchpad/a6f03-2/partial/r4_only_e2e | tail -3; python3 -c "import json;r=json.load(open('/tmp/claude-0/-home-user/bb8d4187-6ae8-587b-a816-8153faeea853/scratchpad/a6f03-2/partial/r4_only_e2e/results.json'));print('overall',r['overall'],'exit',r['exit_code'],r['requested_not_run'])"
+### cwd: /tmp/claude-0/-home-user/bb8d4187-6ae8-587b-a816-8153faeea853/scratchpad/wt/a6-f03-2
+### start: 2026-09-30T10:36:35Z
+--- output ---
+requested but not run: test_e2e (overall "incomplete" unless a step failed)
+
+overall: incomplete {"not_run":15}; exit 3; results: /tmp/claude-0/-home-user/bb8d4187-6ae8-587b-a816-8153faeea853/scratchpad/a6f03-2/partial/r4_only_e2e/results.json
+overall incomplete exit 3 ['test_e2e']
+--- end ---
+### exit: 0
+### wall_s: 0.31
+
+### command: env -u GH_TOKEN -u GITHUB_TOKEN node tests/baseline/run.mjs --python /tmp/claude-0/-home-user/bb8d4187-6ae8-587b-a816-8153faeea853/scratchpad/venv-f02/bin/python --only lnt --out /tmp/claude-0/-home-user/bb8d4187-6ae8-587b-a816-8153faeea853/scratchpad/a6f03-2/partial/r5_typo; echo "exit=$?"; ls -d /tmp/claude-0/-home-user/bb8d4187-6ae8-587b-a816-8153faeea853/scratchpad/a6f03-2/partial/r5_typo 2>&1
+### cwd: /tmp/claude-0/-home-user/bb8d4187-6ae8-587b-a816-8153faeea853/scratchpad/wt/a6-f03-2
+### start: 2026-09-30T10:36:36Z
+--- output ---
+run.mjs: unknown step id(s) in --only: lnt (known: npm_ci, lint, test, typecheck, build, typecheck_after_build, protections_check, launch_check, verify_publication, test_e2e, contracts_ajv, contracts_validate_py, build_graph_check, base02_capture, runner_selftest)
+usage: node tests/baseline/run.mjs [--out DIR] [--only id,id] [--skip id,id] [--python BIN] [--list]
+exit=2
+ls: cannot access '/tmp/claude-0/-home-user/bb8d4187-6ae8-587b-a816-8153faeea853/scratchpad/a6f03-2/partial/r5_typo': No such file or directory
+--- end ---
+### exit: 2
+### wall_s: 0.09
+
+### command: env -u GH_TOKEN -u GITHUB_TOKEN node tests/baseline/run.mjs --python /tmp/claude-0/-home-user/bb8d4187-6ae8-587b-a816-8153faeea853/scratchpad/venv-f02/bin/python --only --out /tmp/claude-0/-home-user/bb8d4187-6ae8-587b-a816-8153faeea853/scratchpad/a6f03-2/partial/r6_novalue; echo "exit=$?"; ls -d /tmp/claude-0/-home-user/bb8d4187-6ae8-587b-a816-8153faeea853/scratchpad/a6f03-2/partial/r6_novalue 2>&1
+### cwd: /tmp/claude-0/-home-user/bb8d4187-6ae8-587b-a816-8153faeea853/scratchpad/wt/a6-f03-2
+### start: 2026-09-30T10:36:36Z
+--- output ---
+run.mjs: --only needs a value
+usage: node tests/baseline/run.mjs [--out DIR] [--only id,id] [--skip id,id] [--python BIN] [--list]
+exit=2
+ls: cannot access '/tmp/claude-0/-home-user/bb8d4187-6ae8-587b-a816-8153faeea853/scratchpad/a6f03-2/partial/r6_novalue': No such file or directory
+--- end ---
+### exit: 2
+### wall_s: 0.07
+
+### command: env -u GH_TOKEN -u GITHUB_TOKEN node tests/baseline/run.mjs --python /tmp/claude-0/-home-user/bb8d4187-6ae8-587b-a816-8153faeea853/scratchpad/venv-f02/bin/python --skip npm_ci,lint,test,typecheck,build,typecheck_after_build,protections_check,launch_check,verify_publication,test_e2e,contracts_ajv,contracts_validate_py,build_graph_check,base02_capture,runner_selftest --out /tmp/claude-0/-home-user/bb8d4187-6ae8-587b-a816-8153faeea853/scratchpad/a6f03-2/partial/r7_skip_all | tail -2; echo "exit=${PIPESTATUS[0]}"
+### cwd: /tmp/claude-0/-home-user/bb8d4187-6ae8-587b-a816-8153faeea853/scratchpad/wt/a6-f03-2
+### start: 2026-09-30T10:36:36Z
+--- output ---
+
+overall: incomplete {"not_run":15}; exit 3; results: /tmp/claude-0/-home-user/bb8d4187-6ae8-587b-a816-8153faeea853/scratchpad/a6f03-2/partial/r7_skip_all/results.json
+exit=3
+--- end ---
+### exit: 0
+### wall_s: 0.31
+
+### command: env -u GH_TOKEN -u GITHUB_TOKEN node tests/baseline/run.mjs --python /tmp/claude-0/-home-user/bb8d4187-6ae8-587b-a816-8153faeea853/scratchpad/venv-f02/bin/python --bogus; echo "exit=$?"
+### cwd: /tmp/claude-0/-home-user/bb8d4187-6ae8-587b-a816-8153faeea853/scratchpad/wt/a6-f03-2
+### start: 2026-09-30T10:36:36Z
+--- output ---
+run.mjs: unknown option --bogus
+usage: node tests/baseline/run.mjs [--out DIR] [--only id,id] [--skip id,id] [--python BIN] [--list]
+exit=2
+--- end ---
+### exit: 0
+### wall_s: 0.08
+
+### command: git status --porcelain
+### cwd: /tmp/claude-0/-home-user/bb8d4187-6ae8-587b-a816-8153faeea853/scratchpad/wt/a6-f03-2
+### start: 2026-09-30T10:36:36Z
+--- output ---
+ M next-env.d.ts
+--- end ---
+### exit: 0
+### wall_s: 0.01
+

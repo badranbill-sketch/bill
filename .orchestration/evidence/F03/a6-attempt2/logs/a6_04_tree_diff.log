@@ -1,0 +1,60 @@
+### command: echo '# name-status counts codex..integration'; git diff --name-status origin/codex/desktop-iphone-unified..integration | cut -f1 | sort | uniq -c; echo '# non-added paths'; git diff --name-status origin/codex/desktop-iphone-unified..integration | grep -v '^A'; echo '# added outside .orchestration'; git diff --name-status --diff-filter=A origin/codex/desktop-iphone-unified..integration | grep -v '	.orchestration/'; echo '# .gitignore diff'; git diff origin/codex/desktop-iphone-unified..integration -- .gitignore; echo '# ink-sheet vs guide'; git diff origin/guide/pre-retirement-guide integration -- scripts/ink-sheet.tsx | wc -l; echo '# grep ink-sheet callers'; git grep -n 'ink-sheet' integration -- ':!.orchestration' | head
+### cwd: /home/user/bill
+### start: 2026-09-30T10:29:19Z
+--- output ---
+# name-status counts codex..integration
+    816 A
+      3 M
+# non-added paths
+M	.gitignore
+M	package-lock.json
+M	package.json
+# added outside .orchestration
+A	guide/README.md
+A	guide/art/charts.tsx
+A	guide/art/containers.tsx
+A	guide/art/cover.tsx
+A	guide/art/harbour.tsx
+A	guide/art/horizons.tsx
+A	guide/art/index.tsx
+A	guide/art/kit.tsx
+A	guide/art/plans.tsx
+A	guide/art/porch.tsx
+A	guide/art/spending.tsx
+A	guide/art/storm.tsx
+A	guide/assets/grain.png
+A	guide/build.tsx
+A	guide/copy.ts
+A	guide/layout.tsx
+A	guide/marks.tsx
+A	guide/style.css
+A	scripts/ink-sheet.tsx
+A	tests/baseline/README.md
+A	tests/baseline/compare-screens.mjs
+A	tests/baseline/contracts.test.ts
+A	tests/baseline/playwright.baseline.config.ts
+A	tests/baseline/run.mjs
+A	tests/baseline/runner-lib.mjs
+A	tests/baseline/runner.test.mjs
+A	tests/baseline/screens.spec.ts
+# .gitignore diff
+diff --git a/.gitignore b/.gitignore
+index 1f035ac..9f3298d 100644
+--- a/.gitignore
++++ b/.gitignore
+@@ -6,3 +6,4 @@ test-results/
+ playwright-report/
+ *.tsbuildinfo
+ work/
++guide/dist/
+# ink-sheet vs guide
+0
+# grep ink-sheet callers
+integration:guide/README.md:32:- `art/*.tsx`: one file per drawing (below). Preview any of them with `scripts/ink-sheet.tsx`:
+integration:guide/README.md:35:node --import tsx scripts/ink-sheet.tsx /tmp/sheet.png 2 1 guide/art/index.tsx:Porch:fr guide/art/index.tsx:Horizons:en
+integration:scripts/ink-sheet.tsx:5: *   node --import tsx scripts/ink-sheet.tsx out.png [cols] [zoom] module:Export[:lang] …
+integration:scripts/ink-sheet.tsx:21:    "usage: ink-sheet.tsx <out.png> [cols] [zoom] module:Export[:lang] …",
+--- end ---
+### exit: 0
+### wall_s: 0.33
+

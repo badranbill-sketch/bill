@@ -1,0 +1,82 @@
+# F02a: result lines of contracts/validate.py BEFORE vs AFTER the fixtures were added (file counts stripped). date (UTC): 2026-09-30T09:00:20Z; cwd /home/user/bill/.orchestration/evidence/F02a
+$ diff <(grep -E '^(PASS|FAIL|KNOWN|INFO)' before-contracts-validate.log | sed 's/([0-9]* files)//') <(grep -E '^(PASS|FAIL|KNOWN|INFO)' after-contracts-validate.log | sed 's/([0-9]* files)//')
+300a301,304
+> PASS  WM37-today-dollar-pre-start-factor.json: input valid; output shape of workshop-math.md s12; clip W07
+> PASS  WM38-joint-owner-participant-age.json: input valid; output shape of workshop-math.md s12; clip W07
+> PASS  WM39-group-total-from-exact-values.json: input valid; output shape of workshop-math.md s12; clip W07
+> PASS  WM40-today-dollar-display-from-exact-gap.json: input valid; output shape of workshop-math.md s12; clip W07
+318c322
+< PASS  CX-17 no-financial-data boundary: PB-SCAN lists, schemas, examples, fixtures, data model, register [67 tokens, 16+14 whole keys; 41 workshop states caught; 133 columns; 10 addresses all on reserved domains]
+---
+> PASS  CX-17 no-financial-data boundary: PB-SCAN lists, schemas, examples, fixtures, data model, register [67 tokens, 16+14 whole keys; 45 workshop states caught; 133 columns; 10 addresses all on reserved domains]
+322c326
+< PASS  CX-21 example and fixture counts stated in the md files match the files [10 stated example counts + fixture and clip counts]
+---
+> FAIL  CX-21 example and fixture counts stated in the md files match the files [10 stated example counts + fixture and clip counts] :: ['workshop-math.md fixture count vs 40']
+324c328
+< PASS  CX-23 no credential-shaped string in any contract file [406 files scanned]
+---
+> PASS  CX-23 no credential-shaped string in any contract file [410 files scanned]
+352c356
+< PASS  CX-29 .orchestration/evidence/F02/math/validation.log: 49 recorded hashes match current files
+---
+> FAIL  CX-29 .orchestration/evidence/F02/math/validation.log: 49 recorded hashes match current files :: ['.orchestration/contracts/fixtures/workshop/index.json']
+[exit 1]  (1 = differences listed above)
+$ grep -E '^pass:' before-contracts-validate.log after-contracts-validate.log
+before-contracts-validate.log:pass: 350  fail: 1  known: 16  info: 2
+after-contracts-validate.log:pass: 352  fail: 3  known: 16  info: 2
+
+$ diff <(grep -E '^(PASS|FAIL)' before-lane-validate.log) <(grep -E '^(PASS|FAIL)' after-lane-validate.log)
+88c88,92
+< PASS compute_fixtures.py --check:   info WM17 float64 contrast: round(1000050*1.01) in IEEE double = 1010050; 1000050*1.01 = 1010050.5 (exact value 1010050.5) |   info WM24 float64 contrast: 1000800*1.025*1.025 = 1051465.4999999998; any float rounding gives 1051465 (wrong) | == check: 38 fixture files regenerated; differing: none; unexpected files: none
+---
+> PASS WM37-today-dollar-pre-start-factor.json: input valid; expected == recomputation (state=complete, clip=W07)
+> PASS WM38-joint-owner-participant-age.json: input valid; expected == recomputation (state=complete, clip=W07)
+> PASS WM39-group-total-from-exact-values.json: input valid; expected == recomputation (state=complete, clip=W07)
+> PASS WM40-today-dollar-display-from-exact-gap.json: input valid; expected == recomputation (state=complete, clip=W07)
+> FAIL compute_fixtures.py --check:   info WM17 float64 contrast: round(1000050*1.01) in IEEE double = 1010050; 1000050*1.01 = 1010050.5 (exact value 1010050.5) |   info WM24 float64 contrast: 1000800*1.025*1.025 = 1051465.4999999998; any float rounding gives 1051465 (wrong) | == check: 38 fixture files regenerated; differing: ['index.json']; unexpected files: ['WM37-today-dollar-pre-start-factor.json', 'WM38-joint-owner-participant-age.json', 'WM39-group-total-from-exact-values.json', 'WM40-today-dollar-display-from-exact-gap.json']
+[exit 1]
+$ diff <(grep -E '^(CAUGHT|MISSED|baseline)' before-a6-faults_run.log) <(grep -E '^(CAUGHT|MISSED|baseline)' after-a6-faults_run.log)
+2c2
+< CAUGHT  half_up                              WM04,WM17
+---
+> CAUGHT  half_up                              WM04,WM17,WM39
+4c4
+< CAUGHT  window_off_by_one                    WM01,WM02,WM03,WM04,WM05,WM06,WM07,WM08,WM09,WM10,WM11,WM12 (+22)
+---
+> CAUGHT  window_off_by_one                    WM01,WM02,WM03,WM04,WM05,WM06,WM07,WM08,WM09,WM10,WM11,WM12 (+26)
+7c7
+< MISSED  joint_uses_partner                   
+---
+> CAUGHT  joint_uses_partner                   WM38
+9,10c9,10
+< CAUGHT  today_dollars_as_nominal             WM04
+< MISSED  today_dollars_uses_q                 
+---
+> CAUGHT  today_dollars_as_nominal             WM04,WM37
+> CAUGHT  today_dollars_uses_q                 WM37
+20c20
+< CAUGHT  end_inclusive                        WM18,WM32,WM33
+---
+> CAUGHT  end_inclusive                        WM18,WM32,WM33,WM38
+23c23
+< CAUGHT  escalate_from_zero                   WM04,WM13
+---
+> CAUGHT  escalate_from_zero                   WM04,WM13,WM37
+26c26
+< MISSED  group_from_rounded_rows              
+---
+> CAUGHT  group_from_rounded_rows              WM37,WM39
+28c28
+< MISSED  deflate_rounded_gap                  
+---
+> CAUGHT  deflate_rounded_gap                  WM40
+30c30
+< CAUGHT  H_by_age                             CS06
+---
+> CAUGHT  H_by_age                             WM38,CS06
+42c42
+< CAUGHT  estimated_triggers_M                 WM01,WM03,WM04,WM05,WM09,WM10,WM11,WM12,WM13,WM14,WM16,WM17 (+24)
+---
+> CAUGHT  estimated_triggers_M                 WM01,WM03,WM04,WM05,WM09,WM10,WM11,WM12,WM13,WM14,WM16,WM17 (+28)
+[exit 1]

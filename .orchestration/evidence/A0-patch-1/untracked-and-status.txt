@@ -1,0 +1,69 @@
+# git status --short -- .orchestration (after A0 patch 1 attempt 2); date (UTC): 2026-09-30T11:39:37Z; HEAD d1a37cf3c17953529774e7801af8f0c16eedb925
+ M .orchestration/blockers.md
+ M .orchestration/contracts/README.md
+ M .orchestration/contracts/approval-scopes.md
+ M .orchestration/contracts/examples/invalid/worker-handoff/unknown-task-id.why.txt
+ M .orchestration/contracts/validate.py
+ M .orchestration/contracts/worker-handoff.schema.json
+ M .orchestration/contracts/workshop-math.md
+ M .orchestration/costs.json
+ M .orchestration/decisions.md
+ M .orchestration/evidence/F02/offers/gen_offers.py
+ M .orchestration/evidence/F02/offers/validate_offers.py
+?? .orchestration/evidence/A0-patch-1/
+?? .orchestration/reviews/A0-patch-1.md
+
+# untracked files (git ls-files --others --exclude-standard -- .orchestration)
+.orchestration/evidence/A0-patch-1/MANIFEST.sha256
+.orchestration/evidence/A0-patch-1/after-contracts-validate.log
+.orchestration/evidence/A0-patch-1/after-handoff-F00.log
+.orchestration/evidence/A0-patch-1/after-handoff-F02.log
+.orchestration/evidence/A0-patch-1/after-handoff-F02a.log
+.orchestration/evidence/A0-patch-1/after-handoff-F03.log
+.orchestration/evidence/A0-patch-1/after-lane-validators.log
+.orchestration/evidence/A0-patch-1/attempt2-after-contracts-validate.log
+.orchestration/evidence/A0-patch-1/attempt2-before-contracts-validate.log
+.orchestration/evidence/A0-patch-1/attempt2-handoff-F00.log
+.orchestration/evidence/A0-patch-1/attempt2-handoff-F02.log
+.orchestration/evidence/A0-patch-1/attempt2-handoff-F02a.log
+.orchestration/evidence/A0-patch-1/attempt2-handoff-F03.log
+.orchestration/evidence/A0-patch-1/attempt2-lane-validators.log
+.orchestration/evidence/A0-patch-1/attempt2-negative-controls-copy.log
+.orchestration/evidence/A0-patch-1/attempt2-rebless-repro.log
+.orchestration/evidence/A0-patch-1/attempt2-records-pinned.log
+.orchestration/evidence/A0-patch-1/before-contracts-validate.log
+.orchestration/evidence/A0-patch-1/before-handoff-F00.log
+.orchestration/evidence/A0-patch-1/before-handoff-F02.log
+.orchestration/evidence/A0-patch-1/before-handoff-F02a.log
+.orchestration/evidence/A0-patch-1/before-handoff-F03.log
+.orchestration/evidence/A0-patch-1/commands.log
+.orchestration/evidence/A0-patch-1/gen-offers-baseline.log
+.orchestration/evidence/A0-patch-1/gen-offers-outputs.after.sha256
+.orchestration/evidence/A0-patch-1/gen-offers-outputs.before.sha256
+.orchestration/evidence/A0-patch-1/gen-offers-regenerate.log
+.orchestration/evidence/A0-patch-1/make-records.log
+.orchestration/evidence/A0-patch-1/make_records.sh
+.orchestration/evidence/A0-patch-1/math-bundle.sha256.log
+.orchestration/evidence/A0-patch-1/negative-controls-copy.log
+.orchestration/evidence/A0-patch-1/patch.diff
+.orchestration/evidence/A0-patch-1/run_after.sh
+.orchestration/evidence/A0-patch-1/run_attempt2.sh
+.orchestration/evidence/A0-patch-1/untracked-and-status.txt
+.orchestration/evidence/A0-patch-1/validator-summaries.txt
+.orchestration/evidence/A0-patch-1/worker-handoff-1.1.sha256.log
+.orchestration/reviews/A0-patch-1.md
+# (MANIFEST.sha256 is rewritten last; reviews/A0-patch-1.md is A6's review, not written by A0)
+
+# git diff --stat -- .orchestration
+ .orchestration/blockers.md                         |   6 +-
+ .orchestration/contracts/README.md                 |  78 +++-
+ .orchestration/contracts/approval-scopes.md        |   6 +-
+ .../invalid/worker-handoff/unknown-task-id.why.txt |   2 +-
+ .orchestration/contracts/validate.py               | 416 ++++++++++++++++++---
+ .../contracts/worker-handoff.schema.json           |   8 +-
+ .orchestration/contracts/workshop-math.md          |  29 +-
+ .orchestration/costs.json                          |  24 +-
+ .orchestration/decisions.md                        |  10 +-
+ .orchestration/evidence/F02/offers/gen_offers.py   |  13 +-
+ .../evidence/F02/offers/validate_offers.py         |   7 +-
+ 11 files changed, 490 insertions(+), 109 deletions(-)

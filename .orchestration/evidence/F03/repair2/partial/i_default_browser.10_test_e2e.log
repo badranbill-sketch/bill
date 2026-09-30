@@ -1,0 +1,936 @@
+# step: test_e2e - Browser tests (verify.yml, playwright.config.ts)
+# command: npm run test:e2e
+# cwd: /tmp/claude-0/-home-user/bb8d4187-6ae8-587b-a816-8153faeea853/scratchpad/wt/integration
+# started: 2026-09-30T10:19:45.404Z
+# env overrides: {"NEXT_TELEMETRY_DISABLED":"1"}
+
+
+> bill-badran@1.0.0 test:e2e
+> playwright test
+
+
+Running 41 tests using 2 workers
+
+  ✘   1 tests/browser/responsive.spec.ts:7:5 › fr responsive conversion path at 320 (4ms)
+  ✘   2 tests/browser/site.spec.ts:11:5 › fr visual 1440, landmarks and accessibility (4ms)
+  ✘   3 tests/browser/responsive.spec.ts:7:5 › fr responsive conversion path at 390 (4ms)
+  ✘   4 tests/browser/site.spec.ts:11:5 › fr visual 390, landmarks and accessibility (4ms)
+  ✘   5 tests/browser/responsive.spec.ts:7:5 › fr responsive conversion path at 700 (5ms)
+  ✘   6 tests/browser/site.spec.ts:51:3 › fr routes, metadata, equivalent language links and internal links (3ms)
+  ✘   7 tests/browser/responsive.spec.ts:7:5 › fr responsive conversion path at 768 (4ms)
+  ✘   8 tests/browser/site.spec.ts:94:5 › fr layout all pages at 320 (4ms)
+  ✘   9 tests/browser/responsive.spec.ts:7:5 › fr responsive conversion path at 1440 (5ms)
+  ✘  10 tests/browser/site.spec.ts:94:5 › fr layout all pages at 375 (4ms)
+  ✘  11 tests/browser/responsive.spec.ts:7:5 › en responsive conversion path at 320 (3ms)
+  ✘  12 tests/browser/site.spec.ts:94:5 › fr layout all pages at 768 (5ms)
+  ✘  13 tests/browser/responsive.spec.ts:7:5 › en responsive conversion path at 390 (3ms)
+  ✘  14 tests/browser/site.spec.ts:11:5 › en visual 1440, landmarks and accessibility (5ms)
+  ✘  15 tests/browser/responsive.spec.ts:7:5 › en responsive conversion path at 700 (4ms)
+  ✘  16 tests/browser/site.spec.ts:11:5 › en visual 390, landmarks and accessibility (6ms)
+  ✘  17 tests/browser/responsive.spec.ts:7:5 › en responsive conversion path at 768 (5ms)
+  ✘  18 tests/browser/site.spec.ts:51:3 › en routes, metadata, equivalent language links and internal links (6ms)
+  ✘  19 tests/browser/responsive.spec.ts:7:5 › en responsive conversion path at 1440 (4ms)
+  ✓  20 tests/browser/responsive.spec.ts:81:1 › review PDF is unavailable outside review mode (144ms)
+  ✘  21 tests/browser/site.spec.ts:94:5 › en layout all pages at 320 (4ms)
+  ✘  22 tests/browser/site.spec.ts:94:5 › en layout all pages at 375 (3ms)
+  ✘  23 tests/browser/site.spec.ts:94:5 › en layout all pages at 768 (5ms)
+  ✘  24 tests/browser/site.spec.ts:107:1 › keyboard menu focus, Escape, reduced motion and 200% text (3ms)
+  ✘  25 tests/browser/site.spec.ts:150:1 › checklist: no network or storage, editing, all yes, reset and print (3ms)
+  ✘  26 tests/browser/site.spec.ts:191:1 › fee inputs invalid states and table (4ms)
+  ✓  27 tests/browser/site.spec.ts:205:1 › protected review, public draft exclusions and assets (764ms)
+  ✘  28 tests/browser/site.spec.ts:246:1 › articles switch to exact translations and render safely (4ms)
+  ✘  29 tests/browser/site.spec.ts:255:1 › no JavaScript still renders substantive content and links (6ms)
+  ✘  30 tests/browser/site.spec.ts:266:1 › missing portrait has deliberate fallback; absent guides have no download claims (5ms)
+  ✘  31 tests/browser/site.spec.ts:283:1 › contact: accepted only after confirmed response; no duplicate click or quiz data (8ms)
+  ✘  32 tests/browser/site.spec.ts:322:3 › contact 400 validation retains message for retry (6ms)
+  ✘  33 tests/browser/site.spec.ts:322:3 › contact 429 rate_limited retains message for retry (4ms)
+  ✘  34 tests/browser/site.spec.ts:322:3 › contact 502 provider_error retains message for retry (3ms)
+  ✘  35 tests/browser/site.spec.ts:322:3 › contact 503 timeout retains message for retry (4ms)
+  ✘  36 tests/browser/site.spec.ts:342:1 › contact native invalid input and browser request timeout (5ms)
+  ✓  37 tests/browser/site.spec.ts:363:1 › API origin, length, schema and missing credentials (195ms)
+  ✘  38 tests/browser/site.spec.ts:401:1 › mountain ride: scrolling walks the hiker through four acts (2ms)
+  ✘  39 tests/browser/site.spec.ts:451:1 › mountain ride: reduced motion shows the four still panels (4ms)
+  ✘  40 tests/browser/site.spec.ts:474:1 › mountain ride: tabbing to the last act shows that act alone (4ms)
+  ✘  41 tests/browser/site.spec.ts:499:1 › narration: one English track that plays through the acts; none in French (7ms)
+
+
+  1) tests/browser/responsive.spec.ts:7:5 › fr responsive conversion path at 320 ───────────────────
+
+    Error: browserType.launch: Executable doesn't exist at /opt/pw-browsers/chromium_headless_shell-1243/chrome-headless-shell-linux64/chrome-headless-shell
+    ╔════════════════════════════════════════════════════════════╗
+    ║ Looks like Playwright was just installed or updated.       ║
+    ║ Please run the following command to download new browsers: ║
+    ║                                                            ║
+    ║     npx playwright install                                 ║
+    ║                                                            ║
+    ║ <3 Playwright Team                                         ║
+    ╚════════════════════════════════════════════════════════════╝
+
+    Error Context: test-results/responsive-fr-responsive-conversion-path-at-320/error-context.md
+
+    attachment #2: trace (application/zip) ─────────────────────────────────────────────────────────
+    test-results/responsive-fr-responsive-conversion-path-at-320/trace.zip
+    Usage:
+
+        npx playwright show-trace test-results/responsive-fr-responsive-conversion-path-at-320/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  2) tests/browser/responsive.spec.ts:7:5 › fr responsive conversion path at 390 ───────────────────
+
+    Error: browserType.launch: Executable doesn't exist at /opt/pw-browsers/chromium_headless_shell-1243/chrome-headless-shell-linux64/chrome-headless-shell
+    ╔════════════════════════════════════════════════════════════╗
+    ║ Looks like Playwright was just installed or updated.       ║
+    ║ Please run the following command to download new browsers: ║
+    ║                                                            ║
+    ║     npx playwright install                                 ║
+    ║                                                            ║
+    ║ <3 Playwright Team                                         ║
+    ╚════════════════════════════════════════════════════════════╝
+
+    Error Context: test-results/responsive-fr-responsive-conversion-path-at-390/error-context.md
+
+    attachment #2: trace (application/zip) ─────────────────────────────────────────────────────────
+    test-results/responsive-fr-responsive-conversion-path-at-390/trace.zip
+    Usage:
+
+        npx playwright show-trace test-results/responsive-fr-responsive-conversion-path-at-390/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  3) tests/browser/responsive.spec.ts:7:5 › fr responsive conversion path at 700 ───────────────────
+
+    Error: browserType.launch: Executable doesn't exist at /opt/pw-browsers/chromium_headless_shell-1243/chrome-headless-shell-linux64/chrome-headless-shell
+    ╔════════════════════════════════════════════════════════════╗
+    ║ Looks like Playwright was just installed or updated.       ║
+    ║ Please run the following command to download new browsers: ║
+    ║                                                            ║
+    ║     npx playwright install                                 ║
+    ║                                                            ║
+    ║ <3 Playwright Team                                         ║
+    ╚════════════════════════════════════════════════════════════╝
+
+    Error Context: test-results/responsive-fr-responsive-conversion-path-at-700/error-context.md
+
+    attachment #2: trace (application/zip) ─────────────────────────────────────────────────────────
+    test-results/responsive-fr-responsive-conversion-path-at-700/trace.zip
+    Usage:
+
+        npx playwright show-trace test-results/responsive-fr-responsive-conversion-path-at-700/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  4) tests/browser/responsive.spec.ts:7:5 › fr responsive conversion path at 768 ───────────────────
+
+    Error: browserType.launch: Executable doesn't exist at /opt/pw-browsers/chromium_headless_shell-1243/chrome-headless-shell-linux64/chrome-headless-shell
+    ╔════════════════════════════════════════════════════════════╗
+    ║ Looks like Playwright was just installed or updated.       ║
+    ║ Please run the following command to download new browsers: ║
+    ║                                                            ║
+    ║     npx playwright install                                 ║
+    ║                                                            ║
+    ║ <3 Playwright Team                                         ║
+    ╚════════════════════════════════════════════════════════════╝
+
+    Error Context: test-results/responsive-fr-responsive-conversion-path-at-768/error-context.md
+
+    attachment #2: trace (application/zip) ─────────────────────────────────────────────────────────
+    test-results/responsive-fr-responsive-conversion-path-at-768/trace.zip
+    Usage:
+
+        npx playwright show-trace test-results/responsive-fr-responsive-conversion-path-at-768/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  5) tests/browser/responsive.spec.ts:7:5 › fr responsive conversion path at 1440 ──────────────────
+
+    Error: browserType.launch: Executable doesn't exist at /opt/pw-browsers/chromium_headless_shell-1243/chrome-headless-shell-linux64/chrome-headless-shell
+    ╔════════════════════════════════════════════════════════════╗
+    ║ Looks like Playwright was just installed or updated.       ║
+    ║ Please run the following command to download new browsers: ║
+    ║                                                            ║
+    ║     npx playwright install                                 ║
+    ║                                                            ║
+    ║ <3 Playwright Team                                         ║
+    ╚════════════════════════════════════════════════════════════╝
+
+    Error Context: test-results/responsive-fr-responsive-conversion-path-at-1440/error-context.md
+
+    attachment #2: trace (application/zip) ─────────────────────────────────────────────────────────
+    test-results/responsive-fr-responsive-conversion-path-at-1440/trace.zip
+    Usage:
+
+        npx playwright show-trace test-results/responsive-fr-responsive-conversion-path-at-1440/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  6) tests/browser/responsive.spec.ts:7:5 › en responsive conversion path at 320 ───────────────────
+
+    Error: browserType.launch: Executable doesn't exist at /opt/pw-browsers/chromium_headless_shell-1243/chrome-headless-shell-linux64/chrome-headless-shell
+    ╔════════════════════════════════════════════════════════════╗
+    ║ Looks like Playwright was just installed or updated.       ║
+    ║ Please run the following command to download new browsers: ║
+    ║                                                            ║
+    ║     npx playwright install                                 ║
+    ║                                                            ║
+    ║ <3 Playwright Team                                         ║
+    ╚════════════════════════════════════════════════════════════╝
+
+    Error Context: test-results/responsive-en-responsive-conversion-path-at-320/error-context.md
+
+    attachment #2: trace (application/zip) ─────────────────────────────────────────────────────────
+    test-results/responsive-en-responsive-conversion-path-at-320/trace.zip
+    Usage:
+
+        npx playwright show-trace test-results/responsive-en-responsive-conversion-path-at-320/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  7) tests/browser/responsive.spec.ts:7:5 › en responsive conversion path at 390 ───────────────────
+
+    Error: browserType.launch: Executable doesn't exist at /opt/pw-browsers/chromium_headless_shell-1243/chrome-headless-shell-linux64/chrome-headless-shell
+    ╔════════════════════════════════════════════════════════════╗
+    ║ Looks like Playwright was just installed or updated.       ║
+    ║ Please run the following command to download new browsers: ║
+    ║                                                            ║
+    ║     npx playwright install                                 ║
+    ║                                                            ║
+    ║ <3 Playwright Team                                         ║
+    ╚════════════════════════════════════════════════════════════╝
+
+    Error Context: test-results/responsive-en-responsive-conversion-path-at-390/error-context.md
+
+    attachment #2: trace (application/zip) ─────────────────────────────────────────────────────────
+    test-results/responsive-en-responsive-conversion-path-at-390/trace.zip
+    Usage:
+
+        npx playwright show-trace test-results/responsive-en-responsive-conversion-path-at-390/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  8) tests/browser/responsive.spec.ts:7:5 › en responsive conversion path at 700 ───────────────────
+
+    Error: browserType.launch: Executable doesn't exist at /opt/pw-browsers/chromium_headless_shell-1243/chrome-headless-shell-linux64/chrome-headless-shell
+    ╔════════════════════════════════════════════════════════════╗
+    ║ Looks like Playwright was just installed or updated.       ║
+    ║ Please run the following command to download new browsers: ║
+    ║                                                            ║
+    ║     npx playwright install                                 ║
+    ║                                                            ║
+    ║ <3 Playwright Team                                         ║
+    ╚════════════════════════════════════════════════════════════╝
+
+    Error Context: test-results/responsive-en-responsive-conversion-path-at-700/error-context.md
+
+    attachment #2: trace (application/zip) ─────────────────────────────────────────────────────────
+    test-results/responsive-en-responsive-conversion-path-at-700/trace.zip
+    Usage:
+
+        npx playwright show-trace test-results/responsive-en-responsive-conversion-path-at-700/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  9) tests/browser/responsive.spec.ts:7:5 › en responsive conversion path at 768 ───────────────────
+
+    Error: browserType.launch: Executable doesn't exist at /opt/pw-browsers/chromium_headless_shell-1243/chrome-headless-shell-linux64/chrome-headless-shell
+    ╔════════════════════════════════════════════════════════════╗
+    ║ Looks like Playwright was just installed or updated.       ║
+    ║ Please run the following command to download new browsers: ║
+    ║                                                            ║
+    ║     npx playwright install                                 ║
+    ║                                                            ║
+    ║ <3 Playwright Team                                         ║
+    ╚════════════════════════════════════════════════════════════╝
+
+    Error Context: test-results/responsive-en-responsive-conversion-path-at-768/error-context.md
+
+    attachment #2: trace (application/zip) ─────────────────────────────────────────────────────────
+    test-results/responsive-en-responsive-conversion-path-at-768/trace.zip
+    Usage:
+
+        npx playwright show-trace test-results/responsive-en-responsive-conversion-path-at-768/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  10) tests/browser/responsive.spec.ts:7:5 › en responsive conversion path at 1440 ─────────────────
+
+    Error: browserType.launch: Executable doesn't exist at /opt/pw-browsers/chromium_headless_shell-1243/chrome-headless-shell-linux64/chrome-headless-shell
+    ╔════════════════════════════════════════════════════════════╗
+    ║ Looks like Playwright was just installed or updated.       ║
+    ║ Please run the following command to download new browsers: ║
+    ║                                                            ║
+    ║     npx playwright install                                 ║
+    ║                                                            ║
+    ║ <3 Playwright Team                                         ║
+    ╚════════════════════════════════════════════════════════════╝
+
+    Error Context: test-results/responsive-en-responsive-conversion-path-at-1440/error-context.md
+
+    attachment #2: trace (application/zip) ─────────────────────────────────────────────────────────
+    test-results/responsive-en-responsive-conversion-path-at-1440/trace.zip
+    Usage:
+
+        npx playwright show-trace test-results/responsive-en-responsive-conversion-path-at-1440/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  11) tests/browser/site.spec.ts:11:5 › fr visual 1440, landmarks and accessibility ────────────────
+
+    Error: browserType.launch: Executable doesn't exist at /opt/pw-browsers/chromium_headless_shell-1243/chrome-headless-shell-linux64/chrome-headless-shell
+    ╔════════════════════════════════════════════════════════════╗
+    ║ Looks like Playwright was just installed or updated.       ║
+    ║ Please run the following command to download new browsers: ║
+    ║                                                            ║
+    ║     npx playwright install                                 ║
+    ║                                                            ║
+    ║ <3 Playwright Team                                         ║
+    ╚════════════════════════════════════════════════════════════╝
+
+    Error Context: test-results/site-fr-visual-1440-landmarks-and-accessibility/error-context.md
+
+    attachment #2: trace (application/zip) ─────────────────────────────────────────────────────────
+    test-results/site-fr-visual-1440-landmarks-and-accessibility/trace.zip
+    Usage:
+
+        npx playwright show-trace test-results/site-fr-visual-1440-landmarks-and-accessibility/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  12) tests/browser/site.spec.ts:11:5 › fr visual 390, landmarks and accessibility ─────────────────
+
+    Error: browserType.launch: Executable doesn't exist at /opt/pw-browsers/chromium_headless_shell-1243/chrome-headless-shell-linux64/chrome-headless-shell
+    ╔════════════════════════════════════════════════════════════╗
+    ║ Looks like Playwright was just installed or updated.       ║
+    ║ Please run the following command to download new browsers: ║
+    ║                                                            ║
+    ║     npx playwright install                                 ║
+    ║                                                            ║
+    ║ <3 Playwright Team                                         ║
+    ╚════════════════════════════════════════════════════════════╝
+
+    Error Context: test-results/site-fr-visual-390-landmarks-and-accessibility/error-context.md
+
+    attachment #2: trace (application/zip) ─────────────────────────────────────────────────────────
+    test-results/site-fr-visual-390-landmarks-and-accessibility/trace.zip
+    Usage:
+
+        npx playwright show-trace test-results/site-fr-visual-390-landmarks-and-accessibility/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  13) tests/browser/site.spec.ts:51:3 › fr routes, metadata, equivalent language links and internal links 
+
+    Error: browserType.launch: Executable doesn't exist at /opt/pw-browsers/chromium_headless_shell-1243/chrome-headless-shell-linux64/chrome-headless-shell
+    ╔════════════════════════════════════════════════════════════╗
+    ║ Looks like Playwright was just installed or updated.       ║
+    ║ Please run the following command to download new browsers: ║
+    ║                                                            ║
+    ║     npx playwright install                                 ║
+    ║                                                            ║
+    ║ <3 Playwright Team                                         ║
+    ╚════════════════════════════════════════════════════════════╝
+
+    Error Context: test-results/site-fr-routes-metadata-eq-4080d-ge-links-and-internal-links/error-context.md
+
+    attachment #2: trace (application/zip) ─────────────────────────────────────────────────────────
+    test-results/site-fr-routes-metadata-eq-4080d-ge-links-and-internal-links/trace.zip
+    Usage:
+
+        npx playwright show-trace test-results/site-fr-routes-metadata-eq-4080d-ge-links-and-internal-links/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  14) tests/browser/site.spec.ts:94:5 › fr layout all pages at 320 ─────────────────────────────────
+
+    Error: browserType.launch: Executable doesn't exist at /opt/pw-browsers/chromium_headless_shell-1243/chrome-headless-shell-linux64/chrome-headless-shell
+    ╔════════════════════════════════════════════════════════════╗
+    ║ Looks like Playwright was just installed or updated.       ║
+    ║ Please run the following command to download new browsers: ║
+    ║                                                            ║
+    ║     npx playwright install                                 ║
+    ║                                                            ║
+    ║ <3 Playwright Team                                         ║
+    ╚════════════════════════════════════════════════════════════╝
+
+    Error Context: test-results/site-fr-layout-all-pages-at-320/error-context.md
+
+    attachment #2: trace (application/zip) ─────────────────────────────────────────────────────────
+    test-results/site-fr-layout-all-pages-at-320/trace.zip
+    Usage:
+
+        npx playwright show-trace test-results/site-fr-layout-all-pages-at-320/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  15) tests/browser/site.spec.ts:94:5 › fr layout all pages at 375 ─────────────────────────────────
+
+    Error: browserType.launch: Executable doesn't exist at /opt/pw-browsers/chromium_headless_shell-1243/chrome-headless-shell-linux64/chrome-headless-shell
+    ╔════════════════════════════════════════════════════════════╗
+    ║ Looks like Playwright was just installed or updated.       ║
+    ║ Please run the following command to download new browsers: ║
+    ║                                                            ║
+    ║     npx playwright install                                 ║
+    ║                                                            ║
+    ║ <3 Playwright Team                                         ║
+    ╚════════════════════════════════════════════════════════════╝
+
+    Error Context: test-results/site-fr-layout-all-pages-at-375/error-context.md
+
+    attachment #2: trace (application/zip) ─────────────────────────────────────────────────────────
+    test-results/site-fr-layout-all-pages-at-375/trace.zip
+    Usage:
+
+        npx playwright show-trace test-results/site-fr-layout-all-pages-at-375/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  16) tests/browser/site.spec.ts:94:5 › fr layout all pages at 768 ─────────────────────────────────
+
+    Error: browserType.launch: Executable doesn't exist at /opt/pw-browsers/chromium_headless_shell-1243/chrome-headless-shell-linux64/chrome-headless-shell
+    ╔════════════════════════════════════════════════════════════╗
+    ║ Looks like Playwright was just installed or updated.       ║
+    ║ Please run the following command to download new browsers: ║
+    ║                                                            ║
+    ║     npx playwright install                                 ║
+    ║                                                            ║
+    ║ <3 Playwright Team                                         ║
+    ╚════════════════════════════════════════════════════════════╝
+
+    Error Context: test-results/site-fr-layout-all-pages-at-768/error-context.md
+
+    attachment #2: trace (application/zip) ─────────────────────────────────────────────────────────
+    test-results/site-fr-layout-all-pages-at-768/trace.zip
+    Usage:
+
+        npx playwright show-trace test-results/site-fr-layout-all-pages-at-768/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  17) tests/browser/site.spec.ts:11:5 › en visual 1440, landmarks and accessibility ────────────────
+
+    Error: browserType.launch: Executable doesn't exist at /opt/pw-browsers/chromium_headless_shell-1243/chrome-headless-shell-linux64/chrome-headless-shell
+    ╔════════════════════════════════════════════════════════════╗
+    ║ Looks like Playwright was just installed or updated.       ║
+    ║ Please run the following command to download new browsers: ║
+    ║                                                            ║
+    ║     npx playwright install                                 ║
+    ║                                                            ║
+    ║ <3 Playwright Team                                         ║
+    ╚════════════════════════════════════════════════════════════╝
+
+    Error Context: test-results/site-en-visual-1440-landmarks-and-accessibility/error-context.md
+
+    attachment #2: trace (application/zip) ─────────────────────────────────────────────────────────
+    test-results/site-en-visual-1440-landmarks-and-accessibility/trace.zip
+    Usage:
+
+        npx playwright show-trace test-results/site-en-visual-1440-landmarks-and-accessibility/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  18) tests/browser/site.spec.ts:11:5 › en visual 390, landmarks and accessibility ─────────────────
+
+    Error: browserType.launch: Executable doesn't exist at /opt/pw-browsers/chromium_headless_shell-1243/chrome-headless-shell-linux64/chrome-headless-shell
+    ╔════════════════════════════════════════════════════════════╗
+    ║ Looks like Playwright was just installed or updated.       ║
+    ║ Please run the following command to download new browsers: ║
+    ║                                                            ║
+    ║     npx playwright install                                 ║
+    ║                                                            ║
+    ║ <3 Playwright Team                                         ║
+    ╚════════════════════════════════════════════════════════════╝
+
+    Error Context: test-results/site-en-visual-390-landmarks-and-accessibility/error-context.md
+
+    attachment #2: trace (application/zip) ─────────────────────────────────────────────────────────
+    test-results/site-en-visual-390-landmarks-and-accessibility/trace.zip
+    Usage:
+
+        npx playwright show-trace test-results/site-en-visual-390-landmarks-and-accessibility/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  19) tests/browser/site.spec.ts:51:3 › en routes, metadata, equivalent language links and internal links 
+
+    Error: browserType.launch: Executable doesn't exist at /opt/pw-browsers/chromium_headless_shell-1243/chrome-headless-shell-linux64/chrome-headless-shell
+    ╔════════════════════════════════════════════════════════════╗
+    ║ Looks like Playwright was just installed or updated.       ║
+    ║ Please run the following command to download new browsers: ║
+    ║                                                            ║
+    ║     npx playwright install                                 ║
+    ║                                                            ║
+    ║ <3 Playwright Team                                         ║
+    ╚════════════════════════════════════════════════════════════╝
+
+    Error Context: test-results/site-en-routes-metadata-eq-a730a-ge-links-and-internal-links/error-context.md
+
+    attachment #2: trace (application/zip) ─────────────────────────────────────────────────────────
+    test-results/site-en-routes-metadata-eq-a730a-ge-links-and-internal-links/trace.zip
+    Usage:
+
+        npx playwright show-trace test-results/site-en-routes-metadata-eq-a730a-ge-links-and-internal-links/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  20) tests/browser/site.spec.ts:94:5 › en layout all pages at 320 ─────────────────────────────────
+
+    Error: browserType.launch: Executable doesn't exist at /opt/pw-browsers/chromium_headless_shell-1243/chrome-headless-shell-linux64/chrome-headless-shell
+    ╔════════════════════════════════════════════════════════════╗
+    ║ Looks like Playwright was just installed or updated.       ║
+    ║ Please run the following command to download new browsers: ║
+    ║                                                            ║
+    ║     npx playwright install                                 ║
+    ║                                                            ║
+    ║ <3 Playwright Team                                         ║
+    ╚════════════════════════════════════════════════════════════╝
+
+    Error Context: test-results/site-en-layout-all-pages-at-320/error-context.md
+
+    attachment #2: trace (application/zip) ─────────────────────────────────────────────────────────
+    test-results/site-en-layout-all-pages-at-320/trace.zip
+    Usage:
+
+        npx playwright show-trace test-results/site-en-layout-all-pages-at-320/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  21) tests/browser/site.spec.ts:94:5 › en layout all pages at 375 ─────────────────────────────────
+
+    Error: browserType.launch: Executable doesn't exist at /opt/pw-browsers/chromium_headless_shell-1243/chrome-headless-shell-linux64/chrome-headless-shell
+    ╔════════════════════════════════════════════════════════════╗
+    ║ Looks like Playwright was just installed or updated.       ║
+    ║ Please run the following command to download new browsers: ║
+    ║                                                            ║
+    ║     npx playwright install                                 ║
+    ║                                                            ║
+    ║ <3 Playwright Team                                         ║
+    ╚════════════════════════════════════════════════════════════╝
+
+    Error Context: test-results/site-en-layout-all-pages-at-375/error-context.md
+
+    attachment #2: trace (application/zip) ─────────────────────────────────────────────────────────
+    test-results/site-en-layout-all-pages-at-375/trace.zip
+    Usage:
+
+        npx playwright show-trace test-results/site-en-layout-all-pages-at-375/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  22) tests/browser/site.spec.ts:94:5 › en layout all pages at 768 ─────────────────────────────────
+
+    Error: browserType.launch: Executable doesn't exist at /opt/pw-browsers/chromium_headless_shell-1243/chrome-headless-shell-linux64/chrome-headless-shell
+    ╔════════════════════════════════════════════════════════════╗
+    ║ Looks like Playwright was just installed or updated.       ║
+    ║ Please run the following command to download new browsers: ║
+    ║                                                            ║
+    ║     npx playwright install                                 ║
+    ║                                                            ║
+    ║ <3 Playwright Team                                         ║
+    ╚════════════════════════════════════════════════════════════╝
+
+    Error Context: test-results/site-en-layout-all-pages-at-768/error-context.md
+
+    attachment #2: trace (application/zip) ─────────────────────────────────────────────────────────
+    test-results/site-en-layout-all-pages-at-768/trace.zip
+    Usage:
+
+        npx playwright show-trace test-results/site-en-layout-all-pages-at-768/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  23) tests/browser/site.spec.ts:107:1 › keyboard menu focus, Escape, reduced motion and 200% text ─
+
+    Error: browserType.launch: Executable doesn't exist at /opt/pw-browsers/chromium_headless_shell-1243/chrome-headless-shell-linux64/chrome-headless-shell
+    ╔════════════════════════════════════════════════════════════╗
+    ║ Looks like Playwright was just installed or updated.       ║
+    ║ Please run the following command to download new browsers: ║
+    ║                                                            ║
+    ║     npx playwright install                                 ║
+    ║                                                            ║
+    ║ <3 Playwright Team                                         ║
+    ╚════════════════════════════════════════════════════════════╝
+
+    Error Context: test-results/site-keyboard-menu-focus-Escape-reduced-motion-and-200-text/error-context.md
+
+    attachment #2: trace (application/zip) ─────────────────────────────────────────────────────────
+    test-results/site-keyboard-menu-focus-Escape-reduced-motion-and-200-text/trace.zip
+    Usage:
+
+        npx playwright show-trace test-results/site-keyboard-menu-focus-Escape-reduced-motion-and-200-text/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  24) tests/browser/site.spec.ts:150:1 › checklist: no network or storage, editing, all yes, reset and print 
+
+    Error: browserType.launch: Executable doesn't exist at /opt/pw-browsers/chromium_headless_shell-1243/chrome-headless-shell-linux64/chrome-headless-shell
+    ╔════════════════════════════════════════════════════════════╗
+    ║ Looks like Playwright was just installed or updated.       ║
+    ║ Please run the following command to download new browsers: ║
+    ║                                                            ║
+    ║     npx playwright install                                 ║
+    ║                                                            ║
+    ║ <3 Playwright Team                                         ║
+    ╚════════════════════════════════════════════════════════════╝
+
+    Error Context: test-results/site-checklist-no-network--16eca-ing-all-yes-reset-and-print/error-context.md
+
+    attachment #2: trace (application/zip) ─────────────────────────────────────────────────────────
+    test-results/site-checklist-no-network--16eca-ing-all-yes-reset-and-print/trace.zip
+    Usage:
+
+        npx playwright show-trace test-results/site-checklist-no-network--16eca-ing-all-yes-reset-and-print/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  25) tests/browser/site.spec.ts:191:1 › fee inputs invalid states and table ───────────────────────
+
+    Error: browserType.launch: Executable doesn't exist at /opt/pw-browsers/chromium_headless_shell-1243/chrome-headless-shell-linux64/chrome-headless-shell
+    ╔════════════════════════════════════════════════════════════╗
+    ║ Looks like Playwright was just installed or updated.       ║
+    ║ Please run the following command to download new browsers: ║
+    ║                                                            ║
+    ║     npx playwright install                                 ║
+    ║                                                            ║
+    ║ <3 Playwright Team                                         ║
+    ╚════════════════════════════════════════════════════════════╝
+
+    Error Context: test-results/site-fee-inputs-invalid-states-and-table/error-context.md
+
+    attachment #2: trace (application/zip) ─────────────────────────────────────────────────────────
+    test-results/site-fee-inputs-invalid-states-and-table/trace.zip
+    Usage:
+
+        npx playwright show-trace test-results/site-fee-inputs-invalid-states-and-table/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  26) tests/browser/site.spec.ts:246:1 › articles switch to exact translations and render safely ───
+
+    Error: browserType.launch: Executable doesn't exist at /opt/pw-browsers/chromium_headless_shell-1243/chrome-headless-shell-linux64/chrome-headless-shell
+    ╔════════════════════════════════════════════════════════════╗
+    ║ Looks like Playwright was just installed or updated.       ║
+    ║ Please run the following command to download new browsers: ║
+    ║                                                            ║
+    ║     npx playwright install                                 ║
+    ║                                                            ║
+    ║ <3 Playwright Team                                         ║
+    ╚════════════════════════════════════════════════════════════╝
+
+    Error Context: test-results/site-articles-switch-to-exact-translations-and-render-safely/error-context.md
+
+    attachment #2: trace (application/zip) ─────────────────────────────────────────────────────────
+    test-results/site-articles-switch-to-exact-translations-and-render-safely/trace.zip
+    Usage:
+
+        npx playwright show-trace test-results/site-articles-switch-to-exact-translations-and-render-safely/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  27) tests/browser/site.spec.ts:255:1 › no JavaScript still renders substantive content and links ─
+
+    Error: browserType.launch: Executable doesn't exist at /opt/pw-browsers/chromium_headless_shell-1243/chrome-headless-shell-linux64/chrome-headless-shell
+    ╔════════════════════════════════════════════════════════════╗
+    ║ Looks like Playwright was just installed or updated.       ║
+    ║ Please run the following command to download new browsers: ║
+    ║                                                            ║
+    ║     npx playwright install                                 ║
+    ║                                                            ║
+    ║ <3 Playwright Team                                         ║
+    ╚════════════════════════════════════════════════════════════╝
+
+    Error Context: test-results/site-no-JavaScript-still-r-03dd6-bstantive-content-and-links/error-context.md
+
+    attachment #2: trace (application/zip) ─────────────────────────────────────────────────────────
+    test-results/site-no-JavaScript-still-r-03dd6-bstantive-content-and-links/trace.zip
+    Usage:
+
+        npx playwright show-trace test-results/site-no-JavaScript-still-r-03dd6-bstantive-content-and-links/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  28) tests/browser/site.spec.ts:266:1 › missing portrait has deliberate fallback; absent guides have no download claims 
+
+    Error: browserType.launch: Executable doesn't exist at /opt/pw-browsers/chromium_headless_shell-1243/chrome-headless-shell-linux64/chrome-headless-shell
+    ╔════════════════════════════════════════════════════════════╗
+    ║ Looks like Playwright was just installed or updated.       ║
+    ║ Please run the following command to download new browsers: ║
+    ║                                                            ║
+    ║     npx playwright install                                 ║
+    ║                                                            ║
+    ║ <3 Playwright Team                                         ║
+    ╚════════════════════════════════════════════════════════════╝
+
+    Error Context: test-results/site-missing-portrait-has--22380-des-have-no-download-claims/error-context.md
+
+    attachment #2: trace (application/zip) ─────────────────────────────────────────────────────────
+    test-results/site-missing-portrait-has--22380-des-have-no-download-claims/trace.zip
+    Usage:
+
+        npx playwright show-trace test-results/site-missing-portrait-has--22380-des-have-no-download-claims/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  29) tests/browser/site.spec.ts:283:1 › contact: accepted only after confirmed response; no duplicate click or quiz data 
+
+    Error: browserType.launch: Executable doesn't exist at /opt/pw-browsers/chromium_headless_shell-1243/chrome-headless-shell-linux64/chrome-headless-shell
+    ╔════════════════════════════════════════════════════════════╗
+    ║ Looks like Playwright was just installed or updated.       ║
+    ║ Please run the following command to download new browsers: ║
+    ║                                                            ║
+    ║     npx playwright install                                 ║
+    ║                                                            ║
+    ║ <3 Playwright Team                                         ║
+    ╚════════════════════════════════════════════════════════════╝
+
+    Error Context: test-results/site-contact-accepted-only-4e7fd-uplicate-click-or-quiz-data/error-context.md
+
+    attachment #2: trace (application/zip) ─────────────────────────────────────────────────────────
+    test-results/site-contact-accepted-only-4e7fd-uplicate-click-or-quiz-data/trace.zip
+    Usage:
+
+        npx playwright show-trace test-results/site-contact-accepted-only-4e7fd-uplicate-click-or-quiz-data/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  30) tests/browser/site.spec.ts:322:3 › contact 400 validation retains message for retry ──────────
+
+    Error: browserType.launch: Executable doesn't exist at /opt/pw-browsers/chromium_headless_shell-1243/chrome-headless-shell-linux64/chrome-headless-shell
+    ╔════════════════════════════════════════════════════════════╗
+    ║ Looks like Playwright was just installed or updated.       ║
+    ║ Please run the following command to download new browsers: ║
+    ║                                                            ║
+    ║     npx playwright install                                 ║
+    ║                                                            ║
+    ║ <3 Playwright Team                                         ║
+    ╚════════════════════════════════════════════════════════════╝
+
+    Error Context: test-results/site-contact-400-validation-retains-message-for-retry/error-context.md
+
+    attachment #2: trace (application/zip) ─────────────────────────────────────────────────────────
+    test-results/site-contact-400-validation-retains-message-for-retry/trace.zip
+    Usage:
+
+        npx playwright show-trace test-results/site-contact-400-validation-retains-message-for-retry/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  31) tests/browser/site.spec.ts:322:3 › contact 429 rate_limited retains message for retry ────────
+
+    Error: browserType.launch: Executable doesn't exist at /opt/pw-browsers/chromium_headless_shell-1243/chrome-headless-shell-linux64/chrome-headless-shell
+    ╔════════════════════════════════════════════════════════════╗
+    ║ Looks like Playwright was just installed or updated.       ║
+    ║ Please run the following command to download new browsers: ║
+    ║                                                            ║
+    ║     npx playwright install                                 ║
+    ║                                                            ║
+    ║ <3 Playwright Team                                         ║
+    ╚════════════════════════════════════════════════════════════╝
+
+    Error Context: test-results/site-contact-429-rate-limited-retains-message-for-retry/error-context.md
+
+    attachment #2: trace (application/zip) ─────────────────────────────────────────────────────────
+    test-results/site-contact-429-rate-limited-retains-message-for-retry/trace.zip
+    Usage:
+
+        npx playwright show-trace test-results/site-contact-429-rate-limited-retains-message-for-retry/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  32) tests/browser/site.spec.ts:322:3 › contact 502 provider_error retains message for retry ──────
+
+    Error: browserType.launch: Executable doesn't exist at /opt/pw-browsers/chromium_headless_shell-1243/chrome-headless-shell-linux64/chrome-headless-shell
+    ╔════════════════════════════════════════════════════════════╗
+    ║ Looks like Playwright was just installed or updated.       ║
+    ║ Please run the following command to download new browsers: ║
+    ║                                                            ║
+    ║     npx playwright install                                 ║
+    ║                                                            ║
+    ║ <3 Playwright Team                                         ║
+    ╚════════════════════════════════════════════════════════════╝
+
+    Error Context: test-results/site-contact-502-provider-error-retains-message-for-retry/error-context.md
+
+    attachment #2: trace (application/zip) ─────────────────────────────────────────────────────────
+    test-results/site-contact-502-provider-error-retains-message-for-retry/trace.zip
+    Usage:
+
+        npx playwright show-trace test-results/site-contact-502-provider-error-retains-message-for-retry/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  33) tests/browser/site.spec.ts:322:3 › contact 503 timeout retains message for retry ─────────────
+
+    Error: browserType.launch: Executable doesn't exist at /opt/pw-browsers/chromium_headless_shell-1243/chrome-headless-shell-linux64/chrome-headless-shell
+    ╔════════════════════════════════════════════════════════════╗
+    ║ Looks like Playwright was just installed or updated.       ║
+    ║ Please run the following command to download new browsers: ║
+    ║                                                            ║
+    ║     npx playwright install                                 ║
+    ║                                                            ║
+    ║ <3 Playwright Team                                         ║
+    ╚════════════════════════════════════════════════════════════╝
+
+    Error Context: test-results/site-contact-503-timeout-retains-message-for-retry/error-context.md
+
+    attachment #2: trace (application/zip) ─────────────────────────────────────────────────────────
+    test-results/site-contact-503-timeout-retains-message-for-retry/trace.zip
+    Usage:
+
+        npx playwright show-trace test-results/site-contact-503-timeout-retains-message-for-retry/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  34) tests/browser/site.spec.ts:342:1 › contact native invalid input and browser request timeout ──
+
+    Error: browserType.launch: Executable doesn't exist at /opt/pw-browsers/chromium_headless_shell-1243/chrome-headless-shell-linux64/chrome-headless-shell
+    ╔════════════════════════════════════════════════════════════╗
+    ║ Looks like Playwright was just installed or updated.       ║
+    ║ Please run the following command to download new browsers: ║
+    ║                                                            ║
+    ║     npx playwright install                                 ║
+    ║                                                            ║
+    ║ <3 Playwright Team                                         ║
+    ╚════════════════════════════════════════════════════════════╝
+
+    Error Context: test-results/site-contact-native-invali-6450a-and-browser-request-timeout/error-context.md
+
+    attachment #2: trace (application/zip) ─────────────────────────────────────────────────────────
+    test-results/site-contact-native-invali-6450a-and-browser-request-timeout/trace.zip
+    Usage:
+
+        npx playwright show-trace test-results/site-contact-native-invali-6450a-and-browser-request-timeout/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  35) tests/browser/site.spec.ts:401:1 › mountain ride: scrolling walks the hiker through four acts 
+
+    Error: browserType.launch: Executable doesn't exist at /opt/pw-browsers/chromium_headless_shell-1243/chrome-headless-shell-linux64/chrome-headless-shell
+    ╔════════════════════════════════════════════════════════════╗
+    ║ Looks like Playwright was just installed or updated.       ║
+    ║ Please run the following command to download new browsers: ║
+    ║                                                            ║
+    ║     npx playwright install                                 ║
+    ║                                                            ║
+    ║ <3 Playwright Team                                         ║
+    ╚════════════════════════════════════════════════════════════╝
+
+    Error Context: test-results/site-mountain-ride-scrolli-1dccd-the-hiker-through-four-acts/error-context.md
+
+    attachment #2: trace (application/zip) ─────────────────────────────────────────────────────────
+    test-results/site-mountain-ride-scrolli-1dccd-the-hiker-through-four-acts/trace.zip
+    Usage:
+
+        npx playwright show-trace test-results/site-mountain-ride-scrolli-1dccd-the-hiker-through-four-acts/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  36) tests/browser/site.spec.ts:451:1 › mountain ride: reduced motion shows the four still panels ─
+
+    Error: browserType.launch: Executable doesn't exist at /opt/pw-browsers/chromium_headless_shell-1243/chrome-headless-shell-linux64/chrome-headless-shell
+    ╔════════════════════════════════════════════════════════════╗
+    ║ Looks like Playwright was just installed or updated.       ║
+    ║ Please run the following command to download new browsers: ║
+    ║                                                            ║
+    ║     npx playwright install                                 ║
+    ║                                                            ║
+    ║ <3 Playwright Team                                         ║
+    ╚════════════════════════════════════════════════════════════╝
+
+    Error Context: test-results/site-mountain-ride-reduced-25829-shows-the-four-still-panels/error-context.md
+
+    attachment #2: trace (application/zip) ─────────────────────────────────────────────────────────
+    test-results/site-mountain-ride-reduced-25829-shows-the-four-still-panels/trace.zip
+    Usage:
+
+        npx playwright show-trace test-results/site-mountain-ride-reduced-25829-shows-the-four-still-panels/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  37) tests/browser/site.spec.ts:474:1 › mountain ride: tabbing to the last act shows that act alone 
+
+    Error: browserType.launch: Executable doesn't exist at /opt/pw-browsers/chromium_headless_shell-1243/chrome-headless-shell-linux64/chrome-headless-shell
+    ╔════════════════════════════════════════════════════════════╗
+    ║ Looks like Playwright was just installed or updated.       ║
+    ║ Please run the following command to download new browsers: ║
+    ║                                                            ║
+    ║     npx playwright install                                 ║
+    ║                                                            ║
+    ║ <3 Playwright Team                                         ║
+    ╚════════════════════════════════════════════════════════════╝
+
+    Error Context: test-results/site-mountain-ride-tabbing-66eda-st-act-shows-that-act-alone/error-context.md
+
+    attachment #2: trace (application/zip) ─────────────────────────────────────────────────────────
+    test-results/site-mountain-ride-tabbing-66eda-st-act-shows-that-act-alone/trace.zip
+    Usage:
+
+        npx playwright show-trace test-results/site-mountain-ride-tabbing-66eda-st-act-shows-that-act-alone/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  38) tests/browser/site.spec.ts:499:1 › narration: one English track that plays through the acts; none in French 
+
+    Error: browserType.launch: Executable doesn't exist at /opt/pw-browsers/chromium_headless_shell-1243/chrome-headless-shell-linux64/chrome-headless-shell
+    ╔════════════════════════════════════════════════════════════╗
+    ║ Looks like Playwright was just installed or updated.       ║
+    ║ Please run the following command to download new browsers: ║
+    ║                                                            ║
+    ║     npx playwright install                                 ║
+    ║                                                            ║
+    ║ <3 Playwright Team                                         ║
+    ╚════════════════════════════════════════════════════════════╝
+
+    Error Context: test-results/site-narration-one-English-74a84-ugh-the-acts-none-in-French/error-context.md
+
+    attachment #2: trace (application/zip) ─────────────────────────────────────────────────────────
+    test-results/site-narration-one-English-74a84-ugh-the-acts-none-in-French/trace.zip
+    Usage:
+
+        npx playwright show-trace test-results/site-narration-one-English-74a84-ugh-the-acts-none-in-French/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  38 failed
+    tests/browser/responsive.spec.ts:7:5 › fr responsive conversion path at 320 ────────────────────
+    tests/browser/responsive.spec.ts:7:5 › fr responsive conversion path at 390 ────────────────────
+    tests/browser/responsive.spec.ts:7:5 › fr responsive conversion path at 700 ────────────────────
+    tests/browser/responsive.spec.ts:7:5 › fr responsive conversion path at 768 ────────────────────
+    tests/browser/responsive.spec.ts:7:5 › fr responsive conversion path at 1440 ───────────────────
+    tests/browser/responsive.spec.ts:7:5 › en responsive conversion path at 320 ────────────────────
+    tests/browser/responsive.spec.ts:7:5 › en responsive conversion path at 390 ────────────────────
+    tests/browser/responsive.spec.ts:7:5 › en responsive conversion path at 700 ────────────────────
+    tests/browser/responsive.spec.ts:7:5 › en responsive conversion path at 768 ────────────────────
+    tests/browser/responsive.spec.ts:7:5 › en responsive conversion path at 1440 ───────────────────
+    tests/browser/site.spec.ts:11:5 › fr visual 1440, landmarks and accessibility ──────────────────
+    tests/browser/site.spec.ts:11:5 › fr visual 390, landmarks and accessibility ───────────────────
+    tests/browser/site.spec.ts:51:3 › fr routes, metadata, equivalent language links and internal links 
+    tests/browser/site.spec.ts:94:5 › fr layout all pages at 320 ───────────────────────────────────
+    tests/browser/site.spec.ts:94:5 › fr layout all pages at 375 ───────────────────────────────────
+    tests/browser/site.spec.ts:94:5 › fr layout all pages at 768 ───────────────────────────────────
+    tests/browser/site.spec.ts:11:5 › en visual 1440, landmarks and accessibility ──────────────────
+    tests/browser/site.spec.ts:11:5 › en visual 390, landmarks and accessibility ───────────────────
+    tests/browser/site.spec.ts:51:3 › en routes, metadata, equivalent language links and internal links 
+    tests/browser/site.spec.ts:94:5 › en layout all pages at 320 ───────────────────────────────────
+    tests/browser/site.spec.ts:94:5 › en layout all pages at 375 ───────────────────────────────────
+    tests/browser/site.spec.ts:94:5 › en layout all pages at 768 ───────────────────────────────────
+    tests/browser/site.spec.ts:107:1 › keyboard menu focus, Escape, reduced motion and 200% text ───
+    tests/browser/site.spec.ts:150:1 › checklist: no network or storage, editing, all yes, reset and print 
+    tests/browser/site.spec.ts:191:1 › fee inputs invalid states and table ─────────────────────────
+    tests/browser/site.spec.ts:246:1 › articles switch to exact translations and render safely ─────
+    tests/browser/site.spec.ts:255:1 › no JavaScript still renders substantive content and links ───
+    tests/browser/site.spec.ts:266:1 › missing portrait has deliberate fallback; absent guides have no download claims 
+    tests/browser/site.spec.ts:283:1 › contact: accepted only after confirmed response; no duplicate click or quiz data 
+    tests/browser/site.spec.ts:322:3 › contact 400 validation retains message for retry ────────────
+    tests/browser/site.spec.ts:322:3 › contact 429 rate_limited retains message for retry ──────────
+    tests/browser/site.spec.ts:322:3 › contact 502 provider_error retains message for retry ────────
+    tests/browser/site.spec.ts:322:3 › contact 503 timeout retains message for retry ───────────────
+    tests/browser/site.spec.ts:342:1 › contact native invalid input and browser request timeout ────
+    tests/browser/site.spec.ts:401:1 › mountain ride: scrolling walks the hiker through four acts ──
+    tests/browser/site.spec.ts:451:1 › mountain ride: reduced motion shows the four still panels ───
+    tests/browser/site.spec.ts:474:1 › mountain ride: tabbing to the last act shows that act alone ─
+    tests/browser/site.spec.ts:499:1 › narration: one English track that plays through the acts; none in French 
+  3 passed (33.7s)
+
+# finished: 2026-09-30T10:20:20.304Z
+# exit: 1
+# seconds: 34.90

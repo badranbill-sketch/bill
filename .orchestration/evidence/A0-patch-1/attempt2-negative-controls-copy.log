@@ -1,0 +1,60 @@
+# A0 patch 1 attempt 2: negative controls on scratch copies of contracts/ (validate.py --contracts-dir). date (UTC): 2026-09-30T11:37:43Z
+# expected: nc0 (unmodified copy) exit 0; every other case exit 1 with the named check failing
+
+== nc0: unmodified copy of the current contracts/
+[exit 0]
+pass: 361  fail: 0  known: 16  info: 2
+exit_code=0
+
+== nc1: contracts/ at HEAD d1a37cf (before A0 patch 1), checked by this validate.py
+[exit 1]
+pass: 350  fail: 11  known: 16  info: 2
+exit_code=1
+  FAIL README declares contract_set_version 1.1 ... :: 1.0
+  FAIL worker-handoff.schema.json $id = https://bill.contracts.local/worker-handoff/1.1 ... :: https://bill.contracts.local/worker-handoff/1.0
+  FAIL CX-01 versions: set = highest contract version; each contract's $id, title, const and index row carr ... :: ['worker-handoff $id https://bill.contracts.local/worker-handoff/1.0 (its version is 1.1)', "worker-handoff title 'Worker handoff 1.0' (its version is 1.1)", 'README row 12 (Worker handoff 1.0) says 1.0; worker-handoff is 1.1']
+  FAIL CX-18 check IDs, fixture coverage and the handoff task_id pattern match the catalog and tasks.json [ ... :: ["worker-handoff task_id pattern vs tasks.json: ['F02a']"]
+  FAIL CX-21 example and fixture counts stated in the md files match the files [10 stated example counts; 4 ... :: ['workshop-math.md fixture count vs 40', 'workshop-math.md fixture range vs files WM01-WM40 (40 files)', "workshop-math.md s10 table vs files: missing ['WM37', 'WM38', 'WM39', 'WM40'], extra []", 'README row 14 fixture range WM36 vs files WM01-WM40']
+  FAIL CX-29 .orchestration/evidence/F02/math/validation.log: 49 recorded hashes, 48 match; 1 superseded an ... :: ['record .orchestration/evidence/A0-patch-1/math-bundle.sha256.log (A0 patch 1 (D-074)) is stale for workshop-math.md']
+  FAIL CX-29 .orchestration/evidence/F02/offers/validation.log: 139 recorded hashes, 139 match; 0 supersede ... :: ['record .orchestration/evidence/A0-patch-1/worker-handoff-1.1.sha256.log (A0 patch 1 (D-074)) is stale for approval-scopes.md', 'record .orchestration/evidence/A0-patch-1/worker-handoff-1.1.sha256.log (A0 patch 1 (D-074)) is stale for examples/invalid/worker-handoff/unknown-task-id.why.txt', 'record .orchestration/evidence/A0-patch-1/worker-handoff-1.1.sha256.log (A0 patch 1 (D-074)) is stale for worker-handoff.schema.json']
+  FAIL NC-15 a task_id pattern with a suffix on every ID, one without F02a, and a suffixed task ID that tas ... :: 
+  FAIL NC-16 a s10 count and range of 36, a s10 table without WM40 and a README row 14 range ending WM36 ar ... :: ['workshop-math.md fixture count vs 40', 'workshop-math.md fixture range vs files WM01-WM40 (40 files)', "workshop-math.md s10 table vs files: missing ['WM37', 'WM38', 'WM39', 'WM40'], extra []", 'README row 14 fixture range WM36 vs files WM01-WM40']
+  FAIL NC-17 the math lane log without its records (index.json and workshop-math.md drift; WM37-WM40 have n ... :: (['drift .orchestration/contracts/fixtures/workshop/index.json', "no recorded hash for ['fixtures/workshop/WM37-today-dollar-pre-start-factor.json', 'fixtures/workshop/WM38-joint-owner-participant-age.json', 'fixtures/workshop/WM39-group-total-from-exact-values.json', 'fixtures/workshop/WM40-today-dollar-display-from-exact-gap.json', 'fixtures/workshop/index.json']"], ['record .orchestration/evidence/A0-patch-1/math-bundle.sha256.log (A0 patch 1 (D-074)) bytes differ from its registration (sha256 bc29dcca365f..., registered bc80f539dc5c...): a record is written once for its round; a later round writes and registers its own record', 'record .orchestration/evidence/A0-patch-1/math-bundle.sha256.log (A0 patch 1 (D-074)) is stale for fixtures/workshop/index.json'])
+  FAIL handoffs/F02a.json conforms to worker-handoff 1.1 (schema only; --handoff for hashes) ... :: ["schema pattern@/task_id: 'F02a' does not match '^(?:F0[0-3]|D0[0-2]|P0[0-5]|W0[0-4]|C(?:0[0-9]|1[01])|U0[0-5]|N(?:0[0-9]|10)|"]
+
+== nc2: task_id pattern widened to a generic [a-z] suffix on every ID (expect CX-18)
+[exit 1]
+pass: 358  fail: 3  known: 16  info: 2
+exit_code=1
+  FAIL CX-18 check IDs, fixture coverage and the handoff task_id pattern match the catalog and tasks.json [ ... :: ["worker-handoff task_id pattern vs tasks.json: ['C00a', 'C00b', 'C00c', 'C00d', 'C00e', 'C00f', 'C00g', 'C00h', 'C00i', 'C00j', 'C00k', 'C00l', 'C00m', 'C00n', 'C00o', 'C00p', 'C00q', 'C00r', 'C00s', 'C00t', 'C00u', 'C00v', 'C00w', 'C00x', 'C00y', 'C00z', 'C01a', 'C01b', 'C01c', 'C01d', 'C01e', 'C01f', 'C01g', 'C01h', 'C01i', 'C01j', 'C01k', 'C01l', 'C01m', 'C01n', 'C01o', 'C01p', 'C01q', 'C01r', 'C01s', 'C01t', 'C01u', 'C01v', 'C01w', 'C01x', 'C01y', 'C01z', 'C02a', 'C02b', 'C02c', 'C02d', 'C02e', 'C02f', 'C02g', 'C02h', 'C02i', 'C02j', 'C02k', 'C02l', 'C02m', 'C02n', 'C02o', 'C02p', 'C02q', 'C02r', 'C02s', 'C02t', 'C02u', 'C02v', 'C02w', 'C02x', 'C02y', 'C02z', 'C03a', 'C03b', 'C03c', 'C03d', 'C03e', 'C03f', 'C03g', 'C03h', 'C03i', 'C03j', 'C03k', 'C03l', 'C03m', 'C03n', 'C03o', 'C03p', 'C03q', 'C03r', 'C03s', 'C03t', 'C03u', 'C03v', 'C03w', 'C03x', 'C03y', 'C03z', 'C04
+  FAIL CX-29 .orchestration/evidence/F02/offers/validation.log: 139 recorded hashes, 137 match; 2 supersede ... :: ['record .orchestration/evidence/A0-patch-1/worker-handoff-1.1.sha256.log (A0 patch 1 (D-074)) is stale for worker-handoff.schema.json', 'drift worker-handoff.schema.json', 'drift .orchestration/contracts/worker-handoff.schema.json', "no recorded hash for ['worker-handoff.schema.json']"]
+  FAIL NC-15 a task_id pattern with a suffix on every ID, one without F02a, and a suffixed task ID that tas ... :: 
+
+== nc3: the WM40 row removed from the workshop-math.md s10 table (expect CX-21)
+[exit 1]
+pass: 359  fail: 2  known: 16  info: 2
+exit_code=1
+  FAIL CX-21 example and fixture counts stated in the md files match the files [10 stated example counts; 4 ... :: ["workshop-math.md s10 table vs files: missing ['WM40'], extra []"]
+  FAIL CX-29 .orchestration/evidence/F02/math/validation.log: 49 recorded hashes, 48 match; 1 superseded an ... :: ['record .orchestration/evidence/A0-patch-1/math-bundle.sha256.log (A0 patch 1 (D-074)) is stale for workshop-math.md', 'drift .orchestration/contracts/workshop-math.md']
+
+== nc4: an extra fixture WM41 with no index entry, no s10 row and no recorded hash (expect S5, CX-21, CX-29)
+[exit 1]
+pass: 359  fail: 3  known: 16  info: 2
+exit_code=1
+  FAIL index.json lists exactly the fixture files on disk ... :: ['WM41-unrecorded-copy.json']
+  FAIL CX-21 example and fixture counts stated in the md files match the files [10 stated example counts; 4 ... :: ['workshop-math.md fixture count vs 41', 'workshop-math.md fixture range vs files WM01-WM41 (41 files)', "workshop-math.md s10 table vs files: missing ['WM41'], extra []", 'README row 14 fixture range WM40 vs files WM01-WM41']
+  FAIL CX-29 .orchestration/evidence/F02/math/validation.log: 49 recorded hashes, 47 match; 2 superseded an ... :: ["no recorded hash for ['fixtures/workshop/WM41-unrecorded-copy.json']"]
+
+== nc5: worker-handoff $id set back to 1.0 while the title and index row say 1.1 (expect S2, CX-01)
+[exit 1]
+pass: 358  fail: 3  known: 16  info: 2
+exit_code=1
+  FAIL worker-handoff.schema.json $id = https://bill.contracts.local/worker-handoff/1.1 ... :: https://bill.contracts.local/worker-handoff/1.0
+  FAIL CX-01 versions: set = highest contract version; each contract's $id, title, const and index row carr ... :: ['worker-handoff $id https://bill.contracts.local/worker-handoff/1.0 (its version is 1.1)']
+  FAIL CX-29 .orchestration/evidence/F02/offers/validation.log: 139 recorded hashes, 137 match; 2 supersede ... :: ['record .orchestration/evidence/A0-patch-1/worker-handoff-1.1.sha256.log (A0 patch 1 (D-074)) is stale for worker-handoff.schema.json', 'drift worker-handoff.schema.json', 'drift .orchestration/contracts/worker-handoff.schema.json', "no recorded hash for ['worker-handoff.schema.json']"]
+
+== nc6: WM01 first gap_cents 1800000 -> 1800001 (expect CX-29: math lane log drift and the A0 patch 1 record stale for WM01)
+[exit 1]
+pass: 360  fail: 1  known: 16  info: 2
+exit_code=1
+  FAIL CX-29 .orchestration/evidence/F02/math/validation.log: 49 recorded hashes, 47 match; 2 superseded an ... :: ['record .orchestration/evidence/A0-patch-1/math-bundle.sha256.log (A0 patch 1 (D-074)) is stale for fixtures/workshop/WM01-zero-inflation-zero-escalation.json', 'drift .orchestration/contracts/fixtures/workshop/WM01-zero-inflation-zero-escalation.json', "no recorded hash for ['fixtures/workshop/WM01-zero-inflation-zero-escalation.json']"]

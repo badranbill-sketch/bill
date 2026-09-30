@@ -1,0 +1,51 @@
+# step: build - Production build (verify.yml)
+# command: npm run build
+# cwd: /tmp/claude-0/-home-user/bb8d4187-6ae8-587b-a816-8153faeea853/scratchpad/wt/integration
+# started: 2026-09-30T09:24:03.144Z
+# env overrides: {"NEXT_TELEMETRY_DISABLED":"1"}
+
+
+> bill-badran@1.0.0 build
+> npm run ink && node --import tsx scripts/content.ts validate && node --import tsx scripts/launch.ts && next build
+
+
+> bill-badran@1.0.0 ink
+> node --import tsx scripts/build-ink.tsx
+
+ink: 13 drawings, 388 KB in public/assets/ink
+Validated 4 articles; 0 publishable. Drafts excluded from public routes.
+Review build; public launch is off. Pending approvals: businessDetails, serviceScope, qualificationsAndAffiliation, portraitRights, websiteCopy, privacyPolicy, legalNotices, contactOperations
+▲ Next.js 16.3.6 (Turbopack)
+✓ Running next.config.ts took 28ms
+
+  Creating an optimized production build ...
+✓ Compiled successfully in 8.8s
+  Running TypeScript ...
+  Finished TypeScript in 7.4s ...
+  Collecting page data using 3 workers ...
+  Generating static pages using 3 workers (0/6) ...
+  Generating static pages using 3 workers (1/6) 
+  Generating static pages using 3 workers (2/6) 
+  Generating static pages using 3 workers (4/6) 
+✓ Generating static pages using 3 workers (6/6) in 271ms
+  Finalizing page optimization ...
+
+Route (app)
+┌ ○ /
+├ ○ /_not-found
+├ ƒ /[lang]/[[...slug]]
+├ ƒ /api/guide
+├ ƒ /api/inquiry
+├ ○ /robots.txt
+└ ○ /sitemap.xml
+
+
+ƒ Proxy (Middleware)
+
+○  (Static)   prerendered as static content
+ƒ  (Dynamic)  server-rendered on demand
+
+
+# finished: 2026-09-30T09:24:24.086Z
+# exit: 0
+# seconds: 20.94

@@ -1,0 +1,47 @@
+# F02a AFTER: A6 attempt-3 negative controls (unmodified faults_run.mjs + model_faults.mjs; reads every WM*.json in contracts/fixtures/workshop). date (UTC): 2026-09-30T08:59:04Z; cwd /tmp/claude-0/-home-user/bb8d4187-6ae8-587b-a816-8153faeea853/scratchpad/f02a-a6run
+$ node faults_run.mjs
+baseline (no fault): 0 mismatches 
+CAUGHT  half_up                              WM04,WM17,WM39
+CAUGHT  float64                              WM17
+CAUGHT  window_off_by_one                    WM01,WM02,WM03,WM04,WM05,WM06,WM07,WM08,WM09,WM10,WM11,WM12 (+26)
+CAUGHT  spending_unknown_zero                WM25
+CAUGHT  coverage_incomplete_as_complete      WM07,WM30,CS03
+CAUGHT  joint_uses_partner                   WM38
+CAUGHT  income_monthly_no_x12                WM03,WM05,WM09,WM19
+CAUGHT  today_dollars_as_nominal             WM04,WM37
+CAUGHT  today_dollars_uses_q                 WM37
+CAUGHT  price_basis_unknown_as_start_year    WM22,WM34
+CAUGHT  pbu_even_at_zero                     WM22,WM34
+CAUGHT  gross_compared                       WM09,WM20,WM34,TT5,TT6,TT7,TT8,TT13,TT14,TT15,TT16,TT21 (+4)
+CAUGHT  tax_unknown_as_net                   WM23,CS04
+CAUGHT  unknown_first                        WM32,WM33
+CAUGHT  unknown_start_not_paying             WM26,WM33,WM34
+CAUGHT  unknown_start_already_receiving      WM22(throw),WM26,WM33,WM34
+CAUGHT  unresolvable_start_not_paying        WM20,WM29,WM34,CS01
+CAUGHT  unknown_end_no_end                   WM27,WM28
+CAUGHT  end_inclusive                        WM18,WM32,WM33,WM38
+CAUGHT  xf05_inference                       WM27,WM28
+CAUGHT  unknown_amount_zero                  WM08,WM34
+CAUGHT  escalate_from_zero                   WM04,WM13,WM37
+CAUGHT  one_code_per_source                  WM20,WM34,CS01
+CAUGHT  groups_as_listed_when_incomplete     WM07,WM30
+CAUGHT  group_from_rounded_rows              WM37,WM39
+CAUGHT  surplus_netted                       WM12
+CAUGHT  deflate_rounded_gap                  WM40
+CAUGHT  partner_age_null_key                 WM28,WM29,WM34
+CAUGHT  H_by_age                             WM38,CS06
+CAUGHT  home_spendable                       WM10
+MISSED  horizon_flag_known_amount_only       
+CAUGHT  horizon_flag_strict                  WM18
+MISSED  uncertain_flag_any                   
+CAUGHT  employment_uncertain_kind            WM32
+CAUGHT  cr_start_of_year_flows               WM11,WM15,WM16,WM35
+CAUGHT  cr_discount_to_base                  WM35
+CAUGHT  ignore_no_positive_gap               WM36
+CAUGHT  ineligible_adds_flags                WM07,WM08,WM09,WM20,WM22,WM23,WM26,WM27,WM28,WM29,WM30,WM31 (+2)
+CAUGHT  X_before_M                           WM34,TT13,TT14,TT15,TT16
+CAUGHT  F_before_H                           WM21,TT4
+CAUGHT  estimated_triggers_M                 WM01,WM03,WM04,WM05,WM09,WM10,WM11,WM12,WM13,WM14,WM16,WM17 (+28)
+MISSED  R_code_only_if_A_known               
+MISSED  no_global_codes_without_window       
+[exit 0]

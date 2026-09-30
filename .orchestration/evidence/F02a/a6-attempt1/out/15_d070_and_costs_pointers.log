@@ -1,0 +1,8 @@
+$ sh -c grep -n "^| D-070" decisions.md | grep -c -i -E "backup destination|encryption key|media-master" ; grep -n "HB-02" costs.json; grep -n "Status: \*\*submitted, not accepted\*\*" blockers.md; grep -n "post-acceptance" blockers.md | cut -c1-80
+# utc 2026-09-30T09:15:59Z; cwd /home/user/bill/.orchestration
+0
+45:      "note": "The current VPS price, its plan and whether an upgrade is needed are unknown (HB-02). Upgrade only after a measured need."
+156:      "note": "amount 0 = the subscription only. Compute and storage fall under vps_increment and offhost_backup. Whether an n8n instance already runs on the VPS is unknown (D-045b, HB-02b); if one exists it is reviewed, not reinstalled, and this line still carries no subscription."
+3:- Task: F01. Owner A0 (delegate), reviewer A6, stage design_or_audit. Status: **submitted, not accepted**.
+6:- A0 post-acceptance patch (2026-09-30, from `reviews/F01-attempt2.md` P3-1…
+[exit 0]

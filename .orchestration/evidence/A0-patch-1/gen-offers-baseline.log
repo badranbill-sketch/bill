@@ -1,0 +1,9 @@
+# A0 patch 1: gen_offers.py determinism baseline (unmodified generator), 2026-09-30T10:56:02Z, cwd /home/user/bill, HEAD d1a37cf3c17953529774e7801af8f0c16eedb925
+# gen-offers-outputs.before.sha256 = sha256 of the 132 generated files at HEAD (git status clean for contracts/)
+$ PYTHONDONTWRITEBYTECODE=1 /tmp/claude-0/-home-user/bb8d4187-6ae8-587b-a816-8153faeea853/scratchpad/venv-f02/bin/python .orchestration/evidence/F02/offers/gen_offers.py
+generated: 22 offer-matrix invalid, 22 asset-manifest invalid, 17 worker-handoff invalid
+[exit 0]
+$ sha256sum -c --quiet .orchestration/evidence/A0-patch-1/gen-offers-outputs.before.sha256
+[exit 0]
+$ git status --short -- .orchestration/contracts
+[exit 0]

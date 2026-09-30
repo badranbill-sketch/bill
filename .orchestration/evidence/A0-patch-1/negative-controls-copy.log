@@ -1,0 +1,60 @@
+# A0 patch 1: negative controls on scratch copies of contracts/ (validate.py --contracts-dir). date (UTC): 2026-09-30T11:04:04Z
+# expected: nc0 (unmodified copy) exit 0; every other case exit 1 with the named check failing
+
+== nc0: unmodified copy of the current contracts/
+[exit 0]
+## Summary
+pass: 360  fail: 0  known: 16  info: 2
+exit_code=0
+
+== nc1: contracts/ at HEAD d1a37cf (before A0 patch 1), checked by the patched validate.py
+[exit 1]
+## Summary
+pass: 349  fail: 11  known: 16  info: 2
+exit_code=1
+  - README declares contract_set_version 1.1 :: 1.0
+  - worker-handoff.schema.json $id = https://bill.contracts.local/worker-handoff/1.1 :: https://bill.contracts.local/worker-handoff/1.0
+  - CX-01 versions: set = highest contract version; each contract's $id, title, const and index row carry its own version [set 1.1; worker-handoff 1.1, every other contract 1.0; 15 versioned index rows checked] :: ['worker-handoff $id https://bill.contracts.lo
+  - CX-18 check IDs, fixture coverage and the handoff task_id pattern match the catalog and tasks.json [task_id pattern accepts exactly 62 of 70200 candidate IDs (62 planned, 0 split: [])] :: ["worker-handoff task_id pattern vs tasks.json: ['F02a']"]
+  - CX-21 example and fixture counts stated in the md files match the files [10 stated example counts; 40 WM fixtures (count, range, s10 table, README row 14); clip counts] :: ['workshop-math.md fixture count vs 40', 'workshop-math.md fixture range vs files WM
+  - CX-29 .orchestration/evidence/F02/math/validation.log: 49 recorded hashes, 48 match; 1 superseded and 5 files recorded by ['A0 patch 1 (D-074)', 'F02a (D-072)']; coverage ['fixtures/workshop/*.json'] :: ['record .orchestration/evidence/A0-patch-1/math-bund
+  - CX-29 .orchestration/evidence/F02/offers/validation.log: 139 recorded hashes, 139 match; 0 superseded and 2 files recorded by ['A0 patch 1 (D-074)']; coverage ['offer-matrix.json', 'asset-manifest.schema.json', 'worker-handoff.schema.json', 'examples/valid
+  - NC-15 a task_id pattern with a suffix on every ID, one without F02a, and a suffixed task ID that tasks.json does not record as a split are caught by CX-18
+  - NC-16 a s10 count and range of 36, a s10 table without WM40 and a README row 14 range ending WM36 are caught by CX-21 :: ['workshop-math.md fixture count vs 40', 'workshop-math.md fixture range vs files WM01-WM40 (40 files)', "workshop-math.md s10 table vs
+  - NC-17 the math lane log without its records (index.json and workshop-math.md drift; WM37-WM40 have no recorded hash) and a record holding a stale hash are caught by CX-29 :: (['drift .orchestration/contracts/fixtures/workshop/index.json', "no recorded hash
+  - handoffs/F02a.json conforms to worker-handoff 1.1 (schema only; --handoff for hashes) :: ["schema pattern@/task_id: 'F02a' does not match '^(?:F0[0-3]|D0[0-2]|P0[0-5]|W0[0-4]|C(?:0[0-9]|1[01])|U0[0-5]|N(?:0[0-9]|10)|"]
+
+== nc2: task_id pattern widened to a generic [a-z] suffix on every ID (expect CX-18)
+[exit 1]
+## Summary
+pass: 357  fail: 3  known: 16  info: 2
+exit_code=1
+  - CX-18 check IDs, fixture coverage and the handoff task_id pattern match the catalog and tasks.json [task_id pattern accepts exactly 1674 of 70200 candidate IDs (62 planned, 1612 split: ['C00a', 'C00b', 'C00c', 'C00d', 'C00e', 'C00f', 'C00g', 'C00h', 'C00i'
+  - CX-29 .orchestration/evidence/F02/offers/validation.log: 139 recorded hashes, 137 match; 2 superseded and 4 files recorded by ['A0 patch 1 (D-074)']; coverage ['offer-matrix.json', 'asset-manifest.schema.json', 'worker-handoff.schema.json', 'examples/valid
+  - NC-15 a task_id pattern with a suffix on every ID, one without F02a, and a suffixed task ID that tasks.json does not record as a split are caught by CX-18
+
+== nc3: the WM40 row removed from the workshop-math.md s10 table (expect CX-21)
+[exit 1]
+## Summary
+pass: 358  fail: 2  known: 16  info: 2
+exit_code=1
+  - CX-21 example and fixture counts stated in the md files match the files [10 stated example counts; 40 WM fixtures (count, range, s10 table, README row 14); clip counts] :: ["workshop-math.md s10 table vs files: missing ['WM40'], extra []"]
+  - CX-29 .orchestration/evidence/F02/math/validation.log: 49 recorded hashes, 48 match; 1 superseded and 5 files recorded by ['A0 patch 1 (D-074)', 'F02a (D-072)']; coverage ['fixtures/workshop/*.json'] :: ['record .orchestration/evidence/A0-patch-1/math-bund
+
+== nc4: an extra fixture WM41 with no index entry, no s10 row and no recorded hash (expect S5, CX-21, CX-29)
+[exit 1]
+## Summary
+pass: 358  fail: 3  known: 16  info: 2
+exit_code=1
+  - index.json lists exactly the fixture files on disk :: ['WM41-unrecorded-copy.json']
+  - CX-21 example and fixture counts stated in the md files match the files [10 stated example counts; 41 WM fixtures (count, range, s10 table, README row 14); clip counts] :: ['workshop-math.md fixture count vs 41', 'workshop-math.md fixture range vs files WM
+  - CX-29 .orchestration/evidence/F02/math/validation.log: 49 recorded hashes, 47 match; 2 superseded and 6 files recorded by ['A0 patch 1 (D-074)', 'F02a (D-072)']; coverage ['fixtures/workshop/*.json'] :: ["no recorded hash for ['fixtures/workshop/WM41-unrec
+
+== nc5: worker-handoff $id set back to 1.0 while the title and index row say 1.1 (expect S2, CX-01)
+[exit 1]
+## Summary
+pass: 357  fail: 3  known: 16  info: 2
+exit_code=1
+  - worker-handoff.schema.json $id = https://bill.contracts.local/worker-handoff/1.1 :: https://bill.contracts.local/worker-handoff/1.0
+  - CX-01 versions: set = highest contract version; each contract's $id, title, const and index row carry its own version [set 1.1; worker-handoff 1.1, every other contract 1.0; 15 versioned index rows checked] :: ['worker-handoff $id https://bill.contracts.lo
+  - CX-29 .orchestration/evidence/F02/offers/validation.log: 139 recorded hashes, 137 match; 2 superseded and 4 files recorded by ['A0 patch 1 (D-074)']; coverage ['offer-matrix.json', 'asset-manifest.schema.json', 'worker-handoff.schema.json', 'examples/valid

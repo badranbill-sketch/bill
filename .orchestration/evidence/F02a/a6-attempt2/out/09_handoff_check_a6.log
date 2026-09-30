@@ -1,0 +1,48 @@
+$ /tmp/claude-0/-home-user/bb8d4187-6ae8-587b-a816-8153faeea853/scratchpad/venv-f02/bin/python /home/user/bill/.orchestration/evidence/F02a/a6-attempt2/check_handoff_a6r2.py
+handoff sha256 e6d9907bdafc439d0f647771f98f5fd05293f00133f0341e76d73dd7bd6b2a86
+base_commit cb3becf25ed042b977d4864ae71e74d13829320f == HEAD cb3becf25ed042b977d4864ae71e74d13829320f: True
+contract_version 1.0; status submitted; result_commit None
+schema errors as submitted: 1
+  - /task_id: 'F02a' does not match '^(?:F0[0-3]|D0[0-2]|P0[0-5]|W0[0-4]|C(?:0[0-9]|1[01])|U0[0-5]|N(?:0[0-9]|10)|R0[0-2]|H0[01]|L0[0-6]|O0[0-2])$'
+schema errors with task_id replaced in memory by 'F02': 0
+artifact hashes matching: 28/28
+changed path exists: True  .orchestration/contracts/fixtures/workshop/WM37-today-dollar-pre-start-factor.json
+changed path exists: True  .orchestration/contracts/fixtures/workshop/WM38-joint-owner-participant-age.json
+changed path exists: True  .orchestration/contracts/fixtures/workshop/WM39-group-total-from-exact-values.json
+changed path exists: True  .orchestration/contracts/fixtures/workshop/WM40-today-dollar-display-from-exact-gap.json
+changed path exists: True  .orchestration/contracts/fixtures/workshop/index.json
+changed path exists: True  .orchestration/evidence/F02a/
+changed path exists: True  .orchestration/handoffs/F02a.json
+top-level evidence files not hashed in the handoff: ['.orchestration/evidence/F02a/final-contracts-validate.log', '.orchestration/evidence/F02a/handoff-check.log', '.orchestration/evidence/F02a/handoff-validate.log']
+  sha256 74a9a296c100330359beeb970d49057afdfcaf522ed00c570a7f2a34f231a9a6  .orchestration/evidence/F02a/final-contracts-validate.log
+  sha256 8c6e73e8010fa5eab96c572cf379c7427620d75b3e7d8b0f5522eca4e6f09990  .orchestration/evidence/F02a/handoff-check.log
+  sha256 5b712c611ef47a9fdf96ed8ec6af75e82935633fa377a69f2a5390cf5126059d  .orchestration/evidence/F02a/handoff-validate.log
+
+tests: declared exit vs evidence markers
+  F02A-before-validate: declared 1; last exit marker in log 1; summary ('350', '1'); .orchestration/evidence/F02a/before-contracts-validate.log
+  F02A-before-lane: declared 0; last exit marker in log 0; summary -; .orchestration/evidence/F02a/before-lane-validate.log
+  F02A-before-A6faults: declared 0; last exit marker in log 0; summary -; .orchestration/evidence/F02a/before-a6-faults_run.log
+  WK02-F02a-generate: declared 0; last exit marker in log 0; summary -; .orchestration/evidence/F02a/generate.log
+  WK02-F02a-generate-check: declared 0; last exit marker in log 0; summary -; .orchestration/evidence/F02a/after-generate-check.log
+  WK02-F02a-mutation: declared 0; last exit marker in log 0; summary -; .orchestration/evidence/F02a/mutation_check.log
+  WK02-A6-faults-after: declared 0; last exit marker in log 0; summary -; .orchestration/evidence/F02a/after-a6-faults_run.log
+  WK02-A6-fixtures-after: declared 0; last exit marker in log 0; summary -; .orchestration/evidence/F02a/after-a6-run_fixtures.log
+  WK02-lane-validate-after: declared 1; last exit marker in log 1; summary -; .orchestration/evidence/F02a/after-lane-validate.log
+  F02A-validate-after: declared 1; last exit marker in log 1; summary ('352', '3'); .orchestration/evidence/F02a/after-contracts-validate.log
+  F02A-R2-validate: declared 1; last exit marker in log 1; summary ('352', '4'); .orchestration/evidence/F02a/attempt2-contracts-validate.log
+  F02A-handoff-check: declared 1; last exit marker in log 1; summary -; .orchestration/evidence/F02a/handoff-check.log
+  F02A-handoff-validate: declared 1; last exit marker in log 1; summary ('0', '1'); .orchestration/evidence/F02a/handoff-validate.log
+  F02A-validate-final: declared 1; last exit marker in log 1; summary ('352', '4'); .orchestration/evidence/F02a/final-contracts-validate.log
+
+blocked_checks:
+  [blocked] owner=A0 (F02 integrator) :: F02A-A6-P2-1: contracts/validate.py CX-21: workshop-math.md s10 fixture count ('36 math fixtures (WM01') vs 40 WM files
+  [blocked] owner=A0 / math lane :: F02A-A6-P2-1: contracts/validate.py CX-29: evidence/F02/math/validation.log recorded hash of fixtures/workshop/index.json
+  [blocked] owner=A0 / math lane :: F02A-A6-P2-1: evidence/F02/math/validate.py step 5 (compute_fixtures.py --check) and step 6 (fault matrix vs workshop_reference.FAULTS)
+  [blocked] owner=A0 :: F02A-A6-P2-2: handoffs/F02a.json against worker-handoff 1.0 (task_id pattern); contracts/validate.py CX-18 and S9
+  [not_run] owner=A6 :: A6 independent verification of WM37-WM40 and the mutation evidence
+human_approvals_required: ['G3: the calculation bundle hashes changed (WM37-WM40 added, index.json appended); per README s3 rule 5 any G3/HB-26 approval of the workshop math must name the new fixture and index.json sha256 values after A6 re-verifies them.']
+external_actions_taken: []
+metered_cost: {'amount': None, 'currency': None, 'status': 'unavailable-not-estimated'}
+
+HANDOFF CHECK (all except the task_id pattern): PASS
+[exit 0]

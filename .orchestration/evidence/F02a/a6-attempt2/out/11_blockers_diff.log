@@ -1,0 +1,63 @@
+$ diff -u /tmp/claude-0/-home-user/bb8d4187-6ae8-587b-a816-8153faeea853/scratchpad/blockers.f01-accepted.md /home/user/bill/.orchestration/blockers.md
+--- /tmp/claude-0/-home-user/bb8d4187-6ae8-587b-a816-8153faeea853/scratchpad/blockers.f01-accepted.md	2026-09-30 08:47:19.118054684 +0000
++++ /home/user/bill/.orchestration/blockers.md	2026-09-30 08:47:19.133812555 +0000
+@@ -3,6 +3,7 @@
+ - Task: F01. Owner A0 (delegate), reviewer A6, stage design_or_audit. Status: **submitted, not accepted**.
+ - Written 2026-09-30 against HEAD `5cbbf9b5d21dbf03d2cb44e524a6fcdc10d5515b`. Decision IDs (D-xxx) refer to `decisions.md`.
+ - This is the **one** human-input batch required by the 00 launch instruction and the 06 "One input sheet". It merges the 06 sheet, the 01 §2 unknowns, F00 questions Q1–Q15 (`inventory.md §10`) and the inputs that later gated tasks need (for example N10's smoke targets and G4's replay policy), without duplicates, so no second ask is needed when those tasks start. Nothing here is an approval.
++- A0 post-acceptance patch (2026-09-30, from `reviews/F01-attempt2.md` P3-1…P3-5): HB-08 proposal made single-outcome and (b) existing-cost question added; HB-22 asks about the AI-assisted cover/likeness; HB-03 keeps presentation/ outside the baseline; G2 'not askable yet' and G5 rows corrected; three backup/media secret rows added. Pre-patch copy retained by A0 in its scratchpad; this patch is reviewed by A6 in F02a.
+ - Repair attempt 2 (after `reviews/F01.md`): HB-02 now asks about any existing n8n on the VPS; HB-09 covers the N10 smoke targets; the Secrets table covers the Telegram bot token, the SM02 webhook secret and provider logins; P3 review items are folded into HB-06, HB-11, HB-13, HB-15, HB-16, HB-17, HB-21, HB-25 and HB-27. HB numbers are unchanged.
+ 
+ ## How to answer, in one sitting
+@@ -50,7 +51,7 @@
+ **HB-03. Canonical branch and design direction** (G0; Bill for the design)
+ - Question: Which line becomes canonical? A: codex (responsive work, "ask Bill" section, review-PDF route). B: homepage (Bill-centred hero, Ask Bill page, booklet). C: a manual merge, where you decide the hero, the navigation and the 3 drawings homepage deletes. Should PR #1 be retargeted to main?
+ - Why: F03 selects the integration baseline. codex and homepage conflict at design level in 5 files (D-028, TB-13).
+-- PROPOSAL: A as the technical integration baseline, because it is the only target green on the full CI sequence, plus guide (merges clean) plus the presentation ignore-list union. homepage stays preserved on its branch. Its Ask Bill content is ported only after its provenance is confirmed (HB-23), and you decide the hero. PR #1 is closed or retargeted after F03. This is a proposal; G0 decides.
++- PROPOSAL: A as the technical integration baseline, because it is the only target green on the full CI sequence, plus guide (merges clean). presentation/ stays preserved on its own branch, outside the baseline, pending HB-12. homepage stays preserved on its branch. Its Ask Bill content is ported only after its provenance is confirmed (HB-23), and you decide the hero. PR #1 is closed or retargeted after F03. This is a proposal; G0 decides.
+ - Blocks: F03 (the canonical record) and the integration of every code task.
+ - Friday: HARD (nothing integrates without a baseline). Local work continues meanwhile.
+ - Provide: reply to the director → D-028.
+@@ -98,7 +99,8 @@
+ **HB-08. Spending caps and subscriptions** (G2)
+ - Question: What are the caps for purchased model API, ads and subscriptions? If Bill's current Google account lacks what Meet needs, may we buy a Workspace tier, and how many seats?
+ - Why: Nothing may be bought before G2 records a cap (D-064). Workspace is a candidate, not a purchase (D-022).
+-- PROPOSAL: keep all three caps at 0 through the pilot. No Workspace purchase unless HB-14 shows the existing entitlement is insufficient. The CAD 20/day × 14 days ad test stays a proposal (D-066).
++- PROPOSAL: keep all three caps at 0 through the pilot. If HB-14 shows Bill's existing account cannot host Meet, the director comes back with one Workspace line item (tier, seats, the price shown at Bill's own checkout) for an explicit yes/no; nothing is bought under a 0 cap. The CAD 20/day × 14 days ad test stays a proposal (D-066).
++- (b) For `costs.json` (01 §17 real cost sheet; 06 handover renewals): for each existing paid item (VPS, domain/registrar, mailbox, Calendly, Google, GitHub, and Resend/Upstash if they exist), what is the current plan, amount, currency and renewal date? "Don't know" is fine; nothing here blocks the pilot.
+ - Blocks: a paid model in N08; R02; any purchase.
+ - Friday: nothing, if the caps stay 0 and Bill's existing account can host Meet.
+ - Provide: reply to the director → D-064 and `costs.json` `authorized_caps`.
+@@ -229,7 +231,7 @@
+ - Provide: facts and names → reply to the director. The firm's approval of the wording comes through H00.
+ 
+ **HB-22. Media rights and synthetic audio** (G4)
+-- Question: Who took `bill-portrait.jpg` and the 5 reference photos, and may we use them? Do you approve removing the cloned narration (`en.mp3`) and the ElevenLabs free-plan audio from anything public? Do you consent to any voice synthesis? (Default: no.)
++- Question: Who took `bill-portrait.jpg` and the 5 reference photos, and may we use them? Who made the review book's cover (an AI-assisted sketch portrait of you with "BILL BADRAN FINANCIAL PLANNING" and a script signature) and its "AI-assisted editorial artwork", and under what terms? Do you consent to an AI-drawn likeness of yourself, and is that signature yours? Do you approve removing the cloned narration (`en.mp3`) and the ElevenLabs free-plan audio from anything public? Do you consent to any voice synthesis? (Default: no.)
+ - Why: `portraitRights=false`. The narration is a third-party voice speaking as you (D-052).
+ - PROPOSAL: quarantine both audio sets now; use the portrait only after its rights are confirmed; no synthesis.
+ - Blocks: F03 baseline content, D01, C10, L02.
+@@ -304,10 +306,10 @@
+ |---|---|---|---|
+ | G0 | Arnaud (+ Bill) | HB-01, HB-02, HB-03, HB-04, HB-14, HB-15, HB-16, HB-17, HB-18, HB-20 | — |
+ | G1 | Bill + firm reviewer | HB-20 (wording), HB-21, HB-23, HB-24, HB-25, HB-29 | Approval of the final copy, which does not exist yet |
+-| G2 | Account owner / Arnaud | HB-02 (incl. existing n8n), HB-05, HB-06, HB-07, HB-08, HB-09 (incl. N10 smoke targets), HB-10, HB-11, HB-13, HB-14 | — |
++| G2 | Account owner / Arnaud | HB-02 (incl. existing n8n), HB-05, HB-06, HB-07, HB-08, HB-09 (incl. N10 smoke targets), HB-10, HB-11, HB-13, HB-14 | Per-action test scopes (exact allowlisted test sends from the real sender, test bookings/cancellations on the live calendar, Stripe test payments, N10 delivery): requested as scoped G2 records when P05/L01 fix the exact actions |
+ | G3 | Bill + firm reviewer | HB-04, HB-23, HB-25, HB-26, HB-29 | Exact-hash approvals: the artifacts are not produced yet (via H00) |
+ | G4 | Bill + rights holders | HB-17 (recording consent and replay release policy), HB-19, HB-22 | Recording approvals: 0 recordings exist |
+-| G5 | Privacy / operations owner | HB-06 (processors), HB-21 (who), HB-27, HB-28 | — |
++| G5 | Privacy / operations owner | HB-06 (processors), HB-20 (fulfilment process inputs), HB-21 (who), HB-27, HB-28 | — |
+ | G6 | Arnaud / Bill | HB-10, HB-13 | Release approval: there is no release manifest until L04 |
+ 
+ ## Secrets: never in chat
+@@ -335,6 +337,9 @@
+ | Provider account logins (Brevo, Supabase, Stripe, Calendly, Google) | HB-06, HB-14, HB-15 | The HB-07 password manager, held by each named owner | Account owner |
+ | Telegram bot token (SM02) | HB-09 (b) | n8n credential vault on the self-hosted instance only; never in the exported workflow JSON (04 §5 SM02) | Bot owner or authorized operator |
+ | SM02 webhook authentication secret | HB-09 (b), N10 | n8n credential on the webhook node, plus the secret store of the test caller; generated on the server | Authorized operator |
++| Off-host backup destination write credential | HB-10, P04 | VPS protected env/secret file readable only by the backup job; a copy in the HB-07 password manager | Authorized operator |
++| Backup encryption key or passphrase | HB-10, P04 | HB-07 password manager plus one offline copy held by the owner; never on the backup destination or inside a backup set | Authorized operator (owner keeps the offline copy) |
++| Media-master storage upload credential | HB-10, C10 | HB-07 password manager; used only by whoever uploads approved masters | Media owner or authorized operator |
+ 
+ ## What can proceed without any answer
+ 
+[exit 1]

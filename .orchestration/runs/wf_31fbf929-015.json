@@ -1,0 +1,20 @@
+{
+  "run_id": "wf_31fbf929-015",
+  "task_ids": [
+    "F03",
+    "F02a"
+  ],
+  "kind": "workflow",
+  "provider": "Anthropic (Claude Code session)",
+  "model": "inherited session model",
+  "agents": 10,
+  "tool_uses": 717,
+  "subagent_tokens": 2754007,
+  "wall_time_s": 6967,
+  "metered_cost": {
+    "amount": null,
+    "currency": null,
+    "status": "unavailable-not-estimated"
+  },
+  "external_actions": "none (npm registry installs in local worktrees)"
+}

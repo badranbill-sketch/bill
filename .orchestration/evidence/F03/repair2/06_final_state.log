@@ -1,0 +1,27 @@
+### command: git log --format='%H %P %s' -6; git status --porcelain; git branch -vv | grep -E '^\*? *integration'; git ls-remote origin | grep -E 'integration|homepage|presentation|codex|guide|main'; git worktree list
+### cwd: /tmp/claude-0/-home-user/bb8d4187-6ae8-587b-a816-8153faeea853/scratchpad/wt/integration
+### start: 2026-09-30T10:23:38Z
+b0bc6cf634b0b5498cc335da4d2d15da04276e3a 5545c2aeb3249e19e5f328c86fa7d264c04ec0d2 Make baseline partial runs fail closed (F03 repair, A6 F03-A6-P2-1)
+5545c2aeb3249e19e5f328c86fa7d264c04ec0d2 67ba636cee04e8b0839d9c7b028a77d2791e32ff Add reproducible baseline check suite (F03)
+67ba636cee04e8b0839d9c7b028a77d2791e32ff 1316ebe10fe9ff753c3ce42151018ae3cebcc163 cb3becf25ed042b977d4864ae71e74d13829320f Merge orchestration record cb3becf into integration (F03)
+1316ebe10fe9ff753c3ce42151018ae3cebcc163 66cce52046f535ddc1a90e6f94474877e375860d 749b360f75185041e1aa3408500857605bc4507f Merge guide/pre-retirement-guide into integration (F03)
+cb3becf25ed042b977d4864ae71e74d13829320f 5cbbf9b5d21dbf03d2cb44e524a6fcdc10d5515b Accept F01 decisions/blockers and F02 contracts; split F02a
+5cbbf9b5d21dbf03d2cb44e524a6fcdc10d5515b eeb79a9380b297880e8fb530ac1f5b6f2fa7f89d Accept F00 inventory with independent review evidence
+* integration                     b0bc6cf Make baseline partial runs fail closed (F03 repair, A6 F03-A6-P2-1)
+d63aabd50d0760145208857856f32779b1069e15	refs/heads/claude/bill-centered-homepage
+fc0044576d851be414d19e2f7a21ca7fd1285eae	refs/heads/claude/bill-presentation-video
+66cce52046f535ddc1a90e6f94474877e375860d	refs/heads/codex/desktop-iphone-unified
+749b360f75185041e1aa3408500857605bc4507f	refs/heads/guide/pre-retirement-guide
+77de3bd51a8c9cb73aec0b32d27ca0cacb6285cd	refs/heads/main
+/home/user/bill                                                                                        cb3becf [claude/orchestration-foundation]
+/tmp/claude-0/-home-user/bb8d4187-6ae8-587b-a816-8153faeea853/scratchpad/wt/base01-codex               66cce52 (detached HEAD)
+/tmp/claude-0/-home-user/bb8d4187-6ae8-587b-a816-8153faeea853/scratchpad/wt/base01-diag-main-filmdeps  77de3bd (detached HEAD)
+/tmp/claude-0/-home-user/bb8d4187-6ae8-587b-a816-8153faeea853/scratchpad/wt/base01-guide               749b360 (detached HEAD)
+/tmp/claude-0/-home-user/bb8d4187-6ae8-587b-a816-8153faeea853/scratchpad/wt/base01-homepage            d63aabd (detached HEAD)
+/tmp/claude-0/-home-user/bb8d4187-6ae8-587b-a816-8153faeea853/scratchpad/wt/base01-main                77de3bd (detached HEAD)
+/tmp/claude-0/-home-user/bb8d4187-6ae8-587b-a816-8153faeea853/scratchpad/wt/base01-video               fc00445 (detached HEAD)
+/tmp/claude-0/-home-user/bb8d4187-6ae8-587b-a816-8153faeea853/scratchpad/wt/integration                b0bc6cf [integration]
+### end: 2026-09-30T10:23:38Z
+### exit: 0
+### wall_s: 0.59
+

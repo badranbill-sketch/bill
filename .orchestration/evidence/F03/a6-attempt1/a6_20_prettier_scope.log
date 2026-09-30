@@ -1,0 +1,41 @@
+### command: echo '== .prettierignore =='; cat .prettierignore; echo '== prettier --check .orchestration (read-only) =='; npx prettier --check .orchestration > /tmp/claude-0/-home-user/bb8d4187-6ae8-587b-a816-8153faeea853/scratchpad/a6f03/prettier.out 2>&1; echo prettier_exit=$?; grep -c '^\[warn\] \.orchestration' /tmp/claude-0/-home-user/bb8d4187-6ae8-587b-a816-8153faeea853/scratchpad/a6f03/prettier.out; grep '^\[warn\] \.orchestration' /tmp/claude-0/-home-user/bb8d4187-6ae8-587b-a816-8153faeea853/scratchpad/a6f03/prettier.out | sed 's#^\[warn\] ##' | awk -F/ '{print $2"/"$3}' | sort | uniq -c | sort -rn | head; echo '== contracts files that format would rewrite =='; grep '^\[warn\] \.orchestration/contracts' /tmp/claude-0/-home-user/bb8d4187-6ae8-587b-a816-8153faeea853/scratchpad/a6f03/prettier.out | head -8; echo '== codex baseline: prettier --check . excluding .orchestration =='; npx prettier --check . '!.orchestration/**' > /tmp/claude-0/-home-user/bb8d4187-6ae8-587b-a816-8153faeea853/scratchpad/a6f03/prettier2.out 2>&1; echo prettier_app_exit=$?; tail -3 /tmp/claude-0/-home-user/bb8d4187-6ae8-587b-a816-8153faeea853/scratchpad/a6f03/prettier2.out
+### cwd: /tmp/claude-0/-home-user/bb8d4187-6ae8-587b-a816-8153faeea853/scratchpad/wt/a6-f03-1
+### start: 2026-09-30T09:57:57Z
+== .prettierignore ==
+.next
+node_modules
+reference
+content
+public
+playwright-report
+test-results
+== prettier --check .orchestration (read-only) ==
+prettier_exit=1
+240
+    101 contracts/examples
+     46 evidence/F02
+     38 contracts/fixtures
+      5 evidence/F00
+      1 tasks.json/
+      1 source/TASK_LEDGER.md
+      1 source/06_HUMAN_GATES_AND_RUNBOOK.md
+      1 source/05_CONTENT_AND_ART_BRIEFS.md
+      1 source/04_CONTRACTS_AND_TESTS.md
+      1 source/03_AGENT_PROMPTS.md
+== contracts files that format would rewrite ==
+[warn] .orchestration/contracts/approval-scopes.md
+[warn] .orchestration/contracts/asset-manifest.md
+[warn] .orchestration/contracts/asset-manifest.schema.json
+[warn] .orchestration/contracts/authority-matrix.md
+[warn] .orchestration/contracts/data-flow-register.json
+[warn] .orchestration/contracts/delivery-job.schema.json
+[warn] .orchestration/contracts/email-eligibility.json
+[warn] .orchestration/contracts/event-envelope.md
+== codex baseline: prettier --check . excluding .orchestration ==
+prettier_app_exit=1
+[warn] film/tsconfig.json
+[warn] tests/baseline/README.md
+[warn] Code style issues found in 24 files. Run Prettier with --write to fix.
+### exit: 0
+### wall_s: 17.014478382
+

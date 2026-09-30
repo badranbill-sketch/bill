@@ -1,0 +1,14 @@
+# step: typecheck - TypeScript before build
+# command: npm run typecheck
+# cwd: /tmp/claude-0/-home-user/bb8d4187-6ae8-587b-a816-8153faeea853/scratchpad/wt/integration
+# started: 2026-09-30T10:11:55.810Z
+# env overrides: {"NEXT_TELEMETRY_DISABLED":"1"}
+
+
+> bill-badran@1.0.0 typecheck
+> tsc --noEmit
+
+
+# finished: 2026-09-30T10:12:02.897Z
+# exit: 0
+# seconds: 7.09

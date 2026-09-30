@@ -1,0 +1,26 @@
+### command: node tests/baseline/compare-screens.mjs --before /home/user/bill/.orchestration/evidence/F03/base02/before --after /home/user/bill/.orchestration/evidence/F03/a6-attempt2/base02 --diff /home/user/bill/.orchestration/evidence/F03/a6-attempt2/base02-diff-vs-codex-before | tail -3
+### cwd: /tmp/claude-0/-home-user/bb8d4187-6ae8-587b-a816-8153faeea853/scratchpad/wt/a6-f03-2
+### start: 2026-09-30T10:34:19Z
+--- output ---
+fr-resources-390         identical      0% 390x5314
+fr-resources-768         identical      0% 768x4608
+{"screenshots":24,"identical":24,"within_threshold":0,"changed":0,"missing_before":0,"missing_after":0,"record_differences":0}
+--- end ---
+### exit: 0
+### wall_s: 8.53
+
+### command: python3 -c "
+import hashlib,os
+h=lambda p: hashlib.sha256(open(p,'rb').read()).hexdigest()
+A='/home/user/bill/.orchestration/evidence/F03/a6-attempt2/base02'; B='/home/user/bill/.orchestration/evidence/F03/base02/before'
+fs=sorted(f for f in os.listdir(A) if f.endswith('.png'))
+print('A6 PNGs', len(fs), 'sha256-equal to codex before:', sum(h(A+'/'+f)==h(B+'/'+f) for f in fs))
+"
+### cwd: /tmp/claude-0/-home-user/bb8d4187-6ae8-587b-a816-8153faeea853/scratchpad/wt/a6-f03-2
+### start: 2026-09-30T10:34:28Z
+--- output ---
+A6 PNGs 24 sha256-equal to codex before: 24
+--- end ---
+### exit: 0
+### wall_s: 0.28
+

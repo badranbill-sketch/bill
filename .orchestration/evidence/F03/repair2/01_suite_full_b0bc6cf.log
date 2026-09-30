@@ -1,0 +1,42 @@
+### command: git rev-parse HEAD; env -u GH_TOKEN -u GITHUB_TOKEN PLAYWRIGHT_CHROMIUM_EXECUTABLE=/opt/pw-browsers/chromium-1194/chrome-linux/chrome node tests/baseline/run.mjs --out /tmp/claude-0/-home-user/bb8d4187-6ae8-587b-a816-8153faeea853/scratchpad/f03r2/suite-full --python /tmp/claude-0/-home-user/bb8d4187-6ae8-587b-a816-8153faeea853/scratchpad/venv-f02/bin/python
+### cwd: /tmp/claude-0/-home-user/bb8d4187-6ae8-587b-a816-8153faeea853/scratchpad/wt/integration
+### start: 2026-09-30T10:11:20Z
+b0bc6cf634b0b5498cc335da4d2d15da04276e3a
+[npm_ci] npm ci ... pass (exit 0, 18.5s)
+[lint] npm run lint ... pass (exit 0, 15.61s)
+[test] npm test ... pass (exit 0, 0.79s)
+[typecheck] npm run typecheck ... pass (exit 0, 7.09s)
+[build] npm run build ... pass (exit 0, 22.96s)
+[typecheck_after_build] npm run typecheck ... pass (exit 0, 7.73s)
+[protections_check] npm run protections:check ... blocked (exit 1, 0.48s)
+[launch_check] npm run launch:check ... expected_fail_by_design (exit 1, 0.58s)
+[verify_publication] node --import tsx scripts/verify-publication.ts ... pass (exit 0, 0.36s)
+[test_e2e] npm run test:e2e ... pass (exit 0, 85.93s)
+[contracts_ajv] npm run test:contracts ... pass (exit 0, 1.8s)
+[contracts_validate_py] /tmp/claude-0/-home-user/bb8d4187-6ae8-587b-a816-8153faeea853/scratchpad/venv-f02/bin/python .orchestration/contracts/validate.py ... fail (exit 1, 5.32s)
+[build_graph_check] python3 .orchestration/scripts/build_graph.py --check ... pass (exit 0, 0.04s)
+[base02_capture] npm run test:base02 ... pass (exit 0, 97.71s)
+[runner_selftest] node --test tests/baseline/runner.test.mjs ... pass (exit 0, 1.82s)
+
+step                     class                    exit  seconds
+npm_ci                   pass                     0     18.5
+lint                     pass                     0     15.61
+test                     pass                     0     0.79
+typecheck                pass                     0     7.09
+build                    pass                     0     22.96
+typecheck_after_build    pass                     0     7.73
+protections_check        blocked                  1     0.48  (GITHUB_REPOSITORY is not set; the audit needs the repository name and an authenticated gh CLI (gh is also not installed here))
+launch_check             expected_fail_by_design  1     0.58
+verify_publication       pass                     0     0.36
+test_e2e                 pass                     0     85.93
+contracts_ajv            pass                     0     1.8
+contracts_validate_py    fail                     1     5.32
+build_graph_check        pass                     0     0.04
+base02_capture           pass                     0     97.71
+runner_selftest          pass                     0     1.82
+
+overall: fail {"pass":12,"blocked":1,"expected_fail_by_design":1,"fail":1}; exit 1; results: /tmp/claude-0/-home-user/bb8d4187-6ae8-587b-a816-8153faeea853/scratchpad/f03r2/suite-full/results.json
+### end: 2026-09-30T10:15:48Z
+### exit: 1
+### wall_s: 268.18
+
