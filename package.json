@@ -16,7 +16,10 @@
     "launch:check": "node --import tsx scripts/launch.ts --strict",
     "protections:check": "node --import tsx scripts/protections.ts",
     "format": "prettier --write .",
-    "guide": "node --import tsx guide/build.tsx"
+    "guide": "node --import tsx guide/build.tsx",
+    "test:baseline": "node tests/baseline/run.mjs",
+    "test:contracts": "node --import tsx --test tests/baseline/contracts.test.ts",
+    "test:base02": "playwright test --config tests/baseline/playwright.baseline.config.ts"
   },
   "dependencies": {
     "@fontsource/caveat": "^5.3.0",
@@ -36,9 +39,13 @@
     "@types/react": "^19",
     "@types/react-dom": "^19",
     "agent-browser": "latest",
+    "ajv": "8.20.0",
+    "ajv-formats": "3.0.1",
     "eslint": "^9.39.0",
     "eslint-config-next": "16.3.6",
     "opentype.js": "^2.0.0",
+    "pixelmatch": "7.2.0",
+    "pngjs": "7.0.0",
     "prettier": "^3.9.9",
     "tsx": "^4.21.0",
     "typescript": "^5.9.3"
