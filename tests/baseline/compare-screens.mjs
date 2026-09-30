@@ -7,11 +7,15 @@
  * DIR is a BASE02_OUT directory written by tests/baseline/screens.spec.ts (PNGs + records/*.json).
  * For every screenshot: byte identity, exact pixel mismatch count, and a pixelmatch count (per-pixel colour
  * threshold, anti-aliasing detection on). Sizes that differ are compared on the union canvas (missing area counts
- * as changed). Status is "identical" only when sizes match and pixelmatch finds 0 differing pixels; otherwise
- * "changed" with diff % = differing pixels / union canvas pixels. A diff PNG is written for every changed shot.
- * Records (HTTP status, console/page errors, bad responses, overflow) are compared field by field.
- * Writes DIFF/report.json and prints a table. Exit 0 when everything is identical, 1 when anything changed or is
- * missing, 2 on a usage error.
+ * as changed). Status per screenshot:
+ *   identical         sizes match and every pixel is equal (byte_identical says whether the PNG files are too)
+ *   within_threshold  sizes match, pixelmatch finds 0 differing pixels, but exact_diff_pixels > 0 (sub-threshold
+ *                     colour or anti-aliasing differences; reported separately, not counted as identical)
+ *   changed           otherwise, with diff % = pixelmatch differing pixels / union canvas pixels
+ * A diff PNG is written for every changed shot. Records (HTTP status, console/page errors, bad responses,
+ * overflow) are compared field by field. Writes DIFF/report.json and prints a table.
+ * Exit 0 when every screenshot is identical or within_threshold and no record differs; 1 when anything changed or
+ * is missing, or when there is nothing to compare (no screenshot on either side); 2 on a usage error.
  */
 import fs from "node:fs";
 import path from "node:path";
@@ -98,7 +102,12 @@ for (const name of names) {
     includeAA: false,
   });
   const sameSize = ia.width === ib.width && ia.height === ib.height;
-  const status = sameSize && pm === 0 ? "identical" : "changed";
+  const status =
+    !sameSize || pm > 0
+      ? "changed"
+      : exact === 0
+        ? "identical"
+        : "within_threshold";
   let diffFile = null;
   if (status === "changed") {
     diffFile = `${id}.diff.png`;
@@ -159,6 +168,7 @@ const report = {
   summary: {
     screenshots: shots.length,
     identical: count("identical"),
+    within_threshold: count("within_threshold"),
     changed: count("changed"),
     missing_before: count("missing_before"),
     missing_after: count("missing_after"),
@@ -180,8 +190,11 @@ for (const d of recordDiffs)
     `record ${d.id} ${d.field}: ${JSON.stringify(d.before)} -> ${JSON.stringify(d.after)}`,
   );
 console.log(JSON.stringify(report.summary));
+if (!shots.length)
+  console.error(`nothing to compare: no screenshot in ${before} or ${after}`);
 process.exit(
-  report.summary.changed ||
+  !shots.length ||
+    report.summary.changed ||
     report.summary.missing_before ||
     report.summary.missing_after ||
     report.summary.record_differences

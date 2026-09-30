@@ -5,11 +5,35 @@ One command reproduces the repository's checks on any checkout and records what 
 ```bash
 npm run test:baseline                      # = node tests/baseline/run.mjs
 node tests/baseline/run.mjs --out DIR      # results elsewhere (default test-results/baseline/)
-node tests/baseline/run.mjs --list         # print the steps
+node tests/baseline/run.mjs --list         # print the steps and their prerequisites
 node tests/baseline/run.mjs --only lint,test
+node tests/baseline/run.mjs --only build,test_e2e
 node tests/baseline/run.mjs --skip test_e2e,base02_capture
 node tests/baseline/run.mjs --python /path/to/venv/bin/python   # a Python with jsonschema, for validate.py
+node --test tests/baseline/runner.test.mjs  # the runner's own tests (also the last suite step)
 ```
+
+Exit status:
+
+| exit | meaning                                                                                                                                                                          |
+| ---- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| 0    | no step failed and every requested step ran. `blocked` and `expected_fail_by_design` steps are allowed and listed                                                                |
+| 1    | at least one step is `fail`                                                                                                                                                      |
+| 2    | usage error, before anything runs: an unknown option or step id in `--only`/`--skip`, or a flag without a value                                                                  |
+| 3    | incomplete: no step failed, but a requested step could not run (`requested_not_run` in `results.json`), or no step was selected. A partial run never reports success by omission |
+
+### Partial runs (`--only`, `--skip`)
+
+A step left out by `--only`/`--skip` is `not_run` with `excluded: true`. The steps you asked for keep their
+prerequisites:
+
+- `npm_ci` (for every node step). When it is left out, the node steps still run if `node_modules` is exactly
+  the lockfile's install: `package.json` agrees with `package-lock.json`, `node_modules/.package-lock.json`
+  lists the lockfile's version and integrity for every package (optional platform builds may be absent) and
+  nothing else, and every listed package is on disk at that version. The step records this under
+  `prerequisites_from_state`. Otherwise the step is `not_run` with the reason, and the run exits 3.
+- `build` (for `test_e2e` and `base02_capture`). A left-out build is never assumed: an existing `.next/` cannot be
+  matched to the working tree. `--only test_e2e` therefore exits 3; use `--only build,test_e2e`.
 
 The runner never edits a guard, a flag or a test. It passes the environment through (plus
 `NEXT_TELEMETRY_DISABLED=1`) and writes, under `--out`:
@@ -29,39 +53,46 @@ Logs are staged in the OS temp directory and copied to `--out` after every step,
 
 ## Steps, in order
 
-| id | command | source |
-|---|---|---|
-| `npm_ci` | `npm ci` | `.github/workflows/verify.yml` |
-| `lint` | `npm run lint` | verify.yml |
-| `test` | `npm test` | verify.yml |
-| `typecheck` | `npm run typecheck` | before the build |
-| `build` | `npm run build` | verify.yml |
-| `typecheck_after_build` | `npm run typecheck` | verify.yml order (lint, test, build, typecheck) |
-| `protections_check` | `npm run protections:check` | `docs/CONTENT-WORKFLOW.md`, `LAUNCH-CHECKLIST.md` |
-| `launch_check` | `npm run launch:check` (strict) | `LAUNCH-CHECKLIST.md` |
-| `verify_publication` | `node --import tsx scripts/verify-publication.ts` | verify.yml (with whatever env is present) |
-| `test_e2e` | `npm run test:e2e` | verify.yml (`playwright.config.ts`) |
-| `contracts_ajv` | `npm run test:contracts` | this folder, `contracts.test.ts` |
-| `contracts_validate_py` | `<python> .orchestration/contracts/validate.py` | `.orchestration/contracts/README.md` §7 |
-| `build_graph_check` | `python3 .orchestration/scripts/build_graph.py --check` | `.orchestration/scripts/build_graph.py` |
-| `base02_capture` | `npm run test:base02` | this folder, `screens.spec.ts` |
+| id                      | command                                                 | source                                            |
+| ----------------------- | ------------------------------------------------------- | ------------------------------------------------- |
+| `npm_ci`                | `npm ci`                                                | `.github/workflows/verify.yml`                    |
+| `lint`                  | `npm run lint`                                          | verify.yml                                        |
+| `test`                  | `npm test`                                              | verify.yml                                        |
+| `typecheck`             | `npm run typecheck`                                     | before the build                                  |
+| `build`                 | `npm run build`                                         | verify.yml                                        |
+| `typecheck_after_build` | `npm run typecheck`                                     | verify.yml order (lint, test, build, typecheck)   |
+| `protections_check`     | `npm run protections:check`                             | `docs/CONTENT-WORKFLOW.md`, `LAUNCH-CHECKLIST.md` |
+| `launch_check`          | `npm run launch:check` (strict)                         | `LAUNCH-CHECKLIST.md`                             |
+| `verify_publication`    | `node --import tsx scripts/verify-publication.ts`       | verify.yml (with whatever env is present)         |
+| `test_e2e`              | `npm run test:e2e`                                      | verify.yml (`playwright.config.ts`)               |
+| `contracts_ajv`         | `npm run test:contracts`                                | this folder, `contracts.test.ts`                  |
+| `contracts_validate_py` | `<python> .orchestration/contracts/validate.py`         | `.orchestration/contracts/README.md` §7           |
+| `build_graph_check`     | `python3 .orchestration/scripts/build_graph.py --check` | `.orchestration/scripts/build_graph.py`           |
+| `base02_capture`        | `npm run test:base02`                                   | this folder, `screens.spec.ts`                    |
+| `runner_selftest`       | `node --test tests/baseline/runner.test.mjs`            | this folder, `runner.test.mjs`                    |
 
 CI runs `lint && test && build && typecheck` as one step, so the first failure hides the rest. The suite runs
 each step on its own so every failure is visible. A step whose prerequisite did not pass (`npm_ci` for the node
-steps; `build` for `test_e2e` and `base02_capture`) is `not_run`, never `pass`.
+steps; `build` for `test_e2e` and `base02_capture`) is `not_run`, never `pass`. In a full run that only happens
+after the prerequisite failed, so the run already exits 1.
+
+`runner_selftest` checks the runner itself: argument parsing, the `node_modules` check, prerequisite resolution,
+the Playwright classifier and the exit codes, including `run.mjs --only test_e2e` (exit 3), `--only lnt` (exit 2)
+and `--only contracts_ajv` (runs on a verified install).
 
 ## Classifications
 
-| value | meaning |
-|---|---|
-| `pass` | exit 0 |
-| `fail` | a non-zero exit that no rule below explains. Nothing downgrades it. **Any `fail` makes the runner exit 1.** |
-| `expected_fail_by_design` | only `launch_check`, and only when (a) it exits 1, (b) every blocker it prints after "Launch blocked:" is one of the approval flags in `lib/business.ts`, and (c) `LAUNCH-CHECKLIST.md` still contains the line that says `npm run launch:check` intentionally fails for unresolved approval categories (the runner cites that line number; see also `.orchestration/decisions.md` D-061). Any other blocker in the output makes it `fail`. |
-| `blocked` | a missing tool, secret or browser build, and the output must show it: `protections_check` without `GITHUB_REPOSITORY`, without `gh` or without gh authentication; `verify_publication` needing `gh` for a published article; a Playwright browser executable that does not exist; `validate.py` without `jsonschema` (checked before running) or its setup error (exit 2). The reason is recorded. |
-| `not_run` | a prerequisite did not pass, or the step was excluded with `--only`/`--skip`. |
+| value                     | meaning                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                     |
+| ------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `pass`                    | exit 0                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      |
+| `fail`                    | a non-zero exit that no rule below explains. Nothing downgrades it. **Any `fail` makes the runner exit 1.**                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 |
+| `expected_fail_by_design` | only `launch_check`, and only when (a) it exits 1, (b) every blocker it prints after "Launch blocked:" is one of the approval flags in `lib/business.ts`, and (c) `LAUNCH-CHECKLIST.md` still contains the line that says `npm run launch:check` intentionally fails for unresolved approval categories (the runner cites that line number; see also `.orchestration/decisions.md` D-061). Any other blocker in the output makes it `fail`.                                                                                                                                                                                                                                 |
+| `blocked`                 | a missing tool, secret or browser build, and the output must show it: `protections_check` without `GITHUB_REPOSITORY`, without `gh` or without gh authentication; `verify_publication` needing `gh` for a published article; a Playwright browser that cannot be launched, and only when every failing test failed with the launch error (the summary's failed count equals the failure blocks, each carrying "Executable doesn't exist" or a launch ENOENT); if any other test failed, for example an API test that needs no browser, the step is `fail`; `validate.py` without `jsonschema` (checked before running) or its setup error (exit 2). The reason is recorded. |
+| `not_run`                 | the step was excluded with `--only`/`--skip` (`excluded: true`), or a prerequisite did not pass. A requested step that is `not_run` makes the run exit 3 unless a step failed.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                              |
 
-`results.json` `overall` is `fail` if any step failed, `pass_with_exceptions` if any step is blocked, not run or
-expected to fail by design, and `pass` only if every step passed. `verify_publication` passing with 0 published
+`results.json` `overall` is `fail` if any step failed (exit 1); `incomplete` if a requested step did not run or
+nothing was selected (exit 3); `pass_with_exceptions` if any step is blocked, excluded or expected to fail by
+design (exit 0); and `pass` only if every step passed (exit 0). `verify_publication` passing with 0 published
 articles is noted as vacuous: no GitHub call is made.
 
 ## Contract validation (`npm run test:contracts`)
@@ -118,9 +149,11 @@ node tests/baseline/compare-screens.mjs --before DIR_A --after DIR_B --diff DIR_
 ```
 
 Per screenshot: byte identity, exact pixel mismatches, pixelmatch mismatches (threshold 0.1, anti-aliasing
-detection on) and diff % over the union canvas; `identical` only when sizes match and pixelmatch finds 0 pixels.
-Records are compared field by field. Writes `DIR_DIFF/report.json` and a diff PNG per changed shot; exits 1 when
-anything changed.
+detection on) and diff % over the union canvas. Status `identical` when sizes match and every pixel is equal;
+`within_threshold` when pixelmatch finds 0 pixels but some pixels differ exactly (reported and counted
+separately); `changed` otherwise. Records are compared field by field. Writes `DIR_DIFF/report.json` and a diff
+PNG per changed shot. Exits 1 when anything changed or is missing, and when there is nothing to compare (no
+screenshot on either side).
 
 ## Environment requirements
 

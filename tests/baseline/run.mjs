@@ -8,10 +8,17 @@
  *   expected_fail_by_design  only launch_check, only when every blocker it prints is one of the approval flags in
  *                            lib/business.ts and LAUNCH-CHECKLIST.md still documents the intentional failure
  *   blocked                  a missing tool, secret or browser build, with the reason (the output must match)
- *   not_run                  a prerequisite step did not pass, or the step was excluded with --only/--skip
+ *   not_run                  excluded with --only/--skip, or a prerequisite step did not pass
  *
- * Exit status: 1 if any step is "fail", else 0. Blocked, not_run and expected_fail_by_design steps are listed in
- * the summary and in results.json; they never turn into "pass".
+ * Prerequisites: the node steps need npm_ci; test_e2e and base02_capture need build. When --only/--skip excludes
+ * npm_ci, the node steps still run if node_modules is verifiably the lockfile's install (runner-lib.mjs
+ * installState); an excluded build is never assumed (an existing .next cannot be matched to the working tree), so
+ * include it. A requested step that cannot run is not_run and makes the run "incomplete".
+ *
+ * Exit status (runner-lib.mjs EXIT): 1 if any step is "fail"; else 3 ("incomplete") if a requested step is not_run
+ * or no step was selected; else 0. 2 is a usage error (unknown option or step id, a flag without a value), before
+ * anything runs. Blocked, not_run and expected_fail_by_design steps are listed in the summary and in
+ * results.json; they never turn into "pass".
  *
  * Usage: node tests/baseline/run.mjs [--out DIR] [--only id,id] [--skip id,id] [--python BIN] [--list]
  *   --out     results directory (default test-results/baseline); logs, results.json, base02 captures
@@ -27,6 +34,14 @@ import fs from "node:fs";
 import os from "node:os";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
+import {
+  classifyBrowserRun,
+  EXIT,
+  installState,
+  parseArgs,
+  resolveNeeds,
+  summarize,
+} from "./runner-lib.mjs";
 
 const ROOT = path.resolve(
   path.dirname(fileURLToPath(import.meta.url)),
@@ -34,22 +49,6 @@ const ROOT = path.resolve(
   "..",
 );
 const argv = process.argv.slice(2);
-const opt = (name, fallback) => {
-  const i = argv.indexOf(`--${name}`);
-  return i >= 0 && argv[i + 1] ? argv[i + 1] : fallback;
-};
-const list = (s) =>
-  s
-    ? s
-        .split(",")
-        .map((x) => x.trim())
-        .filter(Boolean)
-    : null;
-const OUT = path.resolve(ROOT, opt("out", "test-results/baseline"));
-const ONLY = list(opt("only"));
-const SKIP = list(opt("skip")) ?? [];
-const PYTHON = opt("python", process.env.BASELINE_PYTHON || "python3");
-const STAGE = fs.mkdtempSync(path.join(os.tmpdir(), "bill-baseline-"));
 const MIN = 60_000;
 
 const SECRET_NAME = /(TOKEN|SECRET|PASSWORD|API_KEY|PRIVATE)/i;
@@ -133,37 +132,17 @@ const nodeTestNote = (log) => {
     ? null
     : `node:test ${count(log, /^# pass (\d+)/m)}/${t} passed, ${count(log, /^# fail (\d+)/m)} failed`;
 };
-const playwrightNote = (log) => {
-  const parts = ["passed", "failed", "flaky", "skipped", "did not run"]
-    .map((k) => [k, count(log, new RegExp(`^\\s*(\\d+) ${k}`, "m"))])
-    .filter(([, n]) => n !== null)
-    .map(([k, n]) => `${n} ${k}`);
-  return parts.length ? `playwright: ${parts.join(", ")}` : null;
-};
 const browserLabel = () => {
   const b = browserInfo();
   return b.mode === "substitute"
     ? `under substitute ${b.version ?? b.executable} via PLAYWRIGHT_CHROMIUM_EXECUTABLE${b.expected ? `; ${b.expected}` : ""}`
     : `Playwright default browser${b.expected ? ` (${b.expected})` : ""}`;
 };
-const e2eClassify = ({ code, log }) => {
-  const note = [playwrightNote(log), browserLabel()].filter(Boolean).join("; ");
-  if (code === 0) return { classification: "pass", note };
-  if (
-    /Executable doesn't exist|browserType\.launch: .*(ENOENT|not found)/.test(
-      log,
-    )
-  )
-    return {
-      classification: "blocked",
-      reason:
-        "Playwright browser build not installed (set PLAYWRIGHT_CHROMIUM_EXECUTABLE or run npx playwright install chromium)",
-      note,
-    };
-  return { classification: "fail", note };
-};
+const e2eClassify = ({ code, log }) =>
+  classifyBrowserRun({ code, log }, browserLabel());
 
-const STEPS = [
+/** The suite, in order. `python` runs validate.py; `stage` is the log staging directory. */
+const stepsFor = (PYTHON, STAGE) => [
   {
     id: "npm_ci",
     title: "Clean install (verify.yml)",
@@ -350,12 +329,53 @@ const STEPS = [
     env: { BASE02_OUT: path.join(STAGE, "base02") },
     classify: e2eClassify,
   },
+  {
+    id: "runner_selftest",
+    title:
+      "Runner self-test: arguments, prerequisites, classifiers (runner.test.mjs)",
+    cmd: "node --test tests/baseline/runner.test.mjs",
+    classify: ({ code, log }) => ({
+      classification: code === 0 ? "pass" : "fail",
+      note: nodeTestNote(log),
+    }),
+  },
 ];
 
-if (argv.includes("--list")) {
-  for (const s of STEPS) console.log(`${s.id.padEnd(24)} ${s.cmd}`);
-  process.exit(0);
+const USAGE =
+  "usage: node tests/baseline/run.mjs [--out DIR] [--only id,id] [--skip id,id] [--python BIN] [--list]";
+const args = parseArgs(
+  argv,
+  stepsFor("python3", "").map((s) => s.id),
+);
+if (args.errors.length) {
+  for (const e of args.errors) console.error(`run.mjs: ${e}`);
+  console.error(USAGE);
+  process.exit(EXIT.usage);
 }
+if (args.list) {
+  for (const s of stepsFor(
+    args.python ?? (process.env.BASELINE_PYTHON || "python3"),
+    "<stage>",
+  ))
+    console.log(
+      `${s.id.padEnd(24)} ${`needs: ${(s.needs ?? []).join(",") || "-"}`.padEnd(20)} ${s.cmd}`,
+    );
+  process.exit(EXIT.ok);
+}
+const OUT = path.resolve(ROOT, args.out ?? "test-results/baseline");
+const ONLY = args.only;
+const SKIP = args.skip;
+const PYTHON = args.python ?? (process.env.BASELINE_PYTHON || "python3");
+const STAGE = fs.mkdtempSync(path.join(os.tmpdir(), "bill-baseline-"));
+const STEPS = stepsFor(PYTHON, STAGE);
+
+let installCache;
+/** Whether an excluded prerequisite's result is already in the working tree (null: cannot be verified). */
+const stateCheck = (id) => {
+  if (id !== "npm_ci") return null;
+  installCache ??= installState(ROOT);
+  return installCache;
+};
 
 function gitInfo() {
   return {
@@ -443,6 +463,7 @@ const results = {
   finished_at: null,
   root: ROOT,
   out: OUT,
+  selection: { only: ONLY, skip: SKIP },
   git_before: gitInfo(),
   git_after: null,
   dirtied_by_suite: null,
@@ -468,6 +489,7 @@ const results = {
   },
   steps: [],
   summary: null,
+  requested_not_run: null,
   overall: null,
   exit_code: null,
 };
@@ -495,25 +517,33 @@ for (const step of STEPS) {
   };
   let rec;
   const excluded = (ONLY && !ONLY.includes(step.id)) || SKIP.includes(step.id);
-  const unmet = (step.needs ?? []).filter(
-    (d) => byId.get(d)?.classification !== "pass",
-  );
+  const { unmet, fromState } = excluded
+    ? { unmet: [], fromState: [] }
+    : resolveNeeds(step.needs, byId, stateCheck);
   const preReason = !excluded && !unmet.length && step.pre ? step.pre() : null;
   if (excluded) {
     rec = {
       ...base,
       classification: "not_run",
+      excluded: true,
       reason: "excluded by --only/--skip",
     };
   } else if (unmet.length) {
     rec = {
       ...base,
       classification: "not_run",
-      reason: `prerequisite ${unmet.map((d) => `${d}=${byId.get(d)?.classification ?? "absent"}`).join(", ")}`,
+      reason: `prerequisite ${unmet.join("; ")}`,
     };
   } else if (preReason) {
-    rec = { ...base, classification: "blocked", reason: preReason };
+    rec = {
+      ...base,
+      classification: "blocked",
+      reason: preReason,
+      ...(fromState.length ? { prerequisites_from_state: fromState } : {}),
+    };
   } else {
+    for (const f of fromState)
+      console.log(`[${step.id}] prerequisite ${f.id} excluded: ${f.detail}`);
     process.stdout.write(`[${step.id}] ${step.cmd} ... `);
     const logPath = path.join(STAGE, logName);
     const r = await runStep(step, logPath);
@@ -531,6 +561,7 @@ for (const step of STEPS) {
       exit_code: r.code,
       seconds: Number(r.seconds.toFixed(2)),
       started_at: r.started,
+      ...(fromState.length ? { prerequisites_from_state: fromState } : {}),
       ...c,
     };
     if (rec.classification === "pass" && r.code !== 0)
@@ -552,16 +583,11 @@ const beforeSet = new Set(results.git_before.status);
 results.dirtied_by_suite = results.git_after.status.filter(
   (l) => !beforeSet.has(l),
 );
-const tally = {};
-for (const s of results.steps)
-  tally[s.classification] = (tally[s.classification] ?? 0) + 1;
-results.summary = tally;
-results.overall = tally.fail
-  ? "fail"
-  : Object.keys(tally).some((k) => k !== "pass")
-    ? "pass_with_exceptions"
-    : "pass";
-results.exit_code = tally.fail ? 1 : 0;
+const result = summarize(results.steps);
+results.summary = result.summary;
+results.requested_not_run = result.requested_not_run;
+results.overall = result.overall;
+results.exit_code = result.exit_code;
 writeResults();
 fs.rmSync(STAGE, { recursive: true, force: true });
 
@@ -572,7 +598,11 @@ for (const s of results.steps)
   console.log(
     `${s.id.padEnd(24)} ${s.classification.padEnd(24)} ${String(s.exit_code ?? "-").padEnd(5)} ${s.seconds ?? "-"}${s.reason ? `  (${s.reason})` : ""}`,
   );
+if (results.requested_not_run.length)
+  console.log(
+    `\nrequested but not run: ${results.requested_not_run.join(", ")} (overall "incomplete" unless a step failed)`,
+  );
 console.log(
-  `\noverall: ${results.overall} ${JSON.stringify(tally)}; results: ${path.join(OUT, "results.json")}`,
+  `\noverall: ${results.overall} ${JSON.stringify(results.summary)}; exit ${results.exit_code}; results: ${path.join(OUT, "results.json")}`,
 );
 process.exit(results.exit_code);
