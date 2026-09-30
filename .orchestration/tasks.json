@@ -129,9 +129,16 @@
     ],
     "integration_baseline": {
       "branch": "integration",
-      "commit": "b0bc6cf",
+      "commit": "e766026",
       "composition": "codex/desktop-iphone-unified 66cce52 + guide/pre-retirement-guide 749b360 + claude/orchestration-foundation cb3becf + F03 suite",
-      "canonical_production_branch": "pending G0 (HB-03)"
+      "canonical_production_branch": "pending G0 (HB-03)",
+      "regression": {
+        "at": "2026-09-30",
+        "by": "A0",
+        "command": "node tests/baseline/run.mjs --out .orchestration/evidence/A0-regression-e766026 --python <venv-f02>",
+        "driver_exit": 0,
+        "summary": "13 pass, 1 blocked (protections_check: no gh/token), 1 expected_fail_by_design (launch_check: 8 human approvals pending); e2e 41/41 and BASE02 under substitute Chromium 141"
+      }
     }
   },
   "tasks": [

@@ -1,0 +1,68 @@
+# step: base02_capture - BASE02 screenshots, console and status capture (npm run test:base02)
+# command: npm run test:base02
+# cwd: /tmp/claude-0/-home-user/bb8d4187-6ae8-587b-a816-8153faeea853/scratchpad/wt/integration
+# started: 2026-09-30T12:02:33.387Z
+# env overrides: {"NEXT_TELEMETRY_DISABLED":"1","BASE02_OUT":"/tmp/bill-baseline-uaNIjR/base02"}
+
+
+> bill-badran@1.0.0 test:base02
+> playwright test --config tests/baseline/playwright.baseline.config.ts
+
+
+Running 49 tests using 1 worker
+
+  ✓   1 tests/baseline/screens.spec.ts:147:7 › capture fr-home-320 /fr (2.9s)
+  ✓   2 tests/baseline/screens.spec.ts:147:7 › capture fr-home-390 /fr (10.5s)
+  ✓   3 tests/baseline/screens.spec.ts:147:7 › capture fr-home-768 /fr (2.7s)
+  ✓   4 tests/baseline/screens.spec.ts:147:7 › capture fr-home-1440 /fr (2.7s)
+  ✓   5 tests/baseline/screens.spec.ts:147:7 › capture fr-resources-320 /fr/guide-retraite (2.1s)
+  ✓   6 tests/baseline/screens.spec.ts:147:7 › capture fr-resources-390 /fr/guide-retraite (2.0s)
+  ✓   7 tests/baseline/screens.spec.ts:147:7 › capture fr-resources-768 /fr/guide-retraite (2.0s)
+  ✓   8 tests/baseline/screens.spec.ts:147:7 › capture fr-resources-1440 /fr/guide-retraite (1.9s)
+  ✓   9 tests/baseline/screens.spec.ts:147:7 › capture fr-meeting-320 /fr/demarche (1.8s)
+  ✓  10 tests/baseline/screens.spec.ts:147:7 › capture fr-meeting-390 /fr/demarche (1.8s)
+  ✓  11 tests/baseline/screens.spec.ts:147:7 › capture fr-meeting-768 /fr/demarche (1.8s)
+  ✓  12 tests/baseline/screens.spec.ts:147:7 › capture fr-meeting-1440 /fr/demarche (1.9s)
+  ✓  13 tests/baseline/screens.spec.ts:197:7 › smoke smoke-fr-retirement-320 /fr/planification-retraite (912ms)
+  ✓  14 tests/baseline/screens.spec.ts:197:7 › smoke smoke-fr-retirement-1440 /fr/planification-retraite (897ms)
+  ✓  15 tests/baseline/screens.spec.ts:197:7 › smoke smoke-fr-investments-320 /fr/placements-retraite (841ms)
+  ✓  16 tests/baseline/screens.spec.ts:197:7 › smoke smoke-fr-investments-1440 /fr/placements-retraite (859ms)
+  ✓  17 tests/baseline/screens.spec.ts:197:7 › smoke smoke-fr-about-320 /fr/a-propos (858ms)
+  ✓  18 tests/baseline/screens.spec.ts:197:7 › smoke smoke-fr-about-1440 /fr/a-propos (858ms)
+  ✓  19 tests/baseline/screens.spec.ts:197:7 › smoke smoke-fr-fees-320 /fr/outils/frais-placement (844ms)
+  ✓  20 tests/baseline/screens.spec.ts:197:7 › smoke smoke-fr-fees-1440 /fr/outils/frais-placement (886ms)
+  ✓  21 tests/baseline/screens.spec.ts:197:7 › smoke smoke-fr-privacy-320 /fr/confidentialite (802ms)
+  ✓  22 tests/baseline/screens.spec.ts:197:7 › smoke smoke-fr-privacy-1440 /fr/confidentialite (893ms)
+  ✓  23 tests/baseline/screens.spec.ts:197:7 › smoke smoke-fr-legal-320 /fr/mentions-legales (811ms)
+  ✓  24 tests/baseline/screens.spec.ts:197:7 › smoke smoke-fr-legal-1440 /fr/mentions-legales (841ms)
+  ✓  25 tests/baseline/screens.spec.ts:147:7 › capture en-home-320 /en (2.3s)
+  ✓  26 tests/baseline/screens.spec.ts:147:7 › capture en-home-390 /en (10.4s)
+  ✓  27 tests/baseline/screens.spec.ts:147:7 › capture en-home-768 /en (2.6s)
+  ✓  28 tests/baseline/screens.spec.ts:147:7 › capture en-home-1440 /en (2.8s)
+  ✓  29 tests/baseline/screens.spec.ts:147:7 › capture en-resources-320 /en/retirement-guide (2.0s)
+  ✓  30 tests/baseline/screens.spec.ts:147:7 › capture en-resources-390 /en/retirement-guide (1.9s)
+  ✓  31 tests/baseline/screens.spec.ts:147:7 › capture en-resources-768 /en/retirement-guide (1.9s)
+  ✓  32 tests/baseline/screens.spec.ts:147:7 › capture en-resources-1440 /en/retirement-guide (1.9s)
+  ✓  33 tests/baseline/screens.spec.ts:147:7 › capture en-meeting-320 /en/how-it-works (1.7s)
+  ✓  34 tests/baseline/screens.spec.ts:147:7 › capture en-meeting-390 /en/how-it-works (1.8s)
+  ✓  35 tests/baseline/screens.spec.ts:147:7 › capture en-meeting-768 /en/how-it-works (1.8s)
+  ✓  36 tests/baseline/screens.spec.ts:147:7 › capture en-meeting-1440 /en/how-it-works (1.9s)
+  ✓  37 tests/baseline/screens.spec.ts:197:7 › smoke smoke-en-retirement-320 /en/retirement-planning (825ms)
+  ✓  38 tests/baseline/screens.spec.ts:197:7 › smoke smoke-en-retirement-1440 /en/retirement-planning (886ms)
+  ✓  39 tests/baseline/screens.spec.ts:197:7 › smoke smoke-en-investments-320 /en/investing-for-retirement (836ms)
+  ✓  40 tests/baseline/screens.spec.ts:197:7 › smoke smoke-en-investments-1440 /en/investing-for-retirement (870ms)
+  ✓  41 tests/baseline/screens.spec.ts:197:7 › smoke smoke-en-about-320 /en/about (871ms)
+  ✓  42 tests/baseline/screens.spec.ts:197:7 › smoke smoke-en-about-1440 /en/about (861ms)
+  ✓  43 tests/baseline/screens.spec.ts:197:7 › smoke smoke-en-fees-320 /en/tools/investment-fees (876ms)
+  ✓  44 tests/baseline/screens.spec.ts:197:7 › smoke smoke-en-fees-1440 /en/tools/investment-fees (928ms)
+  ✓  45 tests/baseline/screens.spec.ts:197:7 › smoke smoke-en-privacy-320 /en/privacy (840ms)
+  ✓  46 tests/baseline/screens.spec.ts:197:7 › smoke smoke-en-privacy-1440 /en/privacy (859ms)
+  ✓  47 tests/baseline/screens.spec.ts:197:7 › smoke smoke-en-legal-320 /en/legal (810ms)
+  ✓  48 tests/baseline/screens.spec.ts:197:7 › smoke smoke-en-legal-1440 /en/legal (833ms)
+  ✓  49 tests/baseline/screens.spec.ts:226:1 › endpoints: / entry and /api/guide review PDF (79ms)
+
+  49 passed (1.5m)
+
+# finished: 2026-09-30T12:04:05.220Z
+# exit: 0
+# seconds: 91.83

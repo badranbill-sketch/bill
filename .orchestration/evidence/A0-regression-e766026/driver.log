@@ -1,0 +1,34 @@
+[npm_ci] npm ci ... pass (exit 0, 18.21s)
+[lint] npm run lint ... pass (exit 0, 14.51s)
+[test] npm test ... pass (exit 0, 0.75s)
+[typecheck] npm run typecheck ... pass (exit 0, 2.29s)
+[build] npm run build ... pass (exit 0, 8.22s)
+[typecheck_after_build] npm run typecheck ... pass (exit 0, 2.51s)
+[protections_check] npm run protections:check ... blocked (exit 1, 0.46s)
+[launch_check] npm run launch:check ... expected_fail_by_design (exit 1, 0.56s)
+[verify_publication] node --import tsx scripts/verify-publication.ts ... pass (exit 0, 0.39s)
+[test_e2e] npm run test:e2e ... pass (exit 0, 76.74s)
+[contracts_ajv] npm run test:contracts ... pass (exit 0, 1.65s)
+[contracts_validate_py] /tmp/claude-0/-home-user/bb8d4187-6ae8-587b-a816-8153faeea853/scratchpad/venv-f02/bin/python .orchestration/contracts/validate.py ... pass (exit 0, 5.12s)
+[build_graph_check] python3 .orchestration/scripts/build_graph.py --check ... pass (exit 0, 0.04s)
+[base02_capture] npm run test:base02 ... pass (exit 0, 91.83s)
+[runner_selftest] node --test tests/baseline/runner.test.mjs ... pass (exit 0, 1.55s)
+
+step                     class                    exit  seconds
+npm_ci                   pass                     0     18.21
+lint                     pass                     0     14.51
+test                     pass                     0     0.75
+typecheck                pass                     0     2.29
+build                    pass                     0     8.22
+typecheck_after_build    pass                     0     2.51
+protections_check        blocked                  1     0.46  (GITHUB_REPOSITORY is not set; the audit needs the repository name and an authenticated gh CLI (gh is also not installed here))
+launch_check             expected_fail_by_design  1     0.56
+verify_publication       pass                     0     0.39
+test_e2e                 pass                     0     76.74
+contracts_ajv            pass                     0     1.65
+contracts_validate_py    pass                     0     5.12
+build_graph_check        pass                     0     0.04
+base02_capture           pass                     0     91.83
+runner_selftest          pass                     0     1.55
+
+overall: pass_with_exceptions {"pass":13,"blocked":1,"expected_fail_by_design":1}; exit 0; results: /home/user/bill/.orchestration/evidence/A0-regression-e766026/results.json

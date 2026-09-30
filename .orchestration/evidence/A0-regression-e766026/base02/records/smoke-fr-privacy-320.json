@@ -1,0 +1,20 @@
+{
+  "id": "smoke-fr-privacy-320",
+  "kind": "smoke",
+  "lang": "fr",
+  "key": "privacy",
+  "width": 320,
+  "url": "/fr/confidentialite",
+  "final_url": "/fr/confidentialite",
+  "http_status": 200,
+  "console_errors": [],
+  "page_errors": [],
+  "failed_requests": [],
+  "bad_responses": [],
+  "aborted_requests": 1,
+  "horizontal_overflow": false,
+  "scroll_width": 320,
+  "browser": "chromium 141.0.7390.37",
+  "app_dir": "/tmp/claude-0/-home-user/bb8d4187-6ae8-587b-a816-8153faeea853/scratchpad/wt/integration",
+  "captured_at": "2026-09-30T12:03:18.594Z"
+}
