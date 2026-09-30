@@ -1,0 +1,28 @@
+{
+  "name": "bill-plan-briefing",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Internal briefing video for Arnaud and Bill: the plan and what it takes (Remotion). Not for publication.",
+  "license": "UNLICENSED",
+  "scripts": {
+    "dev": "remotion studio",
+    "ink": "node scripts/prep-ink.mjs",
+    "proof": "node scripts/proof.mjs out",
+    "qa": "node --experimental-strip-types --no-warnings scripts/qa.mjs",
+    "lint": "tsc --noEmit"
+  },
+  "dependencies": {
+    "@remotion/bundler": "4.0.529",
+    "@remotion/cli": "4.0.529",
+    "@remotion/fonts": "4.0.529",
+    "@remotion/paths": "4.0.529",
+    "@remotion/renderer": "4.0.529",
+    "react": "19.2.3",
+    "react-dom": "19.2.3",
+    "remotion": "4.0.529"
+  },
+  "devDependencies": {
+    "@types/react": "19.2.7",
+    "typescript": "5.9.3"
+  }
+}
