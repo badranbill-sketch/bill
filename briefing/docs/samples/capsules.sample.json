@@ -1,0 +1,80 @@
+{
+  "title": "Capsule input example (JSON)",
+  "note": "Same layout sample as the ::: capsule block in sample.md. Not a C01 deliverable.",
+  "capsules": [
+    {
+      "id": "S01",
+      "sample": true,
+      "format": "Main capsule · Instagram Reel",
+      "title": {
+        "en": "“I have $800,000. Can I retire?”",
+        "fr": "« J’ai 800 000 $. Est-ce que je peux prendre ma retraite ? »"
+      },
+      "angle": "Show which spending and income facts are missing. Give no retirement verdict.",
+      "duration": "45–75 s",
+      "status": "draft",
+      "version": 1,
+      "owner": "A1 (layout sample for C01)",
+      "script": {
+        "en": "“I have $800,000. Can I retire?” It’s a fair question. But on its own, that number can’t answer it.\n\nTwo things are missing. First: what you plan to spend each year, for the ordinary life you actually want. Second: the income that will arrive anyway, like a pension or government benefits, and when each one starts.\n\nPut those side by side and the question changes. It stops being “is $800,000 enough?” and becomes “how much of my spending does my savings need to cover, and for how long?”\n\n*(Taps the notebook.)* That’s a question you can work on. Start with one page: your yearly spending, your income sources, and their start dates.\n\nThe free guide walks through that page, step by step. The link is in the bio.\n",
+        "fr": "« J’ai 800 000 $. Est-ce que je peux prendre ma retraite ? » C’est une bonne question. Mais ce chiffre-là, tout seul, ne peut pas y répondre.\n\nIl manque deux choses. D’abord, combien vous prévoyez dépenser par année, pour la vie que vous voulez vraiment. Ensuite, les revenus qui vont rentrer de toute façon, comme une rente ou les prestations du gouvernement, et le moment où chacun commence.\n\nMettez les deux côte à côte, et la question change. Ce n’est plus « est-ce que 800 000 $, c’est assez ? », mais « quelle part de mes dépenses mon épargne doit-elle couvrir, et pendant combien de temps ? »\n\n*(Montre le carnet.)* Ça, c’est une question sur laquelle on peut travailler. Commencez par une page : vos dépenses annuelles, vos sources de revenus et leurs dates de début.\n\nLe guide gratuit vous accompagne dans cette page, étape par étape. Le lien est dans la bio.\n"
+      },
+      "on_screen": [
+        {
+          "at": "0–4 s",
+          "en": "$800,000. Can I retire?",
+          "fr": "800 000 $. Retraite possible ?"
+        },
+        {
+          "at": "8–22 s",
+          "en": "1 · Yearly spending  2 · Income that arrives anyway",
+          "fr": "1 · Dépenses annuelles  2 · Revenus qui rentrent de toute façon"
+        },
+        {
+          "at": "25–38 s",
+          "en": "How much must savings cover, and for how long?",
+          "fr": "Quelle part l’épargne doit-elle couvrir, et combien de temps ?"
+        },
+        {
+          "at": "end",
+          "en": "Free guide · link in bio",
+          "fr": "Guide gratuit · lien dans la bio"
+        }
+      ],
+      "shot": "A table, an open notebook, one number written on the page. Hands and notebook only until recording consent exists (G4). End card: the *workshop-notebook* drawing, no text in the art.\n",
+      "ink": "workshop-notebook",
+      "cta": {
+        "offer": "guide-pdf",
+        "note": "No approved edition of the guide exists yet (D-054, HB-04). Do not publish before one does.",
+        "destination": {
+          "route": "resources",
+          "en": "/en/retirement-guide",
+          "fr": "/fr/guide-retraite"
+        }
+      },
+      "companion": {
+        "duration": "15–30 s",
+        "format": "One-question exercise",
+        "brief": "The viewer writes down one number tonight: what an ordinary month would cost in retirement. On screen, the question only; nothing withheld to force a click. Ends on the same guide link.\n"
+      },
+      "sources": [
+        {
+          "claim": "Opening question and useful point",
+          "title": "05_CONTENT_AND_ART_BRIEFS.md §2, row S01",
+          "method": "project-file",
+          "accessed": "2026-09-30"
+        },
+        {
+          "claim": "The guide is free; no approved edition yet",
+          "title": "contracts/offer-matrix.md §1",
+          "method": "project-file",
+          "accessed": "2026-09-30"
+        }
+      ],
+      "factual_claims": false,
+      "compliance": "No verdict on anyone’s retirement; no rates, returns, rules or benefit amounts stated. The $800,000 is a hypothetical opening line, not a client. No credential claims. One CTA, the free guide; nothing is sold.\n",
+      "rights": "created for project (script); recording needs G4",
+      "review_hash": null
+    }
+  ]
+}

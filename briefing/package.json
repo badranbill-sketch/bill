@@ -11,7 +11,10 @@
     "qa": "node --experimental-strip-types --no-warnings scripts/qa.mjs",
     "lint": "tsc --noEmit",
     "stills": "node --experimental-strip-types --no-warnings scripts/stills.mjs",
-    "render": "remotion render Briefing out/plan-briefing-en.mp4 --codec=h264 --crf=18 --concurrency=2"
+    "render": "remotion render Briefing out/plan-briefing-en.mp4 --codec=h264 --crf=18 --concurrency=2",
+    "docs": "node docs/build.mjs",
+    "docs:preview": "${DOCS_PY:-python3} docs/preview.py",
+    "docs:sample": "node docs/build.mjs docs/samples/sample.md"
   },
   "dependencies": {
     "@remotion/bundler": "4.0.529",
@@ -25,6 +28,10 @@
   },
   "devDependencies": {
     "@types/react": "19.2.7",
-    "typescript": "5.9.3"
+    "markdown-it": "14.3.2",
+    "pdf-lib": "1.17.1",
+    "playwright-core": "1.56.1",
+    "typescript": "5.9.3",
+    "yaml": "2.9.1"
   }
 }

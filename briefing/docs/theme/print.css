@@ -1,0 +1,1162 @@
+/*
+ * House print style: navy ink on warm paper, Newsreader headings, Source Sans 3 body,
+ * brass for small marks only (rules, numerals, ticks), never a fill.
+ * US Letter. The running header/footer strings are added by build.mjs (@page margin boxes).
+ */
+:root {
+  --paper: #faf9f5;
+  --ivory: #f5f2ea;
+  --ink: #0e2233;
+  --navy2: #173450;
+  --muted: #4e5b68;
+  --blue-grey: #a7b4c3;
+  --stone: #c9c0b1;
+  --brass: #a8875a;
+  --brass-soft: #c9a874;
+  --brass-ink: #7a5d33;
+  --rule: #d5d4d2;
+  --serif: 'Newsreader', Georgia, serif;
+  --sans: 'Source Sans 3', 'Helvetica Neue', Arial, sans-serif;
+  --measure: 5.35in;
+}
+
+@page {
+  size: 8.5in 11in;
+  margin: 0.95in 1.05in 0.9in 1.05in;
+  background: #faf9f5; /* the whole sheet, margins included */
+}
+
+html {
+  background: var(--paper);
+}
+body {
+  margin: 0;
+  font-family: var(--sans);
+  font-size: 10.5pt;
+  line-height: 1.5;
+  color: var(--ink);
+  font-kerning: normal;
+  font-variant-ligatures: common-ligatures;
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-print-color-adjust: exact;
+  print-color-adjust: exact;
+  orphans: 3;
+  widows: 3;
+}
+
+/* ---------------------------------------------------------------- */
+/* Running text                                                       */
+/* ---------------------------------------------------------------- */
+p {
+  margin: 0 0 8pt;
+  max-width: var(--measure);
+}
+ul,
+ol {
+  margin: 0 0 9pt;
+  padding-left: 1.15em;
+  max-width: var(--measure);
+}
+li {
+  margin: 0 0 3pt;
+  padding-left: 0.15em;
+}
+li > p {
+  margin-bottom: 3pt;
+}
+li::marker {
+  color: var(--brass);
+}
+ol > li::marker {
+  font-family: var(--serif);
+  font-style: italic;
+  color: var(--brass-ink);
+}
+ul ul,
+ol ul {
+  margin: 3pt 0 4pt;
+}
+strong,
+b {
+  font-weight: 600;
+}
+a {
+  color: inherit;
+  text-decoration: underline;
+  text-decoration-color: var(--brass-soft);
+  text-decoration-thickness: 0.6pt;
+  text-underline-offset: 1.8pt;
+}
+code {
+  /* File names and keys: the house sans on an ivory ground (no monospace font is bundled). */
+  font-family: var(--sans);
+  font-size: 0.94em;
+  color: var(--navy2);
+  background: var(--ivory);
+  padding: 0.4pt 2.6pt 0.8pt;
+  border-radius: 1.5pt;
+  box-decoration-break: clone;
+  -webkit-box-decoration-break: clone;
+}
+pre {
+  /* Code samples (writer's reference only). */
+  font-family: 'DejaVu Sans Mono', 'Liberation Mono', monospace;
+  font-size: 7.6pt;
+  line-height: 1.5;
+  color: var(--navy2);
+  background: var(--ivory);
+  border-left: 1.5pt solid var(--stone);
+  padding: 7pt 10pt;
+  margin: 6pt 0 12pt;
+  white-space: pre-wrap;
+  break-inside: avoid;
+}
+pre code {
+  font: inherit;
+  background: none;
+  padding: 0;
+  color: inherit;
+}
+blockquote {
+  margin: 12pt 0 14pt;
+  padding: 0 0 0 14pt;
+  border-left: 1.5pt solid var(--brass);
+  font-family: var(--serif);
+  font-style: italic;
+  font-size: 12pt;
+  line-height: 1.45;
+  color: var(--navy2);
+  max-width: var(--measure);
+}
+blockquote p {
+  margin-bottom: 5pt;
+}
+hr {
+  border: 0;
+  height: 0;
+  border-top: 0.5pt solid var(--rule);
+  margin: 16pt 0;
+}
+sup {
+  font-size: 0.7em;
+  line-height: 0;
+}
+
+/* Headings ---------------------------------------------------------- */
+h2,
+h3,
+h4 {
+  break-after: avoid;
+  page-break-after: avoid;
+  break-inside: avoid;
+}
+h2 {
+  font-family: var(--serif);
+  font-weight: 400;
+  font-size: 17pt;
+  line-height: 1.2;
+  letter-spacing: -0.005em;
+  margin: 24pt 0 7pt;
+  max-width: var(--measure);
+}
+h3 {
+  font-family: var(--sans);
+  font-weight: 600;
+  font-size: 7.75pt;
+  line-height: 1.3;
+  letter-spacing: 0.13em;
+  text-transform: uppercase;
+  color: var(--brass-ink);
+  margin: 18pt 0 5pt;
+}
+h4 {
+  font-family: var(--serif);
+  font-weight: 400;
+  font-style: italic;
+  font-size: 12.5pt;
+  line-height: 1.3;
+  color: var(--navy2);
+  margin: 14pt 0 4pt;
+}
+h2 + h3 {
+  margin-top: 8pt;
+}
+.opener + h2,
+.lede + h2 {
+  margin-top: 14pt;
+}
+
+/* Section opener (every "# Title") ----------------------------------- */
+.opener {
+  break-before: page;
+  page-break-before: always;
+  break-after: avoid;
+  display: grid;
+  grid-template-columns: 1fr;
+  align-items: end;
+  margin: 0 0 18pt;
+  padding: 0.1in 0 13pt;
+  border-bottom: 0.75pt solid var(--ink);
+}
+.opener.has-art {
+  grid-template-columns: 1fr 2.45in;
+  column-gap: 0.35in;
+}
+.opener-num {
+  display: flex;
+  align-items: center;
+  gap: 9pt;
+  font-family: var(--sans);
+  font-weight: 600;
+  font-size: 7.75pt;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--brass-ink);
+  margin: 0 0 12pt;
+}
+.opener-num::after {
+  content: '';
+  width: 0.55in;
+  border-top: 0.75pt solid var(--brass);
+}
+.opener h1 {
+  font-family: var(--serif);
+  font-weight: 300;
+  font-size: 30pt;
+  line-height: 1.07;
+  letter-spacing: -0.012em;
+  margin: 0;
+  max-width: 4.9in;
+}
+.opener-art svg {
+  display: block;
+  width: 100%;
+  height: auto;
+  max-height: 2.3in;
+  margin-bottom: -2pt;
+}
+
+.lede p {
+  font-family: var(--serif);
+  font-size: 13pt;
+  line-height: 1.45;
+  color: var(--navy2);
+  max-width: 5.5in;
+  margin-bottom: 10pt;
+}
+.lede {
+  margin-bottom: 8pt;
+}
+
+/* ---------------------------------------------------------------- */
+/* Status tags                                                        */
+/* ---------------------------------------------------------------- */
+.tag {
+  display: inline-block;
+  font-family: var(--sans);
+  font-size: 7.6pt;
+  line-height: 1;
+  letter-spacing: 0.02em;
+  padding: 1.6pt 3.6pt 2pt;
+  border-radius: 2pt;
+  white-space: nowrap;
+  vertical-align: 0.6pt;
+  text-transform: none;
+}
+.tag-done {
+  color: var(--ink);
+  font-weight: 600;
+  padding-left: 0;
+  padding-right: 0;
+}
+.tag .tick {
+  width: 7.6pt;
+  height: 7.6pt;
+  color: var(--brass);
+  vertical-align: -0.6pt;
+  margin-right: 2.4pt;
+}
+.tag-open {
+  color: var(--muted);
+  font-style: italic;
+  border: 0.6pt dashed var(--blue-grey);
+}
+.tag-caution {
+  color: var(--brass-ink);
+  font-style: italic;
+  border: 0.6pt solid var(--brass-soft);
+}
+.tag-stop {
+  color: var(--ink);
+  font-weight: 600;
+  border: 0.7pt solid var(--ink);
+  border-radius: 0.8pt;
+}
+h2 .tag,
+h4 .tag {
+  font-size: 7.6pt;
+  vertical-align: 3pt;
+  margin-left: 4pt;
+}
+
+/* ---------------------------------------------------------------- */
+/* Blocks                                                             */
+/* ---------------------------------------------------------------- */
+.callout {
+  break-inside: avoid;
+  background: var(--ivory);
+  border-left: 2pt solid var(--brass);
+  padding: 10pt 16pt 11pt 15pt;
+  margin: 12pt 0 15pt;
+}
+.callout-label,
+.checklist-label,
+.sources-label,
+.tbl-title {
+  font-family: var(--sans);
+  font-weight: 600;
+  font-size: 7.5pt;
+  line-height: 1.3;
+  letter-spacing: 0.13em;
+  text-transform: uppercase;
+  color: var(--brass-ink);
+  margin: 0 0 5pt;
+}
+.callout-body {
+  font-size: 10pt;
+  line-height: 1.48;
+}
+.callout-body p,
+.callout-body ul,
+.callout-body ol {
+  max-width: none;
+}
+.callout-body > :last-child,
+.callout-body > :last-child > li:last-child {
+  margin-bottom: 0;
+}
+.callout.tone-rule {
+  border-left-color: var(--ink);
+}
+.callout.tone-rule .callout-label {
+  color: var(--ink);
+}
+.callout.tone-plain {
+  background: transparent;
+  border: 0.6pt solid var(--rule);
+  border-left: 2pt solid var(--brass);
+}
+.callout.tone-quiet {
+  background: transparent;
+  border-left: 0.75pt solid var(--brass);
+  padding: 2pt 0 2pt 14pt;
+}
+
+/* Checklist */
+.checklist-block {
+  margin: 8pt 0 12pt;
+  break-inside: avoid;
+}
+ul.checklist {
+  list-style: none;
+  padding: 0;
+}
+ul.checklist > li {
+  position: relative;
+  padding-left: 19pt;
+  margin: 0 0 5pt;
+}
+ul.checklist > li::marker {
+  content: '';
+}
+ul.checklist .box {
+  position: absolute;
+  left: 0;
+  top: 0.6pt;
+  width: 13pt;
+  height: 12pt;
+}
+ul.checklist li.on {
+  color: var(--ink);
+}
+
+/* Two columns */
+.two-col {
+  display: grid;
+  column-gap: 0.32in;
+  margin: 4pt 0 10pt;
+}
+.two-col.flow {
+  display: block;
+  column-count: 2;
+  column-gap: 0.32in;
+}
+.two-col p,
+.two-col ul,
+.two-col ol,
+.two-col h2 {
+  max-width: none;
+}
+.two-col > .col > :first-child {
+  margin-top: 0;
+}
+.two-col.ruled > .col + .col {
+  border-left: 0.5pt solid var(--rule);
+  padding-left: 0.3in;
+  margin-left: -0.02in;
+}
+.pagebreak {
+  break-after: page;
+  page-break-after: always;
+}
+.keep {
+  break-inside: avoid;
+}
+.small-note p {
+  font-size: 8.5pt;
+  line-height: 1.45;
+  color: var(--muted);
+}
+
+/* Figures (the site's ink drawings) */
+figure {
+  margin: 0;
+}
+figure.fig {
+  margin: 14pt 0 16pt;
+  break-inside: avoid;
+}
+.fig-art {
+  width: var(--fig-w, 100%);
+}
+.fig.align-center .fig-art {
+  margin: 0 auto;
+}
+.fig-art svg {
+  display: block;
+  width: 100%;
+  height: auto;
+  max-height: var(--fig-max, 4.3in);
+}
+.fig.align-right {
+  float: right;
+  width: var(--fig-w);
+  margin: 3pt 0 10pt 0.28in;
+}
+.fig.align-left {
+  float: left;
+  width: var(--fig-w);
+  margin: 3pt 0.28in 10pt 0;
+}
+.fig.align-right .fig-art,
+.fig.align-left .fig-art {
+  width: 100%;
+}
+figcaption {
+  font-size: 8.25pt;
+  line-height: 1.42;
+  color: var(--muted);
+  margin: 8pt 0 0;
+  max-width: 4.4in;
+}
+.fig.align-center figcaption {
+  margin-left: auto;
+  margin-right: auto;
+  text-align: center;
+}
+figcaption::before {
+  content: '';
+  display: block;
+  width: 0.4in;
+  border-top: 0.75pt solid var(--brass);
+  margin: 0 0 5pt;
+}
+.fig.align-center figcaption::before {
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* Tables */
+table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 9pt;
+  line-height: 1.36;
+  margin: 6pt 0 13pt;
+  font-variant-numeric: lining-nums tabular-nums;
+}
+table.fixed {
+  table-layout: fixed;
+}
+thead {
+  display: table-header-group;
+}
+th {
+  font-weight: 600;
+  font-size: 7.1pt;
+  line-height: 1.25;
+  letter-spacing: 0.11em;
+  text-transform: uppercase;
+  color: var(--muted);
+  text-align: left;
+  vertical-align: bottom;
+  padding: 0 10pt 5pt 0;
+  border-bottom: 0.8pt solid var(--ink);
+}
+td {
+  vertical-align: top;
+  padding: 4.8pt 10pt 4.8pt 0;
+  border-bottom: 0.5pt solid var(--rule);
+  overflow-wrap: break-word;
+}
+th:last-child,
+td:last-child {
+  padding-right: 0;
+}
+tbody tr:last-child td {
+  border-bottom: 0.8pt solid var(--ink);
+}
+tr {
+  break-inside: avoid;
+}
+td code {
+  white-space: nowrap;
+}
+td p {
+  margin: 0 0 3pt;
+  max-width: none;
+}
+td > :last-child {
+  margin-bottom: 0;
+}
+.tbl {
+  margin: 12pt 0 16pt;
+}
+.tbl table {
+  margin: 0;
+}
+.tbl.first-strong td:first-child {
+  font-weight: 600;
+}
+.tbl.compact table {
+  font-size: 8.5pt;
+}
+.tbl.compact td {
+  padding-top: 3.5pt;
+  padding-bottom: 3.5pt;
+}
+.tbl-note {
+  font-size: 8pt;
+  line-height: 1.42;
+  color: var(--muted);
+  margin-top: 6pt;
+  max-width: var(--measure);
+}
+
+/* Sources */
+.sources {
+  border-top: 0.5pt solid var(--rule);
+  padding-top: 7pt;
+  margin-top: 16pt;
+  font-size: 8pt;
+  line-height: 1.42;
+  color: var(--muted);
+}
+.sources p,
+.sources ul,
+.sources ol {
+  max-width: none;
+  margin-bottom: 4pt;
+}
+.sources li {
+  margin-bottom: 2.5pt;
+}
+.sources a,
+.cap-src a {
+  overflow-wrap: anywhere;
+  text-decoration: none;
+  color: var(--navy2);
+}
+
+/* ---------------------------------------------------------------- */
+/* Cover                                                              */
+/* ---------------------------------------------------------------- */
+@page cover {
+  margin: 0;
+}
+.cover {
+  page: cover;
+  break-after: page;
+  page-break-after: always;
+  box-sizing: border-box;
+  width: 8.5in;
+  height: 10.98in;
+  padding: 0.85in 1.05in 0.8in;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  position: relative;
+}
+.cover-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-family: var(--sans);
+  font-weight: 600;
+  font-size: 7.5pt;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--brass-ink);
+  padding-bottom: 10pt;
+  border-bottom: 0.75pt solid var(--ink);
+}
+.cover-top .cover-class {
+  color: var(--ink);
+  border: 0.7pt solid var(--ink);
+  padding: 3pt 6pt 3.5pt;
+  letter-spacing: 0.12em;
+}
+.cover-main {
+  margin-top: 0.95in;
+}
+.cover-title {
+  font-family: var(--serif);
+  font-weight: 300;
+  font-size: 40pt;
+  line-height: 1.04;
+  letter-spacing: -0.018em;
+  margin: 0;
+  max-width: 5.9in;
+}
+.cover-sub {
+  font-family: var(--serif);
+  font-style: italic;
+  font-weight: 300;
+  font-size: 16pt;
+  line-height: 1.35;
+  color: var(--navy2);
+  margin: 14pt 0 0;
+  max-width: 5.4in;
+}
+.cover-meta {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  column-gap: 16pt;
+  row-gap: 5pt;
+  margin: 26pt 0 0;
+  padding-top: 13pt;
+  border-top: 0.75pt solid var(--brass);
+  width: 4.6in;
+  font-size: 9.5pt;
+  line-height: 1.35;
+}
+.cover-meta dt {
+  font-weight: 600;
+  font-size: 7.25pt;
+  letter-spacing: 0.13em;
+  text-transform: uppercase;
+  color: var(--muted);
+  padding-top: 1.6pt;
+}
+.cover-meta dd {
+  margin: 0;
+}
+.cover-art {
+  flex: 1 1 auto;
+  min-height: 0;
+  display: flex;
+  align-items: flex-end;
+  justify-content: flex-end;
+  margin: 0.2in -0.15in 0.1in 0;
+}
+.cover-art svg {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+.cover-foot {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  gap: 24pt;
+  padding-top: 9pt;
+  border-top: 0.5pt solid var(--rule);
+  font-size: 7.75pt;
+  line-height: 1.4;
+  color: var(--muted);
+}
+.cover-foot .note {
+  max-width: 4.4in;
+}
+.cover-foot .brand {
+  font-family: var(--serif);
+  font-style: italic;
+  font-size: 9pt;
+  color: var(--navy2);
+  white-space: nowrap;
+}
+
+/* ---------------------------------------------------------------- */
+/* Contents                                                           */
+/* ---------------------------------------------------------------- */
+.toc {
+  break-after: page;
+  page-break-after: always;
+}
+.toc-head {
+  font-family: var(--serif);
+  font-weight: 300;
+  font-size: 30pt;
+  line-height: 1.1;
+  margin: 0.1in 0 0;
+  padding-bottom: 13pt;
+  border-bottom: 0.75pt solid var(--ink);
+}
+.toc ol {
+  list-style: none;
+  padding: 0;
+  margin: 10pt 0 0;
+  max-width: none;
+}
+.toc li {
+  margin: 0;
+  padding: 0;
+}
+.toc li::marker {
+  content: '';
+}
+.toc a {
+  display: flex;
+  align-items: baseline;
+  gap: 10pt;
+  text-decoration: none;
+  color: var(--ink);
+}
+.toc-1 > a {
+  font-family: var(--serif);
+  font-size: 13pt;
+  line-height: 1.3;
+  padding: 9pt 0 4pt;
+}
+.toc-1:not(:first-child) > a {
+  border-top: 0.5pt solid var(--rule);
+}
+.toc-2 > a {
+  font-size: 9.5pt;
+  line-height: 1.3;
+  padding: 2.5pt 0 2.5pt calc(0.32in + 10pt);
+  color: var(--navy2);
+}
+.toc-2:last-child > a,
+.toc-2 + .toc-1 > a {
+  padding-bottom: 7pt;
+}
+.toc-num {
+  flex: 0 0 0.32in;
+  font-family: var(--sans);
+  font-weight: 600;
+  font-size: 7.75pt;
+  letter-spacing: 0.1em;
+  color: var(--brass-ink);
+}
+.toc-leader {
+  flex: 1 1 auto;
+  border-bottom: 0.8pt dotted var(--stone);
+  transform: translateY(-2.5pt);
+  min-width: 0.3in;
+}
+.toc-page {
+  flex: 0 0 auto;
+  min-width: 2.4ch;
+  text-align: right;
+  font-family: var(--sans);
+  font-size: 9pt;
+  font-variant-numeric: tabular-nums lining-nums;
+  color: var(--navy2);
+}
+
+/* ---------------------------------------------------------------- */
+/* Capsule pages                                                      */
+/* One capsule to a page for scripts up to about 150 words a language; */
+/* a longer capsule continues on a second page, breaking only before   */
+/* the production notes. Top/bottom margins are 0.09/0.15 in smaller; */
+/* the running header and footer stay where they are on other pages.   */
+/* ---------------------------------------------------------------- */
+@page capsule {
+  margin-top: 0.86in;
+  margin-bottom: 0.75in;
+  @top-left { padding-bottom: 0.15in; }
+  @top-right { padding-bottom: 0.155in; }
+  @bottom-left { padding-top: 0.09in; }
+  @bottom-right { padding-top: 0.09in; }
+}
+.capsule {
+  page: capsule;
+  break-before: page;
+  page-break-before: always;
+  font-size: 9pt;
+  line-height: 1.42;
+}
+.capsule p,
+.capsule ul,
+.capsule ol {
+  max-width: none;
+}
+.capsule h3 {
+  margin: 0 0 4pt;
+  font-size: 6.9pt;
+}
+.capsule h4.cap-k,
+.cap-k-inline {
+  font-family: var(--sans);
+  font-style: normal;
+  font-weight: 600;
+  font-size: 6.5pt;
+  line-height: 1.3;
+  letter-spacing: 0.13em;
+  text-transform: uppercase;
+  color: var(--brass-ink);
+  margin: 0 0 2pt;
+}
+.cap-k-inline {
+  margin-right: 3pt;
+}
+.cap-head {
+  display: grid;
+  grid-template-columns: 0.7in 1fr auto;
+  column-gap: 12pt;
+  align-items: start;
+  padding-bottom: 8pt;
+  border-bottom: 0.75pt solid var(--ink);
+}
+.cap-id {
+  font-family: var(--serif);
+  font-weight: 300;
+  font-size: 29pt;
+  line-height: 0.95;
+  color: var(--brass-ink);
+  letter-spacing: -0.01em;
+}
+.cap-kicker {
+  font-weight: 600;
+  font-size: 6.9pt;
+  letter-spacing: 0.13em;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin: 1pt 0 2.5pt;
+}
+.cap-title {
+  font-family: var(--serif);
+  font-weight: 400;
+  font-size: 17pt;
+  line-height: 1.15;
+  margin: 0;
+  max-width: none;
+}
+.cap-title-fr {
+  font-family: var(--serif);
+  font-style: italic;
+  font-weight: 300;
+  font-size: 12pt;
+  line-height: 1.25;
+  color: var(--navy2);
+  margin-top: 2pt;
+}
+.cap-tags {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 4pt;
+  padding-top: 2pt;
+}
+
+/* Meta strip: useful point · duration · call to action */
+.cap-meta {
+  display: grid;
+  grid-template-columns: 1.4fr 1fr 1.3fr;
+  border-bottom: 0.5pt solid var(--rule);
+}
+.cap-cell {
+  padding: 6pt 11pt 6.5pt;
+  font-size: 7.9pt;
+  line-height: 1.36;
+}
+.cap-cell:first-child {
+  padding-left: 0;
+}
+.cap-cell:last-child {
+  padding-right: 0;
+}
+.cap-cell + .cap-cell {
+  border-left: 0.5pt solid var(--rule);
+}
+.cap-angle {
+  font-family: var(--serif);
+  font-style: italic;
+  font-size: 10pt;
+  line-height: 1.34;
+  color: var(--navy2);
+}
+.cap-dest {
+  display: block;
+  color: var(--navy2);
+}
+.cap-est {
+  display: block;
+  font-size: 6.9pt;
+  line-height: 1.3;
+  color: var(--muted);
+  font-style: italic;
+  margin-top: 1.5pt;
+}
+.cap-est code {
+  font-style: normal;
+  font-size: 6.9pt;
+}
+
+/* Scripts: English | French, each with its own on-screen lines and CTA wording */
+.cap-scripts {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  column-gap: 0.22in;
+  margin-top: 8pt;
+}
+.cap-script + .cap-script {
+  border-left: 0.5pt solid var(--rule);
+  padding-left: 0.22in;
+}
+.cap-script p {
+  margin: 0 0 4.5pt;
+  font-size: 9.1pt;
+  line-height: 1.43;
+}
+.cap-script em {
+  color: var(--muted);
+}
+.cap-sub {
+  margin-top: 7pt;
+  padding-top: 5pt;
+  border-top: 0.5pt dotted var(--stone);
+  break-inside: avoid;
+}
+ol.cap-os {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  font-size: 8pt;
+  line-height: 1.34;
+}
+ol.cap-os li {
+  display: grid;
+  grid-template-columns: 0.5in 1fr;
+  column-gap: 6pt;
+  margin: 0 0 2pt;
+  padding: 0;
+}
+ol.cap-os li::marker {
+  content: '';
+}
+ol.cap-os .at {
+  color: var(--muted);
+  font-variant-numeric: tabular-nums;
+  font-size: 7.4pt;
+  padding-top: 0.5pt;
+}
+ol.cap-os li:not(:has(.at)) {
+  grid-template-columns: 1fr;
+}
+.cap-script p.cap-ctaline {
+  font-size: 8.4pt;
+  line-height: 1.38;
+  margin: 0;
+}
+
+/* Production notes */
+.cap-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  margin-top: 9pt;
+  border-top: 0.5pt solid var(--rule);
+  border-bottom: 0.5pt solid var(--rule);
+  break-inside: avoid;
+}
+.cap-box {
+  padding: 6pt 11pt 5pt;
+  font-size: 8pt;
+  line-height: 1.4;
+}
+.cap-box:first-child {
+  padding-left: 0;
+}
+.cap-box:last-child {
+  padding-right: 0;
+}
+.cap-box + .cap-box {
+  border-left: 0.5pt solid var(--rule);
+}
+.cap-box p {
+  margin: 0 0 3.5pt;
+}
+.cap-box ul {
+  padding-left: 1em;
+  margin-bottom: 3.5pt;
+}
+.cap-box li {
+  margin-bottom: 1.5pt;
+}
+.cap-box h3 .h3-sub {
+  font-weight: 400;
+  letter-spacing: 0.02em;
+  text-transform: none;
+  font-style: italic;
+  font-size: 7.6pt;
+  color: var(--muted);
+  margin-left: 6pt;
+}
+.cap-ink {
+  float: right;
+  width: 0.95in;
+  margin: -1pt 0 3pt 8pt;
+}
+.cap-ink svg {
+  display: block;
+  width: 100%;
+  height: auto;
+  max-height: 0.85in;
+}
+.cap-foot {
+  display: grid;
+  grid-template-columns: 1.55fr 1fr;
+  column-gap: 0.24in;
+  margin-top: 7pt;
+  font-size: 7.6pt;
+  line-height: 1.4;
+  break-inside: avoid;
+}
+.cap-src {
+  margin: 0;
+  padding-left: 1.2em;
+}
+.cap-src li {
+  margin-bottom: 2pt;
+}
+.cap-src .src-title {
+  font-style: italic;
+}
+.cap-src .src-date {
+  color: var(--muted);
+  white-space: nowrap;
+}
+.cap-src .tag {
+  font-size: 6.6pt;
+  vertical-align: 0.3pt;
+}
+.cap-compliance {
+  background: var(--ivory);
+  border-left: 1.5pt solid var(--brass);
+  padding: 5.5pt 10pt;
+}
+.cap-compliance p {
+  margin: 0 0 3pt;
+}
+.cap-compliance > :last-child {
+  margin-bottom: 0;
+}
+.cap-cta-note {
+  margin-top: 3pt;
+  padding-top: 3pt;
+  border-top: 0.5pt dotted var(--stone);
+}
+.cap-status {
+  margin: 6pt 0 0;
+  padding-top: 4.5pt;
+  border-top: 0.5pt solid var(--rule);
+  font-size: 7pt;
+  line-height: 1.35;
+  color: var(--muted);
+  letter-spacing: 0.02em;
+}
+.cap-empty {
+  color: var(--muted);
+}
+.cap-notes {
+  margin-top: 7pt;
+  font-size: 7.8pt;
+  color: var(--muted);
+}
+
+/* Auto-fit (theme/page.js): each step makes a capsule a little denser so it keeps to one page.
+   "flow": still too long, so the production notes start a second page. */
+.capsule.fit-1 .cap-script p { font-size: 8.75pt; line-height: 1.41; }
+.capsule.fit-1 .cap-box { font-size: 7.8pt; }
+.capsule.fit-2 .cap-script p,
+.capsule.fit-3 .cap-script p { font-size: 8.45pt; line-height: 1.39; margin-bottom: 3.8pt; }
+.capsule.fit-2 .cap-box, .capsule.fit-3 .cap-box { font-size: 7.6pt; }
+.capsule.fit-2 ol.cap-os, .capsule.fit-3 ol.cap-os { font-size: 7.7pt; }
+.capsule.fit-2 .cap-foot, .capsule.fit-3 .cap-foot { font-size: 7.3pt; }
+.capsule.fit-3 .cap-title { font-size: 15.5pt; }
+.capsule.fit-3 .cap-scripts { margin-top: 6pt; }
+.capsule.fit-3 .cap-sub { margin-top: 5pt; padding-top: 4pt; }
+.capsule.fit-3 .cap-grid, .capsule.fit-3 .cap-foot { margin-top: 5.5pt; }
+.capsule.fit-3 .cap-ink { width: 0.72in; }
+/* Two-page capsules: page 1 is the recording script (EN | FR, at the base size);
+   page 2 opens with the on-screen text and CTA wording, then the production notes. */
+.cap-os-page {
+  display: none;
+}
+.capsule.flow .cap-script p {
+  font-size: 10pt; /* a whole page for the scripts: set them for reading aloud */
+  line-height: 1.5;
+  margin-bottom: 6pt;
+}
+.capsule.flow .cap-script .cap-sub {
+  display: none;
+}
+.capsule.flow.has-os .cap-os-page {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  column-gap: 0.22in;
+  break-before: page;
+  page-break-before: always;
+}
+.capsule.flow .cap-os-col + .cap-os-col {
+  border-left: 0.5pt solid var(--rule);
+  padding-left: 0.22in;
+}
+.capsule.flow .cap-os-col h3 {
+  margin-top: 9pt;
+}
+.capsule.flow .cap-os-col .cap-sub:first-of-type {
+  border-top: 0;
+  padding-top: 0;
+  margin-top: 0;
+}
+.capsule.flow.has-os .cap-grid {
+  margin-top: 10pt;
+}
+.capsule.flow:not(.has-os) .cap-grid {
+  break-before: page;
+  page-break-before: always;
+  margin-top: 0;
+}
+.cap-grid::before,
+.cap-os-page::before {
+  display: none;
+}
+.capsule.flow:not(.has-os) .cap-grid::before,
+.capsule.flow.has-os .cap-os-page::before {
+  display: block;
+  grid-column: 1 / -1;
+  content: attr(data-cont);
+  font-family: var(--serif);
+  font-style: italic;
+  font-size: 11pt;
+  color: var(--brass-ink);
+  padding: 0 0 7pt;
+  border-bottom: 0.75pt solid var(--ink);
+}
+
+/* Line breaking */
+.cover-title, .cover-sub, .opener h1, h2, h4, .cap-title, .cap-title-fr, .toc-title, figcaption { text-wrap: balance; }
+p, li { text-wrap: pretty; }

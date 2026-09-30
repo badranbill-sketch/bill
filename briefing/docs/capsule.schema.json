@@ -1,0 +1,129 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://bill.docs.local/capsule-input/1.0",
+  "title": "Capsule page input (C01)",
+  "description": "One main capsule (S01–S18) and its companion cut brief, as printed by docs/build.mjs (lib/capsule.mjs). A file holds either an array of capsules or {\"capsules\": [...]}. The same object can be written as YAML inside a ::: capsule block. Markdown is allowed in every text field. The build checks the rules marked (build) and prints warnings; it does not rewrite anything. Field names follow .orchestration/contracts/asset-manifest.md where they overlap.",
+  "type": "object",
+  "required": ["id", "title", "script", "cta", "companion", "compliance", "status"],
+  "properties": {
+    "id": { "type": "string", "pattern": "^S(0[1-9]|1[0-8])$", "description": "Plan inventory ID (05 §2): S01–S18. (build) warns otherwise unless sample is true." },
+    "sample": { "type": "boolean", "description": "true for a layout sample; prints a [layout sample] tag." },
+    "format": { "type": "string", "description": "Kicker above the title. Default 'Main capsule'. E.g. 'Main capsule · Instagram Reel'." },
+    "title": {
+      "description": "The opening line / core question, in both languages. (build) warns if either is missing.",
+      "oneOf": [{ "type": "string" }, { "$ref": "#/$defs/bilingual" }]
+    },
+    "angle": { "type": "string", "description": "The useful point the capsule resolves (05 §2 column 3)." },
+    "duration": {
+      "description": "Target, e.g. '45–75 s', or {target, measured}. 'measured' only after an actual read-through. The page also prints an estimate from the word count at the front matter's wpm (default 150); (build) warns outside 45–75 s.",
+      "oneOf": [
+        { "type": "string" },
+        { "type": "object", "properties": { "target": { "type": "string" }, "measured": { "type": "string" } }, "additionalProperties": false }
+      ]
+    },
+    "status": { "enum": ["brief", "draft", "reviewed", "recorded", "edited", "approved", "published"], "description": "05 §1. 'approved'/'published' need recorded human gates; (build) warns." },
+    "version": { "type": "integer", "minimum": 1 },
+    "owner": { "type": "string", "description": "Agent role or person maintaining it, e.g. 'A5'." },
+    "script": {
+      "type": "object",
+      "required": ["en", "fr"],
+      "properties": {
+        "en": { "$ref": "#/$defs/script" },
+        "fr": { "$ref": "#/$defs/script" }
+      },
+      "additionalProperties": false,
+      "description": "The spoken script. Natural Quebec French, not a sentence-for-sentence translation. Stage directions in *(italics)*."
+    },
+    "on_screen": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["en", "fr"],
+        "properties": { "at": { "type": "string", "description": "Cue, e.g. '0–4 s' or 'end'." }, "en": { "type": "string" }, "fr": { "type": "string" } },
+        "additionalProperties": false
+      },
+      "description": "On-screen wording, one item per card, in both languages."
+    },
+    "shot": { "type": "string", "description": "Shot, props and ink cue. No photo, portrait, voice or likeness of Bill until rights and consent exist (HB-22, G4)." },
+    "ink": {
+      "description": "Drawing name(s) from public/ink/ shown as a thumbnail beside the shot cue.",
+      "oneOf": [{ "type": "string" }, { "type": "array", "items": { "type": "string" } }]
+    },
+    "ink_crop": { "type": "string", "description": "ink (default) | full | x,y,w,h" },
+    "cta": {
+      "type": "object",
+      "required": ["offer"],
+      "properties": {
+        "offer": { "enum": ["guide-pdf", "intro-15", "book-bundle", "workshop", "crossroads", "share-with-partner", "none"], "description": "One CTA per capsule (05 §2; asset-manifest cta). Labels follow the frozen offer matrix." },
+        "en": { "type": "string", "description": "Optional CTA wording (caption or end card) if it differs from the script's last line." },
+        "fr": { "type": "string" },
+        "note": { "type": "string", "description": "Gating note, printed in the compliance box (e.g. 'no approved edition yet')." },
+        "destination": {
+          "oneOf": [
+            { "type": "string" },
+            {
+              "type": "object",
+              "properties": { "route": { "type": "string", "description": "lib/routes.ts key, e.g. 'resources'." }, "en": { "type": "string" }, "fr": { "type": "string" } },
+              "additionalProperties": false
+            }
+          ]
+        }
+      },
+      "additionalProperties": false
+    },
+    "companion": {
+      "type": "object",
+      "properties": {
+        "duration": { "type": "string", "description": "15–30 s" },
+        "format": { "type": "string", "description": "e.g. one-question exercise, fictional poll with disclosed answer, prop demonstration, corrected misconception, event invitation (05 §2)." },
+        "brief": { "type": "string" }
+      },
+      "additionalProperties": false
+    },
+    "sources": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["method"],
+        "properties": {
+          "claim": { "type": "string", "description": "What the source supports." },
+          "title": { "type": "string" },
+          "url": { "type": "string", "pattern": "^https://" },
+          "accessed": { "type": "string", "pattern": "^\\d{4}-\\d{2}-\\d{2}$" },
+          "method": { "enum": ["fetched", "snippet-only", "project-file", "pending"], "description": "fetched = page retrieved and read; snippet-only = search summary, printed [unverified]; project-file = a file in this repository." }
+        },
+        "additionalProperties": false
+      }
+    },
+    "factual_claims": { "type": "boolean", "description": "false = the script states no fact that needs a source (reviewer confirms). (build) warns when sources is empty and this is not false." },
+    "credential_claims": { "type": "boolean", "description": "true if the capsule states a designation, affiliation, experience or service scope: prints [needs G1]. Those claims are pending (G1)." },
+    "compliance": { "type": "string", "description": "What was checked and what must not be said." },
+    "rights": { "type": "string", "description": "Default 'pending'." },
+    "review_hash": { "type": ["string", "null"] },
+    "notes": { "type": "string" }
+  },
+  "additionalProperties": false,
+  "$defs": {
+    "bilingual": {
+      "type": "object",
+      "required": ["en", "fr"],
+      "properties": { "en": { "type": "string" }, "fr": { "type": "string" } },
+      "additionalProperties": false
+    },
+    "script": {
+      "description": "Markdown with paragraphs separated by blank lines, or an array of beats (strings or {at, text}).",
+      "oneOf": [
+        { "type": "string" },
+        {
+          "type": "array",
+          "items": {
+            "oneOf": [
+              { "type": "string" },
+              { "type": "object", "required": ["text"], "properties": { "at": { "type": "string" }, "text": { "type": "string" } }, "additionalProperties": false }
+            ]
+          }
+        }
+      ]
+    }
+  }
+}
