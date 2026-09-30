@@ -1,0 +1,17 @@
+### command: echo "Informative, read-only: the main path /home/user/bill holds uncommitted in-flight F02a changes (another task) at the time of this run"; git -C /home/user/bill status --porcelain -- .orchestration/contracts; BASELINE_CONTRACTS_DIR=/home/user/bill/.orchestration/contracts node --import tsx --test tests/baseline/contracts.test.ts > /tmp/claude-0/-home-user/bb8d4187-6ae8-587b-a816-8153faeea853/scratchpad/f03/ct-main.out 2>&1; echo test_exit=$?; grep -E "^# (tests|pass|fail) |^not ok" /tmp/claude-0/-home-user/bb8d4187-6ae8-587b-a816-8153faeea853/scratchpad/f03/ct-main.out
+### cwd: /tmp/claude-0/-home-user/bb8d4187-6ae8-587b-a816-8153faeea853/scratchpad/wt/integration
+### start: 2026-09-30T09:37:33Z
+Informative, read-only: the main path /home/user/bill holds uncommitted in-flight F02a changes (another task) at the time of this run
+ M .orchestration/contracts/fixtures/workshop/index.json
+?? .orchestration/contracts/fixtures/workshop/WM37-today-dollar-pre-start-factor.json
+?? .orchestration/contracts/fixtures/workshop/WM38-joint-owner-participant-age.json
+?? .orchestration/contracts/fixtures/workshop/WM39-group-total-from-exact-values.json
+?? .orchestration/contracts/fixtures/workshop/WM40-today-dollar-display-from-exact-gap.json
+test_exit=0
+# tests 244
+# pass 244
+# fail 0
+### end: 2026-09-30T09:37:34Z
+### exit: 0
+### wall_s: 1.62
+

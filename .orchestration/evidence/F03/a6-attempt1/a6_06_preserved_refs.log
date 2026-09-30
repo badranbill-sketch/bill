@@ -1,0 +1,35 @@
+### command: echo '== local remote-tracking refs =='; git for-each-ref --format='%(objectname) %(refname)' refs/remotes refs/heads; echo '== ls-remote (read-only, tokens withheld) =='; env -u GH_TOKEN -u GITHUB_TOKEN timeout 60 git ls-remote origin; echo '== F00 recorded heads =='; cat /home/user/bill/.orchestration/evidence/F00/repo/branch_heads.txt 2>/dev/null || ls /home/user/bill/.orchestration/evidence/F00/repo/
+### cwd: /home/user/bill
+### start: 2026-09-30T09:46:40Z
+== local remote-tracking refs ==
+cb3becf25ed042b977d4864ae71e74d13829320f refs/heads/claude/orchestration-foundation
+5545c2aeb3249e19e5f328c86fa7d264c04ec0d2 refs/heads/integration
+77de3bd51a8c9cb73aec0b32d27ca0cacb6285cd refs/heads/main
+01e296caf4cb6822c9ccd45642834d69e02334bf refs/remotes/origin/add-ask-bill-section
+d63aabd50d0760145208857856f32779b1069e15 refs/remotes/origin/claude/bill-centered-homepage
+fc0044576d851be414d19e2f7a21ca7fd1285eae refs/remotes/origin/claude/bill-presentation-video
+cb3becf25ed042b977d4864ae71e74d13829320f refs/remotes/origin/claude/orchestration-foundation
+66cce52046f535ddc1a90e6f94474877e375860d refs/remotes/origin/codex/desktop-iphone-unified
+749b360f75185041e1aa3408500857605bc4507f refs/remotes/origin/guide/pre-retirement-guide
+77de3bd51a8c9cb73aec0b32d27ca0cacb6285cd refs/remotes/origin/main
+== ls-remote (read-only, tokens withheld) ==
+77de3bd51a8c9cb73aec0b32d27ca0cacb6285cd	HEAD
+01e296caf4cb6822c9ccd45642834d69e02334bf	refs/heads/add-ask-bill-section
+d63aabd50d0760145208857856f32779b1069e15	refs/heads/claude/bill-centered-homepage
+fc0044576d851be414d19e2f7a21ca7fd1285eae	refs/heads/claude/bill-presentation-video
+cb3becf25ed042b977d4864ae71e74d13829320f	refs/heads/claude/orchestration-foundation
+66cce52046f535ddc1a90e6f94474877e375860d	refs/heads/codex/desktop-iphone-unified
+749b360f75185041e1aa3408500857605bc4507f	refs/heads/guide/pre-retirement-guide
+77de3bd51a8c9cb73aec0b32d27ca0cacb6285cd	refs/heads/main
+66cce52046f535ddc1a90e6f94474877e375860d	refs/pull/1/head
+a8e6b332e147027e28da0845a5f7a1557de43cf5	refs/pull/1/merge
+== F00 recorded heads ==
+main head=77de3bd51a8c9cb73aec0b32d27ca0cacb6285cd mergebase_main=77de3bd51a8c9cb73aec0b32d27ca0cacb6285cd behind_ahead(main...b)=0	0
+add-ask-bill-section head=01e296caf4cb6822c9ccd45642834d69e02334bf mergebase_main=77de3bd51a8c9cb73aec0b32d27ca0cacb6285cd behind_ahead(main...b)=0	1
+claude/bill-centered-homepage head=d63aabd50d0760145208857856f32779b1069e15 mergebase_main=77de3bd51a8c9cb73aec0b32d27ca0cacb6285cd behind_ahead(main...b)=0	1
+claude/bill-presentation-video head=fc0044576d851be414d19e2f7a21ca7fd1285eae mergebase_main=77de3bd51a8c9cb73aec0b32d27ca0cacb6285cd behind_ahead(main...b)=0	1
+codex/desktop-iphone-unified head=66cce52046f535ddc1a90e6f94474877e375860d mergebase_main=77de3bd51a8c9cb73aec0b32d27ca0cacb6285cd behind_ahead(main...b)=0	3
+guide/pre-retirement-guide head=749b360f75185041e1aa3408500857605bc4507f mergebase_main=77de3bd51a8c9cb73aec0b32d27ca0cacb6285cd behind_ahead(main...b)=0	1
+### exit: 0
+### wall_s: .872507867
+

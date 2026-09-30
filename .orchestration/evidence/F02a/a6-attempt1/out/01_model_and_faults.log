@@ -1,0 +1,30 @@
+$ /tmp/claude-0/-home-user/bb8d4187-6ae8-587b-a816-8153faeea853/scratchpad/venv-f02/bin/python run_checks.py /home/user/bill/.orchestration/contracts/fixtures/workshop /home/user/bill/.orchestration/contracts/workshop-inputs.schema.json today_dollars_uses_q,joint_uses_partner,group_from_rounded_rows,deflate_rounded_gap,today_carry_to_tR,today_one_year_less,today_as_nominal,today_indexed_at_i_after_start,joint_uses_older
+# utc 2026-09-30T09:15:45Z; cwd /home/user/bill/.orchestration/evidence/F02a/a6-attempt1
+fixtures dir: /home/user/bill/.orchestration/contracts/fixtures/workshop
+WM fixtures found: 40 (WM01..WM40)
+inputs checked: 71; schema+XF-04..06 invalid: 0
+truth table rows: 32; possible 24; impossible 8 all C&F, no input, W10 by precedence: True
+index entries: 41; WM listed 40; WM files 40; files not indexed: []; index problems: []
+CONTRACT READING: 77/77 cases pass (40 WM + 24 TT + 7 CS + 6 MS)
+FAULT today_dollars_uses_q: CAUGHT by ['WM37']; with WM01-WM36 only: MISSED
+    WM37: 38 differing paths, first: ['$.years[0].exact.gap', '$.years[0].exact.income_compared', '$.years[0].gap_cents', '$.years[0].gap_today_dollars_cents']
+FAULT joint_uses_partner: CAUGHT by ['WM38']; with WM01-WM36 only: MISSED
+    WM38: 28 differing paths, first: ['$.flags(len 1!=0)', '$.years[2].exact.gap', '$.years[2].exact.income_compared', '$.years[2].gap_cents']
+FAULT group_from_rounded_rows: CAUGHT by ['WM37', 'WM39']; with WM01-WM36 only: MISSED
+    WM37: 1 differing paths, first: ['$.years[1].income_net_cents']
+    WM39: 1 differing paths, first: ['$.years[1].income_net_cents']
+FAULT deflate_rounded_gap: CAUGHT by ['WM40']; with WM01-WM36 only: MISSED
+    WM40: 1 differing paths, first: ['$.years[2].gap_today_dollars_cents']
+FAULT today_carry_to_tR: CAUGHT by ['WM04', 'WM37']; with WM01-WM36 only: CAUGHT by ['WM04']
+    WM04: 18 differing paths, first: ['$.years[5].exact.gap', '$.years[5].exact.income_compared', '$.years[5].gap_cents', '$.years[5].gap_today_dollars_cents']
+    WM37: 18 differing paths, first: ['$.years[2].exact.gap', '$.years[2].exact.income_compared', '$.years[2].gap_cents', '$.years[2].gap_today_dollars_cents']
+FAULT today_one_year_less: CAUGHT by ['WM04', 'WM37']; with WM01-WM36 only: CAUGHT by ['WM04']
+    WM04: 18 differing paths, first: ['$.years[5].exact.gap', '$.years[5].exact.income_compared', '$.years[5].gap_cents', '$.years[5].gap_today_dollars_cents']
+    WM37: 38 differing paths, first: ['$.years[0].exact.gap', '$.years[0].exact.income_compared', '$.years[0].gap_cents', '$.years[0].gap_today_dollars_cents']
+FAULT today_as_nominal: CAUGHT by ['WM04', 'WM37']; with WM01-WM36 only: CAUGHT by ['WM04']
+    WM04: 18 differing paths, first: ['$.years[5].exact.gap', '$.years[5].exact.income_compared', '$.years[5].gap_cents', '$.years[5].gap_today_dollars_cents']
+    WM37: 38 differing paths, first: ['$.years[0].exact.gap', '$.years[0].exact.income_compared', '$.years[0].gap_cents', '$.years[0].gap_today_dollars_cents']
+FAULT today_indexed_at_i_after_start: CAUGHT by ['WM37']; with WM01-WM36 only: MISSED
+    WM37: 36 differing paths, first: ['$.years[0].exact.gap', '$.years[0].exact.income_compared', '$.years[0].gap_cents', '$.years[0].gap_today_dollars_cents']
+FAULT joint_uses_older: MISSED by -; with WM01-WM36 only: MISSED
+[exit 0]

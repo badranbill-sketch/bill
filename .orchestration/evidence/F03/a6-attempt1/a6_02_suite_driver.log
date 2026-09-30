@@ -1,0 +1,38 @@
+### command: env -u GH_TOKEN -u GITHUB_TOKEN PLAYWRIGHT_CHROMIUM_EXECUTABLE=/opt/pw-browsers/chromium-1194/chrome-linux/chrome node tests/baseline/run.mjs --out /home/user/bill/.orchestration/evidence/F03/a6-attempt1 --python /tmp/claude-0/-home-user/bb8d4187-6ae8-587b-a816-8153faeea853/scratchpad/venv-f02/bin/python
+### cwd: /tmp/claude-0/-home-user/bb8d4187-6ae8-587b-a816-8153faeea853/scratchpad/wt/a6-f03-1
+### start: 2026-09-30T09:45:46Z
+[npm_ci] npm ci ... pass (exit 0, 18.83s)
+[lint] npm run lint ... pass (exit 0, 16.28s)
+[test] npm test ... pass (exit 0, 0.83s)
+[typecheck] npm run typecheck ... pass (exit 0, 7.07s)
+[build] npm run build ... pass (exit 0, 21.99s)
+[typecheck_after_build] npm run typecheck ... pass (exit 0, 8.23s)
+[protections_check] npm run protections:check ... blocked (exit 1, 0.59s)
+[launch_check] npm run launch:check ... expected_fail_by_design (exit 1, 0.6s)
+[verify_publication] node --import tsx scripts/verify-publication.ts ... pass (exit 0, 0.49s)
+[test_e2e] npm run test:e2e ... pass (exit 0, 86.02s)
+[contracts_ajv] npm run test:contracts ... pass (exit 0, 2.1s)
+[contracts_validate_py] /tmp/claude-0/-home-user/bb8d4187-6ae8-587b-a816-8153faeea853/scratchpad/venv-f02/bin/python .orchestration/contracts/validate.py ... fail (exit 1, 4.99s)
+[build_graph_check] python3 .orchestration/scripts/build_graph.py --check ... pass (exit 0, 0.05s)
+[base02_capture] npm run test:base02 ... pass (exit 0, 96.58s)
+
+step                     class                    exit  seconds
+npm_ci                   pass                     0     18.83
+lint                     pass                     0     16.28
+test                     pass                     0     0.83
+typecheck                pass                     0     7.07
+build                    pass                     0     21.99
+typecheck_after_build    pass                     0     8.23
+protections_check        blocked                  1     0.59  (GITHUB_REPOSITORY is not set; the audit needs the repository name and an authenticated gh CLI (gh is also not installed here))
+launch_check             expected_fail_by_design  1     0.6
+verify_publication       pass                     0     0.49
+test_e2e                 pass                     0     86.02
+contracts_ajv            pass                     0     2.1
+contracts_validate_py    fail                     1     4.99
+build_graph_check        pass                     0     0.05
+base02_capture           pass                     0     96.58
+
+overall: fail {"pass":11,"blocked":1,"expected_fail_by_design":1,"fail":1}; results: /home/user/bill/.orchestration/evidence/F03/a6-attempt1/results.json
+### exit: 1
+### wall_s: 266.103417237
+

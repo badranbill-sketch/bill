@@ -1,0 +1,15 @@
+{
+  "id": "endpoints",
+  "kind": "endpoints",
+  "entry": {
+    "status": 307,
+    "location": "/fr"
+  },
+  "api_guide": {
+    "status": 200,
+    "content_type": "application/pdf",
+    "bytes": 912448
+  },
+  "app_dir": "/tmp/claude-0/-home-user/bb8d4187-6ae8-587b-a816-8153faeea853/scratchpad/wt/integration",
+  "captured_at": "2026-09-30T10:15:46.472Z"
+}

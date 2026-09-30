@@ -1,0 +1,62 @@
+$ /tmp/claude-0/-home-user/bb8d4187-6ae8-587b-a816-8153faeea853/scratchpad/venv-f02/bin/python hand_checks.py /home/user/bill/.orchestration/contracts/fixtures/workshop
+# utc 2026-09-30T09:15:46Z; cwd /home/user/bill/.orchestration/evidence/F02a/a6-attempt1
+WM37 (i=2%, A=55, R=65, H=5; spending 6,000,000 today$)
+  [OK] t=10 D: hand=7313967 fixture=7313967
+  [OK] t=10 P1,P2,P3: hand=(2925587, 0, 1392480) fixture=(2925587, 0, 1392480)
+  [OK] t=10 net group: hand=4318067 fixture=4318067
+  [OK] t=10 gap: hand=2995900 fixture=2995900
+  [OK] t=10 gap today$: hand=2457681 fixture=2457681
+  [OK] t=11 D: hand=7460246 fixture=7460246
+  [OK] t=11 P1,P2,P3: hand=(2925587, 0, 1406405) fixture=(2925587, 0, 1406405)
+  [OK] t=11 net group: hand=4331991 fixture=4331991
+  [OK] t=11 gap: hand=3128254 fixture=3128254
+  [OK] t=11 gap today$: hand=2515939 fixture=2515939
+  [OK] t=12 D: hand=7609451 fixture=7609451
+  [OK] t=12 P1,P2,P3: hand=(2925587, 760945, 1420469) fixture=(2925587, 760945, 1420469)
+  [OK] t=12 net group: hand=5107001 fixture=5107001
+  [OK] t=12 gap: hand=2502450 fixture=2502450
+  [OK] t=12 gap today$: hand=1973165 fixture=1973165
+  [OK] t=13 D: hand=7761640 fixture=7761640
+  [OK] t=13 P1,P2,P3: hand=(2925587, 783773, 1434674) fixture=(2925587, 783773, 1434674)
+  [OK] t=13 net group: hand=5144034 fixture=5144034
+  [OK] t=13 gap: hand=2617606 fixture=2617606
+  [OK] t=13 gap today$: hand=2023495 fixture=2023495
+  [OK] t=14 D: hand=7916873 fixture=7916873
+  [OK] t=14 P1,P2,P3: hand=(2925587, 807287, 1449020) fixture=(2925587, 807287, 1449020)
+  [OK] t=14 net group: hand=5181894 fixture=5181894
+  [OK] t=14 gap: hand=2734979 fixture=2734979
+  [OK] t=14 gap today$: hand=2072772 fixture=2072772
+  P1 exact: 2925586.60798741711257600000
+WM38 (joint, participant 60, partner 55, i=0)
+  [OK] t=2 gap: hand=4200000 fixture=4200000
+  [OK] t=3 gap: hand=4200000 fixture=4200000
+  [OK] t=4 gap: hand=4800000 fixture=4800000
+  [OK] t=5 gap: hand=3600000 fixture=3600000
+  [OK] t=6 gap: hand=3600000 fixture=3600000
+  [OK] t=7 gap: hand=3600000 fixture=3600000
+WM39 (two sources 1,000,050 at 1%, t=1)
+  [OK] row: hand=1010050 fixture=1010050
+  [OK] group once-rounded: hand=2020101 fixture=2020101
+  faulty group from rows = 2020100 (fixture 2020101)
+  [OK] gap: hand=1009899 fixture=1009899
+WM40 (i=1.5%, t=2)
+  [OK] gap exact: hand=1060374.030225 fixture=1060374.030225
+  [OK] today$ from exact gap: hand=1029265 fixture=1029265
+  faulty today$ from rounded gap = 1029264  (1029264.48105996262952267708510276881263801596738576524545609)
+
+Contract vs faulty runtime tables (intmodel):
+  WM37 vs today_dollars_uses_q: flags contract=[] fault=[]
+    t=10: income_by_source contract={'src-1': 2925587, 'src-2': 0, 'src-3': 1392480} fault={'src-1': 2400000, 'src-2': 0, 'src-3': 1325547}; gap contract=2995900 fault=3588420 (diff +592520)
+    t=11: income_by_source contract={'src-1': 2925587, 'src-2': 0, 'src-3': 1406405} fault={'src-1': 2400000, 'src-2': 0, 'src-3': 1338802}; gap contract=3128254 fault=3721444 (diff +593190)
+    t=12: income_by_source contract={'src-1': 2925587, 'src-2': 760945, 'src-3': 1420469} fault={'src-1': 2400000, 'src-2': 855457, 'src-3': 1352190}; gap contract=2502450 fault=3001804 (diff +499354)
+    t=13: income_by_source contract={'src-1': 2925587, 'src-2': 783773, 'src-3': 1434674} fault={'src-1': 2400000, 'src-2': 881120, 'src-3': 1365712}; gap contract=2617606 fault=3114808 (diff +497202)
+    t=14: income_by_source contract={'src-1': 2925587, 'src-2': 807287, 'src-3': 1449020} fault={'src-1': 2400000, 'src-2': 907554, 'src-3': 1379369}; gap contract=2734979 fault=3229950 (diff +494971)
+  WM38 vs joint_uses_partner: flags contract=[] fault=['horizon_shorter_than_timeline']
+    t=2: income_by_source contract={'src-1': 0, 'src-2': 600000} fault={'src-1': 0, 'src-2': 600000}; gap contract=4200000 fault=4200000 (diff +0)
+    t=3: income_by_source contract={'src-1': 0, 'src-2': 600000} fault={'src-1': 0, 'src-2': 600000}; gap contract=4200000 fault=4200000 (diff +0)
+    t=4: income_by_source contract={'src-1': 0, 'src-2': 0} fault={'src-1': 0, 'src-2': 600000}; gap contract=4800000 fault=4200000 (diff -600000)
+    t=5: income_by_source contract={'src-1': 1200000, 'src-2': 0} fault={'src-1': 0, 'src-2': 600000}; gap contract=3600000 fault=4200000 (diff +600000)
+    t=6: income_by_source contract={'src-1': 1200000, 'src-2': 0} fault={'src-1': 0, 'src-2': 600000}; gap contract=3600000 fault=4200000 (diff +600000)
+    t=7: income_by_source contract={'src-1': 1200000, 'src-2': 0} fault={'src-1': 0, 'src-2': 600000}; gap contract=3600000 fault=4200000 (diff +600000)
+ALL HAND CHECKS OK
+[exit 0]

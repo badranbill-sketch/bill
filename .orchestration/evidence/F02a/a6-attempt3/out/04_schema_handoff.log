@@ -1,0 +1,14 @@
+$ /tmp/claude-0/-home-user/bb8d4187-6ae8-587b-a816-8153faeea853/scratchpad/venv-f02/bin/python /home/user/bill/.orchestration/evidence/F02a/a6-attempt3/schema_check.py /home/user/bill
+workshop-inputs schema: 71/71 inputs valid (jsonschema 4.26.0)
+WM37: top-level keys as WM01-36=True expected keys as WM01-36=True tolerance as WM01-36=True serialization(indent=1,+newline)=True file-name-prefix=True
+WM38: top-level keys as WM01-36=True expected keys as WM01-36=True tolerance as WM01-36=True serialization(indent=1,+newline)=True file-name-prefix=True
+WM39: top-level keys as WM01-36=True expected keys as WM01-36=True tolerance as WM01-36=True serialization(indent=1,+newline)=True file-name-prefix=True
+WM40: top-level keys as WM01-36=True expected keys as WM01-36=True tolerance as WM01-36=True serialization(indent=1,+newline)=True file-name-prefix=True
+reference WM01 serialization(indent=1,+newline)=True
+handoff as submitted: 1 schema error(s)
+   task_id: pattern 'F02a' does not match '^(?:F0[0-3]|D0[0-2]|P0[0-5]|W0[0-4]|C(?:0[0-9]|1[01])|U0[0-5]|N(?:0[0-9]|10)|R0[0-2]|H0[01]|L0[0-6]|O0[0-2])$'
+handoff with task_id replaced in memory by 'F02': 0 schema error(s)
+handoff artifacts: 35/35 sha256 match
+changed_paths: 7 listed, missing=[]
+tests: 20 listed, evidence missing=[]
+[exit 0]

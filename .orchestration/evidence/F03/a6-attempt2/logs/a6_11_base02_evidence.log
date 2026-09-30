@@ -1,0 +1,52 @@
+### command: python3 /tmp/claude-0/-home-user/bb8d4187-6ae8-587b-a816-8153faeea853/scratchpad/a6f03-2/base02_check.py
+### cwd: /home/user/bill
+### start: 2026-09-30T10:32:54Z
+--- output ---
+before/after PNGs: 24 byte-identical: 24
+diff/report.json summary: {"screenshots": 24, "identical": 24, "changed": 0, "missing_before": 0, "missing_after": 0, "record_differences": 0}
+repair2 report summary: {"screenshots": 24, "identical": 24, "within_threshold": 0, "changed": 0, "missing_before": 0, "missing_after": 0, "record_differences": 0}
+before records: 49 after records: 49
+record keys: ['aborted_requests', 'app_dir', 'bad_responses', 'browser', 'captured_at', 'console_errors', 'contact_section', 'failed_requests', 'final_url', 'horizontal_overflow', 'http_status', 'id', 'images_incomplete', 'inquiry_form', 'journey', 'key', 'kind', 'label', 'lang', 'page_errors', 'page_height', 'reduced_motion', 'screenshot', 'screenshot_sha256', 'scroll_width', 'url', 'width']
+app_dirs: {('after', '/tmp/claude-0/-home-user/bb8d4187-6ae8-587b-a816-8153faeea853/scratchpad/wt/integration'), ('before', '/tmp/claude-0/-home-user/bb8d4187-6ae8-587b-a816-8153faeea853/scratchpad/wt/base01-codex')}
+before records with status!=200/console/page errors/failed req/overflow: []
+after records with status!=200/console/page errors/failed req/overflow: []
+--- end ---
+### exit: 0
+### wall_s: 0.24
+
+before http_status counts {200: 48, None: 1} kinds {'screenshot': 24, 'endpoints': 1, 'smoke': 24}
+before images_incomplete [('en-home-390.json', ['/assets/ink/lighthouse.b6b8127f9b.svg']), ('fr-home-390.json', ['/assets/ink/lighthouse.b6b8127f9b.svg'])]
+before en-meeting-1440.json inquiry_form True contact True rm True
+before en-meeting-320.json inquiry_form True contact True rm True
+before en-meeting-390.json inquiry_form True contact True rm True
+before en-meeting-768.json inquiry_form True contact True rm True
+before fr-meeting-1440.json inquiry_form True contact True rm True
+before fr-meeting-320.json inquiry_form True contact True rm True
+before fr-meeting-390.json inquiry_form True contact True rm True
+before fr-meeting-768.json inquiry_form True contact True rm True
+before en-home-1440.json journey static
+before en-home-320.json journey static
+before en-home-390.json journey static
+before en-home-768.json journey static
+before fr-home-1440.json journey static
+before fr-home-320.json journey static
+before fr-home-390.json journey static
+before fr-home-768.json journey static
+after http_status counts {200: 48, None: 1} kinds {'screenshot': 24, 'endpoints': 1, 'smoke': 24}
+after images_incomplete [('en-home-390.json', ['/assets/ink/lighthouse.b6b8127f9b.svg']), ('fr-home-390.json', ['/assets/ink/lighthouse.b6b8127f9b.svg'])]
+after en-meeting-1440.json inquiry_form True contact True rm True
+after en-meeting-320.json inquiry_form True contact True rm True
+after en-meeting-390.json inquiry_form True contact True rm True
+after en-meeting-768.json inquiry_form True contact True rm True
+after fr-meeting-1440.json inquiry_form True contact True rm True
+after fr-meeting-320.json inquiry_form True contact True rm True
+after fr-meeting-390.json inquiry_form True contact True rm True
+after fr-meeting-768.json inquiry_form True contact True rm True
+after en-home-1440.json journey static
+after en-home-320.json journey static
+after en-home-390.json journey static
+after en-home-768.json journey static
+after fr-home-1440.json journey static
+after fr-home-320.json journey static
+after fr-home-390.json journey static
+after fr-home-768.json journey static

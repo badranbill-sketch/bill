@@ -1,0 +1,88 @@
+{
+ "today_dollars_uses_q": {
+  "caught": [
+   "WM37"
+  ],
+  "old": []
+ },
+ "joint_uses_partner": {
+  "caught": [
+   "WM38"
+  ],
+  "old": []
+ },
+ "joint_start_partner": {
+  "caught": [
+   "WM38"
+  ],
+  "old": []
+ },
+ "joint_end_partner": {
+  "caught": [
+   "WM38"
+  ],
+  "old": []
+ },
+ "joint_uses_younger": {
+  "caught": [
+   "WM38"
+  ],
+  "old": []
+ },
+ "joint_uses_older": {
+  "caught": [],
+  "old": []
+ },
+ "joint_needs_partner_age": {
+  "caught": [],
+  "old": []
+ },
+ "group_from_rounded_rows": {
+  "caught": [
+   "WM37",
+   "WM39"
+  ],
+  "old": []
+ },
+ "deflate_rounded_gap": {
+  "caught": [
+   "WM40"
+  ],
+  "old": []
+ },
+ "gap_from_rounded_rows": {
+  "caught": [
+   "WM17",
+   "WM39"
+  ],
+  "old": [
+   "WM17"
+  ]
+ },
+ "half_up": {
+  "caught": [
+   "WM04",
+   "WM17",
+   "WM39"
+  ],
+  "old": [
+   "WM04",
+   "WM17"
+  ]
+ },
+ "today_dollars_nominal": {
+  "caught": [
+   "WM04",
+   "WM37"
+  ],
+  "old": [
+   "WM04"
+  ]
+ },
+ "today_dollars_i_after": {
+  "caught": [
+   "WM37"
+  ],
+  "old": []
+ }
+}

@@ -1,0 +1,61 @@
+### command: git checkout -q --detach 1316ebe10fe9ff753c3ce42151018ae3cebcc163 && git rev-parse HEAD; git merge --no-commit --no-ff origin/claude/bill-centered-homepage >/dev/null 2>&1; echo merge_exit=$?; python3 /tmp/claude-0/-home-user/bb8d4187-6ae8-587b-a816-8153faeea853/scratchpad/f03/hunks.py; echo "-- deletions staged by the merge:"; git diff --cached --name-status --diff-filter=D; echo "-- auto-merged (staged, no conflict):"; git diff --cached --name-status | head -60; git merge --abort; echo abort_exit=$?; echo clean_after=$(git status --porcelain | wc -l)
+### cwd: /tmp/claude-0/-home-user/bb8d4187-6ae8-587b-a816-8153faeea853/scratchpad/wt/f03-trial
+### start: 2026-09-30T09:25:26Z
+1316ebe10fe9ff753c3ce42151018ae3cebcc163
+merge_exit=1
+components/pages.tsx hunk 1 at line 96: ours(integration) 2 lines / theirs(homepage) 6 lines
+components/pages.tsx hunk 2 at line 158: ours(integration) 24 lines / theirs(homepage) 137 lines
+components/pages.tsx hunk 3 at line 329: ours(integration) 35 lines / theirs(homepage) 4 lines
+lib/copy.ts hunk 1 at line 4: ours(integration) 6 lines / theirs(homepage) 14 lines
+lib/copy.ts hunk 2 at line 156: ours(integration) 6 lines / theirs(homepage) 14 lines
+lib/ink-files.json hunk 1 at line 26: ours(integration) 24 lines / theirs(homepage) 0 lines
+scripts/build-ink.tsx hunk 1 at line 23: ours(integration) 3 lines / theirs(homepage) 2 lines
+scripts/build-ink.tsx hunk 2 at line 42: ours(integration) 2 lines / theirs(homepage) 0 lines
+tests/browser/site.spec.ts hunk 1 at line 23: ours(integration) 5 lines / theirs(homepage) 5 lines
+-- deletions staged by the merge:
+D	public/assets/ink/desk-caption-en.6834acbe8c.svg
+D	public/assets/ink/desk-caption-fr.15f201593d.svg
+D	public/assets/ink/dock.ccd6542ba7.svg
+-- auto-merged (staged, no conflict):
+M	.prettierignore
+M	LAUNCH-CHECKLIST.md
+M	README.md
+M	TEST-SUMMARY.md
+M	app/[lang]/[[...slug]]/page.tsx
+M	app/globals.css
+M	app/ride.css
+A	components/ask.tsx
+A	components/booklet.tsx
+M	components/ink/desk.tsx
+M	components/journey/ride.tsx
+M	components/navigation.tsx
+U	components/pages.tsx
+M	components/resources.tsx
+M	components/shell.tsx
+M	docs/ART-DIRECTION.md
+A	docs/ASK-BILL.md
+M	docs/COPY-STRATEGY.md
+M	docs/INTEGRATIONS.md
+M	eslint.config.mjs
+A	lib/ask.ts
+M	lib/business.ts
+U	lib/copy.ts
+U	lib/ink-files.json
+M	lib/journey.ts
+M	lib/pages.ts
+M	lib/ride.ts
+M	lib/routes.ts
+D	public/assets/ink/desk-caption-en.6834acbe8c.svg
+D	public/assets/ink/desk-caption-fr.15f201593d.svg
+D	public/assets/ink/dock.ccd6542ba7.svg
+U	scripts/build-ink.tsx
+M	scripts/capture.mjs
+M	scripts/launch.ts
+A	tests/ask.test.ts
+U	tests/browser/site.spec.ts
+abort_exit=0
+clean_after=0
+### end: 2026-09-30T09:25:26Z
+### exit: 0
+### wall_s: 0.50
+

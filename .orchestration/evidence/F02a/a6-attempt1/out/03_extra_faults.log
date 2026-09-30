@@ -1,0 +1,7 @@
+$ /tmp/claude-0/-home-user/bb8d4187-6ae8-587b-a816-8153faeea853/scratchpad/venv-f02/bin/python extra_faults.py /home/user/bill/.orchestration/contracts/fixtures/workshop /home/user/bill/.orchestration/contracts/workshop-inputs.schema.json
+# utc 2026-09-30T09:15:46Z; cwd /home/user/bill/.orchestration/evidence/F02a/a6-attempt1
+FAULT joint_start_only_partner: CAUGHT by ['WM38']; WM01-WM36 only: MISSED
+FAULT joint_end_only_partner: CAUGHT by ['WM38']; WM01-WM36 only: MISSED
+FAULT gap_from_rounded_rows: CAUGHT by ['WM17', 'WM39']; WM01-WM36 only: CAUGHT by ['WM17']
+contract reading after restore: all pass
+[exit 0]

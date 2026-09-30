@@ -1,0 +1,54 @@
+### command: echo '== name-status codex..integration excluding .orchestration =='; git diff --name-status origin/codex/desktop-iphone-unified integration -- . ':(exclude).orchestration' ; echo '== counts =='; git diff --name-status origin/codex/desktop-iphone-unified integration | awk '{print $1}' | sort | uniq -c; echo '== deletions/modifications (non-A) =='; git diff --name-status --diff-filter=DMRTC origin/codex/desktop-iphone-unified integration; echo '== .gitignore diff =='; git diff origin/codex/desktop-iphone-unified integration -- .gitignore; echo '== .orchestration paths outside? =='; git diff --name-only origin/codex/desktop-iphone-unified integration | grep -v '^\.orchestration/' | wc -l
+### cwd: /home/user/bill
+### start: 2026-09-30T09:46:04Z
+== name-status codex..integration excluding .orchestration ==
+M	.gitignore
+A	guide/README.md
+A	guide/art/charts.tsx
+A	guide/art/containers.tsx
+A	guide/art/cover.tsx
+A	guide/art/harbour.tsx
+A	guide/art/horizons.tsx
+A	guide/art/index.tsx
+A	guide/art/kit.tsx
+A	guide/art/plans.tsx
+A	guide/art/porch.tsx
+A	guide/art/spending.tsx
+A	guide/art/storm.tsx
+A	guide/assets/grain.png
+A	guide/build.tsx
+A	guide/copy.ts
+A	guide/layout.tsx
+A	guide/marks.tsx
+A	guide/style.css
+M	package-lock.json
+M	package.json
+A	scripts/ink-sheet.tsx
+A	tests/baseline/README.md
+A	tests/baseline/compare-screens.mjs
+A	tests/baseline/contracts.test.ts
+A	tests/baseline/playwright.baseline.config.ts
+A	tests/baseline/run.mjs
+A	tests/baseline/screens.spec.ts
+== counts ==
+    814 A
+      3 M
+== deletions/modifications (non-A) ==
+M	.gitignore
+M	package-lock.json
+M	package.json
+== .gitignore diff ==
+diff --git a/.gitignore b/.gitignore
+index 1f035ac..9f3298d 100644
+--- a/.gitignore
++++ b/.gitignore
+@@ -6,3 +6,4 @@ test-results/
+ playwright-report/
+ *.tsbuildinfo
+ work/
++guide/dist/
+== .orchestration paths outside? ==
+28
+### exit: 0
+### wall_s: .035587335
+

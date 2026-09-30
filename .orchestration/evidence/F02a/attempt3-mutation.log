@@ -1,0 +1,25 @@
+# F02a repair attempt 3: F02a mutation check (faults injected in memory; run without --json, so mutation_check.json is not rewritten). date (UTC): 2026-09-30T09:59:00Z; cwd /home/user/bill; HEAD cb3becf25ed042b977d4864ae71e74d13829320f
+$ /tmp/claude-0/-home-user/bb8d4187-6ae8-587b-a816-8153faeea853/scratchpad/venv-f02/bin/python .orchestration/evidence/F02a/mutation_check.py
+fixtures from index.json: 40 WM fixtures (WM01..WM40); WM01-WM36 subset: 36
+baseline (no fault): 0 mismatches []
+CAUGHT [R] today_dollars_uses_q           by WM37; by WM01-WM36 alone: none
+        WM37 first difference: /years/0/exact/gap: expected "2995899.88763830938048" got "3588419.969475097369428"
+CAUGHT [I] today_dollars_as_nominal       by WM04,WM37; by WM01-WM36 alone: WM04
+        WM37 first difference: /years/0/exact/gap: expected "2995899.88763830938048" got "3652754.45984854278144"
+CAUGHT [I] today_dollars_carried_to_t_R   by WM04,WM37; by WM01-WM36 alone: WM04
+        WM37 first difference: /years/0/exact/gap: expected "2995899.88763830938048" got "2850969.4482647535090349504499712"
+CAUGHT [I] today_dollars_one_year_short   by WM04,WM37; by WM01-WM36 alone: WM04
+        WM37 first difference: /years/0/exact/gap: expected "2995899.88763830938048" got "3080567.86082125513344"
+CAUGHT [I] today_dollars_indexed_at_i     by WM37; by WM01-WM36 alone: none
+        WM37 first difference: /years/0/exact/gap: expected "2995899.88763830938048" got "2925586.607987417112576"
+CAUGHT [R] joint_uses_partner             by WM38; by WM01-WM36 alone: none
+        WM38 first difference: /flags: length 0 vs 1
+CAUGHT [I] joint_uses_younger             by WM38; by WM01-WM36 alone: none
+        WM38 first difference: /flags: length 0 vs 1
+MISSED [I] joint_uses_older               by none; by WM01-WM36 alone: none
+CAUGHT [R] group_from_rounded_rows        by WM37,WM39; by WM01-WM36 alone: none
+        WM39 first difference: /years/1/income_net_cents: expected 2020101 got 2020100
+CAUGHT [R] deflate_rounded_gap            by WM40; by WM01-WM36 alone: none
+        WM40 first difference: /years/2/gap_today_dollars_cents: expected 1029265 got 1029264
+summary: PASS; required faults caught by their fixture and missed by WM01-WM36 alone
+[exit 0]

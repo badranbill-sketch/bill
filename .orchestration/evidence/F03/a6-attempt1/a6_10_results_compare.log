@@ -1,0 +1,21 @@
+builder head 5545c2aeb3249e19e5f328c86fa7d264c04ec0d2 a6 head 5545c2aeb3249e19e5f328c86fa7d264c04ec0d2
+builder summary {'pass': 11, 'blocked': 1, 'expected_fail_by_design': 1, 'fail': 1} fail 1
+a6 summary      {'pass': 11, 'blocked': 1, 'expected_fail_by_design': 1, 'fail': 1} fail 1
+dirtied builder [' M next-env.d.ts'] a6 [' M next-env.d.ts'] a6 git_before status []
+env a6 {"GITHUB_REPOSITORY": false, "GH_TOKEN": false, "GITHUB_TOKEN": false, "CONTENT_REVIEWERS": false, "FIRM_REVIEWERS": false, "PLAYWRIGHT_CHROMIUM_EXECUTABLE": true, "CI": false} Chromium 141.0.7390.37 False
+step                     builder                          a6                               match
+npm_ci                   0 pass                           0 pass                           YES
+lint                     0 pass                           0 pass                           YES
+test                     0 pass                           0 pass                           YES
+typecheck                0 pass                           0 pass                           YES
+build                    0 pass                           0 pass                           YES
+typecheck_after_build    0 pass                           0 pass                           YES
+protections_check        1 blocked                        1 blocked                        YES
+launch_check             1 expected_fail_by_design        1 expected_fail_by_design        YES
+verify_publication       0 pass                           0 pass                           YES
+test_e2e                 0 pass                           0 pass                           YES
+contracts_ajv            0 pass                           0 pass                           YES
+contracts_validate_py    1 fail                           1 fail                           YES
+build_graph_check        0 pass                           0 pass                           YES
+base02_capture           0 pass                           0 pass                           YES
+launch citation a6: LAUNCH-CHECKLIST.md:3 ("npm run launch:check intentionally fails for the unresolved approval categories"); .orchestration/decisions.md D-061

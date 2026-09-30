@@ -1,0 +1,17 @@
+# F02a: A6 attempt-3 harness copy integrity. date (UTC): 2026-09-30T08:59:04Z; cwd /home/user/bill
+$ (cd /home/user/bill/.orchestration/evidence/F02/a6-math-attempt3 && grep '\.mjs$' MANIFEST.sha256) | (cd /tmp/claude-0/-home-user/bb8d4187-6ae8-587b-a816-8153faeea853/scratchpad/f02a-a6run && sha256sum -c)
+./closed_forms.mjs: OK
+./demo_rounding.mjs: OK
+./demo_unpinned.mjs: OK
+./diff_oracle.mjs: OK
+./faults_run.mjs: OK
+./fuzz.mjs: OK
+./metamorphic.mjs: OK
+./model.mjs: OK
+./model_faults.mjs: OK
+./rational.mjs: OK
+./rejects.mjs: OK
+./run_fixtures.mjs: OK
+./schema_sweeps.mjs: OK
+./validate_examples_ajv.mjs: OK
+[exit 0]

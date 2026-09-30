@@ -1,0 +1,65 @@
+### command: python3 /tmp/claude-0/-home-user/bb8d4187-6ae8-587b-a816-8153faeea853/scratchpad/a6f03-2/check_handoff.py
+### cwd: /home/user/bill
+### start: 2026-09-30T10:30:16Z
+--- output ---
+base_commit type: commit | equals main HEAD: True
+result_commit type: commit | equals integration: True
+OK  tests/baseline/run.mjs [blob in b0bc6cf] 
+OK  tests/baseline/runner-lib.mjs [blob in b0bc6cf] 
+OK  tests/baseline/runner.test.mjs [blob in b0bc6cf] 
+OK  tests/baseline/contracts.test.ts [blob in b0bc6cf] 
+OK  tests/baseline/screens.spec.ts [blob in b0bc6cf] 
+OK  tests/baseline/playwright.baseline.config.ts [blob in b0bc6cf] 
+OK  tests/baseline/compare-screens.mjs [blob in b0bc6cf] 
+OK  tests/baseline/README.md [blob in b0bc6cf] 
+OK  package.json [blob in b0bc6cf] 
+OK  package-lock.json [blob in b0bc6cf] 
+OK  .orchestration/baseline.md [main-path file] 
+OK  .orchestration/evidence/F03/repair2/suite-full-b0bc6cf/results.json [main-path file] 
+OK  .orchestration/evidence/F03/repair2/01_suite_full_b0bc6cf.log [main-path file] 
+OK  .orchestration/evidence/F03/repair2/02_base02_codex_before_vs_b0bc6cf.log [main-path file] 
+OK  .orchestration/evidence/F03/repair2/base02-diff-codex-vs-b0bc6cf/report.json [main-path file] 
+OK  .orchestration/evidence/F03/repair2/03_partial_runs.log [main-path file] 
+OK  .orchestration/evidence/F03/repair2/04_compare_screens_controls.log [main-path file] 
+OK  .orchestration/evidence/F03/repair2/05_selftest_mutations.log [main-path file] 
+OK  .orchestration/evidence/F03/repair2/06_final_state.log [main-path file] 
+OK  .orchestration/evidence/F03/suite/final-5545c2a/results.json [main-path file] 
+OK  .orchestration/evidence/F03/base02/diff/report.json [main-path file] 
+OK  .orchestration/evidence/F03/base02/determinism_suite_vs_after.report.json [main-path file] 
+OK  .orchestration/evidence/F03/reconcile/02_trial_merges.log [main-path file] 
+OK  .orchestration/evidence/F03/reconcile/03_merges.log [main-path file] 
+OK  .orchestration/evidence/F03/reconcile/04_preserved_branch_deltas.log [main-path file] 
+OK  .orchestration/evidence/F03/reconcile/05_homepage_conflict_hunks.log [main-path file] 
+OK  .orchestration/evidence/F03/reconcile/06_final_state.log [main-path file] 
+OK  .orchestration/evidence/F03/suite/00_dev_setup.log [main-path file] 
+OK  .orchestration/evidence/F03/suite/02_suite_integration_final.log [main-path file] 
+OK  .orchestration/evidence/F03/suite/preexisting_validate_py_at_cb3becf.log [main-path file] 
+OK  .orchestration/evidence/F03/suite/contracts_negative_controls.log [main-path file] 
+OK  .orchestration/evidence/F03/suite/03_guide_generator_integration.log [main-path file] 
+OK  .orchestration/evidence/F03/base02/before_capture.log [main-path file] 
+OK  .orchestration/evidence/F03/base02/after_capture.log [main-path file] 
+OK  .orchestration/evidence/F03/base02/compare_before_after.log [main-path file] 
+OK  .orchestration/evidence/F03/base02/compare_negative_control.log [main-path file] 
+artifacts: 36 match, 0 mismatch of 36
+tests: 42, evidence missing: 0
+BASE01-npm-ci          step=npm_ci                 handoff_exit=0 results_exit=0 class=pass OK
+BASE01-lint            step=lint                   handoff_exit=0 results_exit=0 class=pass OK
+BASE01-test            step=test                   handoff_exit=0 results_exit=0 class=pass OK
+BASE01-typecheck       step=typecheck              handoff_exit=0 results_exit=0 class=pass OK
+BASE01-build           step=build                  handoff_exit=0 results_exit=0 class=pass OK
+BASE01-typecheck-post  step=typecheck_after_build  handoff_exit=0 results_exit=0 class=pass OK
+BASE01-protections     step=protections_check      handoff_exit=1 results_exit=1 class=blocked OK
+BASE01-launch          step=launch_check           handoff_exit=1 results_exit=1 class=expected_fail_by_design OK
+BASE01-verify-pub      step=verify_publication     handoff_exit=0 results_exit=0 class=pass OK
+BASE01-e2e             step=test_e2e               handoff_exit=0 results_exit=0 class=pass OK
+F03-CONTRACTS-AJV      step=contracts_ajv          handoff_exit=0 results_exit=0 class=pass OK
+F03-VALIDATE-PY        step=contracts_validate_py  handoff_exit=1 results_exit=1 class=fail OK
+F03-GRAPH-CHECK        step=build_graph_check      handoff_exit=0 results_exit=0 class=pass OK
+BASE02-suite-capture   step=base02_capture         handoff_exit=0 results_exit=0 class=pass OK
+F03-RUNNER-SELFTEST    step=runner_selftest        handoff_exit=0 results_exit=0 class=pass OK
+diff paths outside .orchestration: 54 uncovered by changed_paths: []
+changed_paths entries not in diff: []
+--- end ---
+### exit: 0
+### wall_s: 0.11
+

@@ -1,0 +1,25 @@
+$ git diff --stat HEAD -- .orchestration/contracts
+ .../contracts/fixtures/workshop/index.json         | 42 ++++++++++++++++++++++
+ 1 file changed, 42 insertions(+)
+$ git diff --numstat HEAD -- .orchestration/contracts
+42	0	.orchestration/contracts/fixtures/workshop/index.json
+$ git status --short --untracked-files=all -- .orchestration/contracts
+ M .orchestration/contracts/fixtures/workshop/index.json
+?? .orchestration/contracts/fixtures/workshop/WM37-today-dollar-pre-start-factor.json
+?? .orchestration/contracts/fixtures/workshop/WM38-joint-owner-participant-age.json
+?? .orchestration/contracts/fixtures/workshop/WM39-group-total-from-exact-values.json
+?? .orchestration/contracts/fixtures/workshop/WM40-today-dollar-display-from-exact-gap.json
+removed lines in index.json diff: 0
+--- working file vs HEAD blob
+DIFF .orchestration/contracts/fixtures/workshop/index.json
+tracked contract files compared: 407
+e0aa064aca63f5cbaa91cb9f8c6a56cea0fa778f4a367e2303734ef6b88a74b3  README.md
+143f118a0a7133e20eb105eeb4af2d1a280c53c80df2261fe5bc1373defe0f70  validate.py
+583bd20434605b5dc5aa48288f706c0af9014607536f1ccac026fa501a260fbf  workshop-math.md
+ba3da0b8de3f41929452cf705f9bbd71a2171d52d93dbb4bb3bd6cb7081d5757  workshop-inputs.md
+f6b78b9e4db2108a53154bebe6344c6bde62b7b2e163c9d610e9912902429aff  workshop-clip-rules.md
+20df5bc3a360a70d2cbaef2d980d72181a938571f9c602f4377d135fcca3775e  workshop-inputs.schema.json
+b9203fc88e1f2aa4d8365ad56038265de6aa4203850e90b6e32f646f78111c62  worker-handoff.schema.json
+c8201bc12d53855c251ab2d5583673683940aeecaf327467d239a4ad5bc03071  fixtures/workshop/clip-rules.json
+--- files outside F02a paths unchanged vs HEAD (empty = unchanged)
+[exit 0]

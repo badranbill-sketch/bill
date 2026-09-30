@@ -1,0 +1,56 @@
+### command: bash /tmp/claude-0/-home-user/bb8d4187-6ae8-587b-a816-8153faeea853/scratchpad/a6f03/mut_contracts.sh
+### cwd: /home/user/bill
+### start: 2026-09-30T09:51:57Z
+== pre: git status (ignoring next-env.d.ts from build) ==
+ M next-env.d.ts
+== M0 control: unmodified ==
+exit=0
+# tests 240
+# pass 240
+# fail 0
+== M1: git mv invalid/delivery-job/financial-field-in-job.json -> valid/delivery-job/ (schema layer) ==
+exit=1
+# tests 240
+# pass 239
+# fail 1
+not ok 56 - valid delivery-job/financial-field-in-job.json passes delivery-job.schema.json
+== M2: invalid/workshop-inputs/end-before-start.json -> valid/workshop-inputs/ (schema layer? see why: layer semantic) ==
+ajv exit=0
+# tests 240
+# pass 240
+# fail 0
+validate.py exit=1
+## Summary
+pass: 348  fail: 4  known: 16  info: 2
+unexpected results:
+  - valid examples/valid/workshop-inputs/end-before-start.json rejected: XF-05@/chapters/income/sources/0/end: end index 3 not after start index 4
+  - orphan examples/invalid/workshop-inputs/end-before-start.why.txt
+  - CX-18 check IDs, fixture coverage and the handoff task_id pattern match the catalog and tasks.json [task_id pattern accepts exactly 62 IDs] :: ["worker-handoff task_id pattern vs tasks.json: ['F02a']"]
+  - CX-21 example and fixture counts stated in the md files match the files [10 stated example counts + fixture and clip counts] :: ['workshop-inputs.md says examples/valid/workshop-inputs/ has 5, found 6', 'workshop-inputs.md says examples/invalid/workshop-inputs/ has 27, found 26']
+exit_code=1
+FAIL  valid examples/valid/workshop-inputs/end-before-start.json rejected: XF-05@/chapters/income/sources/0/end: end index 3 not after start index 4
+FAIL  orphan examples/invalid/workshop-inputs/end-before-start.why.txt
+FAIL  CX-18 check IDs, fixture coverage and the handoff task_id pattern match the catalog and tasks.json [task_id pattern accepts exactly 62 IDs] :: ["worker-handoff task_id pattern vs tasks.json: ['F02a']"]
+FAIL  CX-21 example and fixture counts stated in the md files match the files [10 stated example counts + fixture and clip counts] :: ['workshop-inputs.md says examples/valid/workshop-inputs/ has 5, found 6', 'workshop-inputs.md says examples/invalid/workshop-inputs/ has 27, found 26']
+== M3: invalid/event-envelope first schema-layer example -> valid ==
+picked age-in-guide-version
+exit=1
+# tests 240
+# pass 239
+# fail 1
+not ok 3 - valid event-envelope/age-in-guide-version.json passes event-envelope.schema.json
+== M4 via suite runner: M1 again through run.mjs --only contracts_ajv (runner exit must be 1) ==
+runner exit=0
+base02_capture           not_run                  -     -  (excluded by --only/--skip)
+
+overall: pass_with_exceptions {"not_run":14}; results: /tmp/claude-0/-home-user/bb8d4187-6ae8-587b-a816-8153faeea853/scratchpad/a6f03/m4-out/results.json
+== post revert: git status ==
+ M next-env.d.ts
+== post revert control ==
+exit=0
+# tests 240
+# pass 240
+# fail 0
+### exit: 0
+### wall_s: 15.280816219
+

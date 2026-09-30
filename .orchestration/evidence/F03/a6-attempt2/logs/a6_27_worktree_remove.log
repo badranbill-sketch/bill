@@ -1,0 +1,37 @@
+### command: for w in /tmp/claude-0/-home-user/bb8d4187-6ae8-587b-a816-8153faeea853/scratchpad/wt/a6-f03-2 /tmp/claude-0/-home-user/bb8d4187-6ae8-587b-a816-8153faeea853/scratchpad/wt/a6-f03-2-codex; do git -C $w checkout -- next-env.d.ts; echo "$w porcelain=$(git -C $w status --porcelain | wc -l) head=$(git -C $w rev-parse HEAD)"; git worktree remove $w && echo "removed $w"; done; git worktree prune; git worktree list; echo '# branch/ref state after'; git for-each-ref --format='%(objectname) %(refname)' refs/heads refs/remotes; git status --porcelain | grep -v '^??' ; git status --porcelain .orchestration/evidence/F03 .orchestration/reviews
+### cwd: /home/user/bill
+### start: 2026-09-30T10:40:42Z
+--- output ---
+/tmp/claude-0/-home-user/bb8d4187-6ae8-587b-a816-8153faeea853/scratchpad/wt/a6-f03-2 porcelain=0 head=b0bc6cf634b0b5498cc335da4d2d15da04276e3a
+removed /tmp/claude-0/-home-user/bb8d4187-6ae8-587b-a816-8153faeea853/scratchpad/wt/a6-f03-2
+/tmp/claude-0/-home-user/bb8d4187-6ae8-587b-a816-8153faeea853/scratchpad/wt/a6-f03-2-codex porcelain=0 head=66cce52046f535ddc1a90e6f94474877e375860d
+removed /tmp/claude-0/-home-user/bb8d4187-6ae8-587b-a816-8153faeea853/scratchpad/wt/a6-f03-2-codex
+/home/user/bill                                                                                        cb3becf [claude/orchestration-foundation]
+/tmp/claude-0/-home-user/bb8d4187-6ae8-587b-a816-8153faeea853/scratchpad/wt/base01-codex               66cce52 (detached HEAD)
+/tmp/claude-0/-home-user/bb8d4187-6ae8-587b-a816-8153faeea853/scratchpad/wt/base01-diag-main-filmdeps  77de3bd (detached HEAD)
+/tmp/claude-0/-home-user/bb8d4187-6ae8-587b-a816-8153faeea853/scratchpad/wt/base01-guide               749b360 (detached HEAD)
+/tmp/claude-0/-home-user/bb8d4187-6ae8-587b-a816-8153faeea853/scratchpad/wt/base01-homepage            d63aabd (detached HEAD)
+/tmp/claude-0/-home-user/bb8d4187-6ae8-587b-a816-8153faeea853/scratchpad/wt/base01-main                77de3bd (detached HEAD)
+/tmp/claude-0/-home-user/bb8d4187-6ae8-587b-a816-8153faeea853/scratchpad/wt/base01-video               fc00445 (detached HEAD)
+/tmp/claude-0/-home-user/bb8d4187-6ae8-587b-a816-8153faeea853/scratchpad/wt/integration                b0bc6cf [integration]
+# branch/ref state after
+cb3becf25ed042b977d4864ae71e74d13829320f refs/heads/claude/orchestration-foundation
+b0bc6cf634b0b5498cc335da4d2d15da04276e3a refs/heads/integration
+77de3bd51a8c9cb73aec0b32d27ca0cacb6285cd refs/heads/main
+01e296caf4cb6822c9ccd45642834d69e02334bf refs/remotes/origin/add-ask-bill-section
+d63aabd50d0760145208857856f32779b1069e15 refs/remotes/origin/claude/bill-centered-homepage
+fc0044576d851be414d19e2f7a21ca7fd1285eae refs/remotes/origin/claude/bill-presentation-video
+cb3becf25ed042b977d4864ae71e74d13829320f refs/remotes/origin/claude/orchestration-foundation
+66cce52046f535ddc1a90e6f94474877e375860d refs/remotes/origin/codex/desktop-iphone-unified
+749b360f75185041e1aa3408500857605bc4507f refs/remotes/origin/guide/pre-retirement-guide
+77de3bd51a8c9cb73aec0b32d27ca0cacb6285cd refs/remotes/origin/main
+ M .orchestration/contracts/fixtures/workshop/index.json
+?? .orchestration/evidence/F03/
+?? .orchestration/reviews/F02a-attempt2.md
+?? .orchestration/reviews/F02a-attempt3.md
+?? .orchestration/reviews/F02a.md
+?? .orchestration/reviews/F03.md
+--- end ---
+### exit: 0
+### wall_s: 10.03
+

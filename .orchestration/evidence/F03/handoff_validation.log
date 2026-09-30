@@ -1,0 +1,60 @@
+### note: a first checker run (not kept) compared package.json/package-lock.json with the main-path copies (cb3becf versions) instead of the result-commit blobs; checker fixed, re-run below.
+### command: node /tmp/claude-0/-home-user/bb8d4187-6ae8-587b-a816-8153faeea853/scratchpad/f03/vh.mjs /tmp/claude-0/-home-user/bb8d4187-6ae8-587b-a816-8153faeea853/scratchpad/wt/integration; PYTHONDONTWRITEBYTECODE=1 /tmp/claude-0/-home-user/bb8d4187-6ae8-587b-a816-8153faeea853/scratchpad/venv-f02/bin/python /tmp/claude-0/-home-user/bb8d4187-6ae8-587b-a816-8153faeea853/scratchpad/f03/vh.py
+### cwd: /tmp/claude-0/-home-user/bb8d4187-6ae8-587b-a816-8153faeea853/scratchpad/wt/integration
+### start: 2026-09-30T09:43:23Z
+ajv worker-handoff 1.0: VALID []
+validate.py handoff_problems(deep=False) [schema, ECMA patterns]: none
+OK  tests/baseline/run.mjs (result_commit blob)
+OK  tests/baseline/contracts.test.ts (result_commit blob)
+OK  tests/baseline/screens.spec.ts (result_commit blob)
+OK  tests/baseline/playwright.baseline.config.ts (result_commit blob)
+OK  tests/baseline/compare-screens.mjs (result_commit blob)
+OK  tests/baseline/README.md (result_commit blob)
+OK  package.json (result_commit blob)
+OK  package-lock.json (result_commit blob)
+OK  .orchestration/baseline.md (main path)
+OK  .orchestration/evidence/F03/suite/final-5545c2a/results.json (main path)
+OK  .orchestration/evidence/F03/base02/diff/report.json (main path)
+OK  .orchestration/evidence/F03/base02/determinism_suite_vs_after.report.json (main path)
+OK  .orchestration/evidence/F03/reconcile/02_trial_merges.log (main path)
+OK  .orchestration/evidence/F03/reconcile/03_merges.log (main path)
+OK  .orchestration/evidence/F03/reconcile/04_preserved_branch_deltas.log (main path)
+OK  .orchestration/evidence/F03/reconcile/05_homepage_conflict_hunks.log (main path)
+OK  .orchestration/evidence/F03/reconcile/06_final_state.log (main path)
+OK  .orchestration/evidence/F03/suite/00_dev_setup.log (main path)
+OK  .orchestration/evidence/F03/suite/02_suite_integration_final.log (main path)
+OK  .orchestration/evidence/F03/suite/preexisting_validate_py_at_cb3becf.log (main path)
+OK  .orchestration/evidence/F03/suite/contracts_negative_controls.log (main path)
+OK  .orchestration/evidence/F03/suite/03_guide_generator_integration.log (main path)
+OK  .orchestration/evidence/F03/base02/before_capture.log (main path)
+OK  .orchestration/evidence/F03/base02/after_capture.log (main path)
+OK  .orchestration/evidence/F03/base02/compare_before_after.log (main path)
+OK  .orchestration/evidence/F03/base02/compare_negative_control.log (main path)
+hash/evidence problems: 0
+### end: 2026-09-30T09:43:23Z
+### exit: 0
+### wall_s: 0.52
+
+### command: echo "Deep check (informative; by design it looks for every artifact in this tree, so the result-commit paths are reported missing and package.json/lock differ):"; PYTHONDONTWRITEBYTECODE=1 /tmp/claude-0/-home-user/bb8d4187-6ae8-587b-a816-8153faeea853/scratchpad/venv-f02/bin/python .orchestration/contracts/validate.py --handoff .orchestration/handoffs/F03.json | tail -6
+### cwd: /home/user/bill
+### start: 2026-09-30T09:43:23Z
+Deep check (informative; by design it looks for every artifact in this tree, so the result-commit paths are reported missing and package.json/lock differ):
+
+## Summary
+pass: 0  fail: 1  known: 0  info: 0
+unexpected results:
+  - F03.json: schema-valid; base_commit = HEAD; 26 artifact hashes match; changed paths and 28 evidence paths exist :: ['artifact missing tests/baseline/run.mjs', 'artifact missing tests/baseline/contracts.test.ts', 'artifact missing tests/baseline/screens.spec.ts', 'artifact missing tests/baseline/play
+exit_code=1
+### end: 2026-09-30T09:43:24Z
+### exit: 0
+### wall_s: 0.34
+
+### command: echo "Same deep check, capturing its own exit status (the previous record exits 0 only because of the tail pipe):"; PYTHONDONTWRITEBYTECODE=1 /tmp/claude-0/-home-user/bb8d4187-6ae8-587b-a816-8153faeea853/scratchpad/venv-f02/bin/python .orchestration/contracts/validate.py --handoff .orchestration/handoffs/F03.json > /dev/null; echo "validate_handoff_exit=$?"
+### cwd: /home/user/bill
+### start: 2026-09-30T09:43:33Z
+Same deep check, capturing its own exit status (the previous record exits 0 only because of the tail pipe):
+validate_handoff_exit=1
+### end: 2026-09-30T09:43:33Z
+### exit: 0
+### wall_s: 0.31
+

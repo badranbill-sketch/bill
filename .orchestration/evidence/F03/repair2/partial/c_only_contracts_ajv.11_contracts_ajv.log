@@ -1,0 +1,1464 @@
+# step: contracts_ajv - Contract examples and fixtures, Ajv 2020-12 (npm run test:contracts)
+# command: npm run test:contracts
+# cwd: /tmp/claude-0/-home-user/bb8d4187-6ae8-587b-a816-8153faeea853/scratchpad/wt/integration
+# started: 2026-09-30T10:17:34.009Z
+# env overrides: {"NEXT_TELEMETRY_DISABLED":"1"}
+
+
+> bill-badran@1.0.0 test:contracts
+> node --import tsx --test tests/baseline/contracts.test.ts
+
+TAP version 13
+# Subtest: every schema compiles under Ajv 2020-12
+ok 1 - every schema compiles under Ajv 2020-12
+  ---
+  duration_ms: 931.60115
+  type: 'test'
+  ...
+# Subtest: every examples/ directory maps to a schema of the contract set
+ok 2 - every examples/ directory maps to a schema of the contract set
+  ---
+  duration_ms: 1.770909
+  type: 'test'
+  ...
+# Subtest: valid event-envelope/book-dispatched.json passes event-envelope.schema.json
+ok 3 - valid event-envelope/book-dispatched.json passes event-envelope.schema.json
+  ---
+  duration_ms: 10.263636
+  type: 'test'
+  ...
+# Subtest: valid event-envelope/book-payment_confirmed.json passes event-envelope.schema.json
+ok 4 - valid event-envelope/book-payment_confirmed.json passes event-envelope.schema.json
+  ---
+  duration_ms: 1.215237
+  type: 'test'
+  ...
+# Subtest: valid event-envelope/book-refunded.json passes event-envelope.schema.json
+ok 5 - valid event-envelope/book-refunded.json passes event-envelope.schema.json
+  ---
+  duration_ms: 0.617986
+  type: 'test'
+  ...
+# Subtest: valid event-envelope/consultation-redeemed.json passes event-envelope.schema.json
+ok 6 - valid event-envelope/consultation-redeemed.json passes event-envelope.schema.json
+  ---
+  duration_ms: 0.345527
+  type: 'test'
+  ...
+# Subtest: valid event-envelope/content-approved-book.json passes event-envelope.schema.json
+ok 7 - valid event-envelope/content-approved-book.json passes event-envelope.schema.json
+  ---
+  duration_ms: 0.511952
+  type: 'test'
+  ...
+# Subtest: valid event-envelope/content-approved-copy.json passes event-envelope.schema.json
+ok 8 - valid event-envelope/content-approved-copy.json passes event-envelope.schema.json
+  ---
+  duration_ms: 0.337997
+  type: 'test'
+  ...
+# Subtest: valid event-envelope/content-approved-ink.json passes event-envelope.schema.json
+ok 9 - valid event-envelope/content-approved-ink.json passes event-envelope.schema.json
+  ---
+  duration_ms: 0.848258
+  type: 'test'
+  ...
+# Subtest: valid event-envelope/content-approved.json passes event-envelope.schema.json
+ok 10 - valid event-envelope/content-approved.json passes event-envelope.schema.json
+  ---
+  duration_ms: 3.568539
+  type: 'test'
+  ...
+# Subtest: valid event-envelope/content-draft_created-companion.json passes event-envelope.schema.json
+ok 11 - valid event-envelope/content-draft_created-companion.json passes event-envelope.schema.json
+  ---
+  duration_ms: 0.507782
+  type: 'test'
+  ...
+# Subtest: valid event-envelope/content-draft_created.json passes event-envelope.schema.json
+ok 12 - valid event-envelope/content-draft_created.json passes event-envelope.schema.json
+  ---
+  duration_ms: 0.284724
+  type: 'test'
+  ...
+# Subtest: valid event-envelope/content-published-event.json passes event-envelope.schema.json
+ok 13 - valid event-envelope/content-published-event.json passes event-envelope.schema.json
+  ---
+  duration_ms: 0.219916
+  type: 'test'
+  ...
+# Subtest: valid event-envelope/content-published.json passes event-envelope.schema.json
+ok 14 - valid event-envelope/content-published.json passes event-envelope.schema.json
+  ---
+  duration_ms: 0.195818
+  type: 'test'
+  ...
+# Subtest: valid event-envelope/delivery-failed.json passes event-envelope.schema.json
+ok 15 - valid event-envelope/delivery-failed.json passes event-envelope.schema.json
+  ---
+  duration_ms: 0.249898
+  type: 'test'
+  ...
+# Subtest: valid event-envelope/guide-requested.json passes event-envelope.schema.json
+ok 16 - valid event-envelope/guide-requested.json passes event-envelope.schema.json
+  ---
+  duration_ms: 0.208143
+  type: 'test'
+  ...
+# Subtest: valid event-envelope/marketing-opted_in.json passes event-envelope.schema.json
+ok 17 - valid event-envelope/marketing-opted_in.json passes event-envelope.schema.json
+  ---
+  duration_ms: 0.332999
+  type: 'test'
+  ...
+# Subtest: valid event-envelope/marketing-withdrawn.json passes event-envelope.schema.json
+ok 18 - valid event-envelope/marketing-withdrawn.json passes event-envelope.schema.json
+  ---
+  duration_ms: 0.331246
+  type: 'test'
+  ...
+# Subtest: valid event-envelope/meeting-cancelled.json passes event-envelope.schema.json
+ok 19 - valid event-envelope/meeting-cancelled.json passes event-envelope.schema.json
+  ---
+  duration_ms: 0.188432
+  type: 'test'
+  ...
+# Subtest: valid event-envelope/meeting-confirmed-operator-reconciliation.json passes event-envelope.schema.json
+ok 20 - valid event-envelope/meeting-confirmed-operator-reconciliation.json passes event-envelope.schema.json
+  ---
+  duration_ms: 0.209987
+  type: 'test'
+  ...
+# Subtest: valid event-envelope/meeting-confirmed.json passes event-envelope.schema.json
+ok 21 - valid event-envelope/meeting-confirmed.json passes event-envelope.schema.json
+  ---
+  duration_ms: 0.169408
+  type: 'test'
+  ...
+# Subtest: valid event-envelope/meeting-held.json passes event-envelope.schema.json
+ok 22 - valid event-envelope/meeting-held.json passes event-envelope.schema.json
+  ---
+  duration_ms: 0.212153
+  type: 'test'
+  ...
+# Subtest: valid event-envelope/webinar-attendance_verified.json passes event-envelope.schema.json
+ok 23 - valid event-envelope/webinar-attendance_verified.json passes event-envelope.schema.json
+  ---
+  duration_ms: 0.170349
+  type: 'test'
+  ...
+# Subtest: valid event-envelope/webinar-cancelled.json passes event-envelope.schema.json
+ok 24 - valid event-envelope/webinar-cancelled.json passes event-envelope.schema.json
+  ---
+  duration_ms: 0.210515
+  type: 'test'
+  ...
+# Subtest: valid event-envelope/webinar-join_clicked.json passes event-envelope.schema.json
+ok 25 - valid event-envelope/webinar-join_clicked.json passes event-envelope.schema.json
+  ---
+  duration_ms: 0.164953
+  type: 'test'
+  ...
+# Subtest: valid event-envelope/webinar-registered.json passes event-envelope.schema.json
+ok 26 - valid event-envelope/webinar-registered.json passes event-envelope.schema.json
+  ---
+  duration_ms: 0.222193
+  type: 'test'
+  ...
+# Subtest: valid event-envelope/workshop-access_requested.json passes event-envelope.schema.json
+ok 27 - valid event-envelope/workshop-access_requested.json passes event-envelope.schema.json
+  ---
+  duration_ms: 0.20928
+  type: 'test'
+  ...
+# Subtest: valid event-envelope/workshop-completed.json passes event-envelope.schema.json
+ok 28 - valid event-envelope/workshop-completed.json passes event-envelope.schema.json
+  ---
+  duration_ms: 0.218311
+  type: 'test'
+  ...
+# Subtest: invalid event-envelope/age-in-guide-version.json is rejected for its stated reason
+ok 29 - invalid event-envelope/age-in-guide-version.json is rejected for its stated reason
+  ---
+  duration_ms: 1.406399
+  type: 'test'
+  ...
+# Subtest: invalid event-envelope/age-in-resource-id.json is rejected for its stated reason
+ok 30 - invalid event-envelope/age-in-resource-id.json is rejected for its stated reason
+  ---
+  duration_ms: 0.492518
+  type: 'test'
+  ...
+# Subtest: invalid event-envelope/amount-words-in-workshop-key.json is rejected for its stated reason
+ok 31 - invalid event-envelope/amount-words-in-workshop-key.json is rejected for its stated reason
+  ---
+  duration_ms: 0.46261
+  type: 'test'
+  ...
+# Subtest: invalid event-envelope/attendance-from-join-click.json is rejected for its stated reason
+ok 32 - invalid event-envelope/attendance-from-join-click.json is rejected for its stated reason
+  ---
+  duration_ms: 0.398885
+  type: 'test'
+  ...
+# Subtest: invalid event-envelope/consent-on-guide-request.json is rejected for its stated reason
+ok 33 - invalid event-envelope/consent-on-guide-request.json is rejected for its stated reason
+  ---
+  duration_ms: 0.354952
+  type: 'test'
+  ...
+# Subtest: invalid event-envelope/consent-wording-mutable-version.json is rejected for its stated reason
+ok 34 - invalid event-envelope/consent-wording-mutable-version.json is rejected for its stated reason
+  ---
+  duration_ms: 0.282476
+  type: 'test'
+  ...
+# Subtest: invalid event-envelope/diagnosis-in-workshop-key.json is rejected for its stated reason
+ok 35 - invalid event-envelope/diagnosis-in-workshop-key.json is rejected for its stated reason
+  ---
+  duration_ms: 0.380619
+  type: 'test'
+  ...
+# Subtest: invalid event-envelope/email-as-subject-id.json is rejected for its stated reason
+ok 36 - invalid event-envelope/email-as-subject-id.json is rejected for its stated reason
+  ---
+  duration_ms: 0.349551
+  type: 'test'
+  ...
+# Subtest: invalid event-envelope/email-in-idempotency-key.json is rejected for its stated reason
+ok 37 - invalid event-envelope/email-in-idempotency-key.json is rejected for its stated reason
+  ---
+  duration_ms: 0.388397
+  type: 'test'
+  ...
+# Subtest: invalid event-envelope/extra-property-form-body.json is rejected for its stated reason
+ok 38 - invalid event-envelope/extra-property-form-body.json is rejected for its stated reason
+  ---
+  duration_ms: 0.456581
+  type: 'test'
+  ...
+# Subtest: invalid event-envelope/financial-amount-field.json is rejected for its stated reason
+ok 39 - invalid event-envelope/financial-amount-field.json is rejected for its stated reason
+  ---
+  duration_ms: 0.316199
+  type: 'test'
+  ...
+# Subtest: invalid event-envelope/locale-es.json is rejected for its stated reason
+ok 40 - invalid event-envelope/locale-es.json is rejected for its stated reason
+  ---
+  duration_ms: 0.298163
+  type: 'test'
+  ...
+# Subtest: invalid event-envelope/meeting-confirmed-from-click.json is rejected for its stated reason
+ok 41 - invalid event-envelope/meeting-confirmed-from-click.json is rejected for its stated reason
+  ---
+  duration_ms: 0.297086
+  type: 'test'
+  ...
+# Subtest: invalid event-envelope/missing-idempotency-key.json is rejected for its stated reason
+ok 42 - invalid event-envelope/missing-idempotency-key.json is rejected for its stated reason
+  ---
+  duration_ms: 0.313483
+  type: 'test'
+  ...
+# Subtest: invalid event-envelope/name-as-guide-key.json is rejected for its stated reason
+ok 43 - invalid event-envelope/name-as-guide-key.json is rejected for its stated reason
+  ---
+  duration_ms: 0.235113
+  type: 'test'
+  ...
+# Subtest: invalid event-envelope/non-utc-timestamp.json is rejected for its stated reason
+ok 44 - invalid event-envelope/non-utc-timestamp.json is rejected for its stated reason
+  ---
+  duration_ms: 0.323695
+  type: 'test'
+  ...
+# Subtest: invalid event-envelope/payment-confirmed-by-operator.json is rejected for its stated reason
+ok 45 - invalid event-envelope/payment-confirmed-by-operator.json is rejected for its stated reason
+  ---
+  duration_ms: 0.237895
+  type: 'test'
+  ...
+# Subtest: invalid event-envelope/schema-version-2.json is rejected for its stated reason
+ok 46 - invalid event-envelope/schema-version-2.json is rejected for its stated reason
+  ---
+  duration_ms: 0.271115
+  type: 'test'
+  ...
+# Subtest: invalid event-envelope/unknown-source.json is rejected for its stated reason
+ok 47 - invalid event-envelope/unknown-source.json is rejected for its stated reason
+  ---
+  duration_ms: 0.298271
+  type: 'test'
+  ...
+# Subtest: invalid event-envelope/unknown-type.json is rejected for its stated reason
+ok 48 - invalid event-envelope/unknown-type.json is rejected for its stated reason
+  ---
+  duration_ms: 0.271256
+  type: 'test'
+  ...
+# Subtest: invalid event-envelope/workshop-completed-with-gap.json is rejected for its stated reason
+ok 49 - invalid event-envelope/workshop-completed-with-gap.json is rejected for its stated reason
+  ---
+  duration_ms: 0.290473
+  type: 'test'
+  ...
+# Subtest: invalid event-envelope/workshop-completed-with-selected-clip.json is rejected for its stated reason
+ok 50 - invalid event-envelope/workshop-completed-with-selected-clip.json is rejected for its stated reason
+  ---
+  duration_ms: 0.327001
+  type: 'test'
+  ...
+# Subtest: invalid event-envelope/workshop-completed-without-consent.json is rejected for its stated reason
+ok 51 - invalid event-envelope/workshop-completed-without-consent.json is rejected for its stated reason
+  ---
+  duration_ms: 0.274469
+  type: 'test'
+  ...
+# Subtest: invalid event-envelope/wrong-subject-kind.json is rejected for its stated reason
+ok 52 - invalid event-envelope/wrong-subject-kind.json is rejected for its stated reason
+  ---
+  duration_ms: 0.261633
+  type: 'test'
+  ...
+# Subtest: valid delivery-job/complete-e03-nurture-delivery-unknown.json passes delivery-job.schema.json
+ok 53 - valid delivery-job/complete-e03-nurture-delivery-unknown.json passes delivery-job.schema.json
+  ---
+  duration_ms: 7.439853
+  type: 'test'
+  ...
+# Subtest: valid delivery-job/dead-letter-e14-input-rejected.json passes delivery-job.schema.json
+ok 54 - valid delivery-job/dead-letter-e14-input-rejected.json passes delivery-job.schema.json
+  ---
+  duration_ms: 0.730258
+  type: 'test'
+  ...
+# Subtest: valid delivery-job/expired-e08-reminder-past-event.json passes delivery-job.schema.json
+ok 55 - valid delivery-job/expired-e08-reminder-past-event.json passes delivery-job.schema.json
+  ---
+  duration_ms: 0.351106
+  type: 'test'
+  ...
+# Subtest: valid delivery-job/leased-e07-reminder.json passes delivery-job.schema.json
+ok 56 - valid delivery-job/leased-e07-reminder.json passes delivery-job.schema.json
+  ---
+  duration_ms: 0.385071
+  type: 'test'
+  ...
+# Subtest: valid delivery-job/pending-e01-guide-delivery.json passes delivery-job.schema.json
+ok 57 - valid delivery-job/pending-e01-guide-delivery.json passes delivery-job.schema.json
+  ---
+  duration_ms: 0.287967
+  type: 'test'
+  ...
+# Subtest: valid delivery-job/pending-e09-replay-promotional-variant.json passes delivery-job.schema.json
+ok 58 - valid delivery-job/pending-e09-replay-promotional-variant.json passes delivery-job.schema.json
+  ---
+  duration_ms: 0.22216
+  type: 'test'
+  ...
+# Subtest: valid delivery-job/reconcile-required-e13-timeout-after-send.json passes delivery-job.schema.json
+ok 59 - valid delivery-job/reconcile-required-e13-timeout-after-send.json passes delivery-job.schema.json
+  ---
+  duration_ms: 0.264361
+  type: 'test'
+  ...
+# Subtest: valid delivery-job/retry-due-e04-deferred-daily-budget.json passes delivery-job.schema.json
+ok 60 - valid delivery-job/retry-due-e04-deferred-daily-budget.json passes delivery-job.schema.json
+  ---
+  duration_ms: 2.150963
+  type: 'test'
+  ...
+# Subtest: valid delivery-job/retry-due-e10-rate-limited.json passes delivery-job.schema.json
+ok 61 - valid delivery-job/retry-due-e10-rate-limited.json passes delivery-job.schema.json
+  ---
+  duration_ms: 0.770403
+  type: 'test'
+  ...
+# Subtest: valid delivery-job/sent-e12-purchase-confirmation.json passes delivery-job.schema.json
+ok 62 - valid delivery-job/sent-e12-purchase-confirmation.json passes delivery-job.schema.json
+  ---
+  duration_ms: 0.477204
+  type: 'test'
+  ...
+# Subtest: valid delivery-job/suppressed-e05-already-booked.json passes delivery-job.schema.json
+ok 63 - valid delivery-job/suppressed-e05-already-booked.json passes delivery-job.schema.json
+  ---
+  duration_ms: 0.280568
+  type: 'test'
+  ...
+# Subtest: valid delivery-job/suppressed-e11-consent-withdrawn-at-presend.json passes delivery-job.schema.json
+ok 64 - valid delivery-job/suppressed-e11-consent-withdrawn-at-presend.json passes delivery-job.schema.json
+  ---
+  duration_ms: 0.253376
+  type: 'test'
+  ...
+# Subtest: invalid delivery-job/attempt-count-over-ceiling.json is rejected for its stated reason
+ok 65 - invalid delivery-job/attempt-count-over-ceiling.json is rejected for its stated reason
+  ---
+  duration_ms: 0.482362
+  type: 'test'
+  ...
+# Subtest: invalid delivery-job/email-in-purpose-key.json is rejected for its stated reason
+ok 66 - invalid delivery-job/email-in-purpose-key.json is rejected for its stated reason
+  ---
+  duration_ms: 0.293296
+  type: 'test'
+  ...
+# Subtest: invalid delivery-job/expiry-before-due.json is rejected for its stated reason
+ok 67 - invalid delivery-job/expiry-before-due.json is rejected for its stated reason
+  ---
+  duration_ms: 0.28671
+  type: 'test'
+  ...
+# Subtest: invalid delivery-job/financial-field-in-job.json is rejected for its stated reason
+ok 68 - invalid delivery-job/financial-field-in-job.json is rejected for its stated reason
+  ---
+  duration_ms: 0.331077
+  type: 'test'
+  ...
+# Subtest: invalid delivery-job/free-text-error.json is rejected for its stated reason
+ok 69 - invalid delivery-job/free-text-error.json is rejected for its stated reason
+  ---
+  duration_ms: 0.290926
+  type: 'test'
+  ...
+# Subtest: invalid delivery-job/leased-with-provider-id.json is rejected for its stated reason
+ok 70 - invalid delivery-job/leased-with-provider-id.json is rejected for its stated reason
+  ---
+  duration_ms: 0.423055
+  type: 'test'
+  ...
+# Subtest: invalid delivery-job/leased-without-lease.json is rejected for its stated reason
+ok 71 - invalid delivery-job/leased-without-lease.json is rejected for its stated reason
+  ---
+  duration_ms: 0.375941
+  type: 'test'
+  ...
+# Subtest: invalid delivery-job/non-utc-expiry.json is rejected for its stated reason
+ok 72 - invalid delivery-job/non-utc-expiry.json is rejected for its stated reason
+  ---
+  duration_ms: 0.27427
+  type: 'test'
+  ...
+# Subtest: invalid delivery-job/nurture-template-as-operational.json is rejected for its stated reason
+ok 73 - invalid delivery-job/nurture-template-as-operational.json is rejected for its stated reason
+  ---
+  duration_ms: 0.320698
+  type: 'test'
+  ...
+# Subtest: invalid delivery-job/promotional-high-priority.json is rejected for its stated reason
+ok 74 - invalid delivery-job/promotional-high-priority.json is rejected for its stated reason
+  ---
+  duration_ms: 0.301471
+  type: 'test'
+  ...
+# Subtest: invalid delivery-job/promotional-without-consent.json is rejected for its stated reason
+ok 75 - invalid delivery-job/promotional-without-consent.json is rejected for its stated reason
+  ---
+  duration_ms: 0.385251
+  type: 'test'
+  ...
+# Subtest: invalid delivery-job/purpose-key-mismatch.json is rejected for its stated reason
+ok 76 - invalid delivery-job/purpose-key-mismatch.json is rejected for its stated reason
+  ---
+  duration_ms: 0.241418
+  type: 'test'
+  ...
+# Subtest: invalid delivery-job/recipient-email-field.json is rejected for its stated reason
+ok 77 - invalid delivery-job/recipient-email-field.json is rejected for its stated reason
+  ---
+  duration_ms: 0.304987
+  type: 'test'
+  ...
+# Subtest: invalid delivery-job/reconcile-without-send-started.json is rejected for its stated reason
+ok 78 - invalid delivery-job/reconcile-without-send-started.json is rejected for its stated reason
+  ---
+  duration_ms: 0.345613
+  type: 'test'
+  ...
+# Subtest: invalid delivery-job/retry-after-expiry.json is rejected for its stated reason
+ok 79 - invalid delivery-job/retry-after-expiry.json is rejected for its stated reason
+  ---
+  duration_ms: 0.258043
+  type: 'test'
+  ...
+# Subtest: invalid delivery-job/sent-without-provider-id.json is rejected for its stated reason
+ok 80 - invalid delivery-job/sent-without-provider-id.json is rejected for its stated reason
+  ---
+  duration_ms: 0.295186
+  type: 'test'
+  ...
+# Subtest: invalid delivery-job/suppressed-after-send-started.json is rejected for its stated reason
+ok 81 - invalid delivery-job/suppressed-after-send-started.json is rejected for its stated reason
+  ---
+  duration_ms: 0.338195
+  type: 'test'
+  ...
+# Subtest: invalid delivery-job/unhashed-template-version.json is rejected for its stated reason
+ok 82 - invalid delivery-job/unhashed-template-version.json is rejected for its stated reason
+  ---
+  duration_ms: 0.368214
+  type: 'test'
+  ...
+# Subtest: invalid delivery-job/unknown-status-delivered.json is rejected for its stated reason
+ok 83 - invalid delivery-job/unknown-status-delivered.json is rejected for its stated reason
+  ---
+  duration_ms: 0.293564
+  type: 'test'
+  ...
+# Subtest: valid feature-flags/defaults-production.json passes feature-flags.json
+ok 84 - valid feature-flags/defaults-production.json passes feature-flags.json
+  ---
+  duration_ms: 25.231238
+  type: 'test'
+  ...
+# Subtest: valid feature-flags/defaults-staging.json passes feature-flags.json
+ok 85 - valid feature-flags/defaults-staging.json passes feature-flags.json
+  ---
+  duration_ms: 1.00809
+  type: 'test'
+  ...
+# Subtest: valid feature-flags/production-marketing-dispatch-fictional.json passes feature-flags.json
+ok 86 - valid feature-flags/production-marketing-dispatch-fictional.json passes feature-flags.json
+  ---
+  duration_ms: 0.976938
+  type: 'test'
+  ...
+# Subtest: valid feature-flags/production-public-guide-step-fictional.json passes feature-flags.json
+ok 87 - valid feature-flags/production-public-guide-step-fictional.json passes feature-flags.json
+  ---
+  duration_ms: 0.751444
+  type: 'test'
+  ...
+# Subtest: valid feature-flags/staging-guide-delivery-allowlist-test.json passes feature-flags.json
+ok 88 - valid feature-flags/staging-guide-delivery-allowlist-test.json passes feature-flags.json
+  ---
+  duration_ms: 0.424893
+  type: 'test'
+  ...
+# Subtest: invalid feature-flags/agent-recorded-approval.json is rejected for its stated reason
+ok 89 - invalid feature-flags/agent-recorded-approval.json is rejected for its stated reason
+  ---
+  duration_ms: 0.537714
+  type: 'test'
+  ...
+# Subtest: invalid feature-flags/approval-without-scope-hash.json is rejected for its stated reason
+ok 90 - invalid feature-flags/approval-without-scope-hash.json is rejected for its stated reason
+  ---
+  duration_ms: 0.474551
+  type: 'test'
+  ...
+# Subtest: invalid feature-flags/enabled-without-controlling-flag.json is rejected for its stated reason
+ok 91 - invalid feature-flags/enabled-without-controlling-flag.json is rejected for its stated reason
+  ---
+  duration_ms: 7.13248
+  type: 'test'
+  ...
+# Subtest: invalid feature-flags/flag-default-true.json is rejected for its stated reason
+ok 92 - invalid feature-flags/flag-default-true.json is rejected for its stated reason
+  ---
+  duration_ms: 1.146165
+  type: 'test'
+  ...
+# Subtest: invalid feature-flags/flag-on-without-approval.json is rejected for its stated reason
+ok 93 - invalid feature-flags/flag-on-without-approval.json is rejected for its stated reason
+  ---
+  duration_ms: 0.813837
+  type: 'test'
+  ...
+# Subtest: invalid feature-flags/gate-mapping-altered.json is rejected for its stated reason
+ok 94 - invalid feature-flags/gate-mapping-altered.json is rejected for its stated reason
+  ---
+  duration_ms: 0.6095
+  type: 'test'
+  ...
+# Subtest: invalid feature-flags/live-verified-in-staging.json is rejected for its stated reason
+ok 95 - invalid feature-flags/live-verified-in-staging.json is rejected for its stated reason
+  ---
+  duration_ms: 0.909653
+  type: 'test'
+  ...
+# Subtest: invalid feature-flags/live-verified-without-enabled.json is rejected for its stated reason
+ok 96 - invalid feature-flags/live-verified-without-enabled.json is rejected for its stated reason
+  ---
+  duration_ms: 0.635081
+  type: 'test'
+  ...
+# Subtest: invalid feature-flags/marketing-dispatch-without-workshop-followup-ready.json is rejected for its stated reason
+ok 97 - invalid feature-flags/marketing-dispatch-without-workshop-followup-ready.json is rejected for its stated reason
+  ---
+  duration_ms: 0.587539
+  type: 'test'
+  ...
+# Subtest: invalid feature-flags/missing-readiness-state.json is rejected for its stated reason
+ok 98 - invalid feature-flags/missing-readiness-state.json is rejected for its stated reason
+  ---
+  duration_ms: 0.558008
+  type: 'test'
+  ...
+# Subtest: invalid feature-flags/public-launch-in-staging.json is rejected for its stated reason
+ok 99 - invalid feature-flags/public-launch-in-staging.json is rejected for its stated reason
+  ---
+  duration_ms: 0.542625
+  type: 'test'
+  ...
+# Subtest: invalid feature-flags/single-boolean-capability.json is rejected for its stated reason
+ok 100 - invalid feature-flags/single-boolean-capability.json is rejected for its stated reason
+  ---
+  duration_ms: 0.57523
+  type: 'test'
+  ...
+# Subtest: invalid feature-flags/state-true-without-evidence.json is rejected for its stated reason
+ok 101 - invalid feature-flags/state-true-without-evidence.json is rejected for its stated reason
+  ---
+  duration_ms: 0.545837
+  type: 'test'
+  ...
+# Subtest: invalid feature-flags/unknown-flag.json is rejected for its stated reason
+ok 102 - invalid feature-flags/unknown-flag.json is rejected for its stated reason
+  ---
+  duration_ms: 0.389379
+  type: 'test'
+  ...
+# Subtest: valid offer-matrix/authoritative-2026-09-30.json passes offer-matrix.json
+ok 103 - valid offer-matrix/authoritative-2026-09-30.json passes offer-matrix.json
+  ---
+  duration_ms: 26.652466
+  type: 'test'
+  ...
+# Subtest: valid offer-matrix/fixture-all-gates-recorded-fictional.json passes offer-matrix.json
+ok 104 - valid offer-matrix/fixture-all-gates-recorded-fictional.json passes offer-matrix.json
+  ---
+  duration_ms: 6.270216
+  type: 'test'
+  ...
+# Subtest: valid offer-matrix/fixture-test-mode-only.json passes offer-matrix.json
+ok 105 - valid offer-matrix/fixture-test-mode-only.json passes offer-matrix.json
+  ---
+  duration_ms: 0.888057
+  type: 'test'
+  ...
+# Subtest: invalid offer-matrix/agent-recorded-gate.json is rejected for its stated reason
+ok 106 - invalid offer-matrix/agent-recorded-gate.json is rejected for its stated reason
+  ---
+  duration_ms: 1.924437
+  type: 'test'
+  ...
+# Subtest: invalid offer-matrix/approval-gate-mismatch.json is rejected for its stated reason
+ok 107 - invalid offer-matrix/approval-gate-mismatch.json is rejected for its stated reason
+  ---
+  duration_ms: 2.134996
+  type: 'test'
+  ...
+# Subtest: invalid offer-matrix/approval-record-missing.json is rejected for its stated reason
+ok 108 - invalid offer-matrix/approval-record-missing.json is rejected for its stated reason
+  ---
+  duration_ms: 11.214692
+  type: 'test'
+  ...
+# Subtest: invalid offer-matrix/book-consultation-60-minutes.json is rejected for its stated reason
+ok 109 - invalid offer-matrix/book-consultation-60-minutes.json is rejected for its stated reason
+  ---
+  duration_ms: 1.046431
+  type: 'test'
+  ...
+# Subtest: invalid offer-matrix/cap-recorded-without-approval.json is rejected for its stated reason
+ok 110 - invalid offer-matrix/cap-recorded-without-approval.json is rejected for its stated reason
+  ---
+  duration_ms: 0.786746
+  type: 'test'
+  ...
+# Subtest: invalid offer-matrix/extra-one-hour-offer.json is rejected for its stated reason
+ok 111 - invalid offer-matrix/extra-one-hour-offer.json is rejected for its stated reason
+  ---
+  duration_ms: 0.580945
+  type: 'test'
+  ...
+# Subtest: invalid offer-matrix/fit-screen-removes-consultation.json is rejected for its stated reason
+ok 112 - invalid offer-matrix/fit-screen-removes-consultation.json is rejected for its stated reason
+  ---
+  duration_ms: 0.59019
+  type: 'test'
+  ...
+# Subtest: invalid offer-matrix/fixture-ref-in-authoritative.json is rejected for its stated reason
+ok 113 - invalid offer-matrix/fixture-ref-in-authoritative.json is rejected for its stated reason
+  ---
+  duration_ms: 1.735625
+  type: 'test'
+  ...
+# Subtest: invalid offer-matrix/funnel-prerequisite.json is rejected for its stated reason
+ok 114 - invalid offer-matrix/funnel-prerequisite.json is rejected for its stated reason
+  ---
+  duration_ms: 0.600058
+  type: 'test'
+  ...
+# Subtest: invalid offer-matrix/guide-requires-consent.json is rejected for its stated reason
+ok 115 - invalid offer-matrix/guide-requires-consent.json is rejected for its stated reason
+  ---
+  duration_ms: 0.538294
+  type: 'test'
+  ...
+# Subtest: invalid offer-matrix/in-person-without-confirmed-location.json is rejected for its stated reason
+ok 116 - invalid offer-matrix/in-person-without-confirmed-location.json is rejected for its stated reason
+  ---
+  duration_ms: 0.521821
+  type: 'test'
+  ...
+# Subtest: invalid offer-matrix/intro-60-minutes.json is rejected for its stated reason
+ok 117 - invalid offer-matrix/intro-60-minutes.json is rejected for its stated reason
+  ---
+  duration_ms: 0.530197
+  type: 'test'
+  ...
+# Subtest: invalid offer-matrix/invented-price-while-pending.json is rejected for its stated reason
+ok 118 - invalid offer-matrix/invented-price-while-pending.json is rejected for its stated reason
+  ---
+  duration_ms: 0.578643
+  type: 'test'
+  ...
+# Subtest: invalid offer-matrix/meeting-type-60-minutes.json is rejected for its stated reason
+ok 119 - invalid offer-matrix/meeting-type-60-minutes.json is rejected for its stated reason
+  ---
+  duration_ms: 0.492251
+  type: 'test'
+  ...
+# Subtest: invalid offer-matrix/missing-cancellation-disclosure.json is rejected for its stated reason
+ok 120 - invalid offer-matrix/missing-cancellation-disclosure.json is rejected for its stated reason
+  ---
+  duration_ms: 0.581094
+  type: 'test'
+  ...
+# Subtest: invalid offer-matrix/missing-disclosure-list.json is rejected for its stated reason
+ok 121 - invalid offer-matrix/missing-disclosure-list.json is rejected for its stated reason
+  ---
+  duration_ms: 0.621454
+  type: 'test'
+  ...
+# Subtest: invalid offer-matrix/on-sale-with-pending-terms.json is rejected for its stated reason
+ok 122 - invalid offer-matrix/on-sale-with-pending-terms.json is rejected for its stated reason
+  ---
+  duration_ms: 0.759477
+  type: 'test'
+  ...
+# Subtest: invalid offer-matrix/online-without-recorded-service.json is rejected for its stated reason
+ok 123 - invalid offer-matrix/online-without-recorded-service.json is rejected for its stated reason
+  ---
+  duration_ms: 0.58223
+  type: 'test'
+  ...
+# Subtest: invalid offer-matrix/price-recorded-without-g0-approval.json is rejected for its stated reason
+ok 124 - invalid offer-matrix/price-recorded-without-g0-approval.json is rejected for its stated reason
+  ---
+  duration_ms: 0.563353
+  type: 'test'
+  ...
+# Subtest: invalid offer-matrix/separately-priced-consultation.json is rejected for its stated reason
+ok 125 - invalid offer-matrix/separately-priced-consultation.json is rejected for its stated reason
+  ---
+  duration_ms: 0.553887
+  type: 'test'
+  ...
+# Subtest: invalid offer-matrix/two-rights-per-order.json is rejected for its stated reason
+ok 126 - invalid offer-matrix/two-rights-per-order.json is rejected for its stated reason
+  ---
+  duration_ms: 0.536462
+  type: 'test'
+  ...
+# Subtest: invalid offer-matrix/zoom-online-service.json is rejected for its stated reason
+ok 127 - invalid offer-matrix/zoom-online-service.json is rejected for its stated reason
+  ---
+  duration_ms: 1.230272
+  type: 'test'
+  ...
+# Subtest: valid asset-manifest/authoritative-empty-2026-09-30.json passes asset-manifest.schema.json
+ok 128 - valid asset-manifest/authoritative-empty-2026-09-30.json passes asset-manifest.schema.json
+  ---
+  duration_ms: 12.073083
+  type: 'test'
+  ...
+# Subtest: valid asset-manifest/fixture-lifecycle.json passes asset-manifest.schema.json
+ok 129 - valid asset-manifest/fixture-lifecycle.json passes asset-manifest.schema.json
+  ---
+  duration_ms: 6.441678
+  type: 'test'
+  ...
+# Subtest: invalid asset-manifest/agent-role-approval.json is rejected for its stated reason
+ok 130 - invalid asset-manifest/agent-role-approval.json is rejected for its stated reason
+  ---
+  duration_ms: 1.749832
+  type: 'test'
+  ...
+# Subtest: invalid asset-manifest/approval-on-draft.json is rejected for its stated reason
+ok 131 - invalid asset-manifest/approval-on-draft.json is rejected for its stated reason
+  ---
+  duration_ms: 1.441919
+  type: 'test'
+  ...
+# Subtest: invalid asset-manifest/approval-without-g3.json is rejected for its stated reason
+ok 132 - invalid asset-manifest/approval-without-g3.json is rejected for its stated reason
+  ---
+  duration_ms: 1.312798
+  type: 'test'
+  ...
+# Subtest: invalid asset-manifest/approved-with-pending-rights.json is rejected for its stated reason
+ok 133 - invalid asset-manifest/approved-with-pending-rights.json is rejected for its stated reason
+  ---
+  duration_ms: 1.190364
+  type: 'test'
+  ...
+# Subtest: invalid asset-manifest/approved-without-review-hash.json is rejected for its stated reason
+ok 134 - invalid asset-manifest/approved-without-review-hash.json is rejected for its stated reason
+  ---
+  duration_ms: 1.228588
+  type: 'test'
+  ...
+# Subtest: invalid asset-manifest/capsule-s19-id.json is rejected for its stated reason
+ok 135 - invalid asset-manifest/capsule-s19-id.json is rejected for its stated reason
+  ---
+  duration_ms: 1.183736
+  type: 'test'
+  ...
+# Subtest: invalid asset-manifest/captions-only-marked-recorded.json is rejected for its stated reason
+ok 136 - invalid asset-manifest/captions-only-marked-recorded.json is rejected for its stated reason
+  ---
+  duration_ms: 1.268503
+  type: 'test'
+  ...
+# Subtest: invalid asset-manifest/cta-offer-not-referenced.json is rejected for its stated reason
+ok 137 - invalid asset-manifest/cta-offer-not-referenced.json is rejected for its stated reason
+  ---
+  duration_ms: 1.16687
+  type: 'test'
+  ...
+# Subtest: invalid asset-manifest/duplicate-entry.json is rejected for its stated reason
+ok 138 - invalid asset-manifest/duplicate-entry.json is rejected for its stated reason
+  ---
+  duration_ms: 1.182436
+  type: 'test'
+  ...
+# Subtest: invalid asset-manifest/factual-claims-without-sources.json is rejected for its stated reason
+ok 139 - invalid asset-manifest/factual-claims-without-sources.json is rejected for its stated reason
+  ---
+  duration_ms: 1.193845
+  type: 'test'
+  ...
+# Subtest: invalid asset-manifest/fixture-publication-id-in-authoritative.json is rejected for its stated reason
+ok 140 - invalid asset-manifest/fixture-publication-id-in-authoritative.json is rejected for its stated reason
+  ---
+  duration_ms: 0.712032
+  type: 'test'
+  ...
+# Subtest: invalid asset-manifest/fixture-ref-in-authoritative.json is rejected for its stated reason
+ok 141 - invalid asset-manifest/fixture-ref-in-authoritative.json is rejected for its stated reason
+  ---
+  duration_ms: 0.521032
+  type: 'test'
+  ...
+# Subtest: invalid asset-manifest/offer-copy-approved-without-g1.json is rejected for its stated reason
+ok 142 - invalid asset-manifest/offer-copy-approved-without-g1.json is rejected for its stated reason
+  ---
+  duration_ms: 1.143711
+  type: 'test'
+  ...
+# Subtest: invalid asset-manifest/publication-hash-mismatch.json is rejected for its stated reason
+ok 143 - invalid asset-manifest/publication-hash-mismatch.json is rejected for its stated reason
+  ---
+  duration_ms: 1.334985
+  type: 'test'
+  ...
+# Subtest: invalid asset-manifest/publication-id-on-draft.json is rejected for its stated reason
+ok 144 - invalid asset-manifest/publication-id-on-draft.json is rejected for its stated reason
+  ---
+  duration_ms: 1.151069
+  type: 'test'
+  ...
+# Subtest: invalid asset-manifest/published-without-publication-id.json is rejected for its stated reason
+ok 145 - invalid asset-manifest/published-without-publication-id.json is rejected for its stated reason
+  ---
+  duration_ms: 1.089673
+  type: 'test'
+  ...
+# Subtest: invalid asset-manifest/recorded-without-consent.json is rejected for its stated reason
+ok 146 - invalid asset-manifest/recorded-without-consent.json is rejected for its stated reason
+  ---
+  duration_ms: 1.238067
+  type: 'test'
+  ...
+# Subtest: invalid asset-manifest/recording-approved-without-g4.json is rejected for its stated reason
+ok 147 - invalid asset-manifest/recording-approved-without-g4.json is rejected for its stated reason
+  ---
+  duration_ms: 1.176995
+  type: 'test'
+  ...
+# Subtest: invalid asset-manifest/reviewed-claim-without-access-date.json is rejected for its stated reason
+ok 148 - invalid asset-manifest/reviewed-claim-without-access-date.json is rejected for its stated reason
+  ---
+  duration_ms: 1.186805
+  type: 'test'
+  ...
+# Subtest: invalid asset-manifest/synthetic-bill-likeness.json is rejected for its stated reason
+ok 149 - invalid asset-manifest/synthetic-bill-likeness.json is rejected for its stated reason
+  ---
+  duration_ms: 1.249298
+  type: 'test'
+  ...
+# Subtest: invalid asset-manifest/text-asset-marked-recorded.json is rejected for its stated reason
+ok 150 - invalid asset-manifest/text-asset-marked-recorded.json is rejected for its stated reason
+  ---
+  duration_ms: 1.167696
+  type: 'test'
+  ...
+# Subtest: invalid asset-manifest/unknown-status-ready.json is rejected for its stated reason
+ok 151 - invalid asset-manifest/unknown-status-ready.json is rejected for its stated reason
+  ---
+  duration_ms: 1.200009
+  type: 'test'
+  ...
+# Subtest: valid worker-handoff/fixture-side-effect-metered.json passes worker-handoff.schema.json
+ok 152 - valid worker-handoff/fixture-side-effect-metered.json passes worker-handoff.schema.json
+  ---
+  duration_ms: 5.820683
+  type: 'test'
+  ...
+# Subtest: valid worker-handoff/normalized-f00-subset.json passes worker-handoff.schema.json
+ok 153 - valid worker-handoff/normalized-f00-subset.json passes worker-handoff.schema.json
+  ---
+  duration_ms: 0.828515
+  type: 'test'
+  ...
+# Subtest: invalid worker-handoff/absolute-changed-path.json is rejected for its stated reason
+ok 154 - invalid worker-handoff/absolute-changed-path.json is rejected for its stated reason
+  ---
+  duration_ms: 0.56264
+  type: 'test'
+  ...
+# Subtest: invalid worker-handoff/annotated-changed-path.json is rejected for its stated reason
+ok 155 - invalid worker-handoff/annotated-changed-path.json is rejected for its stated reason
+  ---
+  duration_ms: 1.925452
+  type: 'test'
+  ...
+# Subtest: invalid worker-handoff/blocked-check-not-visible.json is rejected for its stated reason
+ok 156 - invalid worker-handoff/blocked-check-not-visible.json is rejected for its stated reason
+  ---
+  duration_ms: 0.465922
+  type: 'test'
+  ...
+# Subtest: invalid worker-handoff/empty-artifacts.json is rejected for its stated reason
+ok 157 - invalid worker-handoff/empty-artifacts.json is rejected for its stated reason
+  ---
+  duration_ms: 0.38025
+  type: 'test'
+  ...
+# Subtest: invalid worker-handoff/environment-unlabelled.json is rejected for its stated reason
+ok 158 - invalid worker-handoff/environment-unlabelled.json is rejected for its stated reason
+  ---
+  duration_ms: 0.331435
+  type: 'test'
+  ...
+# Subtest: invalid worker-handoff/estimated-cost.json is rejected for its stated reason
+ok 159 - invalid worker-handoff/estimated-cost.json is rejected for its stated reason
+  ---
+  duration_ms: 0.412775
+  type: 'test'
+  ...
+# Subtest: invalid worker-handoff/exit-code-string.json is rejected for its stated reason
+ok 160 - invalid worker-handoff/exit-code-string.json is rejected for its stated reason
+  ---
+  duration_ms: 0.350227
+  type: 'test'
+  ...
+# Subtest: invalid worker-handoff/extra-accepted-by-field.json is rejected for its stated reason
+ok 161 - invalid worker-handoff/extra-accepted-by-field.json is rejected for its stated reason
+  ---
+  duration_ms: 0.388324
+  type: 'test'
+  ...
+# Subtest: invalid worker-handoff/metered-cost-without-source.json is rejected for its stated reason
+ok 162 - invalid worker-handoff/metered-cost-without-source.json is rejected for its stated reason
+  ---
+  duration_ms: 0.377442
+  type: 'test'
+  ...
+# Subtest: invalid worker-handoff/missing-metered-cost.json is rejected for its stated reason
+ok 163 - invalid worker-handoff/missing-metered-cost.json is rejected for its stated reason
+  ---
+  duration_ms: 0.653827
+  type: 'test'
+  ...
+# Subtest: invalid worker-handoff/placeholder-artifact-hash.json is rejected for its stated reason
+ok 164 - invalid worker-handoff/placeholder-artifact-hash.json is rejected for its stated reason
+  ---
+  duration_ms: 0.481115
+  type: 'test'
+  ...
+# Subtest: invalid worker-handoff/placeholder-command.json is rejected for its stated reason
+ok 165 - invalid worker-handoff/placeholder-command.json is rejected for its stated reason
+  ---
+  duration_ms: 0.390678
+  type: 'test'
+  ...
+# Subtest: invalid worker-handoff/short-result-commit.json is rejected for its stated reason
+ok 166 - invalid worker-handoff/short-result-commit.json is rejected for its stated reason
+  ---
+  duration_ms: 0.468303
+  type: 'test'
+  ...
+# Subtest: invalid worker-handoff/side-effect-without-authorization.json is rejected for its stated reason
+ok 167 - invalid worker-handoff/side-effect-without-authorization.json is rejected for its stated reason
+  ---
+  duration_ms: 0.495701
+  type: 'test'
+  ...
+# Subtest: invalid worker-handoff/status-accepted.json is rejected for its stated reason
+ok 168 - invalid worker-handoff/status-accepted.json is rejected for its stated reason
+  ---
+  duration_ms: 0.46626
+  type: 'test'
+  ...
+# Subtest: invalid worker-handoff/unknown-task-id.json is rejected for its stated reason
+ok 169 - invalid worker-handoff/unknown-task-id.json is rejected for its stated reason
+  ---
+  duration_ms: 0.402686
+  type: 'test'
+  ...
+# Subtest: invalid worker-handoff/verbatim-03-example.json is rejected for its stated reason
+ok 170 - invalid worker-handoff/verbatim-03-example.json is rejected for its stated reason
+  ---
+  duration_ms: 0.4228
+  type: 'test'
+  ...
+# Subtest: valid workshop-inputs/already-retired-zeros.json passes workshop-inputs.schema.json
+ok 171 - valid workshop-inputs/already-retired-zeros.json passes workshop-inputs.schema.json
+  ---
+  duration_ms: 21.622374
+  type: 'test'
+  ...
+# Subtest: valid workshop-inputs/complete-single.json passes workshop-inputs.schema.json
+ok 172 - valid workshop-inputs/complete-single.json passes workshop-inputs.schema.json
+  ---
+  duration_ms: 0.939064
+  type: 'test'
+  ...
+# Subtest: valid workshop-inputs/household-mixed.json passes workshop-inputs.schema.json
+ok 173 - valid workshop-inputs/household-mixed.json passes workshop-inputs.schema.json
+  ---
+  duration_ms: 10.718408
+  type: 'test'
+  ...
+# Subtest: valid workshop-inputs/minimal-all-unknown.json passes workshop-inputs.schema.json
+ok 174 - valid workshop-inputs/minimal-all-unknown.json passes workshop-inputs.schema.json
+  ---
+  duration_ms: 0.62554
+  type: 'test'
+  ...
+# Subtest: valid workshop-inputs/range-limits.json passes workshop-inputs.schema.json
+ok 175 - valid workshop-inputs/range-limits.json passes workshop-inputs.schema.json
+  ---
+  duration_ms: 0.500511
+  type: 'test'
+  ...
+# Subtest: invalid workshop-inputs/already-receiving-with-point.json is rejected for its stated reason
+ok 176 - invalid workshop-inputs/already-receiving-with-point.json is rejected for its stated reason
+  ---
+  duration_ms: 1.010975
+  type: 'test'
+  ...
+# Subtest: invalid workshop-inputs/coverage-none-with-sources.json is rejected for its stated reason
+ok 177 - invalid workshop-inputs/coverage-none-with-sources.json is rejected for its stated reason
+  ---
+  duration_ms: 1.071403
+  type: 'test'
+  ...
+# Subtest: invalid workshop-inputs/duplicate-source-id.json is rejected for its stated reason
+ok 178 - invalid workshop-inputs/duplicate-source-id.json is rejected for its stated reason
+  ---
+  duration_ms: 3.824823
+  type: 'test'
+  ...
+# Subtest: invalid workshop-inputs/end-before-start.json is rejected for its stated reason
+ok 179 - invalid workshop-inputs/end-before-start.json is rejected for its stated reason
+  ---
+  duration_ms: 0.468915
+  type: 'test'
+  ...
+# Subtest: invalid workshop-inputs/estimated-without-value.json is rejected for its stated reason
+ok 180 - invalid workshop-inputs/estimated-without-value.json is rejected for its stated reason
+  ---
+  duration_ms: 0.34849
+  type: 'test'
+  ...
+# Subtest: invalid workshop-inputs/estimated-zero-value.json is rejected for its stated reason
+ok 181 - invalid workshop-inputs/estimated-zero-value.json is rejected for its stated reason
+  ---
+  duration_ms: 0.293733
+  type: 'test'
+  ...
+# Subtest: invalid workshop-inputs/extra-pii-email.json is rejected for its stated reason
+ok 182 - invalid workshop-inputs/extra-pii-email.json is rejected for its stated reason
+  ---
+  duration_ms: 0.319668
+  type: 'test'
+  ...
+# Subtest: invalid workshop-inputs/float-cents.json is rejected for its stated reason
+ok 183 - invalid workshop-inputs/float-cents.json is rejected for its stated reason
+  ---
+  duration_ms: 0.431834
+  type: 'test'
+  ...
+# Subtest: invalid workshop-inputs/home-counted-spendable.json is rejected for its stated reason
+ok 184 - invalid workshop-inputs/home-counted-spendable.json is rejected for its stated reason
+  ---
+  duration_ms: 0.377238
+  type: 'test'
+  ...
+# Subtest: invalid workshop-inputs/horizon-beyond-age-120.json is rejected for its stated reason
+ok 185 - invalid workshop-inputs/horizon-beyond-age-120.json is rejected for its stated reason
+  ---
+  duration_ms: 0.367428
+  type: 'test'
+  ...
+# Subtest: invalid workshop-inputs/horizon-zero.json is rejected for its stated reason
+ok 186 - invalid workshop-inputs/horizon-zero.json is rejected for its stated reason
+  ---
+  duration_ms: 0.283936
+  type: 'test'
+  ...
+# Subtest: invalid workshop-inputs/income-basis-missing.json is rejected for its stated reason
+ok 187 - invalid workshop-inputs/income-basis-missing.json is rejected for its stated reason
+  ---
+  duration_ms: 0.28467
+  type: 'test'
+  ...
+# Subtest: invalid workshop-inputs/income-guaranteed-label.json is rejected for its stated reason
+ok 188 - invalid workshop-inputs/income-guaranteed-label.json is rejected for its stated reason
+  ---
+  duration_ms: 0.389456
+  type: 'test'
+  ...
+# Subtest: invalid workshop-inputs/infinity-literal.json is rejected for its stated reason
+ok 189 - invalid workshop-inputs/infinity-literal.json is rejected for its stated reason
+  ---
+  duration_ms: 1.230087
+  type: 'test'
+  ...
+# Subtest: invalid workshop-inputs/inflation-unknown.json is rejected for its stated reason
+ok 190 - invalid workshop-inputs/inflation-unknown.json is rejected for its stated reason
+  ---
+  duration_ms: 0.287139
+  type: 'test'
+  ...
+# Subtest: invalid workshop-inputs/monthly-spending-over-limit.json is rejected for its stated reason
+ok 191 - invalid workshop-inputs/monthly-spending-over-limit.json is rejected for its stated reason
+  ---
+  duration_ms: 0.31267
+  type: 'test'
+  ...
+# Subtest: invalid workshop-inputs/nan-as-string.json is rejected for its stated reason
+ok 192 - invalid workshop-inputs/nan-as-string.json is rejected for its stated reason
+  ---
+  duration_ms: 0.229989
+  type: 'test'
+  ...
+# Subtest: invalid workshop-inputs/nan-literal.json is rejected for its stated reason
+ok 193 - invalid workshop-inputs/nan-literal.json is rejected for its stated reason
+  ---
+  duration_ms: 0.787399
+  type: 'test'
+  ...
+# Subtest: invalid workshop-inputs/negative-spending.json is rejected for its stated reason
+ok 194 - invalid workshop-inputs/negative-spending.json is rejected for its stated reason
+  ---
+  duration_ms: 0.335358
+  type: 'test'
+  ...
+# Subtest: invalid workshop-inputs/partner-retirement-before-partner-age.json is rejected for its stated reason
+ok 195 - invalid workshop-inputs/partner-retirement-before-partner-age.json is rejected for its stated reason
+  ---
+  duration_ms: 0.362888
+  type: 'test'
+  ...
+# Subtest: invalid workshop-inputs/partner-source-without-household.json is rejected for its stated reason
+ok 196 - invalid workshop-inputs/partner-source-without-household.json is rejected for its stated reason
+  ---
+  duration_ms: 0.338703
+  type: 'test'
+  ...
+# Subtest: invalid workshop-inputs/pii-label-in-source.json is rejected for its stated reason
+ok 197 - invalid workshop-inputs/pii-label-in-source.json is rejected for its stated reason
+  ---
+  duration_ms: 0.321437
+  type: 'test'
+  ...
+# Subtest: invalid workshop-inputs/retirement-before-current-age.json is rejected for its stated reason
+ok 198 - invalid workshop-inputs/retirement-before-current-age.json is rejected for its stated reason
+  ---
+  duration_ms: 0.263672
+  type: 'test'
+  ...
+# Subtest: invalid workshop-inputs/spending-pretax-basis.json is rejected for its stated reason
+ok 199 - invalid workshop-inputs/spending-pretax-basis.json is rejected for its stated reason
+  ---
+  duration_ms: 0.298093
+  type: 'test'
+  ...
+# Subtest: invalid workshop-inputs/spending-status-zero.json is rejected for its stated reason
+ok 200 - invalid workshop-inputs/spending-status-zero.json is rejected for its stated reason
+  ---
+  duration_ms: 0.255784
+  type: 'test'
+  ...
+# Subtest: invalid workshop-inputs/start-age-already-passed.json is rejected for its stated reason
+ok 201 - invalid workshop-inputs/start-age-already-passed.json is rejected for its stated reason
+  ---
+  duration_ms: 0.207092
+  type: 'test'
+  ...
+# Subtest: invalid workshop-inputs/unknown-with-value.json is rejected for its stated reason
+ok 202 - invalid workshop-inputs/unknown-with-value.json is rejected for its stated reason
+  ---
+  duration_ms: 0.272562
+  type: 'test'
+  ...
+# Subtest: fixtures/workshop/index.json lists exactly the fixture files on disk
+ok 203 - fixtures/workshop/index.json lists exactly the fixture files on disk
+  ---
+  duration_ms: 1.769152
+  type: 'test'
+  ...
+# Subtest: fixture WM01-zero-inflation-zero-escalation.json: input passes workshop-inputs.schema.json
+ok 204 - fixture WM01-zero-inflation-zero-escalation.json: input passes workshop-inputs.schema.json
+  ---
+  duration_ms: 0.461242
+  type: 'test'
+  ...
+# Subtest: fixture WM02-geometric-growth-closed-form.json: input passes workshop-inputs.schema.json
+ok 205 - fixture WM02-geometric-growth-closed-form.json: input passes workshop-inputs.schema.json
+  ---
+  duration_ms: 0.318682
+  type: 'test'
+  ...
+# Subtest: fixture WM03-later-income-start.json: input passes workshop-inputs.schema.json
+ok 206 - fixture WM03-later-income-start.json: input passes workshop-inputs.schema.json
+  ---
+  duration_ms: 0.234655
+  type: 'test'
+  ...
+# Subtest: fixture WM04-price-basis-today-vs-start-year.json: input passes workshop-inputs.schema.json
+ok 207 - fixture WM04-price-basis-today-vs-start-year.json: input passes workshop-inputs.schema.json
+  ---
+  duration_ms: 0.474289
+  type: 'test'
+  ...
+# Subtest: fixture WM05-month-to-year-conversion.json: input passes workshop-inputs.schema.json
+ok 208 - fixture WM05-month-to-year-conversion.json: input passes workshop-inputs.schema.json
+  ---
+  duration_ms: 0.225351
+  type: 'test'
+  ...
+# Subtest: fixture WM06-zero-income-declared.json: input passes workshop-inputs.schema.json
+ok 209 - fixture WM06-zero-income-declared.json: input passes workshop-inputs.schema.json
+  ---
+  duration_ms: 0.183559
+  type: 'test'
+  ...
+# Subtest: fixture WM07-unknown-income-not-answered.json: input passes workshop-inputs.schema.json
+ok 210 - fixture WM07-unknown-income-not-answered.json: input passes workshop-inputs.schema.json
+  ---
+  duration_ms: 0.324302
+  type: 'test'
+  ...
+# Subtest: fixture WM08-unknown-amount-later-start.json: input passes workshop-inputs.schema.json
+ok 211 - fixture WM08-unknown-amount-later-start.json: input passes workshop-inputs.schema.json
+  ---
+  duration_ms: 0.302918
+  type: 'test'
+  ...
+# Subtest: fixture WM09-gross-net-mismatch.json: input passes workshop-inputs.schema.json
+ok 212 - fixture WM09-gross-net-mismatch.json: input passes workshop-inputs.schema.json
+  ---
+  duration_ms: 0.521468
+  type: 'test'
+  ...
+# Subtest: fixture WM10-housing-only-wealth.json: input passes workshop-inputs.schema.json
+ok 213 - fixture WM10-housing-only-wealth.json: input passes workshop-inputs.schema.json
+  ---
+  duration_ms: 0.242713
+  type: 'test'
+  ...
+# Subtest: fixture WM11-pension-double-count.json: input passes workshop-inputs.schema.json
+ok 214 - fixture WM11-pension-double-count.json: input passes workshop-inputs.schema.json
+  ---
+  duration_ms: 0.284276
+  type: 'test'
+  ...
+# Subtest: fixture WM12-surplus-years.json: input passes workshop-inputs.schema.json
+ok 215 - fixture WM12-surplus-years.json: input passes workshop-inputs.schema.json
+  ---
+  duration_ms: 0.208406
+  type: 'test'
+  ...
+# Subtest: fixture WM13-retirement-year-boundary.json: input passes workshop-inputs.schema.json
+ok 216 - fixture WM13-retirement-year-boundary.json: input passes workshop-inputs.schema.json
+  ---
+  duration_ms: 0.257322
+  type: 'test'
+  ...
+# Subtest: fixture WM14-capital-illustration-r-zero.json: input passes workshop-inputs.schema.json
+ok 217 - fixture WM14-capital-illustration-r-zero.json: input passes workshop-inputs.schema.json
+  ---
+  duration_ms: 0.201722
+  type: 'test'
+  ...
+# Subtest: fixture WM15-capital-illustration-growing-annuity.json: input passes workshop-inputs.schema.json
+ok 218 - fixture WM15-capital-illustration-growing-annuity.json: input passes workshop-inputs.schema.json
+  ---
+  duration_ms: 0.215445
+  type: 'test'
+  ...
+# Subtest: fixture WM16-capital-illustration-level-annuity.json: input passes workshop-inputs.schema.json
+ok 219 - fixture WM16-capital-illustration-level-annuity.json: input passes workshop-inputs.schema.json
+  ---
+  duration_ms: 0.219826
+  type: 'test'
+  ...
+# Subtest: fixture WM17-rounding-half-even.json: input passes workshop-inputs.schema.json
+ok 220 - fixture WM17-rounding-half-even.json: input passes workshop-inputs.schema.json
+  ---
+  duration_ms: 0.236765
+  type: 'test'
+  ...
+# Subtest: fixture WM18-horizon-and-source-end.json: input passes workshop-inputs.schema.json
+ok 221 - fixture WM18-horizon-and-source-end.json: input passes workshop-inputs.schema.json
+  ---
+  duration_ms: 0.222404
+  type: 'test'
+  ...
+# Subtest: fixture WM19-uncertain-income-labelled-scheduled.json: input passes workshop-inputs.schema.json
+ok 222 - fixture WM19-uncertain-income-labelled-scheduled.json: input passes workshop-inputs.schema.json
+  ---
+  duration_ms: 0.213776
+  type: 'test'
+  ...
+# Subtest: fixture WM20-timing-unknown.json: input passes workshop-inputs.schema.json
+ok 223 - fixture WM20-timing-unknown.json: input passes workshop-inputs.schema.json
+  ---
+  duration_ms: 0.301191
+  type: 'test'
+  ...
+# Subtest: fixture WM21-household-timing.json: input passes workshop-inputs.schema.json
+ok 224 - fixture WM21-household-timing.json: input passes workshop-inputs.schema.json
+  ---
+  duration_ms: 0.381798
+  type: 'test'
+  ...
+# Subtest: fixture WM22-price-basis-unknown.json: input passes workshop-inputs.schema.json
+ok 225 - fixture WM22-price-basis-unknown.json: input passes workshop-inputs.schema.json
+  ---
+  duration_ms: 0.282929
+  type: 'test'
+  ...
+# Subtest: fixture WM23-tax-basis-unknown.json: input passes workshop-inputs.schema.json
+ok 226 - fixture WM23-tax-basis-unknown.json: input passes workshop-inputs.schema.json
+  ---
+  duration_ms: 0.193809
+  type: 'test'
+  ...
+# Subtest: fixture WM24-rounding-float-trap.json: input passes workshop-inputs.schema.json
+ok 227 - fixture WM24-rounding-float-trap.json: input passes workshop-inputs.schema.json
+  ---
+  duration_ms: 0.225149
+  type: 'test'
+  ...
+# Subtest: fixture WM25-spending-unknown-window-known.json: input passes workshop-inputs.schema.json
+ok 228 - fixture WM25-spending-unknown-window-known.json: input passes workshop-inputs.schema.json
+  ---
+  duration_ms: 0.200306
+  type: 'test'
+  ...
+# Subtest: fixture WM26-start-point-unknown.json: input passes workshop-inputs.schema.json
+ok 229 - fixture WM26-start-point-unknown.json: input passes workshop-inputs.schema.json
+  ---
+  duration_ms: 0.209479
+  type: 'test'
+  ...
+# Subtest: fixture WM27-end-point-unknown.json: input passes workshop-inputs.schema.json
+ok 230 - fixture WM27-end-point-unknown.json: input passes workshop-inputs.schema.json
+  ---
+  duration_ms: 0.20874
+  type: 'test'
+  ...
+# Subtest: fixture WM28-end-unresolvable.json: input passes workshop-inputs.schema.json
+ok 231 - fixture WM28-end-unresolvable.json: input passes workshop-inputs.schema.json
+  ---
+  duration_ms: 0.324495
+  type: 'test'
+  ...
+# Subtest: fixture WM29-start-unresolvable-window-known.json: input passes workshop-inputs.schema.json
+ok 232 - fixture WM29-start-unresolvable-window-known.json: input passes workshop-inputs.schema.json
+  ---
+  duration_ms: 0.288058
+  type: 'test'
+  ...
+# Subtest: fixture WM30-income-list-partial.json: input passes workshop-inputs.schema.json
+ok 233 - fixture WM30-income-list-partial.json: input passes workshop-inputs.schema.json
+  ---
+  duration_ms: 0.199168
+  type: 'test'
+  ...
+# Subtest: fixture WM31-retirement-age-unknown.json: input passes workshop-inputs.schema.json
+ok 234 - fixture WM31-retirement-age-unknown.json: input passes workshop-inputs.schema.json
+  ---
+  duration_ms: 0.24682
+  type: 'test'
+  ...
+# Subtest: fixture WM32-unresolved-start-end-at-retirement.json: input passes workshop-inputs.schema.json
+ok 235 - fixture WM32-unresolved-start-end-at-retirement.json: input passes workshop-inputs.schema.json
+  ---
+  duration_ms: 0.246666
+  type: 'test'
+  ...
+# Subtest: fixture WM33-unresolved-start-end-inside-window.json: input passes workshop-inputs.schema.json
+ok 236 - fixture WM33-unresolved-start-end-inside-window.json: input passes workshop-inputs.schema.json
+  ---
+  duration_ms: 0.198702
+  type: 'test'
+  ...
+# Subtest: fixture WM34-combined-unknowns-code-sets.json: input passes workshop-inputs.schema.json
+ok 237 - fixture WM34-combined-unknowns-code-sets.json: input passes workshop-inputs.schema.json
+  ---
+  duration_ms: 0.327152
+  type: 'test'
+  ...
+# Subtest: fixture WM35-capital-illustration-deferred-retirement.json: input passes workshop-inputs.schema.json
+ok 238 - fixture WM35-capital-illustration-deferred-retirement.json: input passes workshop-inputs.schema.json
+  ---
+  duration_ms: 0.22726
+  type: 'test'
+  ...
+# Subtest: fixture WM36-capital-illustration-all-surplus.json: input passes workshop-inputs.schema.json
+ok 239 - fixture WM36-capital-illustration-all-surplus.json: input passes workshop-inputs.schema.json
+  ---
+  duration_ms: 0.203544
+  type: 'test'
+  ...
+# Subtest: fixture clip-rules.json: every possible row and supplementary case input passes workshop-inputs.schema.json
+ok 240 - fixture clip-rules.json: every possible row and supplementary case input passes workshop-inputs.schema.json
+  ---
+  duration_ms: 6.42473
+  type: 'test'
+  ...
+1..240
+# tests 240
+# suites 0
+# pass 240
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 1758.616298
+
+# finished: 2026-09-30T10:17:36.025Z
+# exit: 0
+# seconds: 2.02

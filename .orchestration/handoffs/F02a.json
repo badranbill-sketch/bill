@@ -1,0 +1,355 @@
+{
+  "task_id": "F02a",
+  "base_commit": "cb3becf25ed042b977d4864ae71e74d13829320f",
+  "result_commit": null,
+  "contract_version": "1.0",
+  "changed_paths": [
+    ".orchestration/contracts/fixtures/workshop/WM37-today-dollar-pre-start-factor.json",
+    ".orchestration/contracts/fixtures/workshop/WM38-joint-owner-participant-age.json",
+    ".orchestration/contracts/fixtures/workshop/WM39-group-total-from-exact-values.json",
+    ".orchestration/contracts/fixtures/workshop/WM40-today-dollar-display-from-exact-gap.json",
+    ".orchestration/contracts/fixtures/workshop/index.json",
+    ".orchestration/evidence/F02a/",
+    ".orchestration/handoffs/F02a.json"
+  ],
+  "artifacts": [
+    {
+      "path": ".orchestration/contracts/fixtures/workshop/WM37-today-dollar-pre-start-factor.json",
+      "sha256": "e2afa56e528fff82ed2cff6e5e01bad4916bb6d0a859de126c7a7941096ca876"
+    },
+    {
+      "path": ".orchestration/contracts/fixtures/workshop/WM38-joint-owner-participant-age.json",
+      "sha256": "b27eaf5f6b9b40dae43763dc1ec5fe8f66c1ad312d493079fb26883fa5433f35"
+    },
+    {
+      "path": ".orchestration/contracts/fixtures/workshop/WM39-group-total-from-exact-values.json",
+      "sha256": "fee6cc8372e2e571dabc32400fcf2dc11e50f64974aabab03bb035dd770bb9f5"
+    },
+    {
+      "path": ".orchestration/contracts/fixtures/workshop/WM40-today-dollar-display-from-exact-gap.json",
+      "sha256": "9653eda5f2360416a428aa08a89aae63c3f4923fc2eba6f6bac0f966f7f50e95"
+    },
+    {
+      "path": ".orchestration/contracts/fixtures/workshop/index.json",
+      "sha256": "ebb7cee73c786222fdadccec1eaa6ac215599badc4bbfdb67fa1af875ef4c380"
+    },
+    {
+      "path": ".orchestration/evidence/F02a/compute_f02a_fixtures.py",
+      "sha256": "0884dd227fd52bf3c177f161ddd08639a2f5cae2019a1b6a17c34b765eaa486c"
+    },
+    {
+      "path": ".orchestration/evidence/F02a/mutation_check.py",
+      "sha256": "3d914ae61047640b6ef2561190c1cf426f6fc249a6713a7436c07a26699a077a"
+    },
+    {
+      "path": ".orchestration/evidence/F02a/check_handoff.py",
+      "sha256": "e2241db18890d31403b8927dd5f62157a27abb2025f3d402916f4355666a8c5e"
+    },
+    {
+      "path": ".orchestration/evidence/F02a/make_handoff.py",
+      "sha256": "109410b0941b41c2de351254ca3b4a5975049d4e6a3dde9385f5426af03191eb"
+    },
+    {
+      "path": ".orchestration/evidence/F02a/run_f02a.sh",
+      "sha256": "3ae31cc428a91de9ade0f0e899173fb7156728ee869db7803c5db87a621cb87d"
+    },
+    {
+      "path": ".orchestration/evidence/F02a/mutation_check.json",
+      "sha256": "a52a0ec7876e353f8c70a7679c2a366cba1fd9c56fec84960d985bbfbaf1828a"
+    },
+    {
+      "path": ".orchestration/evidence/F02a/before-hashes.log",
+      "sha256": "f0de490d13859c5584fad3a238299634a311bffea8f32d5a6ef8d96f18c2af75"
+    },
+    {
+      "path": ".orchestration/evidence/F02a/before-contracts-validate.log",
+      "sha256": "21a85928eddf94471942f645d8eb71d7defde317e79b991260ab010fac2c0417"
+    },
+    {
+      "path": ".orchestration/evidence/F02a/before-lane-validate.log",
+      "sha256": "b026147b26234fd82072921c908e0cd34fb9e5691300cd6d87f8a4da909d606b"
+    },
+    {
+      "path": ".orchestration/evidence/F02a/before-a6-faults_run.log",
+      "sha256": "e0720a83c9cdcdb0d34d279703ff53c5877614c85b25e46b91cd6420500a8734"
+    },
+    {
+      "path": ".orchestration/evidence/F02a/before-a6-run_fixtures.log",
+      "sha256": "817d7336c8c4d53988f573c099e9d660be17ffebb3da40f2c6241dc320a93a14"
+    },
+    {
+      "path": ".orchestration/evidence/F02a/generate.log",
+      "sha256": "fa9dc7ee91e0facd8c71953ce0096c42e8e93093b328b6b7fe21539888e127c5"
+    },
+    {
+      "path": ".orchestration/evidence/F02a/index-append-diff.log",
+      "sha256": "259787016152eddc5ed2e02ce392b38b6e586043a1b60d224c34c7a99c86384f"
+    },
+    {
+      "path": ".orchestration/evidence/F02a/after-generate-check.log",
+      "sha256": "0723b89aad371197555d2305cf8f90eca9ec5e2f64f75951cf4e6fd733f2b9f6"
+    },
+    {
+      "path": ".orchestration/evidence/F02a/mutation_check.log",
+      "sha256": "67a8cc3c1580fccb2fd0ac786409e7067f72403b78c413bfebd57862b79ea985"
+    },
+    {
+      "path": ".orchestration/evidence/F02a/after-a6-copy-integrity.log",
+      "sha256": "3d3ae4547a72cf6c2e39dfcecb78581bdb97ccbed2d4123cc609383aeed37f34"
+    },
+    {
+      "path": ".orchestration/evidence/F02a/after-a6-faults_run.log",
+      "sha256": "2c01167aa397443bb1fdd3a86cd50d2044c00330226a0a709c8874334eeed037"
+    },
+    {
+      "path": ".orchestration/evidence/F02a/after-a6-run_fixtures.log",
+      "sha256": "4a74b53d2726e256dab4680eed7dd83be05f35254122c00e375658e5f0c70067"
+    },
+    {
+      "path": ".orchestration/evidence/F02a/after-lane-validate.log",
+      "sha256": "aa0900a31c1479fa282e032cf8744ffd334ea2b02017a7a85a9b55d6d89ef9c6"
+    },
+    {
+      "path": ".orchestration/evidence/F02a/after-contracts-validate.log",
+      "sha256": "0894dd1ead8efc2096bfba7afbf2569575e75796a91192afb67ba2ee18a3645b"
+    },
+    {
+      "path": ".orchestration/evidence/F02a/after-hashes.log",
+      "sha256": "4eb22f88d3f9256a6ee20b309a477c44890f78790b58c71d80f5c6577b0b38a3"
+    },
+    {
+      "path": ".orchestration/evidence/F02a/before-after.diff.log",
+      "sha256": "99bcc59dde24b69b63dad6527c68c5c7aeb3bba790181c5bb4658abe6ea96bae"
+    },
+    {
+      "path": ".orchestration/evidence/F02a/attempt2-contracts-validate.log",
+      "sha256": "85fe532b944f7e3d0d607051de69c22eaff2f94c771f96a055406654461b77b6"
+    },
+    {
+      "path": ".orchestration/evidence/F02a/run_attempt3.sh",
+      "sha256": "732b7a3fca4a301a562093869f7c42cb924d65183381efcb15b4682ce7bcc57a"
+    },
+    {
+      "path": ".orchestration/evidence/F02a/attempt3-hashes.log",
+      "sha256": "3a1d7c61b9efe1f9963b858b514c51d2e90db79d19b67e01a39af9cdf7a9f379"
+    },
+    {
+      "path": ".orchestration/evidence/F02a/attempt3-contracts-diff.log",
+      "sha256": "2e1a07b929c2daa456e3c4d6e02754633dac2b7f7afb7a2a4fc5fde5ea127a99"
+    },
+    {
+      "path": ".orchestration/evidence/F02a/attempt3-generate-check.log",
+      "sha256": "f2cb8700983538903805f86a314fcb38618975a78a77e9e5e1472749a6ed5ae7"
+    },
+    {
+      "path": ".orchestration/evidence/F02a/attempt3-mutation.log",
+      "sha256": "58bbc8f0bcb66243953e302f4d93790174cd992be396addde1391fee2e8a3bec"
+    },
+    {
+      "path": ".orchestration/evidence/F02a/attempt3-lane-validate.log",
+      "sha256": "c45e97c6b1ffe0cc1904d37fb0fcd94af8c19f85935164e3b3fbf0d501445811"
+    },
+    {
+      "path": ".orchestration/evidence/F02a/attempt3-contracts-validate.log",
+      "sha256": "42e1d36b4a45e27a59860b81c7bd1fd505701bdcebf600621efa43ab6f8b5560"
+    }
+  ],
+  "tests": [
+    {
+      "id": "F02A-before-validate",
+      "command": "cd /home/user/bill && /tmp/claude-0/-home-user/bb8d4187-6ae8-587b-a816-8153faeea853/scratchpad/venv-f02/bin/python .orchestration/contracts/validate.py   # BEFORE F02a",
+      "exit_code": 1,
+      "evidence": ".orchestration/evidence/F02a/before-contracts-validate.log",
+      "environment": "local build container (Python 3.11.15, jsonschema 4.26.0, Node v22.22.2, ajv 8.20.0); fixture evidence only, no browser, no network, no provider"
+    },
+    {
+      "id": "F02A-before-lane",
+      "command": "cd /home/user/bill && /tmp/claude-0/-home-user/bb8d4187-6ae8-587b-a816-8153faeea853/scratchpad/venv-f02/bin/python .orchestration/evidence/F02/math/validate.py   # BEFORE F02a",
+      "exit_code": 0,
+      "evidence": ".orchestration/evidence/F02a/before-lane-validate.log",
+      "environment": "local build container (Python 3.11.15, jsonschema 4.26.0, Node v22.22.2, ajv 8.20.0); fixture evidence only, no browser, no network, no provider"
+    },
+    {
+      "id": "F02A-before-A6faults",
+      "command": "cd /tmp/claude-0/-home-user/bb8d4187-6ae8-587b-a816-8153faeea853/scratchpad/f02a-a6run && node faults_run.mjs   # BEFORE F02a; unmodified A6 attempt-3 harness copy",
+      "exit_code": 0,
+      "evidence": ".orchestration/evidence/F02a/before-a6-faults_run.log",
+      "environment": "local build container (Python 3.11.15, jsonschema 4.26.0, Node v22.22.2, ajv 8.20.0); fixture evidence only, no browser, no network, no provider"
+    },
+    {
+      "id": "WK02-F02a-generate",
+      "command": "cd /home/user/bill && /tmp/claude-0/-home-user/bb8d4187-6ae8-587b-a816-8153faeea853/scratchpad/venv-f02/bin/python .orchestration/evidence/F02a/compute_f02a_fixtures.py && /tmp/claude-0/-home-user/bb8d4187-6ae8-587b-a816-8153faeea853/scratchpad/venv-f02/bin/python .orchestration/evidence/F02a/compute_f02a_fixtures.py --check",
+      "exit_code": 0,
+      "evidence": ".orchestration/evidence/F02a/generate.log",
+      "environment": "local build container (Python 3.11.15, jsonschema 4.26.0, Node v22.22.2, ajv 8.20.0); fixture evidence only, no browser, no network, no provider"
+    },
+    {
+      "id": "WK02-F02a-generate-check",
+      "command": "cd /home/user/bill && /tmp/claude-0/-home-user/bb8d4187-6ae8-587b-a816-8153faeea853/scratchpad/venv-f02/bin/python .orchestration/evidence/F02a/compute_f02a_fixtures.py --check",
+      "exit_code": 0,
+      "evidence": ".orchestration/evidence/F02a/after-generate-check.log",
+      "environment": "local build container (Python 3.11.15, jsonschema 4.26.0, Node v22.22.2, ajv 8.20.0); fixture evidence only, no browser, no network, no provider"
+    },
+    {
+      "id": "WK02-F02a-mutation",
+      "command": "cd /home/user/bill && /tmp/claude-0/-home-user/bb8d4187-6ae8-587b-a816-8153faeea853/scratchpad/venv-f02/bin/python .orchestration/evidence/F02a/mutation_check.py --json .orchestration/evidence/F02a/mutation_check.json",
+      "exit_code": 0,
+      "evidence": ".orchestration/evidence/F02a/mutation_check.log",
+      "environment": "local build container (Python 3.11.15, jsonschema 4.26.0, Node v22.22.2, ajv 8.20.0); fixture evidence only, no browser, no network, no provider"
+    },
+    {
+      "id": "WK02-A6-faults-after",
+      "command": "cd /tmp/claude-0/-home-user/bb8d4187-6ae8-587b-a816-8153faeea853/scratchpad/f02a-a6run && node faults_run.mjs   # AFTER F02a; unmodified A6 attempt-3 harness copy",
+      "exit_code": 0,
+      "evidence": ".orchestration/evidence/F02a/after-a6-faults_run.log",
+      "environment": "local build container (Python 3.11.15, jsonschema 4.26.0, Node v22.22.2, ajv 8.20.0); fixture evidence only, no browser, no network, no provider"
+    },
+    {
+      "id": "WK02-A6-fixtures-after",
+      "command": "cd /tmp/claude-0/-home-user/bb8d4187-6ae8-587b-a816-8153faeea853/scratchpad/f02a-a6run && node run_fixtures.mjs   # AFTER F02a; independent BigInt model",
+      "exit_code": 0,
+      "evidence": ".orchestration/evidence/F02a/after-a6-run_fixtures.log",
+      "environment": "local build container (Python 3.11.15, jsonschema 4.26.0, Node v22.22.2, ajv 8.20.0); fixture evidence only, no browser, no network, no provider"
+    },
+    {
+      "id": "WK02-lane-validate-after",
+      "command": "cd /home/user/bill && /tmp/claude-0/-home-user/bb8d4187-6ae8-587b-a816-8153faeea853/scratchpad/venv-f02/bin/python .orchestration/evidence/F02/math/validate.py   # AFTER F02a",
+      "exit_code": 1,
+      "evidence": ".orchestration/evidence/F02a/after-lane-validate.log",
+      "environment": "local build container (Python 3.11.15, jsonschema 4.26.0, Node v22.22.2, ajv 8.20.0); fixture evidence only, no browser, no network, no provider"
+    },
+    {
+      "id": "F02A-validate-after",
+      "command": "cd /home/user/bill && /tmp/claude-0/-home-user/bb8d4187-6ae8-587b-a816-8153faeea853/scratchpad/venv-f02/bin/python .orchestration/contracts/validate.py   # AFTER F02a fixtures, before the handoff existed",
+      "exit_code": 1,
+      "evidence": ".orchestration/evidence/F02a/after-contracts-validate.log",
+      "environment": "local build container (Python 3.11.15, jsonschema 4.26.0, Node v22.22.2, ajv 8.20.0); fixture evidence only, no browser, no network, no provider"
+    },
+    {
+      "id": "F02A-R2-validate",
+      "command": "cd /home/user/bill && /tmp/claude-0/-home-user/bb8d4187-6ae8-587b-a816-8153faeea853/scratchpad/venv-f02/bin/python .orchestration/contracts/validate.py   # repair attempt 2, before the handoff was regenerated",
+      "exit_code": 1,
+      "evidence": ".orchestration/evidence/F02a/attempt2-contracts-validate.log",
+      "environment": "local build container (Python 3.11.15, jsonschema 4.26.0, Node v22.22.2, ajv 8.20.0); fixture evidence only, no browser, no network, no provider"
+    },
+    {
+      "id": "F02A-R3-hashes",
+      "command": "cd /home/user/bill && grep -E '^[0-9a-f]{64}  ' .orchestration/evidence/F02a/after-hashes.log | sha256sum -c   # repair attempt 3: 6 no-change contract files + 42 fixture files vs attempt-1 values",
+      "exit_code": 0,
+      "evidence": ".orchestration/evidence/F02a/attempt3-hashes.log",
+      "environment": "local build container (Python 3.11.15, jsonschema 4.26.0, Node v22.22.2, ajv 8.20.0); fixture evidence only, no browser, no network, no provider"
+    },
+    {
+      "id": "F02A-R3-contracts-diff",
+      "command": "cd /home/user/bill && git diff --numstat HEAD -- .orchestration/contracts && git status --short -- .orchestration/contracts   # repair attempt 3",
+      "exit_code": 0,
+      "evidence": ".orchestration/evidence/F02a/attempt3-contracts-diff.log",
+      "environment": "local build container (Python 3.11.15, jsonschema 4.26.0, Node v22.22.2, ajv 8.20.0); fixture evidence only, no browser, no network, no provider"
+    },
+    {
+      "id": "F02A-R3-generate-check",
+      "command": "cd /home/user/bill && /tmp/claude-0/-home-user/bb8d4187-6ae8-587b-a816-8153faeea853/scratchpad/venv-f02/bin/python .orchestration/evidence/F02a/compute_f02a_fixtures.py --check   # repair attempt 3",
+      "exit_code": 0,
+      "evidence": ".orchestration/evidence/F02a/attempt3-generate-check.log",
+      "environment": "local build container (Python 3.11.15, jsonschema 4.26.0, Node v22.22.2, ajv 8.20.0); fixture evidence only, no browser, no network, no provider"
+    },
+    {
+      "id": "F02A-R3-mutation",
+      "command": "cd /home/user/bill && /tmp/claude-0/-home-user/bb8d4187-6ae8-587b-a816-8153faeea853/scratchpad/venv-f02/bin/python .orchestration/evidence/F02a/mutation_check.py   # repair attempt 3 (no --json)",
+      "exit_code": 0,
+      "evidence": ".orchestration/evidence/F02a/attempt3-mutation.log",
+      "environment": "local build container (Python 3.11.15, jsonschema 4.26.0, Node v22.22.2, ajv 8.20.0); fixture evidence only, no browser, no network, no provider"
+    },
+    {
+      "id": "F02A-R3-lane-validate",
+      "command": "cd /home/user/bill && /tmp/claude-0/-home-user/bb8d4187-6ae8-587b-a816-8153faeea853/scratchpad/venv-f02/bin/python .orchestration/evidence/F02/math/validate.py   # repair attempt 3; exit 1 is F02A-A6R2-P2-1",
+      "exit_code": 1,
+      "evidence": ".orchestration/evidence/F02a/attempt3-lane-validate.log",
+      "environment": "local build container (Python 3.11.15, jsonschema 4.26.0, Node v22.22.2, ajv 8.20.0); fixture evidence only, no browser, no network, no provider"
+    },
+    {
+      "id": "F02A-R3-validate",
+      "command": "cd /home/user/bill && /tmp/claude-0/-home-user/bb8d4187-6ae8-587b-a816-8153faeea853/scratchpad/venv-f02/bin/python .orchestration/contracts/validate.py   # repair attempt 3, before the handoff was regenerated",
+      "exit_code": 1,
+      "evidence": ".orchestration/evidence/F02a/attempt3-contracts-validate.log",
+      "environment": "local build container (Python 3.11.15, jsonschema 4.26.0, Node v22.22.2, ajv 8.20.0); fixture evidence only, no browser, no network, no provider"
+    },
+    {
+      "id": "F02A-handoff-check",
+      "command": "cd /home/user/bill && /tmp/claude-0/-home-user/bb8d4187-6ae8-587b-a816-8153faeea853/scratchpad/venv-f02/bin/python .orchestration/evidence/F02a/check_handoff.py .orchestration/handoffs/F02a.json",
+      "exit_code": 1,
+      "evidence": ".orchestration/evidence/F02a/handoff-check.log",
+      "environment": "local build container (Python 3.11.15, jsonschema 4.26.0, Node v22.22.2, ajv 8.20.0); fixture evidence only, no browser, no network, no provider"
+    },
+    {
+      "id": "F02A-handoff-validate",
+      "command": "cd /home/user/bill && /tmp/claude-0/-home-user/bb8d4187-6ae8-587b-a816-8153faeea853/scratchpad/venv-f02/bin/python .orchestration/contracts/validate.py --handoff .orchestration/handoffs/F02a.json",
+      "exit_code": 1,
+      "evidence": ".orchestration/evidence/F02a/handoff-validate.log",
+      "environment": "local build container (Python 3.11.15, jsonschema 4.26.0, Node v22.22.2, ajv 8.20.0); fixture evidence only, no browser, no network, no provider"
+    },
+    {
+      "id": "F02A-validate-final",
+      "command": "cd /home/user/bill && /tmp/claude-0/-home-user/bb8d4187-6ae8-587b-a816-8153faeea853/scratchpad/venv-f02/bin/python .orchestration/contracts/validate.py   # final, with handoffs/F02a.json present",
+      "exit_code": 1,
+      "evidence": ".orchestration/evidence/F02a/final-contracts-validate.log",
+      "environment": "local build container (Python 3.11.15, jsonschema 4.26.0, Node v22.22.2, ajv 8.20.0); fixture evidence only, no browser, no network, no provider"
+    }
+  ],
+  "assumptions": [
+    "Contract semantics unchanged. workshop-math.md, workshop-inputs.md, workshop-inputs.schema.json, workshop-clip-rules.md, contracts/validate.py and worker-handoff.schema.json have the same sha256 before and after F02a (before-hashes.log vs after-hashes.log); WM01-WM36 and clip-rules.json are byte-identical and still regenerate byte for byte from compute_fixtures.render_all() (after-generate-check.log). No contract text was judged wrong, so nothing was stopped and reported on that ground.",
+    "WM37 pins F02-MATH3-P2-1: three net today-dollar sources with q_j != i (q=0 starting at t_R=10; q=3% starting at t=12 inside the window; q=1% starting at t=5 before t_R), i=2%, A=55, R=65, H=5. WM38 pins F02-MATH3-P2-2: two joint sources with an age start (65 -> t=5) and an age end (64 -> e=4), participant 60, partner 55, same retirement year (H false). WM39 and WM40 are the optional P3-1 pins (group total rounded once from exact values; today-dollar gap deflated from the exact gap).",
+    "Expected values come from the math lane's exact-rational reference model (workshop_reference.compute, imported read-only) and are written only if the hand closed forms in compute_f02a_fixtures.py agree (independent helpers compute_fixtures.g/rhe and literal hand values). A third, independent implementation (A6 attempt-3 BigInt model, run_fixtures.mjs, unmodified) reproduces all 40 WM fixtures with 0 differences (after-a6-run_fixtures.log).",
+    "Faulty runtimes were exercised two independent ways: (a) A6's own unmodified faults_run.mjs/model_faults.mjs, run from a scratch copy whose .mjs files match the A6 MANIFEST.sha256 (after-a6-copy-integrity.log), which reads every WM*.json in contracts/fixtures/workshop; (b) mutation_check.py, which injects each reading into workshop_reference in memory. Both report today_dollars_uses_q caught by WM37, joint_uses_partner caught by WM38, group_from_rounded_rows caught by WM37,WM39 and deflate_rounded_gap caught by WM40, with 0 baseline mismatches; mutation_check.py also shows each of these four is missed by WM01-WM36 alone. faults_run.mjs always exits 0: its result is the CAUGHT/MISSED lines, not the exit code.",
+    "The generator is a sibling script (evidence/F02a/compute_f02a_fixtures.py) that imports compute_fixtures.py for the builders instead of editing it, because F02a owns only evidence/F02a/. index.json was rewritten append-only: the 37 lane-generated entries are byte-identical and the 4 new entries follow the CLIP entry (index-append-diff.log: 0 removed lines; pre-F02a hash e2c690ff... reproduced by compute_fixtures.render_all()).",
+    "contracts/validate.py enumerates fixtures by glob (WM*.json and index.json), not by name, so it was not edited. Its three failures after F02a are CX-18 (present before F02a: tasks.json has F02a but the worker-handoff task_id pattern does not), CX-21 (workshop-math.md s10 still says '36 math fixtures (WM01' while 40 exist) and CX-29 (evidence/F02/math/validation.log records the pre-F02a index.json hash). The final run adds S9 for handoffs/F02a.json (task_id pattern). All four need A0 or integrator action outside F02a's paths (blocked_checks).",
+    "Informative, not required: mutation_check.py shows that resolving a joint source against the OLDER of the two ages is missed by every fixture, because in WM38 the partner is younger (older = participant = contract reading). Pinning it needs a joint age bound with an older partner; no fixture slot for that was assigned to F02a. The four P3-2 readings of the review (horizon_flag_known_amount_only, uncertain_flag_any, R_code_only_if_A_known, no_global_codes_without_window) remain missed, as before; F02a did not address P3-2 or P3-3.",
+    "Repair attempt 2 (reviews/F02a.md). Both P2 findings name A0 as owner, and both need edits outside F02a's write scope. F02A-A6-P2-1 needs the fold-in of compute_f02a_fixtures.py into evidence/F02/math/compute_fixtures.py, the 4 fault hooks in workshop_reference.FAULTS and the lane validate.py fault matrix, workshop-math.md s10 (count, table, negative-control list), README.md row 14, and a regenerated evidence/F02/math/validation.log. F02A-A6-P2-2 needs worker-handoff 1.1 or an A0 decision, which touches worker-handoff.schema.json, offers gen_offers.py, contracts/validate.py CX-18 and S9, and README CX-18. The review asks for no change to WM37-WM40, index.json or evidence/F02a, and none was made: the fixture and index.json sha256 values are unchanged from attempt 1. The only additions are attempt2-contracts-validate.log and this regenerated handoff (make_handoff.py gained the new test, artifact and assumption). The attempt-2 run reproduces the reviewer's result: 352 pass, 4 fail (CX-18, CX-21, CX-29, S9), all four in blocked_checks.",
+    "Repair attempt 3 (reviews/F02a-attempt2.md). Its two P2 findings, F02A-A6R2-P2-1 and F02A-A6R2-P2-2, are the attempt-1 items carried unchanged; the reviewer names A0 as owner of both, states that another worker repair cannot close them (both need edits outside F02a's write scope) and escalates to A0 under 03 s A0 ('Escalate after two repairs'). The review requests no change to WM37-WM40, index.json or the F02a evidence, and none was made. Attempt 3 re-ran the checks on the live tree (run_attempt3.sh): all 48 sha256 values in after-hashes.log still match (6 no-change contract files, WM01-WM40, clip-rules.json, index.json); the contract directory differs from HEAD only by index.json +42/-0 and the 4 untracked fixtures; compute_f02a_fixtures.py --check and mutation_check.py still exit 0 with the same CAUGHT/MISSED lines; the lane validator still reports 116 pass, 1 fail (step 5, P2-1); contracts/validate.py reports 353 pass, 4 fail (CX-18, CX-21, CX-29, S9), which is the reviewer's out/06 result exactly. The attempt-3 additions are run_attempt3.sh, the six attempt3-*.log files and this regenerated handoff (make_handoff.py gained the tests, artifacts and this assumption; blocked_checks now carry the R2 IDs).",
+    "During attempt 3 the worker also started a trial of the A0-side edits for P2-1 in a local clone under the session scratchpad. No repository file outside F02a's paths was written. The trial was stopped when the permission system denied a review command. Its draft patch was deleted from evidence/F02a, and no result from the trial is claimed here or used as evidence.",
+    "evidence/F02a/a6-attempt1/ and evidence/F02a/a6-attempt2/ are A6's verification evidence for reviews/F02a.md and reviews/F02a-attempt2.md. They sit inside the changed_paths directory entry, but F02a did not write them, and none of their files is listed as an F02a artifact.",
+    "base_commit is the current HEAD of /home/user/bill (branch claude/orchestration-foundation); all F02a files are uncommitted working-tree files, so result_commit is null. The A6 harness node_modules (ajv 8.20.0) were copied from an earlier scratch copy (a6m3-clean); no package was installed and no network was used."
+  ],
+  "blocked_checks": [
+    {
+      "check": "F02A-A6R2-P2-1 (= F02A-A6-P2-1): contracts/validate.py CX-21: workshop-math.md s10 fixture count ('36 math fixtures (WM01') vs 40 WM files",
+      "status": "blocked",
+      "reason": "Fixing it means editing workshop-math.md s10 (count sentence, fixture table, negative-control list) and README.md row 14 (which names WM01-WM36), which F02a may not touch. README s3 rule 6 says the integrator updates row 14 and CX-21 in the same round as an additive fixture. Any byte change to workshop-math.md changes its approval hash, so it needs a validate.py run and an A6 look (rule 6, third bullet).",
+      "owner": "A0 (F02 integrator)"
+    },
+    {
+      "check": "F02A-A6R2-P2-1 (= F02A-A6-P2-1): contracts/validate.py CX-29: evidence/F02/math/validation.log recorded hash of fixtures/workshop/index.json",
+      "status": "blocked",
+      "reason": "The math lane approval log records the pre-F02a index.json hash (e2c690ff...) and no WM37-WM40 hash. Regenerating it (evidence/F02/math/run_validation.sh) writes outside F02a's paths. It should run last, after the fold-in and the workshop-math.md s10 edit, because the s10 edit also changes the workshop-math.md hash that the log records.",
+      "owner": "A0 / math lane"
+    },
+    {
+      "check": "F02A-A6R2-P2-1 (= F02A-A6-P2-1): evidence/F02/math/validate.py step 5 (compute_fixtures.py --check) and step 6 (fault matrix vs workshop_reference.FAULTS)",
+      "status": "blocked",
+      "reason": "The lane generator does not know WM37-WM40, so --check reports them as unexpected files and index.json as differing (after-lane-validate.log). Every other lane check passes, including recomputation of WM37-WM40. Resolution: fold compute_f02a_fixtures.py into compute_fixtures.py (same builders and format; the 4 index entries must stay after CLIP so index.json regenerates byte for byte). Also add today_dollars_uses_q, joint_uses_partner, group_from_rounded_rows and deflate_rounded_gap to workshop_reference.FAULTS and to the lane fault matrix (required catchers WM37, WM38, WM39, WM40; mutation_check.py holds the reference readings). All of these edit evidence/F02/math/, outside F02a's paths. Still reproduces in repair attempt 3 (attempt3-lane-validate.log: 116 pass, 1 fail).",
+      "owner": "A0 / math lane"
+    },
+    {
+      "check": "F02A-A6R2-P2-2 (= F02A-A6-P2-2): handoffs/F02a.json against worker-handoff 1.0 (task_id pattern); contracts/validate.py CX-18 and S9",
+      "status": "blocked",
+      "reason": "The task_id pattern accepts only the 62 original task IDs and says a split task needs a contract minor version (WH-ID-1), while D-072 keeps 1.0. 'F02a' is therefore rejected; this handoff is otherwise schema-valid (handoff-check.log: 0 errors with task_id replaced in memory, all hashes, paths and evidence verified). CX-18 already failed on this before F02a started (before-contracts-validate.log). CX-18 only enumerates letter+2-digit candidates, so admitting F02a also needs a validate.py change, not only a new pattern. The ID cannot be changed on the worker side without misstating the task. Still reproduces in repair attempt 3 (attempt3-contracts-validate.log; the post-handoff runs handoff-validate.log and final-contracts-validate.log).",
+      "owner": "A0"
+    },
+    {
+      "check": "A6 re-verification of the attempt-3 handoff",
+      "status": "not_run",
+      "reason": "reviews/F02a.md and reviews/F02a-attempt2.md already verified WM37-WM40 and the mutation evidence independently (fixtures correct; both target faults pinned only by the new fixtures). Attempt 3 changed no fixture or index byte, so only the regenerated handoff and the attempt3-*.log files are new. The worker is not the verifier.",
+      "owner": "A6"
+    }
+  ],
+  "human_approvals_required": [
+    "G3: the calculation bundle hashes changed (WM37-WM40 added, index.json appended); per README s3 rule 5 any G3/HB-26 approval of the workshop math must name the new fixture and index.json sha256 values after A6 re-verifies them."
+  ],
+  "external_actions_taken": [],
+  "metered_cost": {
+    "amount": null,
+    "currency": null,
+    "status": "unavailable-not-estimated"
+  },
+  "status": "submitted"
+}

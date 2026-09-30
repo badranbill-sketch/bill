@@ -1,0 +1,66 @@
+### command: echo spec_tree=$(git rev-parse HEAD) plus uncommitted tests/baseline; git diff --stat 66cce52046f535ddc1a90e6f94474877e375860d HEAD -- lib/routes.ts; echo routes_identical=$([ -z "$(git diff 66cce52046f535ddc1a90e6f94474877e375860d HEAD -- lib/routes.ts)" ] && echo yes || echo no); sha256sum tests/baseline/screens.spec.ts tests/baseline/playwright.baseline.config.ts; /opt/pw-browsers/chromium-1194/chrome-linux/chrome --version; env -u GH_TOKEN -u GITHUB_TOKEN PLAYWRIGHT_CHROMIUM_EXECUTABLE=/opt/pw-browsers/chromium-1194/chrome-linux/chrome BASE02_APP_DIR=/tmp/claude-0/-home-user/bb8d4187-6ae8-587b-a816-8153faeea853/scratchpad/wt/base01-codex BASE02_OUT=/home/user/bill/.orchestration/evidence/F03/base02/before npx playwright test -c tests/baseline/playwright.baseline.config.ts
+### cwd: /tmp/claude-0/-home-user/bb8d4187-6ae8-587b-a816-8153faeea853/scratchpad/wt/integration
+### start: 2026-09-30T09:20:10Z
+spec_tree=67ba636cee04e8b0839d9c7b028a77d2791e32ff plus uncommitted tests/baseline
+routes_identical=yes
+c224d7518f3f092ea2c6d97af4631060ecdc0a84ac887727737d254b3c54df69  tests/baseline/screens.spec.ts
+d853eec57095567719d8278121443ec82859da3876d9397e0bac93a19e9e5698  tests/baseline/playwright.baseline.config.ts
+Chromium 141.0.7390.37 
+
+Running 49 tests using 1 worker
+
+  ✓   1 tests/baseline/screens.spec.ts:147:7 › capture fr-home-320 /fr (3.0s)
+  ✓   2 tests/baseline/screens.spec.ts:147:7 › capture fr-home-390 /fr (10.7s)
+  ✓   3 tests/baseline/screens.spec.ts:147:7 › capture fr-home-768 /fr (3.0s)
+  ✓   4 tests/baseline/screens.spec.ts:147:7 › capture fr-home-1440 /fr (3.0s)
+  ✓   5 tests/baseline/screens.spec.ts:147:7 › capture fr-resources-320 /fr/guide-retraite (2.2s)
+  ✓   6 tests/baseline/screens.spec.ts:147:7 › capture fr-resources-390 /fr/guide-retraite (2.0s)
+  ✓   7 tests/baseline/screens.spec.ts:147:7 › capture fr-resources-768 /fr/guide-retraite (2.1s)
+  ✓   8 tests/baseline/screens.spec.ts:147:7 › capture fr-resources-1440 /fr/guide-retraite (2.0s)
+  ✓   9 tests/baseline/screens.spec.ts:147:7 › capture fr-meeting-320 /fr/demarche (1.8s)
+  ✓  10 tests/baseline/screens.spec.ts:147:7 › capture fr-meeting-390 /fr/demarche (1.9s)
+  ✓  11 tests/baseline/screens.spec.ts:147:7 › capture fr-meeting-768 /fr/demarche (1.9s)
+  ✓  12 tests/baseline/screens.spec.ts:147:7 › capture fr-meeting-1440 /fr/demarche (1.9s)
+  ✓  13 tests/baseline/screens.spec.ts:197:7 › smoke smoke-fr-retirement-320 /fr/planification-retraite (879ms)
+  ✓  14 tests/baseline/screens.spec.ts:197:7 › smoke smoke-fr-retirement-1440 /fr/planification-retraite (920ms)
+  ✓  15 tests/baseline/screens.spec.ts:197:7 › smoke smoke-fr-investments-320 /fr/placements-retraite (852ms)
+  ✓  16 tests/baseline/screens.spec.ts:197:7 › smoke smoke-fr-investments-1440 /fr/placements-retraite (887ms)
+  ✓  17 tests/baseline/screens.spec.ts:197:7 › smoke smoke-fr-about-320 /fr/a-propos (850ms)
+  ✓  18 tests/baseline/screens.spec.ts:197:7 › smoke smoke-fr-about-1440 /fr/a-propos (908ms)
+  ✓  19 tests/baseline/screens.spec.ts:197:7 › smoke smoke-fr-fees-320 /fr/outils/frais-placement (948ms)
+  ✓  20 tests/baseline/screens.spec.ts:197:7 › smoke smoke-fr-fees-1440 /fr/outils/frais-placement (950ms)
+  ✓  21 tests/baseline/screens.spec.ts:197:7 › smoke smoke-fr-privacy-320 /fr/confidentialite (881ms)
+  ✓  22 tests/baseline/screens.spec.ts:197:7 › smoke smoke-fr-privacy-1440 /fr/confidentialite (909ms)
+  ✓  23 tests/baseline/screens.spec.ts:197:7 › smoke smoke-fr-legal-320 /fr/mentions-legales (891ms)
+  ✓  24 tests/baseline/screens.spec.ts:197:7 › smoke smoke-fr-legal-1440 /fr/mentions-legales (903ms)
+  ✓  25 tests/baseline/screens.spec.ts:147:7 › capture en-home-320 /en (2.4s)
+  ✓  26 tests/baseline/screens.spec.ts:147:7 › capture en-home-390 /en (10.5s)
+  ✓  27 tests/baseline/screens.spec.ts:147:7 › capture en-home-768 /en (2.7s)
+  ✓  28 tests/baseline/screens.spec.ts:147:7 › capture en-home-1440 /en (3.0s)
+  ✓  29 tests/baseline/screens.spec.ts:147:7 › capture en-resources-320 /en/retirement-guide (2.0s)
+  ✓  30 tests/baseline/screens.spec.ts:147:7 › capture en-resources-390 /en/retirement-guide (2.0s)
+  ✓  31 tests/baseline/screens.spec.ts:147:7 › capture en-resources-768 /en/retirement-guide (2.3s)
+  ✓  32 tests/baseline/screens.spec.ts:147:7 › capture en-resources-1440 /en/retirement-guide (2.3s)
+  ✓  33 tests/baseline/screens.spec.ts:147:7 › capture en-meeting-320 /en/how-it-works (1.9s)
+  ✓  34 tests/baseline/screens.spec.ts:147:7 › capture en-meeting-390 /en/how-it-works (1.9s)
+  ✓  35 tests/baseline/screens.spec.ts:147:7 › capture en-meeting-768 /en/how-it-works (1.9s)
+  ✓  36 tests/baseline/screens.spec.ts:147:7 › capture en-meeting-1440 /en/how-it-works (2.0s)
+  ✓  37 tests/baseline/screens.spec.ts:197:7 › smoke smoke-en-retirement-320 /en/retirement-planning (859ms)
+  ✓  38 tests/baseline/screens.spec.ts:197:7 › smoke smoke-en-retirement-1440 /en/retirement-planning (905ms)
+  ✓  39 tests/baseline/screens.spec.ts:197:7 › smoke smoke-en-investments-320 /en/investing-for-retirement (906ms)
+  ✓  40 tests/baseline/screens.spec.ts:197:7 › smoke smoke-en-investments-1440 /en/investing-for-retirement (935ms)
+  ✓  41 tests/baseline/screens.spec.ts:197:7 › smoke smoke-en-about-320 /en/about (859ms)
+  ✓  42 tests/baseline/screens.spec.ts:197:7 › smoke smoke-en-about-1440 /en/about (923ms)
+  ✓  43 tests/baseline/screens.spec.ts:197:7 › smoke smoke-en-fees-320 /en/tools/investment-fees (933ms)
+  ✓  44 tests/baseline/screens.spec.ts:197:7 › smoke smoke-en-fees-1440 /en/tools/investment-fees (961ms)
+  ✓  45 tests/baseline/screens.spec.ts:197:7 › smoke smoke-en-privacy-320 /en/privacy (866ms)
+  ✓  46 tests/baseline/screens.spec.ts:197:7 › smoke smoke-en-privacy-1440 /en/privacy (899ms)
+  ✓  47 tests/baseline/screens.spec.ts:197:7 › smoke smoke-en-legal-320 /en/legal (824ms)
+  ✓  48 tests/baseline/screens.spec.ts:197:7 › smoke smoke-en-legal-1440 /en/legal (923ms)
+  ✓  49 tests/baseline/screens.spec.ts:226:1 › endpoints: / entry and /api/guide review PDF (65ms)
+
+  49 passed (1.6m)
+### end: 2026-09-30T09:21:47Z
+### exit: 0
+### wall_s: 96.47
+

@@ -1,0 +1,241 @@
+{
+  "suite": "tests/baseline/run.mjs",
+  "task": "F03",
+  "started_at": "2026-09-30T10:36:16.998Z",
+  "finished_at": "2026-09-30T10:36:35.872Z",
+  "root": "/tmp/claude-0/-home-user/bb8d4187-6ae8-587b-a816-8153faeea853/scratchpad/wt/a6-f03-2",
+  "out": "/tmp/claude-0/-home-user/bb8d4187-6ae8-587b-a816-8153faeea853/scratchpad/a6f03-2/partial/r3_only_lint_test_broken",
+  "selection": {
+    "only": [
+      "lint",
+      "test"
+    ],
+    "skip": []
+  },
+  "git_before": {
+    "head": "b0bc6cf634b0b5498cc335da4d2d15da04276e3a",
+    "branch": "HEAD",
+    "status": [
+      " M next-env.d.ts",
+      "?? app/__a6v2_broken.ts"
+    ]
+  },
+  "git_after": {
+    "head": "b0bc6cf634b0b5498cc335da4d2d15da04276e3a",
+    "branch": "HEAD",
+    "status": [
+      " M next-env.d.ts",
+      "?? app/__a6v2_broken.ts"
+    ]
+  },
+  "dirtied_by_suite": [],
+  "environment": {
+    "node": "v22.22.2",
+    "npm": "10.9.7",
+    "python_for_validate": "/tmp/claude-0/-home-user/bb8d4187-6ae8-587b-a816-8153faeea853/scratchpad/venv-f02/bin/python",
+    "python_version": "Python 3.11.15",
+    "os": "Linux 6.18.44-fc-v50 x64",
+    "browser": {
+      "mode": "playwright-default",
+      "executable": null,
+      "version": null,
+      "expected": "Playwright 1.63.0 expects chromium rev 1243 (153.0.8010.12)"
+    },
+    "gh_cli_installed": false,
+    "env_present": {
+      "GITHUB_REPOSITORY": false,
+      "GH_TOKEN": false,
+      "GITHUB_TOKEN": false,
+      "CONTENT_REVIEWERS": false,
+      "FIRM_REVIEWERS": false,
+      "PLAYWRIGHT_CHROMIUM_EXECUTABLE": false,
+      "CI": false
+    }
+  },
+  "steps": [
+    {
+      "id": "npm_ci",
+      "title": "Clean install (verify.yml)",
+      "command": "npm ci",
+      "log": null,
+      "exit_code": null,
+      "seconds": null,
+      "classification": "not_run",
+      "excluded": true,
+      "reason": "excluded by --only/--skip"
+    },
+    {
+      "id": "lint",
+      "title": "ESLint (verify.yml)",
+      "command": "npm run lint",
+      "log": "02_lint.log",
+      "exit_code": 1,
+      "seconds": 17.83,
+      "started_at": "2026-09-30T10:36:17.217Z",
+      "prerequisites_from_state": [
+        {
+          "id": "npm_ci",
+          "detail": "node_modules matches package-lock.json (450 installed packages checked on disk, 82 optional platform packages absent)"
+        }
+      ],
+      "classification": "fail"
+    },
+    {
+      "id": "test",
+      "title": "Unit tests (verify.yml)",
+      "command": "npm test",
+      "log": "03_test.log",
+      "exit_code": 0,
+      "seconds": 0.81,
+      "started_at": "2026-09-30T10:36:35.045Z",
+      "prerequisites_from_state": [
+        {
+          "id": "npm_ci",
+          "detail": "node_modules matches package-lock.json (450 installed packages checked on disk, 82 optional platform packages absent)"
+        }
+      ],
+      "classification": "pass",
+      "note": "node:test 13/13 passed, 0 failed"
+    },
+    {
+      "id": "typecheck",
+      "title": "TypeScript before build",
+      "command": "npm run typecheck",
+      "log": null,
+      "exit_code": null,
+      "seconds": null,
+      "classification": "not_run",
+      "excluded": true,
+      "reason": "excluded by --only/--skip"
+    },
+    {
+      "id": "build",
+      "title": "Production build (verify.yml)",
+      "command": "npm run build",
+      "log": null,
+      "exit_code": null,
+      "seconds": null,
+      "classification": "not_run",
+      "excluded": true,
+      "reason": "excluded by --only/--skip"
+    },
+    {
+      "id": "typecheck_after_build",
+      "title": "TypeScript after build (verify.yml order)",
+      "command": "npm run typecheck",
+      "log": null,
+      "exit_code": null,
+      "seconds": null,
+      "classification": "not_run",
+      "excluded": true,
+      "reason": "excluded by --only/--skip"
+    },
+    {
+      "id": "protections_check",
+      "title": "Branch-protection audit (scripts/protections.ts)",
+      "command": "npm run protections:check",
+      "log": null,
+      "exit_code": null,
+      "seconds": null,
+      "classification": "not_run",
+      "excluded": true,
+      "reason": "excluded by --only/--skip"
+    },
+    {
+      "id": "launch_check",
+      "title": "Strict launch guard (npm run launch:check)",
+      "command": "npm run launch:check",
+      "log": null,
+      "exit_code": null,
+      "seconds": null,
+      "classification": "not_run",
+      "excluded": true,
+      "reason": "excluded by --only/--skip"
+    },
+    {
+      "id": "verify_publication",
+      "title": "Hash-bound publication check (verify.yml)",
+      "command": "node --import tsx scripts/verify-publication.ts",
+      "log": null,
+      "exit_code": null,
+      "seconds": null,
+      "classification": "not_run",
+      "excluded": true,
+      "reason": "excluded by --only/--skip"
+    },
+    {
+      "id": "test_e2e",
+      "title": "Browser tests (verify.yml, playwright.config.ts)",
+      "command": "npm run test:e2e",
+      "log": null,
+      "exit_code": null,
+      "seconds": null,
+      "classification": "not_run",
+      "excluded": true,
+      "reason": "excluded by --only/--skip"
+    },
+    {
+      "id": "contracts_ajv",
+      "title": "Contract examples and fixtures, Ajv 2020-12 (npm run test:contracts)",
+      "command": "npm run test:contracts",
+      "log": null,
+      "exit_code": null,
+      "seconds": null,
+      "classification": "not_run",
+      "excluded": true,
+      "reason": "excluded by --only/--skip"
+    },
+    {
+      "id": "contracts_validate_py",
+      "title": "Contract harness .orchestration/contracts/validate.py",
+      "command": "/tmp/claude-0/-home-user/bb8d4187-6ae8-587b-a816-8153faeea853/scratchpad/venv-f02/bin/python .orchestration/contracts/validate.py",
+      "log": null,
+      "exit_code": null,
+      "seconds": null,
+      "classification": "not_run",
+      "excluded": true,
+      "reason": "excluded by --only/--skip"
+    },
+    {
+      "id": "build_graph_check",
+      "title": "Task graph and acceptance catalog regenerate unchanged",
+      "command": "python3 .orchestration/scripts/build_graph.py --check",
+      "log": null,
+      "exit_code": null,
+      "seconds": null,
+      "classification": "not_run",
+      "excluded": true,
+      "reason": "excluded by --only/--skip"
+    },
+    {
+      "id": "base02_capture",
+      "title": "BASE02 screenshots, console and status capture (npm run test:base02)",
+      "command": "npm run test:base02",
+      "log": null,
+      "exit_code": null,
+      "seconds": null,
+      "classification": "not_run",
+      "excluded": true,
+      "reason": "excluded by --only/--skip"
+    },
+    {
+      "id": "runner_selftest",
+      "title": "Runner self-test: arguments, prerequisites, classifiers (runner.test.mjs)",
+      "command": "node --test tests/baseline/runner.test.mjs",
+      "log": null,
+      "exit_code": null,
+      "seconds": null,
+      "classification": "not_run",
+      "excluded": true,
+      "reason": "excluded by --only/--skip"
+    }
+  ],
+  "summary": {
+    "not_run": 13,
+    "fail": 1,
+    "pass": 1
+  },
+  "requested_not_run": [],
+  "overall": "fail",
+  "exit_code": 1
+}

@@ -1,0 +1,59 @@
+### command: echo "merge-base codex..homepage: $(git merge-base origin/codex/desktop-iphone-unified origin/claude/bill-centered-homepage)"; git diff --name-status $(git merge-base origin/codex/desktop-iphone-unified origin/claude/bill-centered-homepage) origin/claude/bill-centered-homepage; git diff --shortstat $(git merge-base origin/codex/desktop-iphone-unified origin/claude/bill-centered-homepage) origin/claude/bill-centered-homepage
+### cwd: /home/user/bill
+### start: 2026-09-30T08:52:03Z
+merge-base codex..homepage: 77de3bd51a8c9cb73aec0b32d27ca0cacb6285cd
+M	.prettierignore
+M	LAUNCH-CHECKLIST.md
+M	README.md
+M	TEST-SUMMARY.md
+M	app/[lang]/[[...slug]]/page.tsx
+M	app/globals.css
+M	app/ride.css
+A	components/ask.tsx
+A	components/booklet.tsx
+M	components/ink/desk.tsx
+M	components/journey/ride.tsx
+M	components/navigation.tsx
+M	components/pages.tsx
+M	components/resources.tsx
+M	components/shell.tsx
+M	docs/ART-DIRECTION.md
+A	docs/ASK-BILL.md
+M	docs/COPY-STRATEGY.md
+M	docs/INTEGRATIONS.md
+M	eslint.config.mjs
+A	lib/ask.ts
+M	lib/business.ts
+M	lib/copy.ts
+M	lib/ink-files.json
+M	lib/journey.ts
+M	lib/pages.ts
+M	lib/ride.ts
+M	lib/routes.ts
+D	public/assets/ink/desk-caption-en.6834acbe8c.svg
+D	public/assets/ink/desk-caption-fr.15f201593d.svg
+D	public/assets/ink/dock.ccd6542ba7.svg
+M	scripts/build-ink.tsx
+M	scripts/capture.mjs
+M	scripts/launch.ts
+A	tests/ask.test.ts
+M	tests/browser/site.spec.ts
+M	tsconfig.json
+ 37 files changed, 2177 insertions(+), 615 deletions(-)
+### end: 2026-09-30T08:52:03Z
+### exit: 0
+### wall_s: 0.03
+
+### command: echo "merge-base codex..presentation: $(git merge-base origin/codex/desktop-iphone-unified origin/claude/bill-presentation-video)"; git diff --name-status $(git merge-base origin/codex/desktop-iphone-unified origin/claude/bill-presentation-video) origin/claude/bill-presentation-video | grep -v "^A	presentation/" ; echo "added under presentation/: $(git diff --name-status $(git merge-base origin/codex/desktop-iphone-unified origin/claude/bill-presentation-video) origin/claude/bill-presentation-video | grep -c "^A	presentation/")"; git diff --shortstat $(git merge-base origin/codex/desktop-iphone-unified origin/claude/bill-presentation-video) origin/claude/bill-presentation-video
+### cwd: /home/user/bill
+### start: 2026-09-30T08:52:03Z
+merge-base codex..presentation: 77de3bd51a8c9cb73aec0b32d27ca0cacb6285cd
+M	.prettierignore
+M	eslint.config.mjs
+M	tsconfig.json
+added under presentation/: 64
+ 67 files changed, 7378 insertions(+), 1 deletion(-)
+### end: 2026-09-30T08:52:03Z
+### exit: 0
+### wall_s: 0.04
+

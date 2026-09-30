@@ -1,0 +1,17 @@
+### command: bash /tmp/claude-0/-home-user/bb8d4187-6ae8-587b-a816-8153faeea853/scratchpad/a6f03/launch_nc.sh
+### cwd: /home/user/bill
+### start: 2026-09-30T09:56:53Z
+== NC-L1: newsletterEnabled true (extra blocker beyond approval flags) ==
+ lib/business.ts | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+runner_exit=1
+1 fail blockers beyond the approval flags: newsletter not implemented; keep disabled
+== NC-L2: LAUNCH-CHECKLIST.md intentional-failure line removed ==
+ LAUNCH-CHECKLIST.md | 1 -
+ 1 file changed, 1 deletion(-)
+runner_exit=1
+1 fail None None
+== post: git status ==
+### exit: 0
+### wall_s: 45.568375492
+

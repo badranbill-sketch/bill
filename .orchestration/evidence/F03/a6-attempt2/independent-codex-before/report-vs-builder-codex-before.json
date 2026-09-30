@@ -1,0 +1,285 @@
+{
+  "generated_at": "2026-09-30T10:37:23.139Z",
+  "before": "/tmp/claude-0/-home-user/bb8d4187-6ae8-587b-a816-8153faeea853/scratchpad/a6f03-2/codex-before",
+  "after": "/home/user/bill/.orchestration/evidence/F03/base02/before",
+  "pixelmatch": {
+    "threshold": 0.1,
+    "includeAA": false
+  },
+  "summary": {
+    "screenshots": 24,
+    "identical": 24,
+    "within_threshold": 0,
+    "changed": 0,
+    "missing_before": 0,
+    "missing_after": 0,
+    "record_differences": 0
+  },
+  "shots": [
+    {
+      "id": "en-home-1440",
+      "status": "identical",
+      "byte_identical": true,
+      "size_before": "1440x6598",
+      "size_after": "1440x6598",
+      "exact_diff_pixels": 0,
+      "pixelmatch_diff_pixels": 0,
+      "diff_pct": 0,
+      "diff_png": null
+    },
+    {
+      "id": "en-home-320",
+      "status": "identical",
+      "byte_identical": true,
+      "size_before": "320x8553",
+      "size_after": "320x8553",
+      "exact_diff_pixels": 0,
+      "pixelmatch_diff_pixels": 0,
+      "diff_pct": 0,
+      "diff_png": null
+    },
+    {
+      "id": "en-home-390",
+      "status": "identical",
+      "byte_identical": true,
+      "size_before": "390x8517",
+      "size_after": "390x8517",
+      "exact_diff_pixels": 0,
+      "pixelmatch_diff_pixels": 0,
+      "diff_pct": 0,
+      "diff_png": null
+    },
+    {
+      "id": "en-home-768",
+      "status": "identical",
+      "byte_identical": true,
+      "size_before": "768x7317",
+      "size_after": "768x7317",
+      "exact_diff_pixels": 0,
+      "pixelmatch_diff_pixels": 0,
+      "diff_pct": 0,
+      "diff_png": null
+    },
+    {
+      "id": "en-meeting-1440",
+      "status": "identical",
+      "byte_identical": true,
+      "size_before": "1440x3324",
+      "size_after": "1440x3324",
+      "exact_diff_pixels": 0,
+      "pixelmatch_diff_pixels": 0,
+      "diff_pct": 0,
+      "diff_png": null
+    },
+    {
+      "id": "en-meeting-320",
+      "status": "identical",
+      "byte_identical": true,
+      "size_before": "320x4631",
+      "size_after": "320x4631",
+      "exact_diff_pixels": 0,
+      "pixelmatch_diff_pixels": 0,
+      "diff_pct": 0,
+      "diff_png": null
+    },
+    {
+      "id": "en-meeting-390",
+      "status": "identical",
+      "byte_identical": true,
+      "size_before": "390x4399",
+      "size_after": "390x4399",
+      "exact_diff_pixels": 0,
+      "pixelmatch_diff_pixels": 0,
+      "diff_pct": 0,
+      "diff_png": null
+    },
+    {
+      "id": "en-meeting-768",
+      "status": "identical",
+      "byte_identical": true,
+      "size_before": "768x3957",
+      "size_after": "768x3957",
+      "exact_diff_pixels": 0,
+      "pixelmatch_diff_pixels": 0,
+      "diff_pct": 0,
+      "diff_png": null
+    },
+    {
+      "id": "en-resources-1440",
+      "status": "identical",
+      "byte_identical": true,
+      "size_before": "1440x3503",
+      "size_after": "1440x3503",
+      "exact_diff_pixels": 0,
+      "pixelmatch_diff_pixels": 0,
+      "diff_pct": 0,
+      "diff_png": null
+    },
+    {
+      "id": "en-resources-320",
+      "status": "identical",
+      "byte_identical": true,
+      "size_before": "320x5272",
+      "size_after": "320x5272",
+      "exact_diff_pixels": 0,
+      "pixelmatch_diff_pixels": 0,
+      "diff_pct": 0,
+      "diff_png": null
+    },
+    {
+      "id": "en-resources-390",
+      "status": "identical",
+      "byte_identical": true,
+      "size_before": "390x5058",
+      "size_after": "390x5058",
+      "exact_diff_pixels": 0,
+      "pixelmatch_diff_pixels": 0,
+      "diff_pct": 0,
+      "diff_png": null
+    },
+    {
+      "id": "en-resources-768",
+      "status": "identical",
+      "byte_identical": true,
+      "size_before": "768x4441",
+      "size_after": "768x4441",
+      "exact_diff_pixels": 0,
+      "pixelmatch_diff_pixels": 0,
+      "diff_pct": 0,
+      "diff_png": null
+    },
+    {
+      "id": "fr-home-1440",
+      "status": "identical",
+      "byte_identical": true,
+      "size_before": "1440x6574",
+      "size_after": "1440x6574",
+      "exact_diff_pixels": 0,
+      "pixelmatch_diff_pixels": 0,
+      "diff_pct": 0,
+      "diff_png": null
+    },
+    {
+      "id": "fr-home-320",
+      "status": "identical",
+      "byte_identical": true,
+      "size_before": "320x9122",
+      "size_after": "320x9122",
+      "exact_diff_pixels": 0,
+      "pixelmatch_diff_pixels": 0,
+      "diff_pct": 0,
+      "diff_png": null
+    },
+    {
+      "id": "fr-home-390",
+      "status": "identical",
+      "byte_identical": true,
+      "size_before": "390x8603",
+      "size_after": "390x8603",
+      "exact_diff_pixels": 0,
+      "pixelmatch_diff_pixels": 0,
+      "diff_pct": 0,
+      "diff_png": null
+    },
+    {
+      "id": "fr-home-768",
+      "status": "identical",
+      "byte_identical": true,
+      "size_before": "768x7437",
+      "size_after": "768x7437",
+      "exact_diff_pixels": 0,
+      "pixelmatch_diff_pixels": 0,
+      "diff_pct": 0,
+      "diff_png": null
+    },
+    {
+      "id": "fr-meeting-1440",
+      "status": "identical",
+      "byte_identical": true,
+      "size_before": "1440x3346",
+      "size_after": "1440x3346",
+      "exact_diff_pixels": 0,
+      "pixelmatch_diff_pixels": 0,
+      "diff_pct": 0,
+      "diff_png": null
+    },
+    {
+      "id": "fr-meeting-320",
+      "status": "identical",
+      "byte_identical": true,
+      "size_before": "320x4881",
+      "size_after": "320x4881",
+      "exact_diff_pixels": 0,
+      "pixelmatch_diff_pixels": 0,
+      "diff_pct": 0,
+      "diff_png": null
+    },
+    {
+      "id": "fr-meeting-390",
+      "status": "identical",
+      "byte_identical": true,
+      "size_before": "390x4703",
+      "size_after": "390x4703",
+      "exact_diff_pixels": 0,
+      "pixelmatch_diff_pixels": 0,
+      "diff_pct": 0,
+      "diff_png": null
+    },
+    {
+      "id": "fr-meeting-768",
+      "status": "identical",
+      "byte_identical": true,
+      "size_before": "768x4047",
+      "size_after": "768x4047",
+      "exact_diff_pixels": 0,
+      "pixelmatch_diff_pixels": 0,
+      "diff_pct": 0,
+      "diff_png": null
+    },
+    {
+      "id": "fr-resources-1440",
+      "status": "identical",
+      "byte_identical": true,
+      "size_before": "1440x3608",
+      "size_after": "1440x3608",
+      "exact_diff_pixels": 0,
+      "pixelmatch_diff_pixels": 0,
+      "diff_pct": 0,
+      "diff_png": null
+    },
+    {
+      "id": "fr-resources-320",
+      "status": "identical",
+      "byte_identical": true,
+      "size_before": "320x5991",
+      "size_after": "320x5991",
+      "exact_diff_pixels": 0,
+      "pixelmatch_diff_pixels": 0,
+      "diff_pct": 0,
+      "diff_png": null
+    },
+    {
+      "id": "fr-resources-390",
+      "status": "identical",
+      "byte_identical": true,
+      "size_before": "390x5314",
+      "size_after": "390x5314",
+      "exact_diff_pixels": 0,
+      "pixelmatch_diff_pixels": 0,
+      "diff_pct": 0,
+      "diff_png": null
+    },
+    {
+      "id": "fr-resources-768",
+      "status": "identical",
+      "byte_identical": true,
+      "size_before": "768x4608",
+      "size_after": "768x4608",
+      "exact_diff_pixels": 0,
+      "pixelmatch_diff_pixels": 0,
+      "diff_pct": 0,
+      "diff_png": null
+    }
+  ],
+  "record_differences": []
+}

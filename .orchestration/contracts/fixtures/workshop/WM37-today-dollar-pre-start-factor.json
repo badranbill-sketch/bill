@@ -1,0 +1,328 @@
+{
+ "fixture_id": "WM37",
+ "title": "Today-dollar amounts carried to their start at i, not at their own escalation",
+ "contract_version": "1.0",
+ "covers": [
+  "WK02"
+ ],
+ "purpose": "A today-dollar amount that starts at s_j > 0 is carried to its start year at the inflation scenario i (b_j = a_j(1+i)^{s_j}, workshop-math.md s4) and escalates at its own q_j only from s_j on. Three net today-dollar sources with q_j != i: q = 0 starting at t_R, q > i starting inside the window, 0 < q < i starting before t_R. A runtime that grows the amount before its start at q_j instead of i, carries it only to t_R, by one year less, or not at all, or indexes it at i after the start, fails. Pins F02-MATH3-P2-1.",
+ "input": {
+  "contract": "workshop-inputs",
+  "contract_version": "1.0",
+  "currency": "CAD",
+  "base_year": 2026,
+  "chapters": {
+   "life": {
+    "spending": {
+     "amount": {
+      "status": "estimated",
+      "value": 6000000
+     },
+     "period": "annual",
+     "tax_basis": "after_tax",
+     "price_basis": "today_dollars",
+     "unit": "household"
+    }
+   },
+   "income": {
+    "coverage": "all_known_sources_listed",
+    "sources": [
+     {
+      "id": "src-1",
+      "kind": "workplace_pension",
+      "owner": "self",
+      "amount": {
+       "status": "estimated",
+       "value": 2400000
+      },
+      "period": "annual",
+      "tax_basis": "net",
+      "price_basis": "today_dollars",
+      "start": {
+       "reference": "age",
+       "point": {
+        "status": "estimated",
+        "value": 65
+       }
+      },
+      "escalation_bp": {
+       "status": "zero",
+       "value": 0
+      },
+      "dependability": "scheduled"
+     },
+     {
+      "id": "src-2",
+      "kind": "other",
+      "owner": "self",
+      "amount": {
+       "status": "estimated",
+       "value": 600000
+      },
+      "period": "annual",
+      "tax_basis": "net",
+      "price_basis": "today_dollars",
+      "start": {
+       "reference": "age",
+       "point": {
+        "status": "estimated",
+        "value": 67
+       }
+      },
+      "escalation_bp": {
+       "status": "estimated",
+       "value": 300
+      },
+      "dependability": "scheduled"
+     },
+     {
+      "id": "src-3",
+      "kind": "workplace_pension",
+      "owner": "self",
+      "amount": {
+       "status": "estimated",
+       "value": 1200000
+      },
+      "period": "annual",
+      "tax_basis": "net",
+      "price_basis": "today_dollars",
+      "start": {
+       "reference": "age",
+       "point": {
+        "status": "estimated",
+        "value": 60
+       }
+      },
+      "escalation_bp": {
+       "status": "estimated",
+       "value": 100
+      },
+      "dependability": "scheduled"
+     }
+    ]
+   },
+   "savings": {},
+   "timing": {
+    "current_age": {
+     "status": "estimated",
+     "value": 55
+    },
+    "retirement_age": {
+     "status": "estimated",
+     "value": 65
+    },
+    "planning_horizon_years": {
+     "status": "estimated",
+     "value": 5
+    },
+    "inflation_bp": {
+     "status": "estimated",
+     "value": 200
+    }
+   }
+  }
+ },
+ "expected": {
+  "contract_version": "1.0",
+  "assumptions_echo": {
+   "base_year": 2026,
+   "inflation_bp": 200,
+   "planning_horizon_years": 5,
+   "capital_illustration_return_bp": null,
+   "year_index": "t=0 is calendar year base_year; annual totals per calendar year",
+   "rounding": "exact rational arithmetic; half-even to whole cents at display only"
+  },
+  "window": {
+   "t_R": 10,
+   "first_t": 10,
+   "last_t": 14,
+   "first_calendar_year": 2036,
+   "last_calendar_year": 2040,
+   "first_age": 65,
+   "last_age": 69
+  },
+  "completeness": {
+   "state": "complete",
+   "reasons": []
+  },
+  "years": [
+   {
+    "t": 10,
+    "calendar_year": 2036,
+    "age": 65,
+    "spending_cents": 7313967,
+    "income_by_source_cents": {
+     "src-1": 2925587,
+     "src-2": 0,
+     "src-3": 1392480
+    },
+    "income_net_cents": 4318067,
+    "income_gross_cents": 0,
+    "income_unknown_basis_cents": 0,
+    "status": "computed",
+    "reasons": [],
+    "gap_cents": 2995900,
+    "surplus_cents": 0,
+    "gap_today_dollars_cents": 2457681,
+    "surplus_today_dollars_cents": 0,
+    "exact": {
+     "spending": "7313966.51996854278144",
+     "income_compared": "4318066.63233023340096",
+     "gap": "2995899.88763830938048",
+     "surplus": "0"
+    }
+   },
+   {
+    "t": 11,
+    "calendar_year": 2037,
+    "age": 66,
+    "spending_cents": 7460246,
+    "income_by_source_cents": {
+     "src-1": 2925587,
+     "src-2": 0,
+     "src-3": 1406405
+    },
+    "income_net_cents": 4331991,
+    "income_gross_cents": 0,
+    "income_unknown_basis_cents": 0,
+    "status": "computed",
+    "reasons": [],
+    "gap_cents": 3128254,
+    "surplus_cents": 0,
+    "gap_today_dollars_cents": 2515939,
+    "surplus_today_dollars_cents": 0,
+    "exact": {
+     "spending": "7460245.8503679136370688",
+     "income_compared": "4331991.43257366156384384",
+     "gap": "3128254.41779425207322496",
+     "surplus": "0"
+    }
+   },
+   {
+    "t": 12,
+    "calendar_year": 2038,
+    "age": 67,
+    "spending_cents": 7609451,
+    "income_by_source_cents": {
+     "src-1": 2925587,
+     "src-2": 760945,
+     "src-3": 1420469
+    },
+    "income_net_cents": 5107001,
+    "income_gross_cents": 0,
+    "income_unknown_basis_cents": 0,
+    "status": "computed",
+    "reasons": [],
+    "gap_cents": 2502450,
+    "surplus_cents": 0,
+    "gap_today_dollars_cents": 1973165,
+    "surplus_today_dollars_cents": 0,
+    "exact": {
+     "spending": "7609450.767375271909810176",
+     "income_compared": "5107000.557557051199337536",
+     "gap": "2502450.20981822071047264",
+     "surplus": "0"
+    }
+   },
+   {
+    "t": 13,
+    "calendar_year": 2039,
+    "age": 68,
+    "spending_cents": 7761640,
+    "income_by_source_cents": {
+     "src-1": 2925587,
+     "src-2": 783773,
+     "src-3": 1434674
+    },
+    "income_net_cents": 5144034,
+    "income_gross_cents": 0,
+    "income_unknown_basis_cents": 0,
+    "status": "computed",
+    "reasons": [],
+    "gap_cents": 2617606,
+    "surplus_cents": 0,
+    "gap_today_dollars_cents": 2023495,
+    "surplus_today_dollars_cents": 0,
+    "exact": {
+     "spending": "7761639.78272277734800637952",
+     "income_compared": "5144033.598587498084024771712",
+     "gap": "2617606.184135279263981607808",
+     "surplus": "0"
+    }
+   },
+   {
+    "t": 14,
+    "calendar_year": 2040,
+    "age": 69,
+    "spending_cents": 7916873,
+    "income_by_source_cents": {
+     "src-1": 2925587,
+     "src-2": 807287,
+     "src-3": 1449020
+    },
+    "income_net_cents": 5181894,
+    "income_gross_cents": 0,
+    "income_unknown_basis_cents": 0,
+    "status": "computed",
+    "reasons": [],
+    "gap_cents": 2734979,
+    "surplus_cents": 0,
+    "gap_today_dollars_cents": 2072772,
+    "surplus_today_dollars_cents": 0,
+    "exact": {
+     "spending": "7916872.5783772328949665071104",
+     "income_compared": "5181893.53707429195387346839168",
+     "gap": "2734979.04130294094109303871872",
+     "surplus": "0"
+    }
+   }
+  ],
+  "flags": [],
+  "savings_summary": {
+   "accessible_categories_with_positive_value": [],
+   "home_or_business_positive_value": false,
+   "excluded_from_spendable": [],
+   "pension_value_kept_separate": false,
+   "totals_computed": false
+  },
+  "capital_illustration": {
+   "feature_flag": "off",
+   "displayed": false,
+   "state": "disabled_by_flag",
+   "reference_if_enabled": {
+    "r_bp": null,
+    "computable": false,
+    "not_computable_reasons": [
+     "return_assumption_absent"
+    ],
+    "display_eligible_if_enabled": false,
+    "ineligible_reasons": [
+     "return_assumption_absent"
+    ],
+    "C_R_cents": null,
+    "C_R_exact": null,
+    "valued_at": null,
+    "flow_timing": "end_of_year"
+   }
+  },
+  "clip": {
+   "predicates": {
+    "C": false,
+    "M": false,
+    "X": false,
+    "H": false,
+    "F": true
+   },
+   "selected": "W07",
+   "selection_reason": "funding_gap"
+  }
+ },
+ "independent_checks": [
+  "hand: s_j = start age - A for self-owned sources: 10, 12, 5",
+  "b_j = a_j(1+i)^{s_j} (s4): 2,400,000 x 1.02^10; 600,000 x 1.02^12; 1,200,000 x 1.02^5",
+  "P_j,t = b_j(1+q_j)^{t-s_j} for t >= s_j: q = 0, 3%, 1%",
+  "hand: P_1 = 2,925,586.607987417112576 -> 2,925,587 (growth at q before the start: 2,400,000; gap overstated by 525,587 cents a year)",
+  "hand: P_2,12 = 760,945.0767... -> 760,945 (growth at q: 855,457); P_3,10 = 1,392,480.0243... -> 1,392,480 (growth at q: 1,325,547)"
+ ],
+ "tolerance": "exact integer cents after half-even rounding; exact strings must match exactly; no numeric tolerance"
+}

@@ -1,0 +1,32 @@
+$ /tmp/claude-0/-home-user/bb8d4187-6ae8-587b-a816-8153faeea853/scratchpad/venv-f02/bin/python /home/user/bill/.orchestration/evidence/F02a/a6-attempt3/blockers_checks.py /home/user/bill/.orchestration/evidence/F02a/a6-attempt3/blockers.f01-accepted.md /home/user/bill
+diff: 10 added, 5 removed lines
+HB ids unchanged: True (29 items)
+added lines that ask for a secret value (regex): 0
+'## Secrets: never in chat' heading present: True
+HB-07 Provide line: - Provide: reply with the tool's name and the person's name only, never a secret.
+added lines with an amount/currency: 1
+    - PROPOSAL: keep all three caps at 0 through the pilot. If HB-14 shows Bill's existing account cannot host Meet, the director comes back with one Workspace line item (tier, seats, the price shown at Bill's own checkout) 
+removed lines with an amount/currency: 1
+    - PROPOSAL: keep all three caps at 0 through the pilot. No Workspace purchase unless HB-14 shows the existing entitlement is insufficient. The CAD 20/day × 14 days ad test stays a proposal (D-066).
+costs.json authorized_caps: {"purchased_api": 0, "ads": 0, "subscriptions": 0, "note": "zero until G2 records a cap"}; all zero: True
+'nothing is bought under a 0 cap' in HB-08: True; price source is Bill's own checkout: True
+HB-03 proposal keeps presentation/ outside the baseline: True
+'ignore-list union' still anywhere in blockers.md: False
+D-073 says presentation stays preserved, unmerged: True
+HB-12 proposal: - PROPOSAL: exclude both from the production build and deploy artifact, and keep them in git. Leave `billsite` untouched.
+D-070 mentions 'backup' credential/key: False; mentions media-master: False
+'Outside the 06 map' note says rows are 'proposed in D-070': True
+HB-07 PROPOSAL: - PROPOSAL: one named operator, with Bill as the account owner. No tool is proposed. The D-070 destinations as written.
+new secret rows added: 3
+    | Off-host backup destination write credential | HB-10, P04 | VPS protected env/secret file readable only by the backup job; a copy in the HB-07 password manager | Authorized operator |
+    | Backup encryption key or passphrase | HB-10, P04 | HB-07 password manager plus one offline copy held by the owner; never on the backup destination or inside a backup set | Authorized operator (owner keeps the offline copy) |
+    | Media-master storage upload credential | HB-10, C10 | HB-07 password manager; used only by whoever uploads approved masters | Media owner or authorized operator |
+HB title gate vs gate-row mismatches: before=['HB-20->G5'] after=[]
+G2 'not askable yet' cell: Per-action test scopes (exact allowlisted test sends from the real sender, test bookings/cancellations on the live calendar, Stripe test payments, N10 delivery): requested as scoped G2 records when P0
+blockers.md line 3: - Task: F01. Owner A0 (delegate), reviewer A6, stage design_or_audit. Status: **submitted, not accepted**.
+decisions.md line 3: - Task: F01 "Consolidate decisions, human blockers and real cost assumptions". Owner A0 (delegate), reviewer A6, stage design_or_audit. Stat
+tasks.json F01 state: accepted
+costs.json vps_increment.note: The current VPS price, its plan and whether an upgrade is needed are unknown (HB-02). Upgrade only after a measured need.
+existing_cost_unknown items: 11; citing HB-08: []
+HB-08 Provide line: - Provide: reply to the director → D-064 and `costs.json` `authorized_caps`.
+[exit 0]

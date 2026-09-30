@@ -1,0 +1,102 @@
+# step: test - Unit tests (verify.yml)
+# command: npm test
+# cwd: /tmp/claude-0/-home-user/bb8d4187-6ae8-587b-a816-8153faeea853/scratchpad/wt/a6-f03-2
+# started: 2026-09-30T10:29:54.160Z
+# env overrides: {"NEXT_TELEMETRY_DISABLED":"1"}
+
+
+> bill-badran@1.0.0 test
+> node --import tsx --test tests/*.test.ts
+
+TAP version 13
+# Subtest: fee comparison against independent iterative expectations
+ok 1 - fee comparison against independent iterative expectations
+  ---
+  duration_ms: 1.37058
+  type: 'test'
+  ...
+# Subtest: fee invalid and boundary inputs
+ok 2 - fee invalid and boundary inputs
+  ---
+  duration_ms: 0.532334
+  type: 'test'
+  ...
+# Subtest: checklist distinguishes unanswered, yes and discussion topics
+ok 3 - checklist distinguishes unanswered, yes and discussion topics
+  ---
+  duration_ms: 1.285891
+  type: 'test'
+  ...
+# Subtest: all localized routes map both ways
+ok 4 - all localized routes map both ways
+  ---
+  duration_ms: 0.31992
+  type: 'test'
+  ...
+# Subtest: draft fixtures pair and are never publishable
+ok 5 - draft fixtures pair and are never publishable
+  ---
+  duration_ms: 7.201083
+  type: 'test'
+  ...
+# Subtest: unsafe or incomplete article import is rejected
+ok 6 - unsafe or incomplete article import is rejected
+  ---
+  duration_ms: 1.116465
+  type: 'test'
+  ...
+# Subtest: missing credentials and validation fail honestly
+ok 7 - missing credentials and validation fail honestly
+  ---
+  duration_ms: 2.067466
+  type: 'test'
+  ...
+# Subtest: provider acceptance and safe escaping; deterministic idempotency
+ok 8 - provider acceptance and safe escaping; deterministic idempotency
+  ---
+  duration_ms: 49.406174
+  type: 'test'
+  ...
+# Subtest: rate limit prevents mail; provider error, malformed acceptance, exception and timeout never succeed
+ok 9 - rate limit prevents mail; provider error, malformed acceptance, exception and timeout never succeed
+  ---
+  duration_ms: 4.610134
+  type: 'test'
+  ...
+# Subtest: rate store HTTP errors and malformed JSON fail closed
+ok 10 - rate store HTTP errors and malformed JSON fail closed
+  ---
+  duration_ms: 1.442223
+  type: 'test'
+  ...
+# Subtest: content fingerprint binds substantive changes, not review metadata
+ok 11 - content fingerprint binds substantive changes, not review metadata
+  ---
+  duration_ms: 10.162738
+  type: 'test'
+  ...
+# Subtest: ride timeline moves forward only and holds at each act's stop
+ok 12 - ride timeline moves forward only and holds at each act's stop
+  ---
+  duration_ms: 13.701011
+  type: 'test'
+  ...
+# Subtest: ride camera stays inside the world
+ok 13 - ride camera stays inside the world
+  ---
+  duration_ms: 1.482154
+  type: 'test'
+  ...
+1..13
+# tests 13
+# suites 0
+# pass 13
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 663.333369
+
+# finished: 2026-09-30T10:29:55.098Z
+# exit: 0
+# seconds: 0.94

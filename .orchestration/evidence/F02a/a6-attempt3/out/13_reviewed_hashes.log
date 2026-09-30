@@ -1,0 +1,11 @@
+e2afa56e528fff82ed2cff6e5e01bad4916bb6d0a859de126c7a7941096ca876  .orchestration/contracts/fixtures/workshop/WM37-today-dollar-pre-start-factor.json
+b27eaf5f6b9b40dae43763dc1ec5fe8f66c1ad312d493079fb26883fa5433f35  .orchestration/contracts/fixtures/workshop/WM38-joint-owner-participant-age.json
+fee6cc8372e2e571dabc32400fcf2dc11e50f64974aabab03bb035dd770bb9f5  .orchestration/contracts/fixtures/workshop/WM39-group-total-from-exact-values.json
+9653eda5f2360416a428aa08a89aae63c3f4923fc2eba6f6bac0f966f7f50e95  .orchestration/contracts/fixtures/workshop/WM40-today-dollar-display-from-exact-gap.json
+ebb7cee73c786222fdadccec1eaa6ac215599badc4bbfdb67fa1af875ef4c380  .orchestration/contracts/fixtures/workshop/index.json
+d04c6944a8cf3db7735a43a923a26d0297f160b5d8e8d660b005e221c8aa6e00  .orchestration/handoffs/F02a.json
+a163bc5bcf3b79306a53fa111fd6d8ca31eca0b6a467bacc0edb716a0bb3ee12  .orchestration/blockers.md
+a512abd091aa122371407dc7e1d1edf2c3d162d6bc6f6ca51176ef09290524f7  .orchestration/decisions.md
+f21a278e8f0a9e07317505ed08e392ebf70cdb78737d823f424244e8c81a88e4  .orchestration/costs.json
+486adbde15cabbcef222fa2e186a98382608c69a044a429e20b56cacf500a303  /home/user/bill/.orchestration/evidence/F02a/a6-attempt3/blockers.f01-accepted.md
+[exit 0]

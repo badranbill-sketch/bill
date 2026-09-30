@@ -1,0 +1,7 @@
+# F02a handoff check (repair attempt 3, final). date (UTC): 2026-09-30T10:00:07Z; cwd /home/user/bill
+$ /tmp/claude-0/-home-user/bb8d4187-6ae8-587b-a816-8153faeea853/scratchpad/venv-f02/bin/python /home/user/bill/.orchestration/evidence/F02a/check_handoff.py .orchestration/handoffs/F02a.json
+1. schema errors as written: 1
+   - pattern@/task_id: 'F02a' does not match '^(?:F0[0-3]|D0[0-2]|P0[0-5]|W0[0-4]|C(?:0[0-9]|1[01])|U0[0-5]|N(?:0[0-9]|10)|R0[0-2]|H0[01]|L0[0-6]|O0[0-2])$'
+2. schema errors with task_id replaced by 'F02' in memory only: 0
+3. deep checks (HEAD cb3becf25ed042b977d4864ae71e74d13829320f; task_id F02a in tasks.json; 35 artifact hashes; 7 changed paths; 20 evidence paths): 0 problems
+[exit 1]

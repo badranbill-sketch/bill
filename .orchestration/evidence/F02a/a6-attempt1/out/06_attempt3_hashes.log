@@ -1,0 +1,46 @@
+$ sha256sum -c .orchestration/evidence/F02/a6-math-attempt3/out/contract_hashes.txt
+# utc 2026-09-30T09:15:46Z; cwd /home/user/bill
+.orchestration/contracts/workshop-math.md: OK
+.orchestration/contracts/workshop-inputs.md: OK
+.orchestration/contracts/workshop-clip-rules.md: OK
+.orchestration/contracts/workshop-inputs.schema.json: OK
+.orchestration/contracts/fixtures/workshop/WM01-zero-inflation-zero-escalation.json: OK
+.orchestration/contracts/fixtures/workshop/WM02-geometric-growth-closed-form.json: OK
+.orchestration/contracts/fixtures/workshop/WM03-later-income-start.json: OK
+.orchestration/contracts/fixtures/workshop/WM04-price-basis-today-vs-start-year.json: OK
+.orchestration/contracts/fixtures/workshop/WM05-month-to-year-conversion.json: OK
+.orchestration/contracts/fixtures/workshop/WM06-zero-income-declared.json: OK
+.orchestration/contracts/fixtures/workshop/WM07-unknown-income-not-answered.json: OK
+.orchestration/contracts/fixtures/workshop/WM08-unknown-amount-later-start.json: OK
+.orchestration/contracts/fixtures/workshop/WM09-gross-net-mismatch.json: OK
+.orchestration/contracts/fixtures/workshop/WM10-housing-only-wealth.json: OK
+.orchestration/contracts/fixtures/workshop/WM11-pension-double-count.json: OK
+.orchestration/contracts/fixtures/workshop/WM12-surplus-years.json: OK
+.orchestration/contracts/fixtures/workshop/WM13-retirement-year-boundary.json: OK
+.orchestration/contracts/fixtures/workshop/WM14-capital-illustration-r-zero.json: OK
+.orchestration/contracts/fixtures/workshop/WM15-capital-illustration-growing-annuity.json: OK
+.orchestration/contracts/fixtures/workshop/WM16-capital-illustration-level-annuity.json: OK
+.orchestration/contracts/fixtures/workshop/WM17-rounding-half-even.json: OK
+.orchestration/contracts/fixtures/workshop/WM18-horizon-and-source-end.json: OK
+.orchestration/contracts/fixtures/workshop/WM19-uncertain-income-labelled-scheduled.json: OK
+.orchestration/contracts/fixtures/workshop/WM20-timing-unknown.json: OK
+.orchestration/contracts/fixtures/workshop/WM21-household-timing.json: OK
+.orchestration/contracts/fixtures/workshop/WM22-price-basis-unknown.json: OK
+.orchestration/contracts/fixtures/workshop/WM23-tax-basis-unknown.json: OK
+.orchestration/contracts/fixtures/workshop/WM24-rounding-float-trap.json: OK
+.orchestration/contracts/fixtures/workshop/WM25-spending-unknown-window-known.json: OK
+.orchestration/contracts/fixtures/workshop/WM26-start-point-unknown.json: OK
+.orchestration/contracts/fixtures/workshop/WM27-end-point-unknown.json: OK
+.orchestration/contracts/fixtures/workshop/WM28-end-unresolvable.json: OK
+.orchestration/contracts/fixtures/workshop/WM29-start-unresolvable-window-known.json: OK
+.orchestration/contracts/fixtures/workshop/WM30-income-list-partial.json: OK
+.orchestration/contracts/fixtures/workshop/WM31-retirement-age-unknown.json: OK
+.orchestration/contracts/fixtures/workshop/WM32-unresolved-start-end-at-retirement.json: OK
+.orchestration/contracts/fixtures/workshop/WM33-unresolved-start-end-inside-window.json: OK
+.orchestration/contracts/fixtures/workshop/WM34-combined-unknowns-code-sets.json: OK
+.orchestration/contracts/fixtures/workshop/WM35-capital-illustration-deferred-retirement.json: OK
+.orchestration/contracts/fixtures/workshop/WM36-capital-illustration-all-surplus.json: OK
+.orchestration/contracts/fixtures/workshop/clip-rules.json: OK
+.orchestration/contracts/fixtures/workshop/index.json: FAILED
+sha256sum: WARNING: 1 computed checksum did NOT match
+[exit 1]

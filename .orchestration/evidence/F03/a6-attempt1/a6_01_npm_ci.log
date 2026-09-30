@@ -1,0 +1,19 @@
+### command: env -u GH_TOKEN -u GITHUB_TOKEN npm ci
+### cwd: /tmp/claude-0/-home-user/bb8d4187-6ae8-587b-a816-8153faeea853/scratchpad/wt/a6-f03-1
+### start: 2026-09-30T09:45:21Z
+npm warn EBADENGINE Unsupported engine {
+npm warn EBADENGINE   package: 'agent-browser@0.38.1',
+npm warn EBADENGINE   required: { node: '>=24.0.0', pnpm: '>=11.0.0' },
+npm warn EBADENGINE   current: { node: 'v22.22.2', npm: '10.9.7' }
+npm warn EBADENGINE }
+npm warn deprecated eslint@9.39.5: This version is no longer supported. Please see https://eslint.org/version-support for other options.
+
+added 450 packages, and audited 451 packages in 17s
+
+215 packages are looking for funding
+  run `npm fund` for details
+
+found 0 vulnerabilities
+### exit: 0
+### wall_s: 17.564860753
+

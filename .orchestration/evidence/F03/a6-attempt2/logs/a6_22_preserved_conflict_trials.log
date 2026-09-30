@@ -1,0 +1,30 @@
+### command: for b in origin/claude/bill-presentation-video origin/claude/bill-centered-homepage origin/guide/pre-retirement-guide; do echo "== integration <- $b"; git merge-tree --write-tree --name-only --no-messages integration $b | tail -n +2; echo "merge-tree exit=${PIPESTATUS[0]}"; done; echo '== homepage deletions vs integration'; git diff --name-status --diff-filter=D integration origin/claude/bill-centered-homepage -- public/assets/ink | head; echo '== presentation diffstat vs merge-base'; git diff --shortstat 77de3bd origin/claude/bill-presentation-video; echo '== homepage diffstat vs merge-base'; git diff --shortstat 77de3bd origin/claude/bill-centered-homepage
+### cwd: /home/user/bill
+### start: 2026-09-30T10:39:06Z
+--- output ---
+== integration <- origin/claude/bill-presentation-video
+eslint.config.mjs
+tsconfig.json
+merge-tree exit=1
+== integration <- origin/claude/bill-centered-homepage
+components/pages.tsx
+lib/copy.ts
+lib/ink-files.json
+scripts/build-ink.tsx
+tests/browser/site.spec.ts
+merge-tree exit=1
+== integration <- origin/guide/pre-retirement-guide
+merge-tree exit=0
+== homepage deletions vs integration
+D	public/assets/ink/desk-caption-en.6834acbe8c.svg
+D	public/assets/ink/desk-caption-fr.15f201593d.svg
+D	public/assets/ink/dock.ccd6542ba7.svg
+D	public/assets/ink/hiker.7cb9a1198d.svg
+== presentation diffstat vs merge-base
+ 67 files changed, 7378 insertions(+), 1 deletion(-)
+== homepage diffstat vs merge-base
+ 37 files changed, 2177 insertions(+), 615 deletions(-)
+--- end ---
+### exit: 0
+### wall_s: 0.05
+

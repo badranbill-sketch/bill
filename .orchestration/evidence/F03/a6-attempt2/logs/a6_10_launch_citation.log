@@ -1,0 +1,61 @@
+### command: echo '# LAUNCH-CHECKLIST.md lines 1-6 on integration'; git show integration:LAUNCH-CHECKLIST.md | sed -n '1,6p' | cat -n; echo '# lib/business.ts approvals'; git show integration:lib/business.ts | grep -n -A14 'approvals'; echo '# D-061'; grep -n 'D-061' .orchestration/decisions.md | head -3; echo '# launch classifier in run.mjs/runner-lib.mjs'; grep -n 'LAUNCH-CHECKLIST\|intentionally fails\|expected_fail_by_design' /tmp/claude-0/-home-user/bb8d4187-6ae8-587b-a816-8153faeea853/scratchpad/wt/a6-f03-2/tests/baseline/run.mjs /tmp/claude-0/-home-user/bb8d4187-6ae8-587b-a816-8153faeea853/scratchpad/wt/a6-f03-2/tests/baseline/runner-lib.mjs | head -20
+### cwd: /home/user/bill
+### start: 2026-09-30T10:31:08Z
+--- output ---
+# LAUNCH-CHECKLIST.md lines 1-6 on integration
+     1	# Launch checklist
+     2	
+     3	Public launch approval: **FALSE**. This is a complete working review project, not an approved public financial-services publication. `npm run launch:check` intentionally fails for the unresolved approval categories. Do not change flags without the actual responsible person's approval.
+     4	
+     5	## Implemented and verified
+     6	
+# lib/business.ts approvals
+28:  approvals: {
+29-    businessDetails: false,
+30-    serviceScope: false,
+31-    qualificationsAndAffiliation: false,
+32-    portraitRights: false,
+33-    websiteCopy: false,
+34-    privacyPolicy: false,
+35-    legalNotices: false,
+36-    contactOperations: false,
+37-  },
+38-  guides: {
+39-    fr: null as null | { path: string; approved: boolean },
+40-    en: null as null | { path: string; approved: boolean },
+41-  },
+42-  testimonials: [] as { quote: string; name: string; approved: boolean }[],
+--
+49:    Object.values(business.approvals).every(Boolean)
+50-  );
+51-}
+52-export function localReview() {
+53-  return (
+54-    !process.env.VERCEL &&
+55-    (process.env.NODE_ENV === "development" ||
+56-      process.env.LOCAL_REVIEW === "true")
+57-  );
+58-}
+59-export function reviewEnabled() {
+60-  return (
+61-    localReview() ||
+62-    (process.env.REVIEW_ENABLED === "true" &&
+63-      !!process.env.REVIEW_USER &&
+# D-061
+7:- Repair attempt 2 (after `reviews/F01.md`): D-045 split into a resolved fact and an open question; N10 smoke targets and the secrets outside the 06 map added (D-070, D-071); review P3 items also addressed (D-048, D-061, D-067, index).
+127:| D-061 | **The launch guard stays closed.** 8 approval flags are false on every branch and `launch:check` blocks by design. Agents never flip them. Where each flag's human input is asked: `businessDetails` and `serviceScope` (HB-21), `qualificationsAndAffiliation` (HB-21), `portraitRights` (HB-22), `websiteCopy` (HB-24, HB-25), `privacyPolicy` (HB-27), `legalNotices` (HB-25), `contactOperations` (HB-05, HB-10). | resolved-by-evidence; frozen-by-plan | inventory §3, §8; `lib/business.ts:28-37` | The real approvals (G1, G5) recorded by humans | F03, L04, L06 |
+170:| D-061 launch-guard flags | HB-05, HB-10, HB-21, HB-22, HB-24, HB-25, HB-27 (per flag, see D-061) |
+# launch classifier in run.mjs/runner-lib.mjs
+/tmp/claude-0/-home-user/bb8d4187-6ae8-587b-a816-8153faeea853/scratchpad/wt/a6-f03-2/tests/baseline/run.mjs:8: *   expected_fail_by_design  only launch_check, only when every blocker it prints is one of the approval flags in
+/tmp/claude-0/-home-user/bb8d4187-6ae8-587b-a816-8153faeea853/scratchpad/wt/a6-f03-2/tests/baseline/run.mjs:9: *                            lib/business.ts and LAUNCH-CHECKLIST.md still documents the intentional failure
+/tmp/claude-0/-home-user/bb8d4187-6ae8-587b-a816-8153faeea853/scratchpad/wt/a6-f03-2/tests/baseline/run.mjs:20: * anything runs. Blocked, not_run and expected_fail_by_design steps are listed in the summary and in
+/tmp/claude-0/-home-user/bb8d4187-6ae8-587b-a816-8153faeea853/scratchpad/wt/a6-f03-2/tests/baseline/run.mjs:80:  const f = path.join(ROOT, "LAUNCH-CHECKLIST.md");
+/tmp/claude-0/-home-user/bb8d4187-6ae8-587b-a816-8153faeea853/scratchpad/wt/a6-f03-2/tests/baseline/run.mjs:84:    /launch:check`? intentionally fails/.test(l),
+/tmp/claude-0/-home-user/bb8d4187-6ae8-587b-a816-8153faeea853/scratchpad/wt/a6-f03-2/tests/baseline/run.mjs:86:  return i < 0 ? null : `LAUNCH-CHECKLIST.md:${i + 1}`;
+/tmp/claude-0/-home-user/bb8d4187-6ae8-587b-a816-8153faeea853/scratchpad/wt/a6-f03-2/tests/baseline/run.mjs:230:          classification: "expected_fail_by_design",
+/tmp/claude-0/-home-user/bb8d4187-6ae8-587b-a816-8153faeea853/scratchpad/wt/a6-f03-2/tests/baseline/run.mjs:231:          citation: `${doc} ("npm run launch:check intentionally fails for the unresolved approval categories"); .orchestration/decisions.md D-061`,
+/tmp/claude-0/-home-user/bb8d4187-6ae8-587b-a816-8153faeea853/scratchpad/wt/a6-f03-2/tests/baseline/runner-lib.mjs:7: *   0  no step failed and every requested step ran (blocked and expected_fail_by_design steps are allowed)
+--- end ---
+### exit: 0
+### wall_s: 0.04
+

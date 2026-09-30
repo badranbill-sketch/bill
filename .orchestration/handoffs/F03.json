@@ -1,0 +1,548 @@
+{
+  "task_id": "F03",
+  "base_commit": "cb3becf25ed042b977d4864ae71e74d13829320f",
+  "result_commit": "b0bc6cf634b0b5498cc335da4d2d15da04276e3a",
+  "contract_version": "1.0",
+  "changed_paths": [
+    ".gitignore",
+    "app/[lang]/layout.tsx",
+    "app/api/guide/route.ts",
+    "app/features.css",
+    "app/ink-hiker.css",
+    "app/responsive.css",
+    "components/features.tsx",
+    "components/ink/hiker.tsx",
+    "components/journey/ride-motion.tsx",
+    "components/journey/world.tsx",
+    "components/pages.tsx",
+    "components/question-carousel.tsx",
+    "content/guides/retirement-review-en.pdf",
+    "docs/RESPONSIVE-REVIEW.md",
+    "eslint.config.mjs",
+    "guide/",
+    "lib/copy.ts",
+    "lib/features.ts",
+    "lib/ink-files.json",
+    "next.config.ts",
+    "package-lock.json",
+    "package.json",
+    "public/assets/ink/hiker.7cb9a1198d.svg",
+    "public/assets/retirement-guide-cover.jpg",
+    "scripts/build-ink.tsx",
+    "scripts/ink-sheet.tsx",
+    "tests/baseline/",
+    "tests/browser/responsive.spec.ts",
+    "tests/browser/site.spec.ts",
+    "tsconfig.json",
+    ".orchestration/baseline.md",
+    ".orchestration/handoffs/F03.json",
+    ".orchestration/evidence/F03/"
+  ],
+  "artifacts": [
+    {
+      "path": "tests/baseline/run.mjs",
+      "sha256": "4a81495cefde236cdf1701c76495f8bfc42a79c023dfc5f45616e65233071018"
+    },
+    {
+      "path": "tests/baseline/runner-lib.mjs",
+      "sha256": "1a4ac91ae22b7d252dcb589272a747388d7f8246814220767f6530876f4132b3"
+    },
+    {
+      "path": "tests/baseline/runner.test.mjs",
+      "sha256": "77d2f4356967f6d5007bd5829ea6744afa1ee278b3f4a3d553b0ddd10fe76f6b"
+    },
+    {
+      "path": "tests/baseline/contracts.test.ts",
+      "sha256": "c08132806a760c4e86e2ccccd5e70b277378b257988216123cfe09c6bfaa5ea3"
+    },
+    {
+      "path": "tests/baseline/screens.spec.ts",
+      "sha256": "c224d7518f3f092ea2c6d97af4631060ecdc0a84ac887727737d254b3c54df69"
+    },
+    {
+      "path": "tests/baseline/playwright.baseline.config.ts",
+      "sha256": "d853eec57095567719d8278121443ec82859da3876d9397e0bac93a19e9e5698"
+    },
+    {
+      "path": "tests/baseline/compare-screens.mjs",
+      "sha256": "4aa05489f8b94f22c3eb3191299dc3bf6b450378f12f13f29edd344aa38192a4"
+    },
+    {
+      "path": "tests/baseline/README.md",
+      "sha256": "5a2c37ddde9b228f741535dfe9edb7aeddc09002620419582d55e27ebada52ba"
+    },
+    {
+      "path": "package.json",
+      "sha256": "ae7cb34b87910b3fd9772d82c55995268f097fb88a0e6b9823b345ec9264fb95"
+    },
+    {
+      "path": "package-lock.json",
+      "sha256": "a9deaa8d3cad35a533657586575748cf38599781237b10b404b195f16a6c4f71"
+    },
+    {
+      "path": ".orchestration/baseline.md",
+      "sha256": "0a6fb16bfaeafc665d2dfa614afc4b3e5939ec1606df3193b59f53b8704a8b7e"
+    },
+    {
+      "path": ".orchestration/evidence/F03/repair2/suite-full-b0bc6cf/results.json",
+      "sha256": "6307886f565ff135dcd87d44042948105d6139464d6fae1d0ec6e5cd22bf9c81"
+    },
+    {
+      "path": ".orchestration/evidence/F03/repair2/01_suite_full_b0bc6cf.log",
+      "sha256": "fa06a4a1759141fe91a4df2e053a0824481810055864b2961fcbcc4d68dbad98"
+    },
+    {
+      "path": ".orchestration/evidence/F03/repair2/02_base02_codex_before_vs_b0bc6cf.log",
+      "sha256": "d0929d0864d917b7a47eceedc3b1ebb11a820506fb31e93307609b167c27f89d"
+    },
+    {
+      "path": ".orchestration/evidence/F03/repair2/base02-diff-codex-vs-b0bc6cf/report.json",
+      "sha256": "dd581210107840a17ab00300dfc2af155e0dcc45e61acb13d62156a35c86c583"
+    },
+    {
+      "path": ".orchestration/evidence/F03/repair2/03_partial_runs.log",
+      "sha256": "3d6e6076b2dfbac21f16ae3159e1a9b65ef4a3b952e9eaec2ee1c8e2b75fc7bf"
+    },
+    {
+      "path": ".orchestration/evidence/F03/repair2/04_compare_screens_controls.log",
+      "sha256": "2ff38220a833236b3e9708e1c6a5f64a953f6164fb8efbcb5a57fdbbeade354f"
+    },
+    {
+      "path": ".orchestration/evidence/F03/repair2/05_selftest_mutations.log",
+      "sha256": "bd9064f192dcdd9d435a0a60bde39cd93a752e80a54c62861c44fbef24f3d157"
+    },
+    {
+      "path": ".orchestration/evidence/F03/repair2/06_final_state.log",
+      "sha256": "cf7cb5ee77fd836300d7972714e369faecf8292e7a6c2a3f6027dc52d7dd1122"
+    },
+    {
+      "path": ".orchestration/evidence/F03/suite/final-5545c2a/results.json",
+      "sha256": "7ad3d3ce3ac1af42dc8465fa27a2055a528468e3cf75211d1d1e798430516690"
+    },
+    {
+      "path": ".orchestration/evidence/F03/base02/diff/report.json",
+      "sha256": "1598bbb8131de7134f5f4cdbbdeea380533df7681add2d4e48dca7fc7133113f"
+    },
+    {
+      "path": ".orchestration/evidence/F03/base02/determinism_suite_vs_after.report.json",
+      "sha256": "9ae919e12558f319bf3e50e9f1543e603987b6ede8e59f6270326c35efcaa36e"
+    },
+    {
+      "path": ".orchestration/evidence/F03/reconcile/02_trial_merges.log",
+      "sha256": "a399454ac65c97a236383581742ba38d44f20df82ac160bcaece91a78b9af416"
+    },
+    {
+      "path": ".orchestration/evidence/F03/reconcile/03_merges.log",
+      "sha256": "0a96d5106fd42ef55096cb8d5445deae89e8b6c21958c34ad4a55b4370ea9419"
+    },
+    {
+      "path": ".orchestration/evidence/F03/reconcile/04_preserved_branch_deltas.log",
+      "sha256": "787cb0fce82be01657b9718f4288c17180dce1ceaa5d7f3e728d3d9b73e038ec"
+    },
+    {
+      "path": ".orchestration/evidence/F03/reconcile/05_homepage_conflict_hunks.log",
+      "sha256": "fdcd2b5c937a2dfbdeb98aa8a3e71a2c48e9e9e4703bcddc1d9f230077bcb099"
+    },
+    {
+      "path": ".orchestration/evidence/F03/reconcile/06_final_state.log",
+      "sha256": "39c9de4d876b23e572a6fe92afc5b3bc66f3953e6fd5b415db48d4d30faa9806"
+    },
+    {
+      "path": ".orchestration/evidence/F03/suite/00_dev_setup.log",
+      "sha256": "7aa3e61d8840d559f113376212e09f93a80d68a75b8552f8d69a7f3cd35354c2"
+    },
+    {
+      "path": ".orchestration/evidence/F03/suite/02_suite_integration_final.log",
+      "sha256": "47e00be0a4e7a9f06a1d81d7524b0389f2c873e8d501b0fd1d0556394f38b4c9"
+    },
+    {
+      "path": ".orchestration/evidence/F03/suite/preexisting_validate_py_at_cb3becf.log",
+      "sha256": "56ec07067758f2861a0699926256b2ff4a462e0a956b540db4a57894a360aedb"
+    },
+    {
+      "path": ".orchestration/evidence/F03/suite/contracts_negative_controls.log",
+      "sha256": "aceb66b1c58472513742d34103b4d9d025504812ead34c3c5a8def71543353d6"
+    },
+    {
+      "path": ".orchestration/evidence/F03/suite/03_guide_generator_integration.log",
+      "sha256": "f8af9231149b640050396df44d7047fc08d81c133a6136385e45eefc3c2be5b2"
+    },
+    {
+      "path": ".orchestration/evidence/F03/base02/before_capture.log",
+      "sha256": "4b61a68077d70e1a1fc3db0edf18da40b97b90cea9793fdf225490196bad0a3b"
+    },
+    {
+      "path": ".orchestration/evidence/F03/base02/after_capture.log",
+      "sha256": "5b7015365f6930626f622f0827e96fdac73f560010a2535595c34a67359c6db1"
+    },
+    {
+      "path": ".orchestration/evidence/F03/base02/compare_before_after.log",
+      "sha256": "ed5a2a1a2d900a1ed69083c1f81aa49f4ccba07477df5acc593e8bc348851cb0"
+    },
+    {
+      "path": ".orchestration/evidence/F03/base02/compare_negative_control.log",
+      "sha256": "48e4a79b9ec912bec68364eeb56a8b80d17756b3b7282775e1c65e32e0fda0bc"
+    }
+  ],
+  "tests": [
+    {
+      "id": "F03-SUITE",
+      "command": "cd /tmp/claude-0/-home-user/bb8d4187-6ae8-587b-a816-8153faeea853/scratchpad/wt/integration && env -u GH_TOKEN -u GITHUB_TOKEN PLAYWRIGHT_CHROMIUM_EXECUTABLE=/opt/pw-browsers/chromium-1194/chrome-linux/chrome node tests/baseline/run.mjs --out /tmp/claude-0/-home-user/bb8d4187-6ae8-587b-a816-8153faeea853/scratchpad/f03r2/suite-full --python /tmp/claude-0/-home-user/bb8d4187-6ae8-587b-a816-8153faeea853/scratchpad/venv-f02/bin/python",
+      "exit_code": 1,
+      "evidence": ".orchestration/evidence/F03/repair2/01_suite_full_b0bc6cf.log",
+      "environment": "local container; browser = substitute Chromium 141.0.7390.37 (lockfile Playwright 1.63.0 expects rev 1243); no external side effect"
+    },
+    {
+      "id": "BASE01-npm-ci",
+      "command": "npm ci (step 'npm_ci' of: cd /tmp/claude-0/-home-user/bb8d4187-6ae8-587b-a816-8153faeea853/scratchpad/wt/integration && env -u GH_TOKEN -u GITHUB_TOKEN PLAYWRIGHT_CHROMIUM_EXECUTABLE=/opt/pw-browsers/chromium-1194/chrome-linux/chrome node tests/baseline/run.mjs --out /tmp/claude-0/-home-user/bb8d4187-6ae8-587b-a816-8153faeea853/scratchpad/f03r2/suite-full --python /tmp/claude-0/-home-user/bb8d4187-6ae8-587b-a816-8153faeea853/scratchpad/venv-f02/bin/python) [pass]",
+      "exit_code": 0,
+      "evidence": ".orchestration/evidence/F03/repair2/suite-full-b0bc6cf/01_npm_ci.log",
+      "environment": "local container (worktree scratchpad/wt/integration at b0bc6cf; tokens withheld; no provider, no external side effect)"
+    },
+    {
+      "id": "BASE01-lint",
+      "command": "npm run lint (step 'lint' of: cd /tmp/claude-0/-home-user/bb8d4187-6ae8-587b-a816-8153faeea853/scratchpad/wt/integration && env -u GH_TOKEN -u GITHUB_TOKEN PLAYWRIGHT_CHROMIUM_EXECUTABLE=/opt/pw-browsers/chromium-1194/chrome-linux/chrome node tests/baseline/run.mjs --out /tmp/claude-0/-home-user/bb8d4187-6ae8-587b-a816-8153faeea853/scratchpad/f03r2/suite-full --python /tmp/claude-0/-home-user/bb8d4187-6ae8-587b-a816-8153faeea853/scratchpad/venv-f02/bin/python) [pass]",
+      "exit_code": 0,
+      "evidence": ".orchestration/evidence/F03/repair2/suite-full-b0bc6cf/02_lint.log",
+      "environment": "local container (worktree scratchpad/wt/integration at b0bc6cf; tokens withheld; no provider, no external side effect)"
+    },
+    {
+      "id": "BASE01-test",
+      "command": "npm test (step 'test' of: cd /tmp/claude-0/-home-user/bb8d4187-6ae8-587b-a816-8153faeea853/scratchpad/wt/integration && env -u GH_TOKEN -u GITHUB_TOKEN PLAYWRIGHT_CHROMIUM_EXECUTABLE=/opt/pw-browsers/chromium-1194/chrome-linux/chrome node tests/baseline/run.mjs --out /tmp/claude-0/-home-user/bb8d4187-6ae8-587b-a816-8153faeea853/scratchpad/f03r2/suite-full --python /tmp/claude-0/-home-user/bb8d4187-6ae8-587b-a816-8153faeea853/scratchpad/venv-f02/bin/python) [pass]",
+      "exit_code": 0,
+      "evidence": ".orchestration/evidence/F03/repair2/suite-full-b0bc6cf/03_test.log",
+      "environment": "local container (worktree scratchpad/wt/integration at b0bc6cf; tokens withheld; no provider, no external side effect)"
+    },
+    {
+      "id": "BASE01-typecheck",
+      "command": "npm run typecheck (step 'typecheck' of: cd /tmp/claude-0/-home-user/bb8d4187-6ae8-587b-a816-8153faeea853/scratchpad/wt/integration && env -u GH_TOKEN -u GITHUB_TOKEN PLAYWRIGHT_CHROMIUM_EXECUTABLE=/opt/pw-browsers/chromium-1194/chrome-linux/chrome node tests/baseline/run.mjs --out /tmp/claude-0/-home-user/bb8d4187-6ae8-587b-a816-8153faeea853/scratchpad/f03r2/suite-full --python /tmp/claude-0/-home-user/bb8d4187-6ae8-587b-a816-8153faeea853/scratchpad/venv-f02/bin/python) [pass]",
+      "exit_code": 0,
+      "evidence": ".orchestration/evidence/F03/repair2/suite-full-b0bc6cf/04_typecheck.log",
+      "environment": "local container (worktree scratchpad/wt/integration at b0bc6cf; tokens withheld; no provider, no external side effect)"
+    },
+    {
+      "id": "BASE01-build",
+      "command": "npm run build (step 'build' of: cd /tmp/claude-0/-home-user/bb8d4187-6ae8-587b-a816-8153faeea853/scratchpad/wt/integration && env -u GH_TOKEN -u GITHUB_TOKEN PLAYWRIGHT_CHROMIUM_EXECUTABLE=/opt/pw-browsers/chromium-1194/chrome-linux/chrome node tests/baseline/run.mjs --out /tmp/claude-0/-home-user/bb8d4187-6ae8-587b-a816-8153faeea853/scratchpad/f03r2/suite-full --python /tmp/claude-0/-home-user/bb8d4187-6ae8-587b-a816-8153faeea853/scratchpad/venv-f02/bin/python) [pass]",
+      "exit_code": 0,
+      "evidence": ".orchestration/evidence/F03/repair2/suite-full-b0bc6cf/05_build.log",
+      "environment": "local container (worktree scratchpad/wt/integration at b0bc6cf; tokens withheld; no provider, no external side effect)"
+    },
+    {
+      "id": "BASE01-typecheck-post",
+      "command": "npm run typecheck (step 'typecheck_after_build' of: cd /tmp/claude-0/-home-user/bb8d4187-6ae8-587b-a816-8153faeea853/scratchpad/wt/integration && env -u GH_TOKEN -u GITHUB_TOKEN PLAYWRIGHT_CHROMIUM_EXECUTABLE=/opt/pw-browsers/chromium-1194/chrome-linux/chrome node tests/baseline/run.mjs --out /tmp/claude-0/-home-user/bb8d4187-6ae8-587b-a816-8153faeea853/scratchpad/f03r2/suite-full --python /tmp/claude-0/-home-user/bb8d4187-6ae8-587b-a816-8153faeea853/scratchpad/venv-f02/bin/python) [pass]",
+      "exit_code": 0,
+      "evidence": ".orchestration/evidence/F03/repair2/suite-full-b0bc6cf/06_typecheck_after_build.log",
+      "environment": "local container (worktree scratchpad/wt/integration at b0bc6cf; tokens withheld; no provider, no external side effect)"
+    },
+    {
+      "id": "BASE01-protections",
+      "command": "npm run protections:check (step 'protections_check' of: cd /tmp/claude-0/-home-user/bb8d4187-6ae8-587b-a816-8153faeea853/scratchpad/wt/integration && env -u GH_TOKEN -u GITHUB_TOKEN PLAYWRIGHT_CHROMIUM_EXECUTABLE=/opt/pw-browsers/chromium-1194/chrome-linux/chrome node tests/baseline/run.mjs --out /tmp/claude-0/-home-user/bb8d4187-6ae8-587b-a816-8153faeea853/scratchpad/f03r2/suite-full --python /tmp/claude-0/-home-user/bb8d4187-6ae8-587b-a816-8153faeea853/scratchpad/venv-f02/bin/python) [blocked: GITHUB_REPOSITORY is not set; the audit needs the repository name and an authenticated gh CLI (gh is also not installed here)]",
+      "exit_code": 1,
+      "evidence": ".orchestration/evidence/F03/repair2/suite-full-b0bc6cf/07_protections_check.log",
+      "environment": "local container (worktree scratchpad/wt/integration at b0bc6cf; tokens withheld; no provider, no external side effect)"
+    },
+    {
+      "id": "BASE01-launch",
+      "command": "npm run launch:check (step 'launch_check' of: cd /tmp/claude-0/-home-user/bb8d4187-6ae8-587b-a816-8153faeea853/scratchpad/wt/integration && env -u GH_TOKEN -u GITHUB_TOKEN PLAYWRIGHT_CHROMIUM_EXECUTABLE=/opt/pw-browsers/chromium-1194/chrome-linux/chrome node tests/baseline/run.mjs --out /tmp/claude-0/-home-user/bb8d4187-6ae8-587b-a816-8153faeea853/scratchpad/f03r2/suite-full --python /tmp/claude-0/-home-user/bb8d4187-6ae8-587b-a816-8153faeea853/scratchpad/venv-f02/bin/python) [expected_fail_by_design]",
+      "exit_code": 1,
+      "evidence": ".orchestration/evidence/F03/repair2/suite-full-b0bc6cf/08_launch_check.log",
+      "environment": "local container (worktree scratchpad/wt/integration at b0bc6cf; tokens withheld; no provider, no external side effect)"
+    },
+    {
+      "id": "BASE01-verify-pub",
+      "command": "node --import tsx scripts/verify-publication.ts (step 'verify_publication' of: cd /tmp/claude-0/-home-user/bb8d4187-6ae8-587b-a816-8153faeea853/scratchpad/wt/integration && env -u GH_TOKEN -u GITHUB_TOKEN PLAYWRIGHT_CHROMIUM_EXECUTABLE=/opt/pw-browsers/chromium-1194/chrome-linux/chrome node tests/baseline/run.mjs --out /tmp/claude-0/-home-user/bb8d4187-6ae8-587b-a816-8153faeea853/scratchpad/f03r2/suite-full --python /tmp/claude-0/-home-user/bb8d4187-6ae8-587b-a816-8153faeea853/scratchpad/venv-f02/bin/python) [pass]",
+      "exit_code": 0,
+      "evidence": ".orchestration/evidence/F03/repair2/suite-full-b0bc6cf/09_verify_publication.log",
+      "environment": "local container (worktree scratchpad/wt/integration at b0bc6cf; tokens withheld; no provider, no external side effect)"
+    },
+    {
+      "id": "BASE01-e2e",
+      "command": "npm run test:e2e (step 'test_e2e' of: cd /tmp/claude-0/-home-user/bb8d4187-6ae8-587b-a816-8153faeea853/scratchpad/wt/integration && env -u GH_TOKEN -u GITHUB_TOKEN PLAYWRIGHT_CHROMIUM_EXECUTABLE=/opt/pw-browsers/chromium-1194/chrome-linux/chrome node tests/baseline/run.mjs --out /tmp/claude-0/-home-user/bb8d4187-6ae8-587b-a816-8153faeea853/scratchpad/f03r2/suite-full --python /tmp/claude-0/-home-user/bb8d4187-6ae8-587b-a816-8153faeea853/scratchpad/venv-f02/bin/python) [pass]",
+      "exit_code": 0,
+      "evidence": ".orchestration/evidence/F03/repair2/suite-full-b0bc6cf/10_test_e2e.log",
+      "environment": "local container; browser = substitute Chromium 141.0.7390.37 (lockfile Playwright 1.63.0 expects rev 1243); no external side effect"
+    },
+    {
+      "id": "F03-CONTRACTS-AJV",
+      "command": "npm run test:contracts (step 'contracts_ajv' of: cd /tmp/claude-0/-home-user/bb8d4187-6ae8-587b-a816-8153faeea853/scratchpad/wt/integration && env -u GH_TOKEN -u GITHUB_TOKEN PLAYWRIGHT_CHROMIUM_EXECUTABLE=/opt/pw-browsers/chromium-1194/chrome-linux/chrome node tests/baseline/run.mjs --out /tmp/claude-0/-home-user/bb8d4187-6ae8-587b-a816-8153faeea853/scratchpad/f03r2/suite-full --python /tmp/claude-0/-home-user/bb8d4187-6ae8-587b-a816-8153faeea853/scratchpad/venv-f02/bin/python) [pass]",
+      "exit_code": 0,
+      "evidence": ".orchestration/evidence/F03/repair2/suite-full-b0bc6cf/11_contracts_ajv.log",
+      "environment": "local container (worktree scratchpad/wt/integration at b0bc6cf; tokens withheld; no provider, no external side effect)"
+    },
+    {
+      "id": "F03-VALIDATE-PY",
+      "command": "/tmp/claude-0/-home-user/bb8d4187-6ae8-587b-a816-8153faeea853/scratchpad/venv-f02/bin/python .orchestration/contracts/validate.py (step 'contracts_validate_py' of: cd /tmp/claude-0/-home-user/bb8d4187-6ae8-587b-a816-8153faeea853/scratchpad/wt/integration && env -u GH_TOKEN -u GITHUB_TOKEN PLAYWRIGHT_CHROMIUM_EXECUTABLE=/opt/pw-browsers/chromium-1194/chrome-linux/chrome node tests/baseline/run.mjs --out /tmp/claude-0/-home-user/bb8d4187-6ae8-587b-a816-8153faeea853/scratchpad/f03r2/suite-full --python /tmp/claude-0/-home-user/bb8d4187-6ae8-587b-a816-8153faeea853/scratchpad/venv-f02/bin/python) [fail]",
+      "exit_code": 1,
+      "evidence": ".orchestration/evidence/F03/repair2/suite-full-b0bc6cf/12_contracts_validate_py.log",
+      "environment": "local container (worktree scratchpad/wt/integration at b0bc6cf; tokens withheld; no provider, no external side effect)"
+    },
+    {
+      "id": "F03-GRAPH-CHECK",
+      "command": "python3 .orchestration/scripts/build_graph.py --check (step 'build_graph_check' of: cd /tmp/claude-0/-home-user/bb8d4187-6ae8-587b-a816-8153faeea853/scratchpad/wt/integration && env -u GH_TOKEN -u GITHUB_TOKEN PLAYWRIGHT_CHROMIUM_EXECUTABLE=/opt/pw-browsers/chromium-1194/chrome-linux/chrome node tests/baseline/run.mjs --out /tmp/claude-0/-home-user/bb8d4187-6ae8-587b-a816-8153faeea853/scratchpad/f03r2/suite-full --python /tmp/claude-0/-home-user/bb8d4187-6ae8-587b-a816-8153faeea853/scratchpad/venv-f02/bin/python) [pass]",
+      "exit_code": 0,
+      "evidence": ".orchestration/evidence/F03/repair2/suite-full-b0bc6cf/13_build_graph_check.log",
+      "environment": "local container (worktree scratchpad/wt/integration at b0bc6cf; tokens withheld; no provider, no external side effect)"
+    },
+    {
+      "id": "BASE02-suite-capture",
+      "command": "npm run test:base02 (step 'base02_capture' of: cd /tmp/claude-0/-home-user/bb8d4187-6ae8-587b-a816-8153faeea853/scratchpad/wt/integration && env -u GH_TOKEN -u GITHUB_TOKEN PLAYWRIGHT_CHROMIUM_EXECUTABLE=/opt/pw-browsers/chromium-1194/chrome-linux/chrome node tests/baseline/run.mjs --out /tmp/claude-0/-home-user/bb8d4187-6ae8-587b-a816-8153faeea853/scratchpad/f03r2/suite-full --python /tmp/claude-0/-home-user/bb8d4187-6ae8-587b-a816-8153faeea853/scratchpad/venv-f02/bin/python) [pass]",
+      "exit_code": 0,
+      "evidence": ".orchestration/evidence/F03/repair2/suite-full-b0bc6cf/14_base02_capture.log",
+      "environment": "local container; browser = substitute Chromium 141.0.7390.37 (lockfile Playwright 1.63.0 expects rev 1243); no external side effect"
+    },
+    {
+      "id": "F03-RUNNER-SELFTEST",
+      "command": "node --test tests/baseline/runner.test.mjs (step 'runner_selftest' of: cd /tmp/claude-0/-home-user/bb8d4187-6ae8-587b-a816-8153faeea853/scratchpad/wt/integration && env -u GH_TOKEN -u GITHUB_TOKEN PLAYWRIGHT_CHROMIUM_EXECUTABLE=/opt/pw-browsers/chromium-1194/chrome-linux/chrome node tests/baseline/run.mjs --out /tmp/claude-0/-home-user/bb8d4187-6ae8-587b-a816-8153faeea853/scratchpad/f03r2/suite-full --python /tmp/claude-0/-home-user/bb8d4187-6ae8-587b-a816-8153faeea853/scratchpad/venv-f02/bin/python) [pass]",
+      "exit_code": 0,
+      "evidence": ".orchestration/evidence/F03/repair2/suite-full-b0bc6cf/15_runner_selftest.log",
+      "environment": "local container (worktree scratchpad/wt/integration at b0bc6cf; tokens withheld; no provider, no external side effect)"
+    },
+    {
+      "id": "F03-PARTIAL-A",
+      "command": "cd /tmp/claude-0/-home-user/bb8d4187-6ae8-587b-a816-8153faeea853/scratchpad/wt/integration && env -u GH_TOKEN -u GITHUB_TOKEN node tests/baseline/run.mjs --python /tmp/claude-0/-home-user/bb8d4187-6ae8-587b-a816-8153faeea853/scratchpad/venv-f02/bin/python --only lint,test --out /tmp/claude-0/-home-user/bb8d4187-6ae8-587b-a816-8153faeea853/scratchpad/f03r2/partial/a_only_lint_test (A6 F03-A6-P2-1 reproduction; expect lint+test run, exit 0)",
+      "exit_code": 0,
+      "evidence": ".orchestration/evidence/F03/repair2/03_partial_runs.log",
+      "environment": "local container (worktree scratchpad/wt/integration at b0bc6cf; tokens withheld; no provider, no external side effect)"
+    },
+    {
+      "id": "F03-PARTIAL-B",
+      "command": "printf 'const x = ;\\n' > app/__a6_broken.ts; cd /tmp/claude-0/-home-user/bb8d4187-6ae8-587b-a816-8153faeea853/scratchpad/wt/integration && env -u GH_TOKEN -u GITHUB_TOKEN node tests/baseline/run.mjs --python /tmp/claude-0/-home-user/bb8d4187-6ae8-587b-a816-8153faeea853/scratchpad/venv-f02/bin/python --only lint,test --out /tmp/claude-0/-home-user/bb8d4187-6ae8-587b-a816-8153faeea853/scratchpad/f03r2/partial/b_only_lint_test_broken; rm app/__a6_broken.ts (expect lint fail, exit 1)",
+      "exit_code": 1,
+      "evidence": ".orchestration/evidence/F03/repair2/03_partial_runs.log",
+      "environment": "local container (worktree scratchpad/wt/integration at b0bc6cf; tokens withheld; no provider, no external side effect)"
+    },
+    {
+      "id": "F03-PARTIAL-C",
+      "command": "cd /tmp/claude-0/-home-user/bb8d4187-6ae8-587b-a816-8153faeea853/scratchpad/wt/integration && env -u GH_TOKEN -u GITHUB_TOKEN node tests/baseline/run.mjs --python /tmp/claude-0/-home-user/bb8d4187-6ae8-587b-a816-8153faeea853/scratchpad/venv-f02/bin/python --only contracts_ajv --out /tmp/claude-0/-home-user/bb8d4187-6ae8-587b-a816-8153faeea853/scratchpad/f03r2/partial/c_only_contracts_ajv (expect run, exit 0)",
+      "exit_code": 0,
+      "evidence": ".orchestration/evidence/F03/repair2/03_partial_runs.log",
+      "environment": "local container (worktree scratchpad/wt/integration at b0bc6cf; tokens withheld; no provider, no external side effect)"
+    },
+    {
+      "id": "F03-PARTIAL-D",
+      "command": "cd /tmp/claude-0/-home-user/bb8d4187-6ae8-587b-a816-8153faeea853/scratchpad/wt/integration && env -u GH_TOKEN -u GITHUB_TOKEN node tests/baseline/run.mjs --python /tmp/claude-0/-home-user/bb8d4187-6ae8-587b-a816-8153faeea853/scratchpad/venv-f02/bin/python --skip npm_ci,build,test_e2e,base02_capture,contracts_validate_py --out /tmp/claude-0/-home-user/bb8d4187-6ae8-587b-a816-8153faeea853/scratchpad/f03r2/partial/d_skip_npm_ci (expect the other 10 steps to run, exit 0)",
+      "exit_code": 0,
+      "evidence": ".orchestration/evidence/F03/repair2/03_partial_runs.log",
+      "environment": "local container (worktree scratchpad/wt/integration at b0bc6cf; tokens withheld; no provider, no external side effect)"
+    },
+    {
+      "id": "F03-PARTIAL-E",
+      "command": "PLAYWRIGHT_CHROMIUM_EXECUTABLE=/opt/pw-browsers/chromium-1194/chrome-linux/chrome cd /tmp/claude-0/-home-user/bb8d4187-6ae8-587b-a816-8153faeea853/scratchpad/wt/integration && env -u GH_TOKEN -u GITHUB_TOKEN node tests/baseline/run.mjs --python /tmp/claude-0/-home-user/bb8d4187-6ae8-587b-a816-8153faeea853/scratchpad/venv-f02/bin/python --only test_e2e --out /tmp/claude-0/-home-user/bb8d4187-6ae8-587b-a816-8153faeea853/scratchpad/f03r2/partial/e_only_test_e2e (build excluded, never assumed; expect incomplete, exit 3)",
+      "exit_code": 3,
+      "evidence": ".orchestration/evidence/F03/repair2/03_partial_runs.log",
+      "environment": "local container (worktree scratchpad/wt/integration at b0bc6cf; tokens withheld; no provider, no external side effect)"
+    },
+    {
+      "id": "F03-PARTIAL-F2",
+      "command": "cd /tmp/claude-0/-home-user/bb8d4187-6ae8-587b-a816-8153faeea853/scratchpad/wt/integration && env -u GH_TOKEN -u GITHUB_TOKEN node tests/baseline/run.mjs --python /tmp/claude-0/-home-user/bb8d4187-6ae8-587b-a816-8153faeea853/scratchpad/venv-f02/bin/python --only lnt --out /tmp/claude-0/-home-user/bb8d4187-6ae8-587b-a816-8153faeea853/scratchpad/f03r2/partial/f2_only_typo (expect usage error, exit 2, nothing written)",
+      "exit_code": 2,
+      "evidence": ".orchestration/evidence/F03/repair2/03_partial_runs.log",
+      "environment": "local container (worktree scratchpad/wt/integration at b0bc6cf; tokens withheld; no provider, no external side effect)"
+    },
+    {
+      "id": "F03-PARTIAL-G",
+      "command": "mv node_modules/pngjs aside; cd /tmp/claude-0/-home-user/bb8d4187-6ae8-587b-a816-8153faeea853/scratchpad/wt/integration && env -u GH_TOKEN -u GITHUB_TOKEN node tests/baseline/run.mjs --python /tmp/claude-0/-home-user/bb8d4187-6ae8-587b-a816-8153faeea853/scratchpad/venv-f02/bin/python --only lint,test --out /tmp/claude-0/-home-user/bb8d4187-6ae8-587b-a816-8153faeea853/scratchpad/f03r2/partial/g_stale_node_modules; restore (expect not_run, exit 3)",
+      "exit_code": 3,
+      "evidence": ".orchestration/evidence/F03/repair2/03_partial_runs.log",
+      "environment": "local container (worktree scratchpad/wt/integration at b0bc6cf; tokens withheld; no provider, no external side effect)"
+    },
+    {
+      "id": "F03-PARTIAL-H",
+      "command": "PLAYWRIGHT_CHROMIUM_EXECUTABLE=/opt/pw-browsers/chromium-1194/chrome-linux/chrome cd /tmp/claude-0/-home-user/bb8d4187-6ae8-587b-a816-8153faeea853/scratchpad/wt/integration && env -u GH_TOKEN -u GITHUB_TOKEN node tests/baseline/run.mjs --python /tmp/claude-0/-home-user/bb8d4187-6ae8-587b-a816-8153faeea853/scratchpad/venv-f02/bin/python --only build,test_e2e --out /tmp/claude-0/-home-user/bb8d4187-6ae8-587b-a816-8153faeea853/scratchpad/f03r2/partial/h_only_build_e2e_substitute (expect pass, exit 0)",
+      "exit_code": 0,
+      "evidence": ".orchestration/evidence/F03/repair2/03_partial_runs.log",
+      "environment": "local container; browser = substitute Chromium 141.0.7390.37 (lockfile Playwright 1.63.0 expects rev 1243); no external side effect"
+    },
+    {
+      "id": "F03-PARTIAL-I",
+      "command": "env -u PLAYWRIGHT_CHROMIUM_EXECUTABLE cd /tmp/claude-0/-home-user/bb8d4187-6ae8-587b-a816-8153faeea853/scratchpad/wt/integration && env -u GH_TOKEN -u GITHUB_TOKEN node tests/baseline/run.mjs --python /tmp/claude-0/-home-user/bb8d4187-6ae8-587b-a816-8153faeea853/scratchpad/venv-f02/bin/python --only build,test_e2e --out /tmp/claude-0/-home-user/bb8d4187-6ae8-587b-a816-8153faeea853/scratchpad/f03r2/partial/i_default_browser (expect test_e2e blocked: 38 launch failures, exit 0)",
+      "exit_code": 0,
+      "evidence": ".orchestration/evidence/F03/repair2/03_partial_runs.log",
+      "environment": "local container; lockfile default browser (chromium rev 1243 absent) on purpose; no external side effect"
+    },
+    {
+      "id": "F03-PARTIAL-J",
+      "command": "sed 404->418 in tests/browser/responsive.spec.ts:89; env -u PLAYWRIGHT_CHROMIUM_EXECUTABLE cd /tmp/claude-0/-home-user/bb8d4187-6ae8-587b-a816-8153faeea853/scratchpad/wt/integration && env -u GH_TOKEN -u GITHUB_TOKEN node tests/baseline/run.mjs --python /tmp/claude-0/-home-user/bb8d4187-6ae8-587b-a816-8153faeea853/scratchpad/venv-f02/bin/python --only build,test_e2e --out /tmp/claude-0/-home-user/bb8d4187-6ae8-587b-a816-8153faeea853/scratchpad/f03r2/partial/j_default_browser_api_fail; git checkout -- tests/browser/responsive.spec.ts (expect test_e2e fail, exit 1)",
+      "exit_code": 1,
+      "evidence": ".orchestration/evidence/F03/repair2/03_partial_runs.log",
+      "environment": "local container; lockfile default browser (chromium rev 1243 absent) on purpose; no external side effect"
+    },
+    {
+      "id": "F03-SELFTEST-MUT",
+      "command": "bash (M1..M4: python edit of tests/baseline/runner-lib.mjs, node --test tests/baseline/runner.test.mjs, git checkout -- tests/baseline/runner-lib.mjs); each mutated self-test exits 1, the reverted one 13/13; control record exit",
+      "exit_code": 0,
+      "evidence": ".orchestration/evidence/F03/repair2/05_selftest_mutations.log",
+      "environment": "local container (worktree scratchpad/wt/integration at b0bc6cf; tokens withheld; no provider, no external side effect)"
+    },
+    {
+      "id": "F03-CMP-NC2",
+      "command": "node tests/baseline/compare-screens.mjs on scratch copies of base02/before/en-meeting-390 (empty/empty exit 1; R+3 pixel within_threshold exit 0; 10x10 block changed exit 1; missing after exit 1; identical exit 0); last control's exit",
+      "exit_code": 0,
+      "evidence": ".orchestration/evidence/F03/repair2/04_compare_screens_controls.log",
+      "environment": "local container (worktree scratchpad/wt/integration at b0bc6cf; tokens withheld; no provider, no external side effect)"
+    },
+    {
+      "id": "BASE02-RECHECK",
+      "command": "node tests/baseline/compare-screens.mjs --before /home/user/bill/.orchestration/evidence/F03/base02/before --after /tmp/claude-0/-home-user/bb8d4187-6ae8-587b-a816-8153faeea853/scratchpad/f03r2/suite-full/base02 --diff /home/user/bill/.orchestration/evidence/F03/repair2/base02-diff-codex-vs-b0bc6cf (24/24 identical, 24/24 byte-identical, 0 record differences)",
+      "exit_code": 0,
+      "evidence": ".orchestration/evidence/F03/repair2/02_base02_codex_before_vs_b0bc6cf.log",
+      "environment": "local container; browser = substitute Chromium 141.0.7390.37 (lockfile Playwright 1.63.0 expects rev 1243); no external side effect"
+    },
+    {
+      "id": "F03-TRIAL-MERGES",
+      "command": "git merge --no-commit --no-ff <branch>; git merge --abort (throwaway detached worktree scratchpad/wt/f03-trial at 66cce52 and at 1316ebe; guide, presentation, homepage, cb3becf); wrapper exit recorded, per-merge exits inside the log",
+      "exit_code": 0,
+      "evidence": ".orchestration/evidence/F03/reconcile/02_trial_merges.log",
+      "environment": "local container (worktree scratchpad/wt/integration at 5545c2a, attempt 1; tokens withheld; no provider, no external side effect)"
+    },
+    {
+      "id": "F03-MERGE-GUIDE",
+      "command": "git merge --no-ff -F msg1.txt origin/guide/pre-retirement-guide (-> 1316ebe10fe9ff753c3ce42151018ae3cebcc163)",
+      "exit_code": 0,
+      "evidence": ".orchestration/evidence/F03/reconcile/03_merges.log",
+      "environment": "local container (worktree scratchpad/wt/integration at 5545c2a, attempt 1; tokens withheld; no provider, no external side effect)"
+    },
+    {
+      "id": "F03-MERGE-ORCH",
+      "command": "git merge --no-ff -F msg2.txt cb3becf25ed042b977d4864ae71e74d13829320f (-> 67ba636cee04e8b0839d9c7b028a77d2791e32ff)",
+      "exit_code": 0,
+      "evidence": ".orchestration/evidence/F03/reconcile/03_merges.log",
+      "environment": "local container (worktree scratchpad/wt/integration at 5545c2a, attempt 1; tokens withheld; no provider, no external side effect)"
+    },
+    {
+      "id": "F03-PREEXIST-CX18",
+      "command": "git checkout --detach cb3becf (throwaway worktree) && PYTHONDONTWRITEBYTECODE=1 /tmp/claude-0/-home-user/bb8d4187-6ae8-587b-a816-8153faeea853/scratchpad/venv-f02/bin/python .orchestration/contracts/validate.py",
+      "exit_code": 1,
+      "evidence": ".orchestration/evidence/F03/suite/preexisting_validate_py_at_cb3becf.log",
+      "environment": "local container (worktree scratchpad/wt/integration at 5545c2a, attempt 1; tokens withheld; no provider, no external side effect)"
+    },
+    {
+      "id": "F03-CONTRACTS-NC",
+      "command": "bash /tmp/claude-0/-home-user/bb8d4187-6ae8-587b-a816-8153faeea853/scratchpad/f03/nc.sh (NC-A..D and NC-F on scratch copies via BASELINE_CONTRACTS_DIR; each expected exit 1 and got exit 1; NC-E void, NC-E2 explained, see log); wrapper exit",
+      "exit_code": 0,
+      "evidence": ".orchestration/evidence/F03/suite/contracts_negative_controls.log",
+      "environment": "local container (worktree scratchpad/wt/integration at 5545c2a, attempt 1; tokens withheld; no provider, no external side effect)"
+    },
+    {
+      "id": "F03-CONTRACTS-F02A",
+      "command": "BASELINE_CONTRACTS_DIR=/home/user/bill/.orchestration/contracts node --import tsx --test tests/baseline/contracts.test.ts (informative: main path with in-flight F02a fixtures; 244/244)",
+      "exit_code": 0,
+      "evidence": ".orchestration/evidence/F03/suite/04_contracts_ajv_on_main_path_inflight_F02a.log",
+      "environment": "local container (worktree scratchpad/wt/integration at 5545c2a, attempt 1; tokens withheld; no provider, no external side effect)"
+    },
+    {
+      "id": "F03-GUIDE-BUILD",
+      "command": "PLAYWRIGHT_CHROMIUM_EXECUTABLE=/opt/pw-browsers/chromium-1194/chrome-linux/chrome npm run guide (integration 5545c2a; 4 PDFs, 32 pages each as self-reported)",
+      "exit_code": 0,
+      "evidence": ".orchestration/evidence/F03/suite/03_guide_generator_integration.log",
+      "environment": "local container; browser = substitute Chromium 141.0.7390.37 (lockfile Playwright 1.63.0 expects rev 1243); no external side effect"
+    },
+    {
+      "id": "BASE02-before-build",
+      "command": "cd scratchpad/wt/base01-codex (66cce52) && env -u GH_TOKEN -u GITHUB_TOKEN NEXT_TELEMETRY_DISABLED=1 npm run build",
+      "exit_code": 0,
+      "evidence": ".orchestration/evidence/F03/base02/before_build.log",
+      "environment": "local container (worktree scratchpad/wt/integration at 5545c2a, attempt 1; tokens withheld; no provider, no external side effect)"
+    },
+    {
+      "id": "BASE02-before",
+      "command": "cd /tmp/claude-0/-home-user/bb8d4187-6ae8-587b-a816-8153faeea853/scratchpad/wt/integration && env -u GH_TOKEN -u GITHUB_TOKEN PLAYWRIGHT_CHROMIUM_EXECUTABLE=/opt/pw-browsers/chromium-1194/chrome-linux/chrome BASE02_APP_DIR=/tmp/claude-0/-home-user/bb8d4187-6ae8-587b-a816-8153faeea853/scratchpad/wt/base01-codex BASE02_OUT=/home/user/bill/.orchestration/evidence/F03/base02/before npx playwright test -c tests/baseline/playwright.baseline.config.ts (49 passed)",
+      "exit_code": 0,
+      "evidence": ".orchestration/evidence/F03/base02/before_capture.log",
+      "environment": "local container; browser = substitute Chromium 141.0.7390.37 (lockfile Playwright 1.63.0 expects rev 1243); no external side effect"
+    },
+    {
+      "id": "BASE02-after",
+      "command": "cd /tmp/claude-0/-home-user/bb8d4187-6ae8-587b-a816-8153faeea853/scratchpad/wt/integration && env -u GH_TOKEN -u GITHUB_TOKEN PLAYWRIGHT_CHROMIUM_EXECUTABLE=/opt/pw-browsers/chromium-1194/chrome-linux/chrome BASE02_OUT=/home/user/bill/.orchestration/evidence/F03/base02/after npx playwright test -c tests/baseline/playwright.baseline.config.ts (49 passed)",
+      "exit_code": 0,
+      "evidence": ".orchestration/evidence/F03/base02/after_capture.log",
+      "environment": "local container; browser = substitute Chromium 141.0.7390.37 (lockfile Playwright 1.63.0 expects rev 1243); no external side effect"
+    },
+    {
+      "id": "BASE02-compare",
+      "command": "node tests/baseline/compare-screens.mjs --before /home/user/bill/.orchestration/evidence/F03/base02/before --after /home/user/bill/.orchestration/evidence/F03/base02/after --diff /home/user/bill/.orchestration/evidence/F03/base02/diff (24/24 identical, 0 record differences)",
+      "exit_code": 0,
+      "evidence": ".orchestration/evidence/F03/base02/compare_before_after.log",
+      "environment": "local container; browser = substitute Chromium 141.0.7390.37 (lockfile Playwright 1.63.0 expects rev 1243); no external side effect"
+    },
+    {
+      "id": "BASE02-determinism",
+      "command": "node tests/baseline/compare-screens.mjs --before /tmp/claude-0/-home-user/bb8d4187-6ae8-587b-a816-8153faeea853/scratchpad/f03/suite-integration/base02 --after /home/user/bill/.orchestration/evidence/F03/base02/after --diff /tmp/claude-0/-home-user/bb8d4187-6ae8-587b-a816-8153faeea853/scratchpad/f03/determinism-diff (24/24 identical)",
+      "exit_code": 0,
+      "evidence": ".orchestration/evidence/F03/base02/compare_determinism_suite_vs_after.log",
+      "environment": "local container; browser = substitute Chromium 141.0.7390.37 (lockfile Playwright 1.63.0 expects rev 1243); no external side effect"
+    },
+    {
+      "id": "BASE02-compare-NC",
+      "command": "mutate.mjs (40x40 block in en-meeting-390.png, injected console error in fr-home-768 record) then node tests/baseline/compare-screens.mjs (expected exit 1, got 1: 1 changed, 1 record difference); wrapper exit",
+      "exit_code": 0,
+      "evidence": ".orchestration/evidence/F03/base02/compare_negative_control.log",
+      "environment": "local container (worktree scratchpad/wt/integration at 5545c2a, attempt 1; tokens withheld; no provider, no external side effect)"
+    }
+  ],
+  "assumptions": [
+    "base_commit is the main-repo HEAD at dispatch (cb3becf, the orchestration record), which the integration branch merges as 67ba636; the integration branch itself starts at origin/codex/desktop-iphone-unified 66cce52046f535ddc1a90e6f94474877e375860d. result_commit b0bc6cf (repair attempt 2) is on the local, unpushed branch 'integration' (worktree scratchpad/wt/integration); its parent is the attempt-1 suite commit 5545c2aeb3249e19e5f328c86fa7d264c04ec0d2. Repair 2 added one commit and amended nothing.",
+    "changed_paths is base_commit..result_commit (git diff --name-only cb3becf b0bc6cf; 54 paths outside .orchestration/, guide/ and tests/baseline/ folded into directories) plus the untracked main-path files. 24 of those paths (app/[lang]/layout.tsx, app/api/guide/route.ts, app/features.css, app/ink-hiker.css, app/responsive.css, components/features.tsx, components/ink/hiker.tsx, components/journey/ride-motion.tsx, components/journey/world.tsx, components/pages.tsx, components/question-carousel.tsx, content/guides/retirement-review-en.pdf, docs/RESPONSIVE-REVIEW.md, eslint.config.mjs, lib/copy.ts, lib/features.ts, lib/ink-files.json, next.config.ts, public/assets/ink/hiker.7cb9a1198d.svg, public/assets/retirement-guide-cover.jpg, scripts/build-ink.tsx, tests/browser/responsive.spec.ts, tests/browser/site.spec.ts, tsconfig.json) are codex's own human-authored changes against main 77de3bd, which the integration branch carries because it starts from codex (the baseline choice, D-073); F03 did not edit them. F03 introduced guide/, scripts/ink-sheet.tsx and .gitignore (clean guide merge 1316ebe), package.json, package-lock.json and tests/baseline/ (A6 F03-A6-P3-3).",
+    "tests/baseline/*, package.json and package-lock.json artifact hashes are of the blobs in result_commit b0bc6cf (package.json and package-lock.json are unchanged since 5545c2a); .orchestration/baseline.md and evidence hashes are of the files under /home/user/bill (untracked there, for A0 to carry into integration).",
+    "guide/, scripts/ink-sheet.tsx and .gitignore changed on integration only through the clean merge of guide/pre-retirement-guide 749b360 (merge 1316ebe); .orchestration/ arrived through the clean merge of cb3becf (merge 67ba636). No conflict was resolved.",
+    "Attempt 1 created the suite commit as 6b095fbc8033b51cbe92f044f310f5d8c27659cd and amended it before any push into 5545c2a to keep the suite in one commit; the run against 6b095fb is kept in .orchestration/evidence/F03/suite/run1-6b095fb/.",
+    "Repair 2 fixes A6 F03-A6-P2-1: an excluded npm_ci counts as met only when node_modules verifiably equals the lockfile install; an excluded build is never assumed; a requested step left not_run makes the run 'incomplete' with exit 3; unknown step ids, unknown options and flags without a value exit 2 before anything runs. It also fixes P3-1 (comparator), P3-3 (changed_paths), P3-4 (README formatting) and the e2e-classifier observation. P3-2 is a proposal for A0 (baseline.md section 7, P5): .prettierignore is outside F03's locks.",
+    "Suite overall result is fail (exit 1) solely because contracts_validate_py fails CX-18 (tasks.json lists F02a; the worker-handoff task_id pattern does not accept it). The identical failure reproduces on a clean checkout of cb3becf, so it is pre-existing in the orchestration record, not introduced by F03. Not fixed: a contract-set change is A0's (contracts README section 3).",
+    "Every browser result (test_e2e 41/41, BASE02 49/49, the partial-run control H) ran under substitute Chromium 141.0.7390.37 because Playwright 1.63.0's chromium rev 1243 is not installed and cannot be downloaded (D-058, TB-02). Controls I and J deliberately used the absent default browser to test the blocked/fail classifier.",
+    "GH_TOKEN and GITHUB_TOKEN are present in this container environment; they were withheld (env -u) from every run and never read or logged. protections_check is therefore blocked, not failed.",
+    "Network use was read-only package retrieval from registry.npmjs.org (npm ci inside the suite runs; in attempt 1 also npm view and npx npm@11.20.0 install); no other outbound request, publication, message or provider call was made.",
+    "BASE02 captures use prefers-reduced-motion so two captures of one build are pixel-identical (determinism control 24/24); motion states are covered only by test:e2e. Repair 2 re-checked the codex 'before' against the b0bc6cf suite capture: 24/24 identical and byte-identical.",
+    "Worktree mutations used as negative controls (app/__a6_broken.ts, node_modules/pngjs moved aside, the 404->418 edit, runner-lib.mjs mutations M1-M4) were reverted; the worktree ends clean at b0bc6cf (next-env.d.ts, rewritten by every build, was restored with git checkout).",
+    "The Ajv contract test asserts the 10 semantic/harness-layer invalid examples are schema-valid (contract design, validate.py S3); their harness rejection is checked by validate.py, not re-implemented in JS.",
+    "validate.py --handoff deep check was not run as a pass criterion: no single tree holds both the result-commit files and the main-path evidence until A0 carries baseline.md, the handoff and evidence into integration. Schema validation of this handoff was run with Ajv and with validate.py's schema-only logic.",
+    "Guide generator page counts (32 per PDF) were self-reported by guide/build.tsx in attempt 1; A6 confirmed them independently (reviews/F03.md)."
+  ],
+  "blocked_checks": [
+    {
+      "check": "protections:check against arnaudverdier8-svg/bill",
+      "status": "blocked",
+      "reason": "gh CLI not installed and GITHUB_REPOSITORY/token deliberately not provided; branch protection is known to be off (TB-12), so a real run would fail",
+      "owner": "Arnaud (HB-11), A3"
+    },
+    {
+      "check": "CI-equivalent browser run (Playwright 1.63.0 with chromium rev 1243) of test:e2e and BASE02",
+      "status": "blocked",
+      "reason": "rev 1243 not installed; Playwright CDN returns 403; only Chromium 141 substitute available",
+      "owner": "A3 / Arnaud (environment network)"
+    },
+    {
+      "check": "GitHub Actions run of verify.yml and of tests/baseline/run.mjs (including its exit codes in a CI job)",
+      "status": "not_run",
+      "reason": "no Actions access from this session; CI changes are proposals only (baseline.md section 7)",
+      "owner": "A0"
+    },
+    {
+      "check": "Build/test of claude/bill-centered-homepage and claude/bill-presentation-video as part of the baseline",
+      "status": "not_run",
+      "reason": "deliberately not merged: homepage waits for G0 HB-03, presentation for Arnaud's HB-12 (Q10)",
+      "owner": "Arnaud"
+    },
+    {
+      "check": "validate.py --handoff deep check of handoffs/F03.json",
+      "status": "not_run",
+      "reason": "artifacts span result commit b0bc6cf and untracked main-path files; passes only after A0 carries baseline.md, handoff and evidence into integration",
+      "owner": "A0"
+    },
+    {
+      "check": "Independent A6 verification of F03 repair attempt 2",
+      "status": "not_run",
+      "reason": "requires A6 in a fresh context",
+      "owner": "A6"
+    }
+  ],
+  "human_approvals_required": [
+    "G0: canonical branch and design direction (HB-03): codex-based integration, the Bill-centred homepage branch, or a manual merge of hero, navigation and the 3 drawings homepage deletes; also whether PR #1 is retargeted or closed"
+  ],
+  "external_actions_taken": [],
+  "metered_cost": {
+    "amount": null,
+    "currency": null,
+    "status": "unavailable-not-estimated"
+  },
+  "status": "submitted"
+}

@@ -1,0 +1,30 @@
+### command: git -C /tmp/claude-0/-home-user/bb8d4187-6ae8-587b-a816-8153faeea853/scratchpad/wt/a6-f03-1 status --porcelain; git -C /tmp/claude-0/-home-user/bb8d4187-6ae8-587b-a816-8153faeea853/scratchpad/wt/a6-f03-1 rev-parse HEAD; git worktree remove --force /tmp/claude-0/-home-user/bb8d4187-6ae8-587b-a816-8153faeea853/scratchpad/wt/a6-f03-1 && echo removed; git worktree list; git rev-parse integration; git branch --list integration -vv; git status --porcelain
+### cwd: /home/user/bill
+### start: 2026-09-30T09:59:11Z
+5545c2aeb3249e19e5f328c86fa7d264c04ec0d2
+removed
+/home/user/bill                                                                                        cb3becf [claude/orchestration-foundation]
+/tmp/claude-0/-home-user/bb8d4187-6ae8-587b-a816-8153faeea853/scratchpad/wt/base01-codex               66cce52 (detached HEAD)
+/tmp/claude-0/-home-user/bb8d4187-6ae8-587b-a816-8153faeea853/scratchpad/wt/base01-diag-main-filmdeps  77de3bd (detached HEAD)
+/tmp/claude-0/-home-user/bb8d4187-6ae8-587b-a816-8153faeea853/scratchpad/wt/base01-guide               749b360 (detached HEAD)
+/tmp/claude-0/-home-user/bb8d4187-6ae8-587b-a816-8153faeea853/scratchpad/wt/base01-homepage            d63aabd (detached HEAD)
+/tmp/claude-0/-home-user/bb8d4187-6ae8-587b-a816-8153faeea853/scratchpad/wt/base01-main                77de3bd (detached HEAD)
+/tmp/claude-0/-home-user/bb8d4187-6ae8-587b-a816-8153faeea853/scratchpad/wt/base01-video               fc00445 (detached HEAD)
+/tmp/claude-0/-home-user/bb8d4187-6ae8-587b-a816-8153faeea853/scratchpad/wt/integration                5545c2a [integration]
+5545c2aeb3249e19e5f328c86fa7d264c04ec0d2
++ integration 5545c2a (/tmp/claude-0/-home-user/bb8d4187-6ae8-587b-a816-8153faeea853/scratchpad/wt/integration) Add reproducible baseline check suite (F03)
+ M .orchestration/contracts/fixtures/workshop/index.json
+?? .orchestration/baseline.md
+?? .orchestration/contracts/fixtures/workshop/WM37-today-dollar-pre-start-factor.json
+?? .orchestration/contracts/fixtures/workshop/WM38-joint-owner-participant-age.json
+?? .orchestration/contracts/fixtures/workshop/WM39-group-total-from-exact-values.json
+?? .orchestration/contracts/fixtures/workshop/WM40-today-dollar-display-from-exact-gap.json
+?? .orchestration/evidence/F02a/
+?? .orchestration/evidence/F03/
+?? .orchestration/handoffs/F02a.json
+?? .orchestration/handoffs/F03.json
+?? .orchestration/reviews/F02a-attempt2.md
+?? .orchestration/reviews/F02a.md
+### exit: 0
+### wall_s: 6.378153777
+

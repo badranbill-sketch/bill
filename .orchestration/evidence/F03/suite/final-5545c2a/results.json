@@ -1,0 +1,205 @@
+{
+  "suite": "tests/baseline/run.mjs",
+  "task": "F03",
+  "started_at": "2026-09-30T09:29:02.359Z",
+  "finished_at": "2026-09-30T09:33:21.409Z",
+  "root": "/tmp/claude-0/-home-user/bb8d4187-6ae8-587b-a816-8153faeea853/scratchpad/wt/integration",
+  "out": "/tmp/claude-0/-home-user/bb8d4187-6ae8-587b-a816-8153faeea853/scratchpad/f03/suite-integration",
+  "git_before": {
+    "head": "5545c2aeb3249e19e5f328c86fa7d264c04ec0d2",
+    "branch": "integration",
+    "status": []
+  },
+  "git_after": {
+    "head": "5545c2aeb3249e19e5f328c86fa7d264c04ec0d2",
+    "branch": "integration",
+    "status": [
+      " M next-env.d.ts"
+    ]
+  },
+  "dirtied_by_suite": [
+    " M next-env.d.ts"
+  ],
+  "environment": {
+    "node": "v22.22.2",
+    "npm": "10.9.7",
+    "python_for_validate": "/tmp/claude-0/-home-user/bb8d4187-6ae8-587b-a816-8153faeea853/scratchpad/venv-f02/bin/python",
+    "python_version": "Python 3.11.15",
+    "os": "Linux 6.18.44-fc-v50 x64",
+    "browser": {
+      "mode": "substitute",
+      "executable": "/opt/pw-browsers/chromium-1194/chrome-linux/chrome",
+      "version": "Chromium 141.0.7390.37",
+      "expected": "Playwright 1.63.0 expects chromium rev 1243 (153.0.8010.12)"
+    },
+    "gh_cli_installed": false,
+    "env_present": {
+      "GITHUB_REPOSITORY": false,
+      "GH_TOKEN": false,
+      "GITHUB_TOKEN": false,
+      "CONTENT_REVIEWERS": false,
+      "FIRM_REVIEWERS": false,
+      "PLAYWRIGHT_CHROMIUM_EXECUTABLE": true,
+      "CI": false
+    }
+  },
+  "steps": [
+    {
+      "id": "npm_ci",
+      "title": "Clean install (verify.yml)",
+      "command": "npm ci",
+      "log": "01_npm_ci.log",
+      "exit_code": 0,
+      "seconds": 17.38,
+      "started_at": "2026-09-30T09:29:02.550Z",
+      "classification": "pass"
+    },
+    {
+      "id": "lint",
+      "title": "ESLint (verify.yml)",
+      "command": "npm run lint",
+      "log": "02_lint.log",
+      "exit_code": 0,
+      "seconds": 15.64,
+      "started_at": "2026-09-30T09:29:19.937Z",
+      "classification": "pass"
+    },
+    {
+      "id": "test",
+      "title": "Unit tests (verify.yml)",
+      "command": "npm test",
+      "log": "03_test.log",
+      "exit_code": 0,
+      "seconds": 0.78,
+      "started_at": "2026-09-30T09:29:35.575Z",
+      "classification": "pass",
+      "note": "node:test 13/13 passed, 0 failed"
+    },
+    {
+      "id": "typecheck",
+      "title": "TypeScript before build",
+      "command": "npm run typecheck",
+      "log": "04_typecheck.log",
+      "exit_code": 0,
+      "seconds": 6.93,
+      "started_at": "2026-09-30T09:29:36.360Z",
+      "classification": "pass"
+    },
+    {
+      "id": "build",
+      "title": "Production build (verify.yml)",
+      "command": "npm run build",
+      "log": "05_build.log",
+      "exit_code": 0,
+      "seconds": 19.58,
+      "started_at": "2026-09-30T09:29:43.342Z",
+      "classification": "pass"
+    },
+    {
+      "id": "typecheck_after_build",
+      "title": "TypeScript after build (verify.yml order)",
+      "command": "npm run typecheck",
+      "log": "06_typecheck_after_build.log",
+      "exit_code": 0,
+      "seconds": 7.46,
+      "started_at": "2026-09-30T09:30:02.929Z",
+      "classification": "pass"
+    },
+    {
+      "id": "protections_check",
+      "title": "Branch-protection audit (scripts/protections.ts)",
+      "command": "npm run protections:check",
+      "log": "07_protections_check.log",
+      "exit_code": 1,
+      "seconds": 0.49,
+      "started_at": "2026-09-30T09:30:10.391Z",
+      "classification": "blocked",
+      "reason": "GITHUB_REPOSITORY is not set; the audit needs the repository name and an authenticated gh CLI (gh is also not installed here)"
+    },
+    {
+      "id": "launch_check",
+      "title": "Strict launch guard (npm run launch:check)",
+      "command": "npm run launch:check",
+      "log": "08_launch_check.log",
+      "exit_code": 1,
+      "seconds": 0.55,
+      "started_at": "2026-09-30T09:30:10.884Z",
+      "classification": "expected_fail_by_design",
+      "citation": "LAUNCH-CHECKLIST.md:3 (\"npm run launch:check intentionally fails for the unresolved approval categories\"); .orchestration/decisions.md D-061",
+      "note": "blocked only by 8 approval flag(s) of lib/business.ts: businessDetails, serviceScope, qualificationsAndAffiliation, portraitRights, websiteCopy, privacyPolicy, legalNotices, contactOperations"
+    },
+    {
+      "id": "verify_publication",
+      "title": "Hash-bound publication check (verify.yml)",
+      "command": "node --import tsx scripts/verify-publication.ts",
+      "log": "09_verify_publication.log",
+      "exit_code": 0,
+      "seconds": 0.44,
+      "started_at": "2026-09-30T09:30:11.728Z",
+      "classification": "pass",
+      "note": "vacuous: 0 articles have status=published, so no GitHub API call is made"
+    },
+    {
+      "id": "test_e2e",
+      "title": "Browser tests (verify.yml, playwright.config.ts)",
+      "command": "npm run test:e2e",
+      "log": "10_test_e2e.log",
+      "exit_code": 0,
+      "seconds": 86.47,
+      "started_at": "2026-09-30T09:30:12.628Z",
+      "classification": "pass",
+      "note": "playwright: 41 passed; under substitute Chromium 141.0.7390.37 via PLAYWRIGHT_CHROMIUM_EXECUTABLE; Playwright 1.63.0 expects chromium rev 1243 (153.0.8010.12)"
+    },
+    {
+      "id": "contracts_ajv",
+      "title": "Contract examples and fixtures, Ajv 2020-12 (npm run test:contracts)",
+      "command": "npm run test:contracts",
+      "log": "11_contracts_ajv.log",
+      "exit_code": 0,
+      "seconds": 1.77,
+      "started_at": "2026-09-30T09:31:39.142Z",
+      "classification": "pass",
+      "note": "node:test 240/240 passed, 0 failed"
+    },
+    {
+      "id": "contracts_validate_py",
+      "title": "Contract harness .orchestration/contracts/validate.py",
+      "command": "/tmp/claude-0/-home-user/bb8d4187-6ae8-587b-a816-8153faeea853/scratchpad/venv-f02/bin/python .orchestration/contracts/validate.py",
+      "log": "12_contracts_validate_py.log",
+      "exit_code": 1,
+      "seconds": 4.63,
+      "started_at": "2026-09-30T09:31:41.048Z",
+      "classification": "fail",
+      "note": "pass: 350  fail: 1  known: 16  info: 2 | - CX-18 check IDs, fixture coverage and the handoff task_id pattern match the catalog and tasks.json [task_id pattern accepts exactly 62 IDs] :: [\"worker-handoff task_id pattern vs tasks.json: ['F02a']\"]"
+    },
+    {
+      "id": "build_graph_check",
+      "title": "Task graph and acceptance catalog regenerate unchanged",
+      "command": "python3 .orchestration/scripts/build_graph.py --check",
+      "log": "13_build_graph_check.log",
+      "exit_code": 0,
+      "seconds": 0.04,
+      "started_at": "2026-09-30T09:31:45.691Z",
+      "classification": "pass"
+    },
+    {
+      "id": "base02_capture",
+      "title": "BASE02 screenshots, console and status capture (npm run test:base02)",
+      "command": "npm run test:base02",
+      "log": "14_base02_capture.log",
+      "exit_code": 0,
+      "seconds": 95.62,
+      "started_at": "2026-09-30T09:31:45.737Z",
+      "classification": "pass",
+      "note": "playwright: 49 passed; under substitute Chromium 141.0.7390.37 via PLAYWRIGHT_CHROMIUM_EXECUTABLE; Playwright 1.63.0 expects chromium rev 1243 (153.0.8010.12)"
+    }
+  ],
+  "summary": {
+    "pass": 11,
+    "blocked": 1,
+    "expected_fail_by_design": 1,
+    "fail": 1
+  },
+  "overall": "fail",
+  "exit_code": 1
+}

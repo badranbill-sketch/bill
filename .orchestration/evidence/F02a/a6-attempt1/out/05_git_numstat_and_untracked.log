@@ -1,0 +1,9 @@
+$ sh -c git diff --numstat HEAD -- .orchestration/contracts; echo "untracked:"; git ls-files --others --exclude-standard -- .orchestration/contracts
+# utc 2026-09-30T09:15:46Z; cwd /home/user/bill
+42	0	.orchestration/contracts/fixtures/workshop/index.json
+untracked:
+.orchestration/contracts/fixtures/workshop/WM37-today-dollar-pre-start-factor.json
+.orchestration/contracts/fixtures/workshop/WM38-joint-owner-participant-age.json
+.orchestration/contracts/fixtures/workshop/WM39-group-total-from-exact-values.json
+.orchestration/contracts/fixtures/workshop/WM40-today-dollar-display-from-exact-gap.json
+[exit 0]

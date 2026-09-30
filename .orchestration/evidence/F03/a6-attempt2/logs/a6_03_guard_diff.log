@@ -1,0 +1,45 @@
+### command: git diff --stat origin/codex/desktop-iphone-unified..integration -- package.json .github scripts proxy.ts tests/browser eslint.config.mjs tsconfig.json playwright.config.ts next.config.ts; echo ======; git diff origin/codex/desktop-iphone-unified..integration -- package.json .github proxy.ts tests/browser eslint.config.mjs tsconfig.json playwright.config.ts next.config.ts; echo ======; git diff --name-status origin/codex/desktop-iphone-unified..integration -- scripts
+### cwd: /home/user/bill
+### start: 2026-09-30T10:29:10Z
+--- output ---
+ package.json          | 10 +++++++-
+ scripts/ink-sheet.tsx | 65 +++++++++++++++++++++++++++++++++++++++++++++++++++
+ 2 files changed, 74 insertions(+), 1 deletion(-)
+======
+diff --git a/package.json b/package.json
+index bf5917e..d57adef 100644
+--- a/package.json
++++ b/package.json
+@@ -15,7 +15,11 @@
+     "content": "node --import tsx scripts/content.ts",
+     "launch:check": "node --import tsx scripts/launch.ts --strict",
+     "protections:check": "node --import tsx scripts/protections.ts",
+-    "format": "prettier --write ."
++    "format": "prettier --write .",
++    "guide": "node --import tsx guide/build.tsx",
++    "test:baseline": "node tests/baseline/run.mjs",
++    "test:contracts": "node --import tsx --test tests/baseline/contracts.test.ts",
++    "test:base02": "playwright test --config tests/baseline/playwright.baseline.config.ts"
+   },
+   "dependencies": {
+     "@fontsource/caveat": "^5.3.0",
+@@ -35,9 +39,13 @@
+     "@types/react": "^19",
+     "@types/react-dom": "^19",
+     "agent-browser": "latest",
++    "ajv": "8.20.0",
++    "ajv-formats": "3.0.1",
+     "eslint": "^9.39.0",
+     "eslint-config-next": "16.3.6",
+     "opentype.js": "^2.0.0",
++    "pixelmatch": "7.2.0",
++    "pngjs": "7.0.0",
+     "prettier": "^3.9.9",
+     "tsx": "^4.21.0",
+     "typescript": "^5.9.3"
+======
+A	scripts/ink-sheet.tsx
+--- end ---
+### exit: 0
+### wall_s: 0.02
+

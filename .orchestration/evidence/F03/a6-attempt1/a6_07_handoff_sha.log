@@ -1,0 +1,65 @@
+### command: python3 /tmp/claude-0/-home-user/bb8d4187-6ae8-587b-a816-8153faeea853/scratchpad/a6f03/sha_check.py
+### cwd: /home/user/bill
+### start: 2026-09-30T09:47:07Z
+OK  tests/baseline/run.mjs  blob 5545c2a:tests/baseline/run.mjs  claimed=6b715e6b4402344c got=6b715e6b4402344c
+OK  tests/baseline/contracts.test.ts  blob 5545c2a:tests/baseline/contracts.test.ts  claimed=c08132806a760c4e got=c08132806a760c4e
+OK  tests/baseline/screens.spec.ts  blob 5545c2a:tests/baseline/screens.spec.ts  claimed=c224d7518f3f092e got=c224d7518f3f092e
+OK  tests/baseline/playwright.baseline.config.ts  blob 5545c2a:tests/baseline/playwright.baseline.config.ts  claimed=d853eec570955677 got=d853eec570955677
+OK  tests/baseline/compare-screens.mjs  blob 5545c2a:tests/baseline/compare-screens.mjs  claimed=3f3e71fbeeec8c0c got=3f3e71fbeeec8c0c
+OK  tests/baseline/README.md  blob 5545c2a:tests/baseline/README.md  claimed=db1d0697d77d0718 got=db1d0697d77d0718
+OK  package.json  blob 5545c2a:package.json  claimed=ae7cb34b87910b3f got=ae7cb34b87910b3f
+OK  package-lock.json  blob 5545c2a:package-lock.json  claimed=a9deaa8d3cad35a5 got=a9deaa8d3cad35a5
+OK  .orchestration/baseline.md  worktree-file /home/user/bill/.orchestration/baseline.md  claimed=c0d614584a584780 got=c0d614584a584780
+OK  .orchestration/evidence/F03/suite/final-5545c2a/results.json  worktree-file /home/user/bill/.orchestration/evidence/F03/suite/final-5545c2a/results.json  claimed=7ad3d3ce3ac1af42 got=7ad3d3ce3ac1af42
+OK  .orchestration/evidence/F03/base02/diff/report.json  worktree-file /home/user/bill/.orchestration/evidence/F03/base02/diff/report.json  claimed=1598bbb8131de713 got=1598bbb8131de713
+OK  .orchestration/evidence/F03/base02/determinism_suite_vs_after.report.json  worktree-file /home/user/bill/.orchestration/evidence/F03/base02/determinism_suite_vs_after.report.json  claimed=9ae919e12558f319 got=9ae919e12558f319
+OK  .orchestration/evidence/F03/reconcile/02_trial_merges.log  worktree-file /home/user/bill/.orchestration/evidence/F03/reconcile/02_trial_merges.log  claimed=a399454ac65c97a2 got=a399454ac65c97a2
+OK  .orchestration/evidence/F03/reconcile/03_merges.log  worktree-file /home/user/bill/.orchestration/evidence/F03/reconcile/03_merges.log  claimed=0a96d5106fd42ef5 got=0a96d5106fd42ef5
+OK  .orchestration/evidence/F03/reconcile/04_preserved_branch_deltas.log  worktree-file /home/user/bill/.orchestration/evidence/F03/reconcile/04_preserved_branch_deltas.log  claimed=787cb0fce82be016 got=787cb0fce82be016
+OK  .orchestration/evidence/F03/reconcile/05_homepage_conflict_hunks.log  worktree-file /home/user/bill/.orchestration/evidence/F03/reconcile/05_homepage_conflict_hunks.log  claimed=fdcd2b5c937a2dfb got=fdcd2b5c937a2dfb
+OK  .orchestration/evidence/F03/reconcile/06_final_state.log  worktree-file /home/user/bill/.orchestration/evidence/F03/reconcile/06_final_state.log  claimed=39c9de4d876b23e5 got=39c9de4d876b23e5
+OK  .orchestration/evidence/F03/suite/00_dev_setup.log  worktree-file /home/user/bill/.orchestration/evidence/F03/suite/00_dev_setup.log  claimed=7aa3e61d8840d559 got=7aa3e61d8840d559
+OK  .orchestration/evidence/F03/suite/02_suite_integration_final.log  worktree-file /home/user/bill/.orchestration/evidence/F03/suite/02_suite_integration_final.log  claimed=47e00be0a4e7a9f0 got=47e00be0a4e7a9f0
+OK  .orchestration/evidence/F03/suite/preexisting_validate_py_at_cb3becf.log  worktree-file /home/user/bill/.orchestration/evidence/F03/suite/preexisting_validate_py_at_cb3becf.log  claimed=56ec07067758f286 got=56ec07067758f286
+OK  .orchestration/evidence/F03/suite/contracts_negative_controls.log  worktree-file /home/user/bill/.orchestration/evidence/F03/suite/contracts_negative_controls.log  claimed=aceb66b1c5847251 got=aceb66b1c5847251
+OK  .orchestration/evidence/F03/suite/03_guide_generator_integration.log  worktree-file /home/user/bill/.orchestration/evidence/F03/suite/03_guide_generator_integration.log  claimed=f8af9231149b6400 got=f8af9231149b6400
+OK  .orchestration/evidence/F03/base02/before_capture.log  worktree-file /home/user/bill/.orchestration/evidence/F03/base02/before_capture.log  claimed=4b61a68077d70e1a got=4b61a68077d70e1a
+OK  .orchestration/evidence/F03/base02/after_capture.log  worktree-file /home/user/bill/.orchestration/evidence/F03/base02/after_capture.log  claimed=5b7015365f693062 got=5b7015365f693062
+OK  .orchestration/evidence/F03/base02/compare_before_after.log  worktree-file /home/user/bill/.orchestration/evidence/F03/base02/compare_before_after.log  claimed=ed5a2a1a2d900a1e got=ed5a2a1a2d900a1e
+OK  .orchestration/evidence/F03/base02/compare_negative_control.log  worktree-file /home/user/bill/.orchestration/evidence/F03/base02/compare_negative_control.log  claimed=48e4a79b9ec912be got=48e4a79b9ec912be
+ok 26 bad 0
+base_commit cb3becf25ed042b977d4864ae71e74d13829320f commit
+result_commit 5545c2aeb3249e19e5f328c86fa7d264c04ec0d2 commit
+integration head 5545c2aeb3249e19e5f328c86fa7d264c04ec0d2
+main repo HEAD cb3becf25ed042b977d4864ae71e74d13829320f
+evidence exists F03-SUITE .orchestration/evidence/F03/suite/02_suite_integration_final.log
+evidence exists BASE01-npm-ci .orchestration/evidence/F03/suite/final-5545c2a/01_npm_ci.log
+evidence exists BASE01-lint .orchestration/evidence/F03/suite/final-5545c2a/02_lint.log
+evidence exists BASE01-test .orchestration/evidence/F03/suite/final-5545c2a/03_test.log
+evidence exists BASE01-typecheck .orchestration/evidence/F03/suite/final-5545c2a/04_typecheck.log
+evidence exists BASE01-build .orchestration/evidence/F03/suite/final-5545c2a/05_build.log
+evidence exists BASE01-typecheck-post .orchestration/evidence/F03/suite/final-5545c2a/06_typecheck_after_build.log
+evidence exists BASE01-protections .orchestration/evidence/F03/suite/final-5545c2a/07_protections_check.log
+evidence exists BASE01-launch .orchestration/evidence/F03/suite/final-5545c2a/08_launch_check.log
+evidence exists BASE01-verify-pub .orchestration/evidence/F03/suite/final-5545c2a/09_verify_publication.log
+evidence exists BASE01-e2e .orchestration/evidence/F03/suite/final-5545c2a/10_test_e2e.log
+evidence exists F03-CONTRACTS-AJV .orchestration/evidence/F03/suite/final-5545c2a/11_contracts_ajv.log
+evidence exists F03-VALIDATE-PY .orchestration/evidence/F03/suite/final-5545c2a/12_contracts_validate_py.log
+evidence exists F03-GRAPH-CHECK .orchestration/evidence/F03/suite/final-5545c2a/13_build_graph_check.log
+evidence exists BASE02-suite-capture .orchestration/evidence/F03/suite/final-5545c2a/14_base02_capture.log
+evidence exists F03-TRIAL-MERGES .orchestration/evidence/F03/reconcile/02_trial_merges.log
+evidence exists F03-MERGE-GUIDE .orchestration/evidence/F03/reconcile/03_merges.log
+evidence exists F03-MERGE-ORCH .orchestration/evidence/F03/reconcile/03_merges.log
+evidence exists F03-PREEXIST-CX18 .orchestration/evidence/F03/suite/preexisting_validate_py_at_cb3becf.log
+evidence exists F03-CONTRACTS-NC .orchestration/evidence/F03/suite/contracts_negative_controls.log
+evidence exists F03-CONTRACTS-F02A .orchestration/evidence/F03/suite/04_contracts_ajv_on_main_path_inflight_F02a.log
+evidence exists F03-GUIDE-BUILD .orchestration/evidence/F03/suite/03_guide_generator_integration.log
+evidence exists BASE02-before-build .orchestration/evidence/F03/base02/before_build.log
+evidence exists BASE02-before .orchestration/evidence/F03/base02/before_capture.log
+evidence exists BASE02-after .orchestration/evidence/F03/base02/after_capture.log
+evidence exists BASE02-compare .orchestration/evidence/F03/base02/compare_before_after.log
+evidence exists BASE02-determinism .orchestration/evidence/F03/base02/compare_determinism_suite_vs_after.log
+evidence exists BASE02-compare-NC .orchestration/evidence/F03/base02/compare_negative_control.log
+### exit: 0
+### wall_s: .088318323
+

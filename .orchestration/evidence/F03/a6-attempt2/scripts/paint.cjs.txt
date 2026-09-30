@@ -1,0 +1,4 @@
+const {PNG}=require(process.env.WT+'/node_modules/pngjs'); const fs=require('fs');
+const f=process.argv[2]; const img=PNG.sync.read(fs.readFileSync(f));
+for(let y=100;y<120;y++)for(let x=50;x<70;x++){const i=(y*img.width+x)*4; img.data[i]=255;img.data[i+1]=0;img.data[i+2]=0;img.data[i+3]=255;}
+fs.writeFileSync(f,PNG.sync.write(img)); console.log('painted 20x20 red block into',f);

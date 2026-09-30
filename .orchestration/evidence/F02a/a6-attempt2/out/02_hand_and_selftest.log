@@ -1,0 +1,90 @@
+$ /tmp/claude-0/-home-user/bb8d4187-6ae8-587b-a816-8153faeea853/scratchpad/venv-f02/bin/python /home/user/bill/.orchestration/evidence/F02a/a6-attempt2/hand_and_selftest.py /home/user/bill/.orchestration/contracts
+
+=== non-vacuity (perturb expected by 1 cent / flip a flag) ===
+WM37 gap+1: detected
+WM37 src+1: detected
+WM37 todaygap+1: detected
+WM37 flag: detected
+WM38 gap+1: detected
+WM38 src+1: detected
+WM38 todaygap+1: detected
+WM38 flag: detected
+WM39 gap+1: detected
+WM39 src+1: detected
+WM39 todaygap+1: detected
+WM39 flag: detected
+WM40 gap+1: detected
+WM40 src+1: detected
+WM40 todaygap+1: detected
+WM40 flag: detected
+
+=== WM37 hand closed forms (A=55, R=65 -> t_R=10, i=2%) ===
+OK  P1,t=10: 2925587 (fixture 2925587)
+OK  P1,t=11: 2925587 (fixture 2925587)
+OK  P1,t=12: 2925587 (fixture 2925587)
+OK  P1,t=13: 2925587 (fixture 2925587)
+OK  P1,t=14: 2925587 (fixture 2925587)
+OK  P3,t=10: 1392480 (fixture 1392480)
+OK  P3,t=11: 1406405 (fixture 1406405)
+OK  P3,t=12: 1420469 (fixture 1420469)
+OK  P3,t=13: 1434674 (fixture 1434674)
+OK  P3,t=14: 1449020 (fixture 1449020)
+OK  P2,t=12: 760945 (fixture 760945)
+OK  P2,t=13: 783773 (fixture 783773)
+OK  P2,t=14: 807287 (fixture 807287)
+OK  G,t=10: 2995900 (fixture 2995900)
+OK  G_today,t=10: 2457681 (fixture 2457681)
+OK  net group,t=10: 4318067 (fixture 4318067)
+OK  G,t=11: 3128254 (fixture 3128254)
+OK  G_today,t=11: 2515939 (fixture 2515939)
+OK  net group,t=11: 4331991 (fixture 4331991)
+OK  G,t=12: 2502450 (fixture 2502450)
+OK  G_today,t=12: 1973165 (fixture 1973165)
+OK  net group,t=12: 5107001 (fixture 5107001)
+OK  G,t=13: 2617606 (fixture 2617606)
+OK  G_today,t=13: 2023495 (fixture 2023495)
+OK  net group,t=13: 5144034 (fixture 5144034)
+OK  G,t=14: 2734979 (fixture 2734979)
+OK  G_today,t=14: 2072772 (fixture 2072772)
+OK  net group,t=14: 5181894 (fixture 5181894)
+faulty (1+q_j)^{s_j} reading, gap overstatement per year (cents):
+  t=10: fault gap 3588420, contract 2995900, +592520
+  t=11: fault gap 3721444, contract 3128254, +593190
+  t=12: fault gap 3001804, contract 2502450, +499354
+  t=13: fault gap 3114808, contract 2617606, +497202
+  t=14: fault gap 3229950, contract 2734979, +494971
+
+=== WM38 hand (A=60, partner 55, joint uses self) ===
+OK  G,t=2: 4200000 (fixture 4200000)
+OK  partner_age,t=2: 57 (fixture 57)
+OK  G,t=3: 4200000 (fixture 4200000)
+OK  partner_age,t=3: 58 (fixture 58)
+OK  G,t=4: 4800000 (fixture 4800000)
+OK  partner_age,t=4: 59 (fixture 59)
+OK  G,t=5: 3600000 (fixture 3600000)
+OK  partner_age,t=5: 60 (fixture 60)
+OK  G,t=6: 3600000 (fixture 3600000)
+OK  partner_age,t=6: 61 (fixture 61)
+OK  G,t=7: 3600000 (fixture 3600000)
+OK  partner_age,t=7: 62 (fixture 62)
+partner reading: s=10, e=9; window 2..7 => gaps [4200000, 4200000, 4200000, 4200000, 4200000, 4200000]; s=10 >= t_R+H=8 -> horizon_shorter_than_timeline raised
+
+=== WM39 hand (1,000,050 x 1.01 at t=1) ===
+OK  row t=1: 1010050 (fixture 1010050)
+OK  group t=1: 2020101 (fixture 2020101)
+OK  gap t=1: 1009899 (fixture 1009899)
+OK  row t=2: 1020151 (fixture 1020151)
+OK  group t=2: 2040302 (fixture 2040302)
+  rounded-rows reading t=1: group 2020100 (fixture 2020101)
+
+=== WM40 hand (2,000,001 x 1.015^t - 1,000,077; i=1.5%) ===
+OK  G,t=0: 999924 (fixture 999924)
+OK  G_today,t=0: 999924 (fixture 999924)
+OK  G,t=1: 1029924 (fixture 1029924)
+OK  G_today,t=1: 1014703 (fixture 1014703)
+OK  G,t=2: 1060374 (fixture 1060374)
+OK  G_today,t=2: 1029265 (fixture 1029265)
+  deflating the rounded gap at t=2: 1029264 (fixture 1029265)
+
+HAND/SELFTEST: PASS
+[exit 0]

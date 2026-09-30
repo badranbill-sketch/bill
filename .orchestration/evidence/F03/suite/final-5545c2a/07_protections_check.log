@@ -1,0 +1,25 @@
+# step: protections_check - Branch-protection audit (scripts/protections.ts)
+# command: npm run protections:check
+# cwd: /tmp/claude-0/-home-user/bb8d4187-6ae8-587b-a816-8153faeea853/scratchpad/wt/integration
+# started: 2026-09-30T09:30:10.391Z
+# env overrides: {"NEXT_TELEMETRY_DISABLED":"1"}
+
+
+> bill-badran@1.0.0 protections:check
+> node --import tsx scripts/protections.ts
+
+/tmp/claude-0/-home-user/bb8d4187-6ae8-587b-a816-8153faeea853/scratchpad/wt/integration/scripts/protections.ts:4
+  throw Error("Set GITHUB_REPOSITORY=owner/repo and authenticate gh.");
+        ^
+
+Error: Set GITHUB_REPOSITORY=owner/repo and authenticate gh.
+    at <anonymous> (/tmp/claude-0/-home-user/bb8d4187-6ae8-587b-a816-8153faeea853/scratchpad/wt/integration/scripts/protections.ts:4:9)
+    at ModuleJob.run (node:internal/modules/esm/module_job:343:25)
+    at async onImport.tracePromise.__proto__ (node:internal/modules/esm/loader:665:26)
+    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:117:5)
+
+Node.js v22.22.2
+
+# finished: 2026-09-30T09:30:10.877Z
+# exit: 1
+# seconds: 0.49

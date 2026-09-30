@@ -1,0 +1,19 @@
+$ /tmp/claude-0/-home-user/bb8d4187-6ae8-587b-a816-8153faeea853/scratchpad/venv-f02/bin/python .orchestration/contracts/validate.py --handoff .orchestration/handoffs/F02a.json
+# utc 2026-09-30T09:15:51Z; cwd /home/user/bill
+# F02 contract set validation (validate.py)
+utc_now: 2026-09-30T09:15:51Z
+python: 3.11.15  jsonschema: 4.26.0
+repo: /home/user/bill  branch: claude/orchestration-foundation  HEAD: cb3becf25ed042b977d4864ae71e74d13829320f
+contracts dir: /home/user/bill/.orchestration/contracts
+contract set version: 1.0  frozen for build on: 2026-09-30
+environment: local container; fixture evidence only (no browser, no network, no provider)
+
+## Handoff check: /home/user/bill/.orchestration/handoffs/F02a.json
+FAIL  F02a.json: schema-valid; base_commit = HEAD; 27 artifact hashes match; changed paths and 13 evidence paths exist :: ["schema pattern@/task_id: 'F02a' does not match '^(?:F0[0-3]|D0[0-2]|P0[0-5]|W0[0-4]|C(?:0[0-9]|1[01])|U0[0-5]|N(?:0[0-9]|10)|"]
+
+## Summary
+pass: 0  fail: 1  known: 0  info: 0
+unexpected results:
+  - F02a.json: schema-valid; base_commit = HEAD; 27 artifact hashes match; changed paths and 13 evidence paths exist :: ["schema pattern@/task_id: 'F02a' does not match '^(?:F0[0-3]|D0[0-2]|P0[0-5]|W0[0-4]|C(?:0[0-9]|1[01])|U0[0-5]|N(?:0[0-9]|10)|"]
+exit_code=1
+[exit 1]

@@ -1,0 +1,74 @@
+### command: node /tmp/claude-0/-home-user/bb8d4187-6ae8-587b-a816-8153faeea853/scratchpad/f03r2/cmp_mutate.mjs /tmp/claude-0/-home-user/bb8d4187-6ae8-587b-a816-8153faeea853/scratchpad/wt/integration /tmp/claude-0/-home-user/bb8d4187-6ae8-587b-a816-8153faeea853/scratchpad/f03r2/cmp/r3/en-meeting-390.png r3 && node /tmp/claude-0/-home-user/bb8d4187-6ae8-587b-a816-8153faeea853/scratchpad/f03r2/cmp_mutate.mjs /tmp/claude-0/-home-user/bb8d4187-6ae8-587b-a816-8153faeea853/scratchpad/wt/integration /tmp/claude-0/-home-user/bb8d4187-6ae8-587b-a816-8153faeea853/scratchpad/f03r2/cmp/block/en-meeting-390.png block
+### cwd: /tmp/claude-0/-home-user/bb8d4187-6ae8-587b-a816-8153faeea853/scratchpad/wt/integration
+### start: 2026-09-30T10:21:42Z
+r3 applied to /tmp/claude-0/-home-user/bb8d4187-6ae8-587b-a816-8153faeea853/scratchpad/f03r2/cmp/r3/en-meeting-390.png
+block applied to /tmp/claude-0/-home-user/bb8d4187-6ae8-587b-a816-8153faeea853/scratchpad/f03r2/cmp/block/en-meeting-390.png
+### end: 2026-09-30T10:21:43Z
+### exit: 0
+### wall_s: 0.84
+
+### note: 1) two empty directories: expect 'nothing to compare', exit 1 (was exit 0 in attempt 1, A6 P3-1)
+### command: node tests/baseline/compare-screens.mjs --before /tmp/claude-0/-home-user/bb8d4187-6ae8-587b-a816-8153faeea853/scratchpad/f03r2/cmp/empty_a --after /tmp/claude-0/-home-user/bb8d4187-6ae8-587b-a816-8153faeea853/scratchpad/f03r2/cmp/empty_b --diff /tmp/claude-0/-home-user/bb8d4187-6ae8-587b-a816-8153faeea853/scratchpad/f03r2/cmp/d1
+### cwd: /tmp/claude-0/-home-user/bb8d4187-6ae8-587b-a816-8153faeea853/scratchpad/wt/integration
+### start: 2026-09-30T10:21:43Z
+{"screenshots":0,"identical":0,"within_threshold":0,"changed":0,"missing_before":0,"missing_after":0,"record_differences":0}
+nothing to compare: no screenshot in /tmp/claude-0/-home-user/bb8d4187-6ae8-587b-a816-8153faeea853/scratchpad/f03r2/cmp/empty_a or /tmp/claude-0/-home-user/bb8d4187-6ae8-587b-a816-8153faeea853/scratchpad/f03r2/cmp/empty_b
+### end: 2026-09-30T10:21:43Z
+### exit: 1
+### wall_s: 0.09
+
+### note: 2) one pixel R+3: expect status within_threshold (not identical), exit 0 (A6 P3-1)
+### command: node tests/baseline/compare-screens.mjs --before /tmp/claude-0/-home-user/bb8d4187-6ae8-587b-a816-8153faeea853/scratchpad/f03r2/cmp/before --after /tmp/claude-0/-home-user/bb8d4187-6ae8-587b-a816-8153faeea853/scratchpad/f03r2/cmp/r3 --diff /tmp/claude-0/-home-user/bb8d4187-6ae8-587b-a816-8153faeea853/scratchpad/f03r2/cmp/d2; grep -m1 -A3 '"status"' /tmp/claude-0/-home-user/bb8d4187-6ae8-587b-a816-8153faeea853/scratchpad/f03r2/cmp/d2/report.json
+### cwd: /tmp/claude-0/-home-user/bb8d4187-6ae8-587b-a816-8153faeea853/scratchpad/wt/integration
+### start: 2026-09-30T10:21:43Z
+en-meeting-390           within_threshold 0% 390x4399
+{"screenshots":1,"identical":0,"within_threshold":1,"changed":0,"missing_before":0,"missing_after":0,"record_differences":0}
+      "status": "within_threshold",
+      "byte_identical": false,
+      "size_before": "390x4399",
+      "size_after": "390x4399",
+### end: 2026-09-30T10:21:44Z
+### exit: 0
+### wall_s: 0.50
+
+### note: 2b) exit code of 2 alone (the record above ends with grep)
+### command: node tests/baseline/compare-screens.mjs --before /tmp/claude-0/-home-user/bb8d4187-6ae8-587b-a816-8153faeea853/scratchpad/f03r2/cmp/before --after /tmp/claude-0/-home-user/bb8d4187-6ae8-587b-a816-8153faeea853/scratchpad/f03r2/cmp/r3 --diff /tmp/claude-0/-home-user/bb8d4187-6ae8-587b-a816-8153faeea853/scratchpad/f03r2/cmp/d2b
+### cwd: /tmp/claude-0/-home-user/bb8d4187-6ae8-587b-a816-8153faeea853/scratchpad/wt/integration
+### start: 2026-09-30T10:21:44Z
+en-meeting-390           within_threshold 0% 390x4399
+{"screenshots":1,"identical":0,"within_threshold":1,"changed":0,"missing_before":0,"missing_after":0,"record_differences":0}
+### end: 2026-09-30T10:21:44Z
+### exit: 0
+### wall_s: 0.37
+
+### note: 3) 10x10 black block: expect changed, exit 1
+### command: node tests/baseline/compare-screens.mjs --before /tmp/claude-0/-home-user/bb8d4187-6ae8-587b-a816-8153faeea853/scratchpad/f03r2/cmp/before --after /tmp/claude-0/-home-user/bb8d4187-6ae8-587b-a816-8153faeea853/scratchpad/f03r2/cmp/block --diff /tmp/claude-0/-home-user/bb8d4187-6ae8-587b-a816-8153faeea853/scratchpad/f03r2/cmp/d3
+### cwd: /tmp/claude-0/-home-user/bb8d4187-6ae8-587b-a816-8153faeea853/scratchpad/wt/integration
+### start: 2026-09-30T10:21:44Z
+en-meeting-390           changed        0.0057% 390x4399
+{"screenshots":1,"identical":0,"within_threshold":0,"changed":1,"missing_before":0,"missing_after":0,"record_differences":0}
+### end: 2026-09-30T10:21:45Z
+### exit: 1
+### wall_s: 0.58
+
+### note: 4) missing after directory: expect missing_after, exit 1
+### command: node tests/baseline/compare-screens.mjs --before /tmp/claude-0/-home-user/bb8d4187-6ae8-587b-a816-8153faeea853/scratchpad/f03r2/cmp/before --after /tmp/claude-0/-home-user/bb8d4187-6ae8-587b-a816-8153faeea853/scratchpad/f03r2/cmp/nonexistent --diff /tmp/claude-0/-home-user/bb8d4187-6ae8-587b-a816-8153faeea853/scratchpad/f03r2/cmp/d4
+### cwd: /tmp/claude-0/-home-user/bb8d4187-6ae8-587b-a816-8153faeea853/scratchpad/wt/integration
+### start: 2026-09-30T10:21:45Z
+en-meeting-390           missing_after   
+record en-meeting-390 *: true -> false
+{"screenshots":1,"identical":0,"within_threshold":0,"changed":0,"missing_before":0,"missing_after":1,"record_differences":1}
+### end: 2026-09-30T10:21:45Z
+### exit: 1
+### wall_s: 0.08
+
+### note: 5) identical copy: expect identical, exit 0
+### command: node tests/baseline/compare-screens.mjs --before /tmp/claude-0/-home-user/bb8d4187-6ae8-587b-a816-8153faeea853/scratchpad/f03r2/cmp/before --after /tmp/claude-0/-home-user/bb8d4187-6ae8-587b-a816-8153faeea853/scratchpad/f03r2/cmp/before --diff /tmp/claude-0/-home-user/bb8d4187-6ae8-587b-a816-8153faeea853/scratchpad/f03r2/cmp/d5
+### cwd: /tmp/claude-0/-home-user/bb8d4187-6ae8-587b-a816-8153faeea853/scratchpad/wt/integration
+### start: 2026-09-30T10:21:45Z
+en-meeting-390           identical      0% 390x4399
+{"screenshots":1,"identical":1,"within_threshold":0,"changed":0,"missing_before":0,"missing_after":0,"record_differences":0}
+### end: 2026-09-30T10:21:45Z
+### exit: 0
+### wall_s: 0.32
+

@@ -1,0 +1,108 @@
+### command: bash /tmp/claude-0/-home-user/bb8d4187-6ae8-587b-a816-8153faeea853/scratchpad/a6f03-2/merge_integrity.sh
+### cwd: /home/user/bill
+### start: 2026-09-30T10:29:45Z
+--- output ---
+merge-base guide/codex: 77de3bd51a8c9cb73aec0b32d27ca0cacb6285cd
+# guide changed paths vs merge base
+     19 A
+      2 M
+DIFFERS: package.json guide=3b4b19633cb648925c7c092f778cbc7e98589dfc integration=d57adef5093cbcbceab65dff39cfda5b69b3e94b
+guide paths=21 identical=20 differ=1
+# git diff guide integration -- <guide paths> (stat)
+ package.json | 9 ++++++++-
+ 1 file changed, 8 insertions(+), 1 deletion(-)
+# package.json: guide vs 1316ebe
+0
+# package.json: 1316ebe vs integration
+diff --git a/package.json b/package.json
+index 3b4b196..d57adef 100644
+--- a/package.json
++++ b/package.json
+@@ -16,7 +16,10 @@
+     "launch:check": "node --import tsx scripts/launch.ts --strict",
+     "protections:check": "node --import tsx scripts/protections.ts",
+     "format": "prettier --write .",
+-    "guide": "node --import tsx guide/build.tsx"
++    "guide": "node --import tsx guide/build.tsx",
++    "test:baseline": "node tests/baseline/run.mjs",
++    "test:contracts": "node --import tsx --test tests/baseline/contracts.test.ts",
++    "test:base02": "playwright test --config tests/baseline/playwright.baseline.config.ts"
+   },
+   "dependencies": {
+     "@fontsource/caveat": "^5.3.0",
+@@ -36,9 +39,13 @@
+     "@types/react": "^19",
+     "@types/react-dom": "^19",
+     "agent-browser": "latest",
++    "ajv": "8.20.0",
++    "ajv-formats": "3.0.1",
+     "eslint": "^9.39.0",
+     "eslint-config-next": "16.3.6",
+     "opentype.js": "^2.0.0",
++    "pixelmatch": "7.2.0",
++    "pngjs": "7.0.0",
+     "prettier": "^3.9.9",
+     "tsx": "^4.21.0",
+     "typescript": "^5.9.3"
+# merge commit parents
+1316ebe: 1316ebe10fe9ff753c3ce42151018ae3cebcc163 parents: 66cce52046f535ddc1a90e6f94474877e375860d 749b360f75185041e1aa3408500857605bc4507f
+67ba636: 67ba636cee04e8b0839d9c7b028a77d2791e32ff parents: 1316ebe10fe9ff753c3ce42151018ae3cebcc163 cb3becf25ed042b977d4864ae71e74d13829320f
+5545c2a: 5545c2aeb3249e19e5f328c86fa7d264c04ec0d2 parents: 67ba636cee04e8b0839d9c7b028a77d2791e32ff
+b0bc6cf: b0bc6cf634b0b5498cc335da4d2d15da04276e3a parents: 5545c2aeb3249e19e5f328c86fa7d264c04ec0d2
+# 1316ebe first-parent diff (name-status)
+     19 A
+      2 M
+# does merge 1316ebe tree equal a clean re-merge? (merge-tree)
+0b9593c44f65db8a263f68a93cc1a9cd21b86c4c
+1316ebe tree: 0b9593c44f65db8a263f68a93cc1a9cd21b86c4c
+# 67ba636 clean re-merge
+73102c4e0465e3e73fa1c46585277349c0c57e98
+67ba636 tree: 73102c4e0465e3e73fa1c46585277349c0c57e98
+# orchestration record
+merge-base cb3becf/1316ebe: 77de3bd51a8c9cb73aec0b32d27ca0cacb6285cd
+0
+789
+# git diff cb3becf integration -- .orchestration (lines)
+0
+cb3becf .orchestration tree: 558fdacf184b31cf7c3db62c820aeccf851b579d
+67ba636 .orchestration tree: 558fdacf184b31cf7c3db62c820aeccf851b579d
+5545c2a .orchestration tree: 558fdacf184b31cf7c3db62c820aeccf851b579d
+b0bc6cf .orchestration tree: 558fdacf184b31cf7c3db62c820aeccf851b579d
+# 67ba636 first-parent diff outside .orchestration
+0
+# 5545c2a and b0bc6cf changed paths
+M	package-lock.json
+M	package.json
+A	tests/baseline/README.md
+A	tests/baseline/compare-screens.mjs
+A	tests/baseline/contracts.test.ts
+A	tests/baseline/playwright.baseline.config.ts
+A	tests/baseline/run.mjs
+A	tests/baseline/screens.spec.ts
+---
+M	tests/baseline/README.md
+M	tests/baseline/compare-screens.mjs
+M	tests/baseline/run.mjs
+A	tests/baseline/runner-lib.mjs
+A	tests/baseline/runner.test.mjs
+ 5 files changed, 822 insertions(+), 100 deletions(-)
+# ancestry
+origin/codex/desktop-iphone-unified: ancestor
+origin/guide/pre-retirement-guide: ancestor
+cb3becf: ancestor
+origin/claude/bill-centered-homepage: NOT ancestor
+origin/claude/bill-presentation-video: NOT ancestor
+origin/add-ask-bill-section: ancestor
+# upstream of integration
+fatal: no upstream configured for branch 'integration'
+# reflog integration
+b0bc6cf integration@{0}: commit: Make baseline partial runs fail closed (F03 repair, A6 F03-A6-P2-1)
+5545c2a integration@{1}: commit (amend): Add reproducible baseline check suite (F03)
+6b095fb integration@{2}: commit: Add reproducible baseline check suite (F03)
+67ba636 integration@{3}: merge cb3becf25ed042b977d4864ae71e74d13829320f: Merge made by the 'ort' strategy.
+1316ebe integration@{4}: merge origin/guide/pre-retirement-guide: Merge made by the 'ort' strategy.
+66cce52 integration@{5}: branch: Created from origin/codex/desktop-iphone-unified
+--- end ---
+### exit: 0
+### wall_s: 0.32
+

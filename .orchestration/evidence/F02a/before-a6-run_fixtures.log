@@ -1,0 +1,87 @@
+# F02a baseline BEFORE: A6 independent BigInt model vs fixtures. cwd /tmp/claude-0/-home-user/bb8d4187-6ae8-587b-a816-8153faeea853/scratchpad/f02a-a6run
+$ node run_fixtures.mjs
+PASS WM01 schema=true semantic=ok diffs=0 state=complete clip=W07
+PASS WM02 schema=true semantic=ok diffs=0 state=complete clip=W07
+PASS WM03 schema=true semantic=ok diffs=0 state=complete clip=W07
+PASS WM04 schema=true semantic=ok diffs=0 state=complete clip=W07
+PASS WM05 schema=true semantic=ok diffs=0 state=complete clip=W07
+PASS WM06 schema=true semantic=ok diffs=0 state=complete clip=W07
+PASS WM07 schema=true semantic=ok diffs=0 state=incomplete_unknown_income clip=W06
+PASS WM08 schema=true semantic=ok diffs=0 state=incomplete_unknown_income clip=W06
+PASS WM09 schema=true semantic=ok diffs=0 state=basis_mismatch clip=W08
+PASS WM10 schema=true semantic=ok diffs=0 state=complete clip=W07
+PASS WM11 schema=true semantic=ok diffs=0 state=complete clip=W07
+PASS WM12 schema=true semantic=ok diffs=0 state=complete clip=W07
+PASS WM13 schema=true semantic=ok diffs=0 state=complete clip=W07
+PASS WM14 schema=true semantic=ok diffs=0 state=complete clip=W07
+PASS WM15 schema=true semantic=ok diffs=0 state=complete clip=W07
+PASS WM16 schema=true semantic=ok diffs=0 state=complete clip=W07
+PASS WM17 schema=true semantic=ok diffs=0 state=complete clip=W10
+PASS WM18 schema=true semantic=ok diffs=0 state=complete clip=W07
+PASS WM19 schema=true semantic=ok diffs=0 state=complete clip=W07
+PASS WM20 schema=true semantic=ok diffs=0 state=incomplete_unknown_timing clip=W10
+PASS WM21 schema=true semantic=ok diffs=0 state=complete clip=W09
+PASS WM22 schema=true semantic=ok diffs=0 state=incomplete_unknown_income clip=W06
+PASS WM23 schema=true semantic=ok diffs=0 state=basis_unknown clip=W08
+PASS WM24 schema=true semantic=ok diffs=0 state=complete clip=W07
+PASS WM25 schema=true semantic=ok diffs=0 state=incomplete_unknown_spending clip=W10
+PASS WM26 schema=true semantic=ok diffs=0 state=incomplete_unknown_income clip=W06
+PASS WM27 schema=true semantic=ok diffs=0 state=incomplete_unknown_income clip=W06
+PASS WM28 schema=true semantic=ok diffs=0 state=incomplete_unknown_income clip=W06
+PASS WM29 schema=true semantic=ok diffs=0 state=incomplete_unknown_income clip=W06
+PASS WM30 schema=true semantic=ok diffs=0 state=incomplete_unknown_income clip=W06
+PASS WM31 schema=true semantic=ok diffs=0 state=incomplete_unknown_timing clip=W10
+PASS WM32 schema=true semantic=ok diffs=0 state=complete clip=W07
+PASS WM33 schema=true semantic=ok diffs=0 state=incomplete_unknown_income clip=W06
+PASS WM34 schema=true semantic=ok diffs=0 state=incomplete_unknown_income clip=W06
+PASS WM35 schema=true semantic=ok diffs=0 state=complete clip=W07
+PASS WM36 schema=true semantic=ok diffs=0 state=complete clip=W10
+WM fixtures: 36 pass, 0 fail, of 36
+index.json: 37 entries, 0 mismatches; fixture files 36
+TT row 1 PASS {"C":false,"M":false,"X":false,"H":false,"F":false} -> W10/neutral_fallback 
+TT row 2 PASS {"C":false,"M":false,"X":false,"H":false,"F":true} -> W07/funding_gap 
+TT row 3 PASS {"C":false,"M":false,"X":false,"H":true,"F":false} -> W09/household_timing 
+TT row 4 PASS {"C":false,"M":false,"X":false,"H":true,"F":true} -> W09/household_timing 
+TT row 5 PASS {"C":false,"M":false,"X":true,"H":false,"F":false} -> W08/tax_basis 
+TT row 6 PASS {"C":false,"M":false,"X":true,"H":false,"F":true} -> W08/tax_basis 
+TT row 7 PASS {"C":false,"M":false,"X":true,"H":true,"F":false} -> W08/tax_basis 
+TT row 8 PASS {"C":false,"M":false,"X":true,"H":true,"F":true} -> W08/tax_basis 
+TT row 9 PASS {"C":false,"M":true,"X":false,"H":false,"F":false} -> W06/missing_income 
+TT row 10 PASS {"C":false,"M":true,"X":false,"H":false,"F":true} -> W06/missing_income 
+TT row 11 PASS {"C":false,"M":true,"X":false,"H":true,"F":false} -> W06/missing_income 
+TT row 12 PASS {"C":false,"M":true,"X":false,"H":true,"F":true} -> W06/missing_income 
+TT row 13 PASS {"C":false,"M":true,"X":true,"H":false,"F":false} -> W06/missing_income 
+TT row 14 PASS {"C":false,"M":true,"X":true,"H":false,"F":true} -> W06/missing_income 
+TT row 15 PASS {"C":false,"M":true,"X":true,"H":true,"F":false} -> W06/missing_income 
+TT row 16 PASS {"C":false,"M":true,"X":true,"H":true,"F":true} -> W06/missing_income 
+TT row 17 PASS {"C":true,"M":false,"X":false,"H":false,"F":false} -> W10/core_inputs_missing 
+TT row 18 impossible (C&F): no input
+TT row 19 PASS {"C":true,"M":false,"X":false,"H":true,"F":false} -> W10/core_inputs_missing 
+TT row 20 impossible (C&F): no input
+TT row 21 PASS {"C":true,"M":false,"X":true,"H":false,"F":false} -> W10/core_inputs_missing 
+TT row 22 impossible (C&F): no input
+TT row 23 PASS {"C":true,"M":false,"X":true,"H":true,"F":false} -> W10/core_inputs_missing 
+TT row 24 impossible (C&F): no input
+TT row 25 PASS {"C":true,"M":true,"X":false,"H":false,"F":false} -> W10/core_inputs_missing 
+TT row 26 impossible (C&F): no input
+TT row 27 PASS {"C":true,"M":true,"X":false,"H":true,"F":false} -> W10/core_inputs_missing 
+TT row 28 impossible (C&F): no input
+TT row 29 PASS {"C":true,"M":true,"X":true,"H":false,"F":false} -> W10/core_inputs_missing 
+TT row 30 impossible (C&F): no input
+TT row 31 PASS {"C":true,"M":true,"X":true,"H":true,"F":false} -> W10/core_inputs_missing 
+TT row 32 impossible (C&F): no input
+CS01 PASS W10/core_inputs_missing 
+CS02 PASS W10/core_inputs_missing 
+CS03 PASS W06/missing_income 
+CS04 PASS W08/tax_basis 
+CS05 PASS W10/neutral_fallback 
+CS06 PASS W10/neutral_fallback 
+CS07 PASS W07/funding_gap 
+MS01 PASS unavailable 
+MS02 PASS play 
+MS03 PASS other_locale_only 
+MS04 PASS play_test_media_labelled 
+MS05 PASS unavailable 
+MS06 PASS unavailable 
+clip-rules: 45 pass, 0 fail
+[exit 0]

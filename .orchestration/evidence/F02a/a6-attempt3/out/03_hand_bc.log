@@ -1,0 +1,54 @@
+$ bash /home/user/bill/.orchestration/evidence/F02a/a6-attempt3/hand_bc.sh
+== WM37: A=55 R=65 H=5 i=2%; src-1 2,400,000 q=0 s=10; src-2 600,000\
+ q=3% s=12; src-3 1,200,000 q=1% s=5; spending 6,000,000
+t=10 D=7313967 P1=2925587 P2=0 P3=1392480 net=4318067 G=2995900 Gtod\
+ay=2457681
+    exact G=2995899.88763830938048000000
+    fault(1+q)^s: G=3588420 overstated by 592520
+t=11 D=7460246 P1=2925587 P2=0 P3=1406405 net=4331991 G=3128254 Gtod\
+ay=2515939
+    exact G=3128254.4177942520732249600000
+    fault(1+q)^s: G=3721444 overstated by 593190
+t=12 D=7609451 P1=2925587 P2=760945 P3=1420469 net=5107001 G=2502450\
+ Gtoday=1973165
+    exact G=2502450.209818220710472640000000
+    fault(1+q)^s: G=3001804 overstated by 499354
+t=13 D=7761640 P1=2925587 P2=783773 P3=1434674 net=5144034 G=2617606\
+ Gtoday=2023495
+    exact G=2617606.18413527926398160780800000
+    fault(1+q)^s: G=3114808 overstated by 497202
+t=14 D=7916873 P1=2925587 P2=807287 P3=1449020 net=5181894 G=2734979\
+ Gtoday=2072772
+    exact G=2734979.0413029409410930387187200000
+    fault(1+q)^s: G=3229950 overstated by 494971
+== WM38: A=60 R=62 H=6 i=0; partner 55->57; joint src-1 1,200,000 fr\
+om age 65; joint src-2 600,000 until age 64; spending 4,800,000
+t=2 contract G=4200000 partner-reading G=4200000 partner_age=57
+t=3 contract G=4200000 partner-reading G=4200000 partner_age=58
+t=4 contract G=4800000 partner-reading G=4200000 partner_age=59
+t=5 contract G=3600000 partner-reading G=4200000 partner_age=60
+t=6 contract G=3600000 partner-reading G=4200000 partner_age=61
+t=7 contract G=3600000 partner-reading G=4200000 partner_age=62
+== WM39: A=R=70 H=3 i=1%; two net sources 1,000,050 q=1% already rec\
+eiving; spending 3,000,000
+t=0 row exact=1000050 row=1000050 group=2000100 sum-of-rows=2000100 \
+G=999900 Gtoday=999900
+t=1 row exact=1010050.50 row=1010050 group=2020101 sum-of-rows=20201\
+00 G=1009899 Gtoday=999900
+t=2 row exact=1020151.0050 row=1020151 group=2040302 sum-of-rows=204\
+0302 G=1019998 Gtoday=999900
+== WM40: A=R=70 H=3 i=1.5%; net 1,000,077 q=0 already receiving; spe\
+nding 2,000,001
+t=0 G exact=999924 G=999924 Gtoday(exact)=999924 Gtoday(from rounded\
+)=999924
+    exact/defl=999924.000000000000000000000000000000  rounded/defl=9\
+99924.000000000000000000000000000000
+t=1 G exact=1029924.015 G=1029924 Gtoday(exact)=1014703 Gtoday(from \
+rounded)=1014703
+    exact/defl=1014703.463054187192118226600985221674  rounded/defl=\
+1014703.448275862068965517241379310344
+t=2 G exact=1060374.030225 G=1060374 Gtoday(exact)=1029265 Gtoday(fr\
+om rounded)=1029264
+    exact/defl=1029264.510398213982382489262054405591  rounded/defl=\
+1029264.481059962629522677085102768812
+[exit 0]
