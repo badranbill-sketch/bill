@@ -126,7 +126,13 @@
         "by": "A0",
         "change": "F02a added by split of F02; W00 and C02 depend on it (D-072)"
       }
-    ]
+    ],
+    "integration_baseline": {
+      "branch": "integration",
+      "commit": "b0bc6cf",
+      "composition": "codex/desktop-iphone-unified 66cce52 + guide/pre-retirement-guide 749b360 + claude/orchestration-foundation cb3becf + F03 suite",
+      "canonical_production_branch": "pending G0 (HB-03)"
+    }
   },
   "tasks": [
     {
@@ -292,6 +298,11 @@
           "to": "running",
           "by": "A0",
           "note": "created by split of F02 (decision D-072)"
+        },
+        {
+          "at": "2026-09-30",
+          "by": "A0",
+          "note": "3 attempts used. Fixtures WM37-WM40 verified correct (faulty runtimes now fail). Remaining P2s are A0-owned integration items (fixture registry text + task_id pattern), handled as A0 patch 1 with fresh A6 review before acceptance."
         }
       ]
     },
@@ -317,10 +328,17 @@
         "BASE02"
       ],
       "max_attempts": 3,
-      "state": "running",
-      "attempts": 1,
-      "accepted_at_stage": null,
-      "evidence": [],
+      "state": "accepted",
+      "attempts": 2,
+      "accepted_at_stage": "local_implementation_tested",
+      "evidence": [
+        ".orchestration/baseline.md",
+        ".orchestration/handoffs/F03.json",
+        ".orchestration/reviews/F03.md",
+        ".orchestration/reviews/F03-attempt2.md",
+        ".orchestration/evidence/F03/",
+        "branch integration @ b0bc6cf"
+      ],
       "history": [
         {
           "at": "2026-09-30",
@@ -328,6 +346,13 @@
           "to": "running",
           "by": "A0",
           "note": "deps F00, F02 accepted"
+        },
+        {
+          "at": "2026-09-30",
+          "from": "running",
+          "to": "accepted",
+          "by": "A0",
+          "note": "A6 attempt 2 pass (3 P3: 700px not in BASE02 capture but covered by e2e; some handoff command strings not literally re-runnable; deep handoff check needs base_commit==HEAD). Integration baseline = codex 66cce52 + guide 749b360 + orchestration cb3becf + tests/baseline suite (b0bc6cf). Suite on integration: 12 pass, 1 blocked (protections:check, no gh/token), 1 expected_fail_by_design (launch:check), 1 fail (contracts validate.py CX-18: task_id pattern rejects F02a — caused by D-072 split, fixed by A0 patch 1). e2e 41/41 and BASE02 49/49 under substitute Chromium 141. homepage and presentation preserved unmerged (D-073)."
         }
       ]
     },

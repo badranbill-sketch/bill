@@ -16,6 +16,10 @@
           "task": "F00",
           "stage": "inventory",
           "note": "baseline reproduced on 6 branches in clean worktrees; exact commands/exit codes/logs in .orchestration/inventory.md §8 and evidence/F00/checks/results.json; pre-existing failures recorded (main/guide/video fail lint/typecheck/build due to film/; protections:check blocked (no gh/token); launch:check blocked by design; e2e only under substitute Chromium 141). F03 re-runs BASE01 on the selected integration baseline."
+        },
+        {
+          "task": "F03",
+          "note": "re-run on integration b0bc6cf by builder and independently by A6 (identical 15-step results); see baseline.md and evidence/F03/a6-attempt2"
         }
       ]
     },
@@ -24,8 +28,13 @@
       "title": "No regressions in chosen site",
       "method": "Exercise both language routes and existing guide/journey/contact paths at supported widths.",
       "required_evidence": "Before/after screenshots, browser logs and regression results.",
-      "status": "not_run",
-      "evidence": []
+      "status": "pass",
+      "evidence": [
+        {
+          "task": "F03",
+          "note": "fr/en home, guide, journey, meeting/contact paths at 320/390/768/1440: 24/24 screenshots byte-identical codex vs integration (independent A6 capture too); console/HTTP checked; e2e covers 700px. Under substitute Chromium 141 (lockfile expects 1243). Stage: local only."
+        }
+      ]
     },
     {
       "id": "AUTH01",
