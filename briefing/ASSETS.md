@@ -1,6 +1,7 @@
 # Assets and provenance
 
-Every file in `public/` was copied byte for byte with `git show <branch>:<path> > <file>` on 2026-09-30. The
+Every file in `public/` except the six drawings made for this briefing (see below) was copied byte for byte
+with `git show <branch>:<path> > <file>` on 2026-09-30. The
 blob sha is the file's git object id (`git hash-object <file>`), so a copy can be checked against its source at
 any time. `npm run qa` fails if a file in `public/` is missing here or its sha no longer matches.
 
@@ -26,6 +27,31 @@ Branch heads at copy time: `origin/main` 77de3bd51a8c9cb73aec0b32d27ca0cacb6285c
 | `public/ink/house.svg` | `origin/main:public/assets/ink/house.1bec17b827.svg` | `8a8ea042ba2f1cb361ac73bd568d61cac860501d` | The site's exported pen drawing (seeded Pen, components/ink/ + lib/ink.ts); unmodified |
 | `public/ink/travel-bag.svg` | `origin/main:public/assets/ink/travel-bag.5139bd84df.svg` | `86af4c4218d21b49e0545bdea94d21d1a9480efb` | The site's exported pen drawing (seeded Pen, components/ink/ + lib/ink.ts); unmodified |
 | `public/ink/dock.svg` | `origin/main:public/assets/ink/dock.ccd6542ba7.svg` | `c9b46b0aa1a53088f9b33e5838c715e55f88c26c` | The site's exported pen drawing (seeded Pen, components/ink/ + lib/ink.ts); unmodified |
+| `public/ink/workshop-notebook.svg` | code-drawn for this briefing with the site's seeded pen toolkit (origin/main:lib/ink.ts, components/ink/primitives.tsx, app/ink.css and the export step of scripts/build-ink.tsx; origin/guide/pre-retirement-guide:guide/art/kit.tsx), 2026-09-30; not a depiction of any real person | `4ef7ac9e7714a9b254f2be0422baad0f25e6e191` | An open ruled notebook (blank pages), folded reading glasses, one cup of coffee and a pen near the edge of a table. No writing. viewBox 1440×810 = the whole 1920×1080 frame at 4/3 (place with `width={1920}` at 0, 0); drawing in the right ~56 %. |
+| `public/ink/crossroads-signpost.svg` | code-drawn for this briefing with the site's seeded pen toolkit (origin/main:lib/ink.ts, components/ink/primitives.tsx, app/ink.css and the export step of scripts/build-ink.tsx; origin/guide/pre-retirement-guide:guide/art/kit.tsx), 2026-09-30; not a depiction of any real person | `526c78919d46a32d4f37672adeb7120797ad782a` | A footpath coming toward us forks; a wooden signpost with two blank arms stands in the fork; spruces and a far treeline. Signs carry no text. viewBox 1440×810 = the whole 1920×1080 frame at 4/3 (place with `width={1920}` at 0, 0); drawing in the right ~56 %. |
+| `public/ink/ledger-page.svg` | code-drawn for this briefing with the site's seeded pen toolkit (origin/main:lib/ink.ts, components/ink/primitives.tsx, app/ink.css and the export step of scripts/build-ink.tsx; origin/guide/pre-retirement-guide:guide/art/kit.tsx), 2026-09-30; not a depiction of any real person | `461d1213a371e73e83fe81d09a7d8f20171a7472` | An open account book ruled in rows and a few columns, a fountain pen across the right page, its cap beside the book. No figures, symbols or money. viewBox 1440×810 = the whole 1920×1080 frame at 4/3 (place with `width={1920}` at 0, 0); drawing in the right ~56 %. |
+| `public/ink/desk-clock.svg` | code-drawn for this briefing with the site's seeded pen toolkit (origin/main:lib/ink.ts, components/ink/primitives.tsx, app/ink.css and the export step of scripts/build-ink.tsx; origin/guide/pre-retirement-guide:guide/art/kit.tsx), 2026-09-30; not a depiction of any real person | `be82955a0bf74b9ccb5f53e6eed7d69e2271ba31` | A small arched mantel clock (plain ticks, no numerals, hands at twenty past eleven) and a closed book at the edge of a table. viewBox 1440×810 = the whole 1920×1080 frame at 4/3 (place with `width={1920}` at 0, 0); drawing in the right ~56 %. |
+| `public/ink/system-map.svg` | code-drawn for this briefing with the site's seeded pen toolkit (origin/main:lib/ink.ts, components/ink/primitives.tsx, app/ink.css and the export step of scripts/build-ink.tsx; origin/guide/pre-retirement-guide:guide/art/kit.tsx), 2026-09-30; not a depiction of any real person | `5867ff697df584508c6b97c436dd24c0bbf18804` | Eight small objects on one table in one perspective: building (site/VPS), filing cabinet (records), envelope (email), desk calendar (calendar), receipt (payment), film roll (recordings), gears on a small bench (automation), padlock (backups). No text; labels and connectors are UI, placed from `src/data/ink/system-map.anchors.json`. viewBox 1440×810 = the whole 1920×1080 frame at 4/3 (place with `width={1920}` at 0, 0); drawing in the right ~56 %. |
+| `public/ink/road-markers.svg` | code-drawn for this briefing with the site's seeded pen toolkit (origin/main:lib/ink.ts, components/ink/primitives.tsx, app/ink.css and the export step of scripts/build-ink.tsx; origin/guide/pre-retirement-guide:guide/art/kit.tsx), 2026-09-30; not a depiction of any real person | `3614431d20cf691b573f3278e5465f16822d4c11` | A country road winding away to far hills with six small blank wooden posts along its edge at even steps on the page. Labels are UI, placed from `src/data/ink/road-markers.anchors.json`. viewBox 1440×810 = the whole 1920×1080 frame at 4/3 (place with `width={1920}` at 0, 0); drawing in the right ~56 %. |
+
+## Drawings made for this briefing
+
+The six drawings above whose source reads "code-drawn for this briefing" were not copied from a branch. They
+were written as code on 2026-09-30 in a detached worktree of `origin/guide/pre-retirement-guide` (749b360, never
+modified), using the site's seeded `Pen` (`lib/ink.ts`), its paint components and ink CSS
+(`components/ink/primitives.tsx`, `app/ink.css`) and the guide's drawing kit (`guide/art/kit.tsx`: `Sketch`,
+pinhole cameras, hatch/wash helpers), and exported with the same standalone-SVG step as `scripts/build-ink.tsx`
+(site CSS and wash filter inlined, identical class names: `ink`, `ink soft`, `hatch`, `hatch soft`, `pencil`,
+`wash <tone>` › `wash-fill`/`wash-edge`). Seeds are fixed, so a rebuild is byte-identical. The editable sources
+(`notebook.tsx`, `crossroads.tsx`, `ledger.tsx`, `clock.tsx`, `systemmap.tsx`, `road.tsx`, shared `lib.tsx`,
+export `build.tsx`) are kept with the art lane's output (`briefing-out/art/source/`); they import the kit by
+relative path and need that worktree to rebuild. No image generator, photo, trace or likeness was used; no
+signature. One light for all six (upper left, a little behind: shade on right faces, shadows thrown right and
+toward the viewer).
+
+- `src/data/ink/system-map.anchors.json`, `src/data/ink/road-markers.anchors.json`: written by the same build
+  from the drawing's own geometry. Frame pixels (1920 × 1080) for the frame-sized placement; each object's or
+  post's ink-box centre, box, and base (where it meets the ground); posts also give their top and road side.
 
 ## Derived files
 

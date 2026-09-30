@@ -35,8 +35,8 @@ const phase = (s: InkStroke) => (s.kind === 'ink' || s.kind === 'inkSoft' ? 0 : 
 export type PenOrder = 'passes' | 'objects';
 
 /** Order the strokes and give each a window [a, b] inside 0..1 of the pen's time. */
-export const planStrokes = (data: InkData, order: PenOrder = 'passes', overlap = 0.8): Plan => {
-  const indexed = data.strokes.map((s, i) => ({ s, i }));
+export const planStrokes = (data: InkData, order: PenOrder = 'passes', overlap = 0.8, groups?: readonly number[]): Plan => {
+  const indexed = data.strokes.map((s, i) => ({ s, i })).filter(({ s }) => !groups || groups.includes(s.g));
   const pencil = indexed.filter(({ s }) => s.kind === 'pencil');
   const group = (s: InkStroke) => (order === 'objects' ? s.g : 0);
   const rest = indexed
@@ -82,14 +82,18 @@ export type InkDrawProps = {
   noWash?: boolean;
   /** 'passes' (default): all contours, then all hatching. 'objects': contours then hatching, object by object. */
   order?: PenOrder;
+  /** Draw only the strokes of these object groups (`g`), e.g. one object of the system map. */
+  groups?: readonly number[];
   style?: React.CSSProperties;
 };
 
-export const InkDraw: React.FC<InkDrawProps> = ({ name, start, dur, width, washDelay, washDur = 1.4, crop, noWash, order = 'passes', style }) => {
+export const InkDraw: React.FC<InkDrawProps> = ({ name, start, dur, width, washDelay, washDur = 1.4, crop, noWash, order = 'passes', groups, style }) => {
   const frame = useCurrentFrame();
   const { fps } = useVideoConfig();
   const data = DRAWINGS[name];
-  const plan = useMemo(() => planStrokes(data, order), [data, order]);
+  const groupKey = groups ? groups.join(',') : '';
+  // groups is keyed by its contents, so a new array with the same groups does not re-plan.
+  const plan = useMemo(() => planStrokes(data, order, 0.8, groups), [data, order, groupKey]);
   const uid = useId().replace(/[^a-zA-Z0-9_-]/g, '');
   const filterId = `wash-${name}-${uid}`;
   const maskId = `pen-${name}-${uid}`;

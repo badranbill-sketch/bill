@@ -9,7 +9,9 @@
     "ink": "node scripts/prep-ink.mjs",
     "proof": "node scripts/proof.mjs out",
     "qa": "node --experimental-strip-types --no-warnings scripts/qa.mjs",
-    "lint": "tsc --noEmit"
+    "lint": "tsc --noEmit",
+    "stills": "node --experimental-strip-types --no-warnings scripts/stills.mjs",
+    "render": "remotion render Briefing out/plan-briefing-en.mp4 --codec=h264 --crf=18 --concurrency=2"
   },
   "dependencies": {
     "@remotion/bundler": "4.0.529",

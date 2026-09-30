@@ -1,0 +1,163 @@
+{
+  "drawing": "system-map",
+  "frame": [
+    1920,
+    1080
+  ],
+  "viewBox": [
+    0,
+    0,
+    1440,
+    810
+  ],
+  "placement": "InkDraw name=… width={1920} style={{ left: 0, top: 0 }} — the drawing's viewBox is the whole frame at 4/3",
+  "scale": 1.3333333333333333,
+  "units": "frame pixels (1920 × 1080); [x0, y0, x1, y1] for boxes; divide by scale for viewBox units",
+  "note": "centre and bbox are the object's ink (contours) without its cast shadow; base is where it stands on the table. No text is drawn: labels and connecting lines are screen UI.",
+  "objects": [
+    {
+      "id": "building",
+      "stands_for": "the site and the server it runs on (VPS)",
+      "centre": [
+        1001.5,
+        352.5
+      ],
+      "bbox": [
+        911,
+        271.5,
+        1091.5,
+        434
+      ],
+      "base": [
+        1010.5,
+        381
+      ]
+    },
+    {
+      "id": "padlock",
+      "stands_for": "backups",
+      "centre": [
+        1308,
+        269
+      ],
+      "bbox": [
+        1252.5,
+        201,
+        1364,
+        337
+      ],
+      "base": [
+        1308.5,
+        313.5
+      ]
+    },
+    {
+      "id": "envelope",
+      "stands_for": "email",
+      "centre": [
+        1622,
+        385.5
+      ],
+      "bbox": [
+        1548.5,
+        342.5,
+        1695.5,
+        428
+      ],
+      "base": [
+        1622,
+        386
+      ]
+    },
+    {
+      "id": "calendar",
+      "stands_for": "calendar and meeting booking",
+      "centre": [
+        1728.5,
+        536
+      ],
+      "bbox": [
+        1653,
+        464,
+        1803.5,
+        608
+      ],
+      "base": [
+        1725,
+        565.5
+      ]
+    },
+    {
+      "id": "receipt",
+      "stands_for": "payment",
+      "centre": [
+        1496.5,
+        735
+      ],
+      "bbox": [
+        1447,
+        656.5,
+        1546,
+        813.5
+      ],
+      "base": [
+        1496,
+        751.5
+      ]
+    },
+    {
+      "id": "film",
+      "stands_for": "recordings (video)",
+      "centre": [
+        1176.5,
+        726.5
+      ],
+      "bbox": [
+        1112.5,
+        633,
+        1241,
+        820.5
+      ],
+      "base": [
+        1172.5,
+        734
+      ]
+    },
+    {
+      "id": "filing",
+      "stands_for": "records (the operational database)",
+      "centre": [
+        893.5,
+        558
+      ],
+      "bbox": [
+        820.5,
+        465,
+        966.5,
+        651
+      ],
+      "base": [
+        902.5,
+        597.5
+      ]
+    },
+    {
+      "id": "gears",
+      "stands_for": "automation (n8n)",
+      "centre": [
+        1322.5,
+        481
+      ],
+      "bbox": [
+        1228.5,
+        392,
+        1416.5,
+        570
+      ],
+      "base": [
+        1322.5,
+        525.5
+      ]
+    }
+  ]
+}

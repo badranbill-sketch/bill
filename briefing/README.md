@@ -9,11 +9,27 @@ money and infrastructure. Not for publication, not for prospects.
 
 ```bash
 npm ci
-npm run dev        # Remotion Studio: PipelineTest, and Primitives/LedgerPreview
-npm run qa         # reading time, amounts only in LEDGER with sources, banned wording, no spring(), no photo/audio, provenance
+npm run dev        # Remotion Studio: Briefing, PipelineTest, Primitives/LedgerPreview, Tools/ContactSheet
+npm run qa         # reading time, runtime ≤ 7:00, amounts only in LEDGER with sources, banned wording, no spring(), no photo/audio, provenance
 npm run lint       # tsc --noEmit
 npm run ink        # regenerate src/data/ink/ after adding a drawing to public/ink/
+npm run stills -- <outDir>          # two PNG stills per scene (midpoint, 0.5 s before the end) + contact-sheet.png
+node --experimental-strip-types --no-warnings scripts/cues.mjs --write   # regenerate SCRIPT.md §7 from content.ts
 ```
+
+### The briefing
+
+`Briefing` (1920×1080, 30 fps, no audio): 14 scenes from `SCENES` in `src/content.ts`, 6:56.6 (12,498 frames).
+Render the English film:
+
+```bash
+export REMOTION_BROWSER=/opt/pw-browsers/chromium_headless_shell-1194/chrome-linux/headless_shell
+npx remotion render Briefing out/plan-briefing-en.mp4 --codec=h264 --crf=18 --concurrency=2 --browser-executable="$REMOTION_BROWSER"
+npm run stills -- out/stills
+```
+
+Before a render, re-check `.orchestration/tasks.json` for any status the film states (B04's tags) and run
+`npm run qa`.
 
 ### Rendering in this sandbox
 
@@ -40,7 +56,9 @@ frame wall clock (0.18–0.19 s per frame per worker), plus 2.5–4.5 s to bundl
 | Every word on screen (EN now, FR empty and falling back to EN), when it appears, and the LEDGER rows | `src/content.ts` |
 | Brand tokens, easing, motion and reading-time rules | `src/brand.ts` |
 | Paper, pen drawings, titles and captions, ledger | `src/primitives/` |
-| Compositions (`PipelineTest`, `LedgerPreview`) | `src/compositions/`, registered in `src/Root.tsx` |
+| Compositions (`Briefing`, `PipelineTest`, `LedgerPreview`, the `ContactSheet` QA tool) | `src/compositions/`, registered in `src/Root.tsx` |
+| One layout per scene type (title, pair, list, diagram, statement, table, ledger, columns, road, close), the scene shell (fades, chapter mark, progress dashes), `Art` (crops and places any drawing) | `src/briefing/` |
+| Storyboard, and the source of every claim | `SCRIPT.md`, `CLAIMS.md`, `data/published-prices.json` |
 | The site's drawings, and their stroke data | `public/ink/*.svg` → `src/data/ink/*.json` (`scripts/prep-ink.mjs`) |
 | Where every asset came from | `ASSETS.md` |
 
@@ -50,13 +68,19 @@ frame wall clock (0.18–0.19 s per frame per worker), plus 2.5–4.5 s to bundl
 - `<InkDraw name start dur width />`: one of the site's drawings drawn by the pen, stroke by stroke. Faint pencil
   marks, then every ink contour (each tapered outline is revealed along its length through a nib-wide mask), then
   the hatching; the washes fade in only after the ink (`washDelay`, `washDur`). `crop` shows part of a drawing,
-  `order="objects"` hatches object by object. Drawings: two-chairs, path, sailboat, bridge, lighthouse, house,
-  travel-bag, dock.
+  `order="objects"` hatches object by object, `groups` draws only some object groups (one object of the system
+  map). The site's drawings: two-chairs, path, sailboat, bridge, lighthouse, house, travel-bag, dock. Drawn for the
+  briefing by the art lane (1440×810, the whole frame): workshop-notebook, crossroads-signpost, ledger-page,
+  desk-clock, system-map (+ `system-map.anchors.json`), road-markers (+ `road-markers.anchors.json`).
+- `<Art/>` (`src/briefing/Art.tsx`): crops a drawing to its ink (`crop="ink"`) and places it at a scale in frame px,
+  so line weights stay comparable; falls back to a named stand-in, or to nothing, when a drawing is missing.
 - `<Title/>` (Newsreader 300, sentence case), `<Caption/>` (Source Sans 3 text block), `<Kicker/>` (small label with
   a brass tick, never letter-spaced capitals). `readingSeconds(text)` = 0.3 s per word + 1.5 s; `holdFor(from, text)`
   builds an `at` window that respects it. A line held too briefly logs a warning at render time and fails `npm run qa`.
-- `<Ledger rows at />`: placeholder. Shows an amount only as displayed on its source page, with cadence and retrieval
-  date; anything unknown reads "not yet sourced". It never totals mixed currencies or cadences.
+- `<LedgerLine row at />`: one hand-ruled LEDGER row: the item and its trigger; the amount exactly as recorded
+  (`shown`) with "unverified — confirm at checkout" under every snippet-only figure and "example only" under an
+  example; the source host and retrieval date ("project plan, internal" for a project figure). A proposal keeps its
+  status words boxed and its amount muted. It never adds, totals, converts or annualizes anything.
 
 ## Rules
 

@@ -1,0 +1,151 @@
+{
+  "drawing": "road-markers",
+  "frame": [
+    1920,
+    1080
+  ],
+  "viewBox": [
+    0,
+    0,
+    1440,
+    810
+  ],
+  "placement": "InkDraw name=… width={1920} style={{ left: 0, top: 0 }} — the drawing's viewBox is the whole frame at 4/3",
+  "scale": 1.3333333333333333,
+  "units": "frame pixels (1920 × 1080); [x0, y0, x1, y1] for boxes; divide by scale for viewBox units",
+  "note": "Six posts, nearest first. centre is the post's ink box centre, top its cap, base its foot; side is the road edge it stands on (left/right as seen walking away from the viewer). Labels are screen UI.",
+  "markers": [
+    {
+      "n": 1,
+      "centre": [
+        1047,
+        753.5
+      ],
+      "top": [
+        1044,
+        716
+      ],
+      "base": [
+        1048.5,
+        788.5
+      ],
+      "bbox": [
+        1035.5,
+        715.5,
+        1058,
+        791
+      ],
+      "side": "left"
+    },
+    {
+      "n": 2,
+      "centre": [
+        1211,
+        687
+      ],
+      "top": [
+        1209.5,
+        654.5
+      ],
+      "base": [
+        1211,
+        718
+      ],
+      "bbox": [
+        1203,
+        654.5,
+        1219,
+        719.5
+      ],
+      "side": "left"
+    },
+    {
+      "n": 3,
+      "centre": [
+        1476.5,
+        658
+      ],
+      "top": [
+        1478.5,
+        628
+      ],
+      "base": [
+        1476,
+        687
+      ],
+      "bbox": [
+        1469,
+        627.5,
+        1484,
+        688.5
+      ],
+      "side": "right"
+    },
+    {
+      "n": 4,
+      "centre": [
+        1548,
+        550
+      ],
+      "top": [
+        1549.5,
+        528.5
+      ],
+      "base": [
+        1547.5,
+        571
+      ],
+      "bbox": [
+        1542.5,
+        528.5,
+        1553.5,
+        572
+      ],
+      "side": "right"
+    },
+    {
+      "n": 5,
+      "centre": [
+        1395,
+        482
+      ],
+      "top": [
+        1395.5,
+        466
+      ],
+      "base": [
+        1395,
+        497.5
+      ],
+      "bbox": [
+        1391.5,
+        465.5,
+        1399,
+        498
+      ],
+      "side": "right"
+    },
+    {
+      "n": 6,
+      "centre": [
+        1314,
+        422
+      ],
+      "top": [
+        1314,
+        411.5
+      ],
+      "base": [
+        1314,
+        433
+      ],
+      "bbox": [
+        1311.5,
+        411,
+        1317,
+        433
+      ],
+      "side": "left"
+    }
+  ]
+}
