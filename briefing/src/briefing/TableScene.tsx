@@ -7,7 +7,8 @@ import { Appear, from, HandRule, Header, LeadText, SAFE, T, TagMark } from './co
 /**
  * B08 · Infrastructure: each piece, its status and its owner, one row at a
  * time, hand-ruled like the ledger. The travel bag sits in the top-right
- * corner. The "Not used" footer comes last.
+ * corner, clear of the column headers. Every row's lead (the piece's name) is
+ * set in the strong face. The "Not used" footer comes last.
  */
 const COLS = { piece: 1010, status: 250, owner: 360 }; // + gaps = 1620
 const GAP = 0;
@@ -20,7 +21,7 @@ export const TableScene: React.FC<{ scene: Scene }> = ({ scene }) => {
   const top = 262;
   return (
     <>
-      {art && <Art name={art.name} fallback={art.fallback} start={art.start ?? 0.3} dur={art.dur} washDelay={art.washDelay} crop="ink" pad={14} x={SAFE.right} y={82} anchor="tr" scale={1.45} />}
+      {art && <Art name={art.name} fallback={art.fallback} start={art.start ?? 0.3} dur={art.dur} washDelay={art.washDelay} crop="ink" pad={14} x={SAFE.right} y={64} anchor="tr" scale={1.2} />}
       <Header scene={scene} size={64} width={1300} />
       <div style={{ position: 'absolute', left: SAFE.left, top, width: SAFE.right - SAFE.left }}>
         {tb.header && (
@@ -34,7 +35,7 @@ export const TableScene: React.FC<{ scene: Scene }> = ({ scene }) => {
         {tb.rows.map((r, i) => (
           <Appear key={i} at={r.at} style={{ position: 'relative', display: 'flex', alignItems: 'baseline', padding: '15px 0 15px' }}>
             <div style={{ ...T.body, fontSize: 31, width: COLS.piece - 30, marginRight: 30, lineHeight: 1.3 }}>
-              <LeadText text={tr(r)} />
+              <LeadText text={tr(r)} soft />
             </div>
             <div style={{ width: COLS.status, marginLeft: GAP }}>{r.tag && <TagMark tag={r.tag} start={from(r)} size={27} />}</div>
             <div style={{ ...T.body, fontSize: 30, width: COLS.owner, marginLeft: GAP, color: C.ink, lineHeight: 1.25 }}>{r.owner ? tr(r.owner) : ''}</div>

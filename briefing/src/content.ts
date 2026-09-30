@@ -658,13 +658,13 @@ export const SCENES = {
     title: t('First, the foundation. Nothing is live yet.', 'C04-1', { withPrev: true }),
     lines: [],
     items: [
-      t('Inventory: 6 branches, every asset, a 171-line gap list.', 'C04-2', { tag: 'accepted' }),
+      t('Inventory: 6 branches and a 171-line gap list.', 'C04-2', { tag: 'accepted' }),
       t('74 decisions recorded; 29 questions in one batch.', 'C04-3', { tag: 'accepted' }),
       t('15 versioned rules for data, workshop maths, offers and approvals.', 'C04-4', { tag: 'accepted' }),
       t('A combined code base that builds and passes 41 browser tests.', 'C04-5', { tag: 'accepted' }),
-      t('Four extra test cases for the workshop maths.', 'C04-6', { tag: 'accepted' }),
+      t('Four extra test cases for workshop maths.', 'C04-6', { tag: 'accepted' }),
     ],
-    caption: t('Each step checked by an independent verifier that did none of the work.', 'C04-7'),
+    caption: t('Each step checked by an AI verifier that did none of the work: a technical check, not an approval.', 'C04-7'),
     callout: t("Why first: so parallel work can't drift, leak anyone's numbers, or promise what Bill hasn't approved.", 'C04-8'),
   }),
 
@@ -681,7 +681,7 @@ export const SCENES = {
       t('The main branch did not build (a video folder, film/); the combined base does.', 'C05-1', { tag: 'fixed' }),
       t("Site narration: a clone of someone else's voice, speaking as Bill.", 'C05-2', { tag: 'must-not-ship' }),
       t('Film material: an invented client story, unsupported titles.', 'C05-3', { tag: 'quarantined' }),
-      t("The code assumes other services (Resend, Upstash, Vercel); the only n8n (automation tool) we can reach is someone else's Cloud project.", 'C05-4', { tag: 'plan-stands' }),
+      t("The code assumes other services (Resend, Upstash, Vercel); the only n8n (automation tool) within reach is someone else's Cloud project.", 'C05-4', { tag: 'plan-stands' }),
     ],
   }),
 
@@ -696,7 +696,7 @@ export const SCENES = {
     lines: [],
     diagram: {
       kind: 'diagram',
-      paths: t("Guide · Workshop Journey · Crossroads · Book → Bill's 15-minute conversation", 'C06-1'),
+      paths: t("Guide · Workshop Journey · Crossroads → Bill's 15-minute conversation", 'C06-1'),
       hub: { ...t("Bill's website, on the existing server", 'C06-2'), id: 'site', object: 'building' },
       nodes: {
         kind: 'row',
@@ -705,7 +705,7 @@ export const SCENES = {
           { ...t('Automation: n8n', 'C06-3'), id: 'automation', object: 'gear' },
           { ...t('Email: Brevo', 'C06-3'), id: 'email', object: 'envelope' },
           { ...t('Calendar: Google; Calendly for now', 'C06-4'), id: 'calendar', object: 'calendar' },
-          { ...t('Payments: Stripe', 'C06-3'), id: 'payments', object: 'receipt' },
+          { ...t('Book payments: Stripe', 'C06-3'), id: 'payments', object: 'receipt' },
           { ...t("Bill's recordings", 'C06-5'), id: 'recordings', object: 'film' },
           { ...t('Backups, kept off the server', 'C06-6'), id: 'backups', object: 'padlock' },
         ],
@@ -723,7 +723,7 @@ export const SCENES = {
     kicker: t('How we build'),
     title: t('A small supervised team builds it. People switch it on.', 'C07-1', { withPrev: true }),
     lines: [
-      t("Building: one AI director and at most three AI specialists ('agents') at once, the verifier included.", 'C07-2'),
+      t("Building: one AI director and at most three AI specialists ('agents') at once, verifier included.", 'C07-2'),
       t('Once live: tested automations send reminders and receipts; no agent decides for a client.', 'C07-3'),
     ],
     row: {
@@ -748,7 +748,7 @@ export const SCENES = {
     layout: 'table',
     art: [{ name: 'travel-bag', placement: 'corner', start: 0.3, dur: 2.6 }],
     kicker: t('Infrastructure'),
-    title: t("Proven pieces, in the owners' own names.", 'C08-1', { withPrev: true }),
+    title: t("Proven pieces, in the owners' names.", 'C08-1', { withPrev: true }),
     lines: [],
     table: {
       kind: 'table',
@@ -756,7 +756,7 @@ export const SCENES = {
       rows: [
         t('Existing server (VPS): site, n8n, nightly encrypted off-server backups', 'C08-2', { tag: 'to-confirm', owner: t('Arnaud') }),
         t('Supabase Free: small database', 'C08-3', { tag: 'to-open', owner: t('Bill or firm (proposed)') }),
-        t('Brevo Free: email; one domain record, current mail untouched', 'C08-4', { tag: 'to-open', owner: t('Bill or firm (proposed)') }),
+        t('Brevo Free: email; domain records, current mail untouched', 'C08-4', { tag: 'to-open', owner: t('Bill or firm (proposed)') }),
         t('Google account for Meet and Calendar; Calendly kept for the pilot', 'C08-5', { tag: 'edition-to-confirm', owner: t('Bill') }),
         t('Stripe hosted checkout, test mode first', 'C08-6', { tag: 'to-open', owner: t('Bill or firm (proposed)') }),
         t('Video host, after a bandwidth estimate', 'C08-7', { tag: 'not-chosen', owner: t('Arnaud') }),
@@ -775,7 +775,7 @@ export const SCENES = {
     kicker: t('Money'),
     title: t('Today: nothing bought or spent; spending limits at zero until Arnaud sets them.', 'C09-1', { withPrev: true }),
     lines: [
-      t("New subscriptions for the pilot: none, if the existing server and Bill's Google account suffice.", 'C09-2'),
+      t("New subscriptions for the pilot: none, if the existing server, Bill's Google account and existing storage for backups suffice.", 'C09-2'),
       t('Existing costs to confirm: server, domain, mailbox, Calendly, Google, GitHub, build assistant.', 'C09-3'),
     ],
   }),
@@ -818,8 +818,8 @@ export const SCENES = {
         heading: t('Bill'),
         items: [
           t('10 questions, once; a 20-minute recorded voice interview.', 'C11-1'),
-          t('Recording: 22 to 35 minutes of finished video, not studio time.', 'C11-2'),
-          t('Meetings, proposed: six 15-minute and two 30-minute weekly, buffers included: 3 h 50 min. Bill confirms.', 'C11-3'),
+          t('Recording: 22 to 35 minutes of finished video per language recorded, not studio time.', 'C11-2'),
+          t('Meetings, proposed: six 15-minute and two 30-minute weekly, buffers included: 3 h 50 min reserved, before preparation and follow-up. Bill confirms.', 'C11-3'),
           t('Crossroads: 60 minutes, proposed monthly, plus rehearsal. A weekly voice note; reviewing drafts.', 'C11-4'),
         ],
       },
@@ -894,7 +894,7 @@ export const SCENES = {
         ],
       },
     ],
-    caption: t('Secrets never go in chat: each has its named place. Full list: .orchestration/blockers.md', 'C13-4'),
+    caption: t('Secrets never in chat, each in its named place. Full list: .orchestration/blockers.md', 'C13-4'),
   }),
 
   s14: scene({
@@ -904,7 +904,7 @@ export const SCENES = {
     layout: 'close',
     art: [{ name: 'sailboat', placement: 'center', start: 0.2, dur: 3.0 }],
     title: t('Build a Better Retirement Together', 'C14-1'),
-    lines: [t('Next: one sitting each for the questions. Local work continues; nothing goes live without recorded approval.', 'C14-2')],
+    lines: [t('Next: your answers. Local work continues meanwhile; nothing goes live without recorded approval.', 'C14-2')],
   }),
 } satisfies Record<string, Scene>;
 

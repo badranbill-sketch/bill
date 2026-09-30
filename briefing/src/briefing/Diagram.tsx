@@ -15,6 +15,10 @@ import { Appear, Broken, from, Header, PenStroke, SAFE, splitLead, T } from './c
  * out as a hub and spokes: the site (the building) in the middle, the seven
  * services around it, each with its label beside it and a pen-drawn spoke
  * from the hub. Labels are screen text, never drawn.
+ *
+ * Timing: the building is drawn first, during the title; each service is
+ * drawn just before its label appears, and its spoke draws with the label,
+ * so object, spoke and label arrive together.
  */
 
 // content.ts object names → anchor ids in system-map.anchors.json.
@@ -50,15 +54,18 @@ const groupFor = (object: MapObject): number | null => {
 
 /** Where each object sits (centre, frame px) and which side its label goes. */
 const PLACE: Record<MapObject, { x: number; y: number; side: 'left' | 'right' | 'above'; maxW?: number }> = {
-  building: { x: 960, y: 606, side: 'above' },
+  building: { x: 960, y: 578, side: 'above' },
   drawer: { x: 566, y: 398, side: 'left' },
-  gear: { x: 440, y: 606, side: 'left' },
+  gear: { x: 440, y: 578, side: 'left' },
   film: { x: 566, y: 820, side: 'left' },
   calendar: { x: 1330, y: 398, side: 'right' },
-  envelope: { x: 1500, y: 606, side: 'right' },
+  envelope: { x: 1500, y: 578, side: 'right' },
   receipt: { x: 1440, y: 820, side: 'right' },
-  padlock: { x: 960, y: 826, side: 'right', maxW: 250 },
+  padlock: { x: 960, y: 848, side: 'right', maxW: 250 },
 };
+/** Seconds each service's pen takes; it finishes just after its label starts to fade in. */
+const NODE_PEN = 1.5;
+const NODE_LEAD = 1.2;
 const HUB_SCALE = 1.45;
 const NODE_SCALE = 1.1;
 const LABEL_GAP = 26;
@@ -69,11 +76,11 @@ export const DiagramScene: React.FC<{ scene: Scene }> = ({ scene }) => {
   const art = scene.art?.[0];
   const nodes = d.nodes.items as readonly MapNode[];
   const drawn = [d.hub, ...nodes];
-  // Pen: the hub first, then each service in label order, inside the art cue's window.
+  // Pen: the hub first (from the art cue's start), then each service just before its own label.
   const penStart = art?.start ?? 0.6;
   const penDur = art?.dur ?? 9;
-  const hubDur = penDur * 0.2;
-  const nodeDur = (penDur - hubDur) / Math.max(1, nodes.length);
+  const hubDur = Math.min(2.4, penDur * 0.3);
+  const nodeStart = (n: MapNode, i: number) => Math.max(penStart + hubDur + i * 0.15, from(n) - NODE_LEAD);
 
   const rects = drawn.map((n, i) => {
     const g = groupFor(n.object);
@@ -94,8 +101,8 @@ export const DiagramScene: React.FC<{ scene: Scene }> = ({ scene }) => {
     const ux = dx / len;
     const uy = dy / len;
     const edge = (w: number, h: number) => 1 / Math.sqrt((ux / (w / 2)) ** 2 + (uy / (h / 2)) ** 2);
-    const a = edge(hubW * 0.92, hubH * 0.92) + 8;
-    const b = edge(w2 * 0.95, h2 * 0.95) + 12;
+    const a = edge(hubW * 0.92, hubH * 0.92) + 4;
+    const b = edge(w2 * 0.95, h2 * 0.95) + 6;
     return [hub.p.x + ux * a, hub.p.y + uy * a, x2 - ux * b, y2 - uy * b] as const;
   };
 
@@ -135,9 +142,9 @@ export const DiagramScene: React.FC<{ scene: Scene }> = ({ scene }) => {
             y={p.y}
             anchor="c"
             scale={scale}
-            start={i === 0 ? penStart : penStart + hubDur + (i - 1) * nodeDur}
-            dur={i === 0 ? hubDur : nodeDur * 1.2}
-            washDelay={i === 0 ? hubDur * 0.9 : nodeDur}
+            start={i === 0 ? penStart : nodeStart(node, i - 1)}
+            dur={i === 0 ? hubDur : NODE_PEN}
+            washDelay={i === 0 ? hubDur * 0.9 : NODE_PEN * 0.8}
             washDur={1.0}
           />
         ),
@@ -147,12 +154,14 @@ export const DiagramScene: React.FC<{ scene: Scene }> = ({ scene }) => {
       {rects.map(({ node, p, r }, i) => {
         const w = r?.width ?? 140;
         const h = r?.height ?? 140;
-        const [lead, rest] = splitLead(tr(node));
         const isHub = i === 0;
+        // Every service label has a strong lead: before its colon, else before its first comma, else the whole label.
+        const [lead0, rest0] = splitLead(tr(node), !isHub);
+        const [lead, rest] = !isHub && !lead0 ? [rest0, ''] : [lead0, rest0];
         const body = (
           <>
-            {lead && <div style={{ ...T.strong, fontSize: 30 }}>{lead.replace(/:$/, '')}</div>}
-            <div style={{ ...(isHub ? T.strong : T.body), fontSize: isHub ? 32 : 30, color: isHub ? C.ink : C.navy2, lineHeight: 1.25 }}>{isHub ? <Broken text={rest} sep=", " /> : rest}</div>
+            {lead && <div style={{ ...T.strong, fontSize: 30 }}>{lead.replace(/[:;,]$/, '')}</div>}
+            {rest && <div style={{ ...(isHub ? T.strong : T.body), fontSize: isHub ? 32 : 30, color: isHub ? C.ink : C.navy2, lineHeight: 1.25 }}>{isHub ? <Broken text={rest} sep=", " /> : rest}</div>}
           </>
         );
         if (p.side === 'above') {

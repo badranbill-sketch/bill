@@ -254,16 +254,22 @@ export const Header: React.FC<{ scene: Scene; size?: number; width?: number; lef
   </div>
 );
 
-/** Split "Records: Supabase" into a lead and the rest (layout only; the words are unchanged). */
-export const splitLead = (text: string): [string | null, string] => {
+/**
+ * Split "Records: Supabase" into a lead and the rest (layout only; the words are unchanged).
+ * `soft`: a text with no colon takes its lead from before its first ';' or ',' (the name of the
+ * piece), so every row of a table or label of a diagram gets the same lead treatment.
+ */
+export const splitLead = (text: string, soft = false): [string | null, string] => {
   const i = text.indexOf(': ');
-  if (i < 0 || i > 40) return [null, text];
-  return [text.slice(0, i + 1), text.slice(i + 2)];
+  if (i >= 0 && i <= 40) return [text.slice(0, i + 1), text.slice(i + 2)];
+  if (!soft) return [null, text];
+  const m = text.match(/^([^:;,]{1,40}[;,]) (.+)$/);
+  return m ? [m[1], m[2]] : [null, text];
 };
 
-/** Text of an item with its lead (before the first colon) set in the strong face. */
-export const LeadText: React.FC<{ text: string; leadColor?: string }> = ({ text, leadColor = C.ink }) => {
-  const [lead, rest] = splitLead(text);
+/** Text of an item with its lead (before the first colon; with `soft`, else before the first ';' or ',') set in the strong face. */
+export const LeadText: React.FC<{ text: string; leadColor?: string; soft?: boolean }> = ({ text, leadColor = C.ink, soft = false }) => {
+  const [lead, rest] = splitLead(text, soft);
   if (!lead) return <>{text}</>;
   return (
     <>

@@ -19,7 +19,7 @@ node --experimental-strip-types --no-warnings scripts/cues.mjs --write   # regen
 
 ### The briefing
 
-`Briefing` (1920×1080, 30 fps, no audio): 14 scenes from `SCENES` in `src/content.ts`, 6:56.6 (12,498 frames).
+`Briefing` (1920×1080, 30 fps, no audio): 14 scenes from `SCENES` in `src/content.ts`, 6:58.9 (12,567 frames).
 Render the English film:
 
 ```bash
@@ -64,7 +64,8 @@ frame wall clock (0.18–0.19 s per frame per worker), plus 2.5–4.5 s to bundl
 
 ## Primitives
 
-- `<Paper/>`: the warm page `#FAF9F5` with a 4% grain and a very soft warm falloff. Never moves.
+- `<Paper/>`: the warm page `#FAF9F5` with a paper grain blended in overlay mode (about ±1 level of texture; the
+  page keeps its mean tone) and a very soft warm falloff. Never moves.
 - `<InkDraw name start dur width />`: one of the site's drawings drawn by the pen, stroke by stroke. Faint pencil
   marks, then every ink contour (each tapered outline is revealed along its length through a nib-wide mask), then
   the hatching; the washes fade in only after the ink (`washDelay`, `washDur`). `crop` shows part of a drawing,
