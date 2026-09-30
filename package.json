@@ -15,7 +15,8 @@
     "content": "node --import tsx scripts/content.ts",
     "launch:check": "node --import tsx scripts/launch.ts --strict",
     "protections:check": "node --import tsx scripts/protections.ts",
-    "format": "prettier --write ."
+    "format": "prettier --write .",
+    "guide": "node --import tsx guide/build.tsx"
   },
   "dependencies": {
     "@fontsource/caveat": "^5.3.0",

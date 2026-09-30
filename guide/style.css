@@ -1,0 +1,823 @@
+/*
+ * The guide's page styles. US Letter, 8.5 × 11 in, designed as spreads:
+ * page 1 is the cover (a right-hand page), then left/right pairs.
+ * CSS px are 1/96 in, so a page is 816 × 1056.
+ *
+ * Palette, type and marks follow docs/ART-DIRECTION.md: navy ink on warm
+ * paper, brass as a mark (a numeral, a tick, one underline), never a fill.
+ */
+:root {
+  --navy: #0e2233;
+  --navy-2: #173450;
+  --paper: #faf9f5;
+  --ivory: #f5f2ea;
+  --blue-grey: #a7b4c3;
+  --stone: #c9c0b1;
+  --brass: #a8875a;
+  --brass-soft: #c9a874;
+  --muted: #4e5b68;
+  --body: #2c3a47;
+  --brass-ink: #7a5d33;
+  --rule: rgba(14, 34, 51, 0.16);
+  --rule-strong: rgba(14, 34, 51, 0.3);
+  --ink: var(--navy);
+  --ink-soft: var(--navy-2);
+  --pencil: var(--blue-grey);
+  --serif: "Newsreader", Georgia, serif;
+  --sans: "Source Sans 3", system-ui, sans-serif;
+  --hand: "Caveat", cursive;
+  /* Page geometry */
+  --pw: 816px;
+  --ph: 1056px;
+  --top: 64px;
+  --bottom: 76px;
+  --outer: 64px;
+  --inner: 80px;
+}
+@page {
+  size: 8.5in 11in;
+  margin: 0;
+}
+* {
+  box-sizing: border-box;
+}
+html {
+  -webkit-print-color-adjust: exact;
+  print-color-adjust: exact;
+}
+body {
+  margin: 0;
+  color: var(--navy);
+  font: 400 14.5px/1.6 var(--sans);
+  -webkit-font-smoothing: antialiased;
+  font-kerning: normal;
+  font-variant-ligatures: common-ligatures;
+  hyphens: manual;
+}
+@media screen {
+  body {
+    background: #d9d5cc;
+    padding: 24px 0;
+  }
+  .page {
+    margin: 0 auto 24px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.18);
+  }
+}
+.page {
+  position: relative;
+  width: var(--pw);
+  height: var(--ph);
+  overflow: hidden;
+  background-color: var(--paper);
+  background-image: var(--grain);
+  background-size: 128px 128px;
+  break-after: page;
+  page-break-after: always;
+}
+.page {
+  --page-bg: var(--paper);
+}
+.print .page {
+  background: #fff;
+  --page-bg: #fff;
+}
+.page:last-child {
+  break-after: auto;
+  page-break-after: auto;
+}
+/* The live area, mirrored on left and right pages. */
+.frame {
+  position: absolute;
+  top: var(--top);
+  bottom: var(--bottom);
+  left: var(--inner);
+  right: var(--outer);
+}
+.left .frame {
+  left: var(--outer);
+  right: var(--inner);
+}
+.abs {
+  position: absolute;
+}
+
+/* ---------- folios ---------- */
+.folio {
+  position: absolute;
+  bottom: 34px;
+  display: flex;
+  align-items: baseline;
+  gap: 14px;
+  font: 400 10.5px/1 var(--sans);
+  color: var(--muted);
+  letter-spacing: 0.01em;
+}
+.left .folio {
+  left: var(--outer);
+}
+.right .folio {
+  right: var(--outer);
+  flex-direction: row-reverse;
+}
+.folio b {
+  font: italic 400 13px/1 var(--serif);
+  color: var(--navy);
+}
+.folio.light,
+.folio.light b {
+  color: var(--muted);
+}
+
+/* ---------- type ---------- */
+h1,
+h2,
+h3 {
+  font-family: var(--serif);
+  font-weight: 300;
+  margin: 0;
+  letter-spacing: -0.012em;
+  text-wrap: balance;
+}
+h1 {
+  font-size: 38px;
+  line-height: 1.1;
+}
+h2 {
+  font-size: 29px;
+  line-height: 1.15;
+}
+h3 {
+  font-size: 19px;
+  line-height: 1.25;
+  font-weight: 400;
+  letter-spacing: -0.005em;
+}
+em {
+  font-style: italic;
+}
+p {
+  margin: 0 0 0.75em;
+  color: var(--body);
+  text-wrap: pretty;
+}
+.lead {
+  font: italic 400 19px/1.42 var(--serif);
+  color: var(--navy-2);
+  margin: 16px 0 22px;
+  text-wrap: pretty;
+}
+.caption {
+  font: italic 400 12.5px/1.45 var(--serif);
+  color: var(--muted);
+  margin: 0;
+}
+.small {
+  font-size: 12.5px;
+  line-height: 1.5;
+  color: var(--muted);
+}
+.hand {
+  font: 400 25px/1.1 var(--hand);
+  color: var(--navy-2);
+  transform: rotate(-2.5deg);
+  transform-origin: left center;
+  white-space: nowrap;
+}
+.hand.brass {
+  color: var(--brass-ink);
+}
+
+/* A label with a brass tick, as on the site: sentence case, not capitals. */
+.kicker {
+  display: flex;
+  align-items: center;
+  gap: 11px;
+  font: 600 11.5px/1.3 var(--sans);
+  letter-spacing: 0.03em;
+  color: var(--muted);
+  margin: 0 0 14px;
+}
+.kicker::before {
+  content: "";
+  flex: none;
+  width: 22px;
+  height: 1.5px;
+  border-radius: 2px;
+  background: var(--brass);
+}
+/* The chapter numeral: the one brass mark on an opening page. */
+.num {
+  font: italic 300 50px/1 var(--serif);
+  color: var(--brass-ink);
+  margin: 0 0 6px;
+  letter-spacing: -0.02em;
+}
+.rule {
+  border: 0;
+  border-top: 1px solid var(--rule);
+  margin: 0;
+}
+
+/* ---------- a question to bring ---------- */
+.ask {
+  display: grid;
+  grid-template-columns: 30px 1fr;
+  gap: 4px 14px;
+  padding-top: 14px;
+  border-top: 1px solid var(--rule);
+}
+.ask .mark {
+  grid-row: span 2;
+}
+.ask-label {
+  font: 600 11px/1.3 var(--sans);
+  letter-spacing: 0.03em;
+  color: var(--muted);
+}
+.ask-q {
+  font: italic 400 17px/1.4 var(--serif);
+  color: var(--navy);
+  margin: 2px 0 0;
+  text-wrap: pretty;
+}
+/* A small brass numeral in a hand-drawn ring. */
+.mark {
+  position: relative;
+  width: 28px;
+  height: 28px;
+  display: grid;
+  place-items: center;
+  font: italic 400 14px/1 var(--serif);
+  color: var(--brass-ink);
+}
+.mark svg {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  overflow: visible;
+}
+.mark svg path {
+  fill: none;
+  stroke: var(--brass);
+  stroke-width: 1;
+  stroke-linecap: round;
+}
+
+/* ---------- lists ---------- */
+.items {
+  display: grid;
+  gap: 12px 30px;
+}
+.items.two {
+  grid-template-columns: 1fr 1fr;
+}
+.item h3 {
+  font-size: 17px;
+  margin: 0 0 3px;
+}
+.item p {
+  font-size: 13.5px;
+  line-height: 1.5;
+  margin: 0;
+}
+.numbered {
+  display: grid;
+  gap: 13px;
+}
+.numbered .row {
+  display: grid;
+  grid-template-columns: 30px 1fr;
+  gap: 0 14px;
+  align-items: start;
+}
+.numbered .row h3 {
+  font-size: 17.5px;
+  margin: 3px 0 2px;
+}
+.numbered .row p {
+  font-size: 13.5px;
+  line-height: 1.5;
+  margin: 0;
+}
+
+/* Good to know: a quiet aside between two rules. */
+.aside {
+  border-top: 1px solid var(--rule-strong);
+  border-bottom: 1px solid var(--rule);
+  padding: 12px 0 13px;
+}
+.aside h4 {
+  margin: 0 0 4px;
+  font: 600 11px/1.3 var(--sans);
+  letter-spacing: 0.03em;
+  color: var(--brass-ink);
+}
+.aside p {
+  font-size: 13px;
+  line-height: 1.5;
+  margin: 0;
+}
+
+/* Ruled writing lines for worksheets. */
+.lines {
+  display: grid;
+}
+.lines span {
+  display: block;
+  height: 30px;
+  border-bottom: 1px solid var(--rule);
+}
+.check {
+  display: inline-block;
+  width: 13px;
+  height: 13px;
+  flex: none;
+  position: relative;
+  top: 2px;
+}
+.check svg {
+  width: 100%;
+  height: 100%;
+  overflow: visible;
+}
+.check path {
+  fill: none;
+  stroke: var(--navy);
+  stroke-width: 0.9;
+  stroke-linecap: round;
+}
+
+/* Illustrations: the site's ink styles, plus page placement. */
+.art {
+  position: absolute;
+}
+.art svg {
+  display: block;
+  width: 100%;
+  height: auto;
+  overflow: visible;
+}
+.fade-top {
+  -webkit-mask-image: linear-gradient(to bottom, transparent 0, #000 12%);
+  mask-image: linear-gradient(to bottom, transparent 0, #000 12%);
+}
+
+/* A photograph tucked into the page like a print. */
+.print-photo {
+  position: absolute;
+  background: #fffdf8;
+  padding: 10px 10px 34px;
+  box-shadow:
+    0 1px 1px rgba(14, 34, 51, 0.08),
+    0 10px 18px -10px rgba(14, 34, 51, 0.35);
+}
+.print .print-photo {
+  box-shadow: 0 0 0 1px rgba(14, 34, 51, 0.12);
+}
+.print-photo img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+.pen-link {
+  display: inline-block;
+  padding-bottom: 6px;
+  background: var(--pen-line) 0 100% / 100% 6px no-repeat;
+}
+
+/* ---------- cover ---------- */
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+.monogram {
+  width: 19px;
+  height: 24px;
+  background: var(--monogram) center / contain no-repeat;
+}
+.brand-name {
+  font: 400 19px/1 var(--serif);
+  color: var(--navy);
+  letter-spacing: 0;
+}
+.cover-title {
+  font-size: 56px;
+  line-height: 1.04;
+  font-weight: 300;
+  letter-spacing: -0.02em;
+}
+.cover-title span {
+  display: block;
+}
+.cover-title span:last-child {
+  font-style: italic;
+  color: var(--navy-2);
+}
+.cover-sub {
+  margin-top: 26px;
+  max-width: 430px;
+  font: 400 17px/1.5 var(--sans);
+  color: var(--muted);
+}
+
+/* ---------- contents ---------- */
+.toc {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  border-top: 1px solid var(--rule);
+}
+.toc li {
+  display: grid;
+  grid-template-columns: 34px 1fr 40px;
+  align-items: baseline;
+  padding: 3px 0 3px;
+  border-bottom: 1px solid var(--rule);
+  font-size: 14px;
+  line-height: 1.35;
+}
+.toc-n {
+  font: italic 400 15px/1 var(--serif);
+  color: var(--brass-ink);
+}
+.toc-t {
+  font: 400 16px/1.3 var(--serif);
+  color: var(--navy);
+}
+.toc-p {
+  text-align: right;
+  font: italic 400 13px/1 var(--serif);
+  color: var(--muted);
+}
+
+/* ---------- statement ---------- */
+.st-small {
+  font: 400 15px/1.5 var(--sans);
+  color: var(--muted);
+  margin: 0 0 10px;
+}
+.st-q1 {
+  font: italic 300 32px/1.2 var(--serif);
+  color: var(--muted);
+  margin: 0;
+}
+.st-q2 {
+  font: 300 42px/1.12 var(--serif);
+  color: var(--navy);
+  letter-spacing: -0.015em;
+  margin: 0;
+  text-wrap: balance;
+}
+.thought {
+  font: 300 31px/1.25 var(--serif);
+  color: var(--navy);
+  letter-spacing: -0.012em;
+  text-wrap: pretty;
+  margin: 0;
+}
+.note-line {
+  margin: 18px 0 0;
+  font: italic 400 14px/1.45 var(--serif);
+  color: var(--navy-2);
+}
+
+/* ---------- sources, families ---------- */
+.sources-list {
+  display: grid;
+  gap: 11px;
+}
+.sources-list .item {
+  display: grid;
+  grid-template-columns: 170px 1fr;
+  gap: 18px;
+  padding-top: 10px;
+  border-top: 1px solid var(--rule);
+}
+.sources-list .item h3 {
+  font-size: 16px;
+  margin: 0;
+}
+
+/* ---------- worksheet table ---------- */
+.sheet {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 13px;
+}
+.sheet th {
+  text-align: left;
+  font: 600 11px/1.3 var(--sans);
+  letter-spacing: 0.03em;
+  color: var(--muted);
+  padding: 0 10px 8px 0;
+  border-bottom: 1px solid var(--rule-strong);
+}
+.sheet td {
+  height: 42px;
+  border-bottom: 1px solid var(--rule);
+  padding: 0 10px 0 0;
+  vertical-align: bottom;
+  padding-bottom: 7px;
+}
+.sheet td:first-child {
+  width: 230px;
+  font: 400 15px/1.2 var(--serif);
+  color: var(--navy);
+}
+.sheet td + td {
+  border-left: 1px solid var(--rule);
+}
+.sheet-n {
+  font: italic 400 14px/1 var(--serif);
+  color: var(--brass-ink);
+  margin-right: 6px;
+}
+
+/* ---------- job cards ---------- */
+.card {
+  background: #fdfcf8;
+  transform-origin: 50% 50%;
+  box-shadow: 0 10px 18px -14px rgba(14, 34, 51, 0.45);
+}
+.print .card {
+  box-shadow: none;
+}
+.card-edge {
+  position: absolute;
+  inset: 0;
+  overflow: visible;
+}
+.card-edge path {
+  fill: none;
+  stroke: var(--navy);
+  stroke-width: 0.9;
+  stroke-linecap: round;
+  opacity: 0.8;
+}
+.clip {
+  position: absolute;
+  top: -22px;
+  left: 56%;
+  overflow: visible;
+}
+.clip path {
+  fill: none;
+  stroke: var(--navy);
+  stroke-width: 1.1;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+.card-body {
+  position: absolute;
+  inset: 26px 30px 24px;
+}
+.jobcard .jc-head {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 16px;
+  border-bottom: 1px solid var(--rule-strong);
+  padding-bottom: 10px;
+  margin-bottom: 4px;
+}
+.jobcard h3 {
+  font-size: 25px;
+  font-weight: 300;
+}
+.jc-head span {
+  font: 400 12px/1.3 var(--sans);
+  color: var(--muted);
+}
+.jc-row {
+  display: grid;
+  grid-template-columns: 124px 1fr;
+  gap: 16px;
+  padding: 11px 0;
+  border-bottom: 1px solid var(--rule);
+}
+.jc-row:last-child {
+  border-bottom: 0;
+}
+.jc-label {
+  font: 600 11px/1.6 var(--sans);
+  letter-spacing: 0.03em;
+  color: var(--muted);
+}
+.jc-row p {
+  margin: 0;
+  font-size: 14.5px;
+  line-height: 1.45;
+}
+.jc-big {
+  font: 300 40px/1 var(--serif) !important;
+  color: var(--navy) !important;
+  margin: 6px 0 4px !important;
+}
+.jc-duties {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  display: grid;
+  gap: 5px;
+}
+.jc-duties li {
+  position: relative;
+  padding-left: 18px;
+  font-size: 14.5px;
+  line-height: 1.38;
+  color: var(--body);
+}
+.jc-duties li::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0.72em;
+  width: 9px;
+  height: 1.2px;
+  background: var(--brass);
+}
+
+/* ---------- sequence panels ---------- */
+.panels {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 32px;
+}
+.panel h3 {
+  font-size: 17px;
+  margin: 0 0 8px;
+}
+.panel p {
+  font-size: 13px;
+  line-height: 1.48;
+  margin: 8px 0 0;
+}
+
+/* ---------- checklists ---------- */
+.checks {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  gap: 7px;
+}
+.checks li {
+  display: flex;
+  gap: 12px;
+  align-items: flex-start;
+  font-size: 14px;
+  line-height: 1.4;
+  color: var(--body);
+}
+.groups {
+  display: grid;
+  gap: 0;
+  border-top: 1px solid var(--rule-strong);
+}
+.group {
+  display: grid;
+  grid-template-columns: 200px 1fr;
+  gap: 24px;
+  padding: 14px 0 15px;
+  border-bottom: 1px solid var(--rule);
+}
+.group-head h3 {
+  font-size: 23px;
+  font-weight: 300;
+  margin: 0 0 4px;
+}
+.group-head p {
+  font: italic 400 13.5px/1.4 var(--serif);
+  color: var(--muted);
+  margin: 0;
+}
+.qlist {
+  display: grid;
+  gap: 14px;
+}
+.q,
+.sheet-q {
+  display: grid;
+  grid-template-columns: 30px 1fr;
+  gap: 0 14px;
+}
+.q p,
+.sheet-q p {
+  font: italic 400 16px/1.38 var(--serif);
+  color: var(--navy);
+  margin: 3px 0 0;
+}
+.q .lines span {
+  height: 28px;
+}
+.sheet-qs {
+  display: grid;
+  gap: 20px;
+}
+.lines.tall span {
+  height: 31px;
+}
+.dated {
+  display: flex;
+  align-items: baseline;
+  gap: 12px;
+  font: 600 11px/1.3 var(--sans);
+  letter-spacing: 0.03em;
+  color: var(--muted);
+  margin-bottom: 26px;
+}
+.dated .blank {
+  width: 220px;
+  border-bottom: 1px solid var(--rule-strong);
+  height: 16px;
+}
+
+/* ---------- ending, meeting, back ---------- */
+.end-1 {
+  font: 300 27px/1.25 var(--serif);
+  color: var(--navy);
+  letter-spacing: -0.01em;
+  margin: 0 0 8px;
+  text-wrap: balance;
+}
+.end-2 {
+  font: italic 300 38px/1.15 var(--serif);
+  color: var(--navy-2);
+  letter-spacing: -0.015em;
+  margin: 0;
+}
+.cta {
+  font: 600 17px/1.3 var(--sans);
+  color: var(--navy);
+}
+.contact {
+  margin: 34px 0 0;
+  display: grid;
+  gap: 0;
+  border-top: 1px solid var(--rule-strong);
+}
+.contact div {
+  display: grid;
+  grid-template-columns: 110px 1fr;
+  gap: 16px;
+  padding: 11px 0;
+  border-bottom: 1px solid var(--rule);
+}
+.contact dt {
+  font: 600 11px/1.8 var(--sans);
+  letter-spacing: 0.03em;
+  color: var(--muted);
+}
+.contact dd {
+  margin: 0;
+  font: 400 17px/1.4 var(--serif);
+  color: var(--navy);
+}
+.srcs {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  display: grid;
+  gap: 7px;
+  counter-reset: s;
+}
+.srcs li {
+  display: grid;
+  font-size: 12.5px;
+  line-height: 1.35;
+}
+.srcs a {
+  color: var(--navy);
+}
+.srcs span {
+  font-size: 10px;
+  color: var(--muted);
+  word-break: break-all;
+}
+.draft {
+  font: 600 11px/1.4 var(--sans);
+  letter-spacing: 0.03em;
+  color: var(--brass-ink);
+}
+.back-block {
+  text-align: center;
+}
+.back-name {
+  font: 400 30px/1.1 var(--serif);
+  color: var(--navy);
+  margin: 0 0 10px;
+}
+.back-contact {
+  margin-top: 26px;
+  font: 400 13px/1.4 var(--sans);
+  color: var(--muted);
+  letter-spacing: 0.02em;
+}
