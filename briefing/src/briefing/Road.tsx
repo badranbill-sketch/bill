@@ -14,23 +14,52 @@ import { Callout } from './ListScene';
  * art lane recorded; the legend on the left says what each wave is. The
  * Friday callout and the 90-day caption run under the road, whose near end
  * fades into the paper.
+ *
+ * The drawing is placed inside the page's 150 px side margin and at least
+ * 100 px clear of the title: the right-hand spruce is left out, and the
+ * horizon starts at the left spruces and fades out before the margin instead
+ * of running from edge to edge. The spruces' tiers are drawn before their
+ * trunks, so no bare trunks stand on the horizon while the pen works.
  */
 type Marker = { n: number; centre: number[]; top: number[]; base: number[]; bbox: number[]; side: 'left' | 'right' };
 const MARKERS = (anchors as { markers: Marker[] }).markers;
-const SCALE = (anchors as { scale: number }).scale; // frame px per drawing unit at the art lane's placement
-const DX = 40; // the drawing's shift from the art lane's full-frame placement, px
-const DY = -130;
-const CROP_BOTTOM = 640; // drawing units: the road's near end fades out above the callout
+const BASE = (anchors as { scale: number }).scale; // frame px per drawing unit at the art lane's full-frame placement (the anchors' units)
+const SCALE = 1.27; // frame px per drawing unit here
+const OX = 128; // frame px of the drawing's origin
+const OY = -108;
+/** Drawing units [x0, y0, x1, y1]: the road's near end fades out at the bottom, above the callout. */
+const CROP = [640, 175, 1296, 645] as const;
+/** The right-hand spruce (drawing units): left out. */
+const OMIT = [[1255, 175, 1335, 345]] as const;
+/** The horizon and hills (group 0): from the left spruces to just short of the margin, hidden behind the spruces (their washes 1 and 2). */
+const HORIZON = { groups: [0], x0: 734, x1: 1292, feather: 34, behind: [1, 2] } as const;
+const TREES = [1] as const;
+/** An anchor (art lane's frame px) to this scene's frame px. */
+const place = (a: number, o: number) => (a / BASE) * SCALE + o;
 
 export const RoadScene: React.FC<{ scene: Scene }> = ({ scene }) => {
   const art = scene.art?.[0];
   const row = scene.row;
   const hasRoad = !!art && hasDrawing(art.name);
-  const crop = [600, 150, 820, CROP_BOTTOM - 150] as const;
+  const crop = [CROP[0], CROP[1], CROP[2] - CROP[0], CROP[3] - CROP[1]] as const;
   return (
     <>
       {art && hasRoad && (
-        <Art name={art.name} start={art.start ?? 0.3} dur={art.dur} washDelay={art.washDelay} crop={crop} x={crop[0] * SCALE + DX} y={crop[1] * SCALE + DY} anchor="tl" scale={SCALE} fadeBottom={70} />
+        <Art
+          name={art.name}
+          start={art.start ?? 0.3}
+          dur={art.dur}
+          washDelay={art.washDelay}
+          crop={crop}
+          x={place(CROP[0] * BASE, OX)}
+          y={place(CROP[1] * BASE, OY)}
+          anchor="tl"
+          scale={SCALE}
+          fadeBottom={70}
+          omit={OMIT}
+          fadeGroups={HORIZON}
+          withContours={TREES}
+        />
       )}
       {art && !hasRoad && art.fallback && <Art name={art.fallback} start={art.start ?? 0.3} dur={art.dur} crop="ink" x={1450} y={450} anchor="c" scale={1.8} />}
       <Header scene={scene} size={62} width={860} />
@@ -52,9 +81,9 @@ export const RoadScene: React.FC<{ scene: Scene }> = ({ scene }) => {
             row.items.map((it, i) => {
               const m = MARKERS[i];
               if (!m || !it.label) return null;
-              const x = m.centre[0] + DX;
-              const y = m.centre[1] + DY;
-              const half = (m.bbox[2] - m.bbox[0]) / 2;
+              const x = place(m.centre[0], OX);
+              const y = place(m.centre[1], OY);
+              const half = ((m.bbox[2] - m.bbox[0]) / 2 / BASE) * SCALE;
               const here = it.tag === 'here';
               return (
                 <Appear

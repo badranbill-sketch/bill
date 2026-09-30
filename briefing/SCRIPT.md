@@ -4,8 +4,8 @@ Internal video for Arnaud and Bill, dated 30 September 2026. Not for publication
 slot is empty and falls back to EN. **No audio of any kind** (no voice, no music, no effects): the film is read with
 the sound off, so every word below is on screen and timed for reading.
 
-- **Runtime: 418.9 s = 6:58.9**, 14 scenes, 30 fps, 12,567 frames (per-scene `Math.round(dur * 30)`, summed). The
-  brief allows 5 to 7 minutes: there are only 1.1 s of headroom. **Do not add time.** Transitions happen inside the
+- **Runtime: 419.0 s = 6:59.0**, 14 scenes, 30 fps, 12,570 frames (per-scene `Math.round(dur * 30)`, summed). The
+  brief allows 5 to 7 minutes: there is only 1.0 s of headroom. **Do not add time.** Transitions happen inside the
   scene durations (fade out over the last 0.5 s of a scene, fade in during the first 0.3 s). If a drawing needs more
   time, cut words in `src/content.ts`, not seconds.
 - **Source of every word and timing: `src/content.ts`.** Scenes are written there without timings and passed
@@ -49,6 +49,46 @@ the sound off, so every word below is on screen and timed for reading.
    the 3 h 50 min "reserved, before preparation and follow-up". To stay under 7:00, a few words were cut elsewhere
    (B04 "every asset", B05, B07, B08 title and Brevo row, B13 caption, B14). Scene durations moved: B04 +1.2 s,
    B05 −0.3, B07 −0.3, B08 −0.7, B09 +1.2, B11 +2.4, B13 −0.3, B14 −0.9. Re-render all stills.
+9. **Repair 3 (fact review attempt 2: P2-1, P2-2 and P3-1 to P3-11; visual review attempt 2: V5, V6; live
+   status re-read 2026-09-30 14:49 UTC).** Words and scene names only, plus one new status tag. No layout, drawing,
+   field or component contract changed.
+   - **New tag `resolved`** (`TAGS.resolved`, en "resolved", tone `done`), used by B05 `items.0` instead of `fixed`:
+     main itself still fails; the combined version avoids the failure (P3-3). `Tag` gains `'resolved'`; the tag
+     renderer in `common.tsx` works from `tone`, so nothing else is needed. `fixed` stays in `TAGS`, unused.
+   - **Scene names now match their kickers (V5)**, so the chapter mark and the kicker never disagree: B06 "The plan",
+     B07 "How we build", B09 "Money", B13 "Your part". The component doc comments in `Columns.tsx` and
+     `Statement.tsx` still use the old names (build lane, cosmetic).
+   - **P2 fixes (unchanged from the interrupted attempt, kept):** B04 `items.1` "A 74-entry decision log (13 still
+     open); 29 questions in one batch." B10 Workspace trigger, now in the source's own terms: "if Bill's existing
+     Google account falls short (HB-14)" (8 words, 53 characters: at 28 px italic it may still wrap to two lines in
+     the 528 px item column; the attempt-3 still with the longer wording left page 1's last rule at y ≈ 740, so
+     there is room either way).
+   - **Plain words (V6, P3-9):** B04 "6 code versions" (was "branches"), "A combined site version: builds, passes 41
+     automated browser tests." (was "code base"; 67 characters, like items.1, so it should stay on one line); B05
+     "The site's main version did not build (its film/ video folder); the combined version does." and "…the only n8n (automation tool) in reach isn't Bill's."; B07 G1
+     "professional titles, offers" (was "credentials"); B12 Wave 1 "dry-run setup", Wave 3 "service tests"; B12
+     callout "unless approvals are recorded" (B07 calls the gates approvals); B13 caption "All questions:
+     .orchestration/blockers.md". Left as is: "VPS" (glossed as "Existing server"), and the B08 "Not used" footer.
+   - **Proposals labelled (P3-2, P3-11):** B11 Arnaud "Operating, proposed: …"; B08 "Calendly kept during the build"
+     (the frozen rule, D-024; "for the pilot" was a proposal); B07 "By rule: one AI director, at most three AI
+     specialists ('agents') at once, verifier included."
+   - **Scope named (P3-1, P3-6, P3-8):** B11 "Recording: 22 to 35 minutes of finished workshop and social video per
+     language, not studio time."; B10 lead "Vendors' list prices, not quotes. Taxes extra."; B13 adds HB-04 (which
+     book is the book) and HB-18 (languages): "Official code version and book; domain and mail (HB-03 to HB-05)",
+     "First Crossroads, languages, interview, recording dates (HB-17 to HB-19)".
+   - **Cut to pay for it, meaning unchanged:** B02 "Purpose: … then client relationships …" and "Four steps at your
+     own pace: …"; B11 Arnaud "13 questions, once; …"; B13 "Test-account owners, password manager, operator (…)".
+   - Not changed on screen, recorded in CLAIMS.md §4 instead: P3-4 (substitute browser), P3-7 (unpriced later lines:
+     video hosting, model API, Vercel Pro), P3-10 (Resend/Upstash in HB-08 b).
+   - **Live status (tasks.json 12:04, decisions.md 11:31, contracts/README.md set 1.1):** F00, F01, F02, F02a and F03
+     are accepted, 58 tasks planned; the integration baseline is `e766026` (A0 regression: driver exit 0, 13 pass,
+     1 blocked, 1 expected-fail-by-design; e2e 41/41). The five `accepted` tags in B04 already matched; CLAIMS.md
+     C04-5, C04-6, C05-1 and C12-1 now cite the live record. 74 decision entries (13 still open), 29 HB questions,
+     15 contracts: unchanged.
+   - Scene durations vs the interrupted attempt-3 state (6:59.8): B02 −0.6 s, B04 0.0 (net), B07 +0.3, B10 −0.6,
+     B11 +0.4, B13 −0.3. **Runtime 419.0 s = 6:59.0 (12,570 frames).** Re-render everything from B02 on (every scene
+     start after B02 moves) and all stills.
+   - README.md (build lane) says 6:59.8 (12,594 frames): please update it to 6:59.0 (12,570 frames).
 
 ## 2. Data model added to `src/content.ts` (all new fields optional; the old `Scene` fields are unchanged)
 
@@ -66,7 +106,7 @@ the sound off, so every word below is on screen and timed for reading.
 | `Scene.table?: Table` | `{ kind: 'table', header?: Line, rows: Item[], footer?: Line }`. Rows use `tag` (status) and `owner`. |
 | `Scene.ledger?: LedgerBlock` | `{ kind: 'ledger', lead?: Line, rows: { id, at }[], footer? }`: LEDGER rows by id, in order, each with its own `at`. |
 | `Scene.columns?: Column[]` | `{ kind: 'column', heading: Line, items: Item[] }`, side by side. |
-| `TAGS: Record<Tag, Line & { tone }>` | Words and tone of each status tag. |
+| `TAGS: Record<Tag, Line & { tone }>` | Words and tone of each status tag. Repair 3 adds `resolved` ("resolved", `done`). |
 | `LedgerRow.kind?` | `'if-needed' \| 'per-sale' \| 'proposal' \| 'existing' \| 'reference'`. |
 | `LedgerRow.trigger?: Line` | When the cost would arise. Shown under the item, muted italic. |
 | `LedgerRow.shown?: Line` | The amount text to put on screen, composed only from the record. Use it instead of `amount`. |
@@ -124,7 +164,7 @@ defaults to 85 % of `dur`).
 - Amounts appear **only** through LEDGER rows in B10. B09 states facts without amounts ("nothing bought or spent",
   "limits at zero", "to confirm").
 - Show `shown.en` verbatim. Every `snippet-only` row shows "unverified — confirm at checkout". Example rows show
-  "example only". The lead says "Published list prices, not quotes. Taxes extra."
+  "example only". The lead says "Vendors' list prices, not quotes. Taxes extra."
 - The Workspace amount is the USD figure Google displays; regional checkout is the price that counts (row note).
 - The ad test row says "proposed, not authorized"; its source is the plan (`basis: 'internal'`), and the ads limit
   stays zero.
@@ -139,57 +179,63 @@ motion. Every line stays on screen until its scene ends.
 **B01 · Opening (10.1 s), `title`, two-chairs right (pen 0.3–3.5 s).** One idea: what this is and for whom. The
 dated kicker and the title appear together; the caption "For Arnaud and Bill. Not for publication." follows.
 
-**B02 · Why (24.2 s), `pair`, workshop-notebook left (pen 0.4–3.4 s) and crossroads-signpost right (2.4–5.4 s).** One
+**B02 · Why (23.6 s), `pair`, workshop-notebook left (pen 0.4–3.4 s) and crossroads-signpost right (2.4–5.4 s).** One
 idea: the purpose and the two products. The creative line is the title, then the system's job, then the Workshop
 Journey panel and the Crossroads panel appear under their drawings.
 
 **B03 · The offers (21.2 s), `list`, dock bottom-right (pen 0.3–4.8 s).** One idea: the four frozen offers, and no
 required path. No tags. The wording is exact: one 30-minute consultation with the book (never 60), no price.
 
-**B04 · Built so far (41.0 s), `list`, house right (pen 0.3–3.3 s).** One idea: the foundation, and why it came first.
-Five tagged items (all `accepted`), the verifier caption (an AI check that did none of the work: "a technical check,
+**B04 · Built so far (42.2 s), `list`, house right (pen 0.3–3.3 s).** One idea: the foundation, and why it came first.
+Five tagged items, one per accepted foundation task (F00 inventory, F01 decision log and questions, F02 rules, F03
+combined site version, F02a test cases; all `accepted` in the live `tasks.json`; the decision log's item says how many
+entries are still open, so no open point reads as settled), the verifier caption (an AI check that did none of the work: "a technical check,
 not an approval", so Bill never reads it as a human or firm review), then the "Why first" callout.
 
-**B05 · What we found (28.1 s), `list`, lighthouse right (pen 0.3–3.3 s).** One idea: what the checks found and what
-was done. Four tagged items: fixed; must not ship (boxed); quarantined (boxed); plan stands. Calm, no red.
+**B05 · What we found (27.8 s), `list`, lighthouse right (pen 0.3–3.3 s).** One idea: what the checks found and what
+was done. Four tagged items: resolved; must not ship (boxed); quarantined (boxed); plan stands. Calm, no red.
 
-**B06 · The system (25.1 s), `diagram`, system-map full (pen 0.6–9.6 s, `order="objects"`).** One idea: the design in
+**B06 · The plan (25.1 s), `diagram`, system-map full (pen 0.6–9.6 s, `order="objects"`).** One idea: the design in
 one picture. The paths line ("Guide · Workshop Journey · Crossroads", brass `→`, bold "Bill's 15-minute
 conversation"; the book is not on it because it carries its own 30-minute consultation), the site label beside the
 building, then the seven service labels 0.3 s apart (the receipt's label is "Book payments: Stripe"), each with a short hand-ruled leader to its object, then the caption. Without
 the drawing: the labels in a quiet two-row grid around the site label, with hand-ruled leaders.
 
-**B07 · How it gets built (27.2 s), `statement`, bridge right (pen 0.3–3.3 s).** One idea: a small supervised team
-builds; people switch it on. Two lines, then the gate row across the bottom: the lead "Seven approvals, none recorded
+**B07 · How we build (27.5 s), `statement`, bridge right (pen 0.3–3.3 s).** One idea: a small supervised team
+builds; people switch it on. Two lines (the first states the plan's concurrency rule, "By rule: …"), then the gate row across the bottom: the lead "Seven approvals, none recorded
 yet:" on the left, then seven small markers (brass `G0`…`G6` above a two-word label), with a hand-ruled baseline drawn
 left to right as they appear.
 
 **B08 · Infrastructure (44.3 s), `table`, travel-bag top-right corner (pen 0.3–2.9 s).** One idea: what each piece is,
 its state and its owner. The header appears with the first row, one row about every five seconds, the "Not used"
-footer last. "Bill or firm (proposed)" is the blockers.md HB-06 proposal, not a decision.
+footer last. "Bill or firm (proposed)" is the blockers.md HB-06 proposal, not a decision. Calendly is "kept during
+the build" (the frozen rule, D-024).
 
-**B09 · Money today (18.8 s), `statement`, ledger-page right (pen 0.3–3.3 s).** One idea: nothing bought or spent. The
+**B09 · Money (18.5 s), `statement`, ledger-page right (pen 0.3–3.3 s).** One idea: nothing bought or spent. The
 title, then two lines. No amounts on this page. The first line's condition names all three things the pilot must
-already have (server, Bill's Google account, storage for backups); B10's backup row is what applies otherwise.
+already have (server, Bill's Google account, backup storage); B10's backup row is what applies otherwise.
 
-**B10 · Money later (52.4 s), `ledger`, ledger-page held complete top-right.** One idea: what could cost money later,
-and what would trigger it. The lead line, then seven rows: Workspace, Supabase Pro, Brevo Starter, the Backblaze B2
+**B10 · Money later (52.7 s), `ledger`, ledger-page held complete top-right.** One idea: what could cost money later,
+and what would trigger it. The lead line ("Vendors' list prices, not quotes. Taxes extra."), then seven rows: Workspace, Supabase Pro, Brevo Starter, the Backblaze B2
 example, the Stripe fee, printing and shipping, the ad test proposal. Each row is timed for all its words, markers
-included.
+included. Each trigger is the condition the source records: the Workspace row buys only "if Bill's existing Google
+account falls short (HB-14)". No attendee number is a threshold.
 
-**B11 · Time (40.7 s), `columns`, desk-clock bottom-right (pen 0.3–3.1 s).** One idea: what it asks of each person.
-Bill's four items, then Arnaud's two, then the reviewer and privacy owner. The recording figure is finished footage
-per language recorded, not studio time; the meeting hours are reserved time before preparation and follow-up, and a
-proposal Bill confirms. Bill's third item is now 21 words: allow it three lines in the 820 px column.
+**B11 · Time (41.1 s), `columns`, desk-clock bottom-right (pen 0.3–3.1 s).** One idea: what it asks of each person.
+Bill's four items, then Arnaud's two, then the reviewer and privacy owner. The recording figure is finished workshop
+and social video per language, not studio time; the meeting hours are reserved time before preparation and follow-up,
+and a proposal Bill confirms; Arnaud's operating item is marked "proposed". Bill's second item is now 16 words and
+his third 21: allow two and three lines in the 820 px column.
 
-**B12 · Timeline (32.9 s), `road`, road-markers band (pen 0.3–4.3 s).** One idea: where we are, and what Friday is.
-Six wave labels along the road (Wave 0 "we are here", Wave 1 "next"), then the Friday callout, then the 90-day
-caption.
+**B12 · Timeline (32.6 s), `road`, road-markers band (pen 0.3–4.3 s).** One idea: where we are, and what Friday is.
+Six wave labels along the road (Wave 0 "we are here", Wave 1 "next"), then the Friday callout ("unless approvals
+are recorded", the word B07 uses for the gates), then the 90-day caption.
 
-**B13 · What we need from you (43.7 s), `columns`, two-chairs small bottom-right (pen 0.3–3.3 s).** One idea: each
-person's top questions, by HB number. Arnaud's column, then Bill's, then the secrets caption.
+**B13 · Your part (43.4 s), `columns`, two-chairs small bottom-right (pen 0.3–3.3 s).** One idea: each
+person's top questions, by HB number (a selection: the caption points to the full list). Arnaud's column, then
+Bill's, then the secrets caption.
 
-**B14 · Close (9.2 s), `close`, sailboat centre (pen 0.2–3.2 s).** The brand line, then the next step. Fade to paper
+**B14 · Close (8.9 s), `close`, sailboat centre (pen 0.2–3.2 s).** The brand line, then the next step. Fade to paper
 over the last 0.5 s.
 
 ## 7. Cue sheet (generated from `src/content.ts`)
@@ -207,18 +253,18 @@ Layout `title`. Art: `two-chairs` right, pen 0.3–3.5 s.
 | 0.3 | title | The plan, what is built, and what it takes. |
 | 6.0 | caption | For Arnaud and Bill. Not for publication. (C01-2) |
 
-### B02 · Why — 24.2 s (at 0:10.1–0:34.3)
+### B02 · Why — 23.6 s (at 0:10.1–0:33.7)
 Layout `pair`. Art: `workshop-notebook` left, pen 0.4–3.4 s, fallback `path`; `crossroads-signpost` right, pen 2.4–5.4 s, fallback `bridge`.
 
 | In (s) | Slot | On screen |
 |---:|---|---|
 | 0.3 | kicker | Why |
 | 0.3 | title | The goal isn't to reach retirement. It's to live it. (C02-1) |
-| 5.1 | lines.0 | The system's job: held, relevant retirement conversations with Bill; client relationships where the fit is mutual. (C02-2) |
-| 11.4 | items.0 | **Workshop Journey** A four-part exercise at your own pace: Bill on video beside an interactive tool. (C02-3) |
-| 17.7 | items.1 | **Retirement Crossroads Challenge** A live game show Bill hosts: ten fictional cases, A/B/C/D answers, explanations. (C02-4) |
+| 5.1 | lines.0 | Purpose: held, relevant retirement conversations with Bill, then client relationships where the fit is mutual. (C02-2) |
+| 11.1 | items.0 | **Workshop Journey** Four steps at your own pace: Bill on video beside an interactive tool. (C02-3) |
+| 17.1 | items.1 | **Retirement Crossroads Challenge** A live game show Bill hosts: ten fictional cases, A/B/C/D answers, explanations. (C02-4) |
 
-### B03 · The offers — 21.2 s (at 0:34.3–0:55.5)
+### B03 · The offers — 21.2 s (at 0:33.7–0:54.9)
 Layout `list`. Art: `dock` band, pen 0.3–4.8 s.
 
 | In (s) | Slot | On screen |
@@ -230,34 +276,34 @@ Layout `list`. Art: `dock` band, pen 0.3–4.8 s.
 | 12.0 | items.2 | Paid printed book, including one 30-minute consultation. Price not set yet. (C03-4) |
 | 16.8 | items.3 | Continued work only if the fit is mutual. (C03-5) |
 
-### B04 · Built so far — 41.0 s (at 0:55.5–1:36.5)
+### B04 · Built so far — 42.2 s (at 0:54.9–1:37.1)
 Layout `list`. Art: `house` right, pen 0.3–3.3 s.
 
 | In (s) | Slot | On screen |
 |---:|---|---|
 | 0.3 | kicker | Built so far |
 | 0.3 | title | First, the foundation. Nothing is live yet. (C04-1) |
-| 4.8 | items.0 | Inventory: 6 branches and a 171-line gap list. · tag: _accepted_ (C04-2) |
-| 9.0 | items.1 | 74 decisions recorded; 29 questions in one batch. · tag: _accepted_ (C04-3) |
-| 13.2 | items.2 | 15 versioned rules for data, workshop maths, offers and approvals. · tag: _accepted_ (C04-4) |
-| 18.0 | items.3 | A combined code base that builds and passes 41 browser tests. · tag: _accepted_ (C04-5) |
-| 23.1 | items.4 | Four extra test cases for workshop maths. · tag: _accepted_ (C04-6) |
-| 27.0 | caption | Each step checked by an AI verifier that did none of the work: a technical check, not an approval. (C04-7) |
-| 34.2 | callout | Why first: so parallel work can't drift, leak anyone's numbers, or promise what Bill hasn't approved. (C04-8) |
+| 4.8 | items.0 | Inventory: 6 code versions and a 171-line gap list. · tag: _accepted_ (C04-2) |
+| 9.3 | items.1 | A 74-entry decision log (13 still open); 29 questions in one batch. · tag: _accepted_ (C04-3) |
+| 14.7 | items.2 | 15 versioned rules for data, workshop maths, offers and approvals. · tag: _accepted_ (C04-4) |
+| 19.5 | items.3 | A combined site version: builds, passes 41 automated browser tests. · tag: _accepted_ (C04-5) |
+| 24.3 | items.4 | Four extra test cases for workshop maths. · tag: _accepted_ (C04-6) |
+| 28.2 | caption | Each step checked by an AI verifier that did none of the work: a technical check, not an approval. (C04-7) |
+| 35.4 | callout | Why first: so parallel work can't drift, leak anyone's numbers, or promise what Bill hasn't approved. (C04-8) |
 
-### B05 · What we found — 28.1 s (at 1:36.5–2:04.6)
+### B05 · What we found — 27.8 s (at 1:37.1–2:04.9)
 Layout `list`. Art: `lighthouse` right, pen 0.3–3.3 s.
 
 | In (s) | Slot | On screen |
 |---:|---|---|
 | 0.3 | kicker | What we found |
 | 0.3 | title | Facts, not blame. |
-| 3.6 | items.0 | The main branch did not build (a video folder, film/); the combined base does. · tag: _fixed_ (C05-1) |
-| 9.6 | items.1 | Site narration: a clone of someone else's voice, speaking as Bill. · tag: _must not ship_ (C05-2) |
-| 15.3 | items.2 | Film material: an invented client story, unsupported titles. · tag: _quarantined_ (C05-3) |
-| 19.5 | items.3 | The code assumes other services (Resend, Upstash, Vercel); the only n8n (automation tool) within reach is someone else's Cloud project. · tag: _plan stands_ (C05-4) |
+| 3.6 | items.0 | The site's main version did not build (its film/ video folder); the combined version does. · tag: _resolved_ (C05-1) |
+| 9.9 | items.1 | Site narration: a clone of someone else's voice, speaking as Bill. · tag: _must not ship_ (C05-2) |
+| 15.6 | items.2 | Film material: an invented client story, unsupported titles. · tag: _quarantined_ (C05-3) |
+| 19.8 | items.3 | The code relies on other services (Resend, Upstash, Vercel); the only n8n (automation tool) in reach isn't Bill's. · tag: _plan stands_ (C05-4) |
 
-### B06 · The system — 25.1 s (at 2:04.6–2:29.7)
+### B06 · The plan — 25.1 s (at 2:04.9–2:30.0)
 Layout `diagram`. Art: `system-map` full, pen 0.6–9.6 s, order objects.
 
 | In (s) | Slot | On screen |
@@ -275,25 +321,25 @@ Layout `diagram`. Art: `system-map` full, pen 0.6–9.6 s, order objects.
 | 12.6 | diagram.nodes.items.6 | Backups, kept off the server (C06-6) |
 | 18.6 | caption | Numbers typed into the workshop never leave the visitor's browser. No AI talks to visitors. (C06-7) |
 
-### B07 · How it gets built — 27.2 s (at 2:29.7–2:56.9)
+### B07 · How we build — 27.5 s (at 2:30.0–2:57.5)
 Layout `statement`. Art: `bridge` right, pen 0.3–3.3 s.
 
 | In (s) | Slot | On screen |
 |---:|---|---|
 | 0.3 | kicker | How we build |
 | 0.3 | title | A small supervised team builds it. People switch it on. (C07-1) |
-| 5.7 | lines.0 | Building: one AI director and at most three AI specialists ('agents') at once, verifier included. (C07-2) |
+| 5.7 | lines.0 | By rule: one AI director, at most three AI specialists ('agents') at once, verifier included. (C07-2) |
 | 11.7 | lines.1 | Once live: tested automations send reminders and receipts; no agent decides for a client. (C07-3) |
 | 17.4 | row.lead | Seven approvals, none recorded yet: (C07-4) |
 | 17.7 | row.items.0 | [G0] basic choices (C07-5) |
-| 18.0 | row.items.1 | [G1] credentials, offers (C07-5) |
+| 18.0 | row.items.1 | [G1] professional titles, offers (C07-5) |
 | 18.3 | row.items.2 | [G2] accounts, spending limits (C07-5) |
 | 18.6 | row.items.3 | [G3] exact versions (C07-5) |
 | 18.9 | row.items.4 | [G4] recordings, rights (C07-5) |
 | 19.2 | row.items.5 | [G5] personal data (C07-5) |
 | 19.5 | row.items.6 | [G6] switch-on (C07-5) |
 
-### B08 · Infrastructure — 44.3 s (at 2:56.9–3:41.2)
+### B08 · Infrastructure — 44.3 s (at 2:57.5–3:41.8)
 Layout `table`. Art: `travel-bag` corner, pen 0.3–2.9 s.
 
 | In (s) | Slot | On screen |
@@ -304,38 +350,38 @@ Layout `table`. Art: `travel-bag` corner, pen 0.3–2.9 s.
 | 3.9 | table.rows.0 | Existing server (VPS): site, n8n, nightly encrypted off-server backups · owner: Arnaud · tag: _to confirm_ (C08-2) |
 | 9.6 | table.rows.1 | Supabase Free: small database · owner: Bill or firm (proposed) · tag: _to open_ (C08-3) |
 | 14.1 | table.rows.2 | Brevo Free: email; domain records, current mail untouched · owner: Bill or firm (proposed) · tag: _to open_ (C08-4) |
-| 19.8 | table.rows.3 | Google account for Meet and Calendar; Calendly kept for the pilot · owner: Bill · tag: _edition to confirm_ (C08-5) |
+| 19.8 | table.rows.3 | Google account for Meet and Calendar; Calendly kept during the build · owner: Bill · tag: _edition to confirm_ (C08-5) |
 | 25.8 | table.rows.4 | Stripe hosted checkout, test mode first · owner: Bill or firm (proposed) · tag: _to open_ (C08-6) |
 | 30.9 | table.rows.5 | Video host, after a bandwidth estimate · owner: Arnaud · tag: _not chosen_ (C08-7) |
 | 35.1 | table.rows.6 | GitHub: reviewed versions · owner: Arnaud · tag: _exists_ (C08-8) |
 | 38.1 | table.footer | Not used: Zoom, n8n Cloud, Vercel Hobby, a custom video platform, a new CRM. (C08-9) |
 
-### B09 · Money today — 18.8 s (at 3:41.2–4:00.0)
+### B09 · Money — 18.5 s (at 3:41.8–4:00.3)
 Layout `statement`. Art: `ledger-page` right, pen 0.3–3.3 s.
 
 | In (s) | Slot | On screen |
 |---:|---|---|
 | 0.3 | kicker | Money |
 | 0.3 | title | Today: nothing bought or spent; spending limits at zero until Arnaud sets them. (C09-1) |
-| 6.0 | lines.0 | New subscriptions for the pilot: none, if the existing server, Bill's Google account and existing storage for backups suffice. (C09-2) |
-| 13.2 | lines.1 | Existing costs to confirm: server, domain, mailbox, Calendly, Google, GitHub, build assistant. (C09-3) |
+| 6.0 | lines.0 | New subscriptions for the pilot: none, if the existing server, Bill's Google account and existing backup storage suffice. (C09-2) |
+| 12.9 | lines.1 | Existing costs to confirm: server, domain, mailbox, Calendly, Google, GitHub, build assistant. (C09-3) |
 
-### B10 · Money later — 52.4 s (at 4:00.0–4:52.4)
+### B10 · Money later — 52.7 s (at 4:00.3–4:53.0)
 Layout `ledger`. Art: `ledger-page` corner, held complete (no redraw).
 
 | In (s) | Slot | On screen |
 |---:|---|---|
 | 0.3 | title | Money later, only if needed. (C10-1) |
-| 3.3 | ledger.lead | Published list prices, not quotes. Taxes extra. (C10-2) |
-| 6.9 | ledger.rows.0 → LEDGER `workspace_business_standard` | Google Workspace Business Standard if Meet must record or host 150 USD 14.00 annual / 16.80 flexible, per user per month unverified — confirm at checkout |
-| 15.6 | ledger.rows.1 → LEDGER `supabase_pro` | Supabase Pro if free limits or backups fall short From $25 per month + usage (USD) |
-| 21.6 | ledger.rows.2 → LEDGER `brevo_starter` | Brevo Starter if daily email nears the free 300 From USD 9 per month unverified — confirm at checkout |
-| 28.5 | ledger.rows.3 → LEDGER `backup_example_b2` | Backups: Backblaze B2 if no owner storage exists USD 6.95 per TB per 30 days unverified — confirm at checkout example only |
-| 36.3 | ledger.rows.4 → LEDGER `stripe_fee_ca` | Stripe fee per book (Canadian card) 2.9% + CA$0.30 per successful card charge unverified — confirm at checkout |
-| 42.6 | ledger.rows.5 → LEDGER `book_printing_shipping` | Printing and shipping per book quote needed (HB-20) |
-| 46.5 | ledger.rows.6 → LEDGER `ads_test_proposal` | Ad test: proposed, not authorized CAD 20 a day × 14 days = CAD 280 |
+| 3.3 | ledger.lead | Vendors' list prices, not quotes. Taxes extra. (C10-2) |
+| 6.9 | ledger.rows.0 → LEDGER `workspace_business_standard` | Google Workspace Business Standard if Bill's existing Google account falls short (HB-14) USD 14.00 annual / 16.80 flexible, per user per month unverified — confirm at checkout |
+| 15.9 | ledger.rows.1 → LEDGER `supabase_pro` | Supabase Pro if free limits or backups fall short From $25 per month + usage (USD) |
+| 21.9 | ledger.rows.2 → LEDGER `brevo_starter` | Brevo Starter if daily email nears the free 300 From USD 9 per month unverified — confirm at checkout |
+| 28.8 | ledger.rows.3 → LEDGER `backup_example_b2` | Backups: Backblaze B2 if no owner storage exists USD 6.95 per TB per 30 days unverified — confirm at checkout example only |
+| 36.6 | ledger.rows.4 → LEDGER `stripe_fee_ca` | Stripe fee per book (Canadian card) 2.9% + CA$0.30 per successful card charge unverified — confirm at checkout |
+| 42.9 | ledger.rows.5 → LEDGER `book_printing_shipping` | Printing and shipping per book quote needed (HB-20) |
+| 46.8 | ledger.rows.6 → LEDGER `ads_test_proposal` | Ad test: proposed, not authorized CAD 20 a day × 14 days = CAD 280 |
 
-### B11 · Time — 40.7 s (at 4:52.4–5:33.1)
+### B11 · Time — 41.1 s (at 4:53.0–5:34.1)
 Layout `columns`. Art: `desk-clock` corner, pen 0.3–3.1 s.
 
 | In (s) | Slot | On screen |
@@ -344,16 +390,16 @@ Layout `columns`. Art: `desk-clock` corner, pen 0.3–3.1 s.
 | 0.3 | title | What it asks of each person |
 | 3.9 | columns.0.heading | Bill |
 | 3.9 | columns.0.items.0 | 10 questions, once; a 20-minute recorded voice interview. (C11-1) |
-| 8.1 | columns.0.items.1 | Recording: 22 to 35 minutes of finished video per language recorded, not studio time. (C11-2) |
-| 13.8 | columns.0.items.2 | Meetings, proposed: six 15-minute and two 30-minute weekly, buffers included: 3 h 50 min reserved, before preparation and follow-up. Bill confirms. (C11-3) |
-| 21.6 | columns.0.items.3 | Crossroads: 60 minutes, proposed monthly, plus rehearsal. A weekly voice note; reviewing drafts. (C11-4) |
-| 27.0 | columns.1.heading | Arnaud |
-| 27.0 | columns.1.items.0 | 13 questions in one sitting; owners open accounts in their own names. (C11-5) |
-| 32.4 | columns.1.items.1 | Operating: daily booking check, event moderation, weekly review. (C11-6) |
-| 36.3 | columns.2.heading | Reviewer, privacy owner |
-| 36.3 | columns.2.items.0 | Approves exact versions; 6 questions. (C11-7) |
+| 8.1 | columns.0.items.1 | Recording: 22 to 35 minutes of finished workshop and social video per language, not studio time. (C11-2) |
+| 14.4 | columns.0.items.2 | Meetings, proposed: six 15-minute and two 30-minute weekly, buffers included: 3 h 50 min reserved, before preparation and follow-up. Bill confirms. (C11-3) |
+| 22.2 | columns.0.items.3 | Crossroads: 60 minutes, proposed monthly, plus rehearsal. A weekly voice note; reviewing drafts. (C11-4) |
+| 27.6 | columns.1.heading | Arnaud |
+| 27.6 | columns.1.items.0 | 13 questions, once; owners open accounts in their own names. (C11-5) |
+| 32.4 | columns.1.items.1 | Operating, proposed: daily booking check, event moderation, weekly review. (C11-6) |
+| 36.6 | columns.2.heading | Reviewer, privacy owner |
+| 36.6 | columns.2.items.0 | Approves exact versions; 6 questions. (C11-7) |
 
-### B12 · Timeline — 32.9 s (at 5:33.1–6:06.0)
+### B12 · Timeline — 32.6 s (at 5:34.1–6:06.7)
 Layout `road`. Art: `road-markers` band, pen 0.3–4.3 s, fallback `path`.
 
 | In (s) | Slot | On screen |
@@ -361,15 +407,15 @@ Layout `road`. Art: `road-markers` band, pen 0.3–4.3 s, fallback `path`.
 | 0.3 | kicker | Timeline |
 | 0.3 | title | Where we are: finishing wave 0. (C12-1) |
 | 3.9 | row.items.0 | [Wave 0] Inspect, freeze the rules · tag: _we are here_ (C12-2) |
-| 4.2 | row.items.1 | [Wave 1] First workshop screen, local setup · tag: _next_ (C12-2) |
+| 4.2 | row.items.1 | [Wave 1] First workshop screen, dry-run setup · tag: _next_ (C12-2) |
 | 4.5 | row.items.2 | [Wave 2] Build every path (C12-2) |
-| 4.8 | row.items.3 | [Wave 3] Recordings, reviews, provider tests (C12-2) |
+| 4.8 | row.items.3 | [Wave 3] Recordings, reviews, service tests (C12-2) |
 | 5.1 | row.items.4 | [Wave 4] Friday pilot gate (C12-2) |
 | 5.4 | row.items.5 | [Wave 5] All content, then 90 days (C12-2) |
-| 17.4 | callout | Friday 2 October: on current evidence, a clearly labelled protected rehearsal, unless gates are recorded and recordings exist. (C12-3) |
-| 24.3 | caption | Then 90 days: an article and two videos a week, Crossroads monthly if justified, one change at a time. Success: meetings held. (C12-4) |
+| 17.4 | callout | Friday 2 October: on current evidence, a clearly labelled protected rehearsal, unless approvals are recorded and recordings exist. (C12-3) |
+| 24.3 | caption | Then 90 days: an article and two videos weekly, Crossroads monthly if justified, one change at a time. Success: meetings held. (C12-4) |
 
-### B13 · What we need from you — 43.7 s (at 6:06.0–6:49.7)
+### B13 · Your part — 43.4 s (at 6:06.7–6:50.1)
 Layout `columns`. Art: `two-chairs` corner, pen 0.3–3.3 s.
 
 | In (s) | Slot | On screen |
@@ -378,25 +424,25 @@ Layout `columns`. Art: `two-chairs` corner, pen 0.3–3.3 s.
 | 0.3 | title | One sitting each. "Don't know yet" is fine. (C13-1) |
 | 4.8 | columns.0.heading | Arnaud |
 | 4.8 | columns.0.items.0 | Host choice, server facts and access (HB-01, HB-02) (C13-2) |
-| 9.0 | columns.0.items.1 | Which code version is official; domain and mail (HB-03, HB-05) (C13-2) |
-| 13.5 | columns.0.items.2 | Who opens each test account; password manager; operator (HB-06, HB-07, HB-10) (C13-2) |
-| 18.3 | columns.0.items.3 | Spending limits, proposed at zero; test recipients (HB-08, HB-09) (C13-2) |
-| 22.5 | columns.1.heading | Bill |
-| 22.5 | columns.1.items.0 | Google account, Calendly, weekly slots (HB-14 to HB-16) (C13-3) |
-| 26.7 | columns.1.items.1 | First Crossroads, interview and recording dates (HB-17, HB-19) (C13-3) |
-| 30.6 | columns.1.items.2 | Book price and terms (HB-20) (C13-3) |
-| 33.6 | columns.1.items.3 | Professional details, firm reviewer, photo and voice rights (HB-21, HB-22) (C13-3) |
-| 38.1 | caption | Secrets never in chat, each in its named place. Full list: .orchestration/blockers.md (C13-4) |
+| 9.0 | columns.0.items.1 | Official code version and book; domain and mail (HB-03 to HB-05) (C13-2) |
+| 13.8 | columns.0.items.2 | Test-account owners, password manager, operator (HB-06, HB-07, HB-10) (C13-2) |
+| 17.7 | columns.0.items.3 | Spending limits, proposed at zero; test recipients (HB-08, HB-09) (C13-2) |
+| 21.9 | columns.1.heading | Bill |
+| 21.9 | columns.1.items.0 | Google account, Calendly, weekly slots (HB-14 to HB-16) (C13-3) |
+| 26.1 | columns.1.items.1 | First Crossroads, languages, interview, recording dates (HB-17 to HB-19) (C13-3) |
+| 30.3 | columns.1.items.2 | Book price and terms (HB-20) (C13-3) |
+| 33.3 | columns.1.items.3 | Professional details, firm reviewer, photo and voice rights (HB-21, HB-22) (C13-3) |
+| 37.8 | caption | Secrets never in chat, each in its named place. All questions: .orchestration/blockers.md (C13-4) |
 
-### B14 · Close — 9.2 s (at 6:49.7–6:58.9)
+### B14 · Close — 8.9 s (at 6:50.1–6:59.0)
 Layout `close`. Art: `sailboat` center, pen 0.2–3.2 s.
 
 | In (s) | Slot | On screen |
 |---:|---|---|
 | 0.3 | title | Build a Better Retirement Together (C14-1) |
-| 3.3 | lines.0 | Next: your answers. Local work continues meanwhile; nothing goes live without recorded approval. (C14-2) |
+| 3.3 | lines.0 | Next: your answers. Local work continues; nothing goes live without recorded approval. (C14-2) |
 
-Total: 418.9 s (6:58.9).
+Total: 419.0 s (6:59.0).
 
 ## 8. Deliberately not in the film
 
@@ -406,7 +452,9 @@ Total: 418.9 s (6:58.9).
 - No price for the book (none exists, D-032), no Workspace purchase implied, no estimate of VPS, storage or egress
   cost, no hour counts beyond the plan's (recording totals are computed from 05 targets, meeting hours are the 01 §17
   proposal).
-- Left out for time, available if a scene is cut: the 16 A6 review reports (now 17 with the A0 patch 1 review), the
-  three recorded build runs (40 agent sessions, 31,501 s wall time, cost not metered; `.orchestration/runs/`), the
+- Left out for time, available if a scene is cut: the 18 A6 review reports in `.orchestration/reviews/`, the build
+  usage (`.orchestration/runs/`, 5 runs: 46 agent sessions, 12,946,825 subagent tokens, 37,483 s ≈ 10 h 25 min wall
+  time, metered cost not estimated; the four foundation runs alone: 44 sessions, 12,556,500 tokens, 35,882 s; see
+  CLAIMS.md §4), the A0 regression's other checks (13 of 15 pass; the launch check waits for 8 site approval flags), the
   Hetzner backup example and the CAD reseller figure for Workspace (both in LEDGER and `data/`), the 41 browser tests'
   substitute-browser caveat (CLAIMS.md C04-5), and the 12-clip / 18-video split of the recording minutes (C11-2).

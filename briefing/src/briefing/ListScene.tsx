@@ -55,7 +55,7 @@ export const ListScene: React.FC<{ scene: Scene }> = ({ scene }) => {
         {items.map((it, i) => (
           <Appear key={i} at={it.at} style={{ position: 'relative', display: 'flex', alignItems: 'flex-start', paddingLeft: 44, marginBottom: cfg.gap }}>
             <Bullet start={from(it)} top={cfg.size * 0.62} seed={30 + i} />
-            <div style={{ ...T.body, fontSize: cfg.size, width: cfg.textWidth, color: C.navy2 }}>
+            <div style={{ ...T.body, fontSize: cfg.size, width: cfg.textWidth, color: C.navy2, textWrap: 'pretty' }}>
               {tr(it)}
             </div>
             {tagged && it.tag && (

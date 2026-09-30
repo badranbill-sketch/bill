@@ -4,12 +4,12 @@ import { tr, type Scene } from '../content';
 import { Art } from './Art';
 import { Appear, Broken, KickerLine, SAFE, T } from './common';
 
-/** B01 · Opening: kicker, title and caption vertically centred on the left; two-chairs on the right (as PipelineTest). */
+/** B01 · Opening: kicker, title and caption vertically centred on the left; two-chairs on the right (as PipelineTest), inside the 150 px side margin. */
 export const TitleScene: React.FC<{ scene: Scene }> = ({ scene }) => {
   const art = scene.art?.[0];
   return (
     <>
-      {art && <Art name={art.name} fallback={art.fallback} start={art.start ?? 0.3} dur={art.dur} washDelay={art.washDelay} x={780} y={550} anchor="cl" width={1060} />}
+      {art && <Art name={art.name} fallback={art.fallback} start={art.start ?? 0.3} dur={art.dur} washDelay={art.washDelay} x={780} y={550} anchor="cl" width={1000} />}
       <div style={{ position: 'absolute', left: SAFE.left, top: 0, height: 1080, width: 660, display: 'flex', flexDirection: 'column', justifyContent: 'center' }}>
         {scene.kicker && <KickerLine line={scene.kicker} style={{ marginBottom: 22 }} />}
         <Appear at={scene.title.at} style={{ ...T.title, fontSize: 88, marginLeft: -4, textWrap: 'balance' }}>

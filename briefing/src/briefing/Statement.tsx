@@ -8,7 +8,7 @@ import { Art } from './Art';
 import { Appear, from, HandRule, Header, LeadText, SAFE, T } from './common';
 
 /**
- * B07 · How it gets built, B09 · Money today: a title and a few lines beside
+ * B07 · How we build, B09 · Money: a title and a few lines beside
  * one drawing. B07 adds the seven approval gates across the bottom: open
  * circles, because none is recorded yet.
  */

@@ -23,6 +23,21 @@ import { DRAWINGS, type DrawingName, type InkData, type InkStroke } from '../dat
 
 type Plan = { s: InkStroke; a: number; b: number }[];
 
+/** A box in the drawing's own units: [x0, y0, x1, y1]. */
+export type InkBox = readonly [number, number, number, number];
+
+/** True when box `b` ([x0, y0, x1, y1]) lies wholly inside one of `boxes`. */
+const inside = (b: readonly number[], boxes?: readonly InkBox[]) =>
+  !!boxes && boxes.some(([x0, y0, x1, y1]) => b[0] >= x0 && b[1] >= y0 && b[2] <= x1 && b[3] <= y1);
+
+/** The bounding box [x0, y0, x1, y1] of a wash outline (its absolute coordinates). */
+const washBox = (d: string): number[] => {
+  const n = (d.match(/-?\d+(?:\.\d+)?/g) ?? []).map(Number);
+  const xs = n.filter((_, i) => i % 2 === 0);
+  const ys = n.filter((_, i) => i % 2 === 1);
+  return [Math.min(...xs), Math.min(...ys), Math.max(...xs), Math.max(...ys)];
+};
+
 // Relative pen time per stroke: ink outlines are twice the length of the line
 // they draw; hatching is quick; each stroke adds a small pen lift.
 const weight = (s: InkStroke) => {
@@ -30,18 +45,32 @@ const weight = (s: InkStroke) => {
   if (s.kind === 'hatch' || s.kind === 'hatchSoft') return s.len * 0.55 + 2;
   return s.len * 0.5 + 6;
 };
-const phase = (s: InkStroke) => (s.kind === 'ink' || s.kind === 'inkSoft' ? 0 : 1);
+const phase = (s: InkStroke, withContours?: readonly number[]) =>
+  s.kind === 'ink' || s.kind === 'inkSoft' || (withContours?.includes(s.g) && s.kind !== 'pencil') ? 0 : 1;
 
 export type PenOrder = 'passes' | 'objects';
 
-/** Order the strokes and give each a window [a, b] inside 0..1 of the pen's time. */
-export const planStrokes = (data: InkData, order: PenOrder = 'passes', overlap = 0.8, groups?: readonly number[]): Plan => {
-  const indexed = data.strokes.map((s, i) => ({ s, i })).filter(({ s }) => !groups || groups.includes(s.g));
+/**
+ * Order the strokes and give each a window [a, b] inside 0..1 of the pen's time.
+ * `omit` leaves out every stroke whose box lies inside one of its boxes (an
+ * object cropped out of a composition); `withContours` draws those groups'
+ * hatching with their contours, in the drawing's own order (a spruce's tiers
+ * before its trunk, not a bare trunk first).
+ */
+export const planStrokes = (
+  data: InkData,
+  order: PenOrder = 'passes',
+  overlap = 0.8,
+  groups?: readonly number[],
+  omit?: readonly InkBox[],
+  withContours?: readonly number[],
+): Plan => {
+  const indexed = data.strokes.map((s, i) => ({ s, i })).filter(({ s }) => (!groups || groups.includes(s.g)) && !inside(s.box, omit));
   const pencil = indexed.filter(({ s }) => s.kind === 'pencil');
   const group = (s: InkStroke) => (order === 'objects' ? s.g : 0);
   const rest = indexed
     .filter(({ s }) => s.kind !== 'pencil')
-    .sort((x, y) => group(x.s) - group(y.s) || phase(x.s) - phase(y.s) || x.i - y.i);
+    .sort((x, y) => group(x.s) - group(y.s) || phase(x.s, withContours) - phase(y.s, withContours) || x.i - y.i);
   const ordered = [...pencil, ...rest].map(({ s }) => s);
   const total = ordered.reduce((t, s) => t + weight(s), 0) || 1;
   let acc = 0;
@@ -84,19 +113,41 @@ export type InkDrawProps = {
   order?: PenOrder;
   /** Draw only the strokes of these object groups (`g`), e.g. one object of the system map. */
   groups?: readonly number[];
+  /** Leave out every stroke and wash lying wholly inside one of these boxes ([x0, y0, x1, y1], drawing units). */
+  omit?: readonly InkBox[];
+  /**
+   * Show these groups' strokes only between x0 and x1 (drawing units), fading
+   * them into the paper over `feather` units at each end: a long horizon
+   * line that should stop inside the composition instead of at the crop edge.
+   */
+  fadeGroups?: {
+    groups: readonly number[];
+    x0: number;
+    x1: number;
+    feather: number;
+    /** Indices of washes (in the drawing's own list) whose shapes hide these groups: a horizon passing behind a tree. */
+    behind?: readonly number[];
+  };
+  /** Groups whose hatching is drawn with their contours (see planStrokes). */
+  withContours?: readonly number[];
   style?: React.CSSProperties;
 };
 
-export const InkDraw: React.FC<InkDrawProps> = ({ name, start, dur, width, washDelay, washDur = 1.4, crop, noWash, order = 'passes', groups, style }) => {
+export const InkDraw: React.FC<InkDrawProps> = ({ name, start, dur, width, washDelay, washDur = 1.4, crop, noWash, order = 'passes', groups, omit, fadeGroups, withContours, style }) => {
   const frame = useCurrentFrame();
   const { fps } = useVideoConfig();
   const data = DRAWINGS[name];
   const groupKey = groups ? groups.join(',') : '';
-  // groups is keyed by its contents, so a new array with the same groups does not re-plan.
-  const plan = useMemo(() => planStrokes(data, order, 0.8, groups), [data, order, groupKey]);
+  const omitKey = omit ? JSON.stringify(omit) : '';
+  const contourKey = withContours ? withContours.join(',') : '';
+  // Array props are keyed by their contents, so a new array with the same values does not re-plan.
+  const plan = useMemo(() => planStrokes(data, order, 0.8, groups, omit, withContours), [data, order, groupKey, omitKey, contourKey]);
+  const washes = useMemo(() => (omit ? data.washes.filter((w) => !inside(washBox(w.d), omit)) : data.washes), [data, omitKey]);
   const uid = useId().replace(/[^a-zA-Z0-9_-]/g, '');
   const filterId = `wash-${name}-${uid}`;
   const maskId = `pen-${name}-${uid}`;
+  const fadeId = `fade-${name}-${uid}`;
+  const faded = (s: InkStroke) => !!fadeGroups && fadeGroups.groups.includes(s.g);
 
   const [vx, vy, vw, vh] = crop ?? (data.viewBox as [number, number, number, number]);
   const height = (width * vh) / vw;
@@ -106,16 +157,17 @@ export const InkDraw: React.FC<InkDrawProps> = ({ name, start, dur, width, washD
 
   if (t < 0) return <div style={{ position: 'absolute', width, height, ...style }} />;
 
-  const done: React.ReactNode[] = [];
-  const moving: React.ReactNode[] = [];
+  // Strokes of `fadeGroups` go to a second set of buckets drawn through the fade mask.
+  const buckets = { done: [] as React.ReactNode[], moving: [] as React.ReactNode[], lines: [] as React.ReactNode[] };
+  const fadedBuckets = { done: [] as React.ReactNode[], moving: [] as React.ReactNode[], lines: [] as React.ReactNode[] };
   const masks: React.ReactNode[] = [];
-  const lines: React.ReactNode[] = [];
 
   plan.forEach(({ s, a, b }, i) => {
     const p = P >= 1 ? 1 : Math.max(0, Math.min(1, (P - a) / (b - a)));
     if (p <= 0) return;
     const look = INK_STYLE[s.kind];
     const opacity = look.opacity * (s.o ?? 1);
+    const { done, moving, lines } = faded(s) ? fadedBuckets : buckets;
     if (s.kind === 'ink' || s.kind === 'inkSoft') {
       const path = <path key={i} d={s.d} fill={look.color} opacity={opacity} />;
       if (p >= 1) {
@@ -173,9 +225,23 @@ export const InkDraw: React.FC<InkDrawProps> = ({ name, start, dur, width, washD
               {masks}
             </mask>
           )}
+          {fadeGroups && (
+            <>
+              <linearGradient id={`${fadeId}-g`} gradientUnits="userSpaceOnUse" x1={fadeGroups.x0} y1={0} x2={fadeGroups.x1} y2={0}>
+                <stop offset={0} stopColor="#000" />
+                <stop offset={Math.min(0.5, fadeGroups.feather / (fadeGroups.x1 - fadeGroups.x0))} stopColor="#fff" />
+                <stop offset={Math.max(0.5, 1 - fadeGroups.feather / (fadeGroups.x1 - fadeGroups.x0))} stopColor="#fff" />
+                <stop offset={1} stopColor="#000" />
+              </linearGradient>
+              <mask id={fadeId} maskUnits="userSpaceOnUse" x={vx - 20} y={vy - 20} width={vw + 40} height={vh + 40}>
+                <rect x={vx - 20} y={vy - 20} width={vw + 40} height={vh + 40} fill={`url(#${fadeId}-g)`} />
+                {fadeGroups.behind?.map((i) => data.washes[i] && <path key={i} d={data.washes[i].d} fill="#000" stroke="#000" strokeWidth={1.2} />)}
+              </mask>
+            </>
+          )}
         </defs>
         {!noWash &&
-          data.washes.map((w, i) => {
+          washes.map((w, i) => {
             const o = interpolate(tWash - i * 0.18, [0, washDur], [0, 1], { extrapolateLeft: 'clamp', extrapolateRight: 'clamp', easing: EASE });
             if (o <= 0) return null;
             return (
@@ -185,9 +251,16 @@ export const InkDraw: React.FC<InkDrawProps> = ({ name, start, dur, width, washD
               </g>
             );
           })}
-        {lines}
-        {done}
-        {moving.length > 0 && <g mask={`url(#${maskId})`}>{moving}</g>}
+        {buckets.lines}
+        {buckets.done}
+        {buckets.moving.length > 0 && <g mask={`url(#${maskId})`}>{buckets.moving}</g>}
+        {fadeGroups && (
+          <g mask={`url(#${fadeId})`}>
+            {fadedBuckets.lines}
+            {fadedBuckets.done}
+            {fadedBuckets.moving.length > 0 && <g mask={`url(#${maskId})`}>{fadedBuckets.moving}</g>}
+          </g>
+        )}
       </svg>
     </div>
   );

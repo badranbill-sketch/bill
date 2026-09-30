@@ -19,7 +19,7 @@ node --experimental-strip-types --no-warnings scripts/cues.mjs --write   # regen
 
 ### The briefing
 
-`Briefing` (1920×1080, 30 fps, no audio): 14 scenes from `SCENES` in `src/content.ts`, 6:58.9 (12,567 frames).
+`Briefing` (1920×1080, 30 fps, no audio): 14 scenes from `SCENES` in `src/content.ts`, 6:59.0 (12,570 frames).
 Render the English film:
 
 ```bash
@@ -70,7 +70,10 @@ frame wall clock (0.18–0.19 s per frame per worker), plus 2.5–4.5 s to bundl
   marks, then every ink contour (each tapered outline is revealed along its length through a nib-wide mask), then
   the hatching; the washes fade in only after the ink (`washDelay`, `washDur`). `crop` shows part of a drawing,
   `order="objects"` hatches object by object, `groups` draws only some object groups (one object of the system
-  map). The site's drawings: two-chairs, path, sailboat, bridge, lighthouse, house, travel-bag, dock. Drawn for the
+  map). For composing a crop: `omit` leaves out the strokes and washes inside given boxes (B12 drops the right-hand
+  spruce), `fadeGroups` shows some groups only between two x positions, feathered at both ends and hidden behind
+  given washes (B12's horizon starts behind the left spruces and fades out inside the margin), and `withContours`
+  draws a group's hatching with its contours (B12's spruce tiers before their trunks). The site's drawings: two-chairs, path, sailboat, bridge, lighthouse, house, travel-bag, dock. Drawn for the
   briefing by the art lane (1440×810, the whole frame): workshop-notebook, crossroads-signpost, ledger-page,
   desk-clock, system-map (+ `system-map.anchors.json`), road-markers (+ `road-markers.anchors.json`).
 - `<Art/>` (`src/briefing/Art.tsx`): crops a drawing to its ink (`crop="ink"`) and places it at a scale in frame px,
@@ -82,6 +85,10 @@ frame wall clock (0.18–0.19 s per frame per worker), plus 2.5–4.5 s to bundl
   (`shown`) with "unverified — confirm at checkout" under every snippet-only figure and "example only" under an
   example; the source host and retrieval date ("project plan, internal" for a project figure). A proposal keeps its
   status words boxed and its amount muted. It never adds, totals, converts or annualizes anything.
+  B10 shows the rows as two pages (the "if needed" costs, then per-sale costs and the proposal) with a small
+  "1 / 2" / "2 / 2" mark; page 1 stays 0.8 s past its last row's reading time, fades over about half a second,
+  and page 2's first row comes in after it (`src/briefing/LedgerScene.tsx`). A trigger's "(HB-…)" reference never
+  breaks across lines.
 
 ## Rules
 

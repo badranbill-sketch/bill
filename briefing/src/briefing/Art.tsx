@@ -1,6 +1,6 @@
 import React from 'react';
 import { DRAWINGS, type DrawingName } from '../data/ink';
-import { InkDraw, type PenOrder } from '../primitives/InkDraw';
+import { InkDraw, type InkDrawProps, type PenOrder } from '../primitives/InkDraw';
 
 /**
  * Places one drawing of the briefing, in frame pixels.
@@ -63,6 +63,10 @@ export type ArtProps = {
   hold?: boolean;
   order?: PenOrder;
   groups?: readonly number[];
+  /** Passed to InkDraw: objects to leave out, groups to fade at their ends, groups hatched with their contours. */
+  omit?: InkDrawProps['omit'];
+  fadeGroups?: InkDrawProps['fadeGroups'];
+  withContours?: InkDrawProps['withContours'];
   /** 'ink' = crop to the ink (padded by `pad`), a box in drawing units, or the whole viewBox when omitted. */
   crop?: 'ink' | Box4;
   pad?: number;
@@ -117,6 +121,9 @@ export const Art: React.FC<ArtProps> = (p) => {
       washDur={held ? 0.05 : p.washDur}
       order={p.order}
       groups={p.groups}
+      omit={p.omit}
+      fadeGroups={p.fadeGroups}
+      withContours={p.withContours}
       crop={r.crop}
       width={r.width}
       style={{ left: r.left, top: r.top, ...maskStyle, ...p.style }}

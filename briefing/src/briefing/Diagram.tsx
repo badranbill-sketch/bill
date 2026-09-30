@@ -7,7 +7,7 @@ import { Art, artRect, hasDrawing } from './Art';
 import { Appear, Broken, from, Header, PenStroke, SAFE, splitLead, T } from './common';
 
 /**
- * B06 · The system in one picture.
+ * B06 · The plan: the system in one picture.
  *
  * The art lane drew the eight objects of the system map as separate groups
  * and recorded where each one stands (system-map.anchors.json). Here each

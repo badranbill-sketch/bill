@@ -5,7 +5,7 @@ import { Art } from './Art';
 import { Appear, Bullet, from, HandRule, Header, LeadText, RefText, SAFE, T } from './common';
 
 /**
- * B11 · Time and B13 · What we need from you: side-by-side columns, one per
+ * B11 · Time and B13 · Your part: side-by-side columns, one per
  * person, each with its heading and items. The drawing sits small in the
  * bottom-right corner.
  */
@@ -28,7 +28,7 @@ const CFG: Record<string, Cfg> = {
     size: 31,
     gap: 22,
     top: 276,
-    art: { x: SAFE.right + 20, y: 992, scale: 0.5 },
+    art: { x: SAFE.right + 12, y: 956, scale: 0.5 },
   },
   B13: {
     stacks: [
@@ -38,7 +38,7 @@ const CFG: Record<string, Cfg> = {
     size: 31,
     gap: 22,
     top: 276,
-    art: { x: SAFE.right + 20, y: 990, scale: 0.52 },
+    art: { x: SAFE.right + 10, y: 958, scale: 0.48 },
     caption: { top: 900, width: 1180 },
   },
 };
@@ -74,7 +74,7 @@ const ColumnBlock: React.FC<{ col: Column; width: number; size: number; gap: num
     {col.items.map((it, i) => (
       <Appear key={i} at={it.at} style={{ position: 'relative', paddingLeft: 40, marginBottom: gap }}>
         <Bullet start={from(it)} top={size * 0.6} seed={80 + seed * 10 + i} />
-        <div style={{ ...T.body, fontSize: size, lineHeight: 1.34 }}>
+        <div style={{ ...T.body, fontSize: size, lineHeight: 1.34, textWrap: 'pretty' }}>
           {/\(HB-/.test(tr(it)) ? <RefText text={tr(it)} /> : <LeadText text={tr(it)} />}
         </div>
       </Appear>
