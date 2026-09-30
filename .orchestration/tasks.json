@@ -840,11 +840,19 @@
         "CNT04"
       ],
       "max_attempts": 3,
-      "state": "planned",
-      "attempts": 0,
+      "state": "running",
+      "attempts": 1,
       "accepted_at_stage": null,
       "evidence": [],
-      "history": []
+      "history": [
+        {
+          "at": "2026-09-30",
+          "from": "planned",
+          "to": "running",
+          "by": "A0",
+          "note": "Operator-directed early start (Arnaud asked for the 18 capsules now). Dependency C00 is NOT accepted: no Bill voice interview and no approved claims ledger exist. Scripts are drafts with a provisional voice reference drawn from existing site copy; every professional claim stays pending G1; must be re-checked against C00 before recording. F02 accepted. Branch agent/C01 from integration e766026."
+        }
+      ]
     },
     {
       "id": "C02",
