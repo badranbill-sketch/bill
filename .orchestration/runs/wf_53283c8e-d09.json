@@ -1,0 +1,20 @@
+{
+  "run_id": "wf_53283c8e-d09",
+  "task_ids": [
+    "briefing-video-resume"
+  ],
+  "kind": "workflow",
+  "provider": "Anthropic (Claude Code session)",
+  "model": "inherited session model",
+  "agents": 4,
+  "tool_uses": 305,
+  "subagent_tokens": 1151840,
+  "wall_time_s": 3482,
+  "metered_cost": {
+    "amount": null,
+    "currency": null,
+    "status": "unavailable-not-estimated"
+  },
+  "note": "resume: script sync, build/render, final factual + visual A6 review (both pass, P3 only)",
+  "external_actions": "none (local renders; read-only web searches in prep)"
+}

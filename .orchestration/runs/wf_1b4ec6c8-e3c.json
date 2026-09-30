@@ -1,0 +1,20 @@
+{
+  "run_id": "wf_1b4ec6c8-e3c",
+  "task_ids": [
+    "briefing-video"
+  ],
+  "kind": "workflow",
+  "provider": "Anthropic (Claude Code session)",
+  "model": "inherited session model",
+  "agents": null,
+  "tool_uses": null,
+  "subagent_tokens": null,
+  "wall_time_s": null,
+  "metered_cost": {
+    "amount": null,
+    "currency": null,
+    "status": "unavailable-not-estimated"
+  },
+  "note": "interrupted by container restart during repair attempt 3; per-agent metering for this run was not recovered",
+  "external_actions": "none (local renders; read-only web searches in prep)"
+}
