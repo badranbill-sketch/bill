@@ -1,0 +1,60 @@
+# target=codex step=12_test_e2e
+# cwd=/tmp/claude-0/-home-user/bb8d4187-6ae8-587b-a816-8153faeea853/scratchpad/wt/base01-codex
+# sha=66cce52046f535ddc1a90e6f94474877e375860d
+# command=PLAYWRIGHT_CHROMIUM_EXECUTABLE=/opt/pw-browsers/chromium-1194/chrome-linux/chrome npm run test:e2e
+# env: GH_TOKEN/GITHUB_TOKEN unset; NEXT_TELEMETRY_DISABLED=1; PLAYWRIGHT_BROWSERS_PATH=/opt/pw-browsers; PLAYWRIGHT_CHROMIUM_EXECUTABLE=<unset>; GITHUB_REPOSITORY=<unset>
+# node=v22.22.2 npm=10.9.7
+# started=2026-09-30T02:12:58Z
+# ----------------------------------------------------------------
+
+> bill-badran@1.0.0 test:e2e
+> playwright test
+
+
+Running 41 tests using 2 workers
+
+  ✓   1 tests/browser/responsive.spec.ts:7:5 › fr responsive conversion path at 320 (2.9s)
+  ✓   2 tests/browser/site.spec.ts:11:5 › fr visual 1440, landmarks and accessibility (6.0s)
+  ✓   3 tests/browser/responsive.spec.ts:7:5 › fr responsive conversion path at 390 (3.2s)
+  ✓   5 tests/browser/responsive.spec.ts:7:5 › fr responsive conversion path at 700 (2.3s)
+  ✓   4 tests/browser/site.spec.ts:11:5 › fr visual 390, landmarks and accessibility (3.2s)
+  ✓   6 tests/browser/responsive.spec.ts:7:5 › fr responsive conversion path at 768 (1.9s)
+  ✓   7 tests/browser/site.spec.ts:51:3 › fr routes, metadata, equivalent language links and internal links (4.7s)
+  ✓   8 tests/browser/responsive.spec.ts:7:5 › fr responsive conversion path at 1440 (4.9s)
+  ✓   9 tests/browser/site.spec.ts:94:5 › fr layout all pages at 320 (2.2s)
+  ✓  10 tests/browser/responsive.spec.ts:7:5 › en responsive conversion path at 320 (2.5s)
+  ✓  11 tests/browser/site.spec.ts:94:5 › fr layout all pages at 375 (2.1s)
+  ✓  13 tests/browser/site.spec.ts:94:5 › fr layout all pages at 768 (2.2s)
+  ✓  12 tests/browser/responsive.spec.ts:7:5 › en responsive conversion path at 390 (3.2s)
+  ✓  15 tests/browser/responsive.spec.ts:7:5 › en responsive conversion path at 700 (2.3s)
+  ✓  16 tests/browser/responsive.spec.ts:7:5 › en responsive conversion path at 768 (1.9s)
+  ✓  14 tests/browser/site.spec.ts:11:5 › en visual 1440, landmarks and accessibility (6.0s)
+  ✓  17 tests/browser/responsive.spec.ts:7:5 › en responsive conversion path at 1440 (4.2s)
+  ✓  19 tests/browser/responsive.spec.ts:81:1 › review PDF is unavailable outside review mode (115ms)
+  ✓  18 tests/browser/site.spec.ts:11:5 › en visual 390, landmarks and accessibility (3.3s)
+  ✓  20 tests/browser/site.spec.ts:51:3 › en routes, metadata, equivalent language links and internal links (3.7s)
+  ✓  21 tests/browser/site.spec.ts:94:5 › en layout all pages at 320 (1.8s)
+  ✓  22 tests/browser/site.spec.ts:94:5 › en layout all pages at 375 (1.8s)
+  ✓  23 tests/browser/site.spec.ts:94:5 › en layout all pages at 768 (1.6s)
+  ✓  24 tests/browser/site.spec.ts:107:1 › keyboard menu focus, Escape, reduced motion and 200% text (1.3s)
+  ✓  25 tests/browser/site.spec.ts:150:1 › checklist: no network or storage, editing, all yes, reset and print (2.0s)
+  ✓  26 tests/browser/site.spec.ts:191:1 › fee inputs invalid states and table (816ms)
+  ✓  27 tests/browser/site.spec.ts:205:1 › protected review, public draft exclusions and assets (307ms)
+  ✓  28 tests/browser/site.spec.ts:246:1 › articles switch to exact translations and render safely (682ms)
+  ✓  29 tests/browser/site.spec.ts:255:1 › no JavaScript still renders substantive content and links (823ms)
+  ✓  30 tests/browser/site.spec.ts:266:1 › missing portrait has deliberate fallback; absent guides have no download claims (961ms)
+  ✓  31 tests/browser/site.spec.ts:283:1 › contact: accepted only after confirmed response; no duplicate click or quiz data (1.0s)
+  ✓  32 tests/browser/site.spec.ts:322:3 › contact 400 validation retains message for retry (788ms)
+  ✓  33 tests/browser/site.spec.ts:322:3 › contact 429 rate_limited retains message for retry (753ms)
+  ✓  34 tests/browser/site.spec.ts:322:3 › contact 502 provider_error retains message for retry (794ms)
+  ✓  35 tests/browser/site.spec.ts:322:3 › contact 503 timeout retains message for retry (757ms)
+  ✓  36 tests/browser/site.spec.ts:342:1 › contact native invalid input and browser request timeout (15.9s)
+  ✓  37 tests/browser/site.spec.ts:363:1 › API origin, length, schema and missing credentials (133ms)
+  ✓  38 tests/browser/site.spec.ts:401:1 › mountain ride: scrolling walks the hiker through four acts (1.7s)
+  ✓  39 tests/browser/site.spec.ts:451:1 › mountain ride: reduced motion shows the four still panels (1.2s)
+  ✓  40 tests/browser/site.spec.ts:474:1 › mountain ride: tabbing to the last act shows that act alone (766ms)
+  ✓  41 tests/browser/site.spec.ts:499:1 › narration: one English track that plays through the acts; none in French (3.4s)
+
+  41 passed (1.3m)
+# ----------------------------------------------------------------
+# finished=2026-09-30T02:14:16Z exit_code=0 seconds=77.7

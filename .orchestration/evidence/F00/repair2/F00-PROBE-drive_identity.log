@@ -1,0 +1,8 @@
+# F00-PROBE-drive_identity  2026-09-30T02:52Z  (A0 delegate, repair 2)
+# Connector: Google Drive MCP, tool search_files (read-only). File IDs, parent IDs and view URLs deliberately not recorded (data minimisation).
+$ mcp__Google_Drive__search_files(query="title contains 'bill-badran-before-retirement-guide-en-print' and owner = 'me'", excludeContentSnippets=true, pageSize=10)
+tool_status=ok (no error returned)
+result_count=2
+file[1]: title="bill-badran-before-retirement-guide-en-print 2.pdf" mimeType=application/pdf fileSize=27067783 owner=arnaudverdier8@gmail.com createdTime=2026-09-29T18:38:01.879Z
+file[2]: title="bill-badran-before-retirement-guide-en-print 2.pdf" mimeType=application/pdf fileSize=27067783 owner=arnaudverdier8@gmail.com createdTime=2026-09-29T18:38:24.034Z
+# Inference: owner = 'me' matched files whose owner is arnaudverdier8@gmail.com, so the Drive connector's "me" identity is arnaudverdier8@gmail.com.

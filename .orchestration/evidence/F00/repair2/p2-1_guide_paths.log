@@ -1,0 +1,87 @@
+# P2-1 guide branch provenance, 2026-09-30T02:51:26Z
+$ git diff --name-status origin/main origin/guide/pre-retirement-guide
+M	.gitignore
+A	guide/README.md
+A	guide/art/charts.tsx
+A	guide/art/containers.tsx
+A	guide/art/cover.tsx
+A	guide/art/harbour.tsx
+A	guide/art/horizons.tsx
+A	guide/art/index.tsx
+A	guide/art/kit.tsx
+A	guide/art/plans.tsx
+A	guide/art/porch.tsx
+A	guide/art/spending.tsx
+A	guide/art/storm.tsx
+A	guide/assets/grain.png
+A	guide/build.tsx
+A	guide/copy.ts
+A	guide/layout.tsx
+A	guide/marks.tsx
+A	guide/style.css
+M	package.json
+A	scripts/ink-sheet.tsx
+exit_code=0
+$ ... | grep -c "	guide/"
+18
+exit_code=0
+$ ... | grep -v "	guide/"
+M	.gitignore
+M	package.json
+A	scripts/ink-sheet.tsx
+exit_code=0
+$ git diff --shortstat origin/main origin/guide/pre-retirement-guide
+ 21 files changed, 8304 insertions(+), 1 deletion(-)
+exit_code=0
+$ git show origin/guide/pre-retirement-guide:scripts/ink-sheet.tsx | wc -l
+65
+exit_code=0
+$ git show origin/guide/pre-retirement-guide:scripts/ink-sheet.tsx | grep -n PLAYWRIGHT_CHROMIUM_EXECUTABLE
+8: * PLAYWRIGHT_CHROMIUM_EXECUTABLE picks the browser.
+15:import { chromium } from "@playwright/test";
+54:const browser = await chromium.launch({
+55:  executablePath: process.env.PLAYWRIGHT_CHROMIUM_EXECUTABLE || undefined,
+exit_code=0
+$ git diff origin/main origin/guide/pre-retirement-guide -- package.json .gitignore
+diff --git a/.gitignore b/.gitignore
+index 1f035ac..9f3298d 100644
+--- a/.gitignore
++++ b/.gitignore
+@@ -6,3 +6,4 @@ test-results/
+ playwright-report/
+ *.tsbuildinfo
+ work/
++guide/dist/
+diff --git a/package.json b/package.json
+index bf5917e..3b4b196 100644
+--- a/package.json
++++ b/package.json
+@@ -15,7 +15,8 @@
+     "content": "node --import tsx scripts/content.ts",
+     "launch:check": "node --import tsx scripts/launch.ts --strict",
+     "protections:check": "node --import tsx scripts/protections.ts",
+-    "format": "prettier --write ."
++    "format": "prettier --write .",
++    "guide": "node --import tsx guide/build.tsx"
+   },
+   "dependencies": {
+     "@fontsource/caveat": "^5.3.0",
+exit_code=0
+$ git cat-file -e origin/main:scripts/ink-sheet.tsx
+fatal: path 'scripts/ink-sheet.tsx' does not exist in 'origin/main'
+exit_code=128
+$ git cat-file -e origin/add-ask-bill-section:scripts/ink-sheet.tsx
+fatal: path 'scripts/ink-sheet.tsx' does not exist in 'origin/add-ask-bill-section'
+exit_code=128
+$ git cat-file -e origin/codex/desktop-iphone-unified:scripts/ink-sheet.tsx
+fatal: path 'scripts/ink-sheet.tsx' does not exist in 'origin/codex/desktop-iphone-unified'
+exit_code=128
+$ git cat-file -e origin/claude/bill-centered-homepage:scripts/ink-sheet.tsx
+fatal: path 'scripts/ink-sheet.tsx' does not exist in 'origin/claude/bill-centered-homepage'
+exit_code=128
+$ git cat-file -e origin/claude/bill-presentation-video:scripts/ink-sheet.tsx
+fatal: path 'scripts/ink-sheet.tsx' does not exist in 'origin/claude/bill-presentation-video'
+exit_code=128
+$ git log --format="%H %an <%ae> %ad" origin/main..origin/guide/pre-retirement-guide
+749b360f75185041e1aa3408500857605bc4507f Claude <noreply@anthropic.com> Tue Sep 29 09:30:00 2026 -0400
+exit_code=0

@@ -1,0 +1,24 @@
+# F00-SPOT-14 repo state (repair 3) 2026-09-30T03:18:13Z
+$ git rev-parse HEAD
+eeb79a9380b297880e8fb530ac1f5b6f2fa7f89d
+exit_code=0
+$ git status --porcelain
+?? .orchestration/evidence/
+?? .orchestration/handoffs/
+?? .orchestration/inventory.md
+?? .orchestration/reviews/
+exit_code=0
+$ git stash list
+exit_code=0
+$ git worktree list
+/home/user/bill                                                                                        eeb79a9 [claude/orchestration-foundation]
+/tmp/claude-0/-home-user/bb8d4187-6ae8-587b-a816-8153faeea853/scratchpad/wt/base01-codex               66cce52 (detached HEAD)
+/tmp/claude-0/-home-user/bb8d4187-6ae8-587b-a816-8153faeea853/scratchpad/wt/base01-diag-main-filmdeps  77de3bd (detached HEAD)
+/tmp/claude-0/-home-user/bb8d4187-6ae8-587b-a816-8153faeea853/scratchpad/wt/base01-guide               749b360 (detached HEAD)
+/tmp/claude-0/-home-user/bb8d4187-6ae8-587b-a816-8153faeea853/scratchpad/wt/base01-homepage            d63aabd (detached HEAD)
+/tmp/claude-0/-home-user/bb8d4187-6ae8-587b-a816-8153faeea853/scratchpad/wt/base01-main                77de3bd (detached HEAD)
+/tmp/claude-0/-home-user/bb8d4187-6ae8-587b-a816-8153faeea853/scratchpad/wt/base01-video               fc00445 (detached HEAD)
+exit_code=0
+$ git ls-remote origin refs/heads/claude/orchestration-foundation
+eeb79a9380b297880e8fb530ac1f5b6f2fa7f89d	refs/heads/claude/orchestration-foundation
+exit_code=0

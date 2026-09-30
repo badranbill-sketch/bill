@@ -1,0 +1,132 @@
+# target=homepage step=03_test
+# cwd=/tmp/claude-0/-home-user/bb8d4187-6ae8-587b-a816-8153faeea853/scratchpad/wt/base01-homepage
+# sha=d63aabd50d0760145208857856f32779b1069e15
+# command=npm test
+# env: GH_TOKEN/GITHUB_TOKEN unset; NEXT_TELEMETRY_DISABLED=1; PLAYWRIGHT_BROWSERS_PATH=/opt/pw-browsers; PLAYWRIGHT_CHROMIUM_EXECUTABLE=<unset>; GITHUB_REPOSITORY=<unset>
+# node=v22.22.2 npm=10.9.7
+# started=2026-09-30T02:15:06Z
+# ----------------------------------------------------------------
+
+> bill-badran@1.0.0 test
+> node --import tsx --test tests/*.test.ts
+
+TAP version 13
+# Subtest: Ask Bill: every question in both languages, in exactly one chapter
+ok 1 - Ask Bill: every question in both languages, in exactly one chapter
+  ---
+  duration_ms: 2.414303
+  type: 'test'
+  ...
+# Subtest: Ask Bill: anchors are unique URL fragments and deep links exist
+ok 2 - Ask Bill: anchors are unique URL fragments and deep links exist
+  ---
+  duration_ms: 0.540819
+  type: 'test'
+  ...
+# Subtest: Ask Bill: short answers stay short and general
+ok 3 - Ask Bill: short answers stay short and general
+  ---
+  duration_ms: 0.641578
+  type: 'test'
+  ...
+# Subtest: copy never uses the words the practice has ruled out
+ok 4 - copy never uses the words the practice has ruled out
+  ---
+  duration_ms: 6.466527
+  type: 'test'
+  ...
+# Subtest: one call to action, and house typography in both languages
+ok 5 - one call to action, and house typography in both languages
+  ---
+  duration_ms: 1.291928
+  type: 'test'
+  ...
+# Subtest: fee comparison against independent iterative expectations
+ok 6 - fee comparison against independent iterative expectations
+  ---
+  duration_ms: 2.044806
+  type: 'test'
+  ...
+# Subtest: fee invalid and boundary inputs
+ok 7 - fee invalid and boundary inputs
+  ---
+  duration_ms: 0.838215
+  type: 'test'
+  ...
+# Subtest: checklist distinguishes unanswered, yes and discussion topics
+ok 8 - checklist distinguishes unanswered, yes and discussion topics
+  ---
+  duration_ms: 2.051188
+  type: 'test'
+  ...
+# Subtest: all localized routes map both ways
+ok 9 - all localized routes map both ways
+  ---
+  duration_ms: 0.559334
+  type: 'test'
+  ...
+# Subtest: draft fixtures pair and are never publishable
+ok 10 - draft fixtures pair and are never publishable
+  ---
+  duration_ms: 9.806472
+  type: 'test'
+  ...
+# Subtest: unsafe or incomplete article import is rejected
+ok 11 - unsafe or incomplete article import is rejected
+  ---
+  duration_ms: 1.544314
+  type: 'test'
+  ...
+# Subtest: missing credentials and validation fail honestly
+ok 12 - missing credentials and validation fail honestly
+  ---
+  duration_ms: 3.124978
+  type: 'test'
+  ...
+# Subtest: provider acceptance and safe escaping; deterministic idempotency
+ok 13 - provider acceptance and safe escaping; deterministic idempotency
+  ---
+  duration_ms: 72.286644
+  type: 'test'
+  ...
+# Subtest: rate limit prevents mail; provider error, malformed acceptance, exception and timeout never succeed
+ok 14 - rate limit prevents mail; provider error, malformed acceptance, exception and timeout never succeed
+  ---
+  duration_ms: 4.722869
+  type: 'test'
+  ...
+# Subtest: rate store HTTP errors and malformed JSON fail closed
+ok 15 - rate store HTTP errors and malformed JSON fail closed
+  ---
+  duration_ms: 9.800834
+  type: 'test'
+  ...
+# Subtest: content fingerprint binds substantive changes, not review metadata
+ok 16 - content fingerprint binds substantive changes, not review metadata
+  ---
+  duration_ms: 15.326798
+  type: 'test'
+  ...
+# Subtest: ride timeline moves forward only and holds at each act's stop
+ok 17 - ride timeline moves forward only and holds at each act's stop
+  ---
+  duration_ms: 31.463022
+  type: 'test'
+  ...
+# Subtest: ride camera stays inside the world
+ok 18 - ride camera stays inside the world
+  ---
+  duration_ms: 1.349979
+  type: 'test'
+  ...
+1..18
+# tests 18
+# suites 0
+# pass 18
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 833.157335
+# ----------------------------------------------------------------
+# finished=2026-09-30T02:15:07Z exit_code=0 seconds=1.1

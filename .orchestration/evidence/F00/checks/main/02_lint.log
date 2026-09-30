@@ -1,0 +1,49 @@
+# target=main step=02_lint
+# cwd=/tmp/claude-0/-home-user/bb8d4187-6ae8-587b-a816-8153faeea853/scratchpad/wt/base01-main
+# sha=77de3bd51a8c9cb73aec0b32d27ca0cacb6285cd
+# command=npm run lint
+# env: GH_TOKEN/GITHUB_TOKEN unset; NEXT_TELEMETRY_DISABLED=1; PLAYWRIGHT_BROWSERS_PATH=/opt/pw-browsers; PLAYWRIGHT_CHROMIUM_EXECUTABLE=<unset>; GITHUB_REPOSITORY=<unset>
+# node=v22.22.2 npm=10.9.7
+# started=2026-09-30T02:10:51Z
+# ----------------------------------------------------------------
+
+> bill-badran@1.0.0 lint
+> eslint .
+
+
+/tmp/claude-0/-home-user/bb8d4187-6ae8-587b-a816-8153faeea853/scratchpad/wt/base01-main/film/src/components/CaptionTrack.tsx
+  28:5  error  Error: Calling setState synchronously within an effect can trigger cascading renders
+
+Effects are intended to synchronize state between React and external systems such as manually updating the DOM, state management libraries, or other platform APIs. In general, the body of an effect should do one or both of the following:
+* Update external systems with the latest state from React.
+* Subscribe for updates from some external system, calling setState in a callback function when external state changes.
+
+Calling setState synchronously within an effect body causes cascading renders that can hurt performance, and is not recommended. (https://react.dev/learn/you-might-not-need-an-effect).
+
+/tmp/claude-0/-home-user/bb8d4187-6ae8-587b-a816-8153faeea853/scratchpad/wt/base01-main/film/src/components/CaptionTrack.tsx:28:5
+  26 |
+  27 |   useEffect(() => {
+> 28 |     load();
+     |     ^^^^ Avoid calling setState() directly within an effect
+  29 |   }, [load]);
+  30 |
+  31 |   const ms = (frame / FPS) * 1000;  react-hooks/set-state-in-effect
+
+/tmp/claude-0/-home-user/bb8d4187-6ae8-587b-a816-8153faeea853/scratchpad/wt/base01-main/film/src/components/sketch/Ink.tsx
+  131:9  error  Error: Cannot reassign variable after render completes
+
+Reassigning `cursor` after render has completed can cause inconsistent behavior on subsequent renders. Consider using state instead.
+
+/tmp/claude-0/-home-user/bb8d4187-6ae8-587b-a816-8153faeea853/scratchpad/wt/base01-main/film/src/components/sketch/Ink.tsx:131:9
+  129 |         const dur = writeFrames(line, speed);
+  130 |         const from = cursor;
+> 131 |         cursor += dur + 4;
+      |         ^^^^^^ Cannot reassign `cursor` after render completes
+  132 |         const p = tween(t, from, from + dur, -8, 100, ease.linear);
+  133 |         const mask = `linear-gradient(90deg, #000 ${p}%, rgba(0,0,0,0) ${p + 8}%)`;
+  134 |         return (  react-hooks/immutability
+
+✖ 2 problems (2 errors, 0 warnings)
+
+# ----------------------------------------------------------------
+# finished=2026-09-30T02:11:06Z exit_code=1 seconds=15.2

@@ -1,0 +1,18 @@
+# target=guide step=07_guide
+# cwd=/tmp/claude-0/-home-user/bb8d4187-6ae8-587b-a816-8153faeea853/scratchpad/wt/base01-guide
+# sha=749b360f75185041e1aa3408500857605bc4507f
+# command=PLAYWRIGHT_CHROMIUM_EXECUTABLE=/opt/pw-browsers/chromium-1194/chrome-linux/chrome npm run guide
+# env: GH_TOKEN/GITHUB_TOKEN unset; NEXT_TELEMETRY_DISABLED=1; PLAYWRIGHT_BROWSERS_PATH=/opt/pw-browsers; PLAYWRIGHT_CHROMIUM_EXECUTABLE=<unset>; GITHUB_REPOSITORY=<unset>
+# node=v22.22.2 npm=10.9.7
+# started=2026-09-30T02:15:52Z
+# ----------------------------------------------------------------
+
+> bill-badran@1.0.0 guide
+> node --import tsx guide/build.tsx
+
+guide/dist/bill-badran-before-retirement-guide-en.pdf  32 pages, 1.3 MB
+guide/dist/bill-badran-before-retirement-guide-en-print.pdf  32 pages, 1.1 MB
+guide/dist/bill-badran-guide-avant-la-retraite-fr.pdf  32 pages, 1.3 MB
+guide/dist/bill-badran-guide-avant-la-retraite-fr-print.pdf  32 pages, 1.1 MB
+# ----------------------------------------------------------------
+# finished=2026-09-30T02:16:14Z exit_code=0 seconds=21.6

@@ -1,0 +1,26 @@
+# F00-SPOT-13 unit test counts per file per branch (repair 3) 2026-09-30T03:16:27Z
+# command=git ls-tree -r --name-only origin/<b> -- tests/ | grep -E '\.test\.ts$' ; for each: git show origin/<b>:<f> | grep -c -E '^test\('
+main: tests/logic.test.ts=11(blob ea11528) tests/ride.test.ts=2(blob cc2f8f9) total=13
+add-ask-bill-section: tests/logic.test.ts=11(blob ea11528) tests/ride.test.ts=2(blob cc2f8f9) total=13
+codex/desktop-iphone-unified: tests/logic.test.ts=11(blob ea11528) tests/ride.test.ts=2(blob cc2f8f9) total=13
+claude/bill-centered-homepage: tests/ask.test.ts=5(blob 1ba9bb5) tests/logic.test.ts=11(blob ea11528) tests/ride.test.ts=2(blob cc2f8f9) total=18
+claude/bill-presentation-video: tests/logic.test.ts=11(blob ea11528) tests/ride.test.ts=2(blob cc2f8f9) total=13
+guide/pre-retirement-guide: tests/logic.test.ts=11(blob ea11528) tests/ride.test.ts=2(blob cc2f8f9) total=13
+# command=git diff --stat origin/main origin/claude/bill-centered-homepage -- tests/
+ tests/ask.test.ts          | 128 +++++++++++++++++++++++++++++++++++++++++++++
+ tests/browser/site.spec.ts | 108 ++++++++++++++++++++++++++++++++++++--
+ 2 files changed, 232 insertions(+), 4 deletions(-)
+# exit_code=0
+# command=git show origin/claude/bill-centered-homepage:tests/ask.test.ts | grep -n -E '^test\('
+17:test("Ask Bill: every question in both languages, in exactly one chapter", () => {
+38:test("Ask Bill: anchors are unique URL fragments and deep links exist", () => {
+50:test("Ask Bill: short answers stay short and general", () => {
+60:test("copy never uses the words the practice has ruled out", () => {
+96:test("one call to action, and house typography in both languages", () => {
+# exit_code=0
+# cross-check (recorded run): grep -E '^# (tests|pass|fail)' checks/<t>/03_test.log
+main: # tests 13 # pass 13 # fail 0 
+codex: # tests 13 # pass 13 # fail 0 
+homepage: # tests 18 # pass 18 # fail 0 
+guide: # tests 13 # pass 13 # fail 0 
+video: # tests 13 # pass 13 # fail 0 

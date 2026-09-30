@@ -1,0 +1,6 @@
+# F00-SPOT-09b PLAN_VALIDATION.json search, pruned (repair 3) 2026-09-30T03:16:57Z
+# supersedes the exit code recorded for F00-SPOT-09 (repair2 log shows exit_code=1: '-not -path' does not prune /proc, so find walked it and hit permission errors)
+# first attempt used -iname '*PLAN_VALIDATION*', which matched this log's own filename; pattern anchored below
+# command=find / \( -path /proc -o -path /sys -o -path /dev \) -prune -o \( -iname 'PLAN_VALIDATION*' -o -iname '*PLAN_VALIDATION.json' \) -print
+# exit_code=0
+# (no path lines above = not found)

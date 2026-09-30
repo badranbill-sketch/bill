@@ -1,0 +1,10 @@
+# F00-SPOT-07_original_html_claim  2026-09-30T02:52:01Z  cwd=/home/user/bill
+$ git show origin/main:reference/original.html | grep -n -i -o 'gestionnaire de portefeuille agr.\{0,3\}' 
+7:gestionnaire de portefeuille agr√©√
+352:Gestionnaire de portefeuille agr√©√
+412:Gestionnaire de portefeuille agr√©√
+600:Gestionnaire de portefeuille agr√©√
+603:Gestionnaire de portefeuille agr√©√
+698:gestionnaire de portefeuille agr√©√
+722:gestionnaire de portefeuille agr√©√
+exit_code=0

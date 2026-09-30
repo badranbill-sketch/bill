@@ -1,0 +1,1838 @@
+{
+  "task_id": "F00",
+  "base_commit": "eeb79a9380b297880e8fb530ac1f5b6f2fa7f89d",
+  "result_commit": null,
+  "contract_version": "1.0",
+  "changed_paths": [
+    ".orchestration/inventory.md",
+    ".orchestration/handoffs/F00.json",
+    ".orchestration/evidence/F00/ (untracked; written by the repo, assets and checks lanes)",
+    ".orchestration/evidence/F00/repair2/ (untracked; A0 delegate repair 2)",
+    ".orchestration/evidence/F00/repair3/ (untracked; A0 delegate repair 3)",
+    ".orchestration/evidence/F00/repo/connectors.json (repair 3: content replaced by the minimised version; original sha256 f3516ff1f9924eb2d8c3a254e26f18dbe8389aab1311aa676805e1d5d3871054 not retained)"
+  ],
+  "artifacts": [
+    {
+      "path": ".orchestration/inventory.md",
+      "sha256": "f9f8b9395c6b3b691523e1a936b790bdf3ecb7c720597f4242a1f939c442b855"
+    },
+    {
+      "path": ".orchestration/evidence/F00/assets/gap-matrix.json",
+      "sha256": "76272615ad043513ebf87397af8265aeeaa6a7ecb05c5b6255f8e27ed1822108"
+    },
+    {
+      "path": ".orchestration/evidence/F00/checks/assemble.py",
+      "sha256": "3bb212b0bdf1df5e82da844be9d5bc22988c3919eefb8dc54a46ce0e9f0dcc3e"
+    },
+    {
+      "path": ".orchestration/evidence/F00/checks/codex/01_npm_ci.log",
+      "sha256": "05f07411e649c515e2e4c3651a532f687a20b6074e9962cdc99dc2b7ddde895a"
+    },
+    {
+      "path": ".orchestration/evidence/F00/checks/codex/01_npm_ci.status_after.txt",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": ".orchestration/evidence/F00/checks/codex/02_lint.log",
+      "sha256": "e4af69edf065849d64a5cf4e94d057de41fab2d432b964ab19da8f375895f8fe"
+    },
+    {
+      "path": ".orchestration/evidence/F00/checks/codex/02_lint.status_after.txt",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": ".orchestration/evidence/F00/checks/codex/03_test.log",
+      "sha256": "6f5d74b0b5ad25eaa961fd24c859e8bef98a0d9e36f601cace5bfe14fcd664f0"
+    },
+    {
+      "path": ".orchestration/evidence/F00/checks/codex/03_test.status_after.txt",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": ".orchestration/evidence/F00/checks/codex/04_typecheck_prebuild.log",
+      "sha256": "1f7a9a435b91dbb9bf84c11b2e2eff12bfe0e2ac92c6057fc5da144f9d224c83"
+    },
+    {
+      "path": ".orchestration/evidence/F00/checks/codex/04_typecheck_prebuild.status_after.txt",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": ".orchestration/evidence/F00/checks/codex/05_build.log",
+      "sha256": "5108e81b9f24f61143f494ff2ffc2b0ad6a1cdd8976678ae0f09f2fd17cb5fe2"
+    },
+    {
+      "path": ".orchestration/evidence/F00/checks/codex/05_build.status_after.txt",
+      "sha256": "5473e6f1c6c97ec6bdb6b5e74c9da3b2469dab309d960281a93cdb194bcae87c"
+    },
+    {
+      "path": ".orchestration/evidence/F00/checks/codex/06_typecheck.log",
+      "sha256": "3a568efe822ee039a5439e8f9dc01fa32ed0b341a050fce24bffc12f82ea8ec8"
+    },
+    {
+      "path": ".orchestration/evidence/F00/checks/codex/06_typecheck.status_after.txt",
+      "sha256": "5473e6f1c6c97ec6bdb6b5e74c9da3b2469dab309d960281a93cdb194bcae87c"
+    },
+    {
+      "path": ".orchestration/evidence/F00/checks/codex/07_protections_check.log",
+      "sha256": "dc8954419b54870fd6c307b5335e86581852cdcb31115b8b2e1f87eb56447682"
+    },
+    {
+      "path": ".orchestration/evidence/F00/checks/codex/07_protections_check.status_after.txt",
+      "sha256": "5473e6f1c6c97ec6bdb6b5e74c9da3b2469dab309d960281a93cdb194bcae87c"
+    },
+    {
+      "path": ".orchestration/evidence/F00/checks/codex/08_protections_check_with_repo.log",
+      "sha256": "cf1e07bc1f09f3e301eb2286f456a7f3d0a041d5706224442530f26009431a41"
+    },
+    {
+      "path": ".orchestration/evidence/F00/checks/codex/08_protections_check_with_repo.status_after.txt",
+      "sha256": "5473e6f1c6c97ec6bdb6b5e74c9da3b2469dab309d960281a93cdb194bcae87c"
+    },
+    {
+      "path": ".orchestration/evidence/F00/checks/codex/09_launch_check.log",
+      "sha256": "f231d9d6791bde37e93e5cf61c83b99a215c987672e91d8ed8bcb283d88fdb24"
+    },
+    {
+      "path": ".orchestration/evidence/F00/checks/codex/09_launch_check.status_after.txt",
+      "sha256": "5473e6f1c6c97ec6bdb6b5e74c9da3b2469dab309d960281a93cdb194bcae87c"
+    },
+    {
+      "path": ".orchestration/evidence/F00/checks/codex/10_verify_publication.log",
+      "sha256": "a5998e1615e29bee90cb846a94c6e56605d7dcc55d6de39b436e2c92c4ff1a9b"
+    },
+    {
+      "path": ".orchestration/evidence/F00/checks/codex/10_verify_publication.status_after.txt",
+      "sha256": "5473e6f1c6c97ec6bdb6b5e74c9da3b2469dab309d960281a93cdb194bcae87c"
+    },
+    {
+      "path": ".orchestration/evidence/F00/checks/codex/11_test_e2e_default_browser.log",
+      "sha256": "98de08135e014c25353e96d7bc38f8e447cb3954262b84167878a6f73c1f72f0"
+    },
+    {
+      "path": ".orchestration/evidence/F00/checks/codex/11_test_e2e_default_browser.status_after.txt",
+      "sha256": "5473e6f1c6c97ec6bdb6b5e74c9da3b2469dab309d960281a93cdb194bcae87c"
+    },
+    {
+      "path": ".orchestration/evidence/F00/checks/codex/12_test_e2e.log",
+      "sha256": "5dc4dc6d7ced7e6552eb373cfacce563e85dda1298f7bbc591c419f49ac7731d"
+    },
+    {
+      "path": ".orchestration/evidence/F00/checks/codex/12_test_e2e.status_after.txt",
+      "sha256": "5473e6f1c6c97ec6bdb6b5e74c9da3b2469dab309d960281a93cdb194bcae87c"
+    },
+    {
+      "path": ".orchestration/evidence/F00/checks/codex/status_before.txt",
+      "sha256": "a79ae405914557fc590868f25bba4591a0a538d6165da1bac9cd0c59df824fcc"
+    },
+    {
+      "path": ".orchestration/evidence/F00/checks/codex/steps.jsonl",
+      "sha256": "107a0ffa7efb4f96029a5a3b91e1db1062316f298bbbb74f23156df2868eb493"
+    },
+    {
+      "path": ".orchestration/evidence/F00/checks/diag-main-filmdeps/D01_npm_ci.log",
+      "sha256": "cdf50149d1ff144313d031a6f2d7e139aed3c867071a68207dd307c3faa02faa"
+    },
+    {
+      "path": ".orchestration/evidence/F00/checks/diag-main-filmdeps/D01_npm_ci.status_after.txt",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": ".orchestration/evidence/F00/checks/diag-main-filmdeps/D02_film_npm_ci.log",
+      "sha256": "32c9a5dfcdc316fc0dc6f890ec136523b08e30bbb7647adbdbd409f45ebf7abd"
+    },
+    {
+      "path": ".orchestration/evidence/F00/checks/diag-main-filmdeps/D02_film_npm_ci.status_after.txt",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": ".orchestration/evidence/F00/checks/diag-main-filmdeps/D03_lint.log",
+      "sha256": "5b1cca8c31d7f397129141ab8ebf596f412bf7248a15d68dd192374e2de349ad"
+    },
+    {
+      "path": ".orchestration/evidence/F00/checks/diag-main-filmdeps/D03_lint.status_after.txt",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": ".orchestration/evidence/F00/checks/diag-main-filmdeps/D04_test.log",
+      "sha256": "08c15e2a845f45f10a953aea47da4d94fcb0fa0347cdba73e3d8cf175b3b4c40"
+    },
+    {
+      "path": ".orchestration/evidence/F00/checks/diag-main-filmdeps/D04_test.status_after.txt",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": ".orchestration/evidence/F00/checks/diag-main-filmdeps/D05_build.log",
+      "sha256": "2b543f5a512f022c9486a8e53b8d32460aedaa4f0cbfb83946d8aef7f1795148"
+    },
+    {
+      "path": ".orchestration/evidence/F00/checks/diag-main-filmdeps/D05_build.status_after.txt",
+      "sha256": "5473e6f1c6c97ec6bdb6b5e74c9da3b2469dab309d960281a93cdb194bcae87c"
+    },
+    {
+      "path": ".orchestration/evidence/F00/checks/diag-main-filmdeps/D06_typecheck.log",
+      "sha256": "165c021063ac12f58147737a6c39b94899ce06abc572ec3a46b35736282982d3"
+    },
+    {
+      "path": ".orchestration/evidence/F00/checks/diag-main-filmdeps/D06_typecheck.status_after.txt",
+      "sha256": "5473e6f1c6c97ec6bdb6b5e74c9da3b2469dab309d960281a93cdb194bcae87c"
+    },
+    {
+      "path": ".orchestration/evidence/F00/checks/diag-main-filmdeps/D07_test_e2e.log",
+      "sha256": "98ac04972005a8a5e9811296649cb5902ba7b0ef5eaf8bccda3a6b3a38a560c4"
+    },
+    {
+      "path": ".orchestration/evidence/F00/checks/diag-main-filmdeps/D07_test_e2e.status_after.txt",
+      "sha256": "5473e6f1c6c97ec6bdb6b5e74c9da3b2469dab309d960281a93cdb194bcae87c"
+    },
+    {
+      "path": ".orchestration/evidence/F00/checks/diag-main-filmdeps/status_before.txt",
+      "sha256": "1cd069997d9664afc30e9184e6c609ad110756c444ee4e6132abe640c77d5fb9"
+    },
+    {
+      "path": ".orchestration/evidence/F00/checks/diag-main-filmdeps/steps.jsonl",
+      "sha256": "b8b61c8e76fdec2c7edb6e40b9d803fbbba514a7113b5294fea7d74ef74d5b46"
+    },
+    {
+      "path": ".orchestration/evidence/F00/checks/guide/01_npm_ci.log",
+      "sha256": "6e70bbb9db8f59cd1efe5e9bea080224314657580c0bc8022e810cf44a4bdecc"
+    },
+    {
+      "path": ".orchestration/evidence/F00/checks/guide/01_npm_ci.status_after.txt",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": ".orchestration/evidence/F00/checks/guide/02_lint.log",
+      "sha256": "75cab51d27ea20e1b525c1b2411bd122bace349b519e95bb1be402718dd14aa6"
+    },
+    {
+      "path": ".orchestration/evidence/F00/checks/guide/02_lint.status_after.txt",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": ".orchestration/evidence/F00/checks/guide/03_test.log",
+      "sha256": "5c122b9da8c906d7fa02bf61b4893bc584b62c44c22b2ee40273e3687a92214f"
+    },
+    {
+      "path": ".orchestration/evidence/F00/checks/guide/03_test.status_after.txt",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": ".orchestration/evidence/F00/checks/guide/04_typecheck_prebuild.log",
+      "sha256": "20c7c950e445be5ccc48cf7ff9e7d0e95f586e1f2b419715151c628d9ae81cae"
+    },
+    {
+      "path": ".orchestration/evidence/F00/checks/guide/04_typecheck_prebuild.status_after.txt",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": ".orchestration/evidence/F00/checks/guide/05_build.log",
+      "sha256": "12fa909b3604de9f14e65181abe05afc0ffa902ccf05ab4344654799055cd7dc"
+    },
+    {
+      "path": ".orchestration/evidence/F00/checks/guide/05_build.status_after.txt",
+      "sha256": "5473e6f1c6c97ec6bdb6b5e74c9da3b2469dab309d960281a93cdb194bcae87c"
+    },
+    {
+      "path": ".orchestration/evidence/F00/checks/guide/06_typecheck.log",
+      "sha256": "62c83fbbe019d3909871e6c20cdaa45ce6ed0ce3e7eff9c123908d94ae9946dc"
+    },
+    {
+      "path": ".orchestration/evidence/F00/checks/guide/06_typecheck.status_after.txt",
+      "sha256": "5473e6f1c6c97ec6bdb6b5e74c9da3b2469dab309d960281a93cdb194bcae87c"
+    },
+    {
+      "path": ".orchestration/evidence/F00/checks/guide/07_guide.log",
+      "sha256": "a57115a84891c6c21458ecb2016a2339a73780435bb6a9d05d1bb333ed3a3067"
+    },
+    {
+      "path": ".orchestration/evidence/F00/checks/guide/07_guide.status_after.txt",
+      "sha256": "5473e6f1c6c97ec6bdb6b5e74c9da3b2469dab309d960281a93cdb194bcae87c"
+    },
+    {
+      "path": ".orchestration/evidence/F00/checks/guide/status_before.txt",
+      "sha256": "ac546b538f63636a4212ace01561741b1aeba4144cf94d814dfb8ebaae0d9d2e"
+    },
+    {
+      "path": ".orchestration/evidence/F00/checks/guide/steps.jsonl",
+      "sha256": "4ecd48bb0392ca3a0f6147dfd908f912a3f0e274468438cfd6e68702717b7154"
+    },
+    {
+      "path": ".orchestration/evidence/F00/checks/homepage/01_npm_ci.log",
+      "sha256": "fbe829083021ce34a5495cdcb6a6c58dd957b093309ab40a409ad239b1456d66"
+    },
+    {
+      "path": ".orchestration/evidence/F00/checks/homepage/01_npm_ci.status_after.txt",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": ".orchestration/evidence/F00/checks/homepage/02_lint.log",
+      "sha256": "61b2381110c8445b896519157284f60ca3f89945b71d82683c6911dec691d267"
+    },
+    {
+      "path": ".orchestration/evidence/F00/checks/homepage/02_lint.status_after.txt",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": ".orchestration/evidence/F00/checks/homepage/03_test.log",
+      "sha256": "e53971cdf28cc14b27d32be6677fffef1f00b4d8b7b121fe78fff4b2c644bf2c"
+    },
+    {
+      "path": ".orchestration/evidence/F00/checks/homepage/03_test.status_after.txt",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": ".orchestration/evidence/F00/checks/homepage/04_typecheck_prebuild.log",
+      "sha256": "856d0c39954abde6e33c4e357bd863b0239f1f7e97b86c7c2434d5f1a08d7552"
+    },
+    {
+      "path": ".orchestration/evidence/F00/checks/homepage/04_typecheck_prebuild.status_after.txt",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": ".orchestration/evidence/F00/checks/homepage/05_build.log",
+      "sha256": "3bdd818194a59c63d4c8e19d845bbe8029d8f391e28d4c14d3d183de628c47ce"
+    },
+    {
+      "path": ".orchestration/evidence/F00/checks/homepage/05_build.status_after.txt",
+      "sha256": "5473e6f1c6c97ec6bdb6b5e74c9da3b2469dab309d960281a93cdb194bcae87c"
+    },
+    {
+      "path": ".orchestration/evidence/F00/checks/homepage/06_typecheck.log",
+      "sha256": "3b558e2ef8a5be0e85b9c0175db4eae8c2de8d9e2e96c2fd7d201a11253f6698"
+    },
+    {
+      "path": ".orchestration/evidence/F00/checks/homepage/06_typecheck.status_after.txt",
+      "sha256": "5473e6f1c6c97ec6bdb6b5e74c9da3b2469dab309d960281a93cdb194bcae87c"
+    },
+    {
+      "path": ".orchestration/evidence/F00/checks/homepage/status_before.txt",
+      "sha256": "e32b4451c146a8e450d05daf7be8c4e00dc0e64b39bd2f59bf8c7c6cc9ab3968"
+    },
+    {
+      "path": ".orchestration/evidence/F00/checks/homepage/steps.jsonl",
+      "sha256": "5ba4af87b8f798fe20cd114d41400fc5def3704a1cb6cf81c99eb722a92c3f1e"
+    },
+    {
+      "path": ".orchestration/evidence/F00/checks/main/01_npm_ci.log",
+      "sha256": "26a48b3a909d3f468f3ba408f8080cf09880fb6d97af72d83381bd1e63ff68ec"
+    },
+    {
+      "path": ".orchestration/evidence/F00/checks/main/01_npm_ci.status_after.txt",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": ".orchestration/evidence/F00/checks/main/02_lint.log",
+      "sha256": "ea312b82021dc43661d9ef1b96c1b83eb261df7e6acbe0683ad5ee430124e0ee"
+    },
+    {
+      "path": ".orchestration/evidence/F00/checks/main/02_lint.status_after.txt",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": ".orchestration/evidence/F00/checks/main/03_test.log",
+      "sha256": "e24f87fe993deb33f5e15e04175ed4a2fbe594d6291bd49bad58eea47d0b3c2d"
+    },
+    {
+      "path": ".orchestration/evidence/F00/checks/main/03_test.status_after.txt",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": ".orchestration/evidence/F00/checks/main/04_typecheck_prebuild.log",
+      "sha256": "b45d13f90789d2a0452c2f614769e28186ca0a49b0b9d7eed3ab5f14bca55879"
+    },
+    {
+      "path": ".orchestration/evidence/F00/checks/main/04_typecheck_prebuild.status_after.txt",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": ".orchestration/evidence/F00/checks/main/05_build.log",
+      "sha256": "7861fd80aad7707e3ffefa5744e7a940076faae5144f0e9100096741d40c2198"
+    },
+    {
+      "path": ".orchestration/evidence/F00/checks/main/05_build.status_after.txt",
+      "sha256": "5473e6f1c6c97ec6bdb6b5e74c9da3b2469dab309d960281a93cdb194bcae87c"
+    },
+    {
+      "path": ".orchestration/evidence/F00/checks/main/06_typecheck.log",
+      "sha256": "32d027a8fb331eb8a824d2fd8979f45a17d3f3802ba793fe6dc846301707dad5"
+    },
+    {
+      "path": ".orchestration/evidence/F00/checks/main/06_typecheck.status_after.txt",
+      "sha256": "5473e6f1c6c97ec6bdb6b5e74c9da3b2469dab309d960281a93cdb194bcae87c"
+    },
+    {
+      "path": ".orchestration/evidence/F00/checks/main/07_protections_check.log",
+      "sha256": "92760951db8efb15e6df3e481a1610a2055d523d4fadf77d4b8aeb03fd1c6ebc"
+    },
+    {
+      "path": ".orchestration/evidence/F00/checks/main/07_protections_check.status_after.txt",
+      "sha256": "5473e6f1c6c97ec6bdb6b5e74c9da3b2469dab309d960281a93cdb194bcae87c"
+    },
+    {
+      "path": ".orchestration/evidence/F00/checks/main/08_protections_check_with_repo.log",
+      "sha256": "8fda853f9371f3c34f3f3f073cb5c2fed400abece941d070b7405b3ec6671171"
+    },
+    {
+      "path": ".orchestration/evidence/F00/checks/main/08_protections_check_with_repo.status_after.txt",
+      "sha256": "5473e6f1c6c97ec6bdb6b5e74c9da3b2469dab309d960281a93cdb194bcae87c"
+    },
+    {
+      "path": ".orchestration/evidence/F00/checks/main/09_launch_check.log",
+      "sha256": "83b58077e60294d058176c090c5f7d0d99581f289cf75da04878ffd95f672618"
+    },
+    {
+      "path": ".orchestration/evidence/F00/checks/main/09_launch_check.status_after.txt",
+      "sha256": "5473e6f1c6c97ec6bdb6b5e74c9da3b2469dab309d960281a93cdb194bcae87c"
+    },
+    {
+      "path": ".orchestration/evidence/F00/checks/main/10_verify_publication.log",
+      "sha256": "9442cff932f63aea1d1482e636deca077a5864c68718fb09c279e588b49784ac"
+    },
+    {
+      "path": ".orchestration/evidence/F00/checks/main/10_verify_publication.status_after.txt",
+      "sha256": "5473e6f1c6c97ec6bdb6b5e74c9da3b2469dab309d960281a93cdb194bcae87c"
+    },
+    {
+      "path": ".orchestration/evidence/F00/checks/main/11_test_e2e_default_browser.log",
+      "sha256": "5bd87b80235dfa2dab9c112b2e27e203a7e592241ebbc4a00694b45d3a328536"
+    },
+    {
+      "path": ".orchestration/evidence/F00/checks/main/11_test_e2e_default_browser.status_after.txt",
+      "sha256": "5473e6f1c6c97ec6bdb6b5e74c9da3b2469dab309d960281a93cdb194bcae87c"
+    },
+    {
+      "path": ".orchestration/evidence/F00/checks/main/12_test_e2e.log",
+      "sha256": "6f16cc28a620dc1c521c66811a8e915a7b793e8e372ae8febd582b112d1d749d"
+    },
+    {
+      "path": ".orchestration/evidence/F00/checks/main/12_test_e2e.status_after.txt",
+      "sha256": "5473e6f1c6c97ec6bdb6b5e74c9da3b2469dab309d960281a93cdb194bcae87c"
+    },
+    {
+      "path": ".orchestration/evidence/F00/checks/main/status_before.txt",
+      "sha256": "1cd069997d9664afc30e9184e6c609ad110756c444ee4e6132abe640c77d5fb9"
+    },
+    {
+      "path": ".orchestration/evidence/F00/checks/main/steps.jsonl",
+      "sha256": "d82b7c3821a9558a4e65245cb503b18eecf83cfbf28830d633d2de549e71ec57"
+    },
+    {
+      "path": ".orchestration/evidence/F00/checks/pipeline.sh",
+      "sha256": "f7338a0e50d4b33dcacca42c6b9dbe18a29e4cb681ba0089523b1b336144088e"
+    },
+    {
+      "path": ".orchestration/evidence/F00/checks/results.json",
+      "sha256": "f9d84beffcdbdb57199502b5fe782e648904d4b7b782e5df27c60edb9a84185c"
+    },
+    {
+      "path": ".orchestration/evidence/F00/checks/runner.sh",
+      "sha256": "053864bfb27e40d6b60014a6bcf406aaadf172754cb6780c419d360edd219309"
+    },
+    {
+      "path": ".orchestration/evidence/F00/checks/video/01_npm_ci.log",
+      "sha256": "b21b8412c78528685fc2c02d3b40f79a54dc0f1ad3dd1c99df72bc93768a52bb"
+    },
+    {
+      "path": ".orchestration/evidence/F00/checks/video/01_npm_ci.status_after.txt",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": ".orchestration/evidence/F00/checks/video/02_lint.log",
+      "sha256": "a99425fe1fb76d80879fe31e1c34f45e787255696e3e4dbe061217046aa6cf33"
+    },
+    {
+      "path": ".orchestration/evidence/F00/checks/video/02_lint.status_after.txt",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": ".orchestration/evidence/F00/checks/video/03_test.log",
+      "sha256": "f30dbdb5bc54f300a507b7cb931a68e6ec2b5d5f99f94d6737f97387a290e331"
+    },
+    {
+      "path": ".orchestration/evidence/F00/checks/video/03_test.status_after.txt",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": ".orchestration/evidence/F00/checks/video/04_typecheck_prebuild.log",
+      "sha256": "fae0eb6d168ce3086e6ddbc0244edf9f6a72ea0d7a9972359597f9bde09e5d76"
+    },
+    {
+      "path": ".orchestration/evidence/F00/checks/video/04_typecheck_prebuild.status_after.txt",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": ".orchestration/evidence/F00/checks/video/05_build.log",
+      "sha256": "73a00f0d3efa0c778a3e596644f9000f28efa94755c6d888f2c783349881078d"
+    },
+    {
+      "path": ".orchestration/evidence/F00/checks/video/05_build.status_after.txt",
+      "sha256": "5473e6f1c6c97ec6bdb6b5e74c9da3b2469dab309d960281a93cdb194bcae87c"
+    },
+    {
+      "path": ".orchestration/evidence/F00/checks/video/06_typecheck.log",
+      "sha256": "d34ee159debd26ce92595356cdcbd7382481907b562ebdb7edceaf0633e42763"
+    },
+    {
+      "path": ".orchestration/evidence/F00/checks/video/06_typecheck.status_after.txt",
+      "sha256": "5473e6f1c6c97ec6bdb6b5e74c9da3b2469dab309d960281a93cdb194bcae87c"
+    },
+    {
+      "path": ".orchestration/evidence/F00/checks/video/status_before.txt",
+      "sha256": "9725cd6bfebf6647218567d5a253eacf4ca3d6b02dcf6b1cf71b6f9cbdd36b22"
+    },
+    {
+      "path": ".orchestration/evidence/F00/checks/video/steps.jsonl",
+      "sha256": "81aceae5caf4675b4849023282230e1b72d645cc4649eaf60ccc20c99cf5760d"
+    },
+    {
+      "path": ".orchestration/evidence/F00/checks/worktree_setup.log",
+      "sha256": "f2d1ff1b86d4b7624b21c70f9501b52b24708fc51c893245fa087f6b74d386da"
+    },
+    {
+      "path": ".orchestration/evidence/F00/checks/worktrees_final_status.txt",
+      "sha256": "ab9bc5b0abe82b9fc398711c18e2a04736fa51e1868e007d5c7c5874e193389e"
+    },
+    {
+      "path": ".orchestration/evidence/F00/repair2/F00-PROBE-calendly.log",
+      "sha256": "770f30aeb6afeead52b325ccab6f2ffb65719ea5e3629c13c0b8921b81a6effb"
+    },
+    {
+      "path": ".orchestration/evidence/F00/repair2/F00-PROBE-drive_identity.log",
+      "sha256": "f6ebba2d04bff5c4028f8138fbe69279fbb53ae37b169f7d06f595c335d41c41"
+    },
+    {
+      "path": ".orchestration/evidence/F00/repair2/F00-SPOT-01_review_pdf.log",
+      "sha256": "7fa16b28f2c98bbd7d793f5a4d4d878761f01412dc8a4ae2c58b9801cbd86048"
+    },
+    {
+      "path": ".orchestration/evidence/F00/repair2/F00-SPOT-02_film_pdf.log",
+      "sha256": "fb7303e3b4edaa0c54d1ae36766534bbf71a80bc2d87c390110f72895c4e9c1b"
+    },
+    {
+      "path": ".orchestration/evidence/F00/repair2/F00-SPOT-03_ts_error_codes.log",
+      "sha256": "06faecd092b2852196a598d790526049d187d282e1122a5be22beb8eedeafe68"
+    },
+    {
+      "path": ".orchestration/evidence/F00/repair2/F00-SPOT-04_test_summary_history.log",
+      "sha256": "e7af144a46043b337d6f682d2d3ff39d81ddd161c4a7512577495d6724af96bf"
+    },
+    {
+      "path": ".orchestration/evidence/F00/repair2/F00-SPOT-05_repo_state.log",
+      "sha256": "7ffde0ef614c4983424ca0d2e6557c5cbbbdb8b141750ce2305f8ed91a84ff09"
+    },
+    {
+      "path": ".orchestration/evidence/F00/repair2/F00-SPOT-06_dockerd.log",
+      "sha256": "d10f56f5e1a806308cc69072bb59b21404e7d354bad9ed6d60d2f7f94f60c2b2"
+    },
+    {
+      "path": ".orchestration/evidence/F00/repair2/F00-SPOT-07_original_html_claim.log",
+      "sha256": "dc5a0a0480fe3d810f6a6a95c1f3a6231c94485722bd74fec2f8ed0edb6a8f43"
+    },
+    {
+      "path": ".orchestration/evidence/F00/repair2/F00-SPOT-09_companion_json.log",
+      "sha256": "02296074cf1fcd1e28ab956ba65cc61ddbd3e211538231344c4a759a1a5d13c3"
+    },
+    {
+      "path": ".orchestration/evidence/F00/repair2/connectors.minimised.json",
+      "sha256": "259065c3b328a9d02242e98b3e845b28e27aaf455baa35026c1b0ef4251a35ad"
+    },
+    {
+      "path": ".orchestration/evidence/F00/repair2/p2-1_guide_paths.log",
+      "sha256": "3db8b91223a67572c780ba3efe414523c68bf2621d39e16902054be4d82432b3"
+    },
+    {
+      "path": ".orchestration/evidence/F00/repair2/p3-2_p2-1_trial_merges.log",
+      "sha256": "76e948df53b4d2458fabe19d6ef1af7657597a5a29a22e3e314b4cf0ce233a2d"
+    },
+    {
+      "path": ".orchestration/evidence/F00/repo/ancestry.txt",
+      "sha256": "3fa61659149130637deb1e0beb27b0fa9f18cdbc3d6cf2db3f305738cee93507"
+    },
+    {
+      "path": ".orchestration/evidence/F00/repo/branch_commits_files.txt",
+      "sha256": "fb35c6d9c50affaacee491ec514a9a70e1f9bb650c1510852a4926daa6c294af"
+    },
+    {
+      "path": ".orchestration/evidence/F00/repo/branch_heads.txt",
+      "sha256": "c94821f5547e29257257b07cf720417452a45413c56136b7b9b0d72d61584c70"
+    },
+    {
+      "path": ".orchestration/evidence/F00/repo/conflict_detail_codex_homepage.txt",
+      "sha256": "ca06276945be85c22e0452eb8f074638f3eb883da927ecb81020812911b26d61"
+    },
+    {
+      "path": ".orchestration/evidence/F00/repo/conflict_detail_config.txt",
+      "sha256": "23166853f72ec08a35cfacc0f22399fce63f497579bc56348cb319ea1156081c"
+    },
+    {
+      "path": ".orchestration/evidence/F00/repo/connectors.json",
+      "sha256": "1b7e7eed5c22f166dcd962c25e480e17cbee4470a22e2d90fc7f1f147432a375"
+    },
+    {
+      "path": ".orchestration/evidence/F00/repo/dockerd.log",
+      "sha256": "3dc1d6e06a7153b64a01b37a8cc53d4feadfc88f00c3c23603b91f82f55570e4"
+    },
+    {
+      "path": ".orchestration/evidence/F00/repo/dockerd.pid",
+      "sha256": "b02c8e98672a92883a87da675314c54e97f0c5d9182afec67bfd9caae1153c2d"
+    },
+    {
+      "path": ".orchestration/evidence/F00/repo/env_docker_pre.txt",
+      "sha256": "06ec22b68a71171c50a7512efa3610c04a4f4df5570544ee4a3bbc5a4918538e"
+    },
+    {
+      "path": ".orchestration/evidence/F00/repo/env_docker_run.txt",
+      "sha256": "b2e5de526b893bb856a0c92cc76d7beda8f2e1872496e87e51c5233f3137ecd8"
+    },
+    {
+      "path": ".orchestration/evidence/F00/repo/env_node_playwright.txt",
+      "sha256": "56895d26aef3faae689aacae9d00cb96a5b025a9d60154304a25a53650460501"
+    },
+    {
+      "path": ".orchestration/evidence/F00/repo/env_playwright_compat.txt",
+      "sha256": "f5614ddf03ec7c0409e4e2cd68f32281a8819473015afce16578257b777d8575"
+    },
+    {
+      "path": ".orchestration/evidence/F00/repo/github_remote.json",
+      "sha256": "2bf53e5a6fe4f33bd030eed36c4c52234b9817cc5ca35f87324ec8511e049979"
+    },
+    {
+      "path": ".orchestration/evidence/F00/repo/ls-remote.txt",
+      "sha256": "30987913cd497c2c9e76de0df8db7d583c2e9663f739379915dbf262b52892b0"
+    },
+    {
+      "path": ".orchestration/evidence/F00/repo/reachability.txt",
+      "sha256": "644573f24e26c86c4123dd11aa69232601ac718a6fbdccbdc2d102fc6f638080"
+    },
+    {
+      "path": ".orchestration/evidence/F00/repo/shared_config_diffs.txt",
+      "sha256": "4fdd9253f3722aaa280669a3c02d69022253956b59abd5ff0680a5fce017b003"
+    },
+    {
+      "path": ".orchestration/evidence/F00/repo/trial_merges.log",
+      "sha256": "36633c4c5bfdb9f38e7ffb6221d056cf8bb5c26a0c9061f71c45097a6fd75bec"
+    },
+    {
+      "path": ".orchestration/evidence/F00/repair3/F00-ERRATA.log",
+      "sha256": "f668bf849833e91283670462e6aafb97d4dfd9b7534ad3daa85fa9b9f7322478"
+    },
+    {
+      "path": ".orchestration/evidence/F00/repair3/F00-SPOT-09b_plan_validation_pruned.log",
+      "sha256": "5ddf5aa9955819d9f7920a61c10eb434da4e9c74632062e47e89e1aaaae61b42"
+    },
+    {
+      "path": ".orchestration/evidence/F00/repair3/F00-SPOT-10_claims_register.log",
+      "sha256": "8a732f08b62051822ae156838e37cb1dcd04619f2ae6b7458784282e47059877"
+    },
+    {
+      "path": ".orchestration/evidence/F00/repair3/F00-SPOT-11_review_pdf_claims.log",
+      "sha256": "1ea2bcca6897840b0f9f1a4567103a06caf84d432294205b254ad1e8cfe05b04"
+    },
+    {
+      "path": ".orchestration/evidence/F00/repair3/F00-SPOT-12_copy_strategy_flags.log",
+      "sha256": "af383e379211d100591921bb4a10bcbe2c92d688202fda40f5f867aa4f5834c6"
+    },
+    {
+      "path": ".orchestration/evidence/F00/repair3/F00-SPOT-13_unit_test_counts.log",
+      "sha256": "8fa41fc2a98f5e43a5532c9856034e25e36352e9f3a5b31389998fcee595957b"
+    },
+    {
+      "path": ".orchestration/evidence/F00/repair3/F00-SPOT-14_repo_state.log",
+      "sha256": "e649bed5ca7a05367654bc1d702c0f5daf96bf36672716aa815c596aec3af4f6"
+    }
+  ],
+  "tests": [
+    {
+      "id": "BASE01",
+      "command": "(cwd scratchpad/wt/base01-main @ 77de3bd51a8c9cb73aec0b32d27ca0cacb6285cd) npm ci",
+      "exit_code": 0,
+      "evidence": ".orchestration/evidence/F00/checks/main/01_npm_ci.log",
+      "environment": "local container"
+    },
+    {
+      "id": "BASE01",
+      "command": "(cwd scratchpad/wt/base01-main @ 77de3bd51a8c9cb73aec0b32d27ca0cacb6285cd) npm run lint",
+      "exit_code": 1,
+      "evidence": ".orchestration/evidence/F00/checks/main/02_lint.log",
+      "environment": "local container"
+    },
+    {
+      "id": "BASE01",
+      "command": "(cwd scratchpad/wt/base01-main @ 77de3bd51a8c9cb73aec0b32d27ca0cacb6285cd) npm test",
+      "exit_code": 0,
+      "evidence": ".orchestration/evidence/F00/checks/main/03_test.log",
+      "environment": "local container"
+    },
+    {
+      "id": "BASE01",
+      "command": "(cwd scratchpad/wt/base01-main @ 77de3bd51a8c9cb73aec0b32d27ca0cacb6285cd) npm run typecheck",
+      "exit_code": 2,
+      "evidence": ".orchestration/evidence/F00/checks/main/04_typecheck_prebuild.log",
+      "environment": "local container"
+    },
+    {
+      "id": "BASE01",
+      "command": "(cwd scratchpad/wt/base01-main @ 77de3bd51a8c9cb73aec0b32d27ca0cacb6285cd) npm run build",
+      "exit_code": 1,
+      "evidence": ".orchestration/evidence/F00/checks/main/05_build.log",
+      "environment": "local container"
+    },
+    {
+      "id": "BASE01",
+      "command": "(cwd scratchpad/wt/base01-main @ 77de3bd51a8c9cb73aec0b32d27ca0cacb6285cd) npm run typecheck",
+      "exit_code": 2,
+      "evidence": ".orchestration/evidence/F00/checks/main/06_typecheck.log",
+      "environment": "local container"
+    },
+    {
+      "id": "BASE01",
+      "command": "(cwd scratchpad/wt/base01-main @ 77de3bd51a8c9cb73aec0b32d27ca0cacb6285cd) npm run protections:check",
+      "exit_code": 1,
+      "evidence": ".orchestration/evidence/F00/checks/main/07_protections_check.log",
+      "environment": "local container"
+    },
+    {
+      "id": "BASE01",
+      "command": "(cwd scratchpad/wt/base01-main @ 77de3bd51a8c9cb73aec0b32d27ca0cacb6285cd) GITHUB_REPOSITORY=arnaudverdier8-svg/bill npm run protections:check",
+      "exit_code": 1,
+      "evidence": ".orchestration/evidence/F00/checks/main/08_protections_check_with_repo.log",
+      "environment": "local container"
+    },
+    {
+      "id": "BASE01",
+      "command": "(cwd scratchpad/wt/base01-main @ 77de3bd51a8c9cb73aec0b32d27ca0cacb6285cd) npm run launch:check",
+      "exit_code": 1,
+      "evidence": ".orchestration/evidence/F00/checks/main/09_launch_check.log",
+      "environment": "local container"
+    },
+    {
+      "id": "BASE01",
+      "command": "(cwd scratchpad/wt/base01-main @ 77de3bd51a8c9cb73aec0b32d27ca0cacb6285cd) GITHUB_REPOSITORY=arnaudverdier8-svg/bill node --import tsx scripts/verify-publication.ts",
+      "exit_code": 0,
+      "evidence": ".orchestration/evidence/F00/checks/main/10_verify_publication.log",
+      "environment": "local container"
+    },
+    {
+      "id": "BASE01",
+      "command": "(cwd scratchpad/wt/base01-main @ 77de3bd51a8c9cb73aec0b32d27ca0cacb6285cd) npm run test:e2e",
+      "exit_code": 1,
+      "evidence": ".orchestration/evidence/F00/checks/main/11_test_e2e_default_browser.log",
+      "environment": "local container"
+    },
+    {
+      "id": "BASE01",
+      "command": "(cwd scratchpad/wt/base01-main @ 77de3bd51a8c9cb73aec0b32d27ca0cacb6285cd) PLAYWRIGHT_CHROMIUM_EXECUTABLE=/opt/pw-browsers/chromium-1194/chrome-linux/chrome npm run test:e2e",
+      "exit_code": 1,
+      "evidence": ".orchestration/evidence/F00/checks/main/12_test_e2e.log",
+      "environment": "local container"
+    },
+    {
+      "id": "BASE01",
+      "command": "(cwd scratchpad/wt/base01-codex @ 66cce52046f535ddc1a90e6f94474877e375860d) npm ci",
+      "exit_code": 0,
+      "evidence": ".orchestration/evidence/F00/checks/codex/01_npm_ci.log",
+      "environment": "local container"
+    },
+    {
+      "id": "BASE01",
+      "command": "(cwd scratchpad/wt/base01-codex @ 66cce52046f535ddc1a90e6f94474877e375860d) npm run lint",
+      "exit_code": 0,
+      "evidence": ".orchestration/evidence/F00/checks/codex/02_lint.log",
+      "environment": "local container"
+    },
+    {
+      "id": "BASE01",
+      "command": "(cwd scratchpad/wt/base01-codex @ 66cce52046f535ddc1a90e6f94474877e375860d) npm test",
+      "exit_code": 0,
+      "evidence": ".orchestration/evidence/F00/checks/codex/03_test.log",
+      "environment": "local container"
+    },
+    {
+      "id": "BASE01",
+      "command": "(cwd scratchpad/wt/base01-codex @ 66cce52046f535ddc1a90e6f94474877e375860d) npm run typecheck",
+      "exit_code": 0,
+      "evidence": ".orchestration/evidence/F00/checks/codex/04_typecheck_prebuild.log",
+      "environment": "local container"
+    },
+    {
+      "id": "BASE01",
+      "command": "(cwd scratchpad/wt/base01-codex @ 66cce52046f535ddc1a90e6f94474877e375860d) npm run build",
+      "exit_code": 0,
+      "evidence": ".orchestration/evidence/F00/checks/codex/05_build.log",
+      "environment": "local container"
+    },
+    {
+      "id": "BASE01",
+      "command": "(cwd scratchpad/wt/base01-codex @ 66cce52046f535ddc1a90e6f94474877e375860d) npm run typecheck",
+      "exit_code": 0,
+      "evidence": ".orchestration/evidence/F00/checks/codex/06_typecheck.log",
+      "environment": "local container"
+    },
+    {
+      "id": "BASE01",
+      "command": "(cwd scratchpad/wt/base01-codex @ 66cce52046f535ddc1a90e6f94474877e375860d) npm run protections:check",
+      "exit_code": 1,
+      "evidence": ".orchestration/evidence/F00/checks/codex/07_protections_check.log",
+      "environment": "local container"
+    },
+    {
+      "id": "BASE01",
+      "command": "(cwd scratchpad/wt/base01-codex @ 66cce52046f535ddc1a90e6f94474877e375860d) GITHUB_REPOSITORY=arnaudverdier8-svg/bill npm run protections:check",
+      "exit_code": 1,
+      "evidence": ".orchestration/evidence/F00/checks/codex/08_protections_check_with_repo.log",
+      "environment": "local container"
+    },
+    {
+      "id": "BASE01",
+      "command": "(cwd scratchpad/wt/base01-codex @ 66cce52046f535ddc1a90e6f94474877e375860d) npm run launch:check",
+      "exit_code": 1,
+      "evidence": ".orchestration/evidence/F00/checks/codex/09_launch_check.log",
+      "environment": "local container"
+    },
+    {
+      "id": "BASE01",
+      "command": "(cwd scratchpad/wt/base01-codex @ 66cce52046f535ddc1a90e6f94474877e375860d) GITHUB_REPOSITORY=arnaudverdier8-svg/bill node --import tsx scripts/verify-publication.ts",
+      "exit_code": 0,
+      "evidence": ".orchestration/evidence/F00/checks/codex/10_verify_publication.log",
+      "environment": "local container"
+    },
+    {
+      "id": "BASE01",
+      "command": "(cwd scratchpad/wt/base01-codex @ 66cce52046f535ddc1a90e6f94474877e375860d) npm run test:e2e",
+      "exit_code": 1,
+      "evidence": ".orchestration/evidence/F00/checks/codex/11_test_e2e_default_browser.log",
+      "environment": "local container"
+    },
+    {
+      "id": "BASE01",
+      "command": "(cwd scratchpad/wt/base01-codex @ 66cce52046f535ddc1a90e6f94474877e375860d) PLAYWRIGHT_CHROMIUM_EXECUTABLE=/opt/pw-browsers/chromium-1194/chrome-linux/chrome npm run test:e2e",
+      "exit_code": 0,
+      "evidence": ".orchestration/evidence/F00/checks/codex/12_test_e2e.log",
+      "environment": "local container"
+    },
+    {
+      "id": "BASE01",
+      "command": "(cwd scratchpad/wt/base01-homepage @ d63aabd50d0760145208857856f32779b1069e15) npm ci",
+      "exit_code": 0,
+      "evidence": ".orchestration/evidence/F00/checks/homepage/01_npm_ci.log",
+      "environment": "local container"
+    },
+    {
+      "id": "BASE01",
+      "command": "(cwd scratchpad/wt/base01-homepage @ d63aabd50d0760145208857856f32779b1069e15) npm run lint",
+      "exit_code": 0,
+      "evidence": ".orchestration/evidence/F00/checks/homepage/02_lint.log",
+      "environment": "local container"
+    },
+    {
+      "id": "BASE01",
+      "command": "(cwd scratchpad/wt/base01-homepage @ d63aabd50d0760145208857856f32779b1069e15) npm test",
+      "exit_code": 0,
+      "evidence": ".orchestration/evidence/F00/checks/homepage/03_test.log",
+      "environment": "local container"
+    },
+    {
+      "id": "BASE01",
+      "command": "(cwd scratchpad/wt/base01-homepage @ d63aabd50d0760145208857856f32779b1069e15) npm run typecheck",
+      "exit_code": 0,
+      "evidence": ".orchestration/evidence/F00/checks/homepage/04_typecheck_prebuild.log",
+      "environment": "local container"
+    },
+    {
+      "id": "BASE01",
+      "command": "(cwd scratchpad/wt/base01-homepage @ d63aabd50d0760145208857856f32779b1069e15) npm run build",
+      "exit_code": 0,
+      "evidence": ".orchestration/evidence/F00/checks/homepage/05_build.log",
+      "environment": "local container"
+    },
+    {
+      "id": "BASE01",
+      "command": "(cwd scratchpad/wt/base01-homepage @ d63aabd50d0760145208857856f32779b1069e15) npm run typecheck",
+      "exit_code": 0,
+      "evidence": ".orchestration/evidence/F00/checks/homepage/06_typecheck.log",
+      "environment": "local container"
+    },
+    {
+      "id": "BASE01",
+      "command": "(cwd scratchpad/wt/base01-guide @ 749b360f75185041e1aa3408500857605bc4507f) npm ci",
+      "exit_code": 0,
+      "evidence": ".orchestration/evidence/F00/checks/guide/01_npm_ci.log",
+      "environment": "local container"
+    },
+    {
+      "id": "BASE01",
+      "command": "(cwd scratchpad/wt/base01-guide @ 749b360f75185041e1aa3408500857605bc4507f) npm run lint",
+      "exit_code": 1,
+      "evidence": ".orchestration/evidence/F00/checks/guide/02_lint.log",
+      "environment": "local container"
+    },
+    {
+      "id": "BASE01",
+      "command": "(cwd scratchpad/wt/base01-guide @ 749b360f75185041e1aa3408500857605bc4507f) npm test",
+      "exit_code": 0,
+      "evidence": ".orchestration/evidence/F00/checks/guide/03_test.log",
+      "environment": "local container"
+    },
+    {
+      "id": "BASE01",
+      "command": "(cwd scratchpad/wt/base01-guide @ 749b360f75185041e1aa3408500857605bc4507f) npm run typecheck",
+      "exit_code": 2,
+      "evidence": ".orchestration/evidence/F00/checks/guide/04_typecheck_prebuild.log",
+      "environment": "local container"
+    },
+    {
+      "id": "BASE01",
+      "command": "(cwd scratchpad/wt/base01-guide @ 749b360f75185041e1aa3408500857605bc4507f) npm run build",
+      "exit_code": 1,
+      "evidence": ".orchestration/evidence/F00/checks/guide/05_build.log",
+      "environment": "local container"
+    },
+    {
+      "id": "BASE01",
+      "command": "(cwd scratchpad/wt/base01-guide @ 749b360f75185041e1aa3408500857605bc4507f) npm run typecheck",
+      "exit_code": 2,
+      "evidence": ".orchestration/evidence/F00/checks/guide/06_typecheck.log",
+      "environment": "local container"
+    },
+    {
+      "id": "BASE01",
+      "command": "(cwd scratchpad/wt/base01-guide @ 749b360f75185041e1aa3408500857605bc4507f) PLAYWRIGHT_CHROMIUM_EXECUTABLE=/opt/pw-browsers/chromium-1194/chrome-linux/chrome npm run guide",
+      "exit_code": 0,
+      "evidence": ".orchestration/evidence/F00/checks/guide/07_guide.log",
+      "environment": "local container"
+    },
+    {
+      "id": "BASE01",
+      "command": "(cwd scratchpad/wt/base01-video @ fc0044576d851be414d19e2f7a21ca7fd1285eae) npm ci",
+      "exit_code": 0,
+      "evidence": ".orchestration/evidence/F00/checks/video/01_npm_ci.log",
+      "environment": "local container"
+    },
+    {
+      "id": "BASE01",
+      "command": "(cwd scratchpad/wt/base01-video @ fc0044576d851be414d19e2f7a21ca7fd1285eae) npm run lint",
+      "exit_code": 1,
+      "evidence": ".orchestration/evidence/F00/checks/video/02_lint.log",
+      "environment": "local container"
+    },
+    {
+      "id": "BASE01",
+      "command": "(cwd scratchpad/wt/base01-video @ fc0044576d851be414d19e2f7a21ca7fd1285eae) npm test",
+      "exit_code": 0,
+      "evidence": ".orchestration/evidence/F00/checks/video/03_test.log",
+      "environment": "local container"
+    },
+    {
+      "id": "BASE01",
+      "command": "(cwd scratchpad/wt/base01-video @ fc0044576d851be414d19e2f7a21ca7fd1285eae) npm run typecheck",
+      "exit_code": 2,
+      "evidence": ".orchestration/evidence/F00/checks/video/04_typecheck_prebuild.log",
+      "environment": "local container"
+    },
+    {
+      "id": "BASE01",
+      "command": "(cwd scratchpad/wt/base01-video @ fc0044576d851be414d19e2f7a21ca7fd1285eae) npm run build",
+      "exit_code": 1,
+      "evidence": ".orchestration/evidence/F00/checks/video/05_build.log",
+      "environment": "local container"
+    },
+    {
+      "id": "BASE01",
+      "command": "(cwd scratchpad/wt/base01-video @ fc0044576d851be414d19e2f7a21ca7fd1285eae) npm run typecheck",
+      "exit_code": 2,
+      "evidence": ".orchestration/evidence/F00/checks/video/06_typecheck.log",
+      "environment": "local container"
+    },
+    {
+      "id": "BASE01",
+      "command": "(cwd scratchpad/wt/base01-diag-main-filmdeps @ 77de3bd51a8c9cb73aec0b32d27ca0cacb6285cd) npm ci",
+      "exit_code": 0,
+      "evidence": ".orchestration/evidence/F00/checks/diag-main-filmdeps/D01_npm_ci.log",
+      "environment": "local container"
+    },
+    {
+      "id": "BASE01",
+      "command": "(cwd scratchpad/wt/base01-diag-main-filmdeps @ 77de3bd51a8c9cb73aec0b32d27ca0cacb6285cd) npm ci --prefix film",
+      "exit_code": 0,
+      "evidence": ".orchestration/evidence/F00/checks/diag-main-filmdeps/D02_film_npm_ci.log",
+      "environment": "local container"
+    },
+    {
+      "id": "BASE01",
+      "command": "(cwd scratchpad/wt/base01-diag-main-filmdeps @ 77de3bd51a8c9cb73aec0b32d27ca0cacb6285cd) npm run lint",
+      "exit_code": 1,
+      "evidence": ".orchestration/evidence/F00/checks/diag-main-filmdeps/D03_lint.log",
+      "environment": "local container"
+    },
+    {
+      "id": "BASE01",
+      "command": "(cwd scratchpad/wt/base01-diag-main-filmdeps @ 77de3bd51a8c9cb73aec0b32d27ca0cacb6285cd) npm test",
+      "exit_code": 0,
+      "evidence": ".orchestration/evidence/F00/checks/diag-main-filmdeps/D04_test.log",
+      "environment": "local container"
+    },
+    {
+      "id": "BASE01",
+      "command": "(cwd scratchpad/wt/base01-diag-main-filmdeps @ 77de3bd51a8c9cb73aec0b32d27ca0cacb6285cd) npm run build",
+      "exit_code": 0,
+      "evidence": ".orchestration/evidence/F00/checks/diag-main-filmdeps/D05_build.log",
+      "environment": "local container"
+    },
+    {
+      "id": "BASE01",
+      "command": "(cwd scratchpad/wt/base01-diag-main-filmdeps @ 77de3bd51a8c9cb73aec0b32d27ca0cacb6285cd) npm run typecheck",
+      "exit_code": 0,
+      "evidence": ".orchestration/evidence/F00/checks/diag-main-filmdeps/D06_typecheck.log",
+      "environment": "local container"
+    },
+    {
+      "id": "BASE01",
+      "command": "(cwd scratchpad/wt/base01-diag-main-filmdeps @ 77de3bd51a8c9cb73aec0b32d27ca0cacb6285cd) PLAYWRIGHT_CHROMIUM_EXECUTABLE=/opt/pw-browsers/chromium-1194/chrome-linux/chrome npm run test:e2e",
+      "exit_code": 1,
+      "evidence": ".orchestration/evidence/F00/checks/diag-main-filmdeps/D07_test_e2e.log",
+      "environment": "local container"
+    },
+    {
+      "id": "F00-MERGE-01",
+      "command": "(base=origin/codex/desktop-iphone-unified merge=[origin/add-ask-bill-section]; throwaway worktree; aborted) git merge --no-commit --no-ff origin/add-ask-bill-section",
+      "exit_code": 0,
+      "evidence": ".orchestration/evidence/F00/repo/trial_merges.log",
+      "environment": "local container"
+    },
+    {
+      "id": "F00-MERGE-02",
+      "command": "(base=origin/codex/desktop-iphone-unified merge=[origin/claude/bill-centered-homepage]; throwaway worktree; aborted) git merge --no-commit --no-ff origin/claude/bill-centered-homepage",
+      "exit_code": 1,
+      "evidence": ".orchestration/evidence/F00/repo/trial_merges.log",
+      "environment": "local container"
+    },
+    {
+      "id": "F00-MERGE-03",
+      "command": "(base=origin/codex/desktop-iphone-unified merge=[origin/claude/bill-presentation-video]; throwaway worktree; aborted) git merge --no-commit --no-ff origin/claude/bill-presentation-video",
+      "exit_code": 1,
+      "evidence": ".orchestration/evidence/F00/repo/trial_merges.log",
+      "environment": "local container"
+    },
+    {
+      "id": "F00-MERGE-04",
+      "command": "(base=origin/codex/desktop-iphone-unified merge=[origin/guide/pre-retirement-guide]; throwaway worktree; aborted) git merge --no-commit --no-ff origin/guide/pre-retirement-guide",
+      "exit_code": 0,
+      "evidence": ".orchestration/evidence/F00/repo/trial_merges.log",
+      "environment": "local container"
+    },
+    {
+      "id": "F00-MERGE-05",
+      "command": "(base=origin/codex/desktop-iphone-unified merge=[origin/guide/pre-retirement-guide origin/claude/bill-presentation-video]; throwaway worktree; aborted) git merge --no-commit --no-ff origin/guide/pre-retirement-guide origin/claude/bill-presentation-video",
+      "exit_code": 1,
+      "evidence": ".orchestration/evidence/F00/repo/trial_merges.log",
+      "environment": "local container"
+    },
+    {
+      "id": "F00-MERGE-06",
+      "command": "(base=origin/claude/bill-centered-homepage merge=[origin/claude/bill-presentation-video]; throwaway worktree; aborted) git merge --no-commit --no-ff origin/claude/bill-presentation-video",
+      "exit_code": 1,
+      "evidence": ".orchestration/evidence/F00/repo/trial_merges.log",
+      "environment": "local container"
+    },
+    {
+      "id": "F00-MERGE-07",
+      "command": "(base=origin/claude/bill-centered-homepage merge=[origin/guide/pre-retirement-guide]; throwaway worktree; aborted) git merge --no-commit --no-ff origin/guide/pre-retirement-guide",
+      "exit_code": 0,
+      "evidence": ".orchestration/evidence/F00/repo/trial_merges.log",
+      "environment": "local container"
+    },
+    {
+      "id": "F00-MERGE-08",
+      "command": "(base=origin/claude/bill-presentation-video merge=[origin/guide/pre-retirement-guide]; throwaway worktree; aborted) git merge --no-commit --no-ff origin/guide/pre-retirement-guide",
+      "exit_code": 0,
+      "evidence": ".orchestration/evidence/F00/repo/trial_merges.log",
+      "environment": "local container"
+    },
+    {
+      "id": "F00-MERGE-09",
+      "command": "(base=origin/add-ask-bill-section merge=[origin/claude/bill-centered-homepage]; throwaway worktree; aborted) git merge --no-commit --no-ff origin/claude/bill-centered-homepage",
+      "exit_code": 1,
+      "evidence": ".orchestration/evidence/F00/repo/trial_merges.log",
+      "environment": "local container"
+    },
+    {
+      "id": "F00-MERGE-10",
+      "command": "(base=origin/main merge=[origin/claude/bill-centered-homepage origin/claude/bill-presentation-video origin/guide/pre-retirement-guide]; throwaway worktree; aborted) git merge --no-commit --no-ff origin/claude/bill-centered-homepage origin/claude/bill-presentation-video origin/guide/pre-retirement-guide",
+      "exit_code": 2,
+      "evidence": ".orchestration/evidence/F00/repo/trial_merges.log",
+      "environment": "local container"
+    },
+    {
+      "id": "F00-ENV-01",
+      "command": "node --version",
+      "exit_code": 0,
+      "evidence": ".orchestration/evidence/F00/repo/env_node_playwright.txt",
+      "environment": "local container"
+    },
+    {
+      "id": "F00-ENV-02",
+      "command": "npm --version",
+      "exit_code": 0,
+      "evidence": ".orchestration/evidence/F00/repo/env_node_playwright.txt",
+      "environment": "local container"
+    },
+    {
+      "id": "F00-ENV-03",
+      "command": "/opt/pw-browsers/chromium-1194/chrome-linux/chrome --version",
+      "exit_code": 0,
+      "evidence": ".orchestration/evidence/F00/repo/env_playwright_compat.txt",
+      "environment": "local container"
+    },
+    {
+      "id": "F00-ENV-04",
+      "command": "npm pack playwright-core@1.63.0 (read browsers.json)",
+      "exit_code": 0,
+      "evidence": ".orchestration/evidence/F00/repo/env_playwright_compat.txt",
+      "environment": "local container"
+    },
+    {
+      "id": "F00-ENV-05",
+      "command": "docker info (before dockerd start)",
+      "exit_code": 1,
+      "evidence": ".orchestration/evidence/F00/repo/env_docker_pre.txt",
+      "environment": "local container"
+    },
+    {
+      "id": "F00-ENV-06",
+      "command": "docker info (after dockerd start)",
+      "exit_code": 0,
+      "evidence": ".orchestration/evidence/F00/repo/env_docker_run.txt",
+      "environment": "local container"
+    },
+    {
+      "id": "F00-ENV-07",
+      "command": "docker run --rm hello-world",
+      "exit_code": 125,
+      "evidence": ".orchestration/evidence/F00/repo/env_docker_run.txt",
+      "environment": "local container"
+    },
+    {
+      "id": "F00-ENV-08",
+      "command": "docker pull hello-world (retry)",
+      "exit_code": 1,
+      "evidence": ".orchestration/evidence/F00/repo/env_docker_run.txt",
+      "environment": "local container"
+    },
+    {
+      "id": "F00-ENV-09",
+      "command": "tar -C rootfs -c . | docker import - f00-local-smoke:1",
+      "exit_code": 0,
+      "evidence": ".orchestration/evidence/F00/repo/env_docker_run.txt",
+      "environment": "local container"
+    },
+    {
+      "id": "F00-ENV-10",
+      "command": "docker run --rm --network none f00-local-smoke:1 /bin/tini --version",
+      "exit_code": 0,
+      "evidence": ".orchestration/evidence/F00/repo/env_docker_run.txt",
+      "environment": "local container"
+    },
+    {
+      "id": "F00-ENV-11",
+      "command": "docker run --rm f00-local-smoke:1 /bin/tini --version",
+      "exit_code": 0,
+      "evidence": ".orchestration/evidence/F00/repo/env_docker_run.txt",
+      "environment": "local container"
+    },
+    {
+      "id": "F00-ENV-12",
+      "command": "docker rmi f00-local-smoke:1",
+      "exit_code": 0,
+      "evidence": ".orchestration/evidence/F00/repo/env_docker_run.txt",
+      "environment": "local container"
+    },
+    {
+      "id": "F00-ENV-13",
+      "command": "docker pull hello-world (final retry)",
+      "exit_code": 0,
+      "evidence": ".orchestration/evidence/F00/repo/env_docker_run.txt",
+      "environment": "local container"
+    },
+    {
+      "id": "F00-ENV-14",
+      "command": "docker run --rm hello-world (after pull)",
+      "exit_code": 0,
+      "evidence": ".orchestration/evidence/F00/repo/env_docker_run.txt",
+      "environment": "local container"
+    },
+    {
+      "id": "F00-SPOT-01",
+      "command": "git show origin/codex/desktop-iphone-unified:content/guides/retirement-review-en.pdf > $T/rev.pdf && sha256sum $T/rev.pdf && stat -c '%s bytes' $T/rev.pdf && PYTHONPATH=<scratch pypdf> python3 -S -c '<pypdf: page count, mediabox, p.39 strings>'",
+      "exit_code": 0,
+      "evidence": ".orchestration/evidence/F00/repair2/F00-SPOT-01_review_pdf.log",
+      "environment": "local container"
+    },
+    {
+      "id": "F00-SPOT-02",
+      "command": "git show origin/main:film/assets/source/Guide_prosperite_financiere_Bill_Badran.pdf > $T/film.pdf && sha256sum $T/film.pdf && stat -c '%s bytes' $T/film.pdf && PYTHONPATH=<scratch pypdf> python3 -S -c '<pypdf: page count, 4 claim strings>'",
+      "exit_code": 0,
+      "evidence": ".orchestration/evidence/F00/repair2/F00-SPOT-02_film_pdf.log",
+      "environment": "local container"
+    },
+    {
+      "id": "F00-SPOT-03",
+      "command": "for t in main guide video; do grep -o 'error TS[0-9]*' .orchestration/evidence/F00/checks/$t/06_typecheck.log | sort | uniq -c; grep 'error TS' .orchestration/evidence/F00/checks/$t/06_typecheck.log | grep -vc '^film/'; done; grep 'error TS7006' .orchestration/evidence/F00/checks/main/06_typecheck.log",
+      "exit_code": 0,
+      "evidence": ".orchestration/evidence/F00/repair2/F00-SPOT-03_ts_error_codes.log",
+      "environment": "local container"
+    },
+    {
+      "id": "F00-SPOT-04",
+      "command": "git log --format='%h %ad %s' --date=iso origin/main -- TEST-SUMMARY.md; git log --format='%h %ad %s' --date=iso -1 f84c60f",
+      "exit_code": 0,
+      "evidence": ".orchestration/evidence/F00/repair2/F00-SPOT-04_test_summary_history.log",
+      "environment": "local container"
+    },
+    {
+      "id": "F00-SPOT-05",
+      "command": "git rev-parse HEAD; git status --porcelain; git stash list; git worktree list; git branch -a -vv --no-color",
+      "exit_code": 0,
+      "evidence": ".orchestration/evidence/F00/repair2/F00-SPOT-05_repo_state.log",
+      "environment": "local container"
+    },
+    {
+      "id": "F00-SPOT-06",
+      "command": "ps -p 3134 -o pid,comm,etime; docker images --format '{{.Repository}}:{{.Tag}}'",
+      "exit_code": 0,
+      "evidence": ".orchestration/evidence/F00/repair2/F00-SPOT-06_dockerd.log",
+      "environment": "local container"
+    },
+    {
+      "id": "F00-SPOT-07",
+      "command": "git show origin/main:reference/original.html | grep -n -i -o 'gestionnaire de portefeuille agr.\\{0,3\\}'",
+      "exit_code": 0,
+      "evidence": ".orchestration/evidence/F00/repair2/F00-SPOT-07_original_html_claim.log",
+      "environment": "local container"
+    },
+    {
+      "id": "F00-SPOT-08",
+      "command": "git diff --name-status origin/main origin/guide/pre-retirement-guide (+ grep -c/-v '\\tguide/', --shortstat, wc -l scripts/ink-sheet.tsx, git cat-file -e on 5 other branches, package.json/.gitignore diff)",
+      "exit_code": 0,
+      "evidence": ".orchestration/evidence/F00/repair2/p2-1_guide_paths.log",
+      "environment": "local container"
+    },
+    {
+      "id": "F00-MERGE-R2a",
+      "command": "(throwaway worktree scratchpad/wt/f00-repair2 at origin/codex/desktop-iphone-unified) git merge --no-commit --no-ff origin/claude/bill-centered-homepage; awk hunk counter on components/pages.tsx; git merge --abort",
+      "exit_code": 1,
+      "evidence": ".orchestration/evidence/F00/repair2/p3-2_p2-1_trial_merges.log",
+      "environment": "local container"
+    },
+    {
+      "id": "F00-MERGE-R2b",
+      "command": "(same worktree, after abort) git merge --no-commit --no-ff origin/guide/pre-retirement-guide; git diff --cached --name-status; git merge --abort; git worktree remove --force",
+      "exit_code": 0,
+      "evidence": ".orchestration/evidence/F00/repair2/p3-2_p2-1_trial_merges.log",
+      "environment": "local container"
+    },
+    {
+      "id": "F00-SPOT-09",
+      "command": "find / -name PLAN_VALIDATION.json -not -path '/proc/*'",
+      "exit_code": 1,
+      "evidence": ".orchestration/evidence/F00/repair2/F00-SPOT-09_companion_json.log",
+      "environment": "local container"
+    },
+    {
+      "id": "F00-SPOT-09-git",
+      "command": "git ls-tree -r --name-only HEAD .orchestration",
+      "exit_code": 0,
+      "evidence": ".orchestration/evidence/F00/repair2/F00-SPOT-09_companion_json.log",
+      "environment": "local container"
+    },
+    {
+      "id": "F00-SPOT-09-sed",
+      "command": "sed -n 3p .orchestration/source/01_MASTER_PLAN.md",
+      "exit_code": 0,
+      "evidence": ".orchestration/evidence/F00/repair2/F00-SPOT-09_companion_json.log",
+      "environment": "local container"
+    },
+    {
+      "id": "F00-SPOT-09b",
+      "command": "find / \\( -path /proc -o -path /sys -o -path /dev \\) -prune -o \\( -iname 'PLAN_VALIDATION*' -o -iname '*PLAN_VALIDATION.json' \\) -print",
+      "exit_code": 0,
+      "evidence": ".orchestration/evidence/F00/repair3/F00-SPOT-09b_plan_validation_pruned.log",
+      "environment": "local container"
+    },
+    {
+      "id": "F00-SPOT-10-01",
+      "command": "git grep -n -i -E 'ind[ée]pendan|independent|planificat(eur|rice) financi|financial planner|Pl\\. ?Fin|CIM|B\\.A\\.A|mutual.fund|fonds communs|15 ans|15\\+|15 years|more than 15|plus de 15|experienceYears' origin/main -- lib/pages.ts lib/copy.ts lib/business.ts components/pages.tsx lib/ask.ts",
+      "exit_code": 0,
+      "evidence": ".orchestration/evidence/F00/repair3/F00-SPOT-10_claims_register.log",
+      "environment": "local container"
+    },
+    {
+      "id": "F00-SPOT-10-02",
+      "command": "git grep -n -i -E 'ind[ée]pendan|independent|planificat(eur|rice) financi|financial planner|Pl\\. ?Fin|CIM|B\\.A\\.A|mutual.fund|fonds communs|15 ans|15\\+|15 years|more than 15|plus de 15|experienceYears' origin/add-ask-bill-section -- lib/pages.ts lib/copy.ts lib/business.ts components/pages.tsx lib/ask.ts",
+      "exit_code": 0,
+      "evidence": ".orchestration/evidence/F00/repair3/F00-SPOT-10_claims_register.log",
+      "environment": "local container"
+    },
+    {
+      "id": "F00-SPOT-10-03",
+      "command": "git grep -n -i -E 'ind[ée]pendan|independent|planificat(eur|rice) financi|financial planner|Pl\\. ?Fin|CIM|B\\.A\\.A|mutual.fund|fonds communs|15 ans|15\\+|15 years|more than 15|plus de 15|experienceYears' origin/codex/desktop-iphone-unified -- lib/pages.ts lib/copy.ts lib/business.ts components/pages.tsx lib/ask.ts",
+      "exit_code": 0,
+      "evidence": ".orchestration/evidence/F00/repair3/F00-SPOT-10_claims_register.log",
+      "environment": "local container"
+    },
+    {
+      "id": "F00-SPOT-10-04",
+      "command": "git grep -n -i -E 'ind[ée]pendan|independent|planificat(eur|rice) financi|financial planner|Pl\\. ?Fin|CIM|B\\.A\\.A|mutual.fund|fonds communs|15 ans|15\\+|15 years|more than 15|plus de 15|experienceYears' origin/claude/bill-centered-homepage -- lib/pages.ts lib/copy.ts lib/business.ts components/pages.tsx lib/ask.ts",
+      "exit_code": 0,
+      "evidence": ".orchestration/evidence/F00/repair3/F00-SPOT-10_claims_register.log",
+      "environment": "local container"
+    },
+    {
+      "id": "F00-SPOT-10-05",
+      "command": "git grep -n -i -E 'ind[ée]pendan|independent|planificat(eur|rice) financi|financial planner|Pl\\. ?Fin|CIM|B\\.A\\.A|mutual.fund|fonds communs|15 ans|15\\+|15 years|more than 15|plus de 15|experienceYears' origin/claude/bill-presentation-video -- lib/pages.ts lib/copy.ts lib/business.ts components/pages.tsx lib/ask.ts",
+      "exit_code": 0,
+      "evidence": ".orchestration/evidence/F00/repair3/F00-SPOT-10_claims_register.log",
+      "environment": "local container"
+    },
+    {
+      "id": "F00-SPOT-10-06",
+      "command": "git grep -n -i -E 'ind[ée]pendan|independent|planificat(eur|rice) financi|financial planner|Pl\\. ?Fin|CIM|B\\.A\\.A|mutual.fund|fonds communs|15 ans|15\\+|15 years|more than 15|plus de 15|experienceYears' origin/guide/pre-retirement-guide -- lib/pages.ts lib/copy.ts lib/business.ts components/pages.tsx lib/ask.ts",
+      "exit_code": 0,
+      "evidence": ".orchestration/evidence/F00/repair3/F00-SPOT-10_claims_register.log",
+      "environment": "local container"
+    },
+    {
+      "id": "F00-SPOT-10-07",
+      "command": "git grep -n -i -E 'ind.{1,2}pendan|independent' origin/main -- . ':(exclude)film/' ':(exclude)presentation/' ':(exclude)reference/' ':(exclude)docs/' ':(exclude)public/' ':(exclude)*.svg' ':(exclude)package-lock.json'",
+      "exit_code": 0,
+      "evidence": ".orchestration/evidence/F00/repair3/F00-SPOT-10_claims_register.log",
+      "environment": "local container"
+    },
+    {
+      "id": "F00-SPOT-10-08",
+      "command": "git grep -n -i -E 'planificat(eur|rice) financi|financial planner' origin/main -- . ':(exclude)film/' ':(exclude)presentation/' ':(exclude)reference/' ':(exclude)docs/' ':(exclude)public/' ':(exclude)*.svg' ':(exclude)package-lock.json'",
+      "exit_code": 0,
+      "evidence": ".orchestration/evidence/F00/repair3/F00-SPOT-10_claims_register.log",
+      "environment": "local container"
+    },
+    {
+      "id": "F00-SPOT-10-09",
+      "command": "git grep -n -i -E 'plus de 15|more than 15|15\\+ ?(ans|years)|15.{0,8}(ans|years) d|experienceYears|depuis 20[0-9][0-9]|since 20[0-9][0-9]' origin/main -- . ':(exclude)film/' ':(exclude)presentation/' ':(exclude)reference/' ':(exclude)docs/' ':(exclude)public/' ':(exclude)*.svg' ':(exclude)package-lock.json'",
+      "exit_code": 0,
+      "evidence": ".orchestration/evidence/F00/repair3/F00-SPOT-10_claims_register.log",
+      "environment": "local container"
+    },
+    {
+      "id": "F00-SPOT-10-10",
+      "command": "git grep -n -i -E 'Pl\\.? ?Fin|F\\.Pl|CIM|B\\.A\\.A|BBA|mutual.fund|pargne collective|dealing representative' origin/main -- . ':(exclude)film/' ':(exclude)presentation/' ':(exclude)reference/' ':(exclude)docs/' ':(exclude)public/' ':(exclude)*.svg' ':(exclude)package-lock.json'",
+      "exit_code": 0,
+      "evidence": ".orchestration/evidence/F00/repair3/F00-SPOT-10_claims_register.log",
+      "environment": "local container"
+    },
+    {
+      "id": "F00-SPOT-10-11",
+      "command": "git grep -n -i -E 'ind.{1,2}pendan|independent' origin/add-ask-bill-section -- . ':(exclude)film/' ':(exclude)presentation/' ':(exclude)reference/' ':(exclude)docs/' ':(exclude)public/' ':(exclude)*.svg' ':(exclude)package-lock.json'",
+      "exit_code": 0,
+      "evidence": ".orchestration/evidence/F00/repair3/F00-SPOT-10_claims_register.log",
+      "environment": "local container"
+    },
+    {
+      "id": "F00-SPOT-10-12",
+      "command": "git grep -n -i -E 'planificat(eur|rice) financi|financial planner' origin/add-ask-bill-section -- . ':(exclude)film/' ':(exclude)presentation/' ':(exclude)reference/' ':(exclude)docs/' ':(exclude)public/' ':(exclude)*.svg' ':(exclude)package-lock.json'",
+      "exit_code": 0,
+      "evidence": ".orchestration/evidence/F00/repair3/F00-SPOT-10_claims_register.log",
+      "environment": "local container"
+    },
+    {
+      "id": "F00-SPOT-10-13",
+      "command": "git grep -n -i -E 'plus de 15|more than 15|15\\+ ?(ans|years)|15.{0,8}(ans|years) d|experienceYears|depuis 20[0-9][0-9]|since 20[0-9][0-9]' origin/add-ask-bill-section -- . ':(exclude)film/' ':(exclude)presentation/' ':(exclude)reference/' ':(exclude)docs/' ':(exclude)public/' ':(exclude)*.svg' ':(exclude)package-lock.json'",
+      "exit_code": 0,
+      "evidence": ".orchestration/evidence/F00/repair3/F00-SPOT-10_claims_register.log",
+      "environment": "local container"
+    },
+    {
+      "id": "F00-SPOT-10-14",
+      "command": "git grep -n -i -E 'Pl\\.? ?Fin|F\\.Pl|CIM|B\\.A\\.A|BBA|mutual.fund|pargne collective|dealing representative' origin/add-ask-bill-section -- . ':(exclude)film/' ':(exclude)presentation/' ':(exclude)reference/' ':(exclude)docs/' ':(exclude)public/' ':(exclude)*.svg' ':(exclude)package-lock.json'",
+      "exit_code": 0,
+      "evidence": ".orchestration/evidence/F00/repair3/F00-SPOT-10_claims_register.log",
+      "environment": "local container"
+    },
+    {
+      "id": "F00-SPOT-10-15",
+      "command": "git grep -n -i -E 'ind.{1,2}pendan|independent' origin/codex/desktop-iphone-unified -- . ':(exclude)film/' ':(exclude)presentation/' ':(exclude)reference/' ':(exclude)docs/' ':(exclude)public/' ':(exclude)*.svg' ':(exclude)package-lock.json'",
+      "exit_code": 0,
+      "evidence": ".orchestration/evidence/F00/repair3/F00-SPOT-10_claims_register.log",
+      "environment": "local container"
+    },
+    {
+      "id": "F00-SPOT-10-16",
+      "command": "git grep -n -i -E 'planificat(eur|rice) financi|financial planner' origin/codex/desktop-iphone-unified -- . ':(exclude)film/' ':(exclude)presentation/' ':(exclude)reference/' ':(exclude)docs/' ':(exclude)public/' ':(exclude)*.svg' ':(exclude)package-lock.json'",
+      "exit_code": 0,
+      "evidence": ".orchestration/evidence/F00/repair3/F00-SPOT-10_claims_register.log",
+      "environment": "local container"
+    },
+    {
+      "id": "F00-SPOT-10-17",
+      "command": "git grep -n -i -E 'plus de 15|more than 15|15\\+ ?(ans|years)|15.{0,8}(ans|years) d|experienceYears|depuis 20[0-9][0-9]|since 20[0-9][0-9]' origin/codex/desktop-iphone-unified -- . ':(exclude)film/' ':(exclude)presentation/' ':(exclude)reference/' ':(exclude)docs/' ':(exclude)public/' ':(exclude)*.svg' ':(exclude)package-lock.json'",
+      "exit_code": 0,
+      "evidence": ".orchestration/evidence/F00/repair3/F00-SPOT-10_claims_register.log",
+      "environment": "local container"
+    },
+    {
+      "id": "F00-SPOT-10-18",
+      "command": "git grep -n -i -E 'Pl\\.? ?Fin|F\\.Pl|CIM|B\\.A\\.A|BBA|mutual.fund|pargne collective|dealing representative' origin/codex/desktop-iphone-unified -- . ':(exclude)film/' ':(exclude)presentation/' ':(exclude)reference/' ':(exclude)docs/' ':(exclude)public/' ':(exclude)*.svg' ':(exclude)package-lock.json'",
+      "exit_code": 0,
+      "evidence": ".orchestration/evidence/F00/repair3/F00-SPOT-10_claims_register.log",
+      "environment": "local container"
+    },
+    {
+      "id": "F00-SPOT-10-19",
+      "command": "git grep -n -i -E 'ind.{1,2}pendan|independent' origin/claude/bill-centered-homepage -- . ':(exclude)film/' ':(exclude)presentation/' ':(exclude)reference/' ':(exclude)docs/' ':(exclude)public/' ':(exclude)*.svg' ':(exclude)package-lock.json'",
+      "exit_code": 0,
+      "evidence": ".orchestration/evidence/F00/repair3/F00-SPOT-10_claims_register.log",
+      "environment": "local container"
+    },
+    {
+      "id": "F00-SPOT-10-20",
+      "command": "git grep -n -i -E 'planificat(eur|rice) financi|financial planner' origin/claude/bill-centered-homepage -- . ':(exclude)film/' ':(exclude)presentation/' ':(exclude)reference/' ':(exclude)docs/' ':(exclude)public/' ':(exclude)*.svg' ':(exclude)package-lock.json'",
+      "exit_code": 0,
+      "evidence": ".orchestration/evidence/F00/repair3/F00-SPOT-10_claims_register.log",
+      "environment": "local container"
+    },
+    {
+      "id": "F00-SPOT-10-21",
+      "command": "git grep -n -i -E 'plus de 15|more than 15|15\\+ ?(ans|years)|15.{0,8}(ans|years) d|experienceYears|depuis 20[0-9][0-9]|since 20[0-9][0-9]' origin/claude/bill-centered-homepage -- . ':(exclude)film/' ':(exclude)presentation/' ':(exclude)reference/' ':(exclude)docs/' ':(exclude)public/' ':(exclude)*.svg' ':(exclude)package-lock.json'",
+      "exit_code": 0,
+      "evidence": ".orchestration/evidence/F00/repair3/F00-SPOT-10_claims_register.log",
+      "environment": "local container"
+    },
+    {
+      "id": "F00-SPOT-10-22",
+      "command": "git grep -n -i -E 'Pl\\.? ?Fin|F\\.Pl|CIM|B\\.A\\.A|BBA|mutual.fund|pargne collective|dealing representative' origin/claude/bill-centered-homepage -- . ':(exclude)film/' ':(exclude)presentation/' ':(exclude)reference/' ':(exclude)docs/' ':(exclude)public/' ':(exclude)*.svg' ':(exclude)package-lock.json'",
+      "exit_code": 0,
+      "evidence": ".orchestration/evidence/F00/repair3/F00-SPOT-10_claims_register.log",
+      "environment": "local container"
+    },
+    {
+      "id": "F00-SPOT-10-23",
+      "command": "git grep -n -i -E 'ind.{1,2}pendan|independent' origin/claude/bill-presentation-video -- . ':(exclude)film/' ':(exclude)presentation/' ':(exclude)reference/' ':(exclude)docs/' ':(exclude)public/' ':(exclude)*.svg' ':(exclude)package-lock.json'",
+      "exit_code": 0,
+      "evidence": ".orchestration/evidence/F00/repair3/F00-SPOT-10_claims_register.log",
+      "environment": "local container"
+    },
+    {
+      "id": "F00-SPOT-10-24",
+      "command": "git grep -n -i -E 'planificat(eur|rice) financi|financial planner' origin/claude/bill-presentation-video -- . ':(exclude)film/' ':(exclude)presentation/' ':(exclude)reference/' ':(exclude)docs/' ':(exclude)public/' ':(exclude)*.svg' ':(exclude)package-lock.json'",
+      "exit_code": 0,
+      "evidence": ".orchestration/evidence/F00/repair3/F00-SPOT-10_claims_register.log",
+      "environment": "local container"
+    },
+    {
+      "id": "F00-SPOT-10-25",
+      "command": "git grep -n -i -E 'plus de 15|more than 15|15\\+ ?(ans|years)|15.{0,8}(ans|years) d|experienceYears|depuis 20[0-9][0-9]|since 20[0-9][0-9]' origin/claude/bill-presentation-video -- . ':(exclude)film/' ':(exclude)presentation/' ':(exclude)reference/' ':(exclude)docs/' ':(exclude)public/' ':(exclude)*.svg' ':(exclude)package-lock.json'",
+      "exit_code": 0,
+      "evidence": ".orchestration/evidence/F00/repair3/F00-SPOT-10_claims_register.log",
+      "environment": "local container"
+    },
+    {
+      "id": "F00-SPOT-10-26",
+      "command": "git grep -n -i -E 'Pl\\.? ?Fin|F\\.Pl|CIM|B\\.A\\.A|BBA|mutual.fund|pargne collective|dealing representative' origin/claude/bill-presentation-video -- . ':(exclude)film/' ':(exclude)presentation/' ':(exclude)reference/' ':(exclude)docs/' ':(exclude)public/' ':(exclude)*.svg' ':(exclude)package-lock.json'",
+      "exit_code": 0,
+      "evidence": ".orchestration/evidence/F00/repair3/F00-SPOT-10_claims_register.log",
+      "environment": "local container"
+    },
+    {
+      "id": "F00-SPOT-10-27",
+      "command": "git grep -n -i -E 'ind.{1,2}pendan|independent' origin/guide/pre-retirement-guide -- . ':(exclude)film/' ':(exclude)presentation/' ':(exclude)reference/' ':(exclude)docs/' ':(exclude)public/' ':(exclude)*.svg' ':(exclude)package-lock.json'",
+      "exit_code": 0,
+      "evidence": ".orchestration/evidence/F00/repair3/F00-SPOT-10_claims_register.log",
+      "environment": "local container"
+    },
+    {
+      "id": "F00-SPOT-10-28",
+      "command": "git grep -n -i -E 'planificat(eur|rice) financi|financial planner' origin/guide/pre-retirement-guide -- . ':(exclude)film/' ':(exclude)presentation/' ':(exclude)reference/' ':(exclude)docs/' ':(exclude)public/' ':(exclude)*.svg' ':(exclude)package-lock.json'",
+      "exit_code": 0,
+      "evidence": ".orchestration/evidence/F00/repair3/F00-SPOT-10_claims_register.log",
+      "environment": "local container"
+    },
+    {
+      "id": "F00-SPOT-10-29",
+      "command": "git grep -n -i -E 'plus de 15|more than 15|15\\+ ?(ans|years)|15.{0,8}(ans|years) d|experienceYears|depuis 20[0-9][0-9]|since 20[0-9][0-9]' origin/guide/pre-retirement-guide -- . ':(exclude)film/' ':(exclude)presentation/' ':(exclude)reference/' ':(exclude)docs/' ':(exclude)public/' ':(exclude)*.svg' ':(exclude)package-lock.json'",
+      "exit_code": 0,
+      "evidence": ".orchestration/evidence/F00/repair3/F00-SPOT-10_claims_register.log",
+      "environment": "local container"
+    },
+    {
+      "id": "F00-SPOT-10-30",
+      "command": "git grep -n -i -E 'Pl\\.? ?Fin|F\\.Pl|CIM|B\\.A\\.A|BBA|mutual.fund|pargne collective|dealing representative' origin/guide/pre-retirement-guide -- . ':(exclude)film/' ':(exclude)presentation/' ':(exclude)reference/' ':(exclude)docs/' ':(exclude)public/' ':(exclude)*.svg' ':(exclude)package-lock.json'",
+      "exit_code": 0,
+      "evidence": ".orchestration/evidence/F00/repair3/F00-SPOT-10_claims_register.log",
+      "environment": "local container"
+    },
+    {
+      "id": "F00-SPOT-10-31",
+      "command": "git grep -n -E 'Bill' origin/guide/pre-retirement-guide -- guide/copy.ts",
+      "exit_code": 0,
+      "evidence": ".orchestration/evidence/F00/repair3/F00-SPOT-10_claims_register.log",
+      "environment": "local container"
+    },
+    {
+      "id": "F00-SPOT-10-32",
+      "command": "git grep -n -E 'Bill' origin/claude/bill-centered-homepage -- lib/copy.ts | grep -i -E 'rémunéré|how he is paid|own practice|propre pratique'",
+      "exit_code": 0,
+      "evidence": ".orchestration/evidence/F00/repair3/F00-SPOT-10_claims_register.log",
+      "environment": "local container"
+    },
+    {
+      "id": "F00-SPOT-10-33",
+      "command": "git show origin/main:lib/copy.ts | sed -n '13p;72p;113p;172p'",
+      "exit_code": 0,
+      "evidence": ".orchestration/evidence/F00/repair3/F00-SPOT-10_claims_register.log",
+      "environment": "local container"
+    },
+    {
+      "id": "F00-SPOT-10-34",
+      "command": "git show origin/claude/bill-centered-homepage:lib/copy.ts | sed -n '15p;20p;51p;143p;158p;163p;194p;285p'",
+      "exit_code": 0,
+      "evidence": ".orchestration/evidence/F00/repair3/F00-SPOT-10_claims_register.log",
+      "environment": "local container"
+    },
+    {
+      "id": "F00-SPOT-10-35",
+      "command": "git grep -n seoHomeDescription origin/claude/bill-centered-homepage -- app/",
+      "exit_code": 0,
+      "evidence": ".orchestration/evidence/F00/repair3/F00-SPOT-10_claims_register.log",
+      "environment": "local container"
+    },
+    {
+      "id": "F00-SPOT-10-36",
+      "command": "lib/ hit identity: for b in add-ask codex video guide: git grep -n -i -E \"$P\" origin/$b -- lib/ | strip prefix | sha256sum == main's",
+      "exit_code": null,
+      "evidence": ".orchestration/evidence/F00/repair3/F00-SPOT-10_claims_register.log",
+      "environment": "local container"
+    },
+    {
+      "id": "F00-SPOT-10-37",
+      "command": "git grep -n -i -E 'ind.{1,2}pendan|independent' origin/claude/bill-presentation-video -- presentation/src/ | cut -c1-240",
+      "exit_code": 1,
+      "evidence": ".orchestration/evidence/F00/repair3/F00-SPOT-10_claims_register.log",
+      "environment": "local container"
+    },
+    {
+      "id": "F00-SPOT-10-38",
+      "command": "git grep -n -i -E 'planificat(eur|rice) financi|financial planner|financial planning' origin/claude/bill-presentation-video -- presentation/src/ | cut -c1-240",
+      "exit_code": 0,
+      "evidence": ".orchestration/evidence/F00/repair3/F00-SPOT-10_claims_register.log",
+      "environment": "local container"
+    },
+    {
+      "id": "F00-SPOT-10-39",
+      "command": "git grep -n -i -E 'plus de 15|more than 15|15\\+ ?(ans|years)|15 years|since 20[0-9][0-9]|depuis 20[0-9][0-9]' origin/claude/bill-presentation-video -- presentation/src/ | cut -c1-240",
+      "exit_code": 1,
+      "evidence": ".orchestration/evidence/F00/repair3/F00-SPOT-10_claims_register.log",
+      "environment": "local container"
+    },
+    {
+      "id": "F00-SPOT-10-40",
+      "command": "git grep -n -i -E 'Pl\\.? ?Fin|F\\.Pl|CIM|B\\.A\\.A|BBA|mutual.fund|pargne collective|dealing representative' origin/claude/bill-presentation-video -- presentation/src/ | cut -c1-240",
+      "exit_code": 1,
+      "evidence": ".orchestration/evidence/F00/repair3/F00-SPOT-10_claims_register.log",
+      "environment": "local container"
+    },
+    {
+      "id": "F00-SPOT-11",
+      "command": "git show origin/codex/desktop-iphone-unified:content/guides/retirement-review-en.pdf > $S/rev.pdf; sha256sum; PYTHONPATH=$S/f00-assets/py python3 -S (pypdf extract_text per page, logging disabled; regex below). Text extraction only; fontTools absent, so some glyphs may be dropped.",
+      "exit_code": 0,
+      "evidence": ".orchestration/evidence/F00/repair3/F00-SPOT-11_review_pdf_claims.log",
+      "environment": "local container"
+    },
+    {
+      "id": "F00-SPOT-12-01",
+      "command": "git show origin/main:docs/COPY-STRATEGY.md | grep -n -E '^#+ '",
+      "exit_code": 0,
+      "evidence": ".orchestration/evidence/F00/repair3/F00-SPOT-12_copy_strategy_flags.log",
+      "environment": "local container"
+    },
+    {
+      "id": "F00-SPOT-12-02",
+      "command": "git show origin/main:docs/COPY-STRATEGY.md | awk '/^## Flags/{f=1} f{printf \"%d:%s\\n\", NR, $0}'",
+      "exit_code": 0,
+      "evidence": ".orchestration/evidence/F00/repair3/F00-SPOT-12_copy_strategy_flags.log",
+      "environment": "local container"
+    },
+    {
+      "id": "F00-SPOT-12-03",
+      "command": "git show origin/claude/bill-centered-homepage:docs/COPY-STRATEGY.md | grep -n -E '^#+ '",
+      "exit_code": 0,
+      "evidence": ".orchestration/evidence/F00/repair3/F00-SPOT-12_copy_strategy_flags.log",
+      "environment": "local container"
+    },
+    {
+      "id": "F00-SPOT-12-04",
+      "command": "git show origin/claude/bill-centered-homepage:docs/COPY-STRATEGY.md | awk '/^## Flags/{f=1} f{printf \"%d:%s\\n\", NR, $0}'",
+      "exit_code": 0,
+      "evidence": ".orchestration/evidence/F00/repair3/F00-SPOT-12_copy_strategy_flags.log",
+      "environment": "local container"
+    },
+    {
+      "id": "F00-SPOT-13-01",
+      "command": "git ls-tree -r --name-only origin/<b> -- tests/ | grep -E '\\.test\\.ts$' ; for each: git show origin/<b>:<f> | grep -c -E '^test\\('",
+      "exit_code": null,
+      "evidence": ".orchestration/evidence/F00/repair3/F00-SPOT-13_unit_test_counts.log",
+      "environment": "local container"
+    },
+    {
+      "id": "F00-SPOT-13-02",
+      "command": "git diff --stat origin/main origin/claude/bill-centered-homepage -- tests/",
+      "exit_code": 0,
+      "evidence": ".orchestration/evidence/F00/repair3/F00-SPOT-13_unit_test_counts.log",
+      "environment": "local container"
+    },
+    {
+      "id": "F00-SPOT-13-03",
+      "command": "git show origin/claude/bill-centered-homepage:tests/ask.test.ts | grep -n -E '^test\\('",
+      "exit_code": 0,
+      "evidence": ".orchestration/evidence/F00/repair3/F00-SPOT-13_unit_test_counts.log",
+      "environment": "local container"
+    },
+    {
+      "id": "F00-SPOT-13-04",
+      "command": "for t in main codex homepage guide video: grep -E '^# (tests|pass|fail) ' .orchestration/evidence/F00/checks/$t/03_test.log",
+      "exit_code": null,
+      "evidence": ".orchestration/evidence/F00/repair3/F00-SPOT-13_unit_test_counts.log",
+      "environment": "local container"
+    },
+    {
+      "id": "F00-SPOT-14-01",
+      "command": "git rev-parse HEAD",
+      "exit_code": 0,
+      "evidence": ".orchestration/evidence/F00/repair3/F00-SPOT-14_repo_state.log",
+      "environment": "local container"
+    },
+    {
+      "id": "F00-SPOT-14-02",
+      "command": "git status --porcelain",
+      "exit_code": 0,
+      "evidence": ".orchestration/evidence/F00/repair3/F00-SPOT-14_repo_state.log",
+      "environment": "local container"
+    },
+    {
+      "id": "F00-SPOT-14-03",
+      "command": "git stash list",
+      "exit_code": 0,
+      "evidence": ".orchestration/evidence/F00/repair3/F00-SPOT-14_repo_state.log",
+      "environment": "local container"
+    },
+    {
+      "id": "F00-SPOT-14-04",
+      "command": "git worktree list",
+      "exit_code": 0,
+      "evidence": ".orchestration/evidence/F00/repair3/F00-SPOT-14_repo_state.log",
+      "environment": "local container"
+    },
+    {
+      "id": "F00-SPOT-14-05",
+      "command": "git ls-remote origin refs/heads/claude/orchestration-foundation",
+      "exit_code": 0,
+      "evidence": ".orchestration/evidence/F00/repair3/F00-SPOT-14_repo_state.log",
+      "environment": "local container"
+    },
+    {
+      "id": "F00-SPOT-12-blobs",
+      "command": "for b in <6 origin branches>: git rev-parse origin/$b:docs/COPY-STRATEGY.md",
+      "exit_code": null,
+      "evidence": ".orchestration/evidence/F00/repair3/F00-SPOT-12_copy_strategy_flags.log",
+      "environment": "local container"
+    },
+    {
+      "id": "F00-PROBE-calendly",
+      "command": "curl -sS -o /dev/null -w 'http_code=%{http_code}\\n' --max-time 20 https://calendly.com/bbadran",
+      "exit_code": 56,
+      "evidence": ".orchestration/evidence/F00/repair2/F00-PROBE-calendly.log",
+      "environment": "local container"
+    },
+    {
+      "id": "F00-PROBE-drive",
+      "command": "Google Drive MCP search_files(query=\"title contains 'bill-badran-before-retirement-guide-en-print' and owner = 'me'\", excludeContentSnippets=true, pageSize=10)  # read-only; exit_code null: MCP tool call, returned without error",
+      "exit_code": null,
+      "evidence": ".orchestration/evidence/F00/repair2/F00-PROBE-drive_identity.log",
+      "environment": "local container"
+    }
+  ],
+  "assumptions": [
+    "Rights, provenance and approval statuses are quoted from repository docs, not independently verified.",
+    "Gap-matrix partial/missing split is the assets lane's judgement; each row carries its basis.",
+    "R7 identity: 40-page content matched to codex content/guides/retirement-review-en.pdf by description only; byte identity with R7 or the Drive copies is unverified.",
+    "codex/presentation ignore-list conflict resolvable by keeping both entries: hypothesis, not tested.",
+    "Cause of the 2 film/ lint errors (react-hooks rules) and of the main '.hero img' e2e strict-mode failures (stale selector): hypotheses; only the film/ typecheck/build cause was confirmed.",
+    "eeb79a9 was not made by any F00 lane (per repo lane); its author field is 'Claude <noreply@anthropic.com>'. Who issued it is not asserted here.",
+    "Evidence minimisation (review F00-attempt2 P3-2): .orchestration/evidence/F00/repo/connectors.json now holds the minimised content (same as repair2/connectors.minimised.json plus a provenance note). The original repo-lane file held unrelated third-party identifiers and was not retained; its pre-replacement sha256 was f3516ff1f9924eb2d8c3a254e26f18dbe8389aab1311aa676805e1d5d3871054. One unrelated ad-account name is still present in .orchestration/reviews/F00.md (A6 attempt-1 review), which is outside this delegate's write scope; the director should redact it before committing reviews/.",
+    "Log artifacts (review F00-attempt2 P3-1) are documented, not rewritten, in .orchestration/evidence/F00/repair3/F00-ERRATA.log: F00-SPOT-09's find exited 1 (now recorded as 1; conclusion re-established by F00-SPOT-09b); repo/trial_merges.log abort_exit=0 after 'no merge to abort' is a capture artifact (hypothesis: $? taken after a pipe; the lane script was not preserved); the '# env:' header of the e2e/guide logs reports the runner's environment, not the inline-set PLAYWRIGHT_CHROMIUM_EXECUTABLE.",
+    "tests[].exit_code null means the exit status of that command or loop was not captured in the log; the command's output is still in the cited evidence file.",
+    "The §6.1 claims register covers the affiliation, title, experience and designation categories by pattern (F00-SPOT-10) plus COPY-STRATEGY flags. Paraphrases that match no pattern may be missed; flags 13–15 (compensation, reviews, scope) are cited by page, not line-enumerated. film/ and reference/ are covered in §6.2.",
+    "'Before F00 wrote its outputs only .orchestration/evidence/ was untracked' is circumstantial: no git status before 02:52Z was recorded (repair3/F00-ERRATA.log [P3-4]).",
+    "A0 2026-09-30: redacted unrelated third-party identifiers (n8n account email, an unrelated ad-account name, an unrelated workflow name) from inventory.md, reviews/F00-attempt3.md, reviews/F00.md, reviews/F00-attempt2.md, evidence/F00/repo/connectors.json, evidence/F00/repair2/connectors.minimised.json before commit; sha256 values of affected artifacts refreshed (3)."
+  ],
+  "blocked_checks": [
+    {
+      "check": "npm run protections:check with real GitHub auth",
+      "status": "blocked",
+      "reason": "gh CLI not installed (spawnSync gh ENOENT); token deliberately withheld"
+    },
+    {
+      "check": "e2e under Playwright-pinned chromium rev 1243 (CI browser)",
+      "status": "blocked",
+      "reason": "browser CDNs return CONNECT 403; only chromium-1194 (Chromium 141) installed"
+    },
+    {
+      "check": "Live Brevo/Supabase/Stripe/n8n-docs/n8n-image reachability or account checks",
+      "status": "blocked",
+      "reason": "egress CONNECT 403; no connectors; no accounts supplied (G2)"
+    },
+    {
+      "check": "Calendly event types/durations",
+      "status": "blocked",
+      "reason": "egress 403; no connector"
+    },
+    {
+      "check": "VPS / reverse proxy inspection",
+      "status": "blocked",
+      "reason": "no host, access or tool supplied (G0/G2)"
+    },
+    {
+      "check": "Google Workspace edition / Meet entitlement / Bill calendar",
+      "status": "not_visible",
+      "reason": "connectors signed in as arnaud@verdierconseils.ca (Calendar) and arnaudverdier8@gmail.com (Drive); no Bill account"
+    },
+    {
+      "check": "n8n version / Cloud tier",
+      "status": "not_visible",
+      "reason": "no tool exposes it"
+    },
+    {
+      "check": "e2e for homepage, guide, video",
+      "status": "not_run",
+      "reason": "outside checks-lane scope; F03"
+    },
+    {
+      "check": "film/ and presentation/ Remotion scripts (lint/bundle/render/qc)",
+      "status": "not_run",
+      "reason": "optional per packet"
+    },
+    {
+      "check": "GitHub Actions run history for origin",
+      "status": "not_run",
+      "reason": "not queried"
+    },
+    {
+      "check": "guide PDF build determinism (repeat build)",
+      "status": "not_run",
+      "reason": "single build only"
+    },
+    {
+      "check": "Drive PDF content comparison",
+      "status": "not_run",
+      "reason": "not downloaded (minimum personal-data reading)"
+    },
+    {
+      "check": "verify-publication against real publications",
+      "status": "blocked",
+      "reason": "0 published articles; exit 0 is vacuous"
+    },
+    {
+      "check": "launch:check",
+      "status": "blocked",
+      "reason": "by design: 8 human approval flags false"
+    }
+  ],
+  "human_approvals_required": [
+    "G0: canonical branch / design direction (codex vs homepage vs manual merge); production host (VPS default); book edition choice",
+    "G1: designations, 'more than 15 years', firm affiliation, reviewer identity; 15-minute and book/30-minute offer wording; provenance of quoted voices",
+    "G2: accounts and access (VPS, Google/Workspace, Brevo, Supabase, Stripe test mode, Meta ad account, GitHub reviewers/branch protection), recipient allowlist, spending caps",
+    "G3: exact-hash approval of any book/PDF, page copy or asset before publication",
+    "G4: real Bill recordings; consent before any voice synthesis; portrait/photo rights; disposition of cloned narration and ElevenLabs free-plan audio",
+    "G5: processor choices (retire Resend/Upstash vs Brevo/Supabase), privacy text, retention"
+  ],
+  "external_actions_taken": [
+    {
+      "actor": "repo lane",
+      "type": "read-only connector probe",
+      "target": "GitHub MCP: get_me; search repositories (user); list pull requests (bill, billsite; state all); list branches (bill, billsite); list_commits billsite (409 empty)"
+    },
+    {
+      "actor": "repo lane",
+      "type": "read-only connector probe",
+      "target": "n8n MCP (n8n Cloud; instance subdomain not recorded): search_projects, search_workflows, list_credentials, get_workflow_details(1 unrelated workflow, trigger host only), ListMcpResourcesTool"
+    },
+    {
+      "actor": "repo lane",
+      "type": "read-only connector probe",
+      "target": "Google Calendar MCP: list_calendars (events not read)"
+    },
+    {
+      "actor": "repo lane",
+      "type": "read-only connector probe",
+      "target": "Google Drive MCP: search_files by title (2 searches); no download"
+    },
+    {
+      "actor": "repo lane",
+      "type": "read-only connector probe",
+      "target": "Pipeboard Meta Ads MCP: get_ad_accounts"
+    },
+    {
+      "actor": "repo lane",
+      "type": "read-only network",
+      "target": "git ls-remote origin; curl HEAD/GET reachability probes to public endpoints (npm, Docker Hub, docs.n8n.io, GitHub API, supabase.com, api.brevo.com, api.stripe.com, googleapis, docker.n8n.io, ghcr.io, Playwright CDNs); anonymous Docker Hub token + manifest HEAD"
+    },
+    {
+      "actor": "repo lane",
+      "type": "read-only download",
+      "target": "npm pack playwright-core (1.63.0, 1.56.1, 1.57.0) to scratchpad, deleted; docker pull hello-world:latest (kept)"
+    },
+    {
+      "actor": "checks lane",
+      "type": "read-only download",
+      "target": "npm ci from registry.npmjs.org in 6 scratchpad worktrees (+ npm ci --prefix film in diagnostic)"
+    },
+    {
+      "actor": "assets lane",
+      "type": "read-only download",
+      "target": "pip install --target scratchpad pypdf (PyPI); attempted read of calendly.com/bbadran (proxy 403)"
+    },
+    {
+      "actor": "A0 delegate (repair 2)",
+      "type": "read-only connector probe",
+      "target": "Google Drive MCP: search_files(title contains 'bill-badran-before-retirement-guide-en-print' and owner = 'me'), no content snippets, no download"
+    },
+    {
+      "actor": "A0 delegate (repair 2)",
+      "type": "read-only network",
+      "target": "curl GET https://calendly.com/bbadran (proxy CONNECT 403, exit 56)"
+    },
+    {
+      "actor": "A0 delegate (repair 2)",
+      "type": "local side effect (not external)",
+      "target": "throwaway worktree scratchpad/wt/f00-repair2 created, 2 trial merges aborted, worktree removed; review/film PDFs extracted to scratchpad temp dir and deleted"
+    },
+    {
+      "actor": "A0 delegate (repair 3)",
+      "type": "read-only network",
+      "target": "git ls-remote origin refs/heads/claude/orchestration-foundation"
+    },
+    {
+      "actor": "A0 delegate (repair 3)",
+      "type": "local side effect (not external)",
+      "target": "evidence/F00/repo/connectors.json replaced by minimised content (inside the F00 evidence dir); codex review PDF extracted to scratchpad and deleted; scratch temp files created and deleted. No connector calls, no git writes, no worktrees created."
+    },
+    {
+      "actor": "all lanes",
+      "type": "local side effect (not external)",
+      "target": "dockerd started and left running (PID 3134); hello-world image kept; 6 detached git worktrees kept under scratchpad/wt for F03; throwaway merge worktree created and removed"
+    }
+  ],
+  "metered_cost": {
+    "amount": null,
+    "currency": null,
+    "status": "unavailable-not-estimated"
+  },
+  "status": "submitted"
+}

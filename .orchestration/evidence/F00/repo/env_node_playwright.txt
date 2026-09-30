@@ -1,0 +1,26 @@
+$ node --version
+v22.22.2
+exit=0
+$ npm --version
+10.9.7
+exit=0
+$ git --version
+git version 2.43.0
+$ ls /opt/pw-browsers
+total 24
+drwxr-xr-x  6 root root 4096 Mar 31 13:31 .
+drwxr-xr-x 17 root root 4096 Sep 29 13:01 ..
+drwxr-xr-x  2 root root 4096 Mar 31 13:31 .links
+lrwxrwxrwx  1 root root   50 Mar 31 13:31 chromium -> /opt/pw-browsers/chromium-1194/chrome-linux/chrome
+drwxr-xr-x  3 root root 4096 Mar 31 13:31 chromium-1194
+drwxr-xr-x  3 root root 4096 Mar 31 13:31 chromium_headless_shell-1194
+drwxr-xr-x  2 root root 4096 Mar 31 13:31 ffmpeg-1011
+$ PLAYWRIGHT_BROWSERS_PATH=/opt/pw-browsers
+$ playwright versions in root package-lock.json (origin/main)
+node_modules/@axe-core/playwright 4.13.0
+node_modules/@playwright/test 1.63.0
+node_modules/playwright 1.63.0
+node_modules/playwright-core 1.63.0
+$ ls node_modules (installed?)
+ls: cannot access '/home/user/bill/node_modules': No such file or directory
+ls: cannot access '/home/user/bill/node_modules/playwright-core/package.json': No such file or directory

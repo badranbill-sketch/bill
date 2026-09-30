@@ -1,0 +1,54 @@
+# P3-2 pages.tsx hunk sizes + P2-1 codex<-guide added paths, 2026-09-30T02:51:39Z
+$ git worktree add --detach /tmp/claude-0/-home-user/bb8d4187-6ae8-587b-a816-8153faeea853/scratchpad/wt/f00-repair2 origin/codex/desktop-iphone-unified
+Preparing worktree (detached HEAD 66cce52)
+HEAD is now at 66cce52 Keep website checks scoped to the Next.js application
+exit_code=0
+$ git -C $W -c user.name=f00 -c user.email=f00@invalid merge --no-commit --no-ff origin/claude/bill-centered-homepage
+Auto-merging components/pages.tsx
+CONFLICT (content): Merge conflict in components/pages.tsx
+Auto-merging eslint.config.mjs
+Auto-merging lib/copy.ts
+CONFLICT (content): Merge conflict in lib/copy.ts
+Auto-merging lib/ink-files.json
+CONFLICT (content): Merge conflict in lib/ink-files.json
+Auto-merging scripts/build-ink.tsx
+CONFLICT (content): Merge conflict in scripts/build-ink.tsx
+Auto-merging tests/browser/site.spec.ts
+CONFLICT (content): Merge conflict in tests/browser/site.spec.ts
+Automatic merge failed; fix conflicts and then commit the result.
+exit_code=1
+$ awk hunk counter on components/pages.tsx (lines strictly between markers)
+hunk 1: ours=2 theirs=6
+hunk 2: ours=24 theirs=137
+hunk 3: ours=35 theirs=4
+exit_code=0
+$ grep -n -E "^(<<<<<<<|=======|>>>>>>>)" components/pages.tsx
+96:<<<<<<< HEAD
+99:=======
+106:>>>>>>> origin/claude/bill-centered-homepage
+158:<<<<<<< HEAD
+183:=======
+321:>>>>>>> origin/claude/bill-centered-homepage
+329:<<<<<<< HEAD
+365:=======
+370:>>>>>>> origin/claude/bill-centered-homepage
+exit_code=0
+$ git -C $W merge --abort
+exit_code=0
+$ git -C $W status --porcelain | wc -l
+0
+$ git -C $W -c user.name=f00 -c user.email=f00@invalid merge --no-commit --no-ff origin/guide/pre-retirement-guide
+Automatic merge went well; stopped before committing as requested
+exit_code=0
+$ git -C $W diff --cached --name-status | grep -v "	guide/"
+M	.gitignore
+M	package.json
+A	scripts/ink-sheet.tsx
+exit_code=0
+$ git -C $W diff --cached --name-status | grep -c "	guide/"
+18
+$ git -C $W merge --abort
+exit_code=0
+0
+$ git worktree remove --force /tmp/claude-0/-home-user/bb8d4187-6ae8-587b-a816-8153faeea853/scratchpad/wt/f00-repair2
+exit_code=0

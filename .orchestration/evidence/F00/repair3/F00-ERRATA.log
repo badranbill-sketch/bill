@@ -1,0 +1,40 @@
+# F00 errata for review F00-attempt2 P3-1, P3-2, P3-4 (repair 3, A0 delegate, 2026-09-30)
+# Raw lane logs are NOT rewritten (their sha256 stay as recorded in handoffs/F00.json); this file records how to read them.
+
+[P3-1a] repair2/F00-SPOT-09_companion_json.log
+  Recorded in inventory/handoff (attempt 2) as exit 0. The log itself shows `exit_code=1` for
+  `find / -name PLAN_VALIDATION.json -not -path '/proc/*'`: -not -path filters output but does not prune,
+  so find still descends /proc and exits 1 on permission-denied entries. Corrected: F00-SPOT-09 exit 1.
+  Conclusion re-established by repair3/F00-SPOT-09b_plan_validation_pruned.log (pruned find, exit 0, no match).
+
+[P3-1b] repo/trial_merges.log lines 17-18 and 264-265
+  `abort_exit=0` is printed directly after "fatal: There is no merge to abort (MERGE_HEAD missing)".
+  A real `git merge --abort` with no MERGE_HEAD returns 128 (A6 re-run, review F00-attempt2 recheck #11).
+  The lane's trial-merge script was not preserved, so the capture bug cannot be confirmed; hypothesis:
+  $? was taken after a pipe or `|| true`. Affects only the two trials with no merge state
+  (codex <- add-ask-bill "already up to date"; main <- octopus refused). Merge exit codes and clean_after are unaffected.
+
+[P3-1c] checks/*/12_test_e2e.log, checks/diag-main-filmdeps/D07_test_e2e.log, checks/guide/07_guide.log (line 5)
+  `# env: ... PLAYWRIGHT_CHROMIUM_EXECUTABLE=<unset>` is printed by checks/runner.sh:22 from the runner's own
+  environment before the step's command string is evaluated. The step sets the variable inline
+  (`# command=PLAYWRIGHT_CHROMIUM_EXECUTABLE=/opt/pw-browsers/chromium-1194/chrome-linux/chrome ...`, line 4;
+  checks/pipeline.sh:36,39). The command line is authoritative; the header does not describe the step's environment.
+
+[P3-2] repo/connectors.json
+  Original sha256 f3516ff1f9924eb2d8c3a254e26f18dbe8389aab1311aa676805e1d5d3871054 (repo lane, probe 2026-09-30T02:00Z).
+  Replaced in repair 3 by the minimised content of repair2/connectors.minimised.json plus a provenance note.
+  Removed field paths (values not reproduced): meta_ads_pipeboard.accounts[].{id,name}; n8n.workflows.names[];
+  n8n.hosting (instance subdomain); n8n.projects.owner_label (replaced by owner_account); google_drive.search_title_contains_Badran[].id;
+  google_drive.search_title_contains_retraite_or_retirement_guide (unrelated personal titles; count 2 kept).
+  Before replacement a value scan of all .orchestration files (indices only, values not printed) found these values only in
+  repo/connectors.json, except one ad-account name also present in reviews/F00.md (A6 attempt-1 review; outside this delegate's write scope).
+  Nothing else changed: counts, booleans, call lists and the account identities cited in inventory §7 are identical.
+
+[P3-4] "Before F00 wrote its outputs, only .orchestration/evidence/ was untracked"
+  No `git status` of /home/user/bill before 2026-09-30T02:52Z is recorded in the evidence (searched: grep for
+  '?? .orchestration', 'status --porcelain', 'git status' across evidence/F00; the only hits are per-worktree
+  checks/*/status_before.txt, which describe the base01 worktrees, and repair2/F00-SPOT-05_repo_state.log at 02:52Z).
+  The claim is CIRCUMSTANTIAL: consistent with timestamps (stat birth of .orchestration/evidence and evidence/F00 = 01:53:21Z,
+  before commit eeb79a9 at 01:58:43Z; lane dirs repo 02:03Z, assets 02:08Z, checks 02:20Z mtime; handoffs/ dir 02:34Z) and with
+  `git show --name-only eeb79a9` listing only acceptance_catalog.json, scripts/build_graph.py, source/* (9) and tasks.json
+  (no evidence/, handoffs/, inventory.md or reviews/ paths).

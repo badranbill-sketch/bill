@@ -1,0 +1,50 @@
+# target=diag-main-filmdeps step=D05_build
+# cwd=/tmp/claude-0/-home-user/bb8d4187-6ae8-587b-a816-8153faeea853/scratchpad/wt/base01-diag-main-filmdeps
+# sha=77de3bd51a8c9cb73aec0b32d27ca0cacb6285cd
+# command=npm run build
+# env: GH_TOKEN/GITHUB_TOKEN unset; NEXT_TELEMETRY_DISABLED=1; PLAYWRIGHT_BROWSERS_PATH=/opt/pw-browsers; PLAYWRIGHT_CHROMIUM_EXECUTABLE=<unset>; GITHUB_REPOSITORY=<unset>
+# node=v22.22.2 npm=10.9.7
+# started=2026-09-30T02:18:22Z
+# ----------------------------------------------------------------
+
+> bill-badran@1.0.0 build
+> npm run ink && node --import tsx scripts/content.ts validate && node --import tsx scripts/launch.ts && next build
+
+
+> bill-badran@1.0.0 ink
+> node --import tsx scripts/build-ink.tsx
+
+ink: 12 drawings, 363 KB in public/assets/ink
+Validated 4 articles; 0 publishable. Drafts excluded from public routes.
+Review build; public launch is off. Pending approvals: businessDetails, serviceScope, qualificationsAndAffiliation, portraitRights, websiteCopy, privacyPolicy, legalNotices, contactOperations
+▲ Next.js 16.3.6 (Turbopack)
+✓ Running next.config.ts took 29ms
+
+  Creating an optimized production build ...
+✓ Compiled successfully in 8.5s
+  Running TypeScript ...
+  Finished TypeScript in 6.5s ...
+  Collecting page data using 3 workers ...
+  Generating static pages using 3 workers (0/6) ...
+  Generating static pages using 3 workers (1/6) 
+  Generating static pages using 3 workers (2/6) 
+  Generating static pages using 3 workers (4/6) 
+✓ Generating static pages using 3 workers (6/6) in 218ms
+  Finalizing page optimization ...
+
+Route (app)
+┌ ○ /
+├ ○ /_not-found
+├ ƒ /[lang]/[[...slug]]
+├ ƒ /api/inquiry
+├ ○ /robots.txt
+└ ○ /sitemap.xml
+
+
+ƒ Proxy (Middleware)
+
+○  (Static)   prerendered as static content
+ƒ  (Dynamic)  server-rendered on demand
+
+# ----------------------------------------------------------------
+# finished=2026-09-30T02:18:41Z exit_code=0 seconds=19.5

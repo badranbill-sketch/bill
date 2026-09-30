@@ -1,0 +1,15 @@
+# target=codex step=09_launch_check
+# cwd=/tmp/claude-0/-home-user/bb8d4187-6ae8-587b-a816-8153faeea853/scratchpad/wt/base01-codex
+# sha=66cce52046f535ddc1a90e6f94474877e375860d
+# command=npm run launch:check
+# env: GH_TOKEN/GITHUB_TOKEN unset; NEXT_TELEMETRY_DISABLED=1; PLAYWRIGHT_BROWSERS_PATH=/opt/pw-browsers; PLAYWRIGHT_CHROMIUM_EXECUTABLE=<unset>; GITHUB_REPOSITORY=<unset>
+# node=v22.22.2 npm=10.9.7
+# started=2026-09-30T02:11:45Z
+# ----------------------------------------------------------------
+
+> bill-badran@1.0.0 launch:check
+> node --import tsx scripts/launch.ts --strict
+
+Launch blocked: businessDetails, serviceScope, qualificationsAndAffiliation, portraitRights, websiteCopy, privacyPolicy, legalNotices, contactOperations
+# ----------------------------------------------------------------
+# finished=2026-09-30T02:11:46Z exit_code=1 seconds=0.6

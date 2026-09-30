@@ -10,8 +10,14 @@
       "title": "Preserve and reproduce the actual baseline",
       "method": "Inspect git status and branch graph; clean install and run existing check commands without modifying guards.",
       "required_evidence": "Commit SHA, dirty-tree handling, command logs and observed failures.",
-      "status": "not_run",
-      "evidence": []
+      "status": "pass",
+      "evidence": [
+        {
+          "task": "F00",
+          "stage": "inventory",
+          "note": "baseline reproduced on 6 branches in clean worktrees; exact commands/exit codes/logs in .orchestration/inventory.md §8 and evidence/F00/checks/results.json; pre-existing failures recorded (main/guide/video fail lint/typecheck/build due to film/; protections:check blocked (no gh/token); launch:check blocked by design; e2e only under substitute Chromium 141). F03 re-runs BASE01 on the selected integration baseline."
+        }
+      ]
     },
     {
       "id": "BASE02",

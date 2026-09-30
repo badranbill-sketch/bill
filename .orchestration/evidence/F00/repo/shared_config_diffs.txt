@@ -1,0 +1,130 @@
+######## claude/bill-centered-homepage
+diff --git a/.prettierignore b/.prettierignore
+index 7c5c8b7..0987f75 100644
+--- a/.prettierignore
++++ b/.prettierignore
+@@ -5,3 +5,4 @@ content
+ public
+ playwright-report
+ test-results
++film
+diff --git a/eslint.config.mjs b/eslint.config.mjs
+index a8f7119..f68e0e5 100644
+--- a/eslint.config.mjs
++++ b/eslint.config.mjs
+@@ -7,6 +7,8 @@ const config = [
+     ignores: [
+       ".next/**",
+       "reference/**",
++      // The explainer film is its own Remotion project (film/package.json).
++      "film/**",
+       "test-results/**",
+       "playwright-report/**",
+     ],
+diff --git a/tsconfig.json b/tsconfig.json
+index 69692cc..9541807 100644
+--- a/tsconfig.json
++++ b/tsconfig.json
+@@ -23,5 +23,5 @@
+     ".next/types/**/*.ts",
+     ".next/dev/types/**/*.ts"
+   ],
+-  "exclude": ["node_modules"]
++  "exclude": ["node_modules", "film"]
+ }
+######## claude/bill-presentation-video
+diff --git a/.prettierignore b/.prettierignore
+index 7c5c8b7..f34f13e 100644
+--- a/.prettierignore
++++ b/.prettierignore
+@@ -5,3 +5,4 @@ content
+ public
+ playwright-report
+ test-results
++presentation
+diff --git a/eslint.config.mjs b/eslint.config.mjs
+index a8f7119..28867c7 100644
+--- a/eslint.config.mjs
++++ b/eslint.config.mjs
+@@ -9,6 +9,7 @@ const config = [
+       "reference/**",
+       "test-results/**",
+       "playwright-report/**",
++      "presentation/**",
+     ],
+   },
+ ];
+diff --git a/tsconfig.json b/tsconfig.json
+index 69692cc..73931f8 100644
+--- a/tsconfig.json
++++ b/tsconfig.json
+@@ -23,5 +23,5 @@
+     ".next/types/**/*.ts",
+     ".next/dev/types/**/*.ts"
+   ],
+-  "exclude": ["node_modules"]
++  "exclude": ["node_modules", "presentation"]
+ }
+######## codex/desktop-iphone-unified
+diff --git a/eslint.config.mjs b/eslint.config.mjs
+index a8f7119..2eedc18 100644
+--- a/eslint.config.mjs
++++ b/eslint.config.mjs
+@@ -9,6 +9,8 @@ const config = [
+       "reference/**",
+       "test-results/**",
+       "playwright-report/**",
++      // The standalone Remotion project has its own ESLint config and dependencies.
++      "film/**",
+     ],
+   },
+ ];
+diff --git a/next.config.ts b/next.config.ts
+index d7cb9e4..e2c4420 100644
+--- a/next.config.ts
++++ b/next.config.ts
+@@ -1,6 +1,9 @@
+ import type { NextConfig } from "next";
+ const config: NextConfig = {
+   poweredByHeader: false,
++  outputFileTracingIncludes: {
++    "/api/guide": ["./content/guides/retirement-review-en.pdf"],
++  },
+   devIndicators: false,
+   async headers() {
+     return [
+diff --git a/tsconfig.json b/tsconfig.json
+index 69692cc..9541807 100644
+--- a/tsconfig.json
++++ b/tsconfig.json
+@@ -23,5 +23,5 @@
+     ".next/types/**/*.ts",
+     ".next/dev/types/**/*.ts"
+   ],
+-  "exclude": ["node_modules"]
++  "exclude": ["node_modules", "film"]
+ }
+######## guide/pre-retirement-guide
+diff --git a/.gitignore b/.gitignore
+index 1f035ac..9f3298d 100644
+--- a/.gitignore
++++ b/.gitignore
+@@ -6,3 +6,4 @@ test-results/
+ playwright-report/
+ *.tsbuildinfo
+ work/
++guide/dist/
+diff --git a/package.json b/package.json
+index bf5917e..3b4b196 100644
+--- a/package.json
++++ b/package.json
+@@ -15,7 +15,8 @@
+     "content": "node --import tsx scripts/content.ts",
+     "launch:check": "node --import tsx scripts/launch.ts --strict",
+     "protections:check": "node --import tsx scripts/protections.ts",
+-    "format": "prettier --write ."
++    "format": "prettier --write .",
++    "guide": "node --import tsx guide/build.tsx"
+   },
+   "dependencies": {
+     "@fontsource/caveat": "^5.3.0",

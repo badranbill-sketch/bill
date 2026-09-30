@@ -1,0 +1,145 @@
+### codex + homepage: merged eslint.config.mjs ignores block
+import next from "eslint-config-next/core-web-vitals";
+import ts from "eslint-config-next/typescript";
+const config = [
+  ...next,
+  ...ts,
+  {
+    ignores: [
+      ".next/**",
+      "reference/**",
+      // The explainer film is its own Remotion project (film/package.json).
+      "film/**",
+      "test-results/**",
+      "playwright-report/**",
+      // The standalone Remotion project has its own ESLint config and dependencies.
+      "film/**",
+    ],
+  },
+];
+
+export default config;
+### merged .prettierignore
+.next
+node_modules
+reference
+content
+public
+playwright-report
+test-results
+film
+### tsconfig exclude
+26:  "exclude": ["node_modules", "film"]
+######## CONFLICT HUNKS lib/ink-files.json
+<<<<<<< HEAD
+  "dock": {
+    "w": 1200,
+    "h": 440,
+    "files": {
+      "fr": "dock.ccd6542ba7.svg",
+      "en": "dock.ccd6542ba7.svg"
+    },
+    "alt": {
+      "fr": "",
+      "en": ""
+    }
+  },
+  "hiker": {
+    "w": 940,
+    "h": 560,
+    "files": {
+      "fr": "hiker.7cb9a1198d.svg",
+      "en": "hiker.7cb9a1198d.svg"
+    },
+    "alt": {
+      "fr": "Un randonneur gravit un sentier de montagne",
+      "en": "A hiker climbing a mountain trail"
+    }
+  },
+=======
+>>>>>>> origin/claude/bill-centered-homepage
+   [hunk lines: 27]
+######## CONFLICT HUNKS scripts/build-ink.tsx
+<<<<<<< HEAD
+import { HeroDesk, HeroDeskOverlay } from "../components/ink/desk";
+import { Hiker } from "../components/ink/hiker";
+import { Dock, TwoChairs } from "../components/ink/meeting";
+=======
+import { HeroDesk } from "../components/ink/desk";
+import { TwoChairs } from "../components/ink/meeting";
+>>>>>>> origin/claude/bill-centered-homepage
+   [hunk lines: 8]
+<<<<<<< HEAD
+  dock: Dock,
+  hiker: Hiker,
+=======
+>>>>>>> origin/claude/bill-centered-homepage
+   [hunk lines: 5]
+######## CONFLICT HUNKS tests/browser/site.spec.ts
+<<<<<<< HEAD
+      await expect(page.locator(".hero-person img")).toBeVisible();
+      expect(
+        await page
+          .locator(".hero-person img")
+          .evaluate((img: HTMLImageElement) => img.naturalWidth),
+=======
+      // Bill's portrait is the anchor of the first screen.
+      const portrait = page.locator(".hero-print img");
+      await expect(portrait).toBeVisible();
+      expect(
+        await portrait.evaluate((img: HTMLImageElement) => img.naturalWidth),
+>>>>>>> origin/claude/bill-centered-homepage
+   [hunk lines: 13]
+######## CONFLICT HUNKS lib/copy.ts
+<<<<<<< HEAD
+    nav: ["Retraite", "Placements", "La démarche", "À propos", "Guide"],
+    meeting: "Planifier une première rencontre",
+    shortMeeting: "Première rencontre",
+    eyebrow: "Placements et retraite · Laval",
+    hero: "Un nouveau chapitre.",
+    heroAccent: "Un chemin plus clair.",
+=======
+    nav: {
+      retirement: "Retraite",
+      investments: "Placements",
+      ask: "Demandez à Bill",
+      about: "À propos",
+      guide: "Le guide",
+      meeting: "Première rencontre",
+    },
+    meeting: "Faire le point avec Bill",
+    shortMeeting: "Rencontrer Bill",
+    how: "Comment se passe une première rencontre",
+    eyebrow: "Bill Badran · Planificateur financier · Laval",
+    hero: "Vous avez travaillé fort. Vous avez épargné.",
+    heroAccent: "Voyons maintenant où vous en êtes.",
+>>>>>>> origin/claude/bill-centered-homepage
+   [hunk lines: 23]
+<<<<<<< HEAD
+    nav: ["Retirement", "Investing", "How it works", "About", "Guide"],
+    meeting: "Plan a first meeting",
+    shortMeeting: "First meeting",
+    eyebrow: "Investments and retirement · Laval",
+    hero: "A new chapter.",
+    heroAccent: "A clearer path.",
+=======
+    nav: {
+      retirement: "Retirement",
+      investments: "Investing",
+      ask: "Ask Bill",
+      about: "About",
+      guide: "The guide",
+      meeting: "First meeting",
+    },
+    meeting: "Let’s talk about where you stand",
+    shortMeeting: "Meet Bill",
+    how: "How a first meeting works",
+    eyebrow: "Bill Badran · Financial planner · Laval",
+    hero: "You’ve worked hard. You’ve saved.",
+    heroAccent: "Now let’s see where you stand.",
+>>>>>>> origin/claude/bill-centered-homepage
+   [hunk lines: 23]
+######## CONFLICT HUNK SIZES components/pages.tsx
+hunk at line 96: ours 3 lines, theirs 6 lines
+hunk at line 158: ours 25 lines, theirs 137 lines
+hunk at line 329: ours 36 lines, theirs 4 lines

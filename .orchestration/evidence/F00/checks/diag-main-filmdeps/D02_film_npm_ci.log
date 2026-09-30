@@ -1,0 +1,23 @@
+# target=diag-main-filmdeps step=D02_film_npm_ci
+# cwd=/tmp/claude-0/-home-user/bb8d4187-6ae8-587b-a816-8153faeea853/scratchpad/wt/base01-diag-main-filmdeps
+# sha=77de3bd51a8c9cb73aec0b32d27ca0cacb6285cd
+# command=npm ci --prefix film
+# env: GH_TOKEN/GITHUB_TOKEN unset; NEXT_TELEMETRY_DISABLED=1; PLAYWRIGHT_BROWSERS_PATH=/opt/pw-browsers; PLAYWRIGHT_CHROMIUM_EXECUTABLE=<unset>; GITHUB_REPOSITORY=<unset>
+# node=v22.22.2 npm=10.9.7
+# started=2026-09-30T02:17:57Z
+# ----------------------------------------------------------------
+npm warn deprecated eslint@9.19.0: This version is no longer supported. Please see https://eslint.org/version-support for other options.
+
+added 355 packages, and audited 356 packages in 11s
+
+83 packages are looking for funding
+  run `npm fund` for details
+
+2 low severity vulnerabilities
+
+To address all issues, run:
+  npm audit fix --force
+
+Run `npm audit` for details.
+# ----------------------------------------------------------------
+# finished=2026-09-30T02:18:08Z exit_code=0 seconds=11.0

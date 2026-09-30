@@ -1,0 +1,29 @@
+$ git -C /home/user/bill worktree add --detach /tmp/claude-0/-home-user/bb8d4187-6ae8-587b-a816-8153faeea853/scratchpad/wt/base01-main origin/main
+Preparing worktree (detached HEAD 77de3bd)
+Updating files: 100% (353/353), done.
+HEAD is now at 77de3bd Size refreshed logo mark in site chrome
+exit=0
+$ git -C /home/user/bill worktree add --detach /tmp/claude-0/-home-user/bb8d4187-6ae8-587b-a816-8153faeea853/scratchpad/wt/base01-codex origin/codex/desktop-iphone-unified
+Preparing worktree (detached HEAD 66cce52)
+Updating files: 100% (366/366), done.
+HEAD is now at 66cce52 Keep website checks scoped to the Next.js application
+exit=0
+$ git -C /home/user/bill worktree add --detach /tmp/claude-0/-home-user/bb8d4187-6ae8-587b-a816-8153faeea853/scratchpad/wt/base01-homepage origin/claude/bill-centered-homepage
+Preparing worktree (detached HEAD d63aabd)
+Updating files: 100% (355/355), done.
+HEAD is now at d63aabd Put Bill at the centre; add Ask Bill and the Before You Retire guide
+exit=0
+$ git -C /home/user/bill worktree add --detach /tmp/claude-0/-home-user/bb8d4187-6ae8-587b-a816-8153faeea853/scratchpad/wt/base01-guide origin/guide/pre-retirement-guide
+Preparing worktree (detached HEAD 749b360)
+Updating files: 100% (372/372), done.
+HEAD is now at 749b360 Add the pre-retirement guide (EN/FR print and screen PDFs)
+exit=0
+$ git -C /home/user/bill worktree add --detach /tmp/claude-0/-home-user/bb8d4187-6ae8-587b-a816-8153faeea853/scratchpad/wt/base01-video origin/claude/bill-presentation-video
+Preparing worktree (detached HEAD fc00445)
+Updating files: 100% (417/417), done.
+HEAD is now at fc00445 Add the presentation video "The other side of the table" (Remotion)
+exit=0
+$ git -C /home/user/bill worktree add --detach /tmp/claude-0/-home-user/bb8d4187-6ae8-587b-a816-8153faeea853/scratchpad/wt/base01-diag-main-filmdeps origin/main
+Preparing worktree (detached HEAD 77de3bd)
+HEAD is now at 77de3bd Size refreshed logo mark in site chrome
+exit=0

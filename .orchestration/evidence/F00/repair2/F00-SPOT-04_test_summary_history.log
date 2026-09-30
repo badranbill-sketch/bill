@@ -1,0 +1,6 @@
+# F00-SPOT-04_test_summary_history  2026-09-30T02:52:01Z  cwd=/home/user/bill
+$ git log --format='%h %ad %s' --date=iso origin/main -- TEST-SUMMARY.md; echo '-- film commit:'; git log --format='%h %ad %s' --date=iso -1 f84c60f
+8454981 2026-09-29 06:56:05 -0400 Bill Badran site: pen-and-ink art, mountain ride, ink export pipeline
+-- film commit:
+f84c60f 2026-09-29 07:13:56 -0400 Add the Bill Badran explainer film (Remotion) in film/
+exit_code=0

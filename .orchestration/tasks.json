@@ -139,10 +139,17 @@
         "BASE01"
       ],
       "max_attempts": 3,
-      "state": "running",
-      "attempts": 1,
-      "accepted_at_stage": null,
-      "evidence": [],
+      "state": "accepted",
+      "attempts": 3,
+      "accepted_at_stage": "design_or_audit",
+      "evidence": [
+        ".orchestration/inventory.md",
+        ".orchestration/handoffs/F00.json",
+        ".orchestration/reviews/F00.md",
+        ".orchestration/reviews/F00-attempt2.md",
+        ".orchestration/reviews/F00-attempt3.md",
+        ".orchestration/evidence/F00/"
+      ],
       "history": [
         {
           "at": "2026-09-30",
@@ -150,6 +157,13 @@
           "to": "running",
           "by": "A0",
           "note": "no deps, no gates; dispatched as workflow f00-inventory"
+        },
+        {
+          "at": "2026-09-30",
+          "from": "running",
+          "to": "accepted",
+          "by": "A0",
+          "note": "A6 attempt 3 verdict pass (3 open P3: connector table omits Claude_Docs/Claude_Code_Remote; Drive statement scoped to title searches; residual third-party identifier since redacted by A0). BASE01 evidence recorded; check status set per target."
         }
       ]
     },
@@ -174,11 +188,19 @@
         "artifact/design review"
       ],
       "max_attempts": 3,
-      "state": "planned",
-      "attempts": 0,
+      "state": "running",
+      "attempts": 1,
       "accepted_at_stage": null,
       "evidence": [],
-      "history": []
+      "history": [
+        {
+          "at": "2026-09-30",
+          "from": "planned",
+          "to": "running",
+          "by": "A0",
+          "note": "dep F00 accepted; no gates"
+        }
+      ]
     },
     {
       "id": "F02",

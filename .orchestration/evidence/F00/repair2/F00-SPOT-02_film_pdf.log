@@ -1,0 +1,10 @@
+# F00-SPOT-02_film_pdf  2026-09-30T02:52:00Z  cwd=/home/user/bill
+$ git show origin/main:film/assets/source/Guide_prosperite_financiere_Bill_Badran.pdf > /tmp/claude-0/-home-user/bb8d4187-6ae8-587b-a816-8153faeea853/scratchpad/f00-repair2-tmp/film.pdf && sha256sum /tmp/claude-0/-home-user/bb8d4187-6ae8-587b-a816-8153faeea853/scratchpad/f00-repair2-tmp/film.pdf && stat -c '%s bytes' /tmp/claude-0/-home-user/bb8d4187-6ae8-587b-a816-8153faeea853/scratchpad/f00-repair2-tmp/film.pdf && PYTHONPATH=/tmp/claude-0/-home-user/bb8d4187-6ae8-587b-a816-8153faeea853/scratchpad/f00-assets/py python3 -S -c "import pypdf;r=pypdf.PdfReader('/tmp/claude-0/-home-user/bb8d4187-6ae8-587b-a816-8153faeea853/scratchpad/f00-repair2-tmp/film.pdf');t=' '.join((p.extract_text() or '') for p in r.pages);print('pages',len(r.pages));[print(repr(s),'present:',s.lower() in t.lower()) for s in ['Nathalie, 54 ans, Laval','La Presse','Globe and Mail','gestionnaire de portefeuille agréé']]"
+38f070fee217541976511facbbf4f76e2fffb905919cb3522d93d7e3f4e806b7  /tmp/claude-0/-home-user/bb8d4187-6ae8-587b-a816-8153faeea853/scratchpad/f00-repair2-tmp/film.pdf
+542261 bytes
+pages 14
+'Nathalie, 54 ans, Laval' present: True
+'La Presse' present: True
+'Globe and Mail' present: True
+'gestionnaire de portefeuille agréé' present: True
+exit_code=0

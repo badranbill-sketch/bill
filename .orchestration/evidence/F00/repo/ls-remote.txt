@@ -1,0 +1,9 @@
+77de3bd51a8c9cb73aec0b32d27ca0cacb6285cd	HEAD
+01e296caf4cb6822c9ccd45642834d69e02334bf	refs/heads/add-ask-bill-section
+d63aabd50d0760145208857856f32779b1069e15	refs/heads/claude/bill-centered-homepage
+fc0044576d851be414d19e2f7a21ca7fd1285eae	refs/heads/claude/bill-presentation-video
+66cce52046f535ddc1a90e6f94474877e375860d	refs/heads/codex/desktop-iphone-unified
+749b360f75185041e1aa3408500857605bc4507f	refs/heads/guide/pre-retirement-guide
+77de3bd51a8c9cb73aec0b32d27ca0cacb6285cd	refs/heads/main
+66cce52046f535ddc1a90e6f94474877e375860d	refs/pull/1/head
+a8e6b332e147027e28da0845a5f7a1557de43cf5	refs/pull/1/merge

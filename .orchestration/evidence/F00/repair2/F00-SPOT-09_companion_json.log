@@ -1,0 +1,19 @@
+# F00-SPOT-09_companion_json  2026-09-30T02:54:11Z
+$ find / -name PLAN_VALIDATION.json -not -path '/proc/*'
+exit_code=1 (no output = not found)
+$ git ls-tree -r --name-only HEAD .orchestration
+.orchestration/acceptance_catalog.json
+.orchestration/scripts/build_graph.py
+.orchestration/source/01_MASTER_PLAN.md
+.orchestration/source/02_TASK_GRAPH.json
+.orchestration/source/03_AGENT_PROMPTS.md
+.orchestration/source/04_CONTRACTS_AND_TESTS.md
+.orchestration/source/05_CONTENT_AND_ART_BRIEFS.md
+.orchestration/source/06_HUMAN_GATES_AND_RUNBOOK.md
+.orchestration/source/07_SOURCE_REGISTER.md
+.orchestration/source/TASK_LEDGER.md
+.orchestration/tasks.json
+exit_code=0
+$ sed -n 3p .orchestration/source/01_MASTER_PLAN.md
+> Transcribed by A0 on 2026-09-30 from the operator-supplied handoff "Bill Badran — complete multi-agent execution handoff, Version 1.0 · September 29, 2026". The companion JSON files (02_TASK_GRAPH.json, acceptance_catalog.json, PLAN_VALIDATION.json) were referenced but not attached; A0 regenerates the first two from TASK_LEDGER.md and 04_CONTRACTS_AND_TESTS.md §8 with `.orchestration/scripts/build_graph.py`. This file is the controlling specification. It plans future execution; it does not claim deployment or completed content.
+exit_code=0

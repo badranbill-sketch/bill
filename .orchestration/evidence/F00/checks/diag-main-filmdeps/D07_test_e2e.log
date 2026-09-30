@@ -1,0 +1,211 @@
+# target=diag-main-filmdeps step=D07_test_e2e
+# cwd=/tmp/claude-0/-home-user/bb8d4187-6ae8-587b-a816-8153faeea853/scratchpad/wt/base01-diag-main-filmdeps
+# sha=77de3bd51a8c9cb73aec0b32d27ca0cacb6285cd
+# command=PLAYWRIGHT_CHROMIUM_EXECUTABLE=/opt/pw-browsers/chromium-1194/chrome-linux/chrome npm run test:e2e
+# env: GH_TOKEN/GITHUB_TOKEN unset; NEXT_TELEMETRY_DISABLED=1; PLAYWRIGHT_BROWSERS_PATH=/opt/pw-browsers; PLAYWRIGHT_CHROMIUM_EXECUTABLE=<unset>; GITHUB_REPOSITORY=<unset>
+# node=v22.22.2 npm=10.9.7
+# started=2026-09-30T02:18:48Z
+# ----------------------------------------------------------------
+
+> bill-badran@1.0.0 test:e2e
+> playwright test
+
+
+Running 30 tests using 1 worker
+
+  ✘   1 tests/browser/site.spec.ts:11:5 › fr visual 1440, landmarks and accessibility (1.4s)
+  ✘   2 tests/browser/site.spec.ts:11:5 › fr visual 390, landmarks and accessibility (1.0s)
+  ✓   3 tests/browser/site.spec.ts:51:3 › fr routes, metadata, equivalent language links and internal links (3.6s)
+  ✓   4 tests/browser/site.spec.ts:94:5 › fr layout all pages at 320 (1.6s)
+  ✓   5 tests/browser/site.spec.ts:94:5 › fr layout all pages at 375 (1.6s)
+  ✓   6 tests/browser/site.spec.ts:94:5 › fr layout all pages at 768 (1.5s)
+  ✘   7 tests/browser/site.spec.ts:11:5 › en visual 1440, landmarks and accessibility (1.1s)
+  ✘   8 tests/browser/site.spec.ts:11:5 › en visual 390, landmarks and accessibility (984ms)
+  ✓   9 tests/browser/site.spec.ts:51:3 › en routes, metadata, equivalent language links and internal links (3.2s)
+  ✓  10 tests/browser/site.spec.ts:94:5 › en layout all pages at 320 (1.4s)
+  ✓  11 tests/browser/site.spec.ts:94:5 › en layout all pages at 375 (1.4s)
+  ✓  12 tests/browser/site.spec.ts:94:5 › en layout all pages at 768 (1.4s)
+  ✓  13 tests/browser/site.spec.ts:107:1 › keyboard menu focus, Escape, reduced motion and 200% text (1.3s)
+  ✓  14 tests/browser/site.spec.ts:150:1 › checklist: no network or storage, editing, all yes, reset and print (1.7s)
+  ✓  15 tests/browser/site.spec.ts:191:1 › fee inputs invalid states and table (668ms)
+  ✓  16 tests/browser/site.spec.ts:205:1 › protected review, public draft exclusions and assets (371ms)
+  ✓  17 tests/browser/site.spec.ts:246:1 › articles switch to exact translations and render safely (604ms)
+  ✓  18 tests/browser/site.spec.ts:255:1 › no JavaScript still renders substantive content and links (840ms)
+  ✓  19 tests/browser/site.spec.ts:266:1 › missing portrait has deliberate fallback; absent guides have no download claims (829ms)
+  ✓  20 tests/browser/site.spec.ts:276:1 › contact: accepted only after confirmed response; no duplicate click or quiz data (1.1s)
+  ✓  21 tests/browser/site.spec.ts:315:3 › contact 400 validation retains message for retry (780ms)
+  ✓  22 tests/browser/site.spec.ts:315:3 › contact 429 rate_limited retains message for retry (805ms)
+  ✓  23 tests/browser/site.spec.ts:315:3 › contact 502 provider_error retains message for retry (686ms)
+  ✓  24 tests/browser/site.spec.ts:315:3 › contact 503 timeout retains message for retry (735ms)
+  ✓  25 tests/browser/site.spec.ts:335:1 › contact native invalid input and browser request timeout (15.7s)
+  ✓  26 tests/browser/site.spec.ts:356:1 › API origin, length, schema and missing credentials (128ms)
+  ✓  27 tests/browser/site.spec.ts:394:1 › mountain ride: scrolling walks the hiker through four acts (1.4s)
+  ✓  28 tests/browser/site.spec.ts:444:1 › mountain ride: reduced motion shows the four still panels (1.1s)
+  ✓  29 tests/browser/site.spec.ts:467:1 › mountain ride: tabbing to the last act shows that act alone (752ms)
+  ✓  30 tests/browser/site.spec.ts:492:1 › narration: one English track that plays through the acts; none in French (3.2s)
+
+
+  1) tests/browser/site.spec.ts:11:5 › fr visual 1440, landmarks and accessibility ─────────────────
+
+    Error: expect(locator).toBeVisible() failed
+
+    Locator: locator('.hero img')
+    Expected: visible
+    Error: strict mode violation: locator('.hero img') resolved to 3 elements:
+        1) <img width="720" height="640" data-nimg="1" class="ink-art" decoding="async" src="/assets/ink/desk-fr.75906ff3c1.svg" alt="Un carnet ouvert sur un bureau, devant une fenêtre qui donne sur un lac"/> aka getByRole('img', { name: 'Un carnet ouvert sur un' })
+        2) <img width="960" height="960" data-nimg="1" decoding="async" alt="Bill Badran" sizes="(max-width: 900px) 150px, 17vw" src="http://127.0.0.1:3100/_next/image?url=%2Fassets%2Fbill-portrait.jpg&w=3840&q=75" srcset="/_next/image?url=%2Fassets%2Fbill-portrait.jpg&w=128&q=75 128w, /_next/image?url=%2Fassets%2Fbill-portrait.jpg&w=256&q=75 256w, /_next/image?url=%2Fassets%2Fbill-portrait.jpg&w=384&q=75 384w, /_next/image?url=%2Fassets%2Fbill-portrait.jpg&w=640&q=75 640w, /_next/image?url=%2Fassets%2Fbill-p…/> aka getByRole('img', { name: 'Bill Badran' })
+        3) <img alt="" width="720" height="640" data-nimg="1" class="ink-art" decoding="async" src="/assets/ink/desk-caption-fr.15f201593d.svg"/> aka locator('img').nth(3)
+
+    Call log:
+      - Expect "toBeVisible" locator('.hero img') with timeout 7000ms
+      - waiting for locator('.hero img')
+
+
+      19 |       await expect(page.locator("h1")).toBeVisible();
+      20 |       await expect(page.locator("html")).toHaveAttribute("lang", `${lang}-CA`);
+    > 21 |       await expect(page.locator(".hero img")).toBeVisible();
+         |                                               ^
+      22 |       expect(
+      23 |         await page
+      24 |           .locator(".hero img")
+        at /tmp/claude-0/-home-user/bb8d4187-6ae8-587b-a816-8153faeea853/scratchpad/wt/base01-diag-main-filmdeps/tests/browser/site.spec.ts:21:47
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    test-results/site-fr-visual-1440-landmarks-and-accessibility/test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: test-results/site-fr-visual-1440-landmarks-and-accessibility/error-context.md
+
+    attachment #3: trace (application/zip) ─────────────────────────────────────────────────────────
+    test-results/site-fr-visual-1440-landmarks-and-accessibility/trace.zip
+    Usage:
+
+        npx playwright show-trace test-results/site-fr-visual-1440-landmarks-and-accessibility/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  2) tests/browser/site.spec.ts:11:5 › fr visual 390, landmarks and accessibility ──────────────────
+
+    Error: expect(locator).toBeVisible() failed
+
+    Locator: locator('.hero img')
+    Expected: visible
+    Error: strict mode violation: locator('.hero img') resolved to 3 elements:
+        1) <img width="720" height="640" data-nimg="1" class="ink-art" decoding="async" src="/assets/ink/desk-fr.75906ff3c1.svg" alt="Un carnet ouvert sur un bureau, devant une fenêtre qui donne sur un lac"/> aka getByRole('img', { name: 'Un carnet ouvert sur un' })
+        2) <img width="960" height="960" data-nimg="1" decoding="async" alt="Bill Badran" sizes="(max-width: 900px) 150px, 17vw" src="http://127.0.0.1:3100/_next/image?url=%2Fassets%2Fbill-portrait.jpg&w=3840&q=75" srcset="/_next/image?url=%2Fassets%2Fbill-portrait.jpg&w=128&q=75 128w, /_next/image?url=%2Fassets%2Fbill-portrait.jpg&w=256&q=75 256w, /_next/image?url=%2Fassets%2Fbill-portrait.jpg&w=384&q=75 384w, /_next/image?url=%2Fassets%2Fbill-portrait.jpg&w=640&q=75 640w, /_next/image?url=%2Fassets%2Fbill-p…/> aka getByRole('img', { name: 'Bill Badran' })
+        3) <img alt="" width="720" height="640" data-nimg="1" class="ink-art" decoding="async" src="/assets/ink/desk-caption-fr.15f201593d.svg"/> aka locator('img').nth(3)
+
+    Call log:
+      - Expect "toBeVisible" locator('.hero img') with timeout 7000ms
+      - waiting for locator('.hero img')
+
+
+      19 |       await expect(page.locator("h1")).toBeVisible();
+      20 |       await expect(page.locator("html")).toHaveAttribute("lang", `${lang}-CA`);
+    > 21 |       await expect(page.locator(".hero img")).toBeVisible();
+         |                                               ^
+      22 |       expect(
+      23 |         await page
+      24 |           .locator(".hero img")
+        at /tmp/claude-0/-home-user/bb8d4187-6ae8-587b-a816-8153faeea853/scratchpad/wt/base01-diag-main-filmdeps/tests/browser/site.spec.ts:21:47
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    test-results/site-fr-visual-390-landmarks-and-accessibility/test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: test-results/site-fr-visual-390-landmarks-and-accessibility/error-context.md
+
+    attachment #3: trace (application/zip) ─────────────────────────────────────────────────────────
+    test-results/site-fr-visual-390-landmarks-and-accessibility/trace.zip
+    Usage:
+
+        npx playwright show-trace test-results/site-fr-visual-390-landmarks-and-accessibility/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  3) tests/browser/site.spec.ts:11:5 › en visual 1440, landmarks and accessibility ─────────────────
+
+    Error: expect(locator).toBeVisible() failed
+
+    Locator: locator('.hero img')
+    Expected: visible
+    Error: strict mode violation: locator('.hero img') resolved to 3 elements:
+        1) <img width="720" height="640" data-nimg="1" class="ink-art" decoding="async" src="/assets/ink/desk-en.b5c1493928.svg" alt="An open notebook on a desk, by a window overlooking a lake"/> aka getByRole('img', { name: 'An open notebook on a desk,' })
+        2) <img width="960" height="960" data-nimg="1" decoding="async" alt="Bill Badran" sizes="(max-width: 900px) 150px, 17vw" src="http://127.0.0.1:3100/_next/image?url=%2Fassets%2Fbill-portrait.jpg&w=3840&q=75" srcset="/_next/image?url=%2Fassets%2Fbill-portrait.jpg&w=128&q=75 128w, /_next/image?url=%2Fassets%2Fbill-portrait.jpg&w=256&q=75 256w, /_next/image?url=%2Fassets%2Fbill-portrait.jpg&w=384&q=75 384w, /_next/image?url=%2Fassets%2Fbill-portrait.jpg&w=640&q=75 640w, /_next/image?url=%2Fassets%2Fbill-p…/> aka getByRole('img', { name: 'Bill Badran' })
+        3) <img alt="" width="720" height="640" data-nimg="1" class="ink-art" decoding="async" src="/assets/ink/desk-caption-en.6834acbe8c.svg"/> aka locator('img').nth(3)
+
+    Call log:
+      - Expect "toBeVisible" locator('.hero img') with timeout 7000ms
+      - waiting for locator('.hero img')
+
+
+      19 |       await expect(page.locator("h1")).toBeVisible();
+      20 |       await expect(page.locator("html")).toHaveAttribute("lang", `${lang}-CA`);
+    > 21 |       await expect(page.locator(".hero img")).toBeVisible();
+         |                                               ^
+      22 |       expect(
+      23 |         await page
+      24 |           .locator(".hero img")
+        at /tmp/claude-0/-home-user/bb8d4187-6ae8-587b-a816-8153faeea853/scratchpad/wt/base01-diag-main-filmdeps/tests/browser/site.spec.ts:21:47
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    test-results/site-en-visual-1440-landmarks-and-accessibility/test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: test-results/site-en-visual-1440-landmarks-and-accessibility/error-context.md
+
+    attachment #3: trace (application/zip) ─────────────────────────────────────────────────────────
+    test-results/site-en-visual-1440-landmarks-and-accessibility/trace.zip
+    Usage:
+
+        npx playwright show-trace test-results/site-en-visual-1440-landmarks-and-accessibility/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  4) tests/browser/site.spec.ts:11:5 › en visual 390, landmarks and accessibility ──────────────────
+
+    Error: expect(locator).toBeVisible() failed
+
+    Locator: locator('.hero img')
+    Expected: visible
+    Error: strict mode violation: locator('.hero img') resolved to 3 elements:
+        1) <img width="720" height="640" data-nimg="1" class="ink-art" decoding="async" src="/assets/ink/desk-en.b5c1493928.svg" alt="An open notebook on a desk, by a window overlooking a lake"/> aka getByRole('img', { name: 'An open notebook on a desk,' })
+        2) <img width="960" height="960" data-nimg="1" decoding="async" alt="Bill Badran" sizes="(max-width: 900px) 150px, 17vw" src="http://127.0.0.1:3100/_next/image?url=%2Fassets%2Fbill-portrait.jpg&w=3840&q=75" srcset="/_next/image?url=%2Fassets%2Fbill-portrait.jpg&w=128&q=75 128w, /_next/image?url=%2Fassets%2Fbill-portrait.jpg&w=256&q=75 256w, /_next/image?url=%2Fassets%2Fbill-portrait.jpg&w=384&q=75 384w, /_next/image?url=%2Fassets%2Fbill-portrait.jpg&w=640&q=75 640w, /_next/image?url=%2Fassets%2Fbill-p…/> aka getByRole('img', { name: 'Bill Badran' })
+        3) <img alt="" width="720" height="640" data-nimg="1" class="ink-art" decoding="async" src="/assets/ink/desk-caption-en.6834acbe8c.svg"/> aka locator('img').nth(3)
+
+    Call log:
+      - Expect "toBeVisible" locator('.hero img') with timeout 7000ms
+      - waiting for locator('.hero img')
+
+
+      19 |       await expect(page.locator("h1")).toBeVisible();
+      20 |       await expect(page.locator("html")).toHaveAttribute("lang", `${lang}-CA`);
+    > 21 |       await expect(page.locator(".hero img")).toBeVisible();
+         |                                               ^
+      22 |       expect(
+      23 |         await page
+      24 |           .locator(".hero img")
+        at /tmp/claude-0/-home-user/bb8d4187-6ae8-587b-a816-8153faeea853/scratchpad/wt/base01-diag-main-filmdeps/tests/browser/site.spec.ts:21:47
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    test-results/site-en-visual-390-landmarks-and-accessibility/test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: test-results/site-en-visual-390-landmarks-and-accessibility/error-context.md
+
+    attachment #3: trace (application/zip) ─────────────────────────────────────────────────────────
+    test-results/site-en-visual-390-landmarks-and-accessibility/trace.zip
+    Usage:
+
+        npx playwright show-trace test-results/site-en-visual-390-landmarks-and-accessibility/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  4 failed
+    tests/browser/site.spec.ts:11:5 › fr visual 1440, landmarks and accessibility ──────────────────
+    tests/browser/site.spec.ts:11:5 › fr visual 390, landmarks and accessibility ───────────────────
+    tests/browser/site.spec.ts:11:5 › en visual 1440, landmarks and accessibility ──────────────────
+    tests/browser/site.spec.ts:11:5 › en visual 390, landmarks and accessibility ───────────────────
+  26 passed (1.0m)
+# ----------------------------------------------------------------
+# finished=2026-09-30T02:19:51Z exit_code=1 seconds=62.9
