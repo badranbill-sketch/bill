@@ -1,0 +1,11 @@
+{
+  "schema_version": "1.0",
+  "event_id": "9cb96809-0ce2-4dbf-8c11-9c125c941e71",
+  "type": "content.approved",
+  "occurred_at": "2026-10-06T13:15:00Z",
+  "subject_id": "cnt_xcra67k50tv51g37e1wpth01s9",
+  "locale": "en",
+  "source": "editorial.approval_ledger",
+  "resource_id": "copy.fixture-disclosure.hf6727be1f3e0",
+  "idempotency_key": "ik1_8bc95e6cdc3d0c92b811f9cf4760b52dbe31cfa9fe0d76e1b8831c458ef60bc0"
+}

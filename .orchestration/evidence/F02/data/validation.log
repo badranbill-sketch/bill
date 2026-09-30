@@ -1,0 +1,355 @@
+# F02 data lane validation log (repair attempt 3: reviews/F02-design-attempt2.md A6D2-01, A6D2-02; earlier repairs stay checked in sections 1-7)
+# venv: /tmp/claude-0/-home-user/bb8d4187-6ae8-587b-a816-8153faeea853/scratchpad/venv-f02 (python3 -m venv; pip install jsonschema)
+# regeneration check run before this log: /tmp/claude-0/-home-user/bb8d4187-6ae8-587b-a816-8153faeea853/scratchpad/venv-f02/bin/python .orchestration/evidence/F02/data/gen_contracts.py (ROOT pointed at /tmp/claude-0/-home-user/bb8d4187-6ae8-587b-a816-8153faeea853/scratchpad/data-r3/gencheck2), then cmp over the 3 schema contracts and 157 example/.why files (160 files) against .orchestration/contracts: byte-identical; evidence/F02/data/fixture-resource-registry.json: byte-identical. Earlier example files kept their bytes; repair 3 only adds valid/delivery-job/suppressed-e11-consent-withdrawn-at-presend.json and invalid/delivery-job/suppressed-after-send-started.{json,why.txt}.
+$ cd /home/user/bill && /tmp/claude-0/-home-user/bb8d4187-6ae8-587b-a816-8153faeea853/scratchpad/venv-f02/bin/python .orchestration/evidence/F02/data/validate_f02_data.py
+# F02 data lane validation
+utc_now: 2026-09-30T07:59:07Z
+python: 3.11.15  jsonschema: 4.26.0
+repo: /home/user/bill  branch: claude/orchestration-foundation  HEAD: 5cbbf9b5d21dbf03d2cb44e524a6fcdc10d5515b
+contract files (sha256):
+  580ba2d8160df281ab5da4ea250c716d6166e6f9c03170deeb412c7aef38f253  event-envelope.schema.json
+  d618e085346879038020a290e62f7d978dd9ada69befe3b2e46e35d3d04a122d  delivery-job.schema.json
+  b0caf5163958280b6d443589b8b8ed48ab4f9a2061219a791ec5bfd0947d2d2a  feature-flags.json
+  8c3ac4336a4216396ded574ab1c57c3891c57a57a3e34487c4e6388b0c63f065  email-eligibility.json
+  9c4fade8d62799d123a120a4b2bc10f453d1efd80f69de5da494b3d652c57e0e  data-flow-register.json
+  1d432a07cfa904e9ad4c15f51351390d8512eb04fe2bd88e17ce2b1461d68fa3  privacy-boundary.md
+  a95da08655a148f34d4438c599da796043b5fe31c79bb4fad54c93fe6569f89b  authority-matrix.md
+  d5a89c845272dbaebf2703dd485c71949d8ce1c57094f1883c19a74119df9d11  event-envelope.md
+  7a21f633aa9a4615c42ccdfd4866603806f5ef9052dbbf687b19bc7c88435a43  operational-data-model.md
+  5eced180781ec0d4c59855e652af6a57ca7cb05c2453422d1ba33db3bb4e650e  job-state-machine.md
+  01ab0e8d14d4a69d9ab6a5a9bce7052c6b34bb55f6a0bedbd01bc7ccd47fe792  feature-flags.md
+  ef93d1e60eaf9b48848d3772ae62c19cfe62f4af5522a74e821624522adac112  evidence/F02/data/registry-schemas/email-eligibility.registry.schema.json
+  0fce99d24bdc05a6e9148449acfc2bfd015013b63ceebdeefab264b4a09ee0af  evidence/F02/data/registry-schemas/data-flow-register.registry.schema.json
+  51eb920df3f319351ba741c232dd8e447c63b0c41b693fc703a32d4267eec03f  evidence/F02/data/fixture-resource-registry.json
+  fb578139070c93b4a721e9b3082221c33469275dedc8e61e497014a1c4b3ea43  evidence/F02/data/gen_contracts.py
+  a9b71a9bbbd7d408944b0ea437dd3f3ff09b543be9d0d81f3ecc4e23dfd3ff94  evidence/F02/data/validate_f02_data.py
+
+## 1. Schema meta-validation
+PASS  event-envelope is a valid draft 2020-12 schema
+PASS  event-envelope declares $schema draft 2020-12
+PASS  event-envelope $id = https://bill.contracts.local/event-envelope/1.0
+PASS  event-envelope root is closed (additionalProperties false)
+PASS  delivery-job is a valid draft 2020-12 schema
+PASS  delivery-job declares $schema draft 2020-12
+PASS  delivery-job $id = https://bill.contracts.local/delivery-job/1.0
+PASS  delivery-job root is closed (additionalProperties false)
+PASS  feature-flags is a valid draft 2020-12 schema
+PASS  feature-flags declares $schema draft 2020-12
+PASS  feature-flags $id = https://bill.contracts.local/feature-flags/1.0
+PASS  feature-flags root is closed (additionalProperties false)
+PASS  email-eligibility is a valid draft 2020-12 schema
+PASS  email-eligibility declares $schema draft 2020-12
+PASS  email-eligibility $id = https://bill.contracts.local/email-eligibility-registry/1.0
+PASS  email-eligibility root is closed (additionalProperties false)
+PASS  data-flow-register is a valid draft 2020-12 schema
+PASS  data-flow-register declares $schema draft 2020-12
+PASS  data-flow-register $id = https://bill.contracts.local/data-flow-register-registry/1.0
+PASS  data-flow-register root is closed (additionalProperties false)
+
+## 2. Event types versus source/04 §3
+PASS  envelope enum equals the 20 types of 04 §3, same order
+PASS  every event type has exactly one per-type rule (allOf if/then)
+
+## 3. Examples
+### event-envelope: 26 valid, 24 invalid
+PASS  valid   examples/valid/event-envelope/book-dispatched.json
+PASS  valid   examples/valid/event-envelope/book-payment_confirmed.json
+PASS  valid   examples/valid/event-envelope/book-refunded.json
+PASS  valid   examples/valid/event-envelope/consultation-redeemed.json
+PASS  valid   examples/valid/event-envelope/content-approved-book.json
+PASS  valid   examples/valid/event-envelope/content-approved-copy.json
+PASS  valid   examples/valid/event-envelope/content-approved-ink.json
+PASS  valid   examples/valid/event-envelope/content-approved.json
+PASS  valid   examples/valid/event-envelope/content-draft_created-companion.json
+PASS  valid   examples/valid/event-envelope/content-draft_created.json
+PASS  valid   examples/valid/event-envelope/content-published-event.json
+PASS  valid   examples/valid/event-envelope/content-published.json
+PASS  valid   examples/valid/event-envelope/delivery-failed.json
+PASS  valid   examples/valid/event-envelope/guide-requested.json
+PASS  valid   examples/valid/event-envelope/marketing-opted_in.json
+PASS  valid   examples/valid/event-envelope/marketing-withdrawn.json
+PASS  valid   examples/valid/event-envelope/meeting-cancelled.json
+PASS  valid   examples/valid/event-envelope/meeting-confirmed-operator-reconciliation.json
+PASS  valid   examples/valid/event-envelope/meeting-confirmed.json
+PASS  valid   examples/valid/event-envelope/meeting-held.json
+PASS  valid   examples/valid/event-envelope/webinar-attendance_verified.json
+PASS  valid   examples/valid/event-envelope/webinar-cancelled.json
+PASS  valid   examples/valid/event-envelope/webinar-join_clicked.json
+PASS  valid   examples/valid/event-envelope/webinar-registered.json
+PASS  valid   examples/valid/event-envelope/workshop-access_requested.json
+PASS  valid   examples/valid/event-envelope/workshop-completed.json
+PASS  invalid examples/invalid/event-envelope/age-in-guide-version.json -> pattern at resource_id: 'guide.retirement-guide.v65' does not match '^guide\\.(?:retirement-guide)\\.h[0  [EV-ID-2 contact-subject registry codes use a closed key and ]
+PASS  invalid examples/invalid/event-envelope/age-in-resource-id.json -> pattern at resource_id: 'workshop.retire-at-62.v1' does not match '^guide\\.(?:retirement-guide)\\.h[0-9  [EV-ID-2 contact-subject registry codes use a closed key and ]
+PASS  invalid examples/invalid/event-envelope/amount-words-in-workshop-key.json -> pattern at resource_id: 'workshop.eight-hundred-fifty-thousand.h08faf7e4c314' does not match '^guide\\.(  [EV-ID-2 contact-subject registry codes use a closed key and ]
+PASS  invalid examples/invalid/event-envelope/attendance-from-join-click.json -> enum at source: 'site.join_redirect' is not one of ['provider.meet_attendance', 'operator.reconc  [EV-AUTH-ATT attendance only from provider attendance evidenc]
+PASS  invalid examples/invalid/event-envelope/consent-on-guide-request.json -> not at consent_reference: 'cev_0rv6kbtcg8zyd6m76tv1pmxp7d' should not be valid under {}  [EV-CONSENT-1 consent_reference is forbidden on non-consent e]
+PASS  invalid examples/invalid/event-envelope/consent-wording-mutable-version.json -> pattern at resource_id: 'consent.nurture.v1' does not match '^guide\\.(?:retirement-guide)\\.h[0-9a-f]{1  [EV-ID-2 contact-subject registry codes use a closed key and ]
+PASS  invalid examples/invalid/event-envelope/diagnosis-in-workshop-key.json -> pattern at resource_id: 'workshop.shortfall-large-warning.h6eb852da44c3' does not match '^guide\\.(?:ret  [EV-ID-2 contact-subject registry codes use a closed key and ]
+PASS  invalid examples/invalid/event-envelope/email-as-subject-id.json -> pattern at subject_id: 'jane.fixture@example.com' does not match '^con_[0-9a-hjkmnp-tv-z]{26}$'  [EV-ID-1 subject_id is an internal random ID (con_/cnt_/job_ ]
+PASS  invalid examples/invalid/event-envelope/email-in-idempotency-key.json -> pattern at idempotency_key: 'ik1_jane.fixture@example.com' does not match '^ik1_[0-9a-f]{64}$'  [EV-ID-3 idempotency_key is ik1_ + 64 lowercase hex; an email]
+PASS  invalid examples/invalid/event-envelope/extra-property-form-body.json -> additionalProperties at /: Additional properties are not allowed ('form' was unexpected)  [EV-SHAPE-1 closed envelope: never attach arbitrary form bodi]
+PASS  invalid examples/invalid/event-envelope/financial-amount-field.json -> additionalProperties at /: Additional properties are not allowed ('monthly_spending' was unexpected)  [EV-SHAPE-1 closed envelope: additionalProperties false; no f]
+PASS  invalid examples/invalid/event-envelope/locale-es.json -> enum at locale: 'es' is not one of ['fr', 'en']  [EV-LOC-1 locale is fr or en]
+PASS  invalid examples/invalid/event-envelope/meeting-confirmed-from-click.json -> enum at source: 'site.join_redirect' is not one of ['provider.booking_sync', 'operator.reconcili  [EV-AUTH-BOOK meeting.confirmed only from provider.booking_sy]
+PASS  invalid examples/invalid/event-envelope/missing-idempotency-key.json -> required at /: 'idempotency_key' is a required property  [EV-ID-3 idempotency_key is required on every accepted action]
+PASS  invalid examples/invalid/event-envelope/name-as-guide-key.json -> pattern at resource_id: 'guide.jane-fixture.hff247185088b' does not match '^guide\\.(?:retirement-guide)  [EV-ID-2 contact-subject registry codes use a closed key and ]
+PASS  invalid examples/invalid/event-envelope/non-utc-timestamp.json -> pattern at occurred_at: '2026-10-02T10:00:00-04:00' does not match '^[0-9]{4}-(?:0[1-9]|1[0-2])-(?:0[1-9  [EV-TIME-1 occurred_at is RFC 3339 UTC with a 'Z' suffix]
+PASS  invalid examples/invalid/event-envelope/payment-confirmed-by-operator.json -> enum at source: 'operator.reconciliation' is not one of ['provider.stripe_webhook']  [EV-AUTH-PAY book.payment_confirmed only from provider.stripe]
+PASS  invalid examples/invalid/event-envelope/schema-version-2.json -> const at schema_version: '1.0' was expected  [EV-VER-1 schema_version is exactly 1.0; consumers reject oth]
+PASS  invalid examples/invalid/event-envelope/unknown-source.json -> enum at source: 'site.checkout_return' is not one of ['site.guide_request', 'site.consent_captur  [EV-SRC-1 source is a closed enum; a return page is not a sou]
+PASS  invalid examples/invalid/event-envelope/unknown-type.json -> enum at type: 'workshop.gap_calculated' is not one of ['guide.requested', 'marketing.opted_in'  [EV-TYPE-1 type is one of the 20 types of 04 §3]
+PASS  invalid examples/invalid/event-envelope/workshop-completed-with-gap.json -> additionalProperties at /: Additional properties are not allowed ('gap' was unexpected)  [EV-WS-1 workshop.completed carries no answers, gap or clip (]
+PASS  invalid examples/invalid/event-envelope/workshop-completed-with-selected-clip.json -> additionalProperties at /: Additional properties are not allowed ('selected_clip' was unexpected)  [EV-WS-1 workshop.completed carries no selected financial-war]
+PASS  invalid examples/invalid/event-envelope/workshop-completed-without-consent.json -> required at /: 'consent_reference' is a required property  [EV-CONSENT-2 workshop.completed is a consented signal: conse]
+PASS  invalid examples/invalid/event-envelope/wrong-subject-kind.json -> pattern at subject_id: 'con_xsekt13hxv12z5bp4rm4s2f0hw' does not match '^job_[0-9a-hjkmnp-tv-z]{26}$'  [EV-TYPE-2 delivery.failed is about a job: subject_id must be]
+### delivery-job: 12 valid, 19 invalid
+PASS  valid   examples/valid/delivery-job/complete-e03-nurture-delivery-unknown.json
+PASS  valid   examples/valid/delivery-job/dead-letter-e14-input-rejected.json
+PASS  valid   examples/valid/delivery-job/expired-e08-reminder-past-event.json
+PASS  valid   examples/valid/delivery-job/leased-e07-reminder.json
+PASS  valid   examples/valid/delivery-job/pending-e01-guide-delivery.json
+PASS  valid   examples/valid/delivery-job/pending-e09-replay-promotional-variant.json
+PASS  valid   examples/valid/delivery-job/reconcile-required-e13-timeout-after-send.json
+PASS  valid   examples/valid/delivery-job/retry-due-e04-deferred-daily-budget.json
+PASS  valid   examples/valid/delivery-job/retry-due-e10-rate-limited.json
+PASS  valid   examples/valid/delivery-job/sent-e12-purchase-confirmation.json
+PASS  valid   examples/valid/delivery-job/suppressed-e05-already-booked.json
+PASS  valid   examples/valid/delivery-job/suppressed-e11-consent-withdrawn-at-presend.json
+PASS  invalid examples/invalid/delivery-job/attempt-count-over-ceiling.json -> maximum at attempt_count: 9 is greater than the maximum of 8  [JS-RETRY-1 attempt_count never exceeds the hard ceiling of 8]
+PASS  invalid examples/invalid/delivery-job/email-in-purpose-key.json -> pattern at purpose_key: 'pk1:jane.fixture@example.com:guide:e01:v1' does not match '^pk1:con_[0-9a-hjkmn  [JS-KEY-1 purpose_key = pk1:contact_id:trigger_event_id:templ]
+PASS  invalid examples/invalid/delivery-job/expiry-before-due.json -> rejected by semantic:due_before_expiry  [JS-TIME-2 expires_at is later than due_at]
+PASS  invalid examples/invalid/delivery-job/financial-field-in-job.json -> additionalProperties at /: Additional properties are not allowed ('gap_amount' was unexpected)  [JS-SHAPE-1 closed job; no financial field (PB-FIN-1)]
+PASS  invalid examples/invalid/delivery-job/free-text-error.json -> additionalProperties at last_error: Additional properties are not allowed ('message' was unexpected)  [JS-ERR-1 last_error is sanitized: code + http_status + at on]
+PASS  invalid examples/invalid/delivery-job/leased-with-provider-id.json -> not at provider_message_id: 'fixture-msg-1' should not be valid under {}  [JS-SENT-2 a provider message ID exists only on sent/complete]
+PASS  invalid examples/invalid/delivery-job/leased-without-lease.json -> required at /: 'lease' is a required property  [JS-LEASE-1 a leased job holds a lease (worker, token, leased]
+PASS  invalid examples/invalid/delivery-job/non-utc-expiry.json -> pattern at expires_at: '2026-10-05T10:00:00-04:00' does not match '^[0-9]{4}-(?:0[1-9]|1[0-2])-(?:0[1-9  [JS-TIME-1 all timestamps are UTC with 'Z']
+PASS  invalid examples/invalid/delivery-job/nurture-template-as-operational.json -> const at message_class: 'promotional' was expected  [JS-CLASS-3 E03/E04/E05/E11 are promotional (email-eligibilit]
+PASS  invalid examples/invalid/delivery-job/promotional-high-priority.json -> minimum at priority: 1 is less than the minimum of 5  [JS-PRIO-1 promotional priority is 5-9; operational messages ]
+PASS  invalid examples/invalid/delivery-job/promotional-without-consent.json -> required at /: 'consent_reference' is a required property  [JS-CLASS-2 promotional jobs require consent_reference (AM-CO]
+PASS  invalid examples/invalid/delivery-job/purpose-key-mismatch.json -> rejected by semantic:purpose_key  [JS-KEY-1 purpose_key components must equal contact_id, trigger_event_i]
+PASS  invalid examples/invalid/delivery-job/recipient-email-field.json -> additionalProperties at /: Additional properties are not allowed ('recipient_email' was unexpected)  [JS-SHAPE-1 closed job: no recipient address; it is resolved ]
+PASS  invalid examples/invalid/delivery-job/reconcile-without-send-started.json -> required at /: 'send_started_at' is a required property  [JS-RECON-1 reconcile_required only after a provider call may]
+PASS  invalid examples/invalid/delivery-job/retry-after-expiry.json -> rejected by semantic:retry_before_expiry  [JS-TIME-3 next_attempt_at is earlier than expires_at; otherwise the jo]
+PASS  invalid examples/invalid/delivery-job/sent-without-provider-id.json -> required at /: 'provider_message_id' is a required property  [JS-SENT-1 sent requires the provider's acceptance ID]
+PASS  invalid examples/invalid/delivery-job/suppressed-after-send-started.json -> not at send_started_at: '2026-10-02T20:00:03Z' should not be valid under {}  [JS-SUPP-1 a suppressed job has no send_started_at: a withdra]
+PASS  invalid examples/invalid/delivery-job/unhashed-template-version.json -> pattern at template_version: 'v2' does not match '^h[0-9a-f]{12,64}$'  [JS-VER-1 template_version is h + sha256 prefix (approval bin]
+PASS  invalid examples/invalid/delivery-job/unknown-status-delivered.json -> enum at status: 'delivered' is not one of ['pending', 'leased', 'sent', 'complete', 'retry_due',  [JS-STATE-1 status is one of the nine states; HTTP acceptance]
+### feature-flags: 5 valid, 14 invalid
+PASS  valid   examples/valid/feature-flags/defaults-production.json
+PASS  valid   examples/valid/feature-flags/defaults-staging.json
+PASS  valid   examples/valid/feature-flags/production-marketing-dispatch-fictional.json
+PASS  valid   examples/valid/feature-flags/production-public-guide-step-fictional.json
+PASS  valid   examples/valid/feature-flags/staging-guide-delivery-allowlist-test.json
+PASS  invalid examples/invalid/feature-flags/agent-recorded-approval.json -> enum at capabilities/guide_request_delivery/approved/recorded_by: 'A0' is not one of ['bill', 'firm_reviewer', 'arnaud', 'privacy_owner', 'account  [FF-APPR-1 only human gate owners record approved (D-043)]
+PASS  invalid examples/invalid/feature-flags/approval-without-scope-hash.json -> minItems at capabilities/guide_request_delivery/approved/scope_hashes: [] should be non-empty  [FF-APPR-2 an approval names the exact asset/config hashes it]
+PASS  invalid examples/invalid/feature-flags/enabled-without-controlling-flag.json -> const at flags/marketing_dispatch/value: True was expected  [FF-INV-1 in production a capability is enabled only when all]
+PASS  invalid examples/invalid/feature-flags/flag-default-true.json -> const at flags/third_party_tracking/default: False was expected  [FF-DEF-1 every flag defaults to false]
+PASS  invalid examples/invalid/feature-flags/flag-on-without-approval.json -> const at capabilities/book_checkout/approved/value: True was expected  [FF-INV-3 a flag can be true only when every capability it co]
+PASS  invalid examples/invalid/feature-flags/gate-mapping-altered.json -> const at flags/paid_ads/enable_gates: ['G2', 'G3', 'G5', 'G6'] was expected  [FF-GATE-1 the flag-to-gate mapping is frozen by const (featu]
+PASS  invalid examples/invalid/feature-flags/live-verified-in-staging.json -> const at capabilities/guide_request_delivery/live_verified/value: False was expected  [FF-ENV-2 live_verified is a production fact; it is false out]
+PASS  invalid examples/invalid/feature-flags/live-verified-without-enabled.json -> const at capabilities/workshop_access/enabled/value: True was expected  [FF-INV-2 live_verified requires enabled]
+PASS  invalid examples/invalid/feature-flags/marketing-dispatch-without-workshop-followup-ready.json -> const at capabilities/workshop_followup/approved/value: True was expected  [FF-INV-3 a flag can be true only when every capability it co]
+PASS  invalid examples/invalid/feature-flags/missing-readiness-state.json -> required at capabilities/event_lifecycle: 'live_verified' is a required property  [FF-STATE-1 all five states are required on every capability]
+PASS  invalid examples/invalid/feature-flags/public-launch-in-staging.json -> const at flags/public_launch/value: False was expected  [FF-ENV-1 public_launch, checkout_live, paid_ads and third_pa]
+PASS  invalid examples/invalid/feature-flags/single-boolean-capability.json -> type at capabilities/guide_request_delivery: True is not of type 'object'  [FF-STATE-1 each capability has five separate readiness state]
+PASS  invalid examples/invalid/feature-flags/state-true-without-evidence.json -> type at capabilities/workshop_access/code_ready/evidence_ref: None is not of type 'string'  [FF-STATE-2 a true state needs an evidence reference]
+PASS  invalid examples/invalid/feature-flags/unknown-flag.json -> additionalProperties at flags: Additional properties are not allowed ('newsletter' was unexpected)  [FF-SHAPE-1 the six flags are closed; new switches need a con]
+
+## 4. Registries and cross-contract consistency
+PASS  email-eligibility.json matches its harness schema (16 templates)
+PASS  E01-E16 present in order
+PASS  every template belongs to exactly one feature-flags capability
+PASS  suppression codes equal delivery-job suppression_reason enum (15)
+PASS  E01 consistent (class operational, priority 1, triggers guide.requested)
+PASS  E02 consistent (class operational, priority 3, triggers marketing.opted_in)
+PASS  E03 consistent (class promotional, priority 7, triggers marketing.opted_in)
+PASS  E04 consistent (class promotional, priority 7, triggers marketing.opted_in)
+PASS  E05 consistent (class promotional, priority 6, triggers marketing.opted_in)
+PASS  E06 consistent (class operational, priority 2, triggers webinar.registered)
+PASS  E07 consistent (class operational, priority 1, triggers webinar.registered)
+PASS  E08 consistent (class operational, priority 0, triggers webinar.registered)
+PASS  E09 consistent (class operational, priority 3, triggers webinar.registered)
+PASS  E10 consistent (class operational, priority 2, triggers workshop.access_requested)
+PASS  E11 consistent (class promotional, priority 5, triggers workshop.completed)
+PASS  E12 consistent (class operational, priority 2, triggers book.payment_confirmed)
+PASS  E13 consistent (class operational, priority 3, triggers book.payment_confirmed)
+PASS  E14 consistent (class operational, priority 3, triggers book.dispatched)
+PASS  E15 consistent (class operational, priority 2, triggers meeting.confirmed)
+PASS  E16 consistent (class operational, priority 3, triggers meeting.cancelled)
+PASS  budget: reserved 150 < soft 250 < hard stop 280 < provider quota 300; promotional_max 100 = soft - reserved
+PASS  every operational priority (max 3) precedes every promotional priority (min 5)
+PASS  data-flow-register.json matches its harness schema (18 classes, 26 sinks, 29 flows)
+PASS  flow ids unique
+PASS  FL-01 DC-FIN-INPUT -> browser_memory: proposed
+PASS  FL-02 DC-FIN-INPUT -> browser_storage_optin: proposed
+PASS  FL-03 DC-FIN-DERIVED -> browser_memory,browser_local_export: proposed
+PASS  FL-04 DC-FIN-INPUT -> app_server,app_logs,supabase,n8n,brevo,stripe,scheduler,goog: forbidden
+PASS  FL-05 DC-FIN-DERIVED -> app_server,app_logs,supabase,n8n,brevo,stripe,scheduler,goog: forbidden
+PASS  FL-06 DC-CONTACT -> app_server,supabase: proposed
+PASS  FL-07 DC-CONTACT -> n8n,brevo: proposed
+PASS  FL-08 DC-CONSENT -> app_server,supabase: proposed
+PASS  FL-09 DC-CONSENT -> brevo: proposed
+PASS  FL-10 DC-OPERATIONAL -> supabase,operator_view: proposed
+PASS  FL-11 DC-EVENT-META -> supabase,n8n: proposed
+PASS  FL-12 DC-ORDER -> stripe,supabase,operator_view: proposed
+PASS  FL-13 DC-SHIPPING -> stripe: proposed
+PASS  FL-14 DC-CARD -> stripe: proposed
+PASS  FL-15 DC-BOOKING-INTAKE -> scheduler,google_workspace: existing
+PASS  FL-16 DC-MEETING-PRESENCE -> google_workspace: proposed
+PASS  FL-17 DC-INQUIRY -> app_server,resend,mailbox: existing
+PASS  FL-18 DC-TECH -> upstash: existing
+PASS  FL-19 DC-TECH -> app_logs: existing
+PASS  FL-20 DC-REPLY -> mailbox: existing
+PASS  FL-21 DC-VOICE-NOTE -> llm_prompt: proposed
+PASS  FL-22 DC-CONTENT -> github,app_server: existing
+PASS  FL-23 DC-CONTACT -> analytics_ads,error_monitoring,url,cookies,llm_prompt,alert_: forbidden
+PASS  FL-24 DC-AGGREGATE -> operator_view,alert_channel: proposed
+PASS  FL-25 DC-CONTACT -> backups_offhost: proposed
+PASS  FL-26 DC-AGGREGATE -> telegram_smoke: proposed
+PASS  FL-27 DC-SECRET -> secret_store: proposed
+PASS  FL-28 DC-SECRET -> app_logs,github,url,alert_channel,llm_prompt,telegram_smoke: forbidden
+PASS  FL-29 DC-CONTACT -> app_server,supabase: proposed
+PASS  DC-FIN-INPUT: browser-only; every non-browser sink has an explicit forbidden flow
+PASS  DC-FIN-DERIVED: browser-only; every non-browser sink has an explicit forbidden flow
+
+## 5. Reference PB-SCAN over valid event and job fixtures
+PASS  scan examples/valid/event-envelope/book-dispatched.json
+PASS  scan examples/valid/event-envelope/book-payment_confirmed.json
+PASS  scan examples/valid/event-envelope/book-refunded.json
+PASS  scan examples/valid/event-envelope/consultation-redeemed.json
+PASS  scan examples/valid/event-envelope/content-approved-book.json
+PASS  scan examples/valid/event-envelope/content-approved-copy.json
+PASS  scan examples/valid/event-envelope/content-approved-ink.json
+PASS  scan examples/valid/event-envelope/content-approved.json
+PASS  scan examples/valid/event-envelope/content-draft_created-companion.json
+PASS  scan examples/valid/event-envelope/content-draft_created.json
+PASS  scan examples/valid/event-envelope/content-published-event.json
+PASS  scan examples/valid/event-envelope/content-published.json
+PASS  scan examples/valid/event-envelope/delivery-failed.json
+PASS  scan examples/valid/event-envelope/guide-requested.json
+PASS  scan examples/valid/event-envelope/marketing-opted_in.json
+PASS  scan examples/valid/event-envelope/marketing-withdrawn.json
+PASS  scan examples/valid/event-envelope/meeting-cancelled.json
+PASS  scan examples/valid/event-envelope/meeting-confirmed-operator-reconciliation.json
+PASS  scan examples/valid/event-envelope/meeting-confirmed.json
+PASS  scan examples/valid/event-envelope/meeting-held.json
+PASS  scan examples/valid/event-envelope/webinar-attendance_verified.json
+PASS  scan examples/valid/event-envelope/webinar-cancelled.json
+PASS  scan examples/valid/event-envelope/webinar-join_clicked.json
+PASS  scan examples/valid/event-envelope/webinar-registered.json
+PASS  scan examples/valid/event-envelope/workshop-access_requested.json
+PASS  scan examples/valid/event-envelope/workshop-completed.json
+PASS  scan examples/valid/delivery-job/complete-e03-nurture-delivery-unknown.json
+PASS  scan examples/valid/delivery-job/dead-letter-e14-input-rejected.json
+PASS  scan examples/valid/delivery-job/expired-e08-reminder-past-event.json
+PASS  scan examples/valid/delivery-job/leased-e07-reminder.json
+PASS  scan examples/valid/delivery-job/pending-e01-guide-delivery.json
+PASS  scan examples/valid/delivery-job/pending-e09-replay-promotional-variant.json
+PASS  scan examples/valid/delivery-job/reconcile-required-e13-timeout-after-send.json
+PASS  scan examples/valid/delivery-job/retry-due-e04-deferred-daily-budget.json
+PASS  scan examples/valid/delivery-job/retry-due-e10-rate-limited.json
+PASS  scan examples/valid/delivery-job/sent-e12-purchase-confirmation.json
+PASS  scan examples/valid/delivery-job/suppressed-e05-already-booked.json
+PASS  scan examples/valid/delivery-job/suppressed-e11-consent-withdrawn-at-presend.json
+PASS  scan catches examples/invalid/event-envelope/financial-amount-field.json
+PASS  scan catches examples/invalid/event-envelope/email-in-idempotency-key.json
+PASS  scan catches examples/invalid/event-envelope/extra-property-form-body.json
+PASS  scan catches examples/invalid/event-envelope/workshop-completed-with-gap.json
+PASS  scan catches examples/invalid/delivery-job/recipient-email-field.json
+PASS  scan catches examples/invalid/delivery-job/financial-field-in-job.json
+
+## 6. Rule traceability and data-model column scan
+PASS  present: privacy-boundary.md
+PASS  present: authority-matrix.md
+PASS  present: event-envelope.md
+PASS  present: operational-data-model.md
+PASS  present: job-state-machine.md
+PASS  present: feature-flags.md
+PASS  all 45 rule IDs cited by .why.txt files are defined in the lane's .md files
+PASS  data-model sketch: 10 tables, 133 columns, no forbidden column (exceptions: contacts.email_normalized, email_hmac, first_name)
+PASS  delivery_jobs columns cover the delivery-job schema fields
+
+## 7. Repair attempt 2: runtime-rule reference checks and drift checks
+### 7a. A6D-01: one rule for the non-production waiver (FF-INV-1 = FF-RUN-1)
+PASS  schema FF-INV-1 waives exactly the runtime_gate substitutes ['checkout_live', 'public_launch'] for every one of 17 capabilities
+PASS  R1 staging example, E01 to an allowlisted inbox: FF-RUN-1 open ; the attempt-1 rule would have blocked it (public_launch false)
+PASS  R2 same, recipient not allowlisted: closed ['substitute for public_launch: recipient not allowlisted (not_allowlisted)']
+PASS  R3 staging book_checkout enabled (schema-valid: True): Stripe test mode open ; live key closed ['substitute for checkout_live: Stripe not in test mode']
+PASS  R4 every capability enabled in a valid flags example passes FF-RUN-1 (10 checked): a document that validates can act as it states
+### 7b. A6D-07: marketing_dispatch stops every promotional send
+PASS  E09 alternate_class lists runtime_gate.class_flags.promotional ['marketing_dispatch']
+PASS  every promotional template ['E03', 'E04', 'E05', 'E11'] also lists marketing_dispatch among its capability's flags
+PASS  FF-GATE-2 every flag except public_launch controls each capability that names it
+PASS  marketing_dispatch.controls = ['marketing_nurture', 'workshop_followup', 'preferences_unsubscribe'] (FF-INV-3 now checks workshop_followup readiness)
+PASS  R5 production, public_launch true, marketing_dispatch false (schema-valid: True): operational E09 open; promotional E09 job example closed ['class flag marketing_dispatch is false (FF-RUN-2)']; operational E02 closed ['marketing_nurture not enabled', 'controlling flag marketing_dispatch is false']
+PASS  R6 same with marketing_dispatch true (schema-valid: True): promotional E09 and E11 open 
+PASS  R7a kill switch thrown in the running configuration before the document is updated (FF-RUN-3): every promotional path closed ['event_lifecycle', 'marketing_nurture', 'workshop_followup']; operational E02 closed
+PASS  R7b kill-switch document recorded (flag false, nurture and follow-up not enabled; schema-valid: True): every promotional path closed ['event_lifecycle', 'marketing_nurture', 'workshop_followup'], operational E09 still open
+### 7c. A6D-03: resource codes on contact-subject events
+PASS  ADV-5a workshop.eight-hundred-fifty-thousand.haaaaaaaaaaaa rejected by the schema
+PASS  ADV-5b workshop.shortfall-large-warning.haaaaaaaaaaaa rejected by the schema
+PASS  ADV-5c guide.retirement-guide.v65 rejected by the schema
+PASS  ADV-5d guide.jean-tremblay.haaaaaaaaaaaa rejected by the schema
+PASS  key+v workshop.retirement-workshop.v62 rejected by the schema
+PASS  consent-v consent.nurture.v1 rejected by the schema
+PASS  PB-ID-5 reference: all 10 registry codes in valid event examples are fixture-registry members
+PASS  PB-ID-5 reference: workshop.retirement-workshop.h850000000000 is schema-valid (hex cannot be told from a hash) and rejected by registry membership
+PASS  closed guide/workshop keys in event-envelope.md ['retirement-guide', 'retirement-workshop'] = schema ['retirement-guide', 'retirement-workshop']
+PASS  PB-ID-5 defined in privacy-boundary.md
+PASS  PB-ID-6 defined in privacy-boundary.md
+PASS  privacy-boundary.md section 6 AUTH05 row asserts PB-ID-5
+### 7d. A6D-06: every asset-manifest asset_id can emit content events
+PASS  envelope content-version ID alternation is byte-identical to asset-manifest asset_id
+PASS  content events accept all 13 asset-manifest kinds (14 samples, v and h versions)
+### 7e. A6D-05: PB-SCAN lists identical in privacy-boundary.md, operational-data-model.md and this harness
+PASS  PB-SCAN-1 Financial: privacy-boundary.md = operational-data-model.md (40 tokens)
+PASS  PB-SCAN-1 Age and health: privacy-boundary.md = operational-data-model.md (7 tokens)
+PASS  PB-SCAN-1 Derived selections: privacy-boundary.md = operational-data-model.md (8 tokens)
+PASS  PB-SCAN-1 Identity and device: privacy-boundary.md = operational-data-model.md (12 tokens)
+PASS  PB-SCAN-1 in privacy-boundary.md = harness FORBIDDEN_TOKENS (67)
+PASS  PB-SCAN-2 in privacy-boundary.md = harness FORBIDDEN_KEYS (30)
+### 7f. A6D-02 and A6D-01: the controlling texts carry the rules downstream tests must assert
+PASS  PB-MEDIA-4 defined, PB-FIN-5 subject to it, WK04 row asserts PB-MEDIA-1 to 4, media procedure present
+PASS  FF-RUN-1..3 defined in feature-flags.md; PSC-3 and job-state-machine.md section 6 step 2 cite FF-RUN-1 and FF-RUN-2; the attempt-1 runtime sentence is gone
+### 7g. Negative controls: the section 7 checks catch the defects the review reported
+PASS  NC-A without runtime_gate.class_flags a promotional E09 passes with marketing_dispatch false (the A6D-07 defect), so R5 depends on FF-RUN-2
+PASS  NC-B a schema that also waived marketing_dispatch outside production would differ from the runtime substitutes (7a catches it)
+PASS  NC-C the attempt-1 data-model list differs from privacy-boundary.md by ['assets', 'balances'] (7e catches it)
+PASS  NC-D the attempt-1 content-version alternation differs from asset-manifest asset_id (7d catches it)
+PASS  NC-E a well-formed code missing from the registry fixture is not a member (PB-ID-5 reference is not vacuous)
+
+## 8. Repair attempt 3: A6D2-01 (withdrawal vs leased job) and A6D2-02 (booking-to-contact join)
+### 8a. A6D2-01: the reviewer's race record is rejected, and every text states one rule
+PASS  reviewer reproduction (withdrawal_leased_race.py): suppressed + consent_withdrawn + send_started_at + attempt_count 1 is rejected (JS-SUPP-1): [('send_started_at', 'not')]
+PASS  a suppressed job with sent_at is rejected (JS-SUPP-1)
+PASS  the same job without the send marker (a T5 stop after an earlier known failure, attempt_count 1) is valid
+PASS  valid suppressed examples carry no send marker and no send time (2)
+PASS  no lane file says a sweep suppresses leased jobs ('pending and leased' / 'leased promotional job'): []
+PASS  operational-data-model.md op_record_withdrawal: pending and retry_due only; a leased job is stopped at T5
+PASS  authority-matrix.md AM-CONSENT-2: pending and retry_due swept, leased stopped at T5, a started call never marked suppressed
+PASS  job-state-machine.md T3 (pending/retry_due only), T5 (before the marker), T16 (clears the marker)
+PASS  JS-SUPP-1 to 3 defined; the forbidden list names leased -> suppressed outside T5
+PASS  event-envelope.md marketing.withdrawn row: pending and retry_due, leased at T5
+### 8b. A6D2-02: the booking-to-contact join is named, private and complete
+PASS  authority-matrix.md defines AM-BOOK-3 to AM-BOOK-6: {'AM-BOOK-3': True, 'AM-BOOK-4': True, 'AM-BOOK-5': True, 'AM-BOOK-6': True}
+PASS  privacy-boundary.md PB-CAL-3 and event-envelope.md EV-BOOK-1 (section 6 consumer rule) defined
+PASS  register FL-29: DC-CONTACT to app_server and supabase only, the address never written, cites AM-BOOK-3
+PASS  register DC-BOOKING-INTAKE keeps allowed_sinks scheduler and google_workspace; its examples point to FL-29 for the transient key
+PASS  bookings sketch: contact_match with three values tied to contact_id; the attempt-2 comment 'null until matched' is gone
+PASS  bookings sketch: an unmatched consultation booking can be stored without a right (a booking gap), a right only on a joined consultation booking
+PASS  operational-data-model.md op_accept_event describes the join by email_hmac and the unmatched outcome
+PASS  operational-data-model.md principle 2: a booking never creates a contact
+PASS  email-eligibility.json: already_booked, E05 pre-send check, E15 and E16 count joined bookings only
+PASS  join matched         -> contact joined, meeting.confirmed schema-valid with the con_ subject, pending E05 swept, leased E11 left to its pre-send check (T5), no address stored
+PASS  join case-and-space  -> contact joined, meeting.confirmed schema-valid with the con_ subject, pending E05 swept, leased E11 left to its pre-send check (T5), no address stored
+PASS  join plus-tag        -> unmatched: no envelope, no job swept, no contact created, delivery pending reconciliation, no address stored
+PASS  join other-domain    -> unmatched: no envelope, no job swept, no contact created, delivery pending reconciliation, no address stored
+PASS  join erased-contact  -> unmatched: no envelope, no job swept, no contact created, delivery pending reconciliation, no address stored
+PASS  join unknown         -> unmatched: no envelope, no job swept, no contact created, delivery pending reconciliation, no address stored
+### 8c. Negative controls: the section 8 checks catch the attempt-2 defects
+PASS  NC-F the attempt-2 suppressed branch (no send_started_at rule) accepts the race record, so 8a is not vacuous
+PASS  NC-G the attempt-2 op_record_withdrawal wording is caught by the stale-text search
+PASS  NC-H with no matching email_hmac the reference join joins nothing (the join is not vacuous)
+
+## Result: 298 passed, 0 failed
+exit_code=0

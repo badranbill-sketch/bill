@@ -1,0 +1,14 @@
+$ cd /tmp/claude-0/-home-user/bb8d4187-6ae8-587b-a816-8153faeea853/scratchpad/wt/base01-codex && node_modules/.bin/tsx /home/user/bill/.orchestration/evidence/F02/a6-design-attempt3/fingerprint3.ts   (zod 4.6.5)
+AS-CLAIMED top-level key order reversed: hash unchanged
+AS-CLAIMED source object key order reversed: hash unchanged
+AS-CLAIMED indentation 0 vs 2: hash unchanged
+AS-CLAIMED status/reviewer/dates set (excluded fields): hash unchanged
+AS-CLAIMED relatedServices order swapped: hash changed
+AS-CLAIMED URL letter case changed: hash changed
+AS-CLAIMED unknown key inside a source object (stripped): hash unchanged
+AS-CLAIMED unknown top-level key: parseArticle throws
+parsed key order: language,translationGroup,slug,title,description,topic,sources,author,reviewer,status,publicationDate,substantiveReviewDate,nextReviewDate,relatedServices,relatedArticles,generation,firmApprovalRequired
+fingerprint equals sha256(JSON.stringify({...substance, body})) in schema order: true
+summary: 8 of 8 as claimed
+exit=0
+ M next-env.d.ts

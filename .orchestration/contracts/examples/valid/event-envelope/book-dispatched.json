@@ -1,0 +1,11 @@
+{
+  "schema_version": "1.0",
+  "event_id": "fabbaf61-cf70-4ee8-a1f4-9b388acce6d9",
+  "type": "book.dispatched",
+  "occurred_at": "2026-10-03T16:55:00Z",
+  "subject_id": "con_xsekt13hxv12z5bp4rm4s2f0hw",
+  "locale": "fr",
+  "source": "operator.fulfilment",
+  "resource_id": "ord_zbq3s5z2an35p4e0d2navtnftv",
+  "idempotency_key": "ik1_71df95c3488113fe9edf9c155c3e214cefabb3468a6f242e60af00559843408c"
+}

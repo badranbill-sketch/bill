@@ -1,0 +1,7 @@
+rule: XF-03 - last illustrated age at most 120
+layer: schema
+expect_keyword: maximum
+expect_path: /chapters/timing/planning_horizon_years/value
+expect_validator_value: 26
+plain_message_en_draft: With retirement at 95, the horizon can be at most 26 years.
+explanation: R = 95 and H = 30 would illustrate ages 95 to 124.

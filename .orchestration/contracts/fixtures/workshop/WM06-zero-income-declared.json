@@ -1,0 +1,188 @@
+{
+ "fixture_id": "WM06",
+ "title": "Declared zero planned income",
+ "contract_version": "1.0",
+ "covers": [
+  "WK01"
+ ],
+ "purpose": "'No planned income' is a known zero: the gap equals spending and the result is complete.",
+ "input": {
+  "contract": "workshop-inputs",
+  "contract_version": "1.0",
+  "currency": "CAD",
+  "base_year": 2026,
+  "chapters": {
+   "life": {
+    "spending": {
+     "amount": {
+      "status": "estimated",
+      "value": 250000
+     },
+     "period": "monthly",
+     "tax_basis": "after_tax",
+     "price_basis": "today_dollars",
+     "unit": "household"
+    }
+   },
+   "income": {
+    "coverage": "no_planned_income",
+    "sources": []
+   },
+   "savings": {},
+   "timing": {
+    "current_age": {
+     "status": "estimated",
+     "value": 70
+    },
+    "retirement_age": {
+     "status": "estimated",
+     "value": 70
+    },
+    "planning_horizon_years": {
+     "status": "estimated",
+     "value": 3
+    },
+    "inflation_bp": {
+     "status": "zero",
+     "value": 0
+    }
+   }
+  }
+ },
+ "expected": {
+  "contract_version": "1.0",
+  "assumptions_echo": {
+   "base_year": 2026,
+   "inflation_bp": 0,
+   "planning_horizon_years": 3,
+   "capital_illustration_return_bp": null,
+   "year_index": "t=0 is calendar year base_year; annual totals per calendar year",
+   "rounding": "exact rational arithmetic; half-even to whole cents at display only"
+  },
+  "window": {
+   "t_R": 0,
+   "first_t": 0,
+   "last_t": 2,
+   "first_calendar_year": 2026,
+   "last_calendar_year": 2028,
+   "first_age": 70,
+   "last_age": 72
+  },
+  "completeness": {
+   "state": "complete",
+   "reasons": []
+  },
+  "years": [
+   {
+    "t": 0,
+    "calendar_year": 2026,
+    "age": 70,
+    "spending_cents": 3000000,
+    "income_by_source_cents": {},
+    "income_net_cents": 0,
+    "income_gross_cents": 0,
+    "income_unknown_basis_cents": 0,
+    "status": "computed",
+    "reasons": [],
+    "gap_cents": 3000000,
+    "surplus_cents": 0,
+    "gap_today_dollars_cents": 3000000,
+    "surplus_today_dollars_cents": 0,
+    "exact": {
+     "spending": "3000000",
+     "income_compared": "0",
+     "gap": "3000000",
+     "surplus": "0"
+    }
+   },
+   {
+    "t": 1,
+    "calendar_year": 2027,
+    "age": 71,
+    "spending_cents": 3000000,
+    "income_by_source_cents": {},
+    "income_net_cents": 0,
+    "income_gross_cents": 0,
+    "income_unknown_basis_cents": 0,
+    "status": "computed",
+    "reasons": [],
+    "gap_cents": 3000000,
+    "surplus_cents": 0,
+    "gap_today_dollars_cents": 3000000,
+    "surplus_today_dollars_cents": 0,
+    "exact": {
+     "spending": "3000000",
+     "income_compared": "0",
+     "gap": "3000000",
+     "surplus": "0"
+    }
+   },
+   {
+    "t": 2,
+    "calendar_year": 2028,
+    "age": 72,
+    "spending_cents": 3000000,
+    "income_by_source_cents": {},
+    "income_net_cents": 0,
+    "income_gross_cents": 0,
+    "income_unknown_basis_cents": 0,
+    "status": "computed",
+    "reasons": [],
+    "gap_cents": 3000000,
+    "surplus_cents": 0,
+    "gap_today_dollars_cents": 3000000,
+    "surplus_today_dollars_cents": 0,
+    "exact": {
+     "spending": "3000000",
+     "income_compared": "0",
+     "gap": "3000000",
+     "surplus": "0"
+    }
+   }
+  ],
+  "flags": [],
+  "savings_summary": {
+   "accessible_categories_with_positive_value": [],
+   "home_or_business_positive_value": false,
+   "excluded_from_spendable": [],
+   "pension_value_kept_separate": false,
+   "totals_computed": false
+  },
+  "capital_illustration": {
+   "feature_flag": "off",
+   "displayed": false,
+   "state": "disabled_by_flag",
+   "reference_if_enabled": {
+    "r_bp": null,
+    "computable": false,
+    "not_computable_reasons": [
+     "return_assumption_absent"
+    ],
+    "display_eligible_if_enabled": false,
+    "ineligible_reasons": [
+     "return_assumption_absent"
+    ],
+    "C_R_cents": null,
+    "C_R_exact": null,
+    "valued_at": null,
+    "flow_timing": "end_of_year"
+   }
+  },
+  "clip": {
+   "predicates": {
+    "C": false,
+    "M": false,
+    "X": false,
+    "H": false,
+    "F": true
+   },
+   "selected": "W07",
+   "selection_reason": "funding_gap"
+  }
+ },
+ "independent_checks": [
+  "hand: 12 x 250,000",
+  "income groups 0/0/0: declared no planned income is a known zero (s5)"
+ ],
+ "tolerance": "exact integer cents after half-even rounding; exact strings must match exactly; no numeric tolerance"
+}

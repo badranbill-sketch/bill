@@ -1,0 +1,14 @@
+{
+ "docs": 5000,
+ "checks": 9990,
+ "skipped_invalid_substitutions": 62,
+ "computed_row_checks_by_unknown_kind": {
+  "price_basis": 1790,
+  "start": 173,
+  "amount": 652,
+  "partner_age": 437,
+  "end": 56
+ },
+ "violations": 0,
+ "examples": []
+}

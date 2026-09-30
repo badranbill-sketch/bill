@@ -1,0 +1,31 @@
+# Next 16.3.6 bundled docs in the F00 codex worktree (/tmp/claude-0/-home-user/bb8d4187-6ae8-587b-a816-8153faeea853/scratchpad/wt/base01-codex, HEAD 66cce52046f535ddc1a90e6f94474877e375860d); read-only
+$ grep version node_modules/next/package.json
+  "version": "16.3.6",
+$ sed -n 7,9p .../05-config/01-next-config-js/proxyClientMaxBodySize.md
+When proxy is used, Next.js automatically clones the request body and buffers it in memory to enable multiple reads - both in proxy and the underlying route handler. To prevent excessive memory usage, this configuration option sets a size limit on the buffered body.
+
+By default, the maximum body size is **10MB**. If a request body exceeds this limit, the body will only be buffered up to the limit, and a warning will be logged indicating which route exceeded the limit.
+$ sed -n 236,251p .../03-file-conventions/proxy.md
+## Execution order
+
+Proxy will be invoked for **every route in your project**. Given this, it's crucial to use [matchers](#matcher) to precisely target or exclude specific routes. The following is the execution order:
+
+1. `headers` from `next.config.js`
+2. `redirects` from `next.config.js`
+3. Proxy (`rewrites`, `redirects`, etc.)
+4. `beforeFiles` (`rewrites`) from `next.config.js`
+5. Filesystem routes (`public/`, `_next/static/`, `pages/`, `app/`, etc.)
+6. `afterFiles` (`rewrites`) from `next.config.js`
+7. Dynamic Routes (`/blog/[slug]`)
+8. `fallback` (`rewrites`) from `next.config.js`
+
+> **Good to know:** [Server Functions](/docs/app/api-reference/directives/use-server) are not separate routes in this chain. They are handled as POST requests to the route where they are used, so a Proxy matcher that excludes a path will also skip Server Function calls on that path.
+>
+> A matcher change or a refactor that moves a Server Function to a different route can silently remove Proxy coverage. Always verify authentication and authorization inside each Server Function rather than relying on Proxy alone. See the [Data Security guide](/docs/app/guides/data-security#authentication-and-authorization) for recommended patterns.
+
+# codex next.config.ts security headers (relevant to PB-MEDIA-2/PB-MEDIA-4)
+25:          { key: "Referrer-Policy", value: "strict-origin-when-cross-origin" },
+31:            key: "Content-Security-Policy",
+32:            value: `default-src 'self'; script-src 'self' 'unsafe-inline' ${process.env.NODE_ENV === "development" ? "'unsafe-eval'" : ""}; style-src 'self' 'unsafe-inline'; img-src 'self' data:; font-src 'self'; connect-src 'self'; frame-src 'none'; frame-ancestors 'none'; base-uri 'self'; form-action 'self'; object-src 'none'`,
+$ git -C $W status --short
+ M next-env.d.ts

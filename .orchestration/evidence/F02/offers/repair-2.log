@@ -1,0 +1,19 @@
+# F02 offers lane, repair attempt 2 (A6D-04), 2026-09-30T06:44:02Z
+# Changed: contracts/approval-scopes.md §3 Fingerprint bullets, §4.2 articles-contentFingerprint-v1 row, §6 AS-INV-2 (article key order/whitespace not invalidating).
+# Evidence for the fix: fingerprint-key-order.log (real lib/articles.ts blob df24ccb, zod 4.6.5; script fingerprint_order_repro.ts).
+
+$ bash .orchestration/evidence/F02/offers/run_validation.sh
+PASS  regeneration is byte-identical (132 files)
+pass: 92  fail: 0
+validate exit=0
+
+$ <venv-f02>/bin/python .orchestration/contracts/validate.py   (read-only run; full output not committed)
+PASS  invalid examples/invalid/worker-handoff/exit-code-string.json [WH-TEST-1]: fails anyOf at /tests/0/exit_code
+PASS  CX-15 review-hash methods: asset-manifest enum = approval-scopes s4.2
+FAIL  XL-01 no longer reproduces as described (envelope content kinds missing []): update README.md and validate.py KNOWN_LIST
+FAIL  XL-09 no longer reproduces as described (stale section references (AM-CONSENT-4 PSC; ODM remade_as §7)): update README.md and validate.py KNOWN_LIST
+FAIL  XL-11 no longer reproduces as described (flag/capability asymmetries (marketing_dispatch vs workshop_followup, E02, E09)): update README.md and validate.py KNOWN_LIST
+FAIL  XL-17 no longer reproduces as described (ODM PB-SCAN-1 financial list lacks []): update README.md and validate.py KNOWN_LIST
+pass: 336  fail: 4  known: 13  info: 2
+exit_code=1
+# The 4 FAIL lines are KNOWN_LIST items of other lanes (XL-01/XL-17 data, XL-09, XL-11) that no longer reproduce after those lanes' repairs; README.md and validate.py KNOWN_LIST are integrator-owned. No FAIL concerns an offers-lane file.

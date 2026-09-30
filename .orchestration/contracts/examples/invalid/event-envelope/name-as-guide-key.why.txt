@@ -1,0 +1,5 @@
+rule: EV-ID-2 contact-subject registry codes use a closed key and a hash version: a person's name is not a guide key
+expect_path: resource_id
+expect_keyword: pattern
+
+A (fictional) person's name used as the guide key (review ADV-5d).

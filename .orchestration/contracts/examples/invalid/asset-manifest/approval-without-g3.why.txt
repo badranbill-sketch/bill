@@ -1,0 +1,4 @@
+rule: AM-APPR-1
+breaks: Every approval of an asset names G3 (exact-hash approval).
+expect_keyword: contains
+expect_path: /assets/6/approval/gates

@@ -1,0 +1,5 @@
+rule: EV-SHAPE-1 closed envelope: never attach arbitrary form bodies (04 §3)
+expect_path: /
+expect_keyword: additionalProperties
+
+A raw form body (name and free-text question) attached to the envelope.

@@ -1,0 +1,4 @@
+rule: AM-CLAIM-2
+breaks: From 'reviewed' on, every source carries the date it was checked.
+expect_keyword: type
+expect_path: /assets/2/factual_claims/sources/0/accessed

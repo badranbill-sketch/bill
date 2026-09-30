@@ -1,0 +1,24 @@
+{
+ "seed": "20260930",
+ "generated": 3000,
+ "tried": 3422,
+ "rejectedSchema": 160,
+ "rejectedSem": 262,
+ "clipCount": {
+  "W06/missing_income": 1010,
+  "W10/core_inputs_missing": 1156,
+  "W09/household_timing": 164,
+  "W07/funding_gap": 520,
+  "W08/tax_basis": 117,
+  "W10/neutral_fallback": 33
+ },
+ "stateCount": {
+  "incomplete_unknown_income": 1010,
+  "incomplete_unknown_timing": 559,
+  "complete": 717,
+  "incomplete_unknown_spending": 597,
+  "basis_mismatch": 59,
+  "basis_unknown": 58
+ },
+ "violations": {}
+}

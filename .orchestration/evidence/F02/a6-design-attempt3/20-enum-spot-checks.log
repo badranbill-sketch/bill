@@ -1,0 +1,13 @@
+$ python3 .orchestration/evidence/F02/a6-design-attempt3/enums3.py
+source codes used in md but not in envelope enum: []
+envelope sources never mentioned in any md: []
+suppression codes job==registry: True []
+registry codes never used by any template: []
+defer reasons in job schema: ['capability_disabled', 'daily_budget', 'frequency_cap', 'reminder_collision'] | in state machine text: True
+error codes all in state machine §8: True
+registry capabilities all defined in feature-flags: True []
+op_* named anywhere but not defined in data model s4: []
+booking status values: 'confirmed' | 'cancelled' | 'rescheduled' | 'held' | 'no_show_recorded'
+  'rescheduled' mentioned outside the data model in: ['README.md']
+  'no_show_recorded' mentioned outside the data model in: ['README.md']
+exit=0

@@ -1,0 +1,187 @@
+[
+ {
+  "fault": "halfUp",
+  "label": "half-up rounding instead of half-even",
+  "caught_by": [
+   "WM04",
+   "WM17"
+  ]
+ },
+ {
+  "fault": "float64",
+  "label": "IEEE-754 double growth factors",
+  "caught_by": [
+   "WM02",
+   "WM04",
+   "WM12",
+   "WM13",
+   "WM15",
+   "WM17",
+   "WM22",
+   "WM24"
+  ]
+ },
+ {
+  "fault": "allowGrossInGap",
+  "label": "gross income subtracted from after-tax spending",
+  "caught_by": [
+   "WM09",
+   "WM23"
+  ]
+ },
+ {
+  "fault": "coverageIgnored",
+  "label": "incomplete coverage ignored (unanswered income read as zero)",
+  "caught_by": [
+   "WM07",
+   "CS03"
+  ]
+ },
+ {
+  "fault": "ignorePriceBasis",
+  "label": "today-dollar income treated as nominal start-year amount",
+  "caught_by": [
+   "WM04"
+  ]
+ },
+ {
+  "fault": "nettedSurplus",
+  "label": "surpluses netted against gaps in C_R",
+  "caught_by": [
+   "WM12"
+  ]
+ },
+ {
+  "fault": "taxUnknownAsNet",
+  "label": "tax basis \"unknown\" treated as net",
+  "caught_by": [
+   "WM23",
+   "CS04"
+  ]
+ },
+ {
+  "fault": "monthlyIncomeNotTimes12",
+  "label": "monthly income not multiplied by 12",
+  "caught_by": [
+   "WM03",
+   "WM05",
+   "WM09",
+   "WM19"
+  ]
+ },
+ {
+  "fault": "deflateFromRetirement",
+  "label": "today-dollar display deflated from t_R instead of t = 0",
+  "caught_by": [
+   "WM02",
+   "WM13"
+  ]
+ },
+ {
+  "fault": "crStartOfYear",
+  "label": "C_R with start-of-year flows (exponent k instead of k+1)",
+  "caught_by": [
+   "WM11",
+   "WM15",
+   "WM16"
+  ]
+ },
+ {
+  "fault": "partnerStartSelfAge",
+  "label": "partner-owned age resolved with the participant's age",
+  "caught_by": [
+   "WM21"
+  ]
+ },
+ {
+  "fault": "endInclusive",
+  "label": "end index treated as inclusive",
+  "caught_by": [
+   "WM18"
+  ]
+ },
+ {
+  "fault": "escalateFromZero",
+  "label": "escalation compounded from t = 0 instead of from s_j",
+  "caught_by": [
+   "WM04",
+   "WM13"
+  ]
+ },
+ {
+  "fault": "windowFromZero",
+  "label": "pre-retirement years shown in the window",
+  "caught_by": [
+   "WM02",
+   "WM13",
+   "WM21"
+  ]
+ },
+ {
+  "fault": "precedenceFbeforeM",
+  "label": "funding gap ranked before missing income",
+  "caught_by": [
+   "WM08",
+   "WM21",
+   "WM22",
+   "row4",
+   "row6",
+   "row8",
+   "row10",
+   "row12",
+   "row14",
+   "row16"
+  ]
+ },
+ {
+  "fault": "precedenceHafterF",
+  "label": "household timing ranked after funding gap",
+  "caught_by": [
+   "WM21",
+   "row4"
+  ]
+ },
+ {
+  "fault": "unknownSpendingZeroRowsOnly",
+  "label": "unknown spending read as 0 in year rows (state and clip unchanged)",
+  "caught_by": []
+ },
+ {
+  "fault": "unknownStartAsNotPaying",
+  "label": "unknown or unresolvable start point read as \"not paying\" (P = 0, no code)",
+  "caught_by": [
+   "WM20",
+   "CS01"
+  ]
+ },
+ {
+  "fault": "unknownEndAsOpen",
+  "label": "unknown or unresolvable end point read as \"no end\"",
+  "caught_by": []
+ },
+ {
+  "fault": "crDiscountToBase",
+  "label": "C_R discounted to t = 0 instead of valued at the start of year t_R",
+  "caught_by": []
+ },
+ {
+  "fault": "ignoreNoPositiveGap",
+  "label": "C_R marked display-eligible when no year has G_t > 0 (C_R = 0 displayed)",
+  "caught_by": []
+ },
+ {
+  "fault": "unresolvableStartAsNotPayingWindowKnown",
+  "label": "start_unresolvable (partner age unknown, window known) read as \"not paying\"",
+  "caught_by": []
+ },
+ {
+  "fault": "startPointUnknownAsNotPaying",
+  "label": "start point with status unknown read as \"not paying\" (window known)",
+  "caught_by": []
+ },
+ {
+  "fault": "startPointUnknownAsAlreadyReceiving",
+  "label": "start point with status unknown read as already receiving (s_j = 0)",
+  "caught_by": []
+ }
+]

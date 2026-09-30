@@ -1,0 +1,6 @@
+rule: RANGE - household spending cannot be zero
+layer: schema
+expect_keyword: enum
+expect_path: /chapters/life/spending/amount/status
+plain_message_en_draft: Spending can't be zero. If you don't know yet, choose "I'm not sure".
+explanation: spending.amount.status excludes zero.

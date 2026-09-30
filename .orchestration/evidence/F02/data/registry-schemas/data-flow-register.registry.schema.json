@@ -1,0 +1,41 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://bill.contracts.local/data-flow-register-registry/1.0",
+  "title": "Shape of contracts/data-flow-register.json 1.0 (harness schema, F02 data lane)",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["contract_id", "contract_version", "status", "registry_schema", "rules_document", "sources", "decision_owner", "data_classes", "sinks", "flows"],
+  "properties": {
+    "contract_id": {"const": "https://bill.contracts.local/data-flow-register/1.0"},
+    "contract_version": {"const": "1.0"},
+    "status": {"type": "string"},
+    "registry_schema": {"type": "string"},
+    "rules_document": {"const": "privacy-boundary.md"},
+    "sources": {"type": "array", "items": {"type": "string"}},
+    "decision_owner": {"type": "string"},
+    "data_classes": {"type": "array", "minItems": 1, "items": {
+      "type": "object", "additionalProperties": false, "required": ["id", "label", "examples", "tier", "allowed_sinks"],
+      "properties": {"id": {"type": "string", "pattern": "^DC-[A-Z-]+$"}, "label": {"type": "string"}, "examples": {"type": "string"},
+                     "tier": {"enum": ["browser_only", "personal", "pseudonymous", "provider_only", "technical", "internal", "public_or_internal", "aggregate", "secret"]},
+                     "allowed_sinks": {"type": "array", "minItems": 1, "uniqueItems": true, "items": {"type": "string"}}},
+      "if": {"properties": {"tier": {"const": "browser_only"}}},
+      "then": {"properties": {"allowed_sinks": {"items": {"enum": ["browser_memory", "browser_storage_optin", "browser_local_export"]}}}}}},
+    "sinks": {"type": "array", "minItems": 1, "items": {
+      "type": "object", "additionalProperties": false, "required": ["id", "kind", "processor", "status", "note"],
+      "properties": {"id": {"type": "string", "pattern": "^[a-z0-9_]+$"}, "kind": {"enum": ["visitor_device", "internal", "processor", "channel"]},
+                     "processor": {"type": ["string", "null"]},
+                     "status": {"enum": ["existing", "proposed", "forbidden_until_flag", "not_selected"]}, "note": {"type": "string"}}}},
+    "flows": {"type": "array", "minItems": 1, "items": {
+      "type": "object", "additionalProperties": false,
+      "required": ["id", "data_class", "sinks", "purpose", "status", "basis", "retention", "retention_owner", "operational_owner", "gates", "tests", "notes"],
+      "properties": {"id": {"type": "string", "pattern": "^FL-[0-9]{2}$"}, "data_class": {"type": "string"},
+                     "sinks": {"type": "array", "minItems": 1, "uniqueItems": true, "items": {"type": "string"}},
+                     "purpose": {"type": "string"}, "status": {"enum": ["existing", "proposed", "forbidden"]},
+                     "basis": {"type": "string"}, "retention": {"type": "string"}, "retention_owner": {"type": "string"},
+                     "operational_owner": {"type": "string"},
+                     "gates": {"type": "array", "items": {"enum": ["G0", "G1", "G2", "G3", "G4", "G5", "G6"]}},
+                     "tests": {"type": "array", "items": {"type": "string", "pattern": "^[A-Z]+[0-9]{2}$"}}, "notes": {"type": "string"}},
+      "if": {"properties": {"status": {"const": "forbidden"}}},
+      "then": {"properties": {"retention": {"const": "n/a (forbidden)"}}}}}
+  }
+}

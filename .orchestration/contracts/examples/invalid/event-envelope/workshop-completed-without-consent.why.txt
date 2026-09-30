@@ -1,0 +1,5 @@
+rule: EV-CONSENT-2 workshop.completed is a consented signal: consent_reference required
+expect_path: /
+expect_keyword: required
+
+A completion signal with no consent evidence may not be recorded (01 §9).

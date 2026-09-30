@@ -1,0 +1,4 @@
+rule: OM-PDF-1
+breaks: The free PDF never requires marketing consent.
+expect_keyword: const
+expect_path: /offers/guide-pdf/access

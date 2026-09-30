@@ -1,0 +1,5 @@
+rule: JS-SENT-2 a provider message ID exists only on sent/complete
+expect_path: provider_message_id
+expect_keyword: not
+
+A leased job that already has an acceptance ID is really sent; it must not be sent again.

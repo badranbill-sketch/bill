@@ -1,0 +1,7 @@
+rule: PRIVACY - no free text anywhere
+layer: schema
+expect_keyword: additionalProperties
+expect_path: /chapters/income/sources/0
+expect_message_contains: 'label'
+plain_message_en_draft: (never shown - the form has no free-text field)
+explanation: Income sources are closed; a free-text label could carry names or employers.

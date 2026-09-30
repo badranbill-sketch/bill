@@ -1,0 +1,4 @@
+rule: WH-BLK-1
+breaks: blocked_checks use the evidence vocabulary: blocked or not_run (D-038).
+expect_keyword: enum
+expect_path: /blocked_checks/0/status

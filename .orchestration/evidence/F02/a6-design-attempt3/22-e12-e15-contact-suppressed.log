@@ -1,0 +1,24 @@
+$ python3 -c '<per-template contact_suppressed listing from email-eligibility.json>'
+E01 operational True ['provider_blocklist', 'contact_suppressed', 'not_allowlisted']
+E02 operational True ['consent_withdrawn', 'provider_blocklist', 'contact_suppressed', 'not_allowlisted']
+E03 promotional True ['consent_missing', 'consent_withdrawn', 'provider_blocklist', 'contact_suppressed', 'client_flag', 'human_reply', 'not_allowlisted']
+E04 promotional True ['consent_missing', 'consent_withdrawn', 'provider_blocklist', 'contact_suppressed', 'client_flag', 'human_reply', 'not_allowlisted']
+E05 promotional True ['consent_missing', 'consent_withdrawn', 'provider_blocklist', 'contact_suppressed', 'client_flag', 'human_reply', 'already_booked', 'not_allowlisted']
+E06 operational True ['provider_blocklist', 'contact_suppressed', 'registration_cancelled', 'event_cancelled', 'event_remade', 'not_allowlisted']
+E07 operational True ['provider_blocklist', 'contact_suppressed', 'registration_cancelled', 'event_cancelled', 'event_remade', 'not_allowlisted']
+E08 operational True ['provider_blocklist', 'contact_suppressed', 'registration_cancelled', 'event_cancelled', 'event_remade', 'not_allowlisted']
+E09 operational True ['provider_blocklist', 'contact_suppressed', 'registration_cancelled', 'event_cancelled', 'not_allowlisted']
+E10 operational True ['provider_blocklist', 'contact_suppressed', 'not_allowlisted']
+E11 promotional True ['consent_missing', 'consent_withdrawn', 'provider_blocklist', 'contact_suppressed', 'client_flag', 'human_reply', 'already_booked', 'not_allowlisted']
+E12 operational False ['provider_blocklist', 'not_allowlisted']
+E13 operational False ['provider_blocklist', 'entitlement_inactive', 'order_refunded', 'not_allowlisted']
+E14 operational False ['provider_blocklist', 'not_allowlisted']
+E15 operational False ['provider_blocklist', 'booking_cancelled', 'not_allowlisted']
+E16 operational True ['provider_blocklist', 'contact_suppressed', 'already_rebooked', 'human_reply', 'not_allowlisted']
+PSC-4: ['PSC-4: the provider blocklist and contact lifecycle allow the send']
+$ grep -n '^4\. The contact is not suppressed' .orchestration/contracts/job-state-machine.md
+89:4. The contact is not suppressed or erased, and Brevo does not report a block (`contact_suppressed`, `provider_blocklist`).
+$ grep -n -E "lifecycle_state|'suppressed'" .orchestration/contracts/*.md (who writes lifecycle 'suppressed'?)
+.orchestration/contracts/operational-data-model.md:35:  lifecycle_state     text not null default 'active',     -- 'active' | 'suppressed' | 'erased'
+.orchestration/contracts/operational-data-model.md:40:  -- check: lifecycle_state = 'erased' <=> email_normalized is null and first_name is null
+.orchestration/contracts/operational-data-model.md:264:| RC-SUPPRESSION | erased contacts (`contact_id`, `email_hmac`, `lifecycle_state`) | "Minimal suppression retained appropriately" (OPS03) | pending_G5 |

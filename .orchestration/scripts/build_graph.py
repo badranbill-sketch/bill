@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Regenerate tasks.json and acceptance_catalog.json from the transcribed spec.
+"""Regenerate source/02_TASK_GRAPH.json and source/acceptance_catalog.json from the transcribed spec.
 
 Deterministic; stdlib only. Validates the plan's internal structure (deps exist,
 graph acyclic, check IDs known, gates known). This validates the plan, not the
@@ -105,8 +105,11 @@ def main():
     cat = {"meta": {"source": "04_CONTRACTS_AND_TESTS.md §8", "count": len(catalog),
                     "note": "Every check starts not_run. Statuses: pass, fail, blocked, not_run."},
            "checks": catalog}
+    # Pristine generated files live in source/. The live, stateful copies
+    # (.orchestration/tasks.json, .orchestration/acceptance_catalog.json) are
+    # written by A0 and are not regenerated or compared here.
     out = {ROOT / "source" / "02_TASK_GRAPH.json": graph,
-           ROOT / "acceptance_catalog.json": cat}
+           ROOT / "source" / "acceptance_catalog.json": cat}
     if errs:
         print("PLAN VALIDATION FAILED:"); [print(" -", e) for e in errs]; sys.exit(1)
     check = "--check" in sys.argv

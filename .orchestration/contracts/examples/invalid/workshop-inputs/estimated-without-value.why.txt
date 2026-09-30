@@ -1,0 +1,7 @@
+rule: STATUS-3 - estimated/confirmed need a value
+layer: schema
+expect_keyword: required
+expect_path: /chapters/life/spending/amount
+expect_validator_value: ["value"]
+plain_message_en_draft: Enter an amount, or choose "I'm not sure".
+explanation: An estimated quantity must carry its value.

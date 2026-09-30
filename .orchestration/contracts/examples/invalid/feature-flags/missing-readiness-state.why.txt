@@ -1,0 +1,5 @@
+rule: FF-STATE-1 all five states are required on every capability
+expect_path: capabilities/event_lifecycle
+expect_keyword: required
+
+live_verified omitted: absence would be read as 'not needed'.

@@ -1,0 +1,23 @@
+{
+  "schema_version": "1.0",
+  "job_id": "job_vvxq5xjkq70wgrae3evmm1be96",
+  "purpose_key": "pk1:con_xsekt13hxv12z5bp4rm4s2f0hw:26004810-6b9b-4fa7-833c-26e07740c54f:e09:hddbcc6231536b930",
+  "contact_id": "con_xsekt13hxv12z5bp4rm4s2f0hw",
+  "trigger_event_id": "26004810-6b9b-4fa7-833c-26e07740c54f",
+  "template_id": "e09",
+  "template_version": "hddbcc6231536b930",
+  "locale": "fr",
+  "channel": "email",
+  "provider": "brevo",
+  "message_class": "promotional",
+  "priority": 8,
+  "status": "pending",
+  "due_at": "2026-10-10T01:00:00Z",
+  "expires_at": "2026-10-24T01:00:00Z",
+  "attempt_count": 0,
+  "max_attempts": 5,
+  "created_at": "2026-10-02T13:59:00Z",
+  "updated_at": "2026-10-02T14:00:00Z",
+  "resource_ref": "wev_rrrt8jn3qqp17g4yaqcs747g6t",
+  "consent_reference": "cev_0rv6kbtcg8zyd6m76tv1pmxp7d"
+}

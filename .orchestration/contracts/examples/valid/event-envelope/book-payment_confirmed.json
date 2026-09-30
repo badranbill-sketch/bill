@@ -1,0 +1,11 @@
+{
+  "schema_version": "1.0",
+  "event_id": "303d2605-c848-4df9-af22-72bcf355fb27",
+  "type": "book.payment_confirmed",
+  "occurred_at": "2026-10-03T14:45:00Z",
+  "subject_id": "con_xsekt13hxv12z5bp4rm4s2f0hw",
+  "locale": "fr",
+  "source": "provider.stripe_webhook",
+  "resource_id": "ord_zbq3s5z2an35p4e0d2navtnftv",
+  "idempotency_key": "ik1_b273f1f0ce7eee4fc238a880c1f5381b9e482a68c576a72c28c976e707aa770c"
+}

@@ -1,0 +1,27 @@
+$ /tmp/claude-0/-home-user/bb8d4187-6ae8-587b-a816-8153faeea853/scratchpad/venv-f02/bin/python .orchestration/evidence/F02/a6-design-attempt2/adversarial_offers2.py
+fixture price as recorded: {"model": "paid", "status": "recorded", "value": {"amount_minor": 1, "currency": "XXX"}, "approvals": [{"gate": "G0", "record_id": "gr-05"}]}
+O2-1   rejected expect=rejected as-expected  second 30-minute consultation via count 2 (book includes ONE consultation)
+       1 was expected
+O2-2   rejected expect=rejected as-expected  duration 30 kept but a sibling extra_minutes 30 added (60 total by stealth)
+       Additional properties are not allowed ('extra_minutes' was unexpected)
+O2-3   rejected expect=rejected as-expected  third meeting type book-consultation-60 added to meeting_types
+       Additional properties are not allowed ('book-consultation-60' was unexpected)
+O2-4   accepted expect=accepted as-expected  duration_minutes written as 30.0 (numeric equality, not an invented value)
+       
+O2-5   rejected expect=rejected as-expected  recorded price amount_minor 0 (a free book presented as recorded)
+       {'amount_minor': 0, 'currency': 'XXX'} is not valid under any of the given schemas
+O2-6   rejected expect=rejected as-expected  recorded price as float 49.95 in major units
+       {'amount_minor': 49.95, 'currency': 'XXX'} is not valid under any of the given schemas
+O2-7   rejected expect=rejected as-expected  fixture document citing a real decisions.md row (fixture values passing as real)
+       '.orchestration/decisions.md#D-032' does not match '^fixture:[a-z0-9][a-z0-9-]{2,80}$'
+O2-8   rejected expect=rejected as-expected  authoritative document with price pending but a price hint in an added note field
+       Additional properties are not allowed ('note' was unexpected)
+O2-9   rejected expect=rejected as-expected  consultation validity expressed in minutes (60) instead of days or months
+       {'unit': 'minutes', 'count': 60} is not valid under any of the given schemas
+O2-10  rejected expect=rejected as-expected  intro-15 question_limit raised to 3
+       1 was expected
+O2-11  rejected expect=rejected as-expected  continued-work given a price model paid with a value
+       {'model': 'not_stated_in_matrix'} was expected
+O2-12  rejected expect=rejected as-expected  online_service recorded as "Zoom Workplace" in the fixture
+       'Zoom Workplace' is not valid under any of the given schemas
+exit=0

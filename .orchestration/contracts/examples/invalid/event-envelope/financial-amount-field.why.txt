@@ -1,0 +1,5 @@
+rule: EV-SHAPE-1 closed envelope: additionalProperties false; no financial field can be added
+expect_path: /
+expect_keyword: additionalProperties
+
+A workshop figure (fictional canary 4817) attached to an event. Financial inputs never leave the browser (PB-FIN-1).

@@ -1,0 +1,3 @@
+input: src-2 start age unknown, end age 62 (e_j = 2 = t_R); schema valid = true ; XF-04..06 errors = []
+reading 1 ("no" first, t >= e_j decides)   {"state":"complete","clip":"W07","reason":"funding_gap","flags":[],"t2":{"status":"computed","gap":1800000,"src2":0}}
+reading 2 ("unknown" first)                {"state":"incomplete_unknown_income","clip":"W06","reason":"missing_income","flags":["incomplete_income"],"t2":{"status":"not_computable","gap":null,"src2":null}}

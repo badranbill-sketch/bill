@@ -1,0 +1,23 @@
+
+U1 today-dollar pension, q=0, i=2%, starts in 10 years  (valid input: true; fault: today_dollars_uses_q)
+  t | contract P / gap_cents        | faulty P / gap_cents
+  10 | 2925587 / 4388380            | 2400000 / 4913967
+  11 | 2925587 / 4534659            | 2400000 / 5060246
+  12 | 2925587 / 4683864            | 2400000 / 5209451
+  clip contract W07 vs faulty W07
+
+U2 joint rental from age 65, partner 5 years younger  (valid input: true; fault: joint_uses_partner)
+  t | contract P / gap_cents        | faulty P / gap_cents
+  2 | 0 / 4800000                   | 0 / 4800000
+  3 | 0 / 4800000                   | 0 / 4800000
+  4 | 0 / 4800000                   | 0 / 4800000
+  5 | 1200000 / 3600000             | 0 / 4800000
+  6 | 1200000 / 3600000             | 0 / 4800000
+  7 | 1200000 / 3600000             | 0 / 4800000
+  clip contract W09 vs faulty W09
+{
+ "compared": 2,
+ "identical": 2,
+ "different": 0,
+ "kinds": {}
+}

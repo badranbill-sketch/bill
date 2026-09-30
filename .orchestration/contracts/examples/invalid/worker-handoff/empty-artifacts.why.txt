@@ -1,0 +1,4 @@
+rule: WH-ART-1
+breaks: A handoff lists at least one artifact with its hash.
+expect_keyword: minItems
+expect_path: /artifacts

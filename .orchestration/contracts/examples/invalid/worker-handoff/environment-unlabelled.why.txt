@@ -1,0 +1,4 @@
+rule: WH-ENV-1
+breaks: environment starts with local, ci, staging, provider-sandbox or production so fixture, sandbox and live evidence stay distinct.
+expect_keyword: pattern
+expect_path: /tests/0/environment

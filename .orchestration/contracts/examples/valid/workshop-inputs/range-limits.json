@@ -1,0 +1,107 @@
+{
+ "contract": "workshop-inputs",
+ "contract_version": "1.0",
+ "currency": "CAD",
+ "base_year": 2026,
+ "chapters": {
+  "life": {
+   "spending": {
+    "amount": {
+     "status": "estimated",
+     "value": 10000000
+    },
+    "period": "monthly",
+    "tax_basis": "after_tax",
+    "price_basis": "today_dollars",
+    "unit": "household"
+   },
+   "lifestyle_focus": "travel"
+  },
+  "income": {
+   "coverage": "all_known_sources_listed",
+   "sources": [
+    {
+     "id": "src-1",
+     "kind": "workplace_pension",
+     "owner": "self",
+     "amount": {
+      "status": "estimated",
+      "value": 60000000
+     },
+     "period": "annual",
+     "tax_basis": "net",
+     "price_basis": "start_year_dollars",
+     "start": {
+      "reference": "age",
+      "point": {
+       "status": "estimated",
+       "value": 62
+      }
+     },
+     "escalation_bp": {
+      "status": "confirmed",
+      "value": 150
+     },
+     "dependability": "scheduled"
+    },
+    {
+     "id": "src-2",
+     "kind": "qpp_cpp",
+     "owner": "self",
+     "amount": {
+      "status": "estimated",
+      "value": 95000
+     },
+     "period": "monthly",
+     "tax_basis": "net",
+     "price_basis": "today_dollars",
+     "start": {
+      "reference": "year_index",
+      "point": {
+       "status": "estimated",
+       "value": 81
+      }
+     },
+     "escalation_bp": {
+      "status": "estimated",
+      "value": 1000
+     },
+     "dependability": "scheduled",
+     "end": {
+      "reference": "age",
+      "point": {
+       "status": "estimated",
+       "value": 100
+      }
+     }
+    }
+   ]
+  },
+  "savings": {
+   "accounts": {
+    "other": {
+     "status": "estimated",
+     "value": 5000000000
+    }
+   }
+  },
+  "timing": {
+   "current_age": {
+    "status": "confirmed",
+    "value": 18
+   },
+   "retirement_age": {
+    "status": "estimated",
+    "value": 90
+   },
+   "planning_horizon_years": {
+    "status": "estimated",
+    "value": 31
+   },
+   "inflation_bp": {
+    "status": "estimated",
+    "value": 1000
+   }
+  }
+ }
+}

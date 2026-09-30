@@ -1,0 +1,5 @@
+rule: EV-VER-1 schema_version is exactly 1.0; consumers reject other versions
+expect_path: schema_version
+expect_keyword: const
+
+Unknown contract version.

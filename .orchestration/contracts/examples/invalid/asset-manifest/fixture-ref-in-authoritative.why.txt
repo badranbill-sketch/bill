@@ -1,0 +1,4 @@
+rule: AM-KIND-1
+breaks: An authoritative manifest cites only real approval ledgers or packets, never 'fixture:'.
+expect_keyword: pattern
+expect_path: /assets/0/approval/record_ref

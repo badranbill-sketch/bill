@@ -1,0 +1,5 @@
+rule: EV-ID-1 subject_id is an internal random ID (con_/cnt_/job_ + 26 Crockford base32)
+expect_path: subject_id
+expect_keyword: pattern
+
+A (fictional) email used as the subject. Recipients live only in contacts.

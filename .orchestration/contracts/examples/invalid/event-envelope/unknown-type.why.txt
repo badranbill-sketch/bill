@@ -1,0 +1,5 @@
+rule: EV-TYPE-1 type is one of the 20 types of 04 §3
+expect_path: type
+expect_keyword: enum
+
+An invented type. Unknown types are rejected, not stored.

@@ -1,0 +1,5 @@
+rule: JS-LEASE-1 a leased job holds a lease (worker, token, leased_at, leased_until)
+expect_path: /
+expect_keyword: required
+
+A job marked leased with no bounded lease cannot be recovered safely.

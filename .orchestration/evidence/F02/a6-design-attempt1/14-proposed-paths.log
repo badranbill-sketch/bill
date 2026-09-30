@@ -1,0 +1,22 @@
+$ python3 .orchestration/evidence/F02/a6-design-attempt1/paths.py   (every backticked repo path in contracts/*.md vs git ls-tree of main, codex, homepage)
+MISSING-ON-ALL  content/asset-approvals.json  occurrences=6  lines-without-'proposed'=[('approval-scopes.md', 126)]
+MISSING-ON-ALL  scripts/verify-assets.ts  occurrences=2  lines-without-'proposed'=[('approval-scopes.md', 113)]
+MISSING-ON-ALL  content/marketing/asset-manifest.json  occurrences=1  lines-without-'proposed'=[]
+MISSING-ON-ALL  docs/marketing/media-manifest-first-release.json  occurrences=1  lines-without-'proposed'=[]
+MISSING-ON-ALL  docs/marketing/media-manifest-quarter.json  occurrences=1  lines-without-'proposed'=[]
+MISSING-ON-ALL  lib/marketing  occurrences=1  lines-without-'proposed'=[]
+MISSING-ON-ALL  app/api/marketing  occurrences=2  lines-without-'proposed'=[]
+MISSING-ON-ALL  app/api/internal/automation  occurrences=2  lines-without-'proposed'=[]
+MISSING-ON-ALL  infra/deployment  occurrences=1  lines-without-'proposed'=[]
+MISSING-ON-ALL  supabase/migrations  occurrences=1  lines-without-'proposed'=[]
+MISSING-ON-ALL  tests/security  occurrences=1  lines-without-'proposed'=[]
+MISSING-ON-ALL  app/operations  occurrences=1  lines-without-'proposed'=[]
+MISSING-ON-ALL  public/guides  occurrences=1  lines-without-'proposed'=[]
+MISSING-ON-ALL  lib/workshop/model  occurrences=1  lines-without-'proposed'=[]
+MISSING-ON-ALL  tests/workshop/math  occurrences=1  lines-without-'proposed'=[]
+MISSING-ON-ALL  lib/workshop/state  occurrences=1  lines-without-'proposed'=[]
+MISSING-ON-ALL  components/workshop  occurrences=1  lines-without-'proposed'=[]
+MISSING-ON-ALL  lib/workshop/clips  occurrences=1  lines-without-'proposed'=[]
+MISSING-ON-ALL  components/workshop/media  occurrences=1  lines-without-'proposed'=[]
+checked 54 distinct paths
+exit=0

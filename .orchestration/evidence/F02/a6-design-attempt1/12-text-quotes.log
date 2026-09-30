@@ -1,0 +1,54 @@
+## F-A (flags waiver vs runtime rule)
+$ grep -n "FF-INV-1\|Runtime rule for downstream\|FF-ENV-1" feature-flags.md
+82:| FF-INV-1 | A capability is `enabled` only if it is `code_ready`, `approved` and (if it uses a provider) `provider_tested`. In production, all of its controlling flags must also be true. Outside production, `public_launch` and `checkout_live` are waived (staging runs behind review protection and an allowlist, with Stripe in test mode); its other controlling flags must still be true. |
+85:| FF-ENV-1 | Outside production, `public_launch`, `checkout_live`, `paid_ads` and `third_party_tracking` are false. |
+89:Runtime rule for downstream code (P00, P02, N02): a capability acts only when its `enabled` state is true **and** all of its controlling flags are true in the running configuration. Outside production, every send also requires an allowlisted recipient (PB-ENV-2), whatever the flags say.
+$ grep -n "^2\. The owning capability" job-state-machine.md
+78:2. The owning capability is enabled and its controlling flags are on (feature-flags.json), otherwise T7 with `capability_disabled`.
+$ grep -n "PSC-3" email-eligibility.json
+91:    "PSC-3: the capability that owns the template is enabled and its controlling flags are on (feature-flags.json); otherwise release with defer_reason capability_disabled",
+$ staging example: environment + public_launch value + guide_request_delivery.enabled
+staging public_launch= False guide_request_delivery.enabled= True controlling_flags= ['public_launch']
+
+## F-B (media side channel: privacy-boundary weaker than clip rules)
+$ grep -n "PB-FIN-5\|PB-MEDIA-1\|PB-MEDIA-3\|^| WK04 |" privacy-boundary.md
+63:| PB-FIN-5 | While a visitor fills in, edits, resets and prints the workshop, the page makes **zero** requests except static assets (`/_next/static/`, `/assets/`, approved media). The codex checklist test is the precedent: it records every non-static request and expects an empty list, and expects `localStorage.length` and `sessionStorage.length` to be 0 (`tests/browser/site.spec.ts`, codex `66c
+76:| PB-MEDIA-1 | Clip file names and URLs are opaque (content hash or neutral ID). They never carry branch meaning such as `funding-gap`, `missing-income` or a `w07`-style ID that maps publicly to a branch. | WK04, WK06 |
+78:| PB-MEDIA-3 | No third-party player analytics. If the chosen origin logs requests, its log retention is set at G5 and it holds no identity. Preloading all branch posters or clips is an allowed mitigation. | WK04 |
+170:| WK04 | W04 (with N03 and L00) | PB-FIN-1 to 10, PB-MEDIA-1 to 3, PB-ID-4, PB-URL-1, PB-SCAN-1 to 3 and the canary procedure |
+$ grep -n "must therefore adopt\|(c) Use a first-party\|request pattern is identical" workshop-clip-rules.md
+160:**The branch leaks through media requests.** If only the selected clip's file is requested, the media origin's access log learns which branch was chosen (for example, that someone has a funding gap). W03/W04 must therefore adopt one of these mitigations, and A0/A3 record which one in D-026 (the media origin is not selected yet):
+164:- (c) Use a first-party origin whose logs are proven not to retain request paths.
+166:The sibling `privacy-boundary.md` sets the matching rules. PB-MEDIA-1 requires clip file names and URLs to be opaque, never `w07`-style or branch words, so the clip IDs in this document are internal identifiers only and never appear in a URL. PB-MEDIA-2 forbids a query string, cookie or identifier on media requests. PB-MEDIA-3 names preloading as an allowed mitigation. WK04 must show, from a n
+
+## F-C (resource_id encoding claims)
+$ grep -n "PB-ID-3\|PB-FIN-7" privacy-boundary.md
+65:| PB-FIN-7 | The only workshop-related events that reach the server are `workshop.access_requested` and `workshop.completed`, with exactly the event-envelope 1.0 fields. `workshop.completed` requires consent and carries no answers, gap, clip or diagnosis (schema-enforced; examples `invalid/event-envelope/workshop-completed-*`). | WK04 |
+86:| PB-ID-3 | Registry codes (guide, workshop and content keys) use letters and hyphens only, with no digits, so an age or amount cannot be encoded in a resource code. | schema; invalid example `age-in-resource-id` |
+$ grep -n "CX-13" README.md; grep -n "resource registry" event-envelope.md
+120:| CX-13 | Registry keys (guide, workshop, article and similar) contain no digits, in asset IDs and in envelope resource codes, so an age or amount cannot be encoded | 1, 10 |
+68:- Every registry key must also exist in the proposed resource registry that P02 validates against (the schema checks form, not membership).
+
+## F-D (approval-scopes key-order claim)
+$ grep -n "Key order follows the file" approval-scopes.md
+53:- Key order follows the file (JSON.parse keeps insertion order). Reordering frontmatter keys therefore changes the hash: a harmless reorder invalidates an approval. That fails closed.
+
+## F-E (reschedule)
+$ grep -n "meeting.cancelled" event-envelope.md | head -2; grep -n "rescheduled" operational-data-model.md; grep -n "AM-BOOK-2" authority-matrix.md
+50:| `meeting.cancelled` | con | `bkg_…` | provider.booking_sync, operator.reconciliation | forbidden | bookings (cancelled) | E16; suppresses E15 |
+124:  status              text not null,                      -- 'confirmed' | 'cancelled' | 'rescheduled' | 'held' | 'no_show_recorded'
+39:- **AM-BOOK-2.** Cancellation and rescheduling are distinct states. A cancellation or no-show never restarts acquisition messages automatically (01 §11, N07).
+
+## F-F (expired semantics vs T13)
+21:| `expired` | `expires_at` passed before a provider call started | yes |
+43:| T13 | leased → expired | a recoverable failure whose next retry would fall at or after `expires_at` | `op_record_send_result` |
+
+## F-G (consent_events evidence reference)
+40:create table consent_events (                             -- RC-CONSENT; append-only
+250:| `op_record_withdrawal(contact_id, purpose, source, evidence)` | Appends a revoked consent row and suppresses pending and leased promotional jobs in the same transaction. |
+
+## F-H (pagination fail-closed claim)
+70:3. The **latest** review by a configured content reviewer is `APPROVED`, at the PR head commit, with the exact `humanReview` URL. The same holds for a configured firm reviewer and `firmApproval` when required. Reviews are read with `per_page=100` and no pagination. A review beyond the first 100 i
+
+## F-I (proxy table 503 wording)
+59:| Before launch (`launchApproved()` false, no `localReview`) | 404 if review is off, otherwise Basic Auth | **Basic Auth** (503 without credentials), noindex | public |

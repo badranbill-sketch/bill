@@ -1,0 +1,5 @@
+rule: FF-APPR-2 an approval names the exact asset/config hashes it covers
+expect_path: capabilities/guide_request_delivery/approved/scope_hashes
+expect_keyword: minItems
+
+An approval not bound to any version.

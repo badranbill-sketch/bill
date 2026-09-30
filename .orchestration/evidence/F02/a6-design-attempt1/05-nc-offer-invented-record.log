@@ -1,0 +1,8 @@
+$ (A6 NC-A6-1) inject O-7 (recorded price citing non-existent decisions.md#D-099) into a scratch copy of the authoritative offer matrix; validate.py --contracts-dir <copy>
+PASS  invalid examples/invalid/worker-handoff/exit-code-string.json [WH-TEST-1]: fails anyOf at /tests/0/exit_code
+FAIL  CX-16 authoritative instances cite only real records; fixtures only fixture: refs :: ['examples/valid/offer-matrix/authoritative-2026-09-30.json cites missing .orchestration/decisions.md#D-099']
+FAIL  CX-29 .orchestration/evidence/F02/offers/validation.log: 139 recorded hashes match current files :: ['.orchestration/contracts/examples/valid/offer-matrix/authoritative-2026-09-30.json']
+## Summary
+pass: 310  fail: 2  known: 17  info: 2
+exit_code=1
+exit=1

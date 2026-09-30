@@ -1,0 +1,52 @@
+# README index completeness (A6 attempt 3)
+## top-level files vs README s2
+indexed   README.md
+indexed   approval-scopes.md
+indexed   asset-manifest.md
+indexed   asset-manifest.schema.json
+indexed   authority-matrix.md
+indexed   data-flow-register.json
+indexed   delivery-job.schema.json
+indexed   email-eligibility.json
+indexed   event-envelope.md
+indexed   event-envelope.schema.json
+indexed   feature-flags.json
+indexed   feature-flags.md
+indexed   job-state-machine.md
+indexed   offer-matrix.json
+indexed   offer-matrix.md
+indexed   operational-data-model.md
+indexed   privacy-boundary.md
+indexed   routes.md
+indexed   validate.py
+indexed   worker-handoff.schema.json
+indexed   workshop-clip-rules.md
+indexed   workshop-inputs.md
+indexed   workshop-inputs.schema.json
+indexed   workshop-math.md
+## example and fixture directories vs README s2
+indexed   examples/valid/asset-manifest (2 files)
+indexed   examples/valid/delivery-job (12 files)
+indexed   examples/valid/event-envelope (26 files)
+indexed   examples/valid/feature-flags (5 files)
+indexed   examples/valid/offer-matrix (3 files)
+indexed   examples/valid/worker-handoff (2 files)
+indexed   examples/valid/workshop-inputs (5 files)
+indexed   examples/invalid/asset-manifest (44 files)
+indexed   examples/invalid/delivery-job (38 files)
+indexed   examples/invalid/event-envelope (48 files)
+indexed   examples/invalid/feature-flags (28 files)
+indexed   examples/invalid/offer-matrix (44 files)
+indexed   examples/invalid/worker-handoff (34 files)
+indexed   examples/invalid/workshop-inputs (54 files)
+indexed   fixtures/workshop (38 files)
+## stated counts in md headers vs files
+event-envelope: valid=26 invalid=24 why=24
+delivery-job: valid=12 invalid=19 why=19
+feature-flags: valid=5 invalid=14 why=14
+offer-matrix: valid=3 invalid=22 why=22
+asset-manifest: valid=2 invalid=22 why=22
+worker-handoff: valid=2 invalid=17 why=17
+workshop-inputs: valid=5 invalid=27 why=27
+fixtures/workshop: WM=36 other=clip-rules.json index.json 
+## any file outside the index layout

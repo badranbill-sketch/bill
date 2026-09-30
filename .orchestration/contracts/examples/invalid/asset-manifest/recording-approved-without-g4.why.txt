@@ -1,0 +1,4 @@
+rule: AM-APPR-4
+breaks: An approved Bill recording needs G4 (recording approval and rights) in its approval.
+expect_keyword: contains
+expect_path: /assets/8/approval/gates

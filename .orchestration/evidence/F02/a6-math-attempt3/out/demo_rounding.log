@@ -1,0 +1,2 @@
+Demo A t=1: per-source {"src-1":1010050,"src-2":1010050}; income_net_cents conformant 2020101 vs rounded-rows fault 2020100
+Demo B t=2: exact gap 1060374.030225; gap_today_dollars_cents conformant 1029265 vs deflate-rounded fault 1029264

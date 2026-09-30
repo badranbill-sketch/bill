@@ -1,0 +1,5 @@
+rule: EV-SRC-1 source is a closed enum; a return page is not a source of payment truth
+expect_path: source
+expect_keyword: enum
+
+A Stripe success-page redirect presented as a source (AM-PAY-1).

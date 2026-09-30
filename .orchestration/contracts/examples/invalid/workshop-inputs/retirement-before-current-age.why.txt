@@ -1,0 +1,7 @@
+rule: XF-01 - retirement age not earlier than current age
+layer: schema
+expect_keyword: minimum
+expect_path: /chapters/timing/retirement_age/value
+expect_validator_value: 58
+plain_message_en_draft: Retirement age can't be earlier than your current age. If you've already retired, use your current age.
+explanation: Current age 58, retirement age 55. Enumerated XF-01 clause for current_age = 58 sets minimum 58.

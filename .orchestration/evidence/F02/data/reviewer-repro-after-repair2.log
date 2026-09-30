@@ -1,0 +1,34 @@
+# Data lane re-run of the design reviewer's own scripts (read-only) after repair attempt 2
+$ cd /home/user/bill && /tmp/claude-0/-home-user/bb8d4187-6ae8-587b-a816-8153faeea853/scratchpad/venv-f02/bin/python .orchestration/evidence/F02/a6-design-attempt1/adversarial_envelope.py
+REJECTED  ADV-1a email with @ in idempotency_key, correct length  <- pattern: 'ik1_jane@example.com000000000000000000000000000000000000000000000000' does not match '^ik
+REJECTED  ADV-1b uppercase-hex key (dedupe split)  <- pattern: 'ik1_AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA' does not match '^ik
+REJECTED  ADV-2a amount as extra field nested under allowed name? (resource_id object)  <- anyOf: {'amount': 850000} is not valid under any of the given schemas
+REJECTED  ADV-2b currency amount in resource version  <- anyOf: 'guide.before-you-retire.v850000' is not valid under any of the given schemas
+REJECTED  ADV-2c amount with $ in subject_id  <- anyOf: 'con_$850000aaaaaaaaaaaaaaaaaaa' is not valid under any of the given schemas
+REJECTED  ADV-3a workshop.completed with numeric-digit key  <- anyOf: 'workshop.gap-850000.v1' is not valid under any of the given schemas
+REJECTED  ADV-3b consent_reference that is an email  <- pattern: 'cev_jane@example.com' does not match '^cev_[0-9a-hjkmnp-tv-z]{26}$'
+REJECTED  ADV-3c locale carrying data  <- enum: 'fr-CA-850k' is not one of ['fr', 'en']
+ACCEPTED  ADV-4a hex-encoded email as idempotency_key
+ACCEPTED  ADV-4b decimal amount digits inside idempotency_key
+REJECTED  ADV-5a amount spelled in letters in workshop key (workshop.completed)  <- anyOf: 'workshop.eight-hundred-fifty-thousand.v1' is not valid under any of the given schemas
+REJECTED  ADV-5b diagnosis in workshop key (workshop.completed)  <- anyOf: 'workshop.shortfall-large-warning.v1' is not valid under any of the given schemas
+REJECTED  ADV-5c retirement age in version slot  <- pattern: 'guide.before-you-retire.v65' does not match '^guide\\.(?:retirement-guide)\\.h[0-9a-f]{12
+REJECTED  ADV-5d person name as guide key  <- pattern: 'guide.jean-tremblay.v1' does not match '^guide\\.(?:retirement-guide)\\.h[0-9a-f]{12,64}$
+ACCEPTED  ADV-6 amount digits inside subject_id (Crockford allows digits)
+exit=0
+$ cd /home/user/bill && /tmp/claude-0/-home-user/bb8d4187-6ae8-587b-a816-8153faeea853/scratchpad/venv-f02/bin/python .orchestration/evidence/F02/a6-design-attempt1/known_p2_repro.py
+# XL-01: content.approved for asset kinds that asset-manifest 1.0 defines
+  ACCEPTED  content.approved resource_id=ink.a01.h1f10e4f87273
+  ACCEPTED  content.approved resource_id=companion.s01.v1
+  ACCEPTED  content.approved resource_id=book.printed-guide.v1
+  ACCEPTED  content.approved resource_id=event.crossroads-kit.v1
+  ACCEPTED  content.approved resource_id=copy.price-disclosure.v1
+  ACCEPTED  content.approved resource_id=article.five-years-before-retirement.v1
+  asset-manifest asset_id schema: {"type": "string", "pattern": "^(?:capsule\\.s(?:0[1-9]|1[0-8])|companion\\.s(?:0[1-9]|1[0-8])|clip\\.w(?:0[0-9]|1[01])|case\\.c(?:0[1-9]|10)|ink\\.a0[1-8]|template\\.e(?:0[1-9]|1[0-6])|ad\\.(?:ad0[1-6]|rt0[1-3])|(?:article|page|guide|book|event|copy)\\.[a-z]+(?:-[a-z]+){0,7})$", "description": "Pla
+# XL-11(c): a promotional E09 job is schema-valid, and its owning capability (event_lifecycle) is controlled only by public_launch
+  promotional e09 job: ACCEPTED (schema)
+  event_lifecycle.controlling_flags = ['public_launch']
+  PSC-3 = PSC-3: the runtime gate is open (feature-flags.md FF-RUN-1 and FF-RUN-2; data in runtime_gate below): the capability that owns the template is enabled; each of its controlling flags is true, except that outside production public_launch and checkout_live are replaced by the environment substitute (not production, reviewer-only access, the recipient allowlisted as PSC-5 checks, Stripe in test mode); and every promotional job, whatever capability owns it and in every environment, also needs marketing_dispatch true. Otherwise release with defer_reason capability_disabled
+  => with public_launch=true and marketing_dispatch=false (the kill switch), PSC-3 passes for a promotional E09; only prose (feature-flags.md §4, E09 notes) says otherwise.
+exit=0
+# Note (data lane): the '=>' line above is fixed text printed by the reviewer's script, not a computed result. The PSC-3 it prints now carries FF-RUN-2 (every promotional job needs marketing_dispatch). validation.log §7b (R5, R7a, R7b, NC-A) evaluates that rule. ADV-4a, ADV-4b and ADV-6 stay accepted: the reviewer judged opaque hex and ID slots acceptable. A hex-encoded value in a resource version is now refused by registry membership (PB-ID-5; validation.log §7c).

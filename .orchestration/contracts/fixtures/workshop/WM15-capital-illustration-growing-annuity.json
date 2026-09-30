@@ -1,0 +1,565 @@
+{
+ "fixture_id": "WM15",
+ "title": "Capital illustration, r > 0, growing gap (feature OFF)",
+ "contract_version": "1.0",
+ "covers": [
+  "WK02"
+ ],
+ "purpose": "Growing annuity closed form: C_R = a(1+i)^t_R [1 - ((1+i)/(1+r))^H] / (r - i).",
+ "input": {
+  "contract": "workshop-inputs",
+  "contract_version": "1.0",
+  "currency": "CAD",
+  "base_year": 2026,
+  "chapters": {
+   "life": {
+    "spending": {
+     "amount": {
+      "status": "estimated",
+      "value": 5000000
+     },
+     "period": "annual",
+     "tax_basis": "after_tax",
+     "price_basis": "today_dollars",
+     "unit": "household"
+    }
+   },
+   "income": {
+    "coverage": "no_planned_income",
+    "sources": []
+   },
+   "savings": {},
+   "timing": {
+    "current_age": {
+     "status": "estimated",
+     "value": 60
+    },
+    "retirement_age": {
+     "status": "estimated",
+     "value": 60
+    },
+    "planning_horizon_years": {
+     "status": "estimated",
+     "value": 20
+    },
+    "inflation_bp": {
+     "status": "estimated",
+     "value": 200
+    },
+    "capital_illustration_return_bp": {
+     "status": "estimated",
+     "value": 400
+    }
+   }
+  }
+ },
+ "expected": {
+  "contract_version": "1.0",
+  "assumptions_echo": {
+   "base_year": 2026,
+   "inflation_bp": 200,
+   "planning_horizon_years": 20,
+   "capital_illustration_return_bp": 400,
+   "year_index": "t=0 is calendar year base_year; annual totals per calendar year",
+   "rounding": "exact rational arithmetic; half-even to whole cents at display only"
+  },
+  "window": {
+   "t_R": 0,
+   "first_t": 0,
+   "last_t": 19,
+   "first_calendar_year": 2026,
+   "last_calendar_year": 2045,
+   "first_age": 60,
+   "last_age": 79
+  },
+  "completeness": {
+   "state": "complete",
+   "reasons": []
+  },
+  "years": [
+   {
+    "t": 0,
+    "calendar_year": 2026,
+    "age": 60,
+    "spending_cents": 5000000,
+    "income_by_source_cents": {},
+    "income_net_cents": 0,
+    "income_gross_cents": 0,
+    "income_unknown_basis_cents": 0,
+    "status": "computed",
+    "reasons": [],
+    "gap_cents": 5000000,
+    "surplus_cents": 0,
+    "gap_today_dollars_cents": 5000000,
+    "surplus_today_dollars_cents": 0,
+    "exact": {
+     "spending": "5000000",
+     "income_compared": "0",
+     "gap": "5000000",
+     "surplus": "0"
+    }
+   },
+   {
+    "t": 1,
+    "calendar_year": 2027,
+    "age": 61,
+    "spending_cents": 5100000,
+    "income_by_source_cents": {},
+    "income_net_cents": 0,
+    "income_gross_cents": 0,
+    "income_unknown_basis_cents": 0,
+    "status": "computed",
+    "reasons": [],
+    "gap_cents": 5100000,
+    "surplus_cents": 0,
+    "gap_today_dollars_cents": 5000000,
+    "surplus_today_dollars_cents": 0,
+    "exact": {
+     "spending": "5100000",
+     "income_compared": "0",
+     "gap": "5100000",
+     "surplus": "0"
+    }
+   },
+   {
+    "t": 2,
+    "calendar_year": 2028,
+    "age": 62,
+    "spending_cents": 5202000,
+    "income_by_source_cents": {},
+    "income_net_cents": 0,
+    "income_gross_cents": 0,
+    "income_unknown_basis_cents": 0,
+    "status": "computed",
+    "reasons": [],
+    "gap_cents": 5202000,
+    "surplus_cents": 0,
+    "gap_today_dollars_cents": 5000000,
+    "surplus_today_dollars_cents": 0,
+    "exact": {
+     "spending": "5202000",
+     "income_compared": "0",
+     "gap": "5202000",
+     "surplus": "0"
+    }
+   },
+   {
+    "t": 3,
+    "calendar_year": 2029,
+    "age": 63,
+    "spending_cents": 5306040,
+    "income_by_source_cents": {},
+    "income_net_cents": 0,
+    "income_gross_cents": 0,
+    "income_unknown_basis_cents": 0,
+    "status": "computed",
+    "reasons": [],
+    "gap_cents": 5306040,
+    "surplus_cents": 0,
+    "gap_today_dollars_cents": 5000000,
+    "surplus_today_dollars_cents": 0,
+    "exact": {
+     "spending": "5306040",
+     "income_compared": "0",
+     "gap": "5306040",
+     "surplus": "0"
+    }
+   },
+   {
+    "t": 4,
+    "calendar_year": 2030,
+    "age": 64,
+    "spending_cents": 5412161,
+    "income_by_source_cents": {},
+    "income_net_cents": 0,
+    "income_gross_cents": 0,
+    "income_unknown_basis_cents": 0,
+    "status": "computed",
+    "reasons": [],
+    "gap_cents": 5412161,
+    "surplus_cents": 0,
+    "gap_today_dollars_cents": 5000000,
+    "surplus_today_dollars_cents": 0,
+    "exact": {
+     "spending": "5412160.8",
+     "income_compared": "0",
+     "gap": "5412160.8",
+     "surplus": "0"
+    }
+   },
+   {
+    "t": 5,
+    "calendar_year": 2031,
+    "age": 65,
+    "spending_cents": 5520404,
+    "income_by_source_cents": {},
+    "income_net_cents": 0,
+    "income_gross_cents": 0,
+    "income_unknown_basis_cents": 0,
+    "status": "computed",
+    "reasons": [],
+    "gap_cents": 5520404,
+    "surplus_cents": 0,
+    "gap_today_dollars_cents": 5000000,
+    "surplus_today_dollars_cents": 0,
+    "exact": {
+     "spending": "5520404.016",
+     "income_compared": "0",
+     "gap": "5520404.016",
+     "surplus": "0"
+    }
+   },
+   {
+    "t": 6,
+    "calendar_year": 2032,
+    "age": 66,
+    "spending_cents": 5630812,
+    "income_by_source_cents": {},
+    "income_net_cents": 0,
+    "income_gross_cents": 0,
+    "income_unknown_basis_cents": 0,
+    "status": "computed",
+    "reasons": [],
+    "gap_cents": 5630812,
+    "surplus_cents": 0,
+    "gap_today_dollars_cents": 5000000,
+    "surplus_today_dollars_cents": 0,
+    "exact": {
+     "spending": "5630812.09632",
+     "income_compared": "0",
+     "gap": "5630812.09632",
+     "surplus": "0"
+    }
+   },
+   {
+    "t": 7,
+    "calendar_year": 2033,
+    "age": 67,
+    "spending_cents": 5743428,
+    "income_by_source_cents": {},
+    "income_net_cents": 0,
+    "income_gross_cents": 0,
+    "income_unknown_basis_cents": 0,
+    "status": "computed",
+    "reasons": [],
+    "gap_cents": 5743428,
+    "surplus_cents": 0,
+    "gap_today_dollars_cents": 5000000,
+    "surplus_today_dollars_cents": 0,
+    "exact": {
+     "spending": "5743428.3382464",
+     "income_compared": "0",
+     "gap": "5743428.3382464",
+     "surplus": "0"
+    }
+   },
+   {
+    "t": 8,
+    "calendar_year": 2034,
+    "age": 68,
+    "spending_cents": 5858297,
+    "income_by_source_cents": {},
+    "income_net_cents": 0,
+    "income_gross_cents": 0,
+    "income_unknown_basis_cents": 0,
+    "status": "computed",
+    "reasons": [],
+    "gap_cents": 5858297,
+    "surplus_cents": 0,
+    "gap_today_dollars_cents": 5000000,
+    "surplus_today_dollars_cents": 0,
+    "exact": {
+     "spending": "5858296.905011328",
+     "income_compared": "0",
+     "gap": "5858296.905011328",
+     "surplus": "0"
+    }
+   },
+   {
+    "t": 9,
+    "calendar_year": 2035,
+    "age": 69,
+    "spending_cents": 5975463,
+    "income_by_source_cents": {},
+    "income_net_cents": 0,
+    "income_gross_cents": 0,
+    "income_unknown_basis_cents": 0,
+    "status": "computed",
+    "reasons": [],
+    "gap_cents": 5975463,
+    "surplus_cents": 0,
+    "gap_today_dollars_cents": 5000000,
+    "surplus_today_dollars_cents": 0,
+    "exact": {
+     "spending": "5975462.84311155456",
+     "income_compared": "0",
+     "gap": "5975462.84311155456",
+     "surplus": "0"
+    }
+   },
+   {
+    "t": 10,
+    "calendar_year": 2036,
+    "age": 70,
+    "spending_cents": 6094972,
+    "income_by_source_cents": {},
+    "income_net_cents": 0,
+    "income_gross_cents": 0,
+    "income_unknown_basis_cents": 0,
+    "status": "computed",
+    "reasons": [],
+    "gap_cents": 6094972,
+    "surplus_cents": 0,
+    "gap_today_dollars_cents": 5000000,
+    "surplus_today_dollars_cents": 0,
+    "exact": {
+     "spending": "6094972.0999737856512",
+     "income_compared": "0",
+     "gap": "6094972.0999737856512",
+     "surplus": "0"
+    }
+   },
+   {
+    "t": 11,
+    "calendar_year": 2037,
+    "age": 71,
+    "spending_cents": 6216872,
+    "income_by_source_cents": {},
+    "income_net_cents": 0,
+    "income_gross_cents": 0,
+    "income_unknown_basis_cents": 0,
+    "status": "computed",
+    "reasons": [],
+    "gap_cents": 6216872,
+    "surplus_cents": 0,
+    "gap_today_dollars_cents": 5000000,
+    "surplus_today_dollars_cents": 0,
+    "exact": {
+     "spending": "6216871.541973261364224",
+     "income_compared": "0",
+     "gap": "6216871.541973261364224",
+     "surplus": "0"
+    }
+   },
+   {
+    "t": 12,
+    "calendar_year": 2038,
+    "age": 72,
+    "spending_cents": 6341209,
+    "income_by_source_cents": {},
+    "income_net_cents": 0,
+    "income_gross_cents": 0,
+    "income_unknown_basis_cents": 0,
+    "status": "computed",
+    "reasons": [],
+    "gap_cents": 6341209,
+    "surplus_cents": 0,
+    "gap_today_dollars_cents": 5000000,
+    "surplus_today_dollars_cents": 0,
+    "exact": {
+     "spending": "6341208.97281272659150848",
+     "income_compared": "0",
+     "gap": "6341208.97281272659150848",
+     "surplus": "0"
+    }
+   },
+   {
+    "t": 13,
+    "calendar_year": 2039,
+    "age": 73,
+    "spending_cents": 6468033,
+    "income_by_source_cents": {},
+    "income_net_cents": 0,
+    "income_gross_cents": 0,
+    "income_unknown_basis_cents": 0,
+    "status": "computed",
+    "reasons": [],
+    "gap_cents": 6468033,
+    "surplus_cents": 0,
+    "gap_today_dollars_cents": 5000000,
+    "surplus_today_dollars_cents": 0,
+    "exact": {
+     "spending": "6468033.1522689811233386496",
+     "income_compared": "0",
+     "gap": "6468033.1522689811233386496",
+     "surplus": "0"
+    }
+   },
+   {
+    "t": 14,
+    "calendar_year": 2040,
+    "age": 74,
+    "spending_cents": 6597394,
+    "income_by_source_cents": {},
+    "income_net_cents": 0,
+    "income_gross_cents": 0,
+    "income_unknown_basis_cents": 0,
+    "status": "computed",
+    "reasons": [],
+    "gap_cents": 6597394,
+    "surplus_cents": 0,
+    "gap_today_dollars_cents": 5000000,
+    "surplus_today_dollars_cents": 0,
+    "exact": {
+     "spending": "6597393.815314360745805422592",
+     "income_compared": "0",
+     "gap": "6597393.815314360745805422592",
+     "surplus": "0"
+    }
+   },
+   {
+    "t": 15,
+    "calendar_year": 2041,
+    "age": 75,
+    "spending_cents": 6729342,
+    "income_by_source_cents": {},
+    "income_net_cents": 0,
+    "income_gross_cents": 0,
+    "income_unknown_basis_cents": 0,
+    "status": "computed",
+    "reasons": [],
+    "gap_cents": 6729342,
+    "surplus_cents": 0,
+    "gap_today_dollars_cents": 5000000,
+    "surplus_today_dollars_cents": 0,
+    "exact": {
+     "spending": "6729341.69162064796072153104384",
+     "income_compared": "0",
+     "gap": "6729341.69162064796072153104384",
+     "surplus": "0"
+    }
+   },
+   {
+    "t": 16,
+    "calendar_year": 2042,
+    "age": 76,
+    "spending_cents": 6863929,
+    "income_by_source_cents": {},
+    "income_net_cents": 0,
+    "income_gross_cents": 0,
+    "income_unknown_basis_cents": 0,
+    "status": "computed",
+    "reasons": [],
+    "gap_cents": 6863929,
+    "surplus_cents": 0,
+    "gap_today_dollars_cents": 5000000,
+    "surplus_today_dollars_cents": 0,
+    "exact": {
+     "spending": "6863928.5254530609199359616647168",
+     "income_compared": "0",
+     "gap": "6863928.5254530609199359616647168",
+     "surplus": "0"
+    }
+   },
+   {
+    "t": 17,
+    "calendar_year": 2043,
+    "age": 77,
+    "spending_cents": 7001207,
+    "income_by_source_cents": {},
+    "income_net_cents": 0,
+    "income_gross_cents": 0,
+    "income_unknown_basis_cents": 0,
+    "status": "computed",
+    "reasons": [],
+    "gap_cents": 7001207,
+    "surplus_cents": 0,
+    "gap_today_dollars_cents": 5000000,
+    "surplus_today_dollars_cents": 0,
+    "exact": {
+     "spending": "7001207.095962122138334680898011136",
+     "income_compared": "0",
+     "gap": "7001207.095962122138334680898011136",
+     "surplus": "0"
+    }
+   },
+   {
+    "t": 18,
+    "calendar_year": 2044,
+    "age": 78,
+    "spending_cents": 7141231,
+    "income_by_source_cents": {},
+    "income_net_cents": 0,
+    "income_gross_cents": 0,
+    "income_unknown_basis_cents": 0,
+    "status": "computed",
+    "reasons": [],
+    "gap_cents": 7141231,
+    "surplus_cents": 0,
+    "gap_today_dollars_cents": 5000000,
+    "surplus_today_dollars_cents": 0,
+    "exact": {
+     "spending": "7141231.23788136458110137451597135872",
+     "income_compared": "0",
+     "gap": "7141231.23788136458110137451597135872",
+     "surplus": "0"
+    }
+   },
+   {
+    "t": 19,
+    "calendar_year": 2045,
+    "age": 79,
+    "spending_cents": 7284056,
+    "income_by_source_cents": {},
+    "income_net_cents": 0,
+    "income_gross_cents": 0,
+    "income_unknown_basis_cents": 0,
+    "status": "computed",
+    "reasons": [],
+    "gap_cents": 7284056,
+    "surplus_cents": 0,
+    "gap_today_dollars_cents": 5000000,
+    "surplus_today_dollars_cents": 0,
+    "exact": {
+     "spending": "7284055.8626389918727234020062907858944",
+     "income_compared": "0",
+     "gap": "7284055.8626389918727234020062907858944",
+     "surplus": "0"
+    }
+   }
+  ],
+  "flags": [],
+  "savings_summary": {
+   "accessible_categories_with_positive_value": [],
+   "home_or_business_positive_value": false,
+   "excluded_from_spendable": [],
+   "pension_value_kept_separate": false,
+   "totals_computed": false
+  },
+  "capital_illustration": {
+   "feature_flag": "off",
+   "displayed": false,
+   "state": "disabled_by_flag",
+   "reference_if_enabled": {
+    "r_bp": 400,
+    "computable": true,
+    "not_computable_reasons": [],
+    "display_eligible_if_enabled": true,
+    "ineligible_reasons": [],
+    "C_R_cents": 80458251,
+    "C_R_exact": "13134921846074331710347948006856591796875/163251395749555479775970896904192",
+    "valued_at": {
+     "t": 0,
+     "calendar_year": 2026,
+     "point": "start_of_year"
+    },
+    "flow_timing": "end_of_year"
+   }
+  },
+  "clip": {
+   "predicates": {
+    "C": false,
+    "M": false,
+    "X": false,
+    "H": false,
+    "F": true
+   },
+   "selected": "W07",
+   "selection_reason": "funding_gap"
+  }
+ },
+ "independent_checks": [
+  "growing annuity closed form"
+ ],
+ "tolerance": "exact integer cents after half-even rounding; exact strings must match exactly; no numeric tolerance"
+}

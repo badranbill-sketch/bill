@@ -1,0 +1,50 @@
+## Still-open attempt-1 P3 items (current text)
+-- A6D-08 (reschedule / no-show have no event)
+124:  status              text not null,                      -- 'confirmed' | 'cancelled' | 'rescheduled' | 'held' | 'no_show_recorded'
+50:| `meeting.cancelled` | con | `bkg_…` | provider.booking_sync, operator.reconciliation | forbidden | bookings (cancelled) | E16; suppresses E15 |
+51:| `meeting.held` | con | `bkg_…` | operator.reconciliation | forbidden | bookings (held) | none |
+134:- **EV-ORD-1.** Consumers do not assume arrival order. They compare `occurred_at` and current record state (for example a `meeting.cancelled` older than the booking's latest confirmation is recorded but does not cancel it).
+-- A6D-09
+29:  email_hmac          text not null unique,               -- HMAC-SHA256(email_normalized); keeps suppression after erasure
+213:   - Only exceptions: `contacts.email_normalized`, `contacts.email_hmac`, `contacts.first_name`.
+-- A6D-10
+2:  consent_event_id    text primary key,                   -- cev_ + 26
+9:  event_id            uuid not null unique references integration_events (event_id)
+250:| `op_record_withdrawal(contact_id, purpose, source, evidence)` | Appends a revoked consent row and suppresses pending and leased promotional jobs in the same transaction. |
+-- A6D-11
+22:| `expired` | `expires_at` passed before a provider call started | yes |
+44:| T13 | leased → expired | a recoverable failure whose next retry would fall at or after `expires_at` | `op_record_send_result` |
+47:| T16 | reconcile_required → suppressed / expired | evidence of non-acceptance and the job is no longer eligible or has expired | `op_reconcile_job` |
+-- A6D-14
+72:3. The **latest** review by a configured content reviewer is `APPROVED`, at the PR head commit, with the exact `humanReview` URL. The same holds for a configured firm reviewer and `firmApproval` when required. Reviews are read with `per_page=100` and no pagination. A review beyond the first 100 is not found, so the check fails closed, as `docs/CONTENT-WORKFLOW.md` states.
+-- A6D-15
+59:| Before launch (`launchApproved()` false, no `localReview`) | 404 if review is off, otherwise Basic Auth | **Basic Auth** (503 without credentials), noindex | public |
+
+## New P3 text evidence
+-- stale asset-manifest.md s5 vs event-envelope 1.0
+89:- **Event envelope.** `content.draft_created`, `content.approved` and `content.published` use `resource_id = <asset_id>.<version>`, where the version is `v<n>` or `h<sha>`. The envelope's `resource_content_version` pattern accepts `capsule`, `clip`, `case`, `template`, `ad`, `article`, `page` and `guide`. It **does not yet accept `companion`, `ink`, `book`, `event` or `copy`**, which this manifest needs (05 §2 companions, §5 ink, AD06 book, §4 event kit, §11 copy). That is a cross-lane reconciliation item for A0: widen the envelope pattern in a minor version, or map those kinds to existing ones. It is reported in the validation log §5 and not changed here.
+16:| `asset_id` | Plan inventory ID: `capsule.s01`–`s18`, `companion.s01`–`s18`, `clip.w00`–`w11`, `case.c01`–`c10`, `ink.a01`–`a08`, `template.e01`–`e16`, `ad.ad01`–`ad06`, `ad.rt01`–`rt03`. Otherwise a registry key of letters and hyphens with no digits, one of `article.`, `page.`, `guide.`, `book.`, `event.` or `copy.` (AM-ID-1). The same key form as event-envelope resource codes (event-envelope.md §4.2), so an age or amount cannot be encoded in it. |
+-- E09 creation path
+263:      "timing": {"anchor": "webinar.replay_available_at", "offset": "PT0S", "rule": "When the operator marks the approved replay available. No anchor, no job."},
+243:| `op_accept_event(envelope, change)` | In one transaction: dedupe on `(provider, external_event_id)` and `idempotency_key`, apply the authoritative change, insert `integration_events`, create due jobs. |
+204:`audit_events.action` values: `consent.recorded`, `consent.revoked`, `client_flag.set`, `client_flag.cleared`, `booking.reconciled`, `attendance.recorded`, `order.reconciled`, `fulfilment.updated`, `suppression.applied`, `job.reconciled`, `job.requeued`, `flag.changed`, `release.recorded`, `retention.executed`, `data.exported`, `data.erased`. There is no free-text column: an operator explanati
+-- WF08 draft dedupe
+102:| `editorial.*` | the content sha256 plus the ledger entry (PR number or packet path) |
+75:| WF08 weekly article draft | N08 | emits `content.draft_created` (source `editorial.draft_job`) | none | `editorial_draft_job` (no flag; G2 budget, currently 0 by D-064) | none (Git, not the database) | PB-LLM-1 and 2; data-flow register FL-21; asset manifest 1.0 | CNT05, CNT06, AUTO01 |
+-- PB-FIN-5 vs consented completion POST
+63:| PB-FIN-5 | While a visitor fills in, edits, resets and prints the workshop, the page makes **zero** requests except static assets (`/_next/static/`, `/assets/`) and approved media. Approved media is allowed only as PB-MEDIA-4 permits: branch-clip requests
+167:**WK04 canary procedure (proposed).** Enter fictional, distinctive values, for example monthly spending 4817 (annual
+101:| Consented workshop completion (no figures) | `POST /api/marketing/workshop-completed` | proposed | form; the body carries no answers (PB-FIN-7) | P02, W02 | `site.workshop_completion` |
+-- occurred_at: no server-clock rule for site.* sources
+20:| `occurred_at` | yes | RFC 3339 UTC with `Z` (`2026-10-02T14:00:00Z`) | When the fact happened (the provider's time for provider events). Offsets are rejected; America/Toronto is for display only 
+134:- **EV-ORD-1.** Consumers do not assume arrival order. They compare `occurred_at` and current record state (for example a `meeting.cancelled` older than the booking's latest confirmation is record
+157:| EV-TIME-1 | `occurred_at` is UTC with `Z` | `non-utc-timestamp` |
+65:| PB-FIN-7 | The only workshop-related events that reach the server are `workshop.access_requested` and `workshop.completed`, with exactly the event-envelope 1.0 fields. `workshop.completed` requir
+90:| PB-ID-6 | **Server-set resource codes.** For `site.*` sources the server sets `resource_id` itself, from the registry entry of the guide, workshop or consent wording it served. The kind and key c
+198:- A6D-03: PB-ID-3 now states what the schema really enforces (closed keys and hash-only versions on contact-subject codes). PB-ID-5 (registry membership) and PB-ID-6 (server-set codes) cover what 
+-- §2a rows without an activation gate
+67:| WF00 intake and claim adapter | N00 | Every accepted type enters through `op_accept_event`. Replays hit the `integration_events` uniqueness. | none of its own | none of its own; it serves every c
+77:| WF10 health and operations report | N09 | reads `delivery.failed` as an operator alert | none | none | none (reads aggregates) | PB-LOG-1 to 3; BUD-3 operator alert; data-flow register FL-24 | OP
+78:| WF11 approved retention and reconciliation | N07 (by OPS03; no task names WF11, see §5.3) | none | none | none | `op_erase_contact` (dry run first) | operational-data-model.md §6 retention clas
+79:| SM01 RSS to email | N10 | none | none (every smoke send counts against the Brevo budget) | none | none | `email-eligibility.json` budget counting rule; PB-LLM-2 (feed content is data) | AUTO03 |
+80:| SM02 webhook to Telegram | N10 | none | none | none | none | data-flow register FL-26 (`telegram_smoke`, not yet chosen); PB-N8N-3 | AUTO03, AUTH03 |

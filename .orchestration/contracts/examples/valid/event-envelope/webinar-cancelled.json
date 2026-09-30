@@ -1,0 +1,11 @@
+{
+  "schema_version": "1.0",
+  "event_id": "15b6bd35-9c96-49d6-9c11-a335c6e9772f",
+  "type": "webinar.cancelled",
+  "occurred_at": "2026-10-02T17:20:00Z",
+  "subject_id": "con_xsekt13hxv12z5bp4rm4s2f0hw",
+  "locale": "en",
+  "source": "site.webinar_registration",
+  "resource_id": "wev_rrrt8jn3qqp17g4yaqcs747g6t",
+  "idempotency_key": "ik1_2b0c8d3fe5efa86a367abc388defc3e42b9673f75821ca5d4dae47859224e53d"
+}

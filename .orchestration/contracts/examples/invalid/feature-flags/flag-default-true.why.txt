@@ -1,0 +1,5 @@
+rule: FF-DEF-1 every flag defaults to false
+expect_path: flags/third_party_tracking/default
+expect_keyword: const
+
+Tracking on by default.

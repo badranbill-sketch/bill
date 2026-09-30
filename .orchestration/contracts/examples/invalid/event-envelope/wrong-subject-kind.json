@@ -1,0 +1,11 @@
+{
+  "schema_version": "1.0",
+  "event_id": "8fda023f-4670-43fe-8f44-742b275433f4",
+  "type": "delivery.failed",
+  "occurred_at": "2026-10-04T16:35:00Z",
+  "subject_id": "con_xsekt13hxv12z5bp4rm4s2f0hw",
+  "locale": "fr",
+  "source": "system.dispatcher",
+  "resource_id": "template.e07.h1f10e4f87273",
+  "idempotency_key": "ik1_ca09efad9354b793762642189d1e398b526430f6c449638060a8d03d29825cec"
+}

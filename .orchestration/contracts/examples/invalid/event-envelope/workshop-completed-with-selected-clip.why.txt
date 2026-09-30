@@ -1,0 +1,5 @@
+rule: EV-WS-1 workshop.completed carries no selected financial-warning clip (04 §3); closed envelope
+expect_path: /
+expect_keyword: additionalProperties
+
+The branch clip chosen from the participant's answers would reveal a derived financial profile.

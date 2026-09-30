@@ -1,0 +1,95 @@
+$ git show origin/codex/desktop-iphone-unified:scripts/verify-publication.ts
+import { execFileSync } from "node:child_process";
+import {
+  articles,
+  approvedArticle,
+  approvals,
+  parseArticle,
+} from "../lib/articles";
+const repo = process.env.GITHUB_REPOSITORY;
+const api = (p: string) =>
+  JSON.parse(execFileSync("gh", ["api", p], { encoding: "utf8" }));
+for (const a of articles().filter((a) => a.status === "published")) {
+  if (!approvedArticle(a))
+    throw Error("Missing hash-bound evidence: " + a.filename);
+  const evidence = approvals()[a.filename];
+  const match = evidence.pullRequest.match(
+    /^https:\/\/github.com\/([^/]+\/[^/]+)\/pull\/(\d+)$/,
+  )!;
+  if (match[1] !== repo)
+    throw Error("Review PR must belong to this repository.");
+  const pr = api(`repos/${repo}/pulls/${match[2]}`);
+  if (!pr.merged_at)
+    throw Error("Review PR must be merged before publication.");
+  const reviewList = api(
+    `repos/${repo}/pulls/${match[2]}/reviews?per_page=100`,
+  );
+  const reviewers = (process.env.CONTENT_REVIEWERS || "")
+      .split(",")
+      .filter(Boolean),
+    firm = (process.env.FIRM_REVIEWERS || "").split(",").filter(Boolean);
+  const latest = new Map<
+    string,
+    { state: string; commit_id: string; html_url: string }
+  >();
+  for (const r of reviewList) latest.set(r.user.login, r);
+  const has = (users: string[], url: string | null) =>
+    users.some((u) => {
+      const r = latest.get(u);
+      return (
+        r?.state === "APPROVED" &&
+        r.commit_id === pr.head.sha &&
+        r.html_url === url
+      );
+    });
+  if (!has(reviewers, evidence.humanReview))
+    throw Error(
+      "Missing current-head approval by a configured human content reviewer.",
+    );
+  if (a.firmApprovalRequired && !has(firm, evidence.firmApproval))
+    throw Error("Missing current-head firm review.");
+  const source = api(
+    `repos/${repo}/contents/content/${a.filename}?ref=${pr.head.sha}`,
+  );
+  const reviewRaw = Buffer.from(
+    source.content.replace(/\n/g, ""),
+    "base64",
+  ).toString();
+  if (parseArticle(reviewRaw, a.filename).hash !== a.hash)
+    throw Error(
+      "Published bytes differ from human-reviewed bytes: " + a.filename,
+    );
+  console.log("Verified publication approval: " + a.filename);
+}
+
+$ git show origin/codex/desktop-iphone-unified:docs/CONTENT-WORKFLOW.md
+# Human-reviewed content workflow
+
+Markdown files use a JSON object between `---` delimiters. This avoids executable MDX and YAML-specific object construction. `lib/articles.ts` defines typed, runtime-validated fields. React Markdown skips raw HTML and sanitizes link protocols. Imported notes are treated as data, never executed or used as instructions.
+
+## Prepare and import
+
+1. Obtain Bill's non-identifying notes/transcript and a source-backed brief. Remove identifying client records before any outside processing. The included notes are clearly labelled sample input, not invented Bill quotations.
+2. Prepare a draft manually or with the reusable `GENERATION-PROMPT.md` in an explicitly approved model environment. There is **no enabled model adapter** in this project. `content generate` fails clearly; nothing is sent to a model. The supported path is local import.
+3. Run `npm run content -- import --brief brief.json --notes notes.txt --draft draft.md --dry-run`. Remove `--dry-run` to import a new file. Existing files are not overwritten. Import requires draft status, no review/publication claims and source URLs present in the brief. Import each translation then run `npm run content -- validate`; the pair must exist before build/review.
+4. Start local development and open Resources. Draft pages show the AI-assistance and unreviewed status. Host review only with both the app's credentials and any available Vercel Deployment Protection. Review routes are noindex and unavailable when review is off. Public article routes, sitemap and published listings exclude drafts.
+
+## Human review and controlled release
+
+Bill reviews the readable page, not source code. Review the factual claims and sources, French/English meaning, service scope, limitations, intended author and required firm disclosures. Agree who actually authored the final version. Never name Bill or another person as author/reviewer without their actual involvement and permission.
+
+The release process uses two pull requests. First, commit the completed editorial drafts and the genuine author assignment to a dedicated branch. An authorized operator can run `ALLOW_CONTENT_PR=true npm run content -- pr` after pushing that branch. This creates a **draft review PR**, never an approval, merge or publication. Review links use the protected preview's Resources page. The command requires existing authorized Git access and performs no repository creation.
+
+Configure `CONTENT_REVIEWERS` and `FIRM_REVIEWERS` repository variables with genuine GitHub logins. Obtain approvals from the appropriate people on the latest substantive commit, and merge the editorial review PR. A firm approval is required for all included articles. An offline approval must first be recorded by the actual authorized reviewer in the review PR; the automation never supplies their identity.
+
+Second, prepare an authorized publication PR setting status, reviewer and actual publication/review dates. Add entries to `content/approvals.json`, keyed by filename, with `sha256`, `pullRequest` (the merged editorial review PR), `humanReview` (its actual GitHub review URL) and `firmApproval` (its actual firm review URL). The content fingerprint covers substantive content and author, excluding only publication/review status metadata so the release can record an already completed review without changing the reviewed article. Use `node --import tsx -e "import {articles} from './lib/articles.ts'; console.log(articles().map(a=>({file:a.filename,hash:a.hash})))"` to inspect the current fingerprints. The validator binds the approval to that content; changing title, body, sources, author or references invalidates it.
+
+`verify-publication.ts` retrieves the review PR, verifies it belongs to this repository and is merged, checks configured reviewer approvals at its head commit, and compares the reviewed content fingerprint with the publication file. It never approves or updates content. Pagination is deliberately fail-closed for review histories over 100 entries; resolve those cases manually or extend pagination before release. Publication metadata is itself reviewed in the second PR. Require the CI check, up-to-date branches, stale-approval dismissal, last-push approval, CODEOWNER review and enforcement for admins. Set `.github/CODEOWNERS` to real human/firm owners; no fictional handles are supplied. Protect the workflow, approval ledger and business configuration as well as content. Run `GITHUB_REPOSITORY=owner/repo npm run protections:check` against the real repository; it reports missing access/configuration rather than pretending protections exist. Also inspect ruleset bypass permissions manually.
+
+Arnaud can merge the publication PR after the required reviews. The Vercel Git integration rebuilds the approved branch. Public launch remains subject to the separate business approval gate. The automation cannot approve, merge or publish directly. A content status alone is never sufficient evidence. Repository protections and protected deployment settings are part of the trust boundary; a person with unrestricted repository administration can alter application safeguards.
+
+## Ongoing review
+
+`npm run content -- review-due` flags passed next-review dates without rewriting guidance. The included weekly GitHub workflow runs the same check and places warnings in its job output; it sends no custom messages. Configure repository notifications according to owner preference. Material changes require a fresh editorial review, new approval evidence and publication PR.
+
+External steps are unconfigured until a repository, authorized GitHub access, reviewers, branch protections and Vercel integration exist. Local draft import, validation and readable review work now without credentials.

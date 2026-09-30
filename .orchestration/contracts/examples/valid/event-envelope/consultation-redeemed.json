@@ -1,0 +1,11 @@
+{
+  "schema_version": "1.0",
+  "event_id": "4b0e399f-7229-494b-847b-2e741797c6c1",
+  "type": "consultation.redeemed",
+  "occurred_at": "2026-10-03T17:00:00Z",
+  "subject_id": "con_xsekt13hxv12z5bp4rm4s2f0hw",
+  "locale": "en",
+  "source": "provider.booking_sync",
+  "resource_id": "rgt_fb7w1xvb974y0yqpaswc4ttv3p",
+  "idempotency_key": "ik1_c0704e4dc4d035341c632ca3d30fcb1c5df62ad7ef94a8db51f56f40d2070d68"
+}

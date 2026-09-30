@@ -1,0 +1,6 @@
+rule: XF-06 - source ids are unique
+layer: semantic
+expect_rule: XF-06
+expect_path: /chapters/income/sources/1/id
+plain_message_en_draft: (internal state error)
+explanation: Two sources share src-1; per-source outputs would collide.

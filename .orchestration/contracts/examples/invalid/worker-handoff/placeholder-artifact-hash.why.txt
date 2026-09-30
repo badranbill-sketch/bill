@@ -1,0 +1,4 @@
+rule: WH-SHA-2
+breaks: Artifact hashes are 64 lowercase hex characters.
+expect_keyword: pattern
+expect_path: /artifacts/0/sha256

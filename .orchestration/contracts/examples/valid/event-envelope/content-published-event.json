@@ -1,0 +1,11 @@
+{
+  "schema_version": "1.0",
+  "event_id": "3ad49e48-12ea-448a-be86-6f1d249535a7",
+  "type": "content.published",
+  "occurred_at": "2026-10-06T12:15:00Z",
+  "subject_id": "cnt_c5t78e4ccnjt1cjjdmxxbxc5zj",
+  "locale": "fr",
+  "source": "editorial.publication_handoff",
+  "resource_id": "event.fixture-kit.hd7519e94838e",
+  "idempotency_key": "ik1_fb91e6daf3dd617649f07f042829192f9b1c33cc931fa7f321b4ac4bece73cc6"
+}

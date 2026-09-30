@@ -1,0 +1,11 @@
+{
+  "schema_version": "1.0",
+  "event_id": "36e7c9fd-2373-42d7-b8c8-11578a82b1cf",
+  "type": "webinar.join_clicked",
+  "occurred_at": "2026-10-02T18:25:00Z",
+  "subject_id": "con_xsekt13hxv12z5bp4rm4s2f0hw",
+  "locale": "fr",
+  "source": "site.join_redirect",
+  "resource_id": "wev_rrrt8jn3qqp17g4yaqcs747g6t",
+  "idempotency_key": "ik1_3ba862423227a306a55a7d97307f26527165d89c942a2c8d108cc58977a9a442"
+}

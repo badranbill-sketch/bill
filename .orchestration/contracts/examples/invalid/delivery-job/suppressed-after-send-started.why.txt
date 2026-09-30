@@ -1,0 +1,5 @@
+rule: JS-SUPP-1 a suppressed job has no send_started_at: a withdrawal or other sweep suppresses only pending and retry_due jobs (T3), a leased job is stopped by its own pre-send check before the send marker (T5), and a started call ends in sent or reconcile_required (T9, T11)
+expect_path: send_started_at
+expect_keyword: not
+
+A promotional job marked suppressed (consent_withdrawn) although its provider call had started. The worker's result would then be fenced out, and the record would say the withdrawal stopped a message that may have been sent (review A6D2-01).

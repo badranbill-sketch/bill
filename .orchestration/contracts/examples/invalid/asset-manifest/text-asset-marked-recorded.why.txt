@@ -1,0 +1,4 @@
+rule: AM-LANG-2
+breaks: Only audio or video actually recorded in that language can be 'recorded' or 'edited'.
+expect_keyword: enum
+expect_path: /assets/2/medium

@@ -1,0 +1,5 @@
+rule: JS-TIME-3 next_attempt_at is earlier than expires_at; otherwise the job moves to expired
+expect_path: /
+expect_keyword: semantic:retry_before_expiry
+
+A retry scheduled after expiry would send a stale message.

@@ -1,0 +1,11 @@
+{
+  "schema_version": "1.0",
+  "event_id": "4b11d740-e9a6-4516-b0fa-24fe1c8f9e40",
+  "type": "meeting.confirmed",
+  "occurred_at": "2026-10-03T18:05:00Z",
+  "subject_id": "con_xsekt13hxv12z5bp4rm4s2f0hw",
+  "locale": "fr",
+  "source": "site.join_redirect",
+  "resource_id": "bkg_rae93y3txaq788qsh9e7entmfn",
+  "idempotency_key": "ik1_61f88e3f0b40e168fa1d666be51719f4b8bd19d86c6a74ac1ffb754829b2c954"
+}

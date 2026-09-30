@@ -1,0 +1,7 @@
+rule: XF-07 - partner-owned source needs household timing
+layer: schema
+expect_keyword: required
+expect_path: /chapters/timing
+expect_validator_value: ["household"]
+plain_message_en_draft: Add your partner's age to place this income in time.
+explanation: A partner-owned age-based start cannot be placed without the household section.

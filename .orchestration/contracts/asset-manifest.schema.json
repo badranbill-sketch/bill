@@ -1,0 +1,1309 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://bill.contracts.local/asset-manifest/1.0",
+  "title": "Asset manifest 1.0",
+  "description": "One entry per (asset_id, locale, version) for every final content, media and art asset (05 §1). A file's existence never means it is published: status 'published' needs a publication_id, and approval needs an exact review hash bound to a human gate record. Proposed document location: content/marketing/asset-manifest.json (C08 deliverable, does not exist yet). Status: proposed, submitted, not accepted. See asset-manifest.md.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "contract",
+    "contract_version",
+    "manifest_kind",
+    "generated_at",
+    "assets"
+  ],
+  "properties": {
+    "contract": {
+      "const": "asset-manifest"
+    },
+    "contract_version": {
+      "const": "1.0"
+    },
+    "manifest_kind": {
+      "enum": [
+        "authoritative",
+        "fixture"
+      ]
+    },
+    "generated_at": {
+      "type": "string",
+      "pattern": "^20[0-9]{2}-(?:0[1-9]|1[0-2])-(?:0[1-9]|[12][0-9]|3[01])T(?:[01][0-9]|2[0-3]):[0-5][0-9]:[0-5][0-9](?:\\.[0-9]{1,6})?Z$"
+    },
+    "assets": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/entry"
+      }
+    }
+  },
+  "allOf": [
+    {
+      "if": {
+        "properties": {
+          "manifest_kind": {
+            "const": "authoritative"
+          }
+        },
+        "required": [
+          "manifest_kind"
+        ]
+      },
+      "then": {
+        "properties": {
+          "assets": {
+            "items": {
+              "properties": {
+                "approval": {
+                  "anyOf": [
+                    {
+                      "type": "null"
+                    },
+                    {
+                      "properties": {
+                        "record_ref": {
+                          "pattern": "^(?:content/approvals\\.json#[a-z0-9-]+\\.md|content/asset-approvals\\.json#[a-z0-9.-]+@(?:fr|en|zxx)@v[1-9][0-9]{0,2}|\\.orchestration/approval-packets/[A-Za-z0-9._-]+(?:/[A-Za-z0-9._-]+)*)$"
+                        }
+                      }
+                    }
+                  ]
+                },
+                "recording": {
+                  "anyOf": [
+                    {
+                      "type": "null"
+                    },
+                    {
+                      "properties": {
+                        "consent_ref": {
+                          "pattern": "^(?:\\.orchestration/approval-packets/[A-Za-z0-9._-]+(?:/[A-Za-z0-9._-]+)*|owner-storage:[A-Za-z0-9._/-]{3,200})$"
+                        },
+                        "master_ref": {
+                          "not": {
+                            "pattern": "^fixture:"
+                          }
+                        }
+                      }
+                    }
+                  ]
+                },
+                "rights": {
+                  "properties": {
+                    "evidence_ref": {
+                      "anyOf": [
+                        {
+                          "type": "null"
+                        },
+                        {
+                          "not": {
+                            "pattern": "^fixture:"
+                          }
+                        }
+                      ]
+                    }
+                  }
+                },
+                "publication_id": {
+                  "anyOf": [
+                    {
+                      "type": "null"
+                    },
+                    {
+                      "not": {
+                        "pattern": "^fixture:"
+                      }
+                    }
+                  ]
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "manifest_kind": {
+            "const": "fixture"
+          }
+        },
+        "required": [
+          "manifest_kind"
+        ]
+      },
+      "then": {
+        "properties": {
+          "assets": {
+            "items": {
+              "properties": {
+                "approval": {
+                  "anyOf": [
+                    {
+                      "type": "null"
+                    },
+                    {
+                      "properties": {
+                        "record_ref": {
+                          "pattern": "^fixture:[a-z0-9][a-z0-9-]{2,80}$"
+                        }
+                      }
+                    }
+                  ]
+                },
+                "recording": {
+                  "anyOf": [
+                    {
+                      "type": "null"
+                    },
+                    {
+                      "properties": {
+                        "consent_ref": {
+                          "pattern": "^fixture:[a-z0-9][a-z0-9-]{2,80}$"
+                        },
+                        "master_ref": {
+                          "pattern": "^fixture:[a-z0-9][a-z0-9-]{2,80}$"
+                        }
+                      }
+                    }
+                  ]
+                },
+                "rights": {
+                  "properties": {
+                    "evidence_ref": {
+                      "anyOf": [
+                        {
+                          "type": "null"
+                        },
+                        {
+                          "pattern": "^fixture:[a-z0-9][a-z0-9-]{2,80}$"
+                        }
+                      ]
+                    }
+                  }
+                },
+                "publication_id": {
+                  "anyOf": [
+                    {
+                      "type": "null"
+                    },
+                    {
+                      "pattern": "^fixture:[a-z0-9][a-z0-9-]{2,80}$"
+                    }
+                  ]
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  ],
+  "$defs": {
+    "entry": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "asset_id",
+        "locale",
+        "version",
+        "title_internal",
+        "owner_role",
+        "medium",
+        "status",
+        "language_availability",
+        "captions_source_locale",
+        "source_path",
+        "factual_claims",
+        "offer_refs",
+        "credential_claims",
+        "rights",
+        "recording",
+        "review_hash",
+        "approval",
+        "intended_route_key",
+        "cta",
+        "primary_channel",
+        "publication_id",
+        "published_at",
+        "published_content_sha256"
+      ],
+      "properties": {
+        "asset_id": {
+          "type": "string",
+          "pattern": "^(?:capsule\\.s(?:0[1-9]|1[0-8])|companion\\.s(?:0[1-9]|1[0-8])|clip\\.w(?:0[0-9]|1[01])|case\\.c(?:0[1-9]|10)|ink\\.a0[1-8]|template\\.e(?:0[1-9]|1[0-6])|ad\\.(?:ad0[1-6]|rt0[1-3])|(?:article|page|guide|book|event|copy)\\.[a-z]+(?:-[a-z]+){0,7})$",
+          "description": "Plan inventory ID (05) or a registry key of letters and hyphens (no digits), compatible with event-envelope resource codes."
+        },
+        "locale": {
+          "enum": [
+            "fr",
+            "en",
+            "zxx"
+          ],
+          "description": "zxx = no linguistic content (for example an ink drawing without text)."
+        },
+        "version": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 999
+        },
+        "title_internal": {
+          "type": "string",
+          "minLength": 3,
+          "maxLength": 160
+        },
+        "owner_role": {
+          "enum": [
+            "A0",
+            "A1",
+            "A2",
+            "A3",
+            "A4",
+            "A5",
+            "A6",
+            "bill",
+            "arnaud",
+            "firm_reviewer"
+          ]
+        },
+        "medium": {
+          "enum": [
+            "video",
+            "audio",
+            "text",
+            "image",
+            "print",
+            "mixed"
+          ]
+        },
+        "status": {
+          "enum": [
+            "brief",
+            "draft",
+            "reviewed",
+            "recorded",
+            "edited",
+            "approved",
+            "published"
+          ]
+        },
+        "language_availability": {
+          "enum": [
+            "not_recorded",
+            "language_recorded",
+            "captions_only",
+            "text_only",
+            "not_applicable"
+          ]
+        },
+        "captions_source_locale": {
+          "enum": [
+            "fr",
+            "en",
+            null
+          ]
+        },
+        "source_path": {
+          "anyOf": [
+            {
+              "type": "null"
+            },
+            {
+              "type": "string",
+              "pattern": "^(?![/~])(?!.*(?:^|/)\\.\\.(?:/|$))[^\\s]+$"
+            }
+          ]
+        },
+        "factual_claims": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "present",
+            "sources"
+          ],
+          "properties": {
+            "present": {
+              "type": "boolean"
+            },
+            "sources": {
+              "type": "array",
+              "items": {
+                "type": "object",
+                "additionalProperties": false,
+                "required": [
+                  "title",
+                  "url",
+                  "accessed"
+                ],
+                "properties": {
+                  "title": {
+                    "type": "string",
+                    "minLength": 3,
+                    "maxLength": 200
+                  },
+                  "url": {
+                    "type": "string",
+                    "pattern": "^https://[^\\s]+$"
+                  },
+                  "accessed": {
+                    "anyOf": [
+                      {
+                        "type": "null"
+                      },
+                      {
+                        "type": "string",
+                        "pattern": "^20[0-9]{2}-(?:0[1-9]|1[0-2])-(?:0[1-9]|[12][0-9]|3[01])$"
+                      }
+                    ]
+                  }
+                }
+              }
+            }
+          }
+        },
+        "offer_refs": {
+          "type": "array",
+          "uniqueItems": true,
+          "items": {
+            "enum": [
+              "guide-pdf",
+              "intro-15",
+              "book-bundle",
+              "continued-work"
+            ]
+          }
+        },
+        "credential_claims": {
+          "type": "boolean"
+        },
+        "rights": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "status",
+            "holder",
+            "evidence_ref",
+            "synthetic_bill_likeness"
+          ],
+          "properties": {
+            "status": {
+              "enum": [
+                "pending",
+                "owned_by_bill",
+                "licensed",
+                "created_for_project",
+                "not_applicable"
+              ]
+            },
+            "holder": {
+              "anyOf": [
+                {
+                  "type": "null"
+                },
+                {
+                  "type": "string",
+                  "minLength": 2,
+                  "maxLength": 120
+                }
+              ]
+            },
+            "evidence_ref": {
+              "anyOf": [
+                {
+                  "type": "null"
+                },
+                {
+                  "type": "string",
+                  "minLength": 3,
+                  "maxLength": 300
+                }
+              ]
+            },
+            "synthetic_bill_likeness": {
+              "const": false,
+              "description": "No voice clone, avatar or synthetic face of Bill in 1.0 (D-016)."
+            }
+          }
+        },
+        "recording": {
+          "anyOf": [
+            {
+              "type": "null"
+            },
+            {
+              "type": "object",
+              "additionalProperties": false,
+              "required": [
+                "master_ref",
+                "master_sha256",
+                "duration_seconds",
+                "recorded_on",
+                "consent_ref",
+                "captions_sha256",
+                "transcript_sha256"
+              ],
+              "properties": {
+                "master_ref": {
+                  "type": "string",
+                  "minLength": 3,
+                  "maxLength": 300,
+                  "description": "Owner-controlled storage location of the master (never git)."
+                },
+                "master_sha256": {
+                  "type": "string",
+                  "pattern": "^[0-9a-f]{64}$"
+                },
+                "duration_seconds": {
+                  "type": "number",
+                  "exclusiveMinimum": 0,
+                  "description": "Actual measured duration, not the script target."
+                },
+                "recorded_on": {
+                  "type": "string",
+                  "pattern": "^20[0-9]{2}-(?:0[1-9]|1[0-2])-(?:0[1-9]|[12][0-9]|3[01])$"
+                },
+                "consent_ref": {
+                  "type": "string",
+                  "minLength": 3,
+                  "maxLength": 300
+                },
+                "captions_sha256": {
+                  "anyOf": [
+                    {
+                      "type": "null"
+                    },
+                    {
+                      "type": "string",
+                      "pattern": "^[0-9a-f]{64}$"
+                    }
+                  ]
+                },
+                "transcript_sha256": {
+                  "anyOf": [
+                    {
+                      "type": "null"
+                    },
+                    {
+                      "type": "string",
+                      "pattern": "^[0-9a-f]{64}$"
+                    }
+                  ]
+                }
+              }
+            }
+          ]
+        },
+        "review_hash": {
+          "anyOf": [
+            {
+              "type": "null"
+            },
+            {
+              "type": "object",
+              "additionalProperties": false,
+              "required": [
+                "method",
+                "sha256"
+              ],
+              "properties": {
+                "method": {
+                  "enum": [
+                    "file-sha256-v1",
+                    "articles-contentFingerprint-v1",
+                    "json-canonical-sha256-v1",
+                    "bundle-sha256-v1",
+                    "rendered-text-sha256-v1"
+                  ]
+                },
+                "sha256": {
+                  "type": "string",
+                  "pattern": "^[0-9a-f]{64}$"
+                }
+              }
+            }
+          ]
+        },
+        "approval": {
+          "anyOf": [
+            {
+              "type": "null"
+            },
+            {
+              "type": "object",
+              "additionalProperties": false,
+              "required": [
+                "gates",
+                "approved_by_roles",
+                "approved_on",
+                "record_ref"
+              ],
+              "properties": {
+                "gates": {
+                  "type": "array",
+                  "minItems": 1,
+                  "uniqueItems": true,
+                  "items": {
+                    "enum": [
+                      "G0",
+                      "G1",
+                      "G2",
+                      "G3",
+                      "G4",
+                      "G5",
+                      "G6"
+                    ]
+                  }
+                },
+                "approved_by_roles": {
+                  "type": "array",
+                  "minItems": 1,
+                  "uniqueItems": true,
+                  "items": {
+                    "enum": [
+                      "arnaud",
+                      "bill",
+                      "firm_reviewer",
+                      "privacy_owner",
+                      "account_owner"
+                    ]
+                  }
+                },
+                "approved_on": {
+                  "type": "string",
+                  "pattern": "^20[0-9]{2}-(?:0[1-9]|1[0-2])-(?:0[1-9]|[12][0-9]|3[01])$"
+                },
+                "record_ref": {
+                  "type": "string",
+                  "minLength": 3,
+                  "maxLength": 300
+                }
+              }
+            }
+          ]
+        },
+        "intended_route_key": {
+          "enum": [
+            "home",
+            "retirement",
+            "investments",
+            "about",
+            "resources",
+            "meeting",
+            "fees",
+            "privacy",
+            "legal",
+            "ask",
+            "workshop",
+            "crossroads",
+            "crossroadsConfirmed",
+            "crossroadsJoin",
+            "crossroadsReplay",
+            "book",
+            "bookOrderStatus",
+            "bookConsultation",
+            "emailPreferences",
+            "unsubscribe",
+            null
+          ]
+        },
+        "cta": {
+          "enum": [
+            "intro-15",
+            "guide-pdf",
+            "book-bundle",
+            "workshop",
+            "crossroads",
+            "share-with-partner",
+            "none"
+          ]
+        },
+        "primary_channel": {
+          "enum": [
+            "site",
+            "email",
+            "linkedin",
+            "facebook",
+            "instagram",
+            "meta_ads",
+            "live_event",
+            "workshop",
+            "print"
+          ]
+        },
+        "publication_id": {
+          "anyOf": [
+            {
+              "type": "null"
+            },
+            {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 300
+            }
+          ]
+        },
+        "published_at": {
+          "anyOf": [
+            {
+              "type": "null"
+            },
+            {
+              "type": "string",
+              "pattern": "^20[0-9]{2}-(?:0[1-9]|1[0-2])-(?:0[1-9]|[12][0-9]|3[01])T(?:[01][0-9]|2[0-3]):[0-5][0-9]:[0-5][0-9](?:\\.[0-9]{1,6})?Z$"
+            }
+          ]
+        },
+        "published_content_sha256": {
+          "anyOf": [
+            {
+              "type": "null"
+            },
+            {
+              "type": "string",
+              "pattern": "^[0-9a-f]{64}$"
+            }
+          ]
+        }
+      },
+      "allOf": [
+        {
+          "if": {
+            "properties": {
+              "status": {
+                "enum": [
+                  "published"
+                ]
+              }
+            },
+            "required": [
+              "status"
+            ]
+          },
+          "then": {
+            "properties": {
+              "publication_id": {
+                "type": "string"
+              },
+              "published_at": {
+                "type": "string"
+              },
+              "published_content_sha256": {
+                "type": "string"
+              }
+            }
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "status": {
+                "enum": [
+                  "brief",
+                  "draft",
+                  "reviewed",
+                  "recorded",
+                  "edited",
+                  "approved"
+                ]
+              }
+            },
+            "required": [
+              "status"
+            ]
+          },
+          "then": {
+            "properties": {
+              "publication_id": {
+                "type": "null"
+              },
+              "published_at": {
+                "type": "null"
+              },
+              "published_content_sha256": {
+                "type": "null"
+              }
+            }
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "status": {
+                "enum": [
+                  "approved",
+                  "published"
+                ]
+              }
+            },
+            "required": [
+              "status"
+            ]
+          },
+          "then": {
+            "properties": {
+              "review_hash": {
+                "type": "object"
+              },
+              "approval": {
+                "type": "object",
+                "properties": {
+                  "gates": {
+                    "contains": {
+                      "const": "G3"
+                    }
+                  }
+                }
+              },
+              "rights": {
+                "properties": {
+                  "status": {
+                    "not": {
+                      "const": "pending"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "status": {
+                "enum": [
+                  "brief",
+                  "draft",
+                  "reviewed",
+                  "recorded",
+                  "edited"
+                ]
+              }
+            },
+            "required": [
+              "status"
+            ]
+          },
+          "then": {
+            "properties": {
+              "approval": {
+                "type": "null"
+              }
+            }
+          }
+        },
+        {
+          "if": {
+            "anyOf": [
+              {
+                "properties": {
+                  "offer_refs": {
+                    "minItems": 1
+                  }
+                },
+                "required": [
+                  "offer_refs"
+                ]
+              },
+              {
+                "properties": {
+                  "credential_claims": {
+                    "const": true
+                  }
+                },
+                "required": [
+                  "credential_claims"
+                ]
+              }
+            ],
+            "properties": {
+              "approval": {
+                "type": "object"
+              }
+            },
+            "required": [
+              "approval"
+            ]
+          },
+          "then": {
+            "properties": {
+              "approval": {
+                "properties": {
+                  "gates": {
+                    "contains": {
+                      "const": "G1"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "language_availability": {
+                "const": "language_recorded"
+              },
+              "approval": {
+                "type": "object"
+              }
+            },
+            "required": [
+              "language_availability",
+              "approval"
+            ]
+          },
+          "then": {
+            "properties": {
+              "approval": {
+                "properties": {
+                  "gates": {
+                    "contains": {
+                      "const": "G4"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "language_availability": {
+                "const": "captions_only"
+              }
+            },
+            "required": [
+              "language_availability"
+            ]
+          },
+          "then": {
+            "properties": {
+              "status": {
+                "not": {
+                  "enum": [
+                    "recorded",
+                    "edited"
+                  ]
+                }
+              },
+              "recording": {
+                "type": "null"
+              },
+              "captions_source_locale": {
+                "enum": [
+                  "fr",
+                  "en"
+                ]
+              },
+              "medium": {
+                "enum": [
+                  "video",
+                  "audio"
+                ]
+              }
+            }
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "language_availability": {
+                "const": "captions_only"
+              },
+              "locale": {
+                "const": "fr"
+              }
+            },
+            "required": [
+              "language_availability",
+              "locale"
+            ]
+          },
+          "then": {
+            "properties": {
+              "captions_source_locale": {
+                "const": "en"
+              }
+            }
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "language_availability": {
+                "const": "captions_only"
+              },
+              "locale": {
+                "const": "en"
+              }
+            },
+            "required": [
+              "language_availability",
+              "locale"
+            ]
+          },
+          "then": {
+            "properties": {
+              "captions_source_locale": {
+                "const": "fr"
+              }
+            }
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "language_availability": {
+                "not": {
+                  "const": "captions_only"
+                }
+              }
+            },
+            "required": [
+              "language_availability"
+            ]
+          },
+          "then": {
+            "properties": {
+              "captions_source_locale": {
+                "type": "null"
+              }
+            }
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "status": {
+                "enum": [
+                  "recorded",
+                  "edited"
+                ]
+              }
+            },
+            "required": [
+              "status"
+            ]
+          },
+          "then": {
+            "properties": {
+              "medium": {
+                "enum": [
+                  "video",
+                  "audio"
+                ]
+              },
+              "language_availability": {
+                "const": "language_recorded"
+              },
+              "recording": {
+                "type": "object"
+              }
+            }
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "medium": {
+                "enum": [
+                  "video",
+                  "audio"
+                ]
+              }
+            },
+            "required": [
+              "medium"
+            ]
+          },
+          "then": {
+            "properties": {
+              "language_availability": {
+                "enum": [
+                  "not_recorded",
+                  "language_recorded",
+                  "captions_only"
+                ]
+              }
+            }
+          },
+          "else": {
+            "properties": {
+              "language_availability": {
+                "enum": [
+                  "text_only",
+                  "not_applicable"
+                ]
+              }
+            }
+          }
+        },
+        {
+          "if": {
+            "allOf": [
+              {
+                "properties": {
+                  "status": {
+                    "enum": [
+                      "approved",
+                      "published"
+                    ]
+                  }
+                },
+                "required": [
+                  "status"
+                ]
+              },
+              {
+                "properties": {
+                  "medium": {
+                    "enum": [
+                      "video",
+                      "audio"
+                    ]
+                  }
+                },
+                "required": [
+                  "medium"
+                ]
+              }
+            ]
+          },
+          "then": {
+            "properties": {
+              "language_availability": {
+                "enum": [
+                  "language_recorded",
+                  "captions_only"
+                ]
+              }
+            }
+          }
+        },
+        {
+          "if": {
+            "allOf": [
+              {
+                "properties": {
+                  "status": {
+                    "enum": [
+                      "approved",
+                      "published"
+                    ]
+                  }
+                },
+                "required": [
+                  "status"
+                ]
+              },
+              {
+                "properties": {
+                  "language_availability": {
+                    "const": "language_recorded"
+                  }
+                },
+                "required": [
+                  "language_availability"
+                ]
+              }
+            ]
+          },
+          "then": {
+            "properties": {
+              "recording": {
+                "type": "object"
+              }
+            }
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "language_availability": {
+                "enum": [
+                  "not_recorded",
+                  "text_only",
+                  "not_applicable"
+                ]
+              }
+            },
+            "required": [
+              "language_availability"
+            ]
+          },
+          "then": {
+            "properties": {
+              "recording": {
+                "type": "null"
+              }
+            }
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "factual_claims": {
+                "properties": {
+                  "present": {
+                    "const": true
+                  }
+                }
+              }
+            }
+          },
+          "then": {
+            "properties": {
+              "factual_claims": {
+                "properties": {
+                  "sources": {
+                    "minItems": 1
+                  }
+                }
+              }
+            }
+          }
+        },
+        {
+          "if": {
+            "allOf": [
+              {
+                "properties": {
+                  "status": {
+                    "enum": [
+                      "reviewed",
+                      "recorded",
+                      "edited",
+                      "approved",
+                      "published"
+                    ]
+                  }
+                },
+                "required": [
+                  "status"
+                ]
+              },
+              {
+                "properties": {
+                  "factual_claims": {
+                    "properties": {
+                      "present": {
+                        "const": true
+                      }
+                    }
+                  }
+                }
+              }
+            ]
+          },
+          "then": {
+            "properties": {
+              "factual_claims": {
+                "properties": {
+                  "sources": {
+                    "items": {
+                      "properties": {
+                        "accessed": {
+                          "type": "string"
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "cta": {
+                "const": "guide-pdf"
+              }
+            },
+            "required": [
+              "cta"
+            ]
+          },
+          "then": {
+            "properties": {
+              "offer_refs": {
+                "contains": {
+                  "const": "guide-pdf"
+                }
+              }
+            }
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "cta": {
+                "const": "intro-15"
+              }
+            },
+            "required": [
+              "cta"
+            ]
+          },
+          "then": {
+            "properties": {
+              "offer_refs": {
+                "contains": {
+                  "const": "intro-15"
+                }
+              }
+            }
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "cta": {
+                "const": "book-bundle"
+              }
+            },
+            "required": [
+              "cta"
+            ]
+          },
+          "then": {
+            "properties": {
+              "offer_refs": {
+                "contains": {
+                  "const": "book-bundle"
+                }
+              }
+            }
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "status": {
+                "enum": [
+                  "draft",
+                  "reviewed",
+                  "recorded",
+                  "edited",
+                  "approved",
+                  "published"
+                ]
+              }
+            },
+            "required": [
+              "status"
+            ]
+          },
+          "then": {
+            "properties": {
+              "source_path": {
+                "type": "string"
+              }
+            }
+          }
+        }
+      ]
+    }
+  }
+}

@@ -1,0 +1,5 @@
+rule: JS-VER-1 template_version is h + sha256 prefix (approval binds exact hashes, G3)
+expect_path: template_version
+expect_keyword: pattern
+
+A mutable version label instead of the approved hash.

@@ -1,0 +1,4 @@
+rule: WH-PATH-1
+breaks: changed_paths are repo-relative.
+expect_keyword: pattern
+expect_path: /changed_paths/0

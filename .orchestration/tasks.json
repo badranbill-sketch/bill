@@ -23,7 +23,7 @@
       "blocked_technical",
       "cancelled_by_owner"
     ],
-    "task_count": 62,
+    "task_count": 63,
     "check_count": 62,
     "topological_order": [
       "F00",
@@ -119,7 +119,14 @@
       "ads": 0,
       "subscriptions": 0,
       "note": "zero until G2 records a cap"
-    }
+    },
+    "amendments": [
+      {
+        "at": "2026-09-30",
+        "by": "A0",
+        "change": "F02a added by split of F02; W00 and C02 depend on it (D-072)"
+      }
+    ]
   },
   "tasks": [
     {
@@ -188,10 +195,16 @@
         "artifact/design review"
       ],
       "max_attempts": 3,
-      "state": "running",
-      "attempts": 1,
-      "accepted_at_stage": null,
-      "evidence": [],
+      "state": "accepted",
+      "attempts": 2,
+      "accepted_at_stage": "design_or_audit",
+      "evidence": [
+        ".orchestration/decisions.md",
+        ".orchestration/blockers.md",
+        ".orchestration/costs.json",
+        ".orchestration/reviews/F01.md",
+        ".orchestration/reviews/F01-attempt2.md"
+      ],
       "history": [
         {
           "at": "2026-09-30",
@@ -199,6 +212,13 @@
           "to": "running",
           "by": "A0",
           "note": "dep F00 accepted; no gates"
+        },
+        {
+          "at": "2026-09-30",
+          "from": "running",
+          "to": "accepted",
+          "by": "A0",
+          "note": "A6 attempt 2 pass; 5 P3 applied by A0 as a post-acceptance patch to blockers.md, reviewed by A6 within F02a"
         }
       ]
     },
@@ -221,11 +241,59 @@
         "artifact/design review"
       ],
       "max_attempts": 3,
-      "state": "planned",
-      "attempts": 0,
+      "state": "accepted",
+      "attempts": 3,
+      "accepted_at_stage": "design_or_audit",
+      "evidence": [
+        ".orchestration/contracts/",
+        ".orchestration/handoffs/F02.json",
+        ".orchestration/evidence/F02/",
+        ".orchestration/reviews/F02-design*.md",
+        ".orchestration/reviews/F02-math*.md"
+      ],
+      "history": [
+        {
+          "at": "2026-09-30",
+          "from": "running",
+          "to": "accepted",
+          "by": "A0",
+          "note": "Max attempts reached. Design review pass (P3 only). Math review: formulas and fixtures correct, but 2 P2 conformance-coverage gaps (today-dollar pre-start factor; joint-owner age) — not wrong math. Per 01 §5 A0 splits once: F02 accepted at design_or_audit for all contracts; the two coverage gaps move to split task F02a, which W00 and C02 now depend on (decision D-072)."
+        }
+      ]
+    },
+    {
+      "id": "F02a",
+      "title": "Pin today-dollar pre-start factor and joint-owner age in workshop conformance fixtures (split from F02)",
+      "owner": "A2",
+      "reviewer": "A6",
+      "phase": "foundation",
+      "acceptance_stage": "design_or_audit",
+      "dependencies": [
+        "F02"
+      ],
+      "required_gates": [],
+      "deliverables": [
+        ".orchestration/contracts/fixtures/workshop/"
+      ],
+      "acceptance": "Add fixtures so that a runtime using (1+q_j)^{s_j} instead of (1+i)^{s_j} for today-dollar sources, and a runtime resolving joint sources against the partner age, each fail at least one fixture; expected values computed exactly; A6 mutation evidence. Contract semantics unchanged (version 1.0 stays; fixtures are additive).",
+      "check_refs": [
+        "WK02"
+      ],
+      "max_attempts": 3,
+      "state": "running",
+      "attempts": 1,
       "accepted_at_stage": null,
       "evidence": [],
-      "history": []
+      "split_from": "F02",
+      "history": [
+        {
+          "at": "2026-09-30",
+          "from": null,
+          "to": "running",
+          "by": "A0",
+          "note": "created by split of F02 (decision D-072)"
+        }
+      ]
     },
     {
       "id": "F03",
@@ -249,11 +317,19 @@
         "BASE02"
       ],
       "max_attempts": 3,
-      "state": "planned",
-      "attempts": 0,
+      "state": "running",
+      "attempts": 1,
       "accepted_at_stage": null,
       "evidence": [],
-      "history": []
+      "history": [
+        {
+          "at": "2026-09-30",
+          "from": "planned",
+          "to": "running",
+          "by": "A0",
+          "note": "deps F00, F02 accepted"
+        }
+      ]
     },
     {
       "id": "D00",
@@ -525,7 +601,8 @@
       "acceptance_stage": "local_implementation_tested",
       "dependencies": [
         "F02",
-        "F03"
+        "F03",
+        "F02a"
       ],
       "required_gates": [],
       "deliverables": [
@@ -543,7 +620,13 @@
       "attempts": 0,
       "accepted_at_stage": null,
       "evidence": [],
-      "history": []
+      "history": [
+        {
+          "at": "2026-09-30",
+          "by": "A0",
+          "note": "dependency F02a added (split of F02, D-072)"
+        }
+      ]
     },
     {
       "id": "W01",
@@ -726,7 +809,8 @@
       "acceptance_stage": "draft_or_review_package",
       "dependencies": [
         "C00",
-        "W00"
+        "W00",
+        "F02a"
       ],
       "required_gates": [],
       "deliverables": [
@@ -744,7 +828,13 @@
       "attempts": 0,
       "accepted_at_stage": null,
       "evidence": [],
-      "history": []
+      "history": [
+        {
+          "at": "2026-09-30",
+          "by": "A0",
+          "note": "dependency F02a added (split of F02, D-072)"
+        }
+      ]
     },
     {
       "id": "C03",

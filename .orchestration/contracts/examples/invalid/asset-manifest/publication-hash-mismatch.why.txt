@@ -1,0 +1,4 @@
+rule: AM-HARN-1
+breaks: published_content_sha256 must equal review_hash.sha256 (harness rule; schema-valid on its own).
+expect_keyword: harness:AM-HARN-1
+expect_path: /assets/9/published_content_sha256

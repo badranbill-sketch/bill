@@ -1,0 +1,2722 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://bill.contracts.local/offer-matrix/1.0",
+  "title": "Offer matrix 1.0",
+  "description": "The one authoritative offer matrix (03 A0). The frozen offers of 01 §1 are fixed by const: what is received, durations (15 and 30 minutes; 60 is impossible), guardrails, gate dependencies and the no-staircase rule. Fields G0/G1/G5 must record (price, cap, entitlement unit, location, online service, validity, capacity, disclosures) stay 'pending' with null values until a human gate record exists. Status: proposed, submitted, not accepted. See offer-matrix.md.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "contract",
+    "contract_version",
+    "document_kind",
+    "as_of",
+    "gate_records",
+    "offers",
+    "meeting_types",
+    "rules"
+  ],
+  "properties": {
+    "contract": {
+      "const": "offer-matrix"
+    },
+    "contract_version": {
+      "const": "1.0"
+    },
+    "document_kind": {
+      "enum": [
+        "authoritative",
+        "fixture"
+      ],
+      "description": "fixture documents may only cite 'fixture:' records; authoritative documents may never (OM-DOC-1)."
+    },
+    "as_of": {
+      "$ref": "#/$defs/date"
+    },
+    "gate_records": {
+      "type": "array",
+      "uniqueItems": true,
+      "items": {
+        "$ref": "#/$defs/gate_record"
+      }
+    },
+    "offers": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "guide-pdf",
+        "intro-15",
+        "book-bundle",
+        "continued-work"
+      ],
+      "properties": {
+        "guide-pdf": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "offer_id",
+            "kind",
+            "receives",
+            "price",
+            "duration_minutes",
+            "access",
+            "approved_editions",
+            "primary_route",
+            "gate_dependencies",
+            "guardrails",
+            "spec_refs"
+          ],
+          "properties": {
+            "offer_id": {
+              "const": "guide-pdf"
+            },
+            "kind": {
+              "const": "digital_download"
+            },
+            "receives": {
+              "const": "The approved digital retirement book (PDF), free."
+            },
+            "price": {
+              "const": {
+                "model": "free"
+              }
+            },
+            "duration_minutes": {
+              "const": null
+            },
+            "access": {
+              "const": {
+                "requires_marketing_consent": false,
+                "requires_email": false,
+                "download_fallback_when_email_fails": true
+              }
+            },
+            "approved_editions": {
+              "type": "array",
+              "uniqueItems": true,
+              "maxItems": 2,
+              "items": {
+                "$ref": "#/$defs/edition"
+              }
+            },
+            "primary_route": {
+              "const": {
+                "route_key": "resources",
+                "route_status": "existing"
+              }
+            },
+            "gate_dependencies": {
+              "const": [
+                {
+                  "gate": "G0",
+                  "covers": "which book is canonical and which languages exist (HB-04, HB-18)"
+                },
+                {
+                  "gate": "G1",
+                  "covers": "claims and professional facts in the book and its landing copy (HB-21, HB-25)"
+                },
+                {
+                  "gate": "G3",
+                  "covers": "exact sha256 of each PDF edition and of the landing copy"
+                },
+                {
+                  "gate": "G5",
+                  "covers": "optional email copy: consent wording, processors, retention (HB-27)"
+                },
+                {
+                  "gate": "G6",
+                  "covers": "public activation of the guide path"
+                }
+              ]
+            },
+            "guardrails": {
+              "const": [
+                "Marketing consent is separate from access and fulfilment: the PDF never requires a marketing opt-in.",
+                "Access is immediate and needs no email address; an emailed copy is optional.",
+                "The approved PDF stays downloadable on the site when email delivery or storage fails.",
+                "Only a G3-approved edition (exact sha256) is offered publicly; the review edition stays behind review protection."
+              ]
+            },
+            "spec_refs": {
+              "const": [
+                "01 §1",
+                "01 §7",
+                "04 §1",
+                "04 §6",
+                "D-001",
+                "D-054"
+              ]
+            }
+          }
+        },
+        "intro-15": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "offer_id",
+            "kind",
+            "receives",
+            "price",
+            "question_limit",
+            "meeting_type_id",
+            "duration_minutes",
+            "modalities_permitted",
+            "modalities_offered",
+            "in_person_location",
+            "online_service",
+            "capacity_per_week",
+            "capacity_proposal",
+            "booking_route",
+            "not_included",
+            "booking_truth",
+            "primary_route",
+            "gate_dependencies",
+            "guardrails",
+            "spec_refs"
+          ],
+          "properties": {
+            "offer_id": {
+              "const": "intro-15"
+            },
+            "kind": {
+              "const": "meeting"
+            },
+            "receives": {
+              "const": "15 minutes with Bill about one question, at no charge, online or in person."
+            },
+            "price": {
+              "const": {
+                "model": "free"
+              }
+            },
+            "question_limit": {
+              "const": 1
+            },
+            "meeting_type_id": {
+              "const": "intro-15"
+            },
+            "duration_minutes": {
+              "const": 15
+            },
+            "modalities_permitted": {
+              "const": [
+                "online",
+                "in_person"
+              ]
+            },
+            "modalities_offered": {
+              "$ref": "#/$defs/modalities_offered"
+            },
+            "in_person_location": {
+              "type": "object",
+              "additionalProperties": false,
+              "required": [
+                "status",
+                "value",
+                "approvals"
+              ],
+              "properties": {
+                "status": {
+                  "enum": [
+                    "pending",
+                    "recorded"
+                  ]
+                },
+                "value": {
+                  "anyOf": [
+                    {
+                      "type": "null"
+                    },
+                    {
+                      "$ref": "#/$defs/location_value"
+                    }
+                  ]
+                },
+                "approvals": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/$defs/approval_ref"
+                  }
+                }
+              },
+              "allOf": [
+                {
+                  "if": {
+                    "properties": {
+                      "status": {
+                        "const": "pending"
+                      }
+                    }
+                  },
+                  "then": {
+                    "properties": {
+                      "value": {
+                        "type": "null"
+                      },
+                      "approvals": {
+                        "maxItems": 0
+                      }
+                    }
+                  }
+                },
+                {
+                  "if": {
+                    "properties": {
+                      "status": {
+                        "const": "recorded"
+                      }
+                    }
+                  },
+                  "then": {
+                    "properties": {
+                      "value": {
+                        "$ref": "#/$defs/location_value"
+                      },
+                      "approvals": {
+                        "$ref": "#/$defs/approvals_G0"
+                      }
+                    }
+                  }
+                }
+              ],
+              "description": "Bill's confirmed in-person location and room. Pending: value null, no approvals. Recorded: value set and approvals naming G0."
+            },
+            "online_service": {
+              "type": "object",
+              "additionalProperties": false,
+              "required": [
+                "status",
+                "value",
+                "approvals"
+              ],
+              "properties": {
+                "status": {
+                  "enum": [
+                    "pending",
+                    "recorded"
+                  ]
+                },
+                "value": {
+                  "anyOf": [
+                    {
+                      "type": "null"
+                    },
+                    {
+                      "$ref": "#/$defs/online_service_value"
+                    }
+                  ]
+                },
+                "approvals": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/$defs/approval_ref"
+                  }
+                }
+              },
+              "allOf": [
+                {
+                  "if": {
+                    "properties": {
+                      "status": {
+                        "const": "pending"
+                      }
+                    }
+                  },
+                  "then": {
+                    "properties": {
+                      "value": {
+                        "type": "null"
+                      },
+                      "approvals": {
+                        "maxItems": 0
+                      }
+                    }
+                  }
+                },
+                {
+                  "if": {
+                    "properties": {
+                      "status": {
+                        "const": "recorded"
+                      }
+                    }
+                  },
+                  "then": {
+                    "properties": {
+                      "value": {
+                        "$ref": "#/$defs/online_service_value"
+                      },
+                      "approvals": {
+                        "$ref": "#/$defs/approvals_G0"
+                      }
+                    }
+                  }
+                }
+              ],
+              "description": "The online meeting service for this meeting type. Pending: value null, no approvals. Recorded: value set and approvals naming G0."
+            },
+            "capacity_per_week": {
+              "type": "object",
+              "additionalProperties": false,
+              "required": [
+                "status",
+                "value",
+                "approvals"
+              ],
+              "properties": {
+                "status": {
+                  "enum": [
+                    "pending",
+                    "recorded"
+                  ]
+                },
+                "value": {
+                  "anyOf": [
+                    {
+                      "type": "null"
+                    },
+                    {
+                      "$ref": "#/$defs/capacity_value"
+                    }
+                  ]
+                },
+                "approvals": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/$defs/approval_ref"
+                  }
+                }
+              },
+              "allOf": [
+                {
+                  "if": {
+                    "properties": {
+                      "status": {
+                        "const": "pending"
+                      }
+                    }
+                  },
+                  "then": {
+                    "properties": {
+                      "value": {
+                        "type": "null"
+                      },
+                      "approvals": {
+                        "maxItems": 0
+                      }
+                    }
+                  }
+                },
+                {
+                  "if": {
+                    "properties": {
+                      "status": {
+                        "const": "recorded"
+                      }
+                    }
+                  },
+                  "then": {
+                    "properties": {
+                      "value": {
+                        "$ref": "#/$defs/capacity_value"
+                      },
+                      "approvals": {
+                        "$ref": "#/$defs/approvals_G0"
+                      }
+                    }
+                  }
+                }
+              ],
+              "description": "Weekly slots Bill confirms. Pending: value null, no approvals. Recorded: value set and approvals naming G0."
+            },
+            "capacity_proposal": {
+              "const": {
+                "slots_per_week": 6,
+                "buffer_minutes": 10,
+                "status_note": "plan proposal pending G0 (D-033, HB-16)"
+              }
+            },
+            "booking_route": {
+              "const": {
+                "route_key": "meeting",
+                "route_status": "existing"
+              }
+            },
+            "not_included": {
+              "const": [
+                "a complete financial plan",
+                "onboarding",
+                "a promise of individualized advice outside the appropriate professional process"
+              ]
+            },
+            "booking_truth": {
+              "const": "Confirmed only by the calendar or provider event (provider.booking_sync) or an audited operator reconciliation (operator.reconciliation); a booking-link click changes nothing."
+            },
+            "primary_route": {
+              "const": {
+                "route_key": "meeting",
+                "route_status": "existing"
+              }
+            },
+            "gate_dependencies": {
+              "const": [
+                {
+                  "gate": "G0",
+                  "covers": "scheduling owner, weekly capacity, online meeting service, in-person location (HB-14, HB-15, HB-16)"
+                },
+                {
+                  "gate": "G1",
+                  "covers": "approved scope and wording of the 15-minute introduction (HB-24)"
+                },
+                {
+                  "gate": "G3",
+                  "covers": "exact hashes of the meeting page copy, W11, S13, AD04, RT01, E05 and E15"
+                },
+                {
+                  "gate": "G5",
+                  "covers": "scheduler intake questions, booking data processing and retention"
+                },
+                {
+                  "gate": "G6",
+                  "covers": "public activation of the meeting path"
+                }
+              ]
+            },
+            "guardrails": {
+              "const": [
+                "Exactly 15 minutes and one question; never 60 minutes.",
+                "Not a complete plan, not onboarding, and not a promise of individualized advice outside the appropriate professional process.",
+                "In person is offered only once Bill's location and room are confirmed (G0); online only once the online meeting service is recorded (G0), never Zoom.",
+                "A booking-link click is not a booking: only the calendar or provider event, or an audited operator reconciliation, confirms it.",
+                "Every relevant page can link straight to this meeting; nothing has to be watched, finished or bought first.",
+                "Scheduler links are never prefilled and intake questions ask for no balances, amounts, account numbers or documents."
+              ]
+            },
+            "spec_refs": {
+              "const": [
+                "01 §1",
+                "01 §11",
+                "01 §17",
+                "05 W11",
+                "D-002",
+                "D-005",
+                "D-008",
+                "D-033"
+              ]
+            }
+          },
+          "allOf": [
+            {
+              "if": {
+                "properties": {
+                  "modalities_offered": {
+                    "contains": {
+                      "const": "in_person"
+                    }
+                  }
+                },
+                "required": [
+                  "modalities_offered"
+                ]
+              },
+              "then": {
+                "properties": {
+                  "in_person_location": {
+                    "properties": {
+                      "status": {
+                        "const": "recorded"
+                      }
+                    }
+                  }
+                }
+              }
+            },
+            {
+              "if": {
+                "properties": {
+                  "modalities_offered": {
+                    "contains": {
+                      "const": "online"
+                    }
+                  }
+                },
+                "required": [
+                  "modalities_offered"
+                ]
+              },
+              "then": {
+                "properties": {
+                  "online_service": {
+                    "properties": {
+                      "status": {
+                        "const": "recorded"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          ]
+        },
+        "book-bundle": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "offer_id",
+            "kind",
+            "receives",
+            "price",
+            "approved_print_editions",
+            "included_consultation",
+            "entitlement",
+            "cap",
+            "prepayment_disclosures",
+            "sale_state",
+            "primary_route",
+            "gate_dependencies",
+            "guardrails",
+            "spec_refs"
+          ],
+          "properties": {
+            "offer_id": {
+              "const": "book-bundle"
+            },
+            "kind": {
+              "const": "printed_book_with_consultation"
+            },
+            "receives": {
+              "const": "A paid printed copy of the approved book, including one 30-minute consultation with Bill, online or in person."
+            },
+            "price": {
+              "type": "object",
+              "additionalProperties": false,
+              "required": [
+                "model",
+                "status",
+                "value",
+                "approvals"
+              ],
+              "properties": {
+                "model": {
+                  "const": "paid"
+                },
+                "status": {
+                  "enum": [
+                    "pending",
+                    "recorded"
+                  ]
+                },
+                "value": {
+                  "anyOf": [
+                    {
+                      "type": "null"
+                    },
+                    {
+                      "$ref": "#/$defs/price_value"
+                    }
+                  ]
+                },
+                "approvals": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/$defs/approval_ref"
+                  }
+                }
+              },
+              "allOf": [
+                {
+                  "if": {
+                    "properties": {
+                      "status": {
+                        "const": "pending"
+                      }
+                    }
+                  },
+                  "then": {
+                    "properties": {
+                      "value": {
+                        "type": "null"
+                      },
+                      "approvals": {
+                        "maxItems": 0
+                      }
+                    }
+                  }
+                },
+                {
+                  "if": {
+                    "properties": {
+                      "status": {
+                        "const": "recorded"
+                      }
+                    }
+                  },
+                  "then": {
+                    "properties": {
+                      "value": {
+                        "$ref": "#/$defs/price_value"
+                      },
+                      "approvals": {
+                        "$ref": "#/$defs/approvals_G0"
+                      }
+                    }
+                  }
+                }
+              ],
+              "description": "Book price. No price exists anywhere today (D-032); none may be invented. Pending: value null, no approvals. Recorded: value set and approvals naming G0."
+            },
+            "approved_print_editions": {
+              "type": "array",
+              "uniqueItems": true,
+              "maxItems": 2,
+              "items": {
+                "$ref": "#/$defs/edition"
+              }
+            },
+            "included_consultation": {
+              "type": "object",
+              "additionalProperties": false,
+              "required": [
+                "count",
+                "meeting_type_id",
+                "duration_minutes",
+                "modalities_permitted",
+                "modalities_offered",
+                "in_person_location",
+                "online_service",
+                "capacity_per_week",
+                "capacity_proposal",
+                "booking_route",
+                "validity",
+                "separately_priced",
+                "survives_no_fit",
+                "removable_by_fit_screen",
+                "booking_truth"
+              ],
+              "properties": {
+                "count": {
+                  "const": 1
+                },
+                "meeting_type_id": {
+                  "const": "book-consultation-30"
+                },
+                "duration_minutes": {
+                  "const": 30
+                },
+                "modalities_permitted": {
+                  "const": [
+                    "online",
+                    "in_person"
+                  ]
+                },
+                "modalities_offered": {
+                  "$ref": "#/$defs/modalities_offered"
+                },
+                "in_person_location": {
+                  "type": "object",
+                  "additionalProperties": false,
+                  "required": [
+                    "status",
+                    "value",
+                    "approvals"
+                  ],
+                  "properties": {
+                    "status": {
+                      "enum": [
+                        "pending",
+                        "recorded"
+                      ]
+                    },
+                    "value": {
+                      "anyOf": [
+                        {
+                          "type": "null"
+                        },
+                        {
+                          "$ref": "#/$defs/location_value"
+                        }
+                      ]
+                    },
+                    "approvals": {
+                      "type": "array",
+                      "items": {
+                        "$ref": "#/$defs/approval_ref"
+                      }
+                    }
+                  },
+                  "allOf": [
+                    {
+                      "if": {
+                        "properties": {
+                          "status": {
+                            "const": "pending"
+                          }
+                        }
+                      },
+                      "then": {
+                        "properties": {
+                          "value": {
+                            "type": "null"
+                          },
+                          "approvals": {
+                            "maxItems": 0
+                          }
+                        }
+                      }
+                    },
+                    {
+                      "if": {
+                        "properties": {
+                          "status": {
+                            "const": "recorded"
+                          }
+                        }
+                      },
+                      "then": {
+                        "properties": {
+                          "value": {
+                            "$ref": "#/$defs/location_value"
+                          },
+                          "approvals": {
+                            "$ref": "#/$defs/approvals_G0"
+                          }
+                        }
+                      }
+                    }
+                  ],
+                  "description": "Bill's confirmed in-person location and room. Pending: value null, no approvals. Recorded: value set and approvals naming G0."
+                },
+                "online_service": {
+                  "type": "object",
+                  "additionalProperties": false,
+                  "required": [
+                    "status",
+                    "value",
+                    "approvals"
+                  ],
+                  "properties": {
+                    "status": {
+                      "enum": [
+                        "pending",
+                        "recorded"
+                      ]
+                    },
+                    "value": {
+                      "anyOf": [
+                        {
+                          "type": "null"
+                        },
+                        {
+                          "$ref": "#/$defs/online_service_value"
+                        }
+                      ]
+                    },
+                    "approvals": {
+                      "type": "array",
+                      "items": {
+                        "$ref": "#/$defs/approval_ref"
+                      }
+                    }
+                  },
+                  "allOf": [
+                    {
+                      "if": {
+                        "properties": {
+                          "status": {
+                            "const": "pending"
+                          }
+                        }
+                      },
+                      "then": {
+                        "properties": {
+                          "value": {
+                            "type": "null"
+                          },
+                          "approvals": {
+                            "maxItems": 0
+                          }
+                        }
+                      }
+                    },
+                    {
+                      "if": {
+                        "properties": {
+                          "status": {
+                            "const": "recorded"
+                          }
+                        }
+                      },
+                      "then": {
+                        "properties": {
+                          "value": {
+                            "$ref": "#/$defs/online_service_value"
+                          },
+                          "approvals": {
+                            "$ref": "#/$defs/approvals_G0"
+                          }
+                        }
+                      }
+                    }
+                  ],
+                  "description": "The online meeting service for this meeting type. Pending: value null, no approvals. Recorded: value set and approvals naming G0."
+                },
+                "capacity_per_week": {
+                  "type": "object",
+                  "additionalProperties": false,
+                  "required": [
+                    "status",
+                    "value",
+                    "approvals"
+                  ],
+                  "properties": {
+                    "status": {
+                      "enum": [
+                        "pending",
+                        "recorded"
+                      ]
+                    },
+                    "value": {
+                      "anyOf": [
+                        {
+                          "type": "null"
+                        },
+                        {
+                          "$ref": "#/$defs/capacity_value"
+                        }
+                      ]
+                    },
+                    "approvals": {
+                      "type": "array",
+                      "items": {
+                        "$ref": "#/$defs/approval_ref"
+                      }
+                    }
+                  },
+                  "allOf": [
+                    {
+                      "if": {
+                        "properties": {
+                          "status": {
+                            "const": "pending"
+                          }
+                        }
+                      },
+                      "then": {
+                        "properties": {
+                          "value": {
+                            "type": "null"
+                          },
+                          "approvals": {
+                            "maxItems": 0
+                          }
+                        }
+                      }
+                    },
+                    {
+                      "if": {
+                        "properties": {
+                          "status": {
+                            "const": "recorded"
+                          }
+                        }
+                      },
+                      "then": {
+                        "properties": {
+                          "value": {
+                            "$ref": "#/$defs/capacity_value"
+                          },
+                          "approvals": {
+                            "$ref": "#/$defs/approvals_G0"
+                          }
+                        }
+                      }
+                    }
+                  ],
+                  "description": "Weekly slots Bill confirms. Pending: value null, no approvals. Recorded: value set and approvals naming G0."
+                },
+                "capacity_proposal": {
+                  "const": {
+                    "slots_per_week": 2,
+                    "buffer_minutes": 10,
+                    "status_note": "plan proposal pending G0 (D-033, HB-16)"
+                  }
+                },
+                "booking_route": {
+                  "const": {
+                    "route_key": "bookConsultation",
+                    "route_status": "proposed"
+                  }
+                },
+                "validity": {
+                  "type": "object",
+                  "additionalProperties": false,
+                  "required": [
+                    "status",
+                    "value",
+                    "approvals"
+                  ],
+                  "properties": {
+                    "status": {
+                      "enum": [
+                        "pending",
+                        "recorded"
+                      ]
+                    },
+                    "value": {
+                      "anyOf": [
+                        {
+                          "type": "null"
+                        },
+                        {
+                          "$ref": "#/$defs/validity_value"
+                        }
+                      ]
+                    },
+                    "approvals": {
+                      "type": "array",
+                      "items": {
+                        "$ref": "#/$defs/approval_ref"
+                      }
+                    }
+                  },
+                  "allOf": [
+                    {
+                      "if": {
+                        "properties": {
+                          "status": {
+                            "const": "pending"
+                          }
+                        }
+                      },
+                      "then": {
+                        "properties": {
+                          "value": {
+                            "type": "null"
+                          },
+                          "approvals": {
+                            "maxItems": 0
+                          }
+                        }
+                      }
+                    },
+                    {
+                      "if": {
+                        "properties": {
+                          "status": {
+                            "const": "recorded"
+                          }
+                        }
+                      },
+                      "then": {
+                        "properties": {
+                          "value": {
+                            "$ref": "#/$defs/validity_value"
+                          },
+                          "approvals": {
+                            "$ref": "#/$defs/approvals_G0"
+                          }
+                        }
+                      }
+                    }
+                  ],
+                  "description": "How long the included consultation stays valid (HB-20). Pending: value null, no approvals. Recorded: value set and approvals naming G0."
+                },
+                "separately_priced": {
+                  "const": false
+                },
+                "survives_no_fit": {
+                  "const": true
+                },
+                "removable_by_fit_screen": {
+                  "const": false
+                },
+                "booking_truth": {
+                  "const": "Confirmed only by the calendar or provider event (provider.booking_sync) or an audited operator reconciliation (operator.reconciliation); a booking-link click changes nothing."
+                }
+              },
+              "allOf": [
+                {
+                  "if": {
+                    "properties": {
+                      "modalities_offered": {
+                        "contains": {
+                          "const": "in_person"
+                        }
+                      }
+                    },
+                    "required": [
+                      "modalities_offered"
+                    ]
+                  },
+                  "then": {
+                    "properties": {
+                      "in_person_location": {
+                        "properties": {
+                          "status": {
+                            "const": "recorded"
+                          }
+                        }
+                      }
+                    }
+                  }
+                },
+                {
+                  "if": {
+                    "properties": {
+                      "modalities_offered": {
+                        "contains": {
+                          "const": "online"
+                        }
+                      }
+                    },
+                    "required": [
+                      "modalities_offered"
+                    ]
+                  },
+                  "then": {
+                    "properties": {
+                      "online_service": {
+                        "properties": {
+                          "status": {
+                            "const": "recorded"
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              ]
+            },
+            "entitlement": {
+              "type": "object",
+              "additionalProperties": false,
+              "required": [
+                "unit",
+                "rights_per_verified_paid_order",
+                "issued_only_from",
+                "never_from",
+                "reschedule",
+                "refund"
+              ],
+              "properties": {
+                "unit": {
+                  "type": "object",
+                  "additionalProperties": false,
+                  "required": [
+                    "proposal",
+                    "status",
+                    "value",
+                    "approvals"
+                  ],
+                  "properties": {
+                    "proposal": {
+                      "const": "one_household_per_bundle"
+                    },
+                    "status": {
+                      "enum": [
+                        "pending",
+                        "recorded"
+                      ]
+                    },
+                    "value": {
+                      "anyOf": [
+                        {
+                          "type": "null"
+                        },
+                        {
+                          "$ref": "#/$defs/entitlement_unit_value"
+                        }
+                      ]
+                    },
+                    "approvals": {
+                      "type": "array",
+                      "items": {
+                        "$ref": "#/$defs/approval_ref"
+                      }
+                    }
+                  },
+                  "allOf": [
+                    {
+                      "if": {
+                        "properties": {
+                          "status": {
+                            "const": "pending"
+                          }
+                        }
+                      },
+                      "then": {
+                        "properties": {
+                          "value": {
+                            "type": "null"
+                          },
+                          "approvals": {
+                            "maxItems": 0
+                          }
+                        }
+                      }
+                    },
+                    {
+                      "if": {
+                        "properties": {
+                          "status": {
+                            "const": "recorded"
+                          }
+                        }
+                      },
+                      "then": {
+                        "properties": {
+                          "value": {
+                            "$ref": "#/$defs/entitlement_unit_value"
+                          },
+                          "approvals": {
+                            "$ref": "#/$defs/approvals_G1"
+                          }
+                        }
+                      }
+                    }
+                  ],
+                  "description": "Who the included consultation serves (D-007, HB-20, HB-24). Pending: value null, no approvals. Recorded: value set and approvals naming G1."
+                },
+                "rights_per_verified_paid_order": {
+                  "const": 1
+                },
+                "issued_only_from": {
+                  "const": "book.payment_confirmed from provider.stripe_webhook (verified signature, stored event ID, current status paid)"
+                },
+                "never_from": {
+                  "const": [
+                    "a return-page redirect or its query string",
+                    "a hidden or reusable scheduling URL",
+                    "a booking-link click",
+                    "a second webhook delivery or a second checkout session for the same order"
+                  ]
+                },
+                "reschedule": {
+                  "const": "moves the existing right to the new booking; never creates another right"
+                },
+                "refund": {
+                  "const": "an unused right is voided as the approved refund terms say (HB-20, HB-28)"
+                }
+              }
+            },
+            "cap": {
+              "type": "object",
+              "additionalProperties": false,
+              "required": [
+                "proposal_bundles",
+                "limited_by",
+                "status",
+                "value",
+                "approvals"
+              ],
+              "properties": {
+                "proposal_bundles": {
+                  "const": 8
+                },
+                "limited_by": {
+                  "const": [
+                    "real calendar capacity",
+                    "print and dispatch capacity"
+                  ]
+                },
+                "status": {
+                  "enum": [
+                    "pending",
+                    "recorded"
+                  ]
+                },
+                "value": {
+                  "anyOf": [
+                    {
+                      "type": "null"
+                    },
+                    {
+                      "$ref": "#/$defs/cap_value"
+                    }
+                  ]
+                },
+                "approvals": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/$defs/approval_ref"
+                  }
+                }
+              },
+              "allOf": [
+                {
+                  "if": {
+                    "properties": {
+                      "status": {
+                        "const": "pending"
+                      }
+                    }
+                  },
+                  "then": {
+                    "properties": {
+                      "value": {
+                        "type": "null"
+                      },
+                      "approvals": {
+                        "maxItems": 0
+                      }
+                    }
+                  }
+                },
+                {
+                  "if": {
+                    "properties": {
+                      "status": {
+                        "const": "recorded"
+                      }
+                    }
+                  },
+                  "then": {
+                    "properties": {
+                      "value": {
+                        "$ref": "#/$defs/cap_value"
+                      },
+                      "approvals": {
+                        "$ref": "#/$defs/approvals_G0"
+                      }
+                    }
+                  }
+                }
+              ],
+              "description": "Number of bundles in the first batch (plan proposal 8, D-032). Pending: value null, no approvals. Recorded: value set and approvals naming G0."
+            },
+            "prepayment_disclosures": {
+              "type": "object",
+              "additionalProperties": false,
+              "required": [
+                "price",
+                "currency",
+                "tax_treatment",
+                "shipping",
+                "eligibility",
+                "booking",
+                "cancellation",
+                "refund"
+              ],
+              "properties": {
+                "price": {
+                  "type": "object",
+                  "additionalProperties": false,
+                  "required": [
+                    "status",
+                    "value",
+                    "approvals"
+                  ],
+                  "properties": {
+                    "status": {
+                      "enum": [
+                        "pending",
+                        "recorded"
+                      ]
+                    },
+                    "value": {
+                      "anyOf": [
+                        {
+                          "type": "null"
+                        },
+                        {
+                          "$ref": "#/$defs/disclosure_value"
+                        }
+                      ]
+                    },
+                    "approvals": {
+                      "type": "array",
+                      "items": {
+                        "$ref": "#/$defs/approval_ref"
+                      }
+                    }
+                  },
+                  "allOf": [
+                    {
+                      "if": {
+                        "properties": {
+                          "status": {
+                            "const": "pending"
+                          }
+                        }
+                      },
+                      "then": {
+                        "properties": {
+                          "value": {
+                            "type": "null"
+                          },
+                          "approvals": {
+                            "maxItems": 0
+                          }
+                        }
+                      }
+                    },
+                    {
+                      "if": {
+                        "properties": {
+                          "status": {
+                            "const": "recorded"
+                          }
+                        }
+                      },
+                      "then": {
+                        "properties": {
+                          "value": {
+                            "$ref": "#/$defs/disclosure_value"
+                          },
+                          "approvals": {
+                            "$ref": "#/$defs/approvals_G0"
+                          }
+                        }
+                      }
+                    }
+                  ],
+                  "description": "Pre-payment disclosure 'price'. Pending: value null, no approvals. Recorded: value set and approvals naming G0."
+                },
+                "currency": {
+                  "type": "object",
+                  "additionalProperties": false,
+                  "required": [
+                    "status",
+                    "value",
+                    "approvals"
+                  ],
+                  "properties": {
+                    "status": {
+                      "enum": [
+                        "pending",
+                        "recorded"
+                      ]
+                    },
+                    "value": {
+                      "anyOf": [
+                        {
+                          "type": "null"
+                        },
+                        {
+                          "$ref": "#/$defs/disclosure_value"
+                        }
+                      ]
+                    },
+                    "approvals": {
+                      "type": "array",
+                      "items": {
+                        "$ref": "#/$defs/approval_ref"
+                      }
+                    }
+                  },
+                  "allOf": [
+                    {
+                      "if": {
+                        "properties": {
+                          "status": {
+                            "const": "pending"
+                          }
+                        }
+                      },
+                      "then": {
+                        "properties": {
+                          "value": {
+                            "type": "null"
+                          },
+                          "approvals": {
+                            "maxItems": 0
+                          }
+                        }
+                      }
+                    },
+                    {
+                      "if": {
+                        "properties": {
+                          "status": {
+                            "const": "recorded"
+                          }
+                        }
+                      },
+                      "then": {
+                        "properties": {
+                          "value": {
+                            "$ref": "#/$defs/disclosure_value"
+                          },
+                          "approvals": {
+                            "$ref": "#/$defs/approvals_G0"
+                          }
+                        }
+                      }
+                    }
+                  ],
+                  "description": "Pre-payment disclosure 'currency'. Pending: value null, no approvals. Recorded: value set and approvals naming G0."
+                },
+                "tax_treatment": {
+                  "type": "object",
+                  "additionalProperties": false,
+                  "required": [
+                    "status",
+                    "value",
+                    "approvals"
+                  ],
+                  "properties": {
+                    "status": {
+                      "enum": [
+                        "pending",
+                        "recorded"
+                      ]
+                    },
+                    "value": {
+                      "anyOf": [
+                        {
+                          "type": "null"
+                        },
+                        {
+                          "$ref": "#/$defs/disclosure_value"
+                        }
+                      ]
+                    },
+                    "approvals": {
+                      "type": "array",
+                      "items": {
+                        "$ref": "#/$defs/approval_ref"
+                      }
+                    }
+                  },
+                  "allOf": [
+                    {
+                      "if": {
+                        "properties": {
+                          "status": {
+                            "const": "pending"
+                          }
+                        }
+                      },
+                      "then": {
+                        "properties": {
+                          "value": {
+                            "type": "null"
+                          },
+                          "approvals": {
+                            "maxItems": 0
+                          }
+                        }
+                      }
+                    },
+                    {
+                      "if": {
+                        "properties": {
+                          "status": {
+                            "const": "recorded"
+                          }
+                        }
+                      },
+                      "then": {
+                        "properties": {
+                          "value": {
+                            "$ref": "#/$defs/disclosure_value"
+                          },
+                          "approvals": {
+                            "$ref": "#/$defs/approvals_G0"
+                          }
+                        }
+                      }
+                    }
+                  ],
+                  "description": "Pre-payment disclosure 'tax_treatment'. Pending: value null, no approvals. Recorded: value set and approvals naming G0."
+                },
+                "shipping": {
+                  "type": "object",
+                  "additionalProperties": false,
+                  "required": [
+                    "status",
+                    "value",
+                    "approvals"
+                  ],
+                  "properties": {
+                    "status": {
+                      "enum": [
+                        "pending",
+                        "recorded"
+                      ]
+                    },
+                    "value": {
+                      "anyOf": [
+                        {
+                          "type": "null"
+                        },
+                        {
+                          "$ref": "#/$defs/disclosure_value"
+                        }
+                      ]
+                    },
+                    "approvals": {
+                      "type": "array",
+                      "items": {
+                        "$ref": "#/$defs/approval_ref"
+                      }
+                    }
+                  },
+                  "allOf": [
+                    {
+                      "if": {
+                        "properties": {
+                          "status": {
+                            "const": "pending"
+                          }
+                        }
+                      },
+                      "then": {
+                        "properties": {
+                          "value": {
+                            "type": "null"
+                          },
+                          "approvals": {
+                            "maxItems": 0
+                          }
+                        }
+                      }
+                    },
+                    {
+                      "if": {
+                        "properties": {
+                          "status": {
+                            "const": "recorded"
+                          }
+                        }
+                      },
+                      "then": {
+                        "properties": {
+                          "value": {
+                            "$ref": "#/$defs/disclosure_value"
+                          },
+                          "approvals": {
+                            "$ref": "#/$defs/approvals_G0_G5"
+                          }
+                        }
+                      }
+                    }
+                  ],
+                  "description": "Pre-payment disclosure 'shipping'. Pending: value null, no approvals. Recorded: value set and approvals naming G0, G5."
+                },
+                "eligibility": {
+                  "type": "object",
+                  "additionalProperties": false,
+                  "required": [
+                    "status",
+                    "value",
+                    "approvals"
+                  ],
+                  "properties": {
+                    "status": {
+                      "enum": [
+                        "pending",
+                        "recorded"
+                      ]
+                    },
+                    "value": {
+                      "anyOf": [
+                        {
+                          "type": "null"
+                        },
+                        {
+                          "$ref": "#/$defs/disclosure_value"
+                        }
+                      ]
+                    },
+                    "approvals": {
+                      "type": "array",
+                      "items": {
+                        "$ref": "#/$defs/approval_ref"
+                      }
+                    }
+                  },
+                  "allOf": [
+                    {
+                      "if": {
+                        "properties": {
+                          "status": {
+                            "const": "pending"
+                          }
+                        }
+                      },
+                      "then": {
+                        "properties": {
+                          "value": {
+                            "type": "null"
+                          },
+                          "approvals": {
+                            "maxItems": 0
+                          }
+                        }
+                      }
+                    },
+                    {
+                      "if": {
+                        "properties": {
+                          "status": {
+                            "const": "recorded"
+                          }
+                        }
+                      },
+                      "then": {
+                        "properties": {
+                          "value": {
+                            "$ref": "#/$defs/disclosure_value"
+                          },
+                          "approvals": {
+                            "$ref": "#/$defs/approvals_G1"
+                          }
+                        }
+                      }
+                    }
+                  ],
+                  "description": "Pre-payment disclosure 'eligibility'. Pending: value null, no approvals. Recorded: value set and approvals naming G1."
+                },
+                "booking": {
+                  "type": "object",
+                  "additionalProperties": false,
+                  "required": [
+                    "status",
+                    "value",
+                    "approvals"
+                  ],
+                  "properties": {
+                    "status": {
+                      "enum": [
+                        "pending",
+                        "recorded"
+                      ]
+                    },
+                    "value": {
+                      "anyOf": [
+                        {
+                          "type": "null"
+                        },
+                        {
+                          "$ref": "#/$defs/disclosure_value"
+                        }
+                      ]
+                    },
+                    "approvals": {
+                      "type": "array",
+                      "items": {
+                        "$ref": "#/$defs/approval_ref"
+                      }
+                    }
+                  },
+                  "allOf": [
+                    {
+                      "if": {
+                        "properties": {
+                          "status": {
+                            "const": "pending"
+                          }
+                        }
+                      },
+                      "then": {
+                        "properties": {
+                          "value": {
+                            "type": "null"
+                          },
+                          "approvals": {
+                            "maxItems": 0
+                          }
+                        }
+                      }
+                    },
+                    {
+                      "if": {
+                        "properties": {
+                          "status": {
+                            "const": "recorded"
+                          }
+                        }
+                      },
+                      "then": {
+                        "properties": {
+                          "value": {
+                            "$ref": "#/$defs/disclosure_value"
+                          },
+                          "approvals": {
+                            "$ref": "#/$defs/approvals_G0_G1"
+                          }
+                        }
+                      }
+                    }
+                  ],
+                  "description": "Pre-payment disclosure 'booking'. Pending: value null, no approvals. Recorded: value set and approvals naming G0, G1."
+                },
+                "cancellation": {
+                  "type": "object",
+                  "additionalProperties": false,
+                  "required": [
+                    "status",
+                    "value",
+                    "approvals"
+                  ],
+                  "properties": {
+                    "status": {
+                      "enum": [
+                        "pending",
+                        "recorded"
+                      ]
+                    },
+                    "value": {
+                      "anyOf": [
+                        {
+                          "type": "null"
+                        },
+                        {
+                          "$ref": "#/$defs/disclosure_value"
+                        }
+                      ]
+                    },
+                    "approvals": {
+                      "type": "array",
+                      "items": {
+                        "$ref": "#/$defs/approval_ref"
+                      }
+                    }
+                  },
+                  "allOf": [
+                    {
+                      "if": {
+                        "properties": {
+                          "status": {
+                            "const": "pending"
+                          }
+                        }
+                      },
+                      "then": {
+                        "properties": {
+                          "value": {
+                            "type": "null"
+                          },
+                          "approvals": {
+                            "maxItems": 0
+                          }
+                        }
+                      }
+                    },
+                    {
+                      "if": {
+                        "properties": {
+                          "status": {
+                            "const": "recorded"
+                          }
+                        }
+                      },
+                      "then": {
+                        "properties": {
+                          "value": {
+                            "$ref": "#/$defs/disclosure_value"
+                          },
+                          "approvals": {
+                            "$ref": "#/$defs/approvals_G1_G5"
+                          }
+                        }
+                      }
+                    }
+                  ],
+                  "description": "Pre-payment disclosure 'cancellation'. Pending: value null, no approvals. Recorded: value set and approvals naming G1, G5."
+                },
+                "refund": {
+                  "type": "object",
+                  "additionalProperties": false,
+                  "required": [
+                    "status",
+                    "value",
+                    "approvals"
+                  ],
+                  "properties": {
+                    "status": {
+                      "enum": [
+                        "pending",
+                        "recorded"
+                      ]
+                    },
+                    "value": {
+                      "anyOf": [
+                        {
+                          "type": "null"
+                        },
+                        {
+                          "$ref": "#/$defs/disclosure_value"
+                        }
+                      ]
+                    },
+                    "approvals": {
+                      "type": "array",
+                      "items": {
+                        "$ref": "#/$defs/approval_ref"
+                      }
+                    }
+                  },
+                  "allOf": [
+                    {
+                      "if": {
+                        "properties": {
+                          "status": {
+                            "const": "pending"
+                          }
+                        }
+                      },
+                      "then": {
+                        "properties": {
+                          "value": {
+                            "type": "null"
+                          },
+                          "approvals": {
+                            "maxItems": 0
+                          }
+                        }
+                      }
+                    },
+                    {
+                      "if": {
+                        "properties": {
+                          "status": {
+                            "const": "recorded"
+                          }
+                        }
+                      },
+                      "then": {
+                        "properties": {
+                          "value": {
+                            "$ref": "#/$defs/disclosure_value"
+                          },
+                          "approvals": {
+                            "$ref": "#/$defs/approvals_G1_G5"
+                          }
+                        }
+                      }
+                    }
+                  ],
+                  "description": "Pre-payment disclosure 'refund'. Pending: value null, no approvals. Recorded: value set and approvals naming G1, G5."
+                }
+              },
+              "description": "Every key is mandatory: the terms disclosed before payment (01 §1: price, shipping, eligibility, booking, cancellation; 01 §11: currency, tax treatment, refund)."
+            },
+            "sale_state": {
+              "enum": [
+                "not_on_sale",
+                "test_mode_only",
+                "on_sale"
+              ],
+              "description": "on_sale requires every G0/G1/G5 field recorded (OM-SALE-1). test_mode_only is Stripe test mode behind review protection with a product marked TEST (D-032)."
+            },
+            "primary_route": {
+              "const": {
+                "route_key": "book",
+                "route_status": "proposed"
+              }
+            },
+            "gate_dependencies": {
+              "const": [
+                {
+                  "gate": "G0",
+                  "covers": "price, currency, tax treatment, shipping, cap, consultation validity and weekly capacity (HB-20, HB-16)"
+                },
+                {
+                  "gate": "G1",
+                  "covers": "offer wording, eligibility and the entitlement unit (HB-20, HB-24)"
+                },
+                {
+                  "gate": "G2",
+                  "covers": "Stripe account, test mode first, then live (HB-06)"
+                },
+                {
+                  "gate": "G3",
+                  "covers": "exact hashes of the offer page, the terms, the print master and E12, E13, E14"
+                },
+                {
+                  "gate": "G5",
+                  "covers": "fulfilment, refund and cancellation process and shipping-address handling (HB-28)"
+                },
+                {
+                  "gate": "G6",
+                  "covers": "checkout_live and the capped book-sales rollout step"
+                }
+              ]
+            },
+            "guardrails": {
+              "const": [
+                "The included consultation is 30 minutes, never 60; there is no one-hour book offer.",
+                "Price, currency, tax treatment, shipping, eligibility, booking, cancellation and refund terms are disclosed before payment.",
+                "The promise is '30 minutes included', not a separately priced service with an invented value.",
+                "A buyer keeps the included consultation even if no ongoing relationship follows; a commercial-fit screen cannot remove it.",
+                "One consultation right per verified paid order, issued only after a verified signed payment webhook; never from a redirect, a hidden scheduling URL or a click.",
+                "Rescheduling moves the existing right; duplicate webhooks or clicks never create a second right, book or email.",
+                "Sales are capped by real calendar and print/dispatch capacity; no price or cap is used before G0 records it."
+              ]
+            },
+            "spec_refs": {
+              "const": [
+                "01 §1",
+                "01 §11",
+                "04 §1",
+                "04 §2",
+                "05 AD06",
+                "05 E12",
+                "D-003",
+                "D-007",
+                "D-010",
+                "D-032"
+              ]
+            }
+          },
+          "allOf": [
+            {
+              "if": {
+                "properties": {
+                  "sale_state": {
+                    "const": "on_sale"
+                  }
+                },
+                "required": [
+                  "sale_state"
+                ]
+              },
+              "then": {
+                "properties": {
+                  "price": {
+                    "properties": {
+                      "status": {
+                        "const": "recorded"
+                      }
+                    }
+                  },
+                  "cap": {
+                    "properties": {
+                      "status": {
+                        "const": "recorded"
+                      }
+                    }
+                  },
+                  "approved_print_editions": {
+                    "minItems": 1
+                  },
+                  "entitlement": {
+                    "properties": {
+                      "unit": {
+                        "properties": {
+                          "status": {
+                            "const": "recorded"
+                          }
+                        }
+                      }
+                    }
+                  },
+                  "included_consultation": {
+                    "properties": {
+                      "validity": {
+                        "properties": {
+                          "status": {
+                            "const": "recorded"
+                          }
+                        }
+                      },
+                      "capacity_per_week": {
+                        "properties": {
+                          "status": {
+                            "const": "recorded"
+                          }
+                        }
+                      },
+                      "modalities_offered": {
+                        "minItems": 1
+                      }
+                    }
+                  },
+                  "prepayment_disclosures": {
+                    "properties": {
+                      "price": {
+                        "properties": {
+                          "status": {
+                            "const": "recorded"
+                          }
+                        }
+                      },
+                      "currency": {
+                        "properties": {
+                          "status": {
+                            "const": "recorded"
+                          }
+                        }
+                      },
+                      "tax_treatment": {
+                        "properties": {
+                          "status": {
+                            "const": "recorded"
+                          }
+                        }
+                      },
+                      "shipping": {
+                        "properties": {
+                          "status": {
+                            "const": "recorded"
+                          }
+                        }
+                      },
+                      "eligibility": {
+                        "properties": {
+                          "status": {
+                            "const": "recorded"
+                          }
+                        }
+                      },
+                      "booking": {
+                        "properties": {
+                          "status": {
+                            "const": "recorded"
+                          }
+                        }
+                      },
+                      "cancellation": {
+                        "properties": {
+                          "status": {
+                            "const": "recorded"
+                          }
+                        }
+                      },
+                      "refund": {
+                        "properties": {
+                          "status": {
+                            "const": "recorded"
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          ]
+        },
+        "continued-work": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "offer_id",
+            "kind",
+            "receives",
+            "price",
+            "duration_minutes",
+            "requires_mutual_fit",
+            "prerequisite_for_other_offers",
+            "primary_route",
+            "gate_dependencies",
+            "guardrails",
+            "spec_refs"
+          ],
+          "properties": {
+            "offer_id": {
+              "const": "continued-work"
+            },
+            "kind": {
+              "const": "discussion"
+            },
+            "receives": {
+              "const": "A discussion of scope, fees and next steps, only if the fit is mutual."
+            },
+            "price": {
+              "const": {
+                "model": "not_stated_in_matrix"
+              }
+            },
+            "duration_minutes": {
+              "const": null
+            },
+            "requires_mutual_fit": {
+              "const": true
+            },
+            "prerequisite_for_other_offers": {
+              "const": false
+            },
+            "primary_route": {
+              "const": null
+            },
+            "gate_dependencies": {
+              "const": [
+                {
+                  "gate": "G1",
+                  "covers": "any public wording about continued work, scope or fees (HB-24)"
+                },
+                {
+                  "gate": "G3",
+                  "covers": "exact hash of any artifact that mentions continued work"
+                }
+              ]
+            },
+            "guardrails": {
+              "const": [
+                "Offered only when the fit is mutual; never a condition for the free introduction or the included consultation.",
+                "A book buyer still receives the included consultation when no ongoing relationship results.",
+                "This matrix states no fee, minimum asset level or engagement term; any such public statement needs G1 and G3."
+              ]
+            },
+            "spec_refs": {
+              "const": [
+                "01 §1",
+                "D-004"
+              ]
+            }
+          }
+        }
+      },
+      "description": "Exactly the four frozen offers; no other offer can be added in 1.0."
+    },
+    "meeting_types": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "intro-15",
+        "book-consultation-30"
+      ],
+      "properties": {
+        "intro-15": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "offer_id",
+            "duration_minutes",
+            "requires_consultation_right"
+          ],
+          "properties": {
+            "offer_id": {
+              "const": "intro-15"
+            },
+            "duration_minutes": {
+              "const": 15
+            },
+            "requires_consultation_right": {
+              "const": false
+            }
+          }
+        },
+        "book-consultation-30": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "offer_id",
+            "duration_minutes",
+            "requires_consultation_right"
+          ],
+          "properties": {
+            "offer_id": {
+              "const": "book-bundle"
+            },
+            "duration_minutes": {
+              "const": 30
+            },
+            "requires_consultation_right": {
+              "const": true
+            }
+          }
+        }
+      },
+      "description": "Bookable meeting types. These IDs are the bookings.offer_id values in operational-data-model.md."
+    },
+    "rules": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "no_mandatory_funnel_staircase",
+        "forbidden",
+        "change_control"
+      ],
+      "properties": {
+        "no_mandatory_funnel_staircase": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "direct_meeting_offer_id",
+            "intro_15_prerequisites",
+            "must_link_to_meeting",
+            "exempt_from_meeting_link",
+            "workshop_ending_useful_without_email_or_booking"
+          ],
+          "properties": {
+            "direct_meeting_offer_id": {
+              "const": "intro-15"
+            },
+            "intro_15_prerequisites": {
+              "type": "array",
+              "maxItems": 0,
+              "description": "Nothing must be watched, finished or bought before the 15-minute meeting."
+            },
+            "must_link_to_meeting": {
+              "const": [
+                "home",
+                "retirement",
+                "investments",
+                "about",
+                "resources",
+                "fees",
+                "articles",
+                "workshop",
+                "crossroads",
+                "crossroadsConfirmed",
+                "crossroadsReplay",
+                "book"
+              ]
+            },
+            "exempt_from_meeting_link": {
+              "const": [
+                "meeting",
+                "privacy",
+                "legal",
+                "emailPreferences",
+                "unsubscribe",
+                "crossroadsJoin",
+                "bookOrderStatus",
+                "bookConsultation"
+              ]
+            },
+            "workshop_ending_useful_without_email_or_booking": {
+              "const": true
+            }
+          }
+        },
+        "forbidden": {
+          "const": [
+            "a 60-minute consultation or a one-hour book offer",
+            "Zoom for Bill's meetings or events",
+            "an invented or estimated price, cap or value",
+            "a separately priced value for the included consultation",
+            "a mandatory funnel staircase before the 15-minute meeting",
+            "a live customer-facing LLM answering visitors",
+            "workshop financial figures leaving the browser"
+          ]
+        },
+        "change_control": {
+          "const": "Offers change only when Arnaud and Bill change them explicitly. A0 records the change in decisions.md and issues a new contract version. No agent can change an offer."
+        }
+      }
+    }
+  },
+  "allOf": [
+    {
+      "if": {
+        "properties": {
+          "document_kind": {
+            "const": "authoritative"
+          }
+        },
+        "required": [
+          "document_kind"
+        ]
+      },
+      "then": {
+        "properties": {
+          "gate_records": {
+            "items": {
+              "properties": {
+                "record_ref": {
+                  "pattern": "^\\.orchestration/(?:decisions\\.md#D-[0-9]{3}[a-z]?|approval-packets/[A-Za-z0-9._-]+(?:/[A-Za-z0-9._-]+)*)$"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "document_kind": {
+            "const": "fixture"
+          }
+        },
+        "required": [
+          "document_kind"
+        ]
+      },
+      "then": {
+        "properties": {
+          "gate_records": {
+            "items": {
+              "properties": {
+                "record_ref": {
+                  "pattern": "^fixture:[a-z0-9][a-z0-9-]{2,80}$"
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  ],
+  "$defs": {
+    "date": {
+      "type": "string",
+      "pattern": "^20[0-9]{2}-(?:0[1-9]|1[0-2])-(?:0[1-9]|[12][0-9]|3[01])$"
+    },
+    "gate": {
+      "enum": [
+        "G0",
+        "G1",
+        "G2",
+        "G3",
+        "G4",
+        "G5",
+        "G6"
+      ]
+    },
+    "human_role": {
+      "enum": [
+        "arnaud",
+        "bill",
+        "firm_reviewer",
+        "privacy_owner",
+        "account_owner"
+      ],
+      "description": "Human gate owners only (06). Agent roles A0-A6 can never record a gate."
+    },
+    "approval_ref": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "gate",
+        "record_id"
+      ],
+      "properties": {
+        "gate": {
+          "$ref": "#/$defs/gate"
+        },
+        "record_id": {
+          "type": "string",
+          "pattern": "^gr-[0-9]{2,3}$"
+        }
+      },
+      "description": "Points at one entry of gate_records. The harness checks that the record exists and names the same gate (OM-REF-1, OM-REF-2)."
+    },
+    "gate_record": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "record_id",
+        "gate",
+        "covers",
+        "record_ref",
+        "recorded_by_role",
+        "recorded_on"
+      ],
+      "properties": {
+        "record_id": {
+          "type": "string",
+          "pattern": "^gr-[0-9]{2,3}$"
+        },
+        "gate": {
+          "$ref": "#/$defs/gate"
+        },
+        "covers": {
+          "type": "string",
+          "minLength": 3,
+          "maxLength": 200
+        },
+        "record_ref": {
+          "type": "string",
+          "minLength": 3,
+          "maxLength": 300
+        },
+        "recorded_by_role": {
+          "$ref": "#/$defs/human_role"
+        },
+        "recorded_on": {
+          "$ref": "#/$defs/date"
+        }
+      },
+      "description": "One human gate record. In an authoritative document record_ref must point at decisions.md or an approval packet; in a fixture it must start with 'fixture:' (OM-DOC-1)."
+    },
+    "copy_asset_id": {
+      "type": "string",
+      "pattern": "^copy\\.[a-z]+(?:-[a-z]+){0,7}$",
+      "description": "asset-manifest ID of the approved wording (asset-manifest 1.0)."
+    },
+    "edition": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "locale",
+        "sha256",
+        "approvals"
+      ],
+      "properties": {
+        "locale": {
+          "enum": [
+            "fr",
+            "en"
+          ]
+        },
+        "sha256": {
+          "type": "string",
+          "pattern": "^[0-9a-f]{64}$"
+        },
+        "approvals": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "$ref": "#/$defs/approval_ref"
+          },
+          "contains": {
+            "type": "object",
+            "properties": {
+              "gate": {
+                "const": "G3"
+              }
+            },
+            "required": [
+              "gate"
+            ]
+          }
+        }
+      },
+      "description": "An approved edition: exact file hash, bound to a G3 record."
+    },
+    "modalities_offered": {
+      "type": "array",
+      "uniqueItems": true,
+      "maxItems": 2,
+      "items": {
+        "enum": [
+          "online",
+          "in_person"
+        ]
+      },
+      "description": "Modalities that may be presented now. Empty until G0 records them (OM-MOD-1, OM-MOD-3)."
+    },
+    "price_value": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "amount_minor",
+        "currency"
+      ],
+      "properties": {
+        "amount_minor": {
+          "type": "integer",
+          "minimum": 1,
+          "description": "Integer minor units (cents). Only the G0-recorded amount."
+        },
+        "currency": {
+          "type": "string",
+          "pattern": "^[A-Z]{3}$"
+        }
+      }
+    },
+    "location_value": {
+      "type": "string",
+      "pattern": "^[a-z][a-z0-9_]{2,40}$",
+      "description": "A location key; the address itself lives in lib/business.ts once businessDetails is approved."
+    },
+    "online_service_value": {
+      "type": "string",
+      "pattern": "^[a-z][a-z0-9_]{1,40}$",
+      "not": {
+        "pattern": "zoom"
+      },
+      "description": "Online meeting service key. Zoom is forbidden (D-008)."
+    },
+    "validity_value": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "unit",
+        "count"
+      ],
+      "properties": {
+        "unit": {
+          "enum": [
+            "days",
+            "months"
+          ]
+        },
+        "count": {
+          "type": "integer",
+          "minimum": 1
+        }
+      }
+    },
+    "capacity_value": {
+      "type": "integer",
+      "minimum": 1,
+      "description": "Slots per week recorded at G0."
+    },
+    "entitlement_unit_value": {
+      "type": "string",
+      "pattern": "^[a-z][a-z_]{2,60}$"
+    },
+    "disclosure_value": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "wording_asset_id"
+      ],
+      "properties": {
+        "wording_asset_id": {
+          "$ref": "#/$defs/copy_asset_id"
+        }
+      }
+    },
+    "cap_value": {
+      "type": "integer",
+      "minimum": 1,
+      "description": "Bundles in the first batch, as recorded at G0."
+    },
+    "approvals_G0": {
+      "type": "array",
+      "minItems": 1,
+      "uniqueItems": true,
+      "items": {
+        "$ref": "#/$defs/approval_ref"
+      },
+      "allOf": [
+        {
+          "contains": {
+            "type": "object",
+            "properties": {
+              "gate": {
+                "const": "G0"
+              }
+            },
+            "required": [
+              "gate"
+            ]
+          }
+        }
+      ],
+      "description": "Recorded approvals: at least one approval naming each of G0."
+    },
+    "approvals_G1": {
+      "type": "array",
+      "minItems": 1,
+      "uniqueItems": true,
+      "items": {
+        "$ref": "#/$defs/approval_ref"
+      },
+      "allOf": [
+        {
+          "contains": {
+            "type": "object",
+            "properties": {
+              "gate": {
+                "const": "G1"
+              }
+            },
+            "required": [
+              "gate"
+            ]
+          }
+        }
+      ],
+      "description": "Recorded approvals: at least one approval naming each of G1."
+    },
+    "approvals_G0_G5": {
+      "type": "array",
+      "minItems": 2,
+      "uniqueItems": true,
+      "items": {
+        "$ref": "#/$defs/approval_ref"
+      },
+      "allOf": [
+        {
+          "contains": {
+            "type": "object",
+            "properties": {
+              "gate": {
+                "const": "G0"
+              }
+            },
+            "required": [
+              "gate"
+            ]
+          }
+        },
+        {
+          "contains": {
+            "type": "object",
+            "properties": {
+              "gate": {
+                "const": "G5"
+              }
+            },
+            "required": [
+              "gate"
+            ]
+          }
+        }
+      ],
+      "description": "Recorded approvals: at least one approval naming each of G0, G5."
+    },
+    "approvals_G0_G1": {
+      "type": "array",
+      "minItems": 2,
+      "uniqueItems": true,
+      "items": {
+        "$ref": "#/$defs/approval_ref"
+      },
+      "allOf": [
+        {
+          "contains": {
+            "type": "object",
+            "properties": {
+              "gate": {
+                "const": "G0"
+              }
+            },
+            "required": [
+              "gate"
+            ]
+          }
+        },
+        {
+          "contains": {
+            "type": "object",
+            "properties": {
+              "gate": {
+                "const": "G1"
+              }
+            },
+            "required": [
+              "gate"
+            ]
+          }
+        }
+      ],
+      "description": "Recorded approvals: at least one approval naming each of G0, G1."
+    },
+    "approvals_G1_G5": {
+      "type": "array",
+      "minItems": 2,
+      "uniqueItems": true,
+      "items": {
+        "$ref": "#/$defs/approval_ref"
+      },
+      "allOf": [
+        {
+          "contains": {
+            "type": "object",
+            "properties": {
+              "gate": {
+                "const": "G1"
+              }
+            },
+            "required": [
+              "gate"
+            ]
+          }
+        },
+        {
+          "contains": {
+            "type": "object",
+            "properties": {
+              "gate": {
+                "const": "G5"
+              }
+            },
+            "required": [
+              "gate"
+            ]
+          }
+        }
+      ],
+      "description": "Recorded approvals: at least one approval naming each of G1, G5."
+    }
+  }
+}

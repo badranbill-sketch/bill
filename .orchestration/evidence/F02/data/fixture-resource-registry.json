@@ -1,0 +1,126 @@
+{
+  "fixture": true,
+  "note": "Fictional. Shape proposed for P02 (event-envelope.md section 4.2). A code absent from this list is rejected whole even when it matches the schema pattern (PB-ID-5).",
+  "entries": [
+    {
+      "resource_id": "book.fixture-book.hd5976a6c5231",
+      "kind": "book",
+      "key": "fixture-book",
+      "version": "hd5976a6c5231",
+      "locales": [
+        "en",
+        "fr"
+      ],
+      "approval_ref": "fixture:approval-packets/book.md#G3",
+      "gate": "G3"
+    },
+    {
+      "resource_id": "copy.fixture-disclosure.hf6727be1f3e0",
+      "kind": "copy",
+      "key": "fixture-disclosure",
+      "version": "hf6727be1f3e0",
+      "locales": [
+        "en",
+        "fr"
+      ],
+      "approval_ref": "fixture:approval-packets/copy.md#G3",
+      "gate": "G3"
+    },
+    {
+      "resource_id": "ink.a01.hf4a5f5dea456",
+      "kind": "ink",
+      "key": "a01",
+      "version": "hf4a5f5dea456",
+      "locales": [
+        "en",
+        "fr"
+      ],
+      "approval_ref": "fixture:approval-packets/ink.md#G3",
+      "gate": "G3"
+    },
+    {
+      "resource_id": "article.five-years-before-retirement.he14f01374fa2",
+      "kind": "article",
+      "key": "five-years-before-retirement",
+      "version": "he14f01374fa2",
+      "locales": [
+        "en",
+        "fr"
+      ],
+      "approval_ref": "fixture:approval-packets/article.md#G3",
+      "gate": "G3"
+    },
+    {
+      "resource_id": "companion.s03.h99c5913a468f",
+      "kind": "companion",
+      "key": "s03",
+      "version": "h99c5913a468f",
+      "locales": [
+        "en",
+        "fr"
+      ],
+      "approval_ref": "fixture:approval-packets/companion.md#G3",
+      "gate": "G3"
+    },
+    {
+      "resource_id": "event.fixture-kit.hd7519e94838e",
+      "kind": "event",
+      "key": "fixture-kit",
+      "version": "hd7519e94838e",
+      "locales": [
+        "en",
+        "fr"
+      ],
+      "approval_ref": "fixture:approval-packets/event.md#G3",
+      "gate": "G3"
+    },
+    {
+      "resource_id": "template.e07.h1f10e4f87273",
+      "kind": "template",
+      "key": "e07",
+      "version": "h1f10e4f87273",
+      "locales": [
+        "en",
+        "fr"
+      ],
+      "approval_ref": "fixture:approval-packets/template.md#G3",
+      "gate": "G3"
+    },
+    {
+      "resource_id": "guide.retirement-guide.h905df92f35e6",
+      "kind": "guide",
+      "key": "retirement-guide",
+      "version": "h905df92f35e6",
+      "locales": [
+        "en",
+        "fr"
+      ],
+      "approval_ref": "fixture:approval-packets/guide.md#G3",
+      "gate": "G3"
+    },
+    {
+      "resource_id": "consent.nurture.hade8541d1084",
+      "kind": "consent",
+      "key": "nurture",
+      "version": "hade8541d1084",
+      "locales": [
+        "en",
+        "fr"
+      ],
+      "approval_ref": "fixture:approval-packets/consent.md#G5",
+      "gate": "G5"
+    },
+    {
+      "resource_id": "workshop.retirement-workshop.h328239ed2251",
+      "kind": "workshop",
+      "key": "retirement-workshop",
+      "version": "h328239ed2251",
+      "locales": [
+        "en",
+        "fr"
+      ],
+      "approval_ref": "fixture:approval-packets/workshop.md#G3",
+      "gate": "G3"
+    }
+  ]
+}

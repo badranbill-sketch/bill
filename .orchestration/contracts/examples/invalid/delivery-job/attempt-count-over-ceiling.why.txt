@@ -1,0 +1,5 @@
+rule: JS-RETRY-1 attempt_count never exceeds the hard ceiling of 8
+expect_path: attempt_count
+expect_keyword: maximum
+
+Unbounded retries.

@@ -1,0 +1,5 @@
+rule: JS-PRIO-1 promotional priority is 5-9; operational messages go first
+expect_path: priority
+expect_keyword: minimum
+
+A nurture message placed ahead of operational reminders.

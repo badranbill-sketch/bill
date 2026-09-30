@@ -1,0 +1,4 @@
+rule: OM-BOOK-2
+breaks: One verified paid order creates exactly one consultation right.
+expect_keyword: const
+expect_path: /offers/book-bundle/entitlement/rights_per_verified_paid_order

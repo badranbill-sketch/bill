@@ -1,0 +1,65 @@
+# forbidden offers/tools: every occurrence in contract text (md + json, excluding validate.py)
+README.md:26:  - a paid printed book including one 30-minute consultation (never 60 minutes; there is no one-hour offer);
+README.md:158:a-model checks. The included consultation is 30 minutes. No duration `const` is 60. Asset `offer_refs` use the offer IDs. | 7, 8, 10 |
+README.md:171:| CX-24 | A forbidden duration or tool (a 60-minute consultation, a one-hour offer, Zoom, n8n Cloud, Vercel Hobby, a custom video platform, a live customer-
+README.md:254:, in-person room, online video tool for each meeting type (a service containing Zoom is refused) | Bill (G0) | HB-14, HB-15, HB-16 |
+authority-matrix.md:42: minutes. A value other than 30 in `consultation_rights.duration_minutes`, or a 60-minute event type linked to a right, is a defect (D-003, D-010).
+job-state-machine.md:77:e's anchor and offsets are in `email-eligibility.json` (for example, E08 is due one hour before the event and expires 15 minutes before it).
+job-state-machine.md:106:oposed).** Exponential backoff with full jitter: `delay = random(0, min(3600 s, 60 s × 2^(attempt_count − 1)))`, bounded by `expires_at`. A provider `Retry-Aft
+offer-matrix.md:29:60 minutes cannot appear anywhere a duration is defined. `offers.intro-15.duration_minutes
+offer-matrix.md:29:tion_minutes` are all `const` (OM-DUR-1 to OM-DUR-3). No fifth offer, such as a one-hour session, can be added (OM-SHAPE-1).
+offer-matrix.md:56:| `*.online_service` | G0 | service key; anything containing `zoom` is refused (OM-MOD-2, D-008) | HB-14, HB-15 |
+offer-matrix.md:70:HB-15 asks which video tool the existing Calendly remote type uses. It could be Zoom, which is forbidden, so online stays unconfirmed until G0 answers.
+offer-matrix.md:105:| OM-DUR-1 | Introduction is 15 minutes | `intro-60-minutes` |
+offer-matrix.md:106:| OM-DUR-2 | Included book consultation is 30 minutes, never 60 | `book-consultation-60-minutes` |
+offer-matrix.md:107:| OM-DUR-3 | Meeting type `book-consultation-30` is 30 minutes | `meeting-type-60-minutes` |
+offer-matrix.md:115:| OM-MOD-2 | Zoom is refused as the online service | `zoom-online-service` |
+offer-matrix.md:122:| OM-SHAPE-1 | Exactly four offers | `extra-one-hour-offer` |
+operational-data-model.md:33:  first_name          text,                               -- optional, <= 60 chars
+operational-data-model.md:109:es    integer not null default 30,        -- check duration_minutes = 30 (never 60; D-003, D-010)
+privacy-boundary.md:136:| PB-LLM-1 | No customer-facing LLM (D-013). The only model job is the weekly article draft, which receives Bill's 
+workshop-clip-rules.md:94:**How the fixture inputs are built.** The template is A = 60, R = 62 (t_R = 2), H = 6, i = 0. Each predicate is switched on as follows:
+workshop-inputs.md:93:| `.amount` | any status; monthly ≤ 5,000,000 ($50,000), annual ≤ 60,000,000 ($600,000) | The amount; annual amount = 12 × monthly amount. |
+workshop-inputs.md:120:| `planning_horizon_years` | estimated only | 1–60, and R + H − 1 ≤ 120 (XF-03) | H: the **number of retirement years illustra
+workshop-math.md:197:  - one P_j,t: 1,000,472,455,871 cents (60,000,000 × 1.1¹⁰², a today-dollar source with q_j = i = 10%);
+workshop-math.md:199:105,946,171 cents (the sum of D_t for t = 43…102, that is A = 18, R = 61, H = 60).
+workshop-math.md:374:, income up to $50,000 a month, balances up to $50M, rates of 0–10%, H of 1–60, last age ≤ 120.
+email-eligibility.json:70:ISO 8601 durations. A leading '-' means before the anchor (for example -PT1H is one hour before).",
+email-eligibility.json:227:osed: stricter than 'expires at event' (05 §8) so it never arrives next to the 1-hour reminder."},
+email-eligibility.json:239:      "purpose": "Event 1-hour reminder",
+email-eligibility.json:244:      "timing": {"anchor": "webinar.starts_at", "offset": "-PT1H", "rule": "One hour before the start."},
+email-eligibility.json:326:s the 30-minute included consultation and the fulfilment details (D-003); never 60 minutes (D-010)."
+offer-matrix.json:5:s of 01 §1 are fixed by const: what is received, durations (15 and 30 minutes; 60 is impossible), guardrails, gate dependencies and the no-staircase rule. Fields
+offer-matrix.json:486:                "Exactly 15 minutes and one question; never 60 minutes.",
+offer-matrix.json:488:irmed (G0); online only once the online meeting service is recorded (G0), never Zoom.",
+offer-matrix.json:1939:                "The included consultation is 30 minutes, never 60; there is no one-hour book offer.",
+offer-matrix.json:2278:            "a 60-minute consultation or a one-hour book offer",
+offer-matrix.json:2279:            "Zoom for Bill's meetings or events",
+offer-matrix.json:2283:            "a live customer-facing LLM answering visitors",
+offer-matrix.json:2512:        "pattern": "zoom"
+offer-matrix.json:2514:      "description": "Online meeting service key. Zoom is forbidden (D-008)."
+offer-matrix.json:2543:      "pattern": "^[a-z][a-z_]{2,60}$"
+workshop-inputs.schema.json:681:       "maximum": 60
+workshop-inputs.schema.json:684:     "description": "H: number of retirement years illustrated, 1 to 60, and last illustrated age <= 120. An illustration assumption, not a life-expect
+workshop-inputs.schema.json:728:ies": {"current_age": {"required": ["value"], "properties": {"value": {"const": 60}}}, "retirement_age": {"required": ["value"]}}}, "then": {"properties": {"retir
+workshop-inputs.schema.json:728:ement_age": {"properties": {"value": {"minimum": 60}}}}}},
+workshop-inputs.schema.json:877:partner_current_age": {"required": ["value"], "properties": {"value": {"const": 60}}}, "partner_retirement_age": {"required": ["value"]}}}, "then": {"properties":
+workshop-inputs.schema.json:877: {"partner_retirement_age": {"properties": {"value": {"minimum": 60}}}}}},
+examples/valid/offer-matrix/authoritative-2026-09-30.json:135:        "Exactly 15 minutes and one question; never 60 minutes.",
+examples/valid/offer-matrix/authoritative-2026-09-30.json:137:irmed (G0); online only once the online meeting service is recorded (G0), never Zoom.",
+examples/valid/offer-matrix/authoritative-2026-09-30.json:309:        "The included consultation is 30 minutes, never 60; there is no one-hour book offer.",
+examples/valid/offer-matrix/authoritative-2026-09-30.json:405:      "a 60-minute consultation or a one-hour book offer",
+examples/valid/offer-matrix/authoritative-2026-09-30.json:406:      "Zoom for Bill's meetings or events",
+examples/valid/offer-matrix/authoritative-2026-09-30.json:410:      "a live customer-facing LLM answering visitors",
+examples/valid/offer-matrix/fixture-all-gates-recorded-fictional.json:349:        "Exactly 15 minutes and one question; never 60 minutes.",
+examples/valid/offer-matrix/fixture-all-gates-recorded-fictional.json:351:irmed (G0); online only once the online meeting service is recorded (G0), never Zoom.",
+examples/valid/offer-matrix/fixture-all-gates-recorded-fictional.json:644:        "The included consultation is 30 minutes, never 60; there is no one-hour book offer.",
+examples/valid/offer-matrix/fixture-all-gates-recorded-fictional.json:740:      "a 60-minute consultation or a one-hour book offer",
+examples/valid/offer-matrix/fixture-all-gates-recorded-fictional.json:741:      "Zoom for Bill's meetings or events",
+examples/valid/offer-matrix/fixture-all-gates-recorded-fictional.json:745:      "a live customer-facing LLM answering visitors",
+examples/valid/offer-matrix/fixture-test-mode-only.json:135:        "Exactly 15 minutes and one question; never 60 minutes.",
+examples/valid/offer-matrix/fixture-test-mode-only.json:137:irmed (G0); online only once the online meeting service is recorded (G0), never Zoom.",
+examples/valid/offer-matrix/fixture-test-mode-only.json:309:        "The included consultation is 30 minutes, never 60; there is no one-hour book offer.",
+examples/valid/offer-matrix/fixture-test-mode-only.json:405:      "a 60-minute consultation or a one-hour book offer",
+examples/valid/offer-matrix/fixture-test-mode-only.json:406:      "Zoom for Bill's meetings or events",
+examples/valid/offer-matrix/fixture-test-mode-only.json:410:      "a live customer-facing LLM answering visitors",

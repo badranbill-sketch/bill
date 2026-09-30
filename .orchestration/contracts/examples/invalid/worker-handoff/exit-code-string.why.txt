@@ -1,0 +1,4 @@
+rule: WH-TEST-1
+breaks: exit_code is an integer 0-255, or null when not captured.
+expect_keyword: anyOf
+expect_path: /tests/0/exit_code

@@ -1,0 +1,4 @@
+rule: OM-BOOK-3
+breaks: A commercial-fit screen cannot remove a consultation already sold.
+expect_keyword: const
+expect_path: /offers/book-bundle/included_consultation/removable_by_fit_screen

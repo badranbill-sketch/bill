@@ -1,0 +1,44 @@
+baseline (no fault): 0 mismatches 
+CAUGHT  half_up                              WM04,WM17
+CAUGHT  float64                              WM17
+CAUGHT  window_off_by_one                    WM01,WM02,WM03,WM04,WM05,WM06,WM07,WM08,WM09,WM10,WM11,WM12 (+22)
+CAUGHT  spending_unknown_zero                WM25
+CAUGHT  coverage_incomplete_as_complete      WM07,WM30,CS03
+MISSED  joint_uses_partner                   
+CAUGHT  income_monthly_no_x12                WM03,WM05,WM09,WM19
+CAUGHT  today_dollars_as_nominal             WM04
+MISSED  today_dollars_uses_q                 
+CAUGHT  price_basis_unknown_as_start_year    WM22,WM34
+CAUGHT  pbu_even_at_zero                     WM22,WM34
+CAUGHT  gross_compared                       WM09,WM20,WM34,TT5,TT6,TT7,TT8,TT13,TT14,TT15,TT16,TT21 (+4)
+CAUGHT  tax_unknown_as_net                   WM23,CS04
+CAUGHT  unknown_first                        WM32,WM33
+CAUGHT  unknown_start_not_paying             WM26,WM33,WM34
+CAUGHT  unknown_start_already_receiving      WM22(throw),WM26,WM33,WM34
+CAUGHT  unresolvable_start_not_paying        WM20,WM29,WM34,CS01
+CAUGHT  unknown_end_no_end                   WM27,WM28
+CAUGHT  end_inclusive                        WM18,WM32,WM33
+CAUGHT  xf05_inference                       WM27,WM28
+CAUGHT  unknown_amount_zero                  WM08,WM34
+CAUGHT  escalate_from_zero                   WM04,WM13
+CAUGHT  one_code_per_source                  WM20,WM34,CS01
+CAUGHT  groups_as_listed_when_incomplete     WM07,WM30
+MISSED  group_from_rounded_rows              
+CAUGHT  surplus_netted                       WM12
+MISSED  deflate_rounded_gap                  
+CAUGHT  partner_age_null_key                 WM28,WM29,WM34
+CAUGHT  H_by_age                             CS06
+CAUGHT  home_spendable                       WM10
+MISSED  horizon_flag_known_amount_only       
+CAUGHT  horizon_flag_strict                  WM18
+MISSED  uncertain_flag_any                   
+CAUGHT  employment_uncertain_kind            WM32
+CAUGHT  cr_start_of_year_flows               WM11,WM15,WM16,WM35
+CAUGHT  cr_discount_to_base                  WM35
+CAUGHT  ignore_no_positive_gap               WM36
+CAUGHT  ineligible_adds_flags                WM07,WM08,WM09,WM20,WM22,WM23,WM26,WM27,WM28,WM29,WM30,WM31 (+2)
+CAUGHT  X_before_M                           WM34,TT13,TT14,TT15,TT16
+CAUGHT  F_before_H                           WM21,TT4
+CAUGHT  estimated_triggers_M                 WM01,WM03,WM04,WM05,WM09,WM10,WM11,WM12,WM13,WM14,WM16,WM17 (+24)
+MISSED  R_code_only_if_A_known               
+MISSED  no_global_codes_without_window       

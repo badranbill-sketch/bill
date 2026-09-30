@@ -1,0 +1,5 @@
+rule: FF-ENV-1 public_launch, checkout_live, paid_ads and third_party_tracking are false outside production
+expect_path: flags/public_launch/value
+expect_keyword: const
+
+Staging opened to the public.

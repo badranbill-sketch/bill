@@ -1,0 +1,20 @@
+{
+  "run_id": "wf_1e398e6e-3ba",
+  "task_ids": [
+    "F01",
+    "F02"
+  ],
+  "kind": "workflow",
+  "provider": "Anthropic (Claude Code session)",
+  "model": "inherited session model (claude-opus-5-5)",
+  "agents": 21,
+  "tool_uses": 1364,
+  "subagent_tokens": 6591831,
+  "wall_time_s": 18263,
+  "metered_cost": {
+    "amount": null,
+    "currency": null,
+    "status": "unavailable-not-estimated"
+  },
+  "external_actions": "none (local files, scratch venv with jsonschema from PyPI)"
+}

@@ -1,0 +1,4 @@
+rule: AM-HARN-2
+breaks: (asset_id, locale, version) is unique within a manifest (harness rule).
+expect_keyword: harness:AM-HARN-2
+expect_path: /assets/10

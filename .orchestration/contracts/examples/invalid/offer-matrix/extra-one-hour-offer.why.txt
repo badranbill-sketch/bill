@@ -1,0 +1,4 @@
+rule: OM-SHAPE-1
+breaks: Exactly the four frozen offers exist; a fifth (one-hour) offer cannot be added.
+expect_keyword: additionalProperties
+expect_path: /offers

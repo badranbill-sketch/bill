@@ -1,0 +1,89 @@
+# 19: text quotes for re-verified attempt-2 findings and new observations (grep -n over the current contract files)
+## A6D2-01 (withdrawal vs leased job): one rule everywhere
+35:| T3 | pending / retry_due → suppressed | an upstream suppression sweep (withdrawal, blocklist, cancellation, booking, refund, remade event). It applies to these two states only and never changes a `leased` job (JS-SUPP-2). | `op_record_withdrawal`, domai
+37:| T5 | leased → suppressed | the pre-send check (§6) fails on an eligibility rule. `send_started_at` is null, because the check runs before the send marker. This is the only way a leased job becomes suppressed (JS-SUPP-2). | `op_prepare_send` |
+63:**JS-SUPP-2 (runtime).** Only T3 (from `pending` or `retry_due`), T5 (from `leased`, before the send marker) and T16 (from `reconcile_required`, on evidence) lead to `suppressed`. `op_record_withdrawal` and every other suppression writer change `pending` an
+256:| `op_record_withdrawal(contact_id, purpose, source, evidence)` | Appends a revoked consent row and, in the same transaction, suppresses the contact's `pending` and `retry_due` promotional jobs (job-state-machine.md T3, `consent_withdrawn`). It never chang
+7:  - A6D2-01: AM-CONSENT-2 now matches job-state-machine.md. A revocation suppresses `pending` and `retry_due` jobs, and a leased job is stopped at its own pre-send check.
+29:- **AM-CONSENT-2.** Revocation wins. A later `revoked` row, a Brevo blocklist or unsubscribe signal, or a global suppression vetoes every promotional job that has not reached its send marker, even 
+
+## A6D2-02 (booking-to-contact join)
+141:- **EV-BOOK-1.** A booking event is produced only for a booking joined to a contact (§3, authority-matrix.md AM-BOOK-3). A producer that cannot make the join emits nothing and stores the booking unmatched (AM-BOOK-5). It never uses a placeholder contact a
+17:| Booking | The provider or calendar event, or an authorized, documented operator reconciliation. The contact it belongs to comes only from the exact-address join of AM-BOOK-3. | `meeting.confirmed
+47:- **AM-BOOK-3. Booking-to-contact join.** A booking is joined to a contact only when the invitee's address exactly matches an existing contact, after the normalization used for `contacts.email_norm
+53:- **AM-BOOK-4. Never infer the join.** Never infer it from:
+60:- **AM-BOOK-5. A booking that matches no contact.** The booking row is stored with `contact_id` null and `contact_match = 'unmatched'`: IDs, times, offer, mode and status only. The delivery is reco
+65:- **AM-BOOK-6. How far `already_booked` reaches.** The suppression on E05 and E11 covers bookings joined to the contact. `meeting.confirmed` sweeps the contact's `pending` and `retry_due` E05 and E
+26:| DC-BOOKING-INTAKE | Invitee name, email, intake answer, time, mode | Scheduler and calendar only; Supabase stores IDs, times, offer, mode and status. The invitee email reaches the application ser
+8:  - A6D2-02: the booking-to-contact join is defined (authority-matrix.md AM-BOOK-3 to AM-BOOK-6). `bookings` gains `contact_match`, `op_accept_event` describes the join, and principle 2 says a booki
+123:  contact_match       text not null default 'unmatched',  -- 'unmatched' | 'booking_sync' | 'operator_reconciliation' (how the join was made)
+135:  -- check: (contact_match = 'unmatched') = (contact_id is null)
+249:| `op_accept_event(envelope, change)` | In one transaction: dedupe on `(provider, external_event_id)` and `idempotency_key`, apply the authoritative change, insert `integration_events`, create due
+
+## still-open P3s (quotes)
+- A6D2-03 occurred_at: no server-stamp rule
+event-envelope.md:165:| EV-TIME-1 | `occurred_at` is UTC with `Z` | `non-utc-timestamp` |
+privacy-boundary.md:164:- a formatted amount `\b\d{1,3}(?:[ ,.  ]\d{3})+(?:[.,]\d{2})?\b` (IDs and timestamps are excluded by field).
+- A6D2-06 E09 creation path
+263:      "timing": {"anchor": "webinar.replay_available_at", "offset": "PT0S", "rule": "When the operator marks the approved replay available. No anchor, no job."},
+operational-data-model.md:66:  replay_available_at timestamptz,                        -- only when replay_policy <> 'none'
+authority-matrix.md:104:| G4 | Recordings, rights and the replay policy | `webinar.replay_available_at` for E09; real media in the workshop | Synthetic stand-ins presented as Bill |
+- A6D2-07 PB-FIN-5 vs the two allowed POSTs
+63:| PB-FIN-5 | While a visitor fills in, edits, resets and prints the workshop, the page makes **zero** requests except static assets (`/_next/static/`, `/assets/`) and approved media. Approved media is allowed only as PB-MEDIA-4 permits: 
+100:| Workshop access request | `POST /api/marketing/workshop-access` | proposed | form | P02, W01 | `site.workshop_access` |
+101:| Consented workshop completion (no figures) | `POST /api/marketing/workshop-completed` | proposed | form; the body carries no answers (PB-FIN-7) | P02, W02 | `site.workshop_completion` |
+- A6D2-08 one draft per content key
+README.md:87:| WF08 weekly article draft | N08 | emits `content.draft_created` (source `editorial.draft_job`) | none | `editorial_draft_job` (no flag; G2 budget, currently 0 by D-064) | none (Git, not
+README.md:232:    - A6D2-08: "one draft per content key" has no contract rule, and the `editorial.*` origin cannot enforce it.
+109:| `editorial.*` | the content sha256 plus the ledger entry (PR number or packet path) |
+- A6D-08 rescheduled/no_show_recorded writers
+128:  status              text not null,                      -- 'confirmed' | 'cancelled' | 'rescheduled' | 'held' | 'no_show_recorded'
+- A6D-09 email_hmac key unnamed
+224:  - A6D2-02 (data). AM-BOOK-3 to 6, PB-CAL-3, EV-BOOK-1, register flow FL-29 and the `bookings.contact_match` column name the booking-to-contact join (an exact address match via `email_hmac`, with the address never s
+234:    - A6D-09: the HMAC key of `contacts.email_hmac` is still unnamed (§6).
+259:| The name and destination of the key for `contacts.email_hmac` (A6D-09) | Data lane proposes it; A0 adds it to the 06 secrets map | not yet asked |
+266:  - The key for `contacts.email_hmac` is a second secret that no contract names yet (A6D-09). It must not be `EVENT_KEY_SECRET`: rotating that key would break suppression matching after erasure. It goes to the same d
+- A6D-10 consent_events evidence column
+create table consent_events (                             -- RC-CONSENT; append-only
+  consent_event_id    text primary key,                   -- cev_ + 26
+  contact_id          text not null references contacts,
+  purpose             text not null,                      -- 'nurture' | 'workshop-followup' (proposed, pending G5)
+  state               text not null,                      -- 'requested' | 'granted' | 'revoked'
+  wording_version     text not null,                      -- consent.<purpose>.h<sha256 prefix> of the exact text shown (PB-ID-3)
+  captured_at         timestamptz not null,
+  capture_source      text not null,                      -- a consent source code from event-envelope 1.0
+  event_id            uuid not null unique references integration_events (event_id)
+  -- index (contact_id, purpose, captured_at desc): current consent = latest row
+);
+- A6D-11 expired definition vs T13/T16
+23:| `expired` | `expires_at` passed before a provider call started | yes |
+45:| T13 | leased → expired | a recoverable failure whose next retry would fall at or after `expires_at` | `op_record_send_result` |
+48:| T16 | reconcile_required → suppressed / expired | evidence of non-acceptance and the job is no longer eligible or has expired. Moving to `suppressed` clears `send_started_at`, since the call is known not to have b
+- A6D2-05 asset-manifest stale
+16:| `asset_id` | Plan inventory ID: `capsule.s01`–`s18`, `companion.s01`–`s18`, `clip.w00`–`w11`, `case.c01`–`c10`, `ink.a01`–`a08`, `template.e01`–`e16`, `ad.ad01`–`ad06`, `ad.rt01`–
+89:- **Event envelope.** `content.draft_created`, `content.approved` and `content.published` use `resource_id = <asset_id>.<version>`, where the version is `v<n>` or `h<sha>`. The envelope's `resource
+- A6D-15 routes 503 cell
+59:| Before launch (`launchApproved()` false, no `localReview`) | 404 if review is off, otherwise Basic Auth | **Basic Auth** (503 without credentials), noindex | public |
+
+## new: job-state-machine §6 step 4 vs email-eligibility E12-E15 suppressions
+89:4. The contact is not suppressed or erased, and Brevo does not report a block (`contact_suppressed`, `provider_blocklist`).
+
+## new: WF06 n8n role vs PB-CAL-3
+85:| WF06 booking reconciliation | N06 | consumes `meeting.confirmed`, `meeting.cancelled`, `meeting.held`, `consultation.redeemed`, each only for a booking joined to a contact (EV-BOOK-1) | E15, E16 (and suppresses E05 and E11) | `booking_
+88:| WF06 — booking reconciliation | Supported provider/calendar read or operator import | Click is not booked; cancellation/reschedule distinct |
+
+## new: booking-to-right link (consultation.redeemed)
+52:  - A join never redeems a consultation right by itself. `consultation.redeemed` follows AM-RIGHT-1.
+104:| Redeem the consultation | `POST /api/book/redeem` | proposed | token, or operator | U03 | `provider.booking_sync` or `operator.reconciliation` (via `consultation.redeemed`) |
+106:  right_id            text primary key,                   -- rgt_ + 26
+111:  booking_id          text references bookings,           -- the current booking; rescheduling moves it
+119:  booking_id          text primary key,                   -- bkg_ + 26
+130:  right_id            text references consultation_rights,
+136:  -- check: right_id is null or (offer_id = 'book-consultation-30' and contact_id is not null)
+
+## new: offer-matrix runtime loader and document_kind fixture
+129:JSON Schema cannot compare values across the document, so harness rules are checked by `validate_offers.py`. At runtime, the loader that reads the offer matrix must check them too (proposed owners: U02 for meetings, U03 for the book).
+
+## new: WF10 alert dedupe / SM01 size limit not restated
+92:| WF10 — health/operations report | Health, backup age, quota, jobs and actual calendar outcomes | Deduplicate alerts; no secrets/financial data in alert payloads |
+94:| SM01 — RSS to email | Manual or explicit smoke schedule; approved feed and inbox | Treat content as data; limit size; empty/feed/SMTP failure visible |

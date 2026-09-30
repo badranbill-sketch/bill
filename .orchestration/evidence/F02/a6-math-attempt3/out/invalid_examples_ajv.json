@@ -1,0 +1,191 @@
+[
+ {
+  "file": "already-receiving-with-point.json",
+  "rule": "START - already receiving has no start point",
+  "layer": "schema",
+  "verdict": "OK",
+  "detail": "hits=1 value_ok=true msg_ok=true; other errors: none"
+ },
+ {
+  "file": "coverage-none-with-sources.json",
+  "rule": "XF-08 - coverage agrees with the source list",
+  "layer": "schema",
+  "verdict": "OK",
+  "detail": "hits=1 value_ok=true msg_ok=true; other errors: none"
+ },
+ {
+  "file": "duplicate-source-id.json",
+  "rule": "XF-06 - source ids are unique",
+  "layer": "semantic",
+  "verdict": "OK",
+  "detail": "schema_valid=true semantic=[{\"rule\":\"XF-06\",\"path\":\"/chapters/income/sources/1/id\"}]"
+ },
+ {
+  "file": "end-before-start.json",
+  "rule": "XF-05 - end is after start",
+  "layer": "semantic",
+  "verdict": "OK",
+  "detail": "schema_valid=true semantic=[{\"rule\":\"XF-05\",\"path\":\"/chapters/income/sources/0/end\"}]"
+ },
+ {
+  "file": "estimated-without-value.json",
+  "rule": "STATUS-3 - estimated/confirmed need a value",
+  "layer": "schema",
+  "verdict": "OK",
+  "detail": "hits=1 value_ok=true msg_ok=true; other errors: none"
+ },
+ {
+  "file": "estimated-zero-value.json",
+  "rule": "STATUS-2 - zero has exactly one representation",
+  "layer": "schema",
+  "verdict": "OK",
+  "detail": "hits=1 value_ok=true msg_ok=true; other errors: none"
+ },
+ {
+  "file": "extra-pii-email.json",
+  "rule": "PRIVACY - no personal identifier fields (closed shapes)",
+  "layer": "schema",
+  "verdict": "OK",
+  "detail": "hits=1 value_ok=true msg_ok=true; other errors: none"
+ },
+ {
+  "file": "float-cents.json",
+  "rule": "UNITS - money is an integer number of cents",
+  "layer": "schema",
+  "verdict": "OK",
+  "detail": "hits=1 value_ok=true msg_ok=true; other errors: none"
+ },
+ {
+  "file": "home-counted-spendable.json",
+  "rule": "ASSET - home/business excluded from spendable",
+  "layer": "schema",
+  "verdict": "OK",
+  "detail": "hits=1 value_ok=true msg_ok=true; other errors: none"
+ },
+ {
+  "file": "horizon-beyond-age-120.json",
+  "rule": "XF-03 - last illustrated age at most 120",
+  "layer": "schema",
+  "verdict": "OK",
+  "detail": "hits=1 value_ok=true msg_ok=true; other errors: none"
+ },
+ {
+  "file": "horizon-zero.json",
+  "rule": "RANGE - planning horizon is at least 1 year",
+  "layer": "schema",
+  "verdict": "OK",
+  "detail": "hits=2 value_ok=true msg_ok=true; other errors: none"
+ },
+ {
+  "file": "income-basis-missing.json",
+  "rule": "BASIS - every income source states gross, net or unknown",
+  "layer": "schema",
+  "verdict": "OK",
+  "detail": "hits=1 value_ok=true msg_ok=true; other errors: none"
+ },
+ {
+  "file": "income-guaranteed-label.json",
+  "rule": "LABEL - no 'guaranteed' dependability",
+  "layer": "schema",
+  "verdict": "OK",
+  "detail": "hits=1 value_ok=true msg_ok=true; other errors: none"
+ },
+ {
+  "file": "infinity-literal.json",
+  "rule": "NONFINITE - number must be a finite integer",
+  "layer": "json-parse",
+  "verdict": "OK",
+  "detail": "strict_parse_rejected=true (Unexpected token 'I', ...\" \"value\": Infinity\n \"... is not valid JSON); ajv keywords at path: maximum; all errors: /chapters/life/spending/amount/value:maximum /chapters/life/spending/amount/value:maximum"
+ },
+ {
+  "file": "inflation-unknown.json",
+  "rule": "ASSUMPTION - inflation is an explicit assumption",
+  "layer": "schema",
+  "verdict": "OK",
+  "detail": "hits=1 value_ok=true msg_ok=true; other errors: none"
+ },
+ {
+  "file": "monthly-spending-over-limit.json",
+  "rule": "RANGE - monthly spending up to $100,000.00",
+  "layer": "schema",
+  "verdict": "OK",
+  "detail": "hits=1 value_ok=true msg_ok=true; other errors: none"
+ },
+ {
+  "file": "nan-as-string.json",
+  "rule": "NONFINITE - number must be a finite integer",
+  "layer": "schema",
+  "verdict": "OK",
+  "detail": "hits=1 value_ok=true msg_ok=true; other errors: none"
+ },
+ {
+  "file": "nan-literal.json",
+  "rule": "NONFINITE - number must be a finite integer",
+  "layer": "json-parse",
+  "verdict": "OK",
+  "detail": "strict_parse_rejected=true (Unexpected token 'N', ...\" \"value\": NaN\n    },\"... is not valid JSON); ajv keywords at path: maximum,minimum,type; all errors: /chapters/life/spending/amount/value:maximum /chapters/life/spending/amount/value:minimum /chapters/life/spending/amount/value:type /chapters/life/spending/amount/value:maximum /chapters/life/spending/amount/value:minimum"
+ },
+ {
+  "file": "negative-spending.json",
+  "rule": "RANGE - money is never negative",
+  "layer": "schema",
+  "verdict": "OK",
+  "detail": "hits=2 value_ok=true msg_ok=true; other errors: none"
+ },
+ {
+  "file": "partner-retirement-before-partner-age.json",
+  "rule": "XF-02 - partner retirement age not earlier than partner current age",
+  "layer": "schema",
+  "verdict": "OK",
+  "detail": "hits=1 value_ok=true msg_ok=true; other errors: none"
+ },
+ {
+  "file": "partner-source-without-household.json",
+  "rule": "XF-07 - partner-owned source needs household timing",
+  "layer": "schema",
+  "verdict": "OK",
+  "detail": "hits=1 value_ok=true msg_ok=true; other errors: none"
+ },
+ {
+  "file": "pii-label-in-source.json",
+  "rule": "PRIVACY - no free text anywhere",
+  "layer": "schema",
+  "verdict": "OK",
+  "detail": "hits=1 value_ok=true msg_ok=true; other errors: none"
+ },
+ {
+  "file": "retirement-before-current-age.json",
+  "rule": "XF-01 - retirement age not earlier than current age",
+  "layer": "schema",
+  "verdict": "OK",
+  "detail": "hits=1 value_ok=true msg_ok=true; other errors: none"
+ },
+ {
+  "file": "spending-pretax-basis.json",
+  "rule": "BASIS - spending is after tax (stated)",
+  "layer": "schema",
+  "verdict": "OK",
+  "detail": "hits=1 value_ok=true msg_ok=true; other errors: none"
+ },
+ {
+  "file": "spending-status-zero.json",
+  "rule": "RANGE - household spending cannot be zero",
+  "layer": "schema",
+  "verdict": "OK",
+  "detail": "hits=1 value_ok=true msg_ok=true; other errors: none"
+ },
+ {
+  "file": "start-age-already-passed.json",
+  "rule": "XF-04 - an age-based start is not before the owner's current age",
+  "layer": "semantic",
+  "verdict": "OK",
+  "detail": "schema_valid=true semantic=[{\"rule\":\"XF-04\",\"path\":\"/chapters/income/sources/0/start/point/value\"}]"
+ },
+ {
+  "file": "unknown-with-value.json",
+  "rule": "STATUS-1 - unknown carries no value",
+  "layer": "schema",
+  "verdict": "OK",
+  "detail": "hits=1 value_ok=true msg_ok=true; other errors: none"
+ }
+]

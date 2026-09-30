@@ -1,0 +1,449 @@
+{
+  "contract": "asset-manifest",
+  "contract_version": "1.0",
+  "manifest_kind": "fixture",
+  "generated_at": "2026-09-30T12:00:00Z",
+  "assets": [
+    {
+      "asset_id": "capsule.s01",
+      "locale": "en",
+      "version": 1,
+      "title_internal": "S01 one number on a notebook (fixture)",
+      "owner_role": "A5",
+      "medium": "video",
+      "status": "brief",
+      "language_availability": "not_recorded",
+      "captions_source_locale": null,
+      "source_path": null,
+      "factual_claims": {
+        "present": false,
+        "sources": []
+      },
+      "offer_refs": [
+        "guide-pdf"
+      ],
+      "credential_claims": false,
+      "rights": {
+        "status": "pending",
+        "holder": null,
+        "evidence_ref": null,
+        "synthetic_bill_likeness": false
+      },
+      "recording": null,
+      "review_hash": null,
+      "approval": null,
+      "intended_route_key": "resources",
+      "cta": "guide-pdf",
+      "primary_channel": "linkedin",
+      "publication_id": null,
+      "published_at": null,
+      "published_content_sha256": null
+    },
+    {
+      "asset_id": "capsule.s01",
+      "locale": "fr",
+      "version": 1,
+      "title_internal": "S01 version française (fixture)",
+      "owner_role": "A5",
+      "medium": "video",
+      "status": "draft",
+      "language_availability": "not_recorded",
+      "captions_source_locale": null,
+      "source_path": "content/marketing/capsules/s01.fr.md",
+      "factual_claims": {
+        "present": false,
+        "sources": []
+      },
+      "offer_refs": [
+        "guide-pdf"
+      ],
+      "credential_claims": false,
+      "rights": {
+        "status": "pending",
+        "holder": null,
+        "evidence_ref": null,
+        "synthetic_bill_likeness": false
+      },
+      "recording": null,
+      "review_hash": null,
+      "approval": null,
+      "intended_route_key": "resources",
+      "cta": "guide-pdf",
+      "primary_channel": "facebook",
+      "publication_id": null,
+      "published_at": null,
+      "published_content_sha256": null
+    },
+    {
+      "asset_id": "article.fixture-draft",
+      "locale": "en",
+      "version": 1,
+      "title_internal": "Reviewed article draft (fixture)",
+      "owner_role": "A5",
+      "medium": "text",
+      "status": "reviewed",
+      "language_availability": "text_only",
+      "captions_source_locale": null,
+      "source_path": "content/fixture-draft.md",
+      "factual_claims": {
+        "present": true,
+        "sources": [
+          {
+            "title": "FCAC — Retirement planning",
+            "url": "https://www.canada.ca/en/financial-consumer-agency/services/retirement-planning.html",
+            "accessed": "2026-09-28"
+          },
+          {
+            "title": "Retraite Québec — Outils de planification",
+            "url": "https://www.retraitequebec.gouv.qc.ca/fr/services-ligne-et-outils/seances-information-et-outils-planification",
+            "accessed": "2026-09-28"
+          }
+        ]
+      },
+      "offer_refs": [
+        "intro-15"
+      ],
+      "credential_claims": false,
+      "rights": {
+        "status": "created_for_project",
+        "holder": null,
+        "evidence_ref": null,
+        "synthetic_bill_likeness": false
+      },
+      "recording": null,
+      "review_hash": null,
+      "approval": null,
+      "intended_route_key": "resources",
+      "cta": "intro-15",
+      "primary_channel": "site",
+      "publication_id": null,
+      "published_at": null,
+      "published_content_sha256": null
+    },
+    {
+      "asset_id": "clip.w00",
+      "locale": "en",
+      "version": 1,
+      "title_internal": "W00 welcome, English recording (fixture)",
+      "owner_role": "bill",
+      "medium": "video",
+      "status": "recorded",
+      "language_availability": "language_recorded",
+      "captions_source_locale": null,
+      "source_path": "content/marketing/workshop/w00.en.md",
+      "factual_claims": {
+        "present": false,
+        "sources": []
+      },
+      "offer_refs": [],
+      "credential_claims": false,
+      "rights": {
+        "status": "owned_by_bill",
+        "holder": "Bill Badran",
+        "evidence_ref": "fixture:rights-w00",
+        "synthetic_bill_likeness": false
+      },
+      "recording": {
+        "master_ref": "fixture:master-w00-en",
+        "master_sha256": "4bbd1dd6debcad45385811d2d39bc6ee4f3d862f473e78fa553c681dd94a1489",
+        "duration_seconds": 74.2,
+        "recorded_on": "2026-09-30",
+        "consent_ref": "fixture:consent-w00-en",
+        "captions_sha256": null,
+        "transcript_sha256": null
+      },
+      "review_hash": null,
+      "approval": null,
+      "intended_route_key": "workshop",
+      "cta": "none",
+      "primary_channel": "workshop",
+      "publication_id": null,
+      "published_at": null,
+      "published_content_sha256": null
+    },
+    {
+      "asset_id": "clip.w00",
+      "locale": "fr",
+      "version": 1,
+      "title_internal": "W00 French captions over the English recording (fixture)",
+      "owner_role": "A5",
+      "medium": "video",
+      "status": "recorded",
+      "language_availability": "captions_only",
+      "captions_source_locale": "en",
+      "source_path": "content/marketing/workshop/w00.fr.vtt",
+      "factual_claims": {
+        "present": false,
+        "sources": []
+      },
+      "offer_refs": [],
+      "credential_claims": false,
+      "rights": {
+        "status": "owned_by_bill",
+        "holder": "Bill Badran",
+        "evidence_ref": "fixture:rights-w00",
+        "synthetic_bill_likeness": false
+      },
+      "recording": null,
+      "review_hash": null,
+      "approval": null,
+      "intended_route_key": "workshop",
+      "cta": "none",
+      "primary_channel": "workshop",
+      "publication_id": null,
+      "published_at": null,
+      "published_content_sha256": null
+    },
+    {
+      "asset_id": "capsule.s13",
+      "locale": "en",
+      "version": 1,
+      "title_internal": "S13 what we would talk about first, edited (fixture)",
+      "owner_role": "A5",
+      "medium": "video",
+      "status": "edited",
+      "language_availability": "language_recorded",
+      "captions_source_locale": null,
+      "source_path": "content/marketing/capsules/s13.en.md",
+      "factual_claims": {
+        "present": false,
+        "sources": []
+      },
+      "offer_refs": [
+        "intro-15"
+      ],
+      "credential_claims": false,
+      "rights": {
+        "status": "owned_by_bill",
+        "holder": "Bill Badran",
+        "evidence_ref": "fixture:rights-s13",
+        "synthetic_bill_likeness": false
+      },
+      "recording": {
+        "master_ref": "fixture:master-s13-en",
+        "master_sha256": "67d042462d25fe7ab4cc5980ca0d67d64f5210fcb37b2fe5a5ca7290a7458d74",
+        "duration_seconds": 61.0,
+        "recorded_on": "2026-09-30",
+        "consent_ref": "fixture:consent-s13-en",
+        "captions_sha256": "154a00225300ff8029209eb9de07fd3c7da5ef234705619a9755b508b87963d1",
+        "transcript_sha256": "1fe8e6b02bf1df615d1fea6809ad1311cb69907ebbcf1f7b36f5d962438dd84b"
+      },
+      "review_hash": null,
+      "approval": null,
+      "intended_route_key": "meeting",
+      "cta": "intro-15",
+      "primary_channel": "instagram",
+      "publication_id": null,
+      "published_at": null,
+      "published_content_sha256": null
+    },
+    {
+      "asset_id": "ink.a01",
+      "locale": "zxx",
+      "version": 1,
+      "title_internal": "A01 notebook, glasses and cup (fixture)",
+      "owner_role": "A1",
+      "medium": "image",
+      "status": "approved",
+      "language_availability": "not_applicable",
+      "captions_source_locale": null,
+      "source_path": "public/assets/ink/fixture-a01.svg",
+      "factual_claims": {
+        "present": false,
+        "sources": []
+      },
+      "offer_refs": [],
+      "credential_claims": false,
+      "rights": {
+        "status": "created_for_project",
+        "holder": null,
+        "evidence_ref": "fixture:provenance-a01",
+        "synthetic_bill_likeness": false
+      },
+      "recording": null,
+      "review_hash": {
+        "method": "file-sha256-v1",
+        "sha256": "157eb2e59eeaeddf954e8e2375b986e0ef94d1f5ecee7f54b6bdd182b6602908"
+      },
+      "approval": {
+        "gates": [
+          "G3"
+        ],
+        "approved_by_roles": [
+          "bill",
+          "arnaud"
+        ],
+        "approved_on": "2026-09-30",
+        "record_ref": "fixture:packet-ink-a01"
+      },
+      "intended_route_key": "workshop",
+      "cta": "none",
+      "primary_channel": "workshop",
+      "publication_id": null,
+      "published_at": null,
+      "published_content_sha256": null
+    },
+    {
+      "asset_id": "template.e05",
+      "locale": "en",
+      "version": 1,
+      "title_internal": "E05 exact 15-minute meeting explanation (fixture)",
+      "owner_role": "A5",
+      "medium": "text",
+      "status": "approved",
+      "language_availability": "text_only",
+      "captions_source_locale": null,
+      "source_path": "content/marketing/emails/e05.en.json",
+      "factual_claims": {
+        "present": false,
+        "sources": []
+      },
+      "offer_refs": [
+        "intro-15"
+      ],
+      "credential_claims": false,
+      "rights": {
+        "status": "created_for_project",
+        "holder": null,
+        "evidence_ref": null,
+        "synthetic_bill_likeness": false
+      },
+      "recording": null,
+      "review_hash": {
+        "method": "json-canonical-sha256-v1",
+        "sha256": "611fe900019fa78a4b13cd237a3342d2e7186f0f79bdac6c3b5cf83b0dfda7cf"
+      },
+      "approval": {
+        "gates": [
+          "G1",
+          "G3"
+        ],
+        "approved_by_roles": [
+          "bill",
+          "firm_reviewer"
+        ],
+        "approved_on": "2026-09-30",
+        "record_ref": "fixture:packet-e05"
+      },
+      "intended_route_key": "meeting",
+      "cta": "intro-15",
+      "primary_channel": "email",
+      "publication_id": null,
+      "published_at": null,
+      "published_content_sha256": null
+    },
+    {
+      "asset_id": "clip.w11",
+      "locale": "en",
+      "version": 1,
+      "title_internal": "W11 invitation, approved recording (fixture)",
+      "owner_role": "bill",
+      "medium": "video",
+      "status": "approved",
+      "language_availability": "language_recorded",
+      "captions_source_locale": null,
+      "source_path": "content/marketing/workshop/w11.en.md",
+      "factual_claims": {
+        "present": false,
+        "sources": []
+      },
+      "offer_refs": [
+        "intro-15"
+      ],
+      "credential_claims": false,
+      "rights": {
+        "status": "owned_by_bill",
+        "holder": "Bill Badran",
+        "evidence_ref": "fixture:rights-w11",
+        "synthetic_bill_likeness": false
+      },
+      "recording": {
+        "master_ref": "fixture:master-w11-en",
+        "master_sha256": "b8c95522661b08b0966416b3174cbec4dd77c660dcb823a77e228d7b79bc3e75",
+        "duration_seconds": 38.5,
+        "recorded_on": "2026-09-30",
+        "consent_ref": "fixture:consent-w11-en",
+        "captions_sha256": "556fa6c0b38a55afd35fcbb575da57a96f12c24654c0105800766e0d66cbb5a3",
+        "transcript_sha256": "a1ebcce604b36d870473532e3cc470484ece7a075191c433a50684d7f785e923"
+      },
+      "review_hash": {
+        "method": "bundle-sha256-v1",
+        "sha256": "84e33761502c2374d09aae3d80829df5e504abb6e2527e026a8235710b5d6603"
+      },
+      "approval": {
+        "gates": [
+          "G1",
+          "G3",
+          "G4"
+        ],
+        "approved_by_roles": [
+          "bill",
+          "firm_reviewer"
+        ],
+        "approved_on": "2026-09-30",
+        "record_ref": "fixture:packet-w11"
+      },
+      "intended_route_key": "workshop",
+      "cta": "intro-15",
+      "primary_channel": "workshop",
+      "publication_id": null,
+      "published_at": null,
+      "published_content_sha256": null
+    },
+    {
+      "asset_id": "article.fixture-sample",
+      "locale": "en",
+      "version": 2,
+      "title_internal": "Published article (fixture)",
+      "owner_role": "A5",
+      "medium": "text",
+      "status": "published",
+      "language_availability": "text_only",
+      "captions_source_locale": null,
+      "source_path": "content/fixture-sample.md",
+      "factual_claims": {
+        "present": true,
+        "sources": [
+          {
+            "title": "FCAC — Retirement planning",
+            "url": "https://www.canada.ca/en/financial-consumer-agency/services/retirement-planning.html",
+            "accessed": "2026-09-28"
+          }
+        ]
+      },
+      "offer_refs": [
+        "intro-15"
+      ],
+      "credential_claims": false,
+      "rights": {
+        "status": "created_for_project",
+        "holder": null,
+        "evidence_ref": null,
+        "synthetic_bill_likeness": false
+      },
+      "recording": null,
+      "review_hash": {
+        "method": "articles-contentFingerprint-v1",
+        "sha256": "d1775f88da79613c663e02c412832a88c7118ea393e96ef4d8649d3e5c0e7476"
+      },
+      "approval": {
+        "gates": [
+          "G1",
+          "G3"
+        ],
+        "approved_by_roles": [
+          "bill",
+          "firm_reviewer"
+        ],
+        "approved_on": "2026-09-30",
+        "record_ref": "fixture:approvals-article-sample"
+      },
+      "intended_route_key": "resources",
+      "cta": "intro-15",
+      "primary_channel": "site",
+      "publication_id": "fixture:site-deploy-0001",
+      "published_at": "2026-09-30T15:00:00Z",
+      "published_content_sha256": "d1775f88da79613c663e02c412832a88c7118ea393e96ef4d8649d3e5c0e7476"
+    }
+  ]
+}

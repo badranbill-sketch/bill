@@ -1,0 +1,100 @@
+{
+ "contract": "workshop-inputs",
+ "contract_version": "1.0",
+ "currency": "CAD",
+ "base_year": 2026,
+ "chapters": {
+  "life": {
+   "spending": {
+    "amount": {
+     "status": "estimated",
+     "value": 4800000
+    },
+    "period": "annual",
+    "tax_basis": "after_tax",
+    "price_basis": "today_dollars",
+    "unit": "household"
+   },
+   "lifestyle_focus": "travel"
+  },
+  "income": {
+   "coverage": "all_known_sources_listed",
+   "sources": [
+    {
+     "id": "src-1",
+     "kind": "annuity",
+     "owner": "self",
+     "amount": {
+      "status": "confirmed",
+      "value": 1800000
+     },
+     "period": "annual",
+     "tax_basis": "net",
+     "price_basis": "start_year_dollars",
+     "start": {
+      "reference": "already_receiving"
+     },
+     "escalation_bp": {
+      "status": "zero",
+      "value": 0
+     },
+     "dependability": "scheduled"
+    },
+    {
+     "id": "src-2",
+     "kind": "other",
+     "owner": "self",
+     "amount": {
+      "status": "zero",
+      "value": 0
+     },
+     "period": "monthly",
+     "tax_basis": "unknown",
+     "price_basis": "unknown",
+     "start": {
+      "reference": "already_receiving"
+     },
+     "escalation_bp": {
+      "status": "zero",
+      "value": 0
+     },
+     "dependability": "scheduled"
+    }
+   ]
+  },
+  "savings": {
+   "accounts": {
+    "tfsa": {
+     "status": "zero",
+     "value": 0
+    },
+    "rrsp_rrif": {
+     "status": "zero",
+     "value": 0
+    }
+   }
+  },
+  "timing": {
+   "current_age": {
+    "status": "confirmed",
+    "value": 71
+   },
+   "retirement_age": {
+    "status": "confirmed",
+    "value": 71
+   },
+   "planning_horizon_years": {
+    "status": "estimated",
+    "value": 20
+   },
+   "inflation_bp": {
+    "status": "zero",
+    "value": 0
+   },
+   "capital_illustration_return_bp": {
+    "status": "zero",
+    "value": 0
+   }
+  }
+ }
+}

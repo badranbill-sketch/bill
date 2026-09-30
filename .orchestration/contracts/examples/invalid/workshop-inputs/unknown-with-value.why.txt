@@ -1,0 +1,6 @@
+rule: STATUS-1 - unknown carries no value
+layer: schema
+expect_keyword: not
+expect_path: /chapters/life/spending/amount
+plain_message_en_draft: (internal state error - the form never produces this)
+explanation: An unknown quantity must not carry a value, otherwise an unknown could silently be read as a number.

@@ -1,0 +1,6 @@
+rule: ASSUMPTION - inflation is an explicit assumption
+layer: schema
+expect_keyword: enum
+expect_path: /chapters/timing/inflation_bp/status
+plain_message_en_draft: Choose an inflation assumption (0% to 10%).
+explanation: Rate assumptions accept only zero or estimated.

@@ -1,0 +1,5 @@
+rule: JS-SHAPE-1 closed job: no recipient address; it is resolved from contacts at send time
+expect_path: /
+expect_keyword: additionalProperties
+
+The job copies the recipient address. Addresses live only in contacts (PB-SINK-SUPA-2).

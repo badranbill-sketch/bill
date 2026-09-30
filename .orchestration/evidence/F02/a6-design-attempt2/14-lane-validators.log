@@ -1,0 +1,17 @@
+$ python .orchestration/evidence/F02/data/validate_f02_data.py
+PASS  NC-B a schema that also waived marketing_dispatch outside production would differ from the runtime substitutes (7a catches it)
+PASS  NC-C the attempt-1 data-model list differs from privacy-boundary.md by ['assets', 'balances'] (7e catches it)
+PASS  NC-D the attempt-1 content-version alternation differs from asset-manifest asset_id (7d catches it)
+PASS  NC-E a well-formed code missing from the registry fixture is not a member (PB-ID-5 reference is not vacuous)
+
+## Result: 266 passed, 0 failed
+exit=0
+$ python .orchestration/evidence/F02/offers/validate_offers.py
+PASS  offer-matrix meeting_types ['book-consultation-30', 'intro-15'] = bookings.offer_id values in operational-data-model.md ['book-consultation-30', 'intro-15']
+PASS  asset-manifest accepts one sample ID of every kind
+  INFO event-envelope resource_content_version accepts kinds ['capsule', 'companion', 'clip', 'case', 'ink', 'template', 'ad', 'article', 'page', 'guide', 'book', 'event', 'copy']; not yet: [] (cross-lane reconciliation item for A0, not a failure of this lane)
+
+## Summary
+pass: 92  fail: 0
+exit=0
+tree hash before=e621f57214e870936df20409390e47c8b83e372b58c5b60fc5f11f10fc979f56  - after=e621f57214e870936df20409390e47c8b83e372b58c5b60fc5f11f10fc979f56  -

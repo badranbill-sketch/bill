@@ -1,0 +1,5 @@
+rule: FF-INV-2 live_verified requires enabled
+expect_path: capabilities/workshop_access/enabled/value
+expect_keyword: const
+
+Live verification of a capability that is not switched on.

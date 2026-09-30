@@ -1,0 +1,12 @@
+{
+  "schema_version": "1.0",
+  "event_id": "aacac832-2f05-4352-b2de-d7847a2df372",
+  "type": "guide.requested",
+  "occurred_at": "2026-10-02T13:00:00Z",
+  "subject_id": "con_xsekt13hxv12z5bp4rm4s2f0hw",
+  "locale": "en",
+  "source": "site.guide_request",
+  "resource_id": "guide.retirement-guide.h905df92f35e6",
+  "idempotency_key": "ik1_e0af3da5402a5ab98d816b9e846ea2728c73e5167379a2650ba10f7cafe2acde",
+  "consent_reference": "cev_0rv6kbtcg8zyd6m76tv1pmxp7d"
+}

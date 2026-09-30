@@ -1,0 +1,5 @@
+rule: EV-ID-2 contact-subject registry codes use a closed key and a hash version: a consent wording is cited by the hash of the exact text shown
+expect_path: resource_id
+expect_keyword: pattern
+
+A consent wording cited by a mutable number. The hash proves which words the person saw (AM-CONSENT, G5).

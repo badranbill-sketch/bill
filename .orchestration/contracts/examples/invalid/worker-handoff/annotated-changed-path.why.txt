@@ -1,0 +1,4 @@
+rule: WH-PATH-2
+breaks: changed_paths hold paths only; prose notes belong in assumptions.
+expect_keyword: pattern
+expect_path: /changed_paths/0

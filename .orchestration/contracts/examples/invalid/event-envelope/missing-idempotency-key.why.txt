@@ -1,0 +1,5 @@
+rule: EV-ID-3 idempotency_key is required on every accepted action
+expect_path: /
+expect_keyword: required
+
+No stable key: replay could duplicate side effects.

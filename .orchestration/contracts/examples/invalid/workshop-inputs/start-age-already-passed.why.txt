@@ -1,0 +1,6 @@
+rule: XF-04 - an age-based start is not before the owner's current age
+layer: semantic
+expect_rule: XF-04
+expect_path: /chapters/income/sources/0/start/point/value
+plain_message_en_draft: That age has already passed. If this income has started, choose "Already receiving".
+explanation: Schema-valid (55 is within 18-100) but cross-chapter: owner's current age is 58.

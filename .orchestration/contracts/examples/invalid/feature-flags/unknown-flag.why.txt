@@ -1,0 +1,5 @@
+rule: FF-SHAPE-1 the six flags are closed; new switches need a contract version
+expect_path: flags
+expect_keyword: additionalProperties
+
+An ad-hoc flag outside the contract.

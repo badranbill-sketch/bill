@@ -1,0 +1,4 @@
+rule: WH-ST-1
+breaks: A worker can only submit; acceptance is written separately by A0 after A6 verification.
+expect_keyword: const
+expect_path: /status

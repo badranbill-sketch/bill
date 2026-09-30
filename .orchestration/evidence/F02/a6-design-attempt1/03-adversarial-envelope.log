@@ -1,0 +1,17 @@
+$ $VENV/bin/python .orchestration/evidence/F02/a6-design-attempt1/adversarial_envelope.py
+REJECTED  ADV-1a email with @ in idempotency_key, correct length  <- pattern: 'ik1_jane@example.com000000000000000000000000000000000000000000000000' does not match '^ik
+REJECTED  ADV-1b uppercase-hex key (dedupe split)  <- pattern: 'ik1_AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA' does not match '^ik
+REJECTED  ADV-2a amount as extra field nested under allowed name? (resource_id object)  <- anyOf: {'amount': 850000} is not valid under any of the given schemas
+REJECTED  ADV-2b currency amount in resource version  <- anyOf: 'guide.before-you-retire.v850000' is not valid under any of the given schemas
+REJECTED  ADV-2c amount with $ in subject_id  <- anyOf: 'con_$850000aaaaaaaaaaaaaaaaaaa' is not valid under any of the given schemas
+REJECTED  ADV-3a workshop.completed with numeric-digit key  <- anyOf: 'workshop.gap-850000.v1' is not valid under any of the given schemas
+REJECTED  ADV-3b consent_reference that is an email  <- pattern: 'cev_jane@example.com' does not match '^cev_[0-9a-hjkmnp-tv-z]{26}$'
+REJECTED  ADV-3c locale carrying data  <- enum: 'fr-CA-850k' is not one of ['fr', 'en']
+ACCEPTED  ADV-4a hex-encoded email as idempotency_key
+ACCEPTED  ADV-4b decimal amount digits inside idempotency_key
+ACCEPTED  ADV-5a amount spelled in letters in workshop key (workshop.completed)
+ACCEPTED  ADV-5b diagnosis in workshop key (workshop.completed)
+ACCEPTED  ADV-5c retirement age in version slot
+ACCEPTED  ADV-5d person name as guide key
+ACCEPTED  ADV-6 amount digits inside subject_id (Crockford allows digits)
+exit=0

@@ -1,0 +1,5 @@
+rule: EV-LOC-1 locale is fr or en
+expect_path: locale
+expect_keyword: enum
+
+Unsupported locale.

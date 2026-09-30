@@ -1,0 +1,7 @@
+rule: PRIVACY - no personal identifier fields (closed shapes)
+layer: schema
+expect_keyword: additionalProperties
+expect_path: 
+expect_message_contains: 'email'
+plain_message_en_draft: (never shown - the form has no such field)
+explanation: The root object is closed (additionalProperties false). An email address can never enter the workshop state.

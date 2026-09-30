@@ -1,0 +1,12 @@
+{
+  "schema_version": "1.0",
+  "event_id": "32aa9441-b88c-466d-b5c0-93addf8cee7d",
+  "type": "marketing.opted_in",
+  "occurred_at": "2026-10-02T14:05:00Z",
+  "subject_id": "con_xsekt13hxv12z5bp4rm4s2f0hw",
+  "locale": "fr",
+  "source": "site.consent_capture",
+  "resource_id": "consent.nurture.v1",
+  "consent_reference": "cev_0rv6kbtcg8zyd6m76tv1pmxp7d",
+  "idempotency_key": "ik1_bf5bfcd4292cf79225bbfc2230bcfbb07cf09f448795e04787f2e979bbd4d8f1"
+}

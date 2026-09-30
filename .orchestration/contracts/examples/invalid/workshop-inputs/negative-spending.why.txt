@@ -1,0 +1,7 @@
+rule: RANGE - money is never negative
+layer: schema
+expect_keyword: minimum
+expect_path: /chapters/life/spending/amount/value
+expect_validator_value: 0
+plain_message_en_draft: Spending can't be negative.
+explanation: The quantity wrapper sets minimum 0 for every value; estimated values also need minimum 1.

@@ -1,0 +1,5 @@
+rule: JS-SHAPE-1 closed job; no financial field (PB-FIN-1)
+expect_path: /
+expect_keyword: additionalProperties
+
+A derived gap copied into a follow-up job for personalisation.

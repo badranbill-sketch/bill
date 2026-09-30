@@ -1,0 +1,6 @@
+rule: NONFINITE - number must be a finite integer
+layer: json-parse
+also_schema_keyword: type
+also_schema_path: /chapters/life/spending/amount/value
+plain_message_en_draft: Enter an amount in dollars and cents.
+explanation: Strict JSON (RFC 8259) has no NaN token, so a strict parser rejects the document. If a lenient parser admits it, the schema still rejects it: NaN is not an integer.

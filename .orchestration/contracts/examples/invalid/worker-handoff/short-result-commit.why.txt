@@ -1,0 +1,4 @@
+rule: WH-SHA-1
+breaks: result_commit is a full 40-hex commit SHA or null; abbreviations are refused.
+expect_keyword: anyOf
+expect_path: /result_commit

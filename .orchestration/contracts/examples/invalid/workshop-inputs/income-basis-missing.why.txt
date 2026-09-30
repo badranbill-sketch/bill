@@ -1,0 +1,7 @@
+rule: BASIS - every income source states gross, net or unknown
+layer: schema
+expect_keyword: required
+expect_path: /chapters/income/sources/0
+expect_message_contains: 'tax_basis'
+plain_message_en_draft: Is this amount before tax, after tax, or are you not sure?
+explanation: tax_basis is required; 'unknown' is an allowed answer, silence is not.

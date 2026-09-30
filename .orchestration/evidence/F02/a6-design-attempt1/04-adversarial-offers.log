@@ -1,0 +1,14 @@
+$ $VENV/bin/python .orchestration/evidence/F02/a6-design-attempt1/adversarial_offers.py
+fixture examples: ['fixture-all-gates-recorded-fictional.json', 'fixture-test-mode-only.json']
+REJECTED  O-1 two included consultations (count=2)  <- const at /offers/book-bundle/included_consultation/count: 1 was expected
+REJECTED  O-2 extra meeting type of 60 minutes  <- additionalProperties at /meeting_types: Additional properties are not allowed ('consultation-60' was unexpected)
+REJECTED  O-3 invented price string while pending  <- anyOf at /offers/book-bundle/price/value: '49.95' is not valid under any of the given schemas
+REJECTED  O-4 disclosure recorded without approvals  <- minItems at /offers/book-bundle/prepayment_disclosures/price/approvals: [] should be non-empty
+REJECTED  O-5 continued-work given a price  <- const at /offers/continued-work/price: {'model': 'not_stated_in_matrix'} was expected
+REJECTED  O-6 intro-15 made paid  <- const at /offers/intro-15/price: {'model': 'free'} was expected
+ACCEPTED  O-7 recorded price citing non-existent decision D-099 (schema only; CX-16 is harness)
+REJECTED  O-8 intro duration "60" as string  <- const at /offers/intro-15/duration_minutes: 15 was expected
+REJECTED  O-9 extra upgrade property with 60 minutes  <- additionalProperties at /offers/book-bundle: Additional properties are not allowed ('upgrade' was unexpected)
+REJECTED  O-10 online_service "ZOOM-meetings" (uppercase)  <- anyOf at /offers/intro-15/online_service/value: 'ZOOM-meetings' is not valid under any of the given schemas
+ACCEPTED  O-10b online_service "z00m" (lookalike)
+exit=0

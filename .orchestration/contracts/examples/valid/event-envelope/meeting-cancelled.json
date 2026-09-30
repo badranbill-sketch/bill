@@ -1,0 +1,11 @@
+{
+  "schema_version": "1.0",
+  "event_id": "793f11f1-b83e-44f2-a765-2ca75f897b30",
+  "type": "meeting.cancelled",
+  "occurred_at": "2026-10-03T19:10:00Z",
+  "subject_id": "con_xsekt13hxv12z5bp4rm4s2f0hw",
+  "locale": "en",
+  "source": "provider.booking_sync",
+  "resource_id": "bkg_rae93y3txaq788qsh9e7entmfn",
+  "idempotency_key": "ik1_38364663adf56e45a8e995ac199d6ebaf4fc06ef7e4275ffbb46756b43916d9f"
+}

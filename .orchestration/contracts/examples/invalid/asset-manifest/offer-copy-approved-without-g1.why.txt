@@ -1,0 +1,4 @@
+rule: AM-APPR-3
+breaks: An asset that states an offer (or credentials) needs G1 in its approval.
+expect_keyword: contains
+expect_path: /assets/7/approval/gates

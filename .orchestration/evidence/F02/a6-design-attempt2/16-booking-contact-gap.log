@@ -1,0 +1,19 @@
+$ python .orchestration/evidence/F02/a6-design-attempt2/booking_contact_gap.py
+meeting.confirmed without subject_id -> rejected
+meeting.confirmed with a non-contact subject -> rejected
+
+operational-data-model.md: ['contact_id          text references contacts,           -- null until matched to a contact']
+privacy-boundary.md: ['| DC-BOOKING-INTAKE | Invitee name, email, intake answer, time, mode | Scheduler and calendar only; Supabase stores IDs, times, offer, mode and status |']
+privacy-boundary.md: ['| PB-CAL-2 | We never prefill a scheduler or calendar link with an email, name or workshop value. Supabase stores the provider event ID, times, offer, mode and status only. | BOOK02, WK04 |']
+data-flow-register DC-BOOKING-INTAKE allowed_sinks: [['scheduler', 'google_workspace']]
+data-flow-register FL-15 notes: ['Intake questions ask for no balances, amounts or documents. Supabase receives only booking IDs, times, offer, mode and status (FL-10).']
+suppression already_booked: the contact has a confirmed future booking, or a meeting held within the suppression window (window pending G5)
+  E05 'Exact 15-minute meeting explanation' suppressions=['consent_missing', 'consent_withdrawn', 'provider_blocklist', 'contact_suppressed', 'client_flag', 'human_reply', 'already_booked', 'not_allowlisted'] resource_ref=None
+  E11 'Workshop next-step invitation' suppressions=['consent_missing', 'consent_withdrawn', 'provider_blocklist', 'contact_suppressed', 'client_flag', 'human_reply', 'already_booked', 'not_allowlisted'] resource_ref=None
+  E15 'Meeting preparation/confirmation' suppressions=['provider_blocklist', 'booking_cancelled', 'not_allowlisted'] resource_ref=bkg
+  E16 'Meeting reschedule/cancellation follow-up' suppressions=['provider_blocklist', 'contact_suppressed', 'already_rebooked', 'human_reply', 'not_allowlisted'] resource_ref=bkg
+
+04 s6: ['A meaningful reply or confirmed booking suppresses irrelevant appointment-solicitation messages']
+
+contract text that says how a booking is matched to a contact: ['contact_id          text references contacts,           -- null until matched to a contact']
+exit=0

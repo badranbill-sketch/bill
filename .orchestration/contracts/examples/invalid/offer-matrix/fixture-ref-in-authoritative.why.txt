@@ -1,0 +1,4 @@
+rule: OM-DOC-1
+breaks: An authoritative document may cite only decisions.md or approval-packet records, never 'fixture:'.
+expect_keyword: pattern
+expect_path: /gate_records/0/record_ref

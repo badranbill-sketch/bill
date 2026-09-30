@@ -1,0 +1,11 @@
+{
+  "schema_version": "1.0",
+  "event_id": "7aa8f2ec-3b05-4b97-a432-1ac838c0a63b",
+  "type": "content.published",
+  "occurred_at": "2026-10-04T15:30:00Z",
+  "subject_id": "cnt_6cahpth9b2s2zgg0mcngnb48qg",
+  "locale": "en",
+  "source": "editorial.publication_handoff",
+  "resource_id": "article.five-years-before-retirement.he14f01374fa2",
+  "idempotency_key": "ik1_f74d7ef810b82903e7b2427068abaab9c9b556333b7a5f7ac6c59fd1b2e0f7ee"
+}

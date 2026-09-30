@@ -1,0 +1,7 @@
+rule: NONFINITE - number must be a finite integer
+layer: json-parse
+also_schema_keyword: type
+also_schema_path: /chapters/life/spending/amount/value
+also_schema_keyword_is_validator_dependent: type and maximum (Python jsonschema 4.26 reports type, then maximum twice) or maximum only (Ajv 8, which treats Infinity as an integer)
+plain_message_en_draft: Enter an amount in dollars and cents.
+explanation: Strict JSON has no Infinity token, so a strict parser rejects the document. A lenient parse still fails the schema at the same path, but the keywords depend on the validator: Python jsonschema 4.26 reports type (Infinity is not an integer) and also maximum (twice, once for each maximum that applies), while Ajv 8 treats Infinity as an integer and reports only maximum. Either way the document is rejected. The runtime must still check Number.isFinite and Number.isSafeInteger explicitly (workshop-inputs.md s4).

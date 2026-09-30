@@ -1,0 +1,4 @@
+rule: AM-REC-1
+breaks: A recording must cite the recording consent (G4) record.
+expect_keyword: required
+expect_path: /assets/3/recording

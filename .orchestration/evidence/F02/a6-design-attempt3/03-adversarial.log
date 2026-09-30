@@ -1,0 +1,80 @@
+$ PYTHONDONTWRITEBYTECODE=1 /tmp/claude-0/-home-user/bb8d4187-6ae8-587b-a816-8153faeea853/scratchpad/venv-f02/bin/python .orchestration/evidence/F02/a6-design-attempt3/adversarial3.py
+AS-EXPECTED ADV3-01  [env] expect=accept actual=accept
+            hex-encoded email 6a65616e2e747265... in idempotency_key: schema cannot tell HMAC from hex; closed only by server-side HMAC construction (event-envelope.md s1 'Browsers never emit envelopes', s4.3)
+AS-EXPECTED ADV3-02  [env] expect=accept actual=accept
+            unkeyed sha256(email) in idempotency_key: schema-valid; the contract requires a keyed HMAC over (type, subject_id, resource_id, origin_ref), never the address
+AS-EXPECTED ADV3-03  [env] expect=reject actual=reject at /idempotency_key: 'ik1_jean.tremblay@example.com' does not match '^ik1_[0-9a-f]{64}$'
+            readable email after the ik1_ prefix
+AS-EXPECTED ADV3-04  [env] expect=reject actual=reject at /idempotency_key: 'ik1_aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\u200b' does not match '^ik1_[0-9a-f]{64}$
+            63 hex + zero-width space (length 68, passes maxLength)
+AS-EXPECTED ADV3-05  [env] expect=reject actual=reject at /idempotency_key: 111111111111111111111111111111 is not of type 'string'
+            idempotency_key as a JSON number
+AS-EXPECTED ADV3-06  [env] expect=reject actual=reject at /resource_id: {'kind': 'workshop', 'savings': 386152} is not valid under any of the given schemas
+            resource_id as an object carrying an amount
+AS-EXPECTED ADV3-07  [env] expect=reject actual=reject at /: Additional properties are not allowed ('idempotency_kеy' was unexpected)
+            homoglyph extra property name 'idempotency_k<cyrillic e>y' holding an email
+AS-EXPECTED ADV3-08  [env] expect=reject actual=reject at /: Additional properties are not allowed ('' was unexpected)
+            empty-string property name holding an amount
+AS-EXPECTED ADV3-09  [env] expect=reject actual=reject at /resource_id: 'page.retirement-workshop.v386' does not match '^workshop\\.(?:retirement-workshop)\\.h[0-9a-f]{12,64}$'
+            workshop.completed with a content-form code whose v-number carries 386 (content alternation must not apply to a contact subject)
+AS-EXPECTED ADV3-10  [env] expect=reject actual=reject at /resource_id: 'guide.retirement-guide.h000000000000' does not match '^workshop\\.(?:retirement-workshop)\\.h[0-9a-f]{12,64}$
+            workshop.completed with a guide code (kind mismatch)
+AS-EXPECTED ADV3-11  [env] expect=reject actual=reject at /subject_id: 'con_xsekt13hxv12z5bp4rm4s2f0hw' does not match '^cnt_[0-9a-hjkmnp-tv-z]{26}$'
+            content.published about a contact (con_), from a site source, key spells an amount in words
+AS-EXPECTED ADV3-12  [env] expect=accept actual=accept
+            content.published (cnt_ subject, editorial source) with an editorial slug made of finance words: allowed, it describes an article, not a visitor
+AS-EXPECTED ADV3-13  [env] expect=reject actual=reject at /consent_reference: 'cev_atefdzyyp6wc038cgb6qj5cmj8' should not be valid under {}
+            consent_reference on delivery.failed
+AS-EXPECTED ADV3-14  [env] expect=reject actual=reject at /subject_id: 'cnt_xsekt13hxv12z5bp4rm4s2f0hw' does not match '^con_[0-9a-hjkmnp-tv-z]{26}$'
+            meeting.confirmed for an unmatched booking using a cnt_ placeholder subject
+AS-EXPECTED ADV3-15  [env] expect=accept actual=accept
+            meeting.confirmed with an all-zero placeholder con_ subject: schema-valid; forbidden by runtime rule EV-BOOK-1 ('never uses a placeholder contact')
+AS-EXPECTED ADV3-16  [env] expect=reject actual=reject at /source: 'site.join_redirect' is not one of ['provider.booking_sync', 'operator.reconciliation']
+            meeting.confirmed from a click source
+AS-EXPECTED ADV3-17  [env] expect=reject actual=reject at /type: ['workshop.completed'] is not one of ['guide.requested', 'marketing.opted_in', 'marketing.withdrawn', 'webinar
+            type as an array (per-type if/then evasion)
+AS-EXPECTED ADV3-18  [env] expect=reject actual=reject at /: 'type' is a required property
+            type omitted (no per-type then applies)
+AS-EXPECTED ADV3-19  [env] expect=reject actual=reject at /subject_id: 'con_XSEKT13HXV12Z5BP4RM4S2F0HW' is not valid under any of the given schemas
+            uppercase Crockford in subject_id
+AS-EXPECTED ADV3-20  [env] expect=reject actual=reject at /occurred_at: '2026-10-03T13:40:00+00:00' does not match '^[0-9]{4}-(?:0[1-9]|1[0-2])-(?:0[1-9]|[12][0-9]|3[01])T(?:[01][0-9
+            +00:00 offset instead of Z
+AS-EXPECTED JOB3-01  [job] expect=reject actual=reject at /provider_message_id: 'jean.tremblay@example.com' does not match '^(?:<[A-Za-z0-9._%+-]{1,128}@[A-Za-z0-9.-]{1,128}>|[A-Za-z0-9._:-]
+            bare recipient address as provider_message_id
+AS-EXPECTED JOB3-02  [job] expect=accept actual=accept
+            angle-bracketed address as provider_message_id: schema-valid by design (RFC 5322 Message-ID form); PB-SCAN-3 names the runtime test that it never equals the recipient
+AS-EXPECTED JOB3-03  [job] expect=reject actual=reject at /: Additional properties are not allowed ('recipient_email' was unexpected)
+            added recipient_email field
+AS-EXPECTED JOB3-04  [job] expect=reject actual=reject at /last_error: Additional properties are not allowed ('body' was unexpected)
+            provider error body inside last_error
+AS-EXPECTED JOB3-05  [job] expect=reject actual=reject at /sent_at: '2026-10-03T13:40:00Z' should not be valid under {}
+            suppressed job carrying sent_at (JS-SUPP-1)
+AS-EXPECTED JOB3-06  [job] expect=reject actual=reject at /send_started_at: '2026-10-03T13:40:00Z' should not be valid under {}
+            suppressed job carrying send_started_at (A6D2-01 repair)
+AS-EXPECTED JOB3-07  [job] expect=reject actual=reject at /send_started_at: '2026-10-03T13:40:00Z' should not be valid under {}
+            retry_due job carrying send_started_at (T10/T15 clear it)
+AS-EXPECTED OFF3-01  [off] expect=reject actual=reject at /offers/intro-15/question_limit: 1 was expected
+            introduction with two questions
+AS-EXPECTED OFF3-02  [off] expect=reject actual=reject at /offers/book-bundle/included_consultation/duration_minutes: 30 was expected
+            consultation duration as the string '30'
+AS-EXPECTED OFF3-03  [off] expect=reject actual=reject at /offers/book-bundle/price: 'status' is a required property
+            book bundle made free
+AS-EXPECTED OFF3-04  [off] expect=reject actual=reject at /offers/book-bundle/included_consultation/capacity_proposal: {'slots_per_week': 2, 'buffer_minutes': 10, 'status_note': 'plan proposal pending G0 (D-033, HB-16)'} was expe
+            60-minute buffer smuggled into the capacity proposal const
+AS-EXPECTED OFF3-05  [off] expect=reject actual=reject at /offers/book-bundle/cap/value: 8 is not of type 'null'
+            cap value 8 written while pending (proposal promoted to value)
+AS-EXPECTED OFF3-06  [off] expect=reject actual=reject at /offers/book-bundle/price/value: {'amount_minor': 4995, 'currency': 'CAD'} is not of type 'null'
+            invented price 49.95 CAD while pending (authoritative)
+AS-EXPECTED OFF3-07  [off] expect=reject actual=reject at /offers/continued-work: Additional properties are not allowed ('hourly_rate' was unexpected)
+            hourly rate added to continued-work
+AS-EXPECTED OFF3-08  [off] expect=reject actual=reject at /offers/intro-15/online_service/value: 'zoom_workplace' is not valid under any of the given schemas
+            online service key zoom_workplace
+AS-EXPECTED OFF3-09  [off] expect=reject actual=reject at /offers/book-bundle/included_consultation/duration_minutes: 30 was expected
+            fixture with the included consultation at 60 minutes
+AS-EXPECTED OFF3-10  [off] expect=reject actual=reject at /meeting_types/book-consultation-30/duration_minutes: 30 was expected
+            meeting type 30.5 minutes
+AS-EXPECTED OFF3-11  [off] expect=reject actual=reject at /offers/book-bundle/price/value: {'amount_minor': 49.95, 'currency': 'XXX'} is not valid under any of the given schemas
+            price as a decimal 49.95 instead of integer minor units
+
+summary: 38 as expected of 38
+exit=0

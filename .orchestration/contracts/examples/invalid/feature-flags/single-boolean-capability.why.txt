@@ -1,0 +1,5 @@
+rule: FF-STATE-1 each capability has five separate readiness states; one boolean cannot stand for all five (04 §7)
+expect_path: capabilities/guide_request_delivery
+expect_keyword: type
+
+A capability collapsed to a single true.

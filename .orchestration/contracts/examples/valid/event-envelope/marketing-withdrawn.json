@@ -1,0 +1,12 @@
+{
+  "schema_version": "1.0",
+  "event_id": "27b38655-dd45-4a6d-9b4c-87d214713b89",
+  "type": "marketing.withdrawn",
+  "occurred_at": "2026-10-02T15:10:00Z",
+  "subject_id": "con_xsekt13hxv12z5bp4rm4s2f0hw",
+  "locale": "en",
+  "source": "site.unsubscribe",
+  "resource_id": "consent.nurture.hade8541d1084",
+  "consent_reference": "cev_ad947t6estc3b76pksksegzd1m",
+  "idempotency_key": "ik1_afaa9c7ab9e118b13602e1df7998061fdff65e5717a0f3df1b4e73ad1d0c3d40"
+}

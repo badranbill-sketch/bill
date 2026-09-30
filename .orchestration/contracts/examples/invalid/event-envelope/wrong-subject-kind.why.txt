@@ -1,0 +1,5 @@
+rule: EV-TYPE-2 delivery.failed is about a job: subject_id must be job_
+expect_path: subject_id
+expect_keyword: pattern
+
+A contact ID as the subject of a delivery failure; the job row holds the contact link.

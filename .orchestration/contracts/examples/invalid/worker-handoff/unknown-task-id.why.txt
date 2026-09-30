@@ -1,0 +1,4 @@
+rule: WH-ID-1
+breaks: task_id is one of the 62 task IDs in tasks.json.
+expect_keyword: pattern
+expect_path: /task_id

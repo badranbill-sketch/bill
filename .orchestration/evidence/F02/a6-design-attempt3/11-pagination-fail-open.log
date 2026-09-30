@@ -1,0 +1,8 @@
+$ node .orchestration/evidence/F02/a6-design-attempt3/pagination3.mjs
+first page only (script behaviour): passes = true
+all 101 reviews (true latest state):  passes = false
+=> approval-scopes.md s3 'fails closed' is contradicted when the later CHANGES_REQUESTED is beyond review 100
+exit=0
+
+$ grep -n 'fails closed' .orchestration/contracts/approval-scopes.md
+72:3. The **latest** review by a configured content reviewer is `APPROVED`, at the PR head commit, with the exact `humanReview` URL. The same holds for a configured firm reviewer and `firmApproval` when required. Reviews are read with `per_page=100` and no pagination. A review beyond the first 100 is not found, so the check fails closed, as `docs/CONTENT-WORKFLOW.md` states.

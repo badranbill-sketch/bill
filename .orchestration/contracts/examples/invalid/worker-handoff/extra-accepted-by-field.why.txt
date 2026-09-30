@@ -1,0 +1,4 @@
+rule: WH-SHAPE-1
+breaks: The handoff is closed; a worker cannot add acceptance or other fields.
+expect_keyword: additionalProperties
+expect_path: 

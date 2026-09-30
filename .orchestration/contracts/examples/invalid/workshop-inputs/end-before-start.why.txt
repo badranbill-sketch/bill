@@ -1,0 +1,6 @@
+rule: XF-05 - end is after start
+layer: semantic
+expect_rule: XF-05
+expect_path: /chapters/income/sources/0/end
+plain_message_en_draft: The end age must be after the start age.
+explanation: Start age 62, end age 61.

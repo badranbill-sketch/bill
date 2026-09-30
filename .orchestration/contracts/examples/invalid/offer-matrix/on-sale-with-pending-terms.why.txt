@@ -1,0 +1,4 @@
+rule: OM-SALE-1
+breaks: The book cannot be on sale while its price, cap and terms are pending.
+expect_keyword: const
+expect_path: /offers/book-bundle/price/status

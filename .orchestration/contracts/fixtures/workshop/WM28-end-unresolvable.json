@@ -1,0 +1,311 @@
+{
+ "fixture_id": "WM28",
+ "title": "Partner-owned end age with the partner's age unknown",
+ "contract_version": "1.0",
+ "covers": [
+  "WK01",
+  "WK02"
+ ],
+ "purpose": "An age-based end is unresolvable without the owner's age: known 0 before the start, unknown from the start onward.",
+ "input": {
+  "contract": "workshop-inputs",
+  "contract_version": "1.0",
+  "currency": "CAD",
+  "base_year": 2026,
+  "chapters": {
+   "life": {
+    "spending": {
+     "amount": {
+      "status": "estimated",
+      "value": 4800000
+     },
+     "period": "annual",
+     "tax_basis": "after_tax",
+     "price_basis": "today_dollars",
+     "unit": "household"
+    }
+   },
+   "income": {
+    "coverage": "all_known_sources_listed",
+    "sources": [
+     {
+      "id": "src-1",
+      "kind": "workplace_pension",
+      "owner": "self",
+      "amount": {
+       "status": "estimated",
+       "value": 3000000
+      },
+      "period": "annual",
+      "tax_basis": "net",
+      "price_basis": "start_year_dollars",
+      "start": {
+       "reference": "already_receiving"
+      },
+      "escalation_bp": {
+       "status": "zero",
+       "value": 0
+      },
+      "dependability": "scheduled"
+     },
+     {
+      "id": "src-2",
+      "kind": "workplace_pension",
+      "owner": "partner",
+      "amount": {
+       "status": "estimated",
+       "value": 1200000
+      },
+      "period": "annual",
+      "tax_basis": "net",
+      "price_basis": "start_year_dollars",
+      "start": {
+       "reference": "year_index",
+       "point": {
+        "status": "estimated",
+        "value": 4
+       }
+      },
+      "escalation_bp": {
+       "status": "zero",
+       "value": 0
+      },
+      "dependability": "scheduled",
+      "end": {
+       "reference": "age",
+       "point": {
+        "status": "estimated",
+        "value": 65
+       }
+      }
+     }
+    ]
+   },
+   "savings": {},
+   "timing": {
+    "current_age": {
+     "status": "estimated",
+     "value": 60
+    },
+    "retirement_age": {
+     "status": "estimated",
+     "value": 62
+    },
+    "planning_horizon_years": {
+     "status": "estimated",
+     "value": 5
+    },
+    "inflation_bp": {
+     "status": "zero",
+     "value": 0
+    },
+    "household": {
+     "partner_current_age": {
+      "status": "unknown"
+     },
+     "partner_retirement_age": {
+      "status": "estimated",
+      "value": 63
+     }
+    }
+   }
+  }
+ },
+ "expected": {
+  "contract_version": "1.0",
+  "assumptions_echo": {
+   "base_year": 2026,
+   "inflation_bp": 0,
+   "planning_horizon_years": 5,
+   "capital_illustration_return_bp": null,
+   "year_index": "t=0 is calendar year base_year; annual totals per calendar year",
+   "rounding": "exact rational arithmetic; half-even to whole cents at display only"
+  },
+  "window": {
+   "t_R": 2,
+   "first_t": 2,
+   "last_t": 6,
+   "first_calendar_year": 2028,
+   "last_calendar_year": 2032,
+   "first_age": 62,
+   "last_age": 66
+  },
+  "completeness": {
+   "state": "incomplete_unknown_income",
+   "reasons": [
+    "end_unresolvable:src-2"
+   ]
+  },
+  "years": [
+   {
+    "t": 2,
+    "calendar_year": 2028,
+    "age": 62,
+    "spending_cents": 4800000,
+    "income_by_source_cents": {
+     "src-1": 3000000,
+     "src-2": 0
+    },
+    "income_net_cents": 3000000,
+    "income_gross_cents": 0,
+    "income_unknown_basis_cents": 0,
+    "status": "computed",
+    "reasons": [],
+    "gap_cents": 1800000,
+    "surplus_cents": 0,
+    "gap_today_dollars_cents": 1800000,
+    "surplus_today_dollars_cents": 0,
+    "exact": {
+     "spending": "4800000",
+     "income_compared": "3000000",
+     "gap": "1800000",
+     "surplus": "0"
+    }
+   },
+   {
+    "t": 3,
+    "calendar_year": 2029,
+    "age": 63,
+    "spending_cents": 4800000,
+    "income_by_source_cents": {
+     "src-1": 3000000,
+     "src-2": 0
+    },
+    "income_net_cents": 3000000,
+    "income_gross_cents": 0,
+    "income_unknown_basis_cents": 0,
+    "status": "computed",
+    "reasons": [],
+    "gap_cents": 1800000,
+    "surplus_cents": 0,
+    "gap_today_dollars_cents": 1800000,
+    "surplus_today_dollars_cents": 0,
+    "exact": {
+     "spending": "4800000",
+     "income_compared": "3000000",
+     "gap": "1800000",
+     "surplus": "0"
+    }
+   },
+   {
+    "t": 4,
+    "calendar_year": 2030,
+    "age": 64,
+    "spending_cents": 4800000,
+    "income_by_source_cents": {
+     "src-1": 3000000,
+     "src-2": null
+    },
+    "income_net_cents": null,
+    "income_gross_cents": 0,
+    "income_unknown_basis_cents": 0,
+    "status": "not_computable",
+    "reasons": [
+     "end_unresolvable:src-2"
+    ],
+    "gap_cents": null,
+    "surplus_cents": null,
+    "gap_today_dollars_cents": null,
+    "surplus_today_dollars_cents": null,
+    "exact": {
+     "spending": "4800000"
+    }
+   },
+   {
+    "t": 5,
+    "calendar_year": 2031,
+    "age": 65,
+    "spending_cents": 4800000,
+    "income_by_source_cents": {
+     "src-1": 3000000,
+     "src-2": null
+    },
+    "income_net_cents": null,
+    "income_gross_cents": 0,
+    "income_unknown_basis_cents": 0,
+    "status": "not_computable",
+    "reasons": [
+     "end_unresolvable:src-2"
+    ],
+    "gap_cents": null,
+    "surplus_cents": null,
+    "gap_today_dollars_cents": null,
+    "surplus_today_dollars_cents": null,
+    "exact": {
+     "spending": "4800000"
+    }
+   },
+   {
+    "t": 6,
+    "calendar_year": 2032,
+    "age": 66,
+    "spending_cents": 4800000,
+    "income_by_source_cents": {
+     "src-1": 3000000,
+     "src-2": null
+    },
+    "income_net_cents": null,
+    "income_gross_cents": 0,
+    "income_unknown_basis_cents": 0,
+    "status": "not_computable",
+    "reasons": [
+     "end_unresolvable:src-2"
+    ],
+    "gap_cents": null,
+    "surplus_cents": null,
+    "gap_today_dollars_cents": null,
+    "surplus_today_dollars_cents": null,
+    "exact": {
+     "spending": "4800000"
+    }
+   }
+  ],
+  "flags": [
+   "incomplete_income"
+  ],
+  "savings_summary": {
+   "accessible_categories_with_positive_value": [],
+   "home_or_business_positive_value": false,
+   "excluded_from_spendable": [],
+   "pension_value_kept_separate": false,
+   "totals_computed": false
+  },
+  "capital_illustration": {
+   "feature_flag": "off",
+   "displayed": false,
+   "state": "disabled_by_flag",
+   "reference_if_enabled": {
+    "r_bp": null,
+    "computable": false,
+    "not_computable_reasons": [
+     "return_assumption_absent",
+     "state_not_complete"
+    ],
+    "display_eligible_if_enabled": false,
+    "ineligible_reasons": [
+     "return_assumption_absent",
+     "state_not_complete"
+    ],
+    "C_R_cents": null,
+    "C_R_exact": null,
+    "valued_at": null,
+    "flow_timing": "end_of_year"
+   }
+  },
+  "clip": {
+   "predicates": {
+    "C": false,
+    "M": true,
+    "X": false,
+    "H": false,
+    "F": true
+   },
+   "selected": "W06",
+   "selection_reason": "missing_income"
+  }
+ },
+ "independent_checks": [
+  "hand: 4,800,000 - 3,000,000"
+ ],
+ "tolerance": "exact integer cents after half-even rounding; exact strings must match exactly; no numeric tolerance"
+}

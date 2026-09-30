@@ -1,0 +1,11 @@
+{
+  "schema_version": "1.0",
+  "event_id": "e83f1d18-b2a6-4141-b081-3dd6454f5e89",
+  "type": "workshop.access_requested",
+  "occurred_at": "2026-10-02T20:35:00Z",
+  "subject_id": "con_xsekt13hxv12z5bp4rm4s2f0hw",
+  "locale": "fr",
+  "source": "site.workshop_access",
+  "resource_id": "workshop.retirement-workshop.h328239ed2251",
+  "idempotency_key": "ik1_4f60a1f82bb84d4060687aac56e6942890cf6b4c6e763714640608384f3d1283"
+}

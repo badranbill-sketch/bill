@@ -1,0 +1,145 @@
+## codex app/api/guide/route.ts
+import { readFile } from "node:fs/promises";
+import path from "node:path";
+import { launchApproved, reviewEnabled } from "@/lib/business";
+
+export const runtime = "nodejs";
+export const dynamic = "force-dynamic";
+
+/** Review-only PDF. The normal site proxy also enforces review authentication. */
+export async function GET() {
+  const headers = {
+    "Cache-Control": "private, no-store",
+    "X-Robots-Tag": "noindex, nofollow",
+  };
+  if (launchApproved() || !reviewEnabled())
+    return new Response("Not found", { status: 404, headers });
+  try {
+    const data = await readFile(
+      path.join(process.cwd(), "content/guides/retirement-review-en.pdf"),
+    );
+    return new Response(new Uint8Array(data), {
+      headers: {
+        ...headers,
+        "Content-Type": "application/pdf",
+        "Content-Disposition":
+          'inline; filename="bill-badran-retirement-guide-review.pdf"',
+        "Content-Length": String(data.byteLength),
+      },
+    });
+  } catch {
+    return new Response("Guide temporarily unavailable", {
+      status: 503,
+      headers,
+    });
+  }
+}
+## codex app/api/inquiry/route.ts (limits/origin/requestId)
+16:  const origin = request.headers.get("origin");
+19:      !origin ||
+20:      new URL(origin).host !== request.headers.get("host") ||
+21:      !["http:", "https:"].includes(new URL(origin).protocol)
+23:      return respond(403, "origin");
+25:    return respond(403, "origin");
+27:  if (!request.headers.get("content-type")?.startsWith("application/json"))
+31:  let size = 0;
+37:      size += value.byteLength;
+38:      if (size > 12000) {
+## lib/contact.ts requestId/limit
+12:    requestId: z.uuid(),
+68:    if (count.result > 5) return { status: 429, code: "rate_limited" };
+## components/pages.tsx StandardPage cta (codex)
+24:  meeting = true,
+27:  meeting?: boolean;
+60:          {meeting && (
+202:                <Link className="text-link" href={pathFor(lang, "meeting")}>
+221:  cta = true,
+231:  cta?: boolean;
+250:          {cta && (
+251:            <p className="page-hero-cta">
+252:              <Link className="text-link" href={pathFor(lang, "meeting")}>
+253:                {t(lang).meeting} →
+271:    case "meeting":
+350:    meeting: c.nav[2],
+420:        cta={page !== "meeting" && page !== "privacy" && page !== "legal"}
+422:        wide={page === "meeting"}
+424:      {page === "meeting" && (
+425:        <section className="meeting-options">
+427:            <div className="meeting-actions">
+430:                  {c.meeting}
+439:              <p className="meeting-note">
+463:      {page === "meeting" ? (
+## components/pages.tsx StandardPage cta (main)
+264:  cta = true,
+274:  cta?: boolean;
+293:          {cta && (
+294:            <p className="page-hero-cta">
+463:        cta={page !== "meeting" && page !== "privacy" && page !== "legal"}
+## components/navigation.tsx header-cta
+25:    ["retirement", "investments", "meeting", "about", "resources"] as PageKey[]
+58:      <Link className="button header-cta" href={pathFor(lang, "meeting")}>
+110:          <Link href={pathFor(lang, "meeting")} onClick={close}>
+111:            {c.meeting}
+## components/shell.tsx footer
+4:import { pathFor } from "@/lib/routes";
+23:            href={pathFor(lang, "home")}
+61:            <Link href={pathFor(lang, "retirement")}>{c.nav[0]}</Link>
+62:            <Link href={pathFor(lang, "investments")}>{c.nav[1]}</Link>
+63:            <Link href={pathFor(lang, "meeting")}>{c.nav[2]}</Link>
+64:            <Link href={pathFor(lang, "about")}>{c.nav[3]}</Link>
+65:            <Link href={pathFor(lang, "resources")}>{c.nav[4]}</Link>
+66:            <Link href={pathFor(lang, "privacy")}>{c.privacy}</Link>
+67:            <Link href={pathFor(lang, "legal")}>{c.legal}</Link>
+82:    <Link className="button" href={pathFor(lang, "meeting")}>
+## scripts/launch.ts guides
+7:if (!fs.existsSync("public" + business.portrait))
+9:for (const [lang, guide] of Object.entries(business.guides)) {
+10:  if (guide && (!guide.approved || !fs.existsSync("public" + guide.path)))
+29:    "Review build; public launch is off. Pending approvals: " +
+## next.config.ts codex
+import type { NextConfig } from "next";
+const config: NextConfig = {
+  poweredByHeader: false,
+  outputFileTracingIncludes: {
+    "/api/guide": ["./content/guides/retirement-review-en.pdf"],
+  },
+  devIndicators: false,
+  async headers() {
+    return [
+      {
+        // Drawings from scripts/build-ink.tsx: the name carries a content
+        // hash, so a changed drawing is a new file.
+        source: "/assets/ink/:file*",
+        headers: [
+          {
+            key: "Cache-Control",
+            value: "public, max-age=31536000, immutable",
+          },
+        ],
+      },
+      {
+        source: "/:path*",
+        headers: [
+          { key: "X-Content-Type-Options", value: "nosniff" },
+          { key: "Referrer-Policy", value: "strict-origin-when-cross-origin" },
+          {
+            key: "Permissions-Policy",
+            value: "camera=(), microphone=(), geolocation=()",
+          },
+          {
+            key: "Content-Security-Policy",
+            value: `default-src 'self'; script-src 'self' 'unsafe-inline' ${process.env.NODE_ENV === "development" ? "'unsafe-eval'" : ""}; style-src 'self' 'unsafe-inline'; img-src 'self' data:; font-src 'self'; connect-src 'self'; frame-src 'none'; frame-ancestors 'none'; base-uri 'self'; form-action 'self'; object-src 'none'`,
+          },
+        ],
+      },
+    ];
+  },
+};
+export default config;
+## Next docs: proxy body buffering (codex node_modules not in git; look in F00 worktree)
+base01-codex
+base01-diag-main-filmdeps
+base01-guide
+base01-homepage
+base01-main
+base01-video

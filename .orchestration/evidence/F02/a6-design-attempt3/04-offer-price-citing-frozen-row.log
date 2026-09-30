@@ -1,0 +1,10 @@
+# OFF3-12: invented price citing D-003 (a frozen-by-plan row that names G0) in the authoritative instance, on a scratch copy
+$ validate.py --contracts-dir /tmp/claude-0/-home-user/bb8d4187-6ae8-587b-a816-8153faeea853/scratchpad/a6-design-attempt3/contracts
+FAIL  CX-16 authoritative instances cite only real, recorded human answers for the named gate; fixtures only fixture: refs :: ["examples/valid/offer-matrix/authoritative-2026-09-30.json gate record gr-01 cites D-003, whose status ['frozen-by-plan'] is not a recorded answer", 'examples/valid/offer-matrix/authoritative-2026-09-30.json gate record gr-01 cites D-003, which carries no answer date']
+FAIL  CX-29 .orchestration/evidence/F02/offers/validation.log: 139 recorded hashes match current files :: ['.orchestration/contracts/examples/valid/offer-matrix/authoritative-2026-09-30.json']
+PASS  NC-9 a recorded price citing D-032 (a pending row) or a missing D-099 is caught by CX-16, without relying on CX-29
+## Summary
+pass: 349  fail: 2  known: 16  info: 2
+unexpected results:
+  - CX-16 authoritative instances cite only real, recorded human answers for the named gate; fixtures only fixture: refs :: ["examples/valid/offer-matrix/authoritative-2026-09-30.json gate record gr-01 cites D-003, whose status ['frozen-by-plan'] is not a recorded answer", 'examples/valid/offer-matrix/a
+exit=1

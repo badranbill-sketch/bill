@@ -1,0 +1,4 @@
+rule: AM-PUB-1
+breaks: An asset with status 'published' must carry its actual publication_id.
+expect_keyword: type
+expect_path: /assets/9/publication_id

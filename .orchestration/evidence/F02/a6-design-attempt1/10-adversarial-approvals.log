@@ -1,0 +1,16 @@
+$ $VENV/bin/python .orchestration/evidence/F02/a6-design-attempt1/adversarial_approvals.py
+REJECTED  FF approved.recorded_by=operator  <- 'operator' is not one of ['bill', 'firm_reviewer', 'arnaud', 'privacy_owner', 'account_own
+REJECTED  FF approved.recorded_by=A6  <- 'A6' is not one of ['bill', 'firm_reviewer', 'arnaud', 'privacy_owner', 'account_owner', N
+REJECTED  FF approved.recorded_by=A0  <- 'A0' is not one of ['bill', 'firm_reviewer', 'arnaud', 'privacy_owner', 'account_owner', N
+REJECTED  FF approved.recorded_by=claude  <- 'claude' is not one of ['bill', 'firm_reviewer', 'arnaud', 'privacy_owner', 'account_owner
+REJECTED  FF approved true with no scope hash  <- [] should be non-empty
+REJECTED  FF approved gate G7  <- 'G7' is not one of ['G0', 'G1', 'G2', 'G3', 'G4', 'G5', 'G6']
+REJECTED  AM approved_by_roles=['A0']  <- {'gates': ['G3'], 'approved_by_roles': ['A0'], 'approved_on': '2026-09-30', 'record_ref': 
+REJECTED  AM approved_by_roles=['operator']  <- {'gates': ['G3'], 'approved_by_roles': ['operator'], 'approved_on': '2026-09-30', 'record_
+REJECTED  AM approved_by_roles=['bill', 'A6']  <- {'gates': ['G3'], 'approved_by_roles': ['bill', 'A6'], 'approved_on': '2026-09-30', 'recor
+REJECTED  OM gate_records[0].recorded_by_role=A0  <- 'A0' is not one of ['arnaud', 'bill', 'firm_reviewer', 'privacy_owner', 'account_owner']
+REJECTED  OM gate_records[0].recorded_by_role=operator  <- 'operator' is not one of ['arnaud', 'bill', 'firm_reviewer', 'privacy_owner', 'account_own
+REJECTED  handoff status=accepted  <- 'submitted' was expected
+REJECTED  handoff test environment=live (not in vocabulary)  <- 'live' does not match '^(?:local|ci|staging|provider-sandbox|production)(?:[ :].{1,200})?$
+REJECTED  handoff blocked_checks status=pass  <- 'pass' is not one of ['blocked', 'not_run']
+exit=0

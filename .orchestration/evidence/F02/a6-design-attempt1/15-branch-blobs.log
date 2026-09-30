@@ -1,0 +1,7 @@
+$ (lib/routes.ts, proxy.ts, lib/business.ts helpers, robots/sitemap, page.tsx, api/guide, verify-publication.ts, CONTENT-WORKFLOW.md, lib/articles.ts, verify.yml read with git show; blob ids)
+origin/main 77de3bd routes=7592590 proxy=4159faf business=4bcea8f articles=df24ccb verify-pub=393d8d6 workflow-doc=6ea8d61 approvals={}
+origin/codex/desktop-iphone-unified 66cce52 routes=7592590 proxy=4159faf business=4bcea8f articles=df24ccb verify-pub=393d8d6 workflow-doc=6ea8d61 approvals={}
+origin/claude/bill-centered-homepage d63aabd routes=c094895 proxy=4159faf business=4edc95c articles=df24ccb verify-pub=393d8d6 workflow-doc=6ea8d61 approvals={}
+origin/guide/pre-retirement-guide 749b360 routes=7592590 proxy=4159faf business=4bcea8f articles=df24ccb verify-pub=393d8d6 workflow-doc=6ea8d61 approvals={}
+origin/claude/bill-presentation-video fc00445 routes=7592590 proxy=4159faf business=4bcea8f articles=df24ccb verify-pub=393d8d6 workflow-doc=6ea8d61 approvals={}
+origin/add-ask-bill-section 01e296c routes=7592590 proxy=4159faf business=4bcea8f articles=df24ccb verify-pub=393d8d6 workflow-doc=6ea8d61 approvals={}

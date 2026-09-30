@@ -1,0 +1,5 @@
+rule: FF-GATE-1 the flag-to-gate mapping is frozen by const (feature-flags.md)
+expect_path: flags/paid_ads/enable_gates
+expect_keyword: const
+
+Ads made enableable with G2 alone, skipping G3/G5/G6.
