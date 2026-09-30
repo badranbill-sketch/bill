@@ -2,7 +2,7 @@
   "task_id": "F02a",
   "base_commit": "cb3becf25ed042b977d4864ae71e74d13829320f",
   "result_commit": null,
-  "contract_version": "1.0",
+  "contract_version": "1.1",
   "changed_paths": [
     ".orchestration/contracts/fixtures/workshop/WM37-today-dollar-pre-start-factor.json",
     ".orchestration/contracts/fixtures/workshop/WM38-joint-owner-participant-age.json",
@@ -308,7 +308,8 @@
     "Repair attempt 3 (reviews/F02a-attempt2.md). Its two P2 findings, F02A-A6R2-P2-1 and F02A-A6R2-P2-2, are the attempt-1 items carried unchanged; the reviewer names A0 as owner of both, states that another worker repair cannot close them (both need edits outside F02a's write scope) and escalates to A0 under 03 s A0 ('Escalate after two repairs'). The review requests no change to WM37-WM40, index.json or the F02a evidence, and none was made. Attempt 3 re-ran the checks on the live tree (run_attempt3.sh): all 48 sha256 values in after-hashes.log still match (6 no-change contract files, WM01-WM40, clip-rules.json, index.json); the contract directory differs from HEAD only by index.json +42/-0 and the 4 untracked fixtures; compute_f02a_fixtures.py --check and mutation_check.py still exit 0 with the same CAUGHT/MISSED lines; the lane validator still reports 116 pass, 1 fail (step 5, P2-1); contracts/validate.py reports 353 pass, 4 fail (CX-18, CX-21, CX-29, S9), which is the reviewer's out/06 result exactly. The attempt-3 additions are run_attempt3.sh, the six attempt3-*.log files and this regenerated handoff (make_handoff.py gained the tests, artifacts and this assumption; blocked_checks now carry the R2 IDs).",
     "During attempt 3 the worker also started a trial of the A0-side edits for P2-1 in a local clone under the session scratchpad. No repository file outside F02a's paths was written. The trial was stopped when the permission system denied a review command. Its draft patch was deleted from evidence/F02a, and no result from the trial is claimed here or used as evidence.",
     "evidence/F02a/a6-attempt1/ and evidence/F02a/a6-attempt2/ are A6's verification evidence for reviews/F02a.md and reviews/F02a-attempt2.md. They sit inside the changed_paths directory entry, but F02a did not write them, and none of their files is listed as an F02a artifact.",
-    "base_commit is the current HEAD of /home/user/bill (branch claude/orchestration-foundation); all F02a files are uncommitted working-tree files, so result_commit is null. The A6 harness node_modules (ajv 8.20.0) were copied from an earlier scratch copy (a6m3-clean); no package was installed and no network was used."
+    "base_commit is the current HEAD of /home/user/bill (branch claude/orchestration-foundation); all F02a files are uncommitted working-tree files, so result_commit is null. The A6 harness node_modules (ajv 8.20.0) were copied from an earlier scratch copy (a6m3-clean); no package was installed and no network was used.",
+    "A0 2026-09-30: contract_version set to 1.1 (the version that admits split task IDs; A0-patch-1 review P3-1)."
   ],
   "blocked_checks": [
     {

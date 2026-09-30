@@ -7,7 +7,7 @@
    (expect_keyword at expect_path, searched through nested anyOf/oneOf contexts;
    'harness:<ID>' rules are checked by the harness below, and those examples must be
    schema-valid so that only the harness rule catches them).
-4. Validates .orchestration/handoffs/F00.json against worker-handoff 1.0 and reports every
+4. Validates .orchestration/handoffs/F00.json against worker-handoff 1.1 and reports every
    mismatch (informational; F00.json is not edited).
 5. Cross-checks names against the repository (route keys in lib/routes.ts on main and codex,
    bookings.offer_id values in operational-data-model.md, event-envelope resource-code
@@ -37,7 +37,8 @@ EX = C / "examples"
 CONTRACTS = {
     "offer-matrix": ("offer-matrix.json", "https://bill.contracts.local/offer-matrix/1.0"),
     "asset-manifest": ("asset-manifest.schema.json", "https://bill.contracts.local/asset-manifest/1.0"),
-    "worker-handoff": ("worker-handoff.schema.json", "https://bill.contracts.local/worker-handoff/1.0"),
+    # worker handoff 1.1: A0 patch 1 (D-074) admits the split task F02a; the other two contracts stay 1.0
+    "worker-handoff": ("worker-handoff.schema.json", "https://bill.contracts.local/worker-handoff/1.1"),
 }
 
 failures: list[str] = []
@@ -269,7 +270,7 @@ def main():
     dup = [r for r, n in rules_seen.items() if n > 1]
     print(f"rules covered: {len(rules_seen)} distinct rule IDs; duplicated IDs: {dup or 'none'}")
 
-    print("\n## 4. .orchestration/handoffs/F00.json against worker-handoff 1.0 (informational; file not edited)")
+    print("\n## 4. .orchestration/handoffs/F00.json against worker-handoff 1.1 (informational; file not edited)")
     f00p = ORCH / "handoffs" / "F00.json"
     f00 = json.loads(f00p.read_text(encoding="utf-8"))
     print("F00.json sha256:", hashlib.sha256(f00p.read_bytes()).hexdigest())

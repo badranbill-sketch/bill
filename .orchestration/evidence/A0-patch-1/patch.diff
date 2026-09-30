@@ -1,0 +1,1190 @@
+diff --git a/.orchestration/blockers.md b/.orchestration/blockers.md
+index 9652128..619e6e2 100644
+--- a/.orchestration/blockers.md
++++ b/.orchestration/blockers.md
+@@ -1,6 +1,6 @@
+ # Consolidated blockers (F01)
+ 
+-- Task: F01. Owner A0 (delegate), reviewer A6, stage design_or_audit. Status: **submitted, not accepted**.
++- Task: F01. Owner A0 (delegate), reviewer A6, stage design_or_audit. Status: **accepted**. A0 accepted F01 on 2026-09-30 after the A6 attempt-2 pass (`reviews/F01-attempt2.md`), recorded at `cb3becf`. The post-acceptance patch below was reviewed by A6 in F02a attempt 3, part B (`reviews/F02a-attempt3.md`: pass). A0 patch 1 (`evidence/A0-patch-1/`) then updated this header and HB-08's "Provide" line, from F02A-A6R3-P3-4 and P3-5.
+ - Written 2026-09-30 against HEAD `5cbbf9b5d21dbf03d2cb44e524a6fcdc10d5515b`. Decision IDs (D-xxx) refer to `decisions.md`.
+ - This is the **one** human-input batch required by the 00 launch instruction and the 06 "One input sheet". It merges the 06 sheet, the 01 §2 unknowns, F00 questions Q1–Q15 (`inventory.md §10`) and the inputs that later gated tasks need (for example N10's smoke targets and G4's replay policy), without duplicates, so no second ask is needed when those tasks start. Nothing here is an approval.
+ - A0 post-acceptance patch (2026-09-30, from `reviews/F01-attempt2.md` P3-1…P3-5): HB-08 proposal made single-outcome and (b) existing-cost question added; HB-22 asks about the AI-assisted cover/likeness; HB-03 keeps presentation/ outside the baseline; G2 'not askable yet' and G5 rows corrected; three backup/media secret rows added. Pre-patch copy retained by A0 in its scratchpad; this patch is reviewed by A6 in F02a.
+@@ -21,7 +21,7 @@
+ 
+ ## Pilot status on the evidence (2026-09-30)
+ 
+-- Tasks: F00 accepted, F01 running, 60 of 62 planned (`tasks.json`).
++- Tasks, as a snapshot taken when F01 was written at `5cbbf9b`: F00 accepted, F01 running, 60 of 62 planned. `tasks.json` holds the current states. At A0 patch 1 they are: F00, F01, F02 and F03 accepted, F02a running, and 58 of 63 planned.
+ - L05, the controlled invited pilot, needs gates G0, G1, G3, G4, G5 and G6 recorded (TASK_LEDGER). **None is recorded.** It is task 14 on the 18-task longest dependency chain (`tasks.json` meta).
+ - 0 Bill video recordings exist, and no approved book PDF (`inventory.md §4`). No Bill Google, Brevo, Supabase, Stripe or ad account is visible (§7). The VPS is not visible (§7).
+ - So on the current evidence, Friday October 2 can only be a **clearly labelled protected rehearsal** of whatever passes locally, using fictional data. That changes only if the gates are recorded and the recordings exist. Items marked HARD are what closes that gap. This is a statement of the plan's rules applied to the evidence, not a request to drop scope.
+@@ -103,7 +103,7 @@
+ - (b) For `costs.json` (01 §17 real cost sheet; 06 handover renewals): for each existing paid item (VPS, domain/registrar, mailbox, Calendly, Google, GitHub, and Resend/Upstash if they exist), what is the current plan, amount, currency and renewal date? "Don't know" is fine; nothing here blocks the pilot.
+ - Blocks: a paid model in N08; R02; any purchase.
+ - Friday: nothing, if the caps stay 0 and Bill's existing account can host Meet.
+-- Provide: reply to the director → D-064 and `costs.json` `authorized_caps`.
++- Provide: reply to the director → D-064 and `costs.json` `authorized_caps`. The (b) answers go to the matching `existing_cost_unknown` items of `costs.json`, with the plan and renewal date in the item's note. `amount` and `currency` stay `null` until an invoice or checkout fixes them (`costs.json` rules).
+ 
+ **HB-09. Test recipient allowlist and smoke-test targets** (G2)
+ - Questions:
+diff --git a/.orchestration/contracts/README.md b/.orchestration/contracts/README.md
+index 926a1ed..06e6cc2 100644
+--- a/.orchestration/contracts/README.md
++++ b/.orchestration/contracts/README.md
+@@ -1,6 +1,6 @@
+-# Contract set 1.0 (F02): index, change control and invariants
++# Contract set 1.1 (F02; A0 patch 1): index, change control and invariants
+ 
+-contract_set_version: 1.0
++contract_set_version: 1.1
+ frozen_for_build_on: 2026-09-30
+ 
+ - Task F02, "Freeze interfaces, privacy boundary, math units and offer matrix". Written by the A0 delegate acting as F02 integrator. Base commit `5cbbf9b5d21dbf03d2cb44e524a6fcdc10d5515b` on `claude/orchestration-foundation`. Nothing here is committed.
+@@ -10,9 +10,10 @@ frozen_for_build_on: 2026-09-30
+   - the offers lane changed no file in this round.
+ 
+   The integrator wrote only this README and `validate.py`, and edited no other contract file. It also addressed the two review findings owned by the index, A6D2-04 and A6D2-09 (§5.3). A6 verifies them.
++- **A0 patch 1 (1.1).** This is the first contract change after A0 recorded F02 acceptance. It moves worker handoff to 1.1 so that the split task F02a (D-072) can hand off, and it records F02a's fixtures WM37–WM40. Every other contract stays 1.0. See §3a and D-074.
+ - **What "frozen-for-build" means.** Downstream tasks build against exactly these names, shapes and rules. Nothing changes except through the change-control rule in §3.
+ - **What it does not mean.** It is not an approval.
+-  - F02 itself is submitted, not accepted. A6 reviews it, and A0 records acceptance separately (03; D-037).
++  - A0 recorded F02 acceptance at design_or_audit on 2026-09-30 (tasks.json, D-072), after A6 review (03; D-037). Acceptance is still not an approval.
+   - No contract here records a G0–G6 decision, and every contract file still says "proposed" for that reason.
+   - Some contracts need a human decision before they govern real people, money, content or data. For those, the Status column adds "proposed-for-human-approval" and names the gate.
+ - **When two artifacts disagree:**
+@@ -39,6 +40,20 @@ frozen_for_build_on: 2026-09-30
+   - `offers/`: the generator `gen_offers.py`, the validator `validate_offers.py`, `run_validation.sh`, `validation.log`, and the repair-2 evidence `repair-2.log`, `fingerprint_order_repro.ts` and `fingerprint-key-order.log`;
+   - `a6-design-attempt1/`, `a6-math-attempt1/`, `a6-design-attempt2/` and `a6-math-attempt2/`: A6's own review evidence. A6 wrote them, not the F02 lanes, so they are not F02 artifacts;
+   - `validate-all.log`: the output of this set's harness, plus read-only re-runs of the three lane validators.
++- Later records (CX-29) live outside `evidence/F02/`, because the lane logs are historical evidence and are never rewritten.
++  - A record is written once, for its round, and is never regenerated in place.
++  - `validate.py` registers each record in `LANE_LOG_RECORDS`, in round order, with the sha256 of the record's bytes and the files its round changed. A record whose bytes differ from its registration fails CX-29.
++  - Only the listed files supersede a lane-log entry. A record that prints a whole bundle must match the current bytes on every line, but its other lines supersede nothing. The registration says what a record supersedes, not the record's own header line.
++  - The records today:
++    - `evidence/F02a/after-hashes.log`: F02a's record (D-072). It changed WM37–WM40 and `index.json`. Its other lines are F02a's own before/after evidence.
++    - `evidence/A0-patch-1/math-bundle.sha256.log`: A0 patch 1's record. It changed `workshop-math.md`, and it also names `index.json`, which F02a changed. It prints the whole calculation bundle, which is the hash list for G3 and HB-26.
++    - `evidence/A0-patch-1/worker-handoff-1.1.sha256.log`: A0 patch 1's record. It changed `worker-handoff.schema.json`, `approval-scopes.md` (§8 holds the handoff semantics), `examples/invalid/worker-handoff/unknown-task-id.why.txt`, `gen_offers.py` and `validate_offers.py`. It prints every worker handoff 1.1 file and the offers-lane scripts that generate and check them.
++- **How a later round records bytes it changes.** One example is the math lane's fold of WM37–WM40 into `compute_fixtures.py` and its `FAULTS` (F02A-A6R3-P2-1).
++  - The round never edits a lane log or an earlier record.
++  - It either writes a new record in its own evidence folder, or runs its lane validation again into a new log file (never over `evidence/F02/*/validation.log`).
++  - A0 registers that file in `LANE_LOG_RECORDS`, after the records above, with its sha256 and the files the round changed. A0 registers a new lane validation log only if its verdict is exit 0.
++  - Until then, CX-29 fails on every file the round changed.
++  - A change to a WM expected value or to a math rule also needs a new A6 math review and a new G3 (§3 rule 3).
+ 
+ ## 2. Contract index
+ 
+@@ -57,9 +72,9 @@ One row per contract. Paths are relative to `contracts/`. A range such as N00–
+ | 9 | Routes 1.0 | `routes.md` | offers lane | P00, P02, U00–U05, W01, W02, N00, N01, N06, N07, R00 | frozen-for-build; proposed-for-human-approval: slugs are approved with the page copy at G3 (RT-SLUG-3); proxy and callback changes need independent A6 review (01 §14) |
+ | 10 | Asset manifest 1.0 | `asset-manifest.schema.json`, `asset-manifest.md`, `examples/valid/asset-manifest/`, `examples/invalid/asset-manifest/` | offers lane | C01–C11, D01, W03, H00, N08, R00, H01 | frozen-for-build |
+ | 11 | Approval scopes 1.0 | `approval-scopes.md` | offers lane | H00, C10, C11, W03, N02, N08, R00, L00, L04, L05, L06; §8 applies to every task handoff | frozen-for-build; proposed-for-human-approval: the proposed ledger `content/asset-approvals.json`, the H00 packet format and its enforcement (CODEOWNERS, branch protection, HB-11) |
+-| 12 | Worker handoff 1.0 | `worker-handoff.schema.json`, `examples/valid/worker-handoff/`, `examples/invalid/worker-handoff/` | offers lane | every task (all 62 tasks) on submission; A0 records acceptance; A6 verifies | frozen-for-build |
+-| 13 | Workshop inputs 1.0 | `workshop-inputs.schema.json`, `workshop-inputs.md`, `examples/valid/workshop-inputs/`, `examples/invalid/workshop-inputs/` | math lane (A2 contract author) | D00, W00, W01, W02, W04, C02, H00 | frozen-for-build; proposed-for-human-approval: A6 reviews the math, then G3 (Bill and the firm reviewer, HB-26) approves the hashes printed in `evidence/F02/math/validation.log` |
+-| 14 | Workshop math and fixtures 1.0 | `workshop-math.md`, `fixtures/workshop/` | math lane | W00, W02, W04, C02, H00 | frozen-for-build; proposed-for-human-approval: as row 13. The fixtures are WM01–WM36 plus `clip-rules.json` and `index.json`. Adding a fixture that follows the existing rules is allowed under §3 rule 6; the integrator then updates this row and CX-21 in the same round. The capital illustration stays off; no flag for it exists (XL-03). |
++| 12 | Worker handoff 1.1 | `worker-handoff.schema.json`, `examples/valid/worker-handoff/`, `examples/invalid/worker-handoff/`; semantics in `approval-scopes.md` §8 | offers lane; 1.1 by A0 (D-074) | every task (all 63 tasks) on submission; A0 records acceptance; A6 verifies | frozen-for-build. 1.1 admits the split task F02a in `task_id` (WH-ID-1); every 1.0 handoff is valid under 1.1. |
++| 13 | Workshop inputs 1.0 | `workshop-inputs.schema.json`, `workshop-inputs.md`, `examples/valid/workshop-inputs/`, `examples/invalid/workshop-inputs/` | math lane (A2 contract author) | D00, W00, W01, W02, W04, C02, H00 | frozen-for-build; proposed-for-human-approval: A6 reviews the math, then G3 (Bill and the firm reviewer, HB-26) approves the hashes printed in `evidence/F02/math/validation.log`, or in the later CX-29 record that supersedes it for a file. After A0 patch 1, `evidence/A0-patch-1/math-bundle.sha256.log` prints the whole bundle. |
++| 14 | Workshop math and fixtures 1.0 | `workshop-math.md`, `fixtures/workshop/` | math lane | W00, W02, W04, C02, H00 | frozen-for-build; proposed-for-human-approval: as row 13. The fixtures are WM01–WM40 plus `clip-rules.json` and `index.json` (WM37–WM40 added by F02a, D-072). Adding a fixture that follows the existing rules is allowed under §3 rule 6; the integrator then updates this row and CX-21 in the same round. The capital illustration stays off; no flag for it exists (XL-03). |
+ | 15 | Workshop clip rules 1.0 | `workshop-clip-rules.md`, `fixtures/workshop/clip-rules.json` | math lane | W03, W04, C02, C10, H00 | frozen-for-build; proposed-for-human-approval: as row 13. The disclosure wording is a draft owned by C02 (G1, G3). |
+ | 16 | Index and harness | `README.md`, `validate.py` | A0 delegate (F02 integrator) | A0 at every dispatch; L00; every consuming task runs `validate.py` before its handoff | frozen-for-build |
+ 
+@@ -120,7 +135,7 @@ Two 04 rules that bind these workflows are restated in no contract. They are tra
+    - running: it stops at the next checkpoint and is re-issued on the new version (01 §5, "Rebase or reissue a task after a conflicting contract change");
+    - submitted or accepted: A6 re-verifies it against the new version before its acceptance is relied on again.
+ 
+-   A handoff that names an older `contract_version` is not accepted. Splitting a task needs a minor version (WH-ID-1).
++   A handoff that names an older `contract_version` is not accepted. There is one exception: when the change log (§3a) records a minor version whose re-issue is "None", a task dispatched before that version may still hand off naming the older version. Today this means that 1.0 stays acceptable after 1.1 (D-074), and `validate.py --handoff` accepts both. The harness cannot see when a task was dispatched, so A0 checks that a handoff naming 1.0 comes from a task dispatched under 1.0. Splitting a task needs a minor version (WH-ID-1).
+ 5. **Approvals lost.** A change voids every approval bound to the hash of a changed file (approval-scopes.md AS-INV-1, AS-INV-3). For example:
+    - any byte change to `workshop-inputs.schema.json`, `workshop-math.md`, `workshop-clip-rules.md` or a fixture voids a G3 on the calculation bundle;
+    - a new offer-matrix version voids the approval of every asset whose `offer_refs` names a changed offer.
+@@ -139,13 +154,32 @@ Two 04 rules that bind these workflows are restated in no contract. They are tra
+    - A6 reviews the change.
+ 8. **Repairs inside F02's own review cycle (proposed; A0 confirms).** The lanes' repair attempts 2 and 3 changed contract files and kept version 1.0. The integrator reads this as allowed only because F02 is not yet accepted: no task has been dispatched against 1.0, and no approval is bound to any earlier hash. The rules above apply in full from the moment A0 records F02 acceptance. Any later edit then bumps the version.
+ 
++## 3a. Change log
++
++| Version | Date | Decision | What changed | Why | Re-issue |
++|---|---|---|---|---|---|
++| 1.0 | 2026-09-30 | D-037, D-072 | The contract set is frozen for build. A0 recorded F02 acceptance. | F02 | none (first version) |
++| 1.1 | 2026-09-30 | D-074 | **Worker handoff 1.0 → 1.1.** The `task_id` pattern also accepts `F02a`, listed explicitly rather than as a generic suffix, so it accepts exactly the 63 IDs of `tasks.json`. `$id`, title and description say 1.1. `approval-scopes.md` §8 (the handoff semantics, WH-ID-1) says the same, and the invalid example `unknown-task-id` now cites 63 IDs. **Editorial, no version change:** `workshop-math.md` §10 records F02a's fixtures WM37–WM40 (count 40, rows, F02a's negative controls), and its header names the hash record. This index gains row 14's range, CX-01, CX-18, CX-21 and CX-29 as rewritten, and NC-15 to NC-18. `validate.py` checks each contract's own version. | D-072 split F02 and created F02a, but worker handoff 1.0 accepted only the 62 planned IDs, so F02a's handoff could not validate (WH-ID-1: "a split task needs a minor version"). F02a added WM37–WM40 under §3 rule 6. | **None.** The change only widens acceptance by one task ID and adds fixtures. Every handoff and packet valid under 1.0 is still valid under 1.1, and no field, rule or meaning changed. So rule 4's re-issue has nothing to change for any task in row 12 or row 14. A task dispatched under 1.0 still names 1.0, and `validate.py --handoff` accepts 1.0 and 1.1. S9 re-validated every stored handoff against 1.1 in this round; F00 stays XL-14, with the same 6 errors as under 1.0. |
++
++- **Unchanged contracts keep 1.0** (rule 2): every contract except worker handoff, including approval scopes (only its §8 changed, and §8 carries the worker handoff semantics). The workshop math contract also stays 1.0 (the patch records fixtures under rule 6 and changes no rule).
++- **Approvals lost** (rule 5): none were recorded. `workshop-math.md` and `index.json` changed bytes, so any future G3 names the hashes in `evidence/A0-patch-1/math-bundle.sha256.log`, not the older ones.
++- **Header sentence of `workshop-math.md`** (A0P1-A6-P3-2):
++  - The sentence "Any approval must name the sha256 …" is normative (rule 1). A0 patch 1 added where those hashes are printed: the later CX-29 record that supersedes the lane log for a file, and, after A0 patch 1, `math-bundle.sha256.log`.
++  - The obligation itself did not change: an approval still names the exact sha256 of the same files (this file, the schema and every fixture). So the math contract keeps 1.0 under rule 6, because no rule changed. Rule 5 still applies, because the file's hash changed.
++  - Since attempt 2, the record the sentence names is written once and pinned in `validate.py`. The hash list that G3 cites cannot be regenerated in place.
++- **Attempt 2** (`reviews/A0-patch-1.md`, A0P1-A6-P2-1):
++  - Each CX-29 record is pinned by the sha256 of its bytes, and it supersedes only the files its round changed (§1, CX-29).
++  - `make_records.sh` refuses to overwrite a record.
++  - NC-18 shows that a wrong WM01 value still fails CX-29 after the A0 patch 1 record is regenerated. The attempt also fixed A0P1-A6-P3-1 (rule 4), P3-2 (above), P3-3 (§5.3, §7) and P3-4 (`blockers.md`).
++- **Evidence:** `evidence/A0-patch-1/` holds the exact commands, the validator output before and after, the regeneration logs and the diff, including attempt 2's `attempt2-*` files. A6 reviews the change (rule 7).
++
+ ## 4. Cross-contract invariants
+ 
+ `validate.py` checks every invariant. The ID appears in its output.
+ 
+ | ID | Invariant | Contracts |
+ |---|---|---|
+-| CX-01 | One version, 1.0: every `$id` ends `/1.0`; `schema_version` or `contract_version` consts are `1.0`; the registries, the fixture index and each fixture say 1.0 | all |
++| CX-01 | Versions agree (1.1). The set version is the highest contract version, and every contract shares major 1. Each contract's `$id`, title (where it carries a version) and `schema_version` or `contract_version` const carry its own version, and its index row states that version. Worker handoff is 1.1 (§3a). Every other contract is 1.0, including the registries, the fixture index and each fixture. The worker-handoff `contract_version` pattern accepts each version a dispatch packet can name (1.0, 1.1). | all |
+ | CX-02 | The same five human approver roles (`arnaud`, `bill`, `firm_reviewer`, `privacy_owner`, `account_owner`) in the offer matrix, the asset manifest and the flag `approved` state, matching AS-WRITE-1. No agent role (A0–A6 or operator) can approve. | 4, 8, 10, 11 |
+ | CX-03 | One gate vocabulary, G0–G6, in every enum, gate mapping, register flow and handoff pattern | 4, 5, 8, 10, 12 |
+ | CX-04 | Locales are `fr` or `en` in events, jobs and clip availability. The asset manifest adds `zxx` (XL-02). | 1, 2, 10, 15 |
+@@ -162,10 +196,10 @@ Two 04 rules that bind these workflows are restated in no contract. They are tra
+ | CX-15 | The five review-hash methods in the asset manifest equal approval-scopes.md §4.2 | 10, 11 |
+ | CX-16 | Authoritative instances cite only real records: an existing approval packet, or a `decisions.md#D-nnn` row that exists and is a recorded answer. That row must name the gate of the gate record, carry an answer date, and not have one of the four non-recorded statuses of `decisions.md` (`frozen-by-plan`, `default-pending-G0`, `resolved-by-evidence`, `open`). A price citing D-032 ("No price exists anywhere") is refused (A6D-13). Fixture documents cite only `fixture:` references. Negative examples prove that agent approvals and fixture references are refused. This is a floor: the recorded value itself is still checked by A6. | 4, 8, 10 |
+ | CX-17 | No financial data: the PB-SCAN lists parsed from privacy-boundary.md §5 hit no envelope or job property and no valid event or job example. They catch every serialized workshop state and the negative examples carrying amounts or addresses. The data model has no forbidden column. DC-FIN-* stay browser-only. Examples use only reserved address domains (PB-ENV-3). | 1, 2, 5, 7, 13 |
+-| CX-18 | Register tests and fixture coverage cite catalog checks. The handoff `task_id` pattern accepts exactly the 62 IDs of `tasks.json`. | 5, 12, 14 |
++| CX-18 | Register tests and fixture coverage cite catalog checks. The handoff `task_id` pattern accepts exactly the 63 IDs of `tasks.json`: the 62 planned IDs (a letter and two digits) and each split task. A split task is its parent's ID plus one lowercase letter, recorded with `split_from` (today F02a, D-072). Every task ID in `tasks.json` has one of these two forms. The candidates tested include every suffixed ID, so a generic suffix fails. | 5, 12, 14 |
+ | CX-19 | Every check, decision, blocker and task ID cited in a contract or in this README exists. Clip IDs W05–W11 are not task IDs (XL-08). | all |
+ | CX-20 | Brevo budget: operational reserve 150 < soft budget 250 < hard stop 280 < provider quota 300. The promotional maximum equals the soft budget minus the reserve. Operational priorities (0–3) come before promotional ones (5–9). | 2, 3 |
+-| CX-21 | Every example, fixture and clip-case count stated in an .md file equals the files | all with examples |
++| CX-21 | Every example, fixture and clip-case count stated in an .md file equals the files. For the workshop fixtures, the count, the range, the `workshop-math.md` §10 table and the range in row 14 above all equal the WM files (WM01–WM40). | all with examples |
+ | CX-22 | Workshop clip IDs (clip.w00–w11) are accepted by the asset manifest and by envelope resource codes | 1, 10, 15 |
+ | CX-23 | No contract file contains a credential-shaped string (Stripe, Brevo, GitHub, AWS, private key or JWT). The idempotency key secret `EVENT_KEY_SECRET` is named only; its value is never in a contract. | all |
+ | CX-24 | A forbidden duration or tool (a 60-minute consultation, a one-hour offer, Zoom, n8n Cloud, Vercel Hobby, a custom video platform, a live customer-facing LLM) appears only as a prohibition | all |
+@@ -173,7 +207,7 @@ Two 04 rules that bind these workflows are restated in no contract. They are tra
+ | CX-26 | Every normative .md file states in its header that it is proposed | all |
+ | CX-27 | Clip availability derives from asset manifest 1.0. `available` means a `clip.wNN` entry in that locale with status `approved` or `published`, `language_availability` `language_recorded` and recording evidence. `captions_only` never counts as a recording. `test_media` never appears in an authoritative manifest. This is the reconciliation proposed for XL-10. | 10, 15 |
+ | CX-28 | Every contract file is UTF-8 with LF line endings and no BOM, as the `file-sha256-v1` method assumes | all |
+-| CX-29 | The sha256 values recorded in the three lane validation logs still match the current bytes, so the lane evidence describes these files | all |
++| CX-29 | The sha256 values recorded in the three lane validation logs still match the current bytes, or a later record that `validate.py` registers (`LANE_LOG_RECORDS`, §1) supersedes them. A record is written once for its round. It is registered with the sha256 of its own bytes, so a regenerated record fails, and with the files its round changed. Only those files supersede a lane-log entry or give a file its recorded hash, and each must match the current bytes. A record that prints a whole bundle must match the current bytes on every line, but its other lines supersede nothing. A registered line may differ from the current bytes only when a later registered record lists that file as changed. Every workshop fixture and every offers-lane generated file has a recorded hash. The lane logs are never rewritten. Records today: F02a's `after-hashes.log` (WM37–WM40, `index.json`), and A0 patch 1's `math-bundle.sha256.log` (`workshop-math.md`, `index.json`; whole bundle) and `worker-handoff-1.1.sha256.log` (the schema, `approval-scopes.md`, `unknown-task-id.why.txt` and the two offers scripts; every worker handoff file). A later round records its bytes as §1 says. So the lane evidence, with its records, describes these files. NC-17 and NC-18 prove the check. | all |
+ | CX-30 | Unknown is never zero, and the fixtures prove it (math review P2-1). Every reason code of workshop-math.md §7 is pinned by a WM fixture. A code that acts inside a known window is pinned by a fixture with a window and a `not_computable` year whose gap and surplus are null and whose reasons carry the code. The two timing codes are pinned with no window. Every fixture named in the §6 "Pinned by" column exists. The fault reproductions themselves (unknown read as 0, as "not paying" or as "no end") run in the math lane's harness against its exact model; this harness checks the coverage they rely on. | 13, 14 |
+ | CX-31 | The workflow trace in §2a names exactly the 14 workflows of 04 §5, in order. Every task, event type, template, capability, flag, operation, rule ID and check it cites exists. Every `x.md §N` citation names an existing section whose text holds the label cited with it (A6D2-09). Each activation gate equals the approval-scopes.md §2 baseline (A6, G2, G6) plus the production gates of the row's capabilities, plus G5 for WF11. Every event type, template and operation is traced by at least one workflow. | 1, 2, 3, 4, 7, 11, 16 |
+ 
+@@ -195,7 +229,7 @@ The integrator wrote only this README and `validate.py`, and fixed no contract f
+ | XL-10 | Two owners for one shape. workshop-clip-rules.md §7 says the media-availability manifest shape "belongs to W03/C10". asset-manifest.md says the C10 and C11 media manifests use asset manifest 1.0. | P3 | Use asset manifest 1.0, with availability derived as in CX-27. A0 confirms at W03 dispatch. |
+ | XL-12 | The offer matrix's `must_link_to_meeting` contains the pseudo-key `articles`, which is not a route key. `ask`, on the homepage branch only, is in the asset manifest's route enum but in neither offer-matrix list. | P3 | R00 reads `articles` as every approved article page. Porting `ask` (HB-03, HB-23) needs an offer-matrix version change. |
+ | XL-13 | For DC-CONTACT at Stripe, the privacy sink matrix says "C" (conditional), while the register's DC-CONTACT allowed sinks exclude Stripe; buyer data is Stripe-collected (DC-SHIPPING, DC-CARD). The intent agrees (PB-STRIPE-1: internal IDs only), but the class boundary differs. | P3 | Clarify in 1.1 (data lane) |
+-| XL-14 | `handoffs/F00.json` does not conform to worker handoff 1.0: 6 errors, from prose in `changed_paths` and a `not_visible` status | P3 | A0 decides whether to reissue it (approval-scopes.md §8). Its accepted status is unaffected. |
++| XL-14 | `handoffs/F00.json` does not conform to worker handoff 1.0 or 1.1: 6 errors, from prose in `changed_paths` and a `not_visible` status | P3 | A0 decides whether to reissue it (approval-scopes.md §8). Its accepted status is unaffected. |
+ | XL-15 | Nine math-lane rule labels cited by `.why.txt` files (ASSET, ASSUMPTION, BASIS, LABEL, NONFINITE, PRIVACY, RANGE, START, UNITS) are not defined as rule IDs in workshop-inputs.md. The data and offers lanes define every rule ID they cite. | P3 | Add them to the workshop-inputs rule index in 1.1 (math lane) |
+ | XL-16 | The envelope's `resource_template_version` accepts `template.eNN.vN`, but jobs only ever hold the hash form `hNNN…`. A `delivery.failed` event could cite a version no job had. | P3 | Restrict it to the hash form in 1.1, or producers copy the job's `template_version` verbatim (A4 at P02) |
+ | XL-18 | Two 04 rules that bind the workflows appear in no contract file (§2a): 04 §4, a truthful queued or accepted state and no false success when storage is down; 04 §5, one dispatcher with no per-person wait step, and model work that never blocks payment or email. Found while tracing the workflows for A6D-12. | P3 | Restate them in job-state-machine.md 1.1 (data lane). Until then P02, U00–U05 and N02 take them from 04 directly, and A6 checks them (AUTO02, MAIL04). |
+@@ -238,9 +272,12 @@ The data lane closed these four items in its own files, following A6D-05 to A6D-
+     - A6D2-05: asset-manifest.md §5 still says the envelope "does not yet accept" five asset kinds (XL-01 is resolved), and §1 still claims an age or amount cannot be encoded in an asset ID.
+     - A6D-14: approval-scopes.md §3 still says a review beyond the first 100 "fails closed".
+     - A6D-15: the routes.md §2 cell still reads "Basic Auth (503 without credentials)".
+-  - Math lane: attempt-2 P3-1. Two display-rounding faults pass every fixture: a group total summed from rounded rows, and a today-dollar value deflated from a rounded gap.
+-    - The math lane left it open because README row 14 names WM01–WM36. That row is not an obstacle. Adding a fixture that follows the existing rules is not a contract change (§3 rule 6), and the integrator updates row 14 and CX-21 in the same round.
+-    - `validate.py` cannot carry the negative control the review asks for until such a fixture exists. No fixture catches these faults today, so the control could only fail.
++  - Math lane: attempt-2 P3-1 (two display-rounding faults: a group total summed from rounded rows, and a today-dollar value deflated from a rounded gap). **Closed by F02a (D-072):** WM39 and WM40 pin them (A6, `reviews/F02a-attempt3.md`). Row 14 and CX-21 were updated in A0 patch 1. The fault reproductions run in `evidence/F02a/mutation_check.py`. They do not run in this harness, which has no reference model, or yet in the lane's `FAULTS`: folding them into `compute_fixtures.py` and the lane fault matrix is open for the math lane (F02A-A6R3-P2-1, fix direction 1–2).
++    - **The math lane gate is red until that fold.** `evidence/F02/math/validate.py` reports `116 passed, 1 failed` and exits 1.
++    - The one failure is `compute_fixtures.py --check`, which reports `differing: ['index.json']` and unexpected files WM37–WM40, because the lane generator does not yet produce F02a's fixtures.
++    - It was already the same at HEAD `d1a37cf`, before A0 patch 1 (`reviews/A0-patch-1.md` P3-3).
++    - Any other failure of that validator is a regression.
++    - Until the fold, CX-29 holds the WM values by hash (§1). `evidence/F02a/compute_f02a_fixtures.py --check` re-derives all 40 fixtures, `clip-rules.json` and `index.json` without writing anything, and it exits 0 today.
+ - **WF11 has no owning task.** 04 §5 lists WF11, but no task in `tasks.json` or `TASK_LEDGER.md` names it. N07 carries OPS03, so §2a maps WF11 to N07. A0 should confirm the owner or amend the ledger.
+ - **Housekeeping for A0.** `evidence/F02/math/__pycache__/` holds a compiled file left by a lane run without `PYTHONDONTWRITEBYTECODE`. It is not an artifact, and the handoff excludes it.
+ 
+@@ -273,7 +310,7 @@ The data lane closed these four items in its own files, following A6D-05 to A6D-
+ 
+ It reads:
+ - `contracts/`;
+-- in `.orchestration/`: `acceptance_catalog.json`, `tasks.json`, `decisions.md`, `blockers.md`, `source/04_CONTRACTS_AND_TESTS.md`, `handoffs/`, the three lane `validation.log` files and `evidence/F02/data/registry-schemas/`;
++- in `.orchestration/`: `acceptance_catalog.json`, `tasks.json`, `decisions.md`, `blockers.md`, `source/04_CONTRACTS_AND_TESTS.md`, `handoffs/`, the three lane `validation.log` files, the CX-29 records (§1) and `evidence/F02/data/registry-schemas/`;
+ - `git show` of `lib/routes.ts` on origin/main, origin/codex/desktop-iphone-unified and origin/claude/bill-centered-homepage.
+ 
+ The venv used for F02 is `/tmp/claude-0/-home-user/bb8d4187-6ae8-587b-a816-8153faeea853/scratchpad/venv-f02` (Python 3.11.15, jsonschema 4.26.0). It is session scratch space, so recreate it if it is gone:
+@@ -305,21 +342,22 @@ echo "exit=$?"
+ - S5: the workshop fixtures.
+ - S6: CX-01 to CX-27, CX-30 and CX-31.
+ - S7: the open items of §5.1 (`KNOWN`) and the resolved items of §5.2 (`PASS` while they stay resolved).
+-- S7b: CX-29.
+-- S8: negative controls NC-1 to NC-14, which inject defects that must be caught.
++- S7b: CX-29, the lane logs with their registered records.
++- S8: negative controls NC-1 to NC-18, which inject defects that must be caught. NC-15 to NC-18 (A0 patch 1) cover CX-18, CX-21 and CX-29 (NC-17 and NC-18).
+ - S9: `handoffs/*.json`.
+ 
+ **Other modes:**
+ - **Negative control on a copy.** Copy `contracts/` to a scratch folder, inject a defect, then run `validate.py --contracts-dir <copy>`. The expected exit is 1.
+ - **One handoff, checked deeply.** `validate.py --handoff .orchestration/handoffs/<task>.json` checks:
+   - the schema;
+-  - that `base_commit` equals HEAD;
++  - that `base_commit` equals HEAD (so a handoff checked after later commits reports that difference);
++  - that `contract_version` is one a dispatch packet can name (1.0 or 1.1, §3a);
+   - that every artifact hash matches the current bytes;
+   - that every changed path and evidence path exists;
+   - for F02, that every contract file is listed as an artifact.
+ - **The lane validators, re-run read-only:**
+   - `.orchestration/evidence/F02/data/validate_f02_data.py`;
+-  - `.orchestration/evidence/F02/math/validate.py`, which also runs the math generators with `--check`, which only compares;
++  - `.orchestration/evidence/F02/math/validate.py`, which also runs the math generators with `--check`, which only compares. It exits 1 until the math lane's fold, with the one known failure in §5.3;
+   - `.orchestration/evidence/F02/offers/validate_offers.py`.
+ 
+   The lane generators and `offers/run_validation.sh` rewrite files. Run them only to make a change under §3.
+diff --git a/.orchestration/contracts/approval-scopes.md b/.orchestration/contracts/approval-scopes.md
+index f279001..b8d36b0 100644
+--- a/.orchestration/contracts/approval-scopes.md
++++ b/.orchestration/contracts/approval-scopes.md
+@@ -174,13 +174,13 @@ The principle stays the same: a canonical fingerprint, a human-reviewed ledger e
+ - **AS-SEP-2.** A6 findings on factual accuracy (CNT02, CNT03) inform the reviewer; they are not the approval.
+ - **AS-SEP-3.** A green CI run, a passed schema or a merged PR is never a G3 record (authority-matrix.md, "Content approval").
+ 
+-## 8. Worker handoff 1.0 (`worker-handoff.schema.json`)
++## 8. Worker handoff 1.1 (`worker-handoff.schema.json`)
+ 
+ The worker handoff is a **submission**, not an approval. Its schema lives in this lane; this section gives its semantics.
+ - **WH-ST-1.** `status` is always `submitted`. Workers cannot mark work accepted; A0 writes acceptance separately after A6 evidence (03, D-037).
+ - **WH-SHAPE-1, WH-REQ-1.** The object has exactly the 13 fields of the 03 example, all required, and nothing else. For example, no `accepted_by` field.
+ - **WH-PH-1, WH-PH-2.** No placeholders. `base_commit` is 40 lowercase hex. `result_commit` is 40 lowercase hex or `null` when uncommitted (WH-SHA-1). Artifact `sha256` is 64 lowercase hex (WH-SHA-2). The 03 example strings (`actual-sha`, `actual-hash`, `actual command`, `actual path`, `actual/path`), `TODO`, `TBD`, `xxx` and `<…>` are refused. The 03 example submitted verbatim fails.
+-- **WH-ID-1.** `task_id` is one of the 62 IDs in `tasks.json`. A split task needs a contract minor version.
++- **WH-ID-1.** `task_id` is one of the 63 IDs in `tasks.json`: the 62 planned IDs and the split task F02a (D-072), which worker handoff 1.1 lists explicitly (A0 patch 1, D-074). A split task needs a contract minor version, and its ID is listed explicitly; no generic suffix is accepted.
+ - **WH-PATH-1, WH-PATH-2.** `changed_paths`, artifact paths and evidence paths are repo-relative POSIX paths with no leading `/`, no `..` segment and no whitespace. Parentheses are allowed, as in `app/(entry)/page.tsx`. Notes go in `assumptions`, not in paths.
+ - **WH-ART-1.** At least one artifact is listed with its hash.
+ - **WH-TEST-1.** `exit_code` is an integer from 0 to 255, or `null` when the exit status was not captured (explain it in `assumptions`).
+@@ -189,7 +189,7 @@ The worker handoff is a **submission**, not an approval. Its schema lives in thi
+ - **WH-EXT-1.** An `external_actions_taken[]` entry with `effect: side_effect` must carry `authorization: G<n>:<record path>`, pointing at decisions.md or an approval packet.
+ - **WH-COST-1, WH-COST-2.** `metered_cost.status` is `unavailable-not-estimated` (amount and currency `null`: no estimate is ever written) or `provider-metered` (a number, an ISO currency and a `source` run record). This matches `costs.json`.
+ 
+-**`handoffs/F00.json` result** (validation log §4, F00.json unchanged): **does not conform to 1.0**, with 6 mismatches, both shape problems rather than wrong evidence:
++**`handoffs/F00.json` result** (validation log §4, F00.json unchanged): **does not conform to 1.0 or 1.1**, with 6 mismatches, both shape problems rather than wrong evidence:
+ 1. `changed_paths[2..5]` carry prose notes such as `".orchestration/evidence/F00/ (untracked; …)"` (WH-PATH-2).
+ 2. `blocked_checks[5]` and `blocked_checks[6]` use `status: "not_visible"`, which is outside the D-038 vocabulary (WH-BLK-1). `blocked` fits both.
+ 
+diff --git a/.orchestration/contracts/examples/invalid/worker-handoff/unknown-task-id.why.txt b/.orchestration/contracts/examples/invalid/worker-handoff/unknown-task-id.why.txt
+index f7db890..67f0409 100644
+--- a/.orchestration/contracts/examples/invalid/worker-handoff/unknown-task-id.why.txt
++++ b/.orchestration/contracts/examples/invalid/worker-handoff/unknown-task-id.why.txt
+@@ -1,4 +1,4 @@
+ rule: WH-ID-1
+-breaks: task_id is one of the 62 task IDs in tasks.json.
++breaks: task_id is one of the 63 task IDs in tasks.json (the 62 planned IDs and the split task F02a).
+ expect_keyword: pattern
+ expect_path: /task_id
+diff --git a/.orchestration/contracts/validate.py b/.orchestration/contracts/validate.py
+index 0580651..de6c11c 100644
+--- a/.orchestration/contracts/validate.py
++++ b/.orchestration/contracts/validate.py
+@@ -1,10 +1,10 @@
+ #!/usr/bin/env python3
+-"""F02 contract set 1.0: the single validation harness (A0 delegate, F02 integrator).
++"""F02 contract set 1.1: the single validation harness (A0 delegate, F02 integrator; A0 patch 1, D-074).
+ 
+ What it checks (read-only; it writes nothing and uses no network):
+   S1  the README index: version line, one row per contract, every file under contracts/ indexed,
+       sha256 of every contract file (the values the F02 handoff binds to)
+-  S2  the seven JSON Schemas and the two registry schemas: draft 2020-12, $id .../1.0, closed shapes, and
++  S2  the seven JSON Schemas and the two registry schemas: draft 2020-12, $id .../<contract version>, closed shapes, and
+       ECMA-262 pattern semantics (A6D2-04): every schema pattern is translated before use, see ecma_translate
+   S3  every example: valid examples pass schema + harness; invalid examples fail for the exact
+       reason in their .why.txt (the three lane dialects are normalised, see README XL-07)
+@@ -16,8 +16,9 @@ What it checks (read-only; it writes nothing and uses no network):
+       described (KNOWN); if one no longer reproduces the run fails until README is updated.
+       The items resolved by the lanes' repair attempt 2 (README s5.2) are checked the other way:
+       each must stay resolved (PASS), and a regression fails the run.
+-  S8  negative controls NC-1..NC-14: injected defects must be caught by the checks above (non-vacuity)
+-  S9  handoffs/*.json against worker-handoff 1.0
++  S7b CX-29: the lane logs, plus the later records registered in LANE_LOG_RECORDS, describe the current bytes
++  S8  negative controls NC-1..NC-18: injected defects must be caught by the checks above (non-vacuity)
++  S9  handoffs/*.json against worker-handoff 1.1
+ 
+ Usage (from anywhere; paths are resolved from this file):
+   VENV=/tmp/claude-0/-home-user/bb8d4187-6ae8-587b-a816-8153faeea853/scratchpad/venv-f02
+@@ -124,7 +125,17 @@ def _kw_pattern_ecma(validator, patrn, instance, schema):
+ 
+ EcmaValidator = js_validators.extend(Draft202012Validator, {"pattern": _kw_pattern_ecma})
+ 
+-SET_VERSION = "1.0"
++SET_VERSION = "1.1"
++# Each contract's own version (README s3 rule 2: "Unchanged contracts keep their version, and the index records each
++# one"). A0 patch 1 (D-074) moved only the worker handoff to 1.1, to admit the split task F02a (D-072).
++CONTRACT_VERSIONS = {
++    "event-envelope": "1.0", "delivery-job": "1.0", "feature-flags": "1.0", "offer-matrix": "1.0",
++    "asset-manifest": "1.0", "worker-handoff": "1.1", "workshop-inputs": "1.0",
++    "email-eligibility": "1.0", "data-flow-register": "1.0", "workshop-math": "1.0",
++}
++# The contract_version a handoff may name: the version in its dispatch packet. 1.1 forced no re-issue (README s3a,
++# D-074), so a task dispatched under 1.0 still hands off under 1.0. Any other value is refused.
++HANDOFF_CONTRACT_VERSIONS = ("1.0", "1.1")
+ FROZEN_ON = "2026-09-30"
+ DRAFT = "https://json-schema.org/draft/2020-12/schema"
+ ID_BASE = "https://bill.contracts.local/"
+@@ -154,6 +165,45 @@ SCHEMAS = OrderedDict([
+ REGISTRIES = OrderedDict([("email-eligibility", "email-eligibility.json"), ("data-flow-register", "data-flow-register.json")])
+ LANE_LOGS = [".orchestration/evidence/F02/data/validation.log", ".orchestration/evidence/F02/math/validation.log",
+              ".orchestration/evidence/F02/offers/validation.log"]
++# CX-29 records (README s1, s4 CX-29, s3a). A lane log is historical evidence and is never rewritten. A later round that
++# changes or adds a file a lane log describes prints the new sha256 in its own record. A record is written once, for its
++# round, and registered here in round order as (lane log, record, round, record sha256, changed, whole):
++#   record sha256  the record's own bytes, pinned when it is registered. A record is never regenerated in place: a record
++#                  whose bytes differ fails. A later round writes its own record and registers it as a new entry here.
++#   changed        the files that round changed or added, listed explicitly (never "every line"). Only these may
++#                  supersede a lane-log entry or give a covered file its recorded hash, and each must appear in the
++#                  record with the sha256 of the current bytes. This list, not a record's header line, says what a
++#                  record supersedes.
++#   whole          True when the record prints a whole bundle (the G3/HB-26 hash list): every hash line must then match
++#                  the current bytes too, but its lines outside `changed` supersede nothing. False: the record's other
++#                  lines are that round's own before/after evidence and are not checked here.
++# A registered line may differ from the current bytes only if a later registered record for the same lane lists that
++# file in `changed` with the current sha256 (A0P1-A6-P2-1).
++_MATH_LOG, _OFFERS_LOG = LANE_LOGS[1], LANE_LOGS[2]
++_FX = ".orchestration/contracts/fixtures/workshop/"
++_WH = ".orchestration/contracts/"
++LANE_LOG_RECORDS = [
++    (_MATH_LOG, ".orchestration/evidence/F02a/after-hashes.log", "F02a (D-072)",
++     "4eb22f88d3f9256a6ee20b309a477c44890f78790b58c71d80f5c6577b0b38a3",
++     [_FX + f for f in ("WM37-today-dollar-pre-start-factor.json", "WM38-joint-owner-participant-age.json",
++                        "WM39-group-total-from-exact-values.json", "WM40-today-dollar-display-from-exact-gap.json",
++                        "index.json")], False),
++    (_MATH_LOG, ".orchestration/evidence/A0-patch-1/math-bundle.sha256.log", "A0 patch 1 (D-074)",
++     "bc80f539dc5c73809610d4bba7f3de002383889860bdfb3e57280c0d03402b05",
++     [_WH + "workshop-math.md", _FX + "index.json"], True),  # index.json: F02a changed it; this record names it too
++    (_OFFERS_LOG, ".orchestration/evidence/A0-patch-1/worker-handoff-1.1.sha256.log", "A0 patch 1 (D-074)",
++     "e838813371b9684567d4f918ce4411fb515a051deb8a1b4cf486cfc7ee304985",
++     [_WH + "worker-handoff.schema.json", _WH + "approval-scopes.md",
++      _WH + "examples/invalid/worker-handoff/unknown-task-id.why.txt",
++      ".orchestration/evidence/F02/offers/gen_offers.py", ".orchestration/evidence/F02/offers/validate_offers.py"], True),
++]
++# Files each lane log must describe, directly or through a record: a new file here without a recorded hash fails.
++LANE_LOG_COVERAGE = {
++    _MATH_LOG: ["fixtures/workshop/*.json"],
++    _OFFERS_LOG: ["offer-matrix.json", "asset-manifest.schema.json", "worker-handoff.schema.json"]
++                 + [f"examples/{k}/{c}/*" for k in ("valid", "invalid") for c in ("offer-matrix", "asset-manifest", "worker-handoff")],
++}
++HASH_LINE = re.compile(r"^\s*([0-9a-f]{64})\s+(\S+)\s*$", re.M)
+ WHY_KEYS = {"rule", "layer", "breaks", "expect_keyword", "expect_path", "expect_validator_value", "expect_message_contains",
+             "expect_rule", "also_schema_keyword", "also_schema_path"}
+ 
+@@ -495,7 +545,9 @@ class Ctx:
+         self.reg = {n: strict_load(contracts / f) for n, f in REGISTRIES.items()}
+         self.fix_dir = contracts / "fixtures" / "workshop"
+         self.catalog_ids = {c["id"] for c in strict_load(self.orch / "acceptance_catalog.json")["checks"]}
+-        self.task_ids = {t["id"] for t in strict_load(self.orch / "tasks.json")["tasks"]}
++        tasks = strict_load(self.orch / "tasks.json")["tasks"]
++        self.task_ids = {t["id"] for t in tasks}
++        self.task_split_from = {t["id"]: t["split_from"] for t in tasks if t.get("split_from")}  # WH-ID-1, D-072
+         self.decisions = (self.orch / "decisions.md").read_text(encoding="utf-8")
+         self.blockers = (self.orch / "blockers.md").read_text(encoding="utf-8")
+         self.src04 = (self.orch / "source" / "04_CONTRACTS_AND_TESTS.md").read_text(encoding="utf-8")
+@@ -612,7 +664,8 @@ def s2_schemas(ctx: Ctx):
+         except Exception as exc:  # noqa: BLE001
+             R.bad(f"{fname} meta-validation: {exc}")
+         R.check(s.get("$schema") == DRAFT, f"{fname} declares $schema draft 2020-12")
+-        R.check(s.get("$id") == f"{ID_BASE}{name}/{SET_VERSION}", f"{fname} $id = {ID_BASE}{name}/{SET_VERSION}", s.get("$id"))
++        want_v = CONTRACT_VERSIONS[name]
++        R.check(s.get("$id") == f"{ID_BASE}{name}/{want_v}", f"{fname} $id = {ID_BASE}{name}/{want_v}", s.get("$id"))
+         R.check(s.get("additionalProperties") is False, f"{fname} root is closed")
+         open_ = closed_shape_audit(s)
+         R.check(not open_, f"{fname} closed-shape audit: no open object schema", open_[:5])
+@@ -628,8 +681,8 @@ def s2_schemas(ctx: Ctx):
+             R.ok(f"{rs_path.name} is a valid draft 2020-12 schema")
+         except Exception as exc:  # noqa: BLE001
+             R.bad(f"{rs_path.name} meta-validation: {exc}")
+-        R.check(rs.get("$id", "").startswith(ID_BASE) and rs.get("$id", "").endswith("/" + SET_VERSION),
+-                f"{rs_path.name} $id is versioned {SET_VERSION}", rs.get("$id"))
++        R.check(rs.get("$id", "").startswith(ID_BASE) and rs.get("$id", "").endswith("/" + CONTRACT_VERSIONS[name]),
++                f"{rs_path.name} $id is versioned {CONTRACT_VERSIONS[name]}", rs.get("$id"))
+         open_ = closed_shape_audit(rs)
+         if open_:
+             R.info(f"{rs_path.name} (evidence-located registry schema) has {len(open_)} open object schemas: {open_}")
+@@ -780,8 +833,8 @@ def s4_registries(ctx: Ctx):
+         errs = top_errors(v, doc)
+         R.check(not errs, f"{REGISTRIES[name]} matches {Path(doc['registry_schema']).name}",
+                 [f"{e.validator}@{ptr(e)}: {e.message[:90]}" for e in errs[:5]])
+-        R.check(doc.get("contract_version") == SET_VERSION and doc.get("contract_id", "").endswith("/" + SET_VERSION),
+-                f"{REGISTRIES[name]} contract_version and contract_id are {SET_VERSION}")
++        R.check(doc.get("contract_version") == CONTRACT_VERSIONS[name] and doc.get("contract_id", "").endswith("/" + CONTRACT_VERSIONS[name]),
++                f"{REGISTRIES[name]} contract_version and contract_id are {CONTRACT_VERSIONS[name]}")
+ 
+ 
+ # ----------------------------------------------------------------------------------------------
+@@ -837,7 +890,7 @@ def fixture_problems(ctx: Ctx, doc: dict, index_entry: dict | None, vocab) -> li
+     if set(doc) != FIXTURE_KEYS:
+         probs.append(f"top-level keys {sorted(set(doc) ^ FIXTURE_KEYS)}")
+         return probs
+-    if doc["contract_version"] != SET_VERSION:
++    if doc["contract_version"] != CONTRACT_VERSIONS["workshop-math"]:
+         probs.append("contract_version")
+     errs = top_errors(ctx.validators["workshop-inputs"], doc["input"])
+     if errs:
+@@ -850,7 +903,7 @@ def fixture_problems(ctx: Ctx, doc: dict, index_entry: dict | None, vocab) -> li
+     if set(ex) != EXPECTED_KEYS:
+         probs.append(f"expected keys differ from workshop-math.md s12: {sorted(set(ex) ^ EXPECTED_KEYS)}")
+         return probs
+-    if ex["contract_version"] != SET_VERSION:
++    if ex["contract_version"] != CONTRACT_VERSIONS["workshop-math"]:
+         probs.append("expected.contract_version")
+     st = ex["completeness"]["state"]
+     if st not in states:
+@@ -967,7 +1020,8 @@ def s5_fixtures(ctx: Ctx):
+     R.check(len(states) == 6 and len(flags) == 9 and len(prec) == 5 and fb,
+             f"workshop vocabulary parsed from the md files ({len(states)} states, {len(flags)} flags, {len(prec)} precedence rules)")
+     idx = strict_load(ctx.fix_dir / "index.json")
+-    R.check(idx.get("contract_version") == SET_VERSION, "fixtures/workshop/index.json contract_version 1.0")
++    R.check(idx.get("contract_version") == CONTRACT_VERSIONS["workshop-math"],
++            f"fixtures/workshop/index.json contract_version {CONTRACT_VERSIONS['workshop-math']}")
+     listed = {e["file"]: e for e in idx["fixtures"]}
+     on_disk = {p.name for p in ctx.fix_dir.glob("*.json")} - {"index.json"}
+     R.check(set(listed) == on_disk, "index.json lists exactly the fixture files on disk", sorted(set(listed) ^ on_disk))
+@@ -1090,22 +1144,55 @@ def cx_checks(ctx: Ctx):
+     md = ctx.md
+ 
+     def cx01():
++        """Versions (README s3 rule 2): the set version is the highest contract version, all share one major, and each
++        contract's $id, title, version const and README index row carry that contract's own version."""
+         p = []
++        vkey = lambda v: tuple(int(x) for x in v.split("."))  # noqa: E731
++        vers = set(CONTRACT_VERSIONS.values())
++        if SET_VERSION != max(vers, key=vkey):
++            p.append(f"set version {SET_VERSION} is not the highest contract version {sorted(vers, key=vkey)}")
++        if {v.split(".")[0] for v in vers} != {SET_VERSION.split(".")[0]}:
++            p.append(f"contract versions span more than one major version: {sorted(vers, key=vkey)}")
+         for n, s in ctx.schemas.items():
+-            if not s.get("$id", "").endswith("/" + SET_VERSION):
+-                p.append(f"{n} $id")
++            want = CONTRACT_VERSIONS[n]
++            if s.get("$id") != f"{ID_BASE}{n}/{want}":
++                p.append(f"{n} $id {s.get('$id')} (its version is {want})")
++            tv = re.findall(r"\b(\d+\.\d+)\b", str(s.get("title", "")))
++            if tv and tv != [want]:
++                p.append(f"{n} title {s.get('title')!r} (its version is {want})")
+         for n in ("event-envelope", "delivery-job", "feature-flags"):
+-            if ctx.schemas[n]["properties"].get("schema_version", {}).get("const") != SET_VERSION:
++            if ctx.schemas[n]["properties"].get("schema_version", {}).get("const") != CONTRACT_VERSIONS[n]:
+                 p.append(f"{n} schema_version const")
+         for n in ("offer-matrix", "asset-manifest", "workshop-inputs"):
+-            if ctx.schemas[n]["properties"].get("contract_version", {}).get("const") != SET_VERSION:
++            if ctx.schemas[n]["properties"].get("contract_version", {}).get("const") != CONTRACT_VERSIONS[n]:
+                 p.append(f"{n} contract_version const")
+-        if not ecma_re(wh["properties"]["contract_version"]["pattern"]).fullmatch(SET_VERSION):
+-            p.append("worker-handoff contract_version pattern rejects 1.0")
++        for v in HANDOFF_CONTRACT_VERSIONS:
++            if not ecma_re(wh["properties"]["contract_version"]["pattern"]).fullmatch(v):
++                p.append(f"worker-handoff contract_version pattern rejects {v}")
++        if max(HANDOFF_CONTRACT_VERSIONS, key=vkey) != SET_VERSION:
++            p.append(f"the newest version a handoff may name {HANDOFF_CONTRACT_VERSIONS} is not the set version {SET_VERSION}")
+         for n, d in ctx.reg.items():
+-            if d.get("contract_version") != SET_VERSION:
++            if d.get("contract_version") != CONTRACT_VERSIONS[n]:
+                 p.append(f"{n} contract_version")
+-        return p
++        # the index records each contract's version: a row naming a schema or registry file states that file's version
++        by_file = {f: n for n, f in list(SCHEMAS.items()) + list(REGISTRIES.items())}
++        by_file["workshop-math.md"] = "workshop-math"
++        n_rows = 0
++        for r in getattr(ctx, "readme_rows", []):
++            m = re.search(r"\s(\d+\.\d+)$", r["name"])
++            named = sorted({by_file[f] for f in r["files"] if f in by_file})
++            if not m:
++                if named:
++                    p.append(f"README row {r['no']} ({r['name']}) states no version but holds {named}")
++                continue
++            n_rows += 1
++            if vkey(m.group(1)) > vkey(SET_VERSION):
++                p.append(f"README row {r['no']} version {m.group(1)} is above the set version {SET_VERSION}")
++            for n in named:
++                if CONTRACT_VERSIONS[n] != m.group(1):
++                    p.append(f"README row {r['no']} ({r['name']}) says {m.group(1)}; {n} is {CONTRACT_VERSIONS[n]}")
++        return p, f"set {SET_VERSION}; " + ", ".join(f"{n} {v}" for n, v in CONTRACT_VERSIONS.items() if v != "1.0") + \
++            f", every other contract 1.0; {n_rows} versioned index rows checked"
+ 
+     def cx02():
+         p = []
+@@ -1711,12 +1798,30 @@ def cx_checks(ctx: Ctx):
+         for e in idx["fixtures"]:
+             if not set(e.get("covers", [])) <= ctx.catalog_ids:
+                 p.append(f"fixture {e['file']} covers unknown check")
+-        cand = {a + "%02d" % i for a in "ABCDEFGHIJKLMNOPQRSTUVWXYZ" for i in range(100)}
++        # WH-ID-1 (worker handoff 1.1, D-072, D-074): a task ID is a planned ID (a letter and two digits) or a split ID,
++        # which is its parent's ID plus one lowercase letter and is recorded in tasks.json with split_from = the parent
++        split = getattr(ctx, "task_split_from", {})
++        for tid in sorted(ctx.task_ids):
++            if re.fullmatch(r"[A-Z]\d\d", tid):
++                continue
++            m = re.fullmatch(r"([A-Z]\d\d)[a-z]", tid)
++            if not m or split.get(tid) != m.group(1) or m.group(1) not in ctx.task_ids:
++                p.append(f"task {tid} is neither a planned ID nor a recorded split (split_from) of an existing task")
++        for tid, parent in sorted(split.items()):
++            if not re.fullmatch(re.escape(str(parent)) + "[a-z]", tid):
++                p.append(f"task {tid} records split_from {parent} but its ID is not {parent} plus one lowercase letter")
++        base = {a + "%02d" % i for a in "ABCDEFGHIJKLMNOPQRSTUVWXYZ" for i in range(100)}
++        cand = base | {c + x for c in base for x in "abcdefghijklmnopqrstuvwxyz"}
+         pat = ecma_re(wh["properties"]["task_id"]["pattern"])
+         accepted = {c for c in cand if pat.fullmatch(c)}
+         if accepted != ctx.task_ids:
+             p.append(f"worker-handoff task_id pattern vs tasks.json: {sorted(accepted ^ ctx.task_ids)}")
+-        return p, f"task_id pattern accepts exactly {len(accepted)} IDs"
++        odd = [x for x in ("F02A", "f02a", "F02aa", "F02a ", "F02a\n", "F2a", "F002a", "F02-a") if pat.search(x)]
++        if odd:
++            p.append(f"worker-handoff task_id pattern accepts malformed IDs {odd!r}")
++        n_split = len(accepted - base)
++        return p, (f"task_id pattern accepts exactly {len(accepted)} of {len(cand)} candidate IDs "
++                   f"({len(accepted & base)} planned, {n_split} split: {sorted(accepted - base)})")
+ 
+     def cx19():
+         p = []
+@@ -1769,16 +1874,32 @@ def cx_checks(ctx: Ctx):
+                     actual = len(ctx.examples.get((kind, sch), []))
+                     if int(n) != actual:
+                         p.append(f"{name} says examples/{kind}/{sch}/ has {n}, found {actual}")
+-        m = re.search(r"(\d+) math fixtures \(WM01", md.get("workshop-math.md", ""))
+-        nwm = len(list(ctx.fix_dir.glob("WM*.json")))
++        wm_md = md.get("workshop-math.md", "")
++        wm_ids = sorted(f.name[:4] for f in ctx.fix_dir.glob("WM*.json"))
++        nwm, last = len(wm_ids), (wm_ids[-1] if wm_ids else "WM00")
++        m = re.search(r"(\d+) math fixtures \(WM01[–-](WM\d\d)\)", wm_md)
+         if not m or int(m.group(1)) != nwm:
+             p.append(f"workshop-math.md fixture count vs {nwm}")
++        if not m or m.group(2) != last or wm_ids != ["WM%02d" % i for i in range(1, nwm + 1)]:
++            p.append(f"workshop-math.md fixture range vs files WM01-{last} ({nwm} files)")
++        # the s10 table lists every fixture on disk, and only those (a row may name several, e.g. "WM06 / WM07")
++        tab = set()
++        for cells in table_rows(section_text(wm_md, r"^## 10\.", r"^## 11\.")):
++            if cells and re.match(r"WM\d\d", cells[0]):
++                tab |= set(re.findall(r"WM\d\d", cells[0]))
++        if tab != set(wm_ids):
++            p.append(f"workshop-math.md s10 table vs files: missing {sorted(set(wm_ids) - tab)}, extra {sorted(tab - set(wm_ids))}")
++        # README row 14 names the same range (README s2: "the integrator then updates this row and CX-21")
++        rd = getattr(ctx, "readme", md.get("README.md", ""))
++        r14 = re.search(r"The fixtures are WM01[–-](WM\d\d) plus", rd)
++        if not r14 or r14.group(1) != last:
++            p.append(f"README row 14 fixture range {r14.group(1) if r14 else None} vs files WM01-{last}")
+         cr = strict_load(ctx.fix_dir / "clip-rules.json")
+         m = re.search(r"(\d+)-row truth table, (\d+) supplementary cases and (\d+) media-state cases", md.get("workshop-clip-rules.md", ""))
+         got = (len(cr["truth_table"]), len(cr["supplementary_cases"]), len(cr["media_state_cases"]))
+         if not m or tuple(map(int, m.groups())) != got:
+             p.append(f"workshop-clip-rules.md counts vs {got}")
+-        return p, f"{n_stated} stated example counts + fixture and clip counts"
++        return p, f"{n_stated} stated example counts; {nwm} WM fixtures (count, range, s10 table, README row 14); clip counts"
+ 
+     def cx22():
+         p = []
+@@ -2050,7 +2171,7 @@ def cx_checks(ctx: Ctx):
+ 
+     global CX_LIST
+     CX_LIST = [
+-        ("CX-01", "one contract version 1.0 across schemas, registries and fixtures", cx01),
++        ("CX-01", "versions: set = highest contract version; each contract's $id, title, const and index row carry its own version", cx01),
+         ("CX-02", "the same five human approver roles everywhere; no agent role can approve", cx02),
+         ("CX-03", "one gate vocabulary G0-G6", cx03),
+         ("CX-04", "locales are fr or en (asset-manifest adds zxx, see XL-02)", cx04),
+@@ -2078,7 +2199,7 @@ def cx_checks(ctx: Ctx):
+         ("CX-26", "every normative md file states it is proposed", cx26),
+         ("CX-27", "clip availability can be derived from asset-manifest 1.0", cx27),
+         ("CX-28", "text hygiene: UTF-8, LF, no BOM (checked in S1)", None),
+-        ("CX-29", "the three lane validation logs still describe the current bytes (checked in S7b)", None),
++        ("CX-29", "the three lane validation logs, with their registered later records, describe the current bytes (checked in S7b)", None),
+         ("CX-30", "every workshop reason code is pinned by a fixture with null values, never 0; s6 fixture references exist", cx30),
+         ("CX-31", "README workflow trace: the 14 workflows of 04 s5, every cited name exists, every event, template and operation traced", cx31),
+     ]
+@@ -2159,7 +2280,7 @@ def known_list(ctx: Ctx):
+         if not f00.exists():
+             return False, "F00.json missing"
+         errs = top_errors(ctx.validators["worker-handoff"], strict_load(f00))
+-        return len(errs) == 6, f"F00.json has {len(errs)} top-level errors against worker-handoff 1.0"
++        return len(errs) == 6, f"F00.json has {len(errs)} top-level errors against worker-handoff {CONTRACT_VERSIONS['worker-handoff']}"
+ 
+     def xl15():
+         text = "".join(v for k, v in md.items() if k != "README.md")
+@@ -2212,7 +2333,7 @@ def known_list(ctx: Ctx):
+         ("XL-10", "media-manifest shape has two proposed owners (W03/C10 vs asset-manifest 1.0)", xl10),
+         ("XL-12", "offer-matrix meeting-link lists use pseudo-key 'articles' and omit 'ask'", xl12),
+         ("XL-13", "privacy sink matrix and data-flow register draw the DC-CONTACT/Stripe boundary differently", xl13),
+-        ("XL-14", "handoffs/F00.json does not conform to worker-handoff 1.0 (6 errors)", xl14),
++        ("XL-14", "handoffs/F00.json does not conform to worker-handoff 1.0 or 1.1 (6 errors)", xl14),
+         ("XL-15", "math-lane .why.txt rule labels are not defined as rule IDs in workshop-inputs.md", xl15),
+         ("XL-16", "delivery.failed resource may carry a v-form template version; jobs only hold h-form", xl16),
+         ("XL-18", "04 s4 and s5 runtime rules (truthful queued state; one dispatcher, no per-person Wait node) restated in no contract", xl18),
+@@ -2309,23 +2430,112 @@ def s7_known(ctx: Ctx):
+ # ----------------------------------------------------------------------------------------------
+ # lane evidence drift (part of S7 output)
+ # ----------------------------------------------------------------------------------------------
++def _log_text(ctx: Ctx, rel: str):
++    """Text of a lane log or record; negative controls may substitute an in-memory text (never written to disk)."""
++    ov = getattr(ctx, "log_overrides", {})
++    if rel in ov:
++        return ov[rel]
++    p = ctx.repo / rel
++    return p.read_text(encoding="utf-8") if p.is_file() else None
++
++
++def _log_sha(ctx: Ctx, rel: str):
++    """sha256 of a record's bytes (of the in-memory text when a negative control substitutes one)."""
++    ov = getattr(ctx, "log_overrides", {})
++    if rel in ov:
++        return hashlib.sha256(ov[rel].encode("utf-8")).hexdigest()
++    p = ctx.repo / rel
++    return sha256_file(p) if p.is_file() else None
++
++
++def _cur_sha(ctx: Ctx, q: Path):
++    """sha256 of a file's current bytes, or None if it is missing; negative controls may substitute the sha256 of
++    in-memory mutated bytes (never written to disk)."""
++    ov = getattr(ctx, "hash_overrides", {})
++    if q in ov:
++        return ov[q]
++    return sha256_file(q) if q.is_file() else None
++
++
++def cx29_problems(ctx: Ctx, log: str, records=None):
++    """CX-29 for one lane log (README s4). Every sha256 the lane log records matches the current bytes, or the file is
++    in the `changed` list of a registered record (LANE_LOG_RECORDS) that holds its current sha256. Each record's bytes
++    equal the sha256 pinned at registration (written once, never regenerated in place). Each `changed` line, and for a
++    whole-bundle record every line, matches the current bytes unless a later registered record for the lane lists the
++    file in `changed` with the current sha256. Every file in LANE_LOG_COVERAGE is matched by the lane log or is in a
++    record's `changed` list. Returns (problems, note)."""
++    recs = [r for r in (LANE_LOG_RECORDS if records is None else records) if r[0] == log]
++    text = _log_text(ctx, log)
++    if text is None:
++        return [f"{log} missing"], ""
++    entries = HASH_LINE.findall(text)
++    probs, parsed = [], []
++    for _, rec, label, pin, changed, whole in recs:
++        rtext = _log_text(ctx, rec)
++        if rtext is None:
++            probs.append(f"record {rec} ({label}) missing")
++            continue
++        got = _log_sha(ctx, rec)
++        if got != pin:
++            probs.append(f"record {rec} ({label}) bytes differ from its registration (sha256 {got[:12]}..., registered "
++                         f"{str(pin)[:12]}...): a record is written once for its round; a later round writes and "
++                         f"registers its own record")
++        rent = {}
++        for h, rel in HASH_LINE.findall(rtext):
++            rent[ctx.resolve_logged(rel)] = h  # a later line for the same file wins
++        if not rent:
++            probs.append(f"record {rec} ({label}) holds no hash line")
++        if not changed:
++            probs.append(f"record {rec} ({label}) registers no changed file (every record lists the files its round changed)")
++        chg = {ctx.resolve_logged(x) for x in (changed or [])}
++        for q in sorted(chg - set(rent)):
++            probs.append(f"record {rec} ({label}) has no hash for changed file {ctx.rel(q)}")
++        parsed.append((rec, label, rent, chg, bool(whole)))
++    covered = {}
++    for i, (rec, label, rent, chg, whole) in enumerate(parsed):
++        for q in sorted(rent):
++            if q not in chg and not whole:
++                continue  # this round's own before/after evidence, not a claim about the current bytes
++            cur = _cur_sha(ctx, q)
++            if cur is None:
++                probs.append(f"record {rec} ({label}): {ctx.rel(q)} missing")
++            elif cur == rent[q]:
++                if q in chg:
++                    covered.setdefault(q, set()).add(label)
++            elif not any(q in c2 and r2.get(q) == cur for _, _, r2, c2, _ in parsed[i + 1:]):
++                probs.append(f"record {rec} ({label}) is stale for {ctx.rel(q)}")
++    good, superseded = set(), 0
++    for h, rel in entries:
++        q = ctx.resolve_logged(rel)
++        cur = _cur_sha(ctx, q)
++        if cur is None:
++            probs.append(f"missing {rel}")
++        elif cur == h:
++            good.add(q)
++        elif q in covered:
++            superseded += 1
++        else:
++            probs.append(f"drift {rel}")
++    if not entries:
++        probs.append(f"{log} holds no hash line")
++    uncovered = [ctx.rel(f) for g in LANE_LOG_COVERAGE.get(log, []) for f in sorted(ctx.C.glob(g))
++                 if f.is_file() and f not in good and f not in covered]
++    if uncovered:
++        probs.append(f"no recorded hash for {uncovered}")
++    labels = sorted({x for v in covered.values() for x in v})
++    recnote = "; ".join(f"{label} {Path(rec).name}: pinned, {len(chg)} changed" + (f", {len(rent)} bundle lines" if whole else "")
++                        for rec, label, rent, chg, whole in parsed)
++    note = (f"{len(entries)} recorded hashes, {len(entries) - superseded} match; {superseded} superseded"
++            + (f" and {len(set(covered) - good)} files recorded by {labels} [{recnote}]" if recs else "")
++            + (f"; coverage {LANE_LOG_COVERAGE[log]}" if log in LANE_LOG_COVERAGE else ""))
++    return probs, note
++
++
+ def s7b_drift(ctx: Ctx):
+-    R.section("S7b. Lane evidence drift: sha256 recorded in the three lane logs vs current bytes")
++    R.section("S7b. CX-29 lane evidence: sha256 in the three lane logs and their registered records vs current bytes")
+     for log in LANE_LOGS:
+-        p = ctx.repo / log
+-        if not p.exists():
+-            R.bad(f"{log} missing")
+-            continue
+-        entries = re.findall(r"^\s*([0-9a-f]{64})\s+(\S+)\s*$", p.read_text(encoding="utf-8"), re.M)
+-        drift, missing = [], []
+-        for h, rel in entries:
+-            q = ctx.resolve_logged(rel)
+-            if not q.exists():
+-                missing.append(rel)
+-            elif sha256_file(q) != h:
+-                drift.append(rel)
+-        R.check(entries and not drift and not missing, f"CX-29 {log}: {len(entries)} recorded hashes match current files",
+-                (drift + missing)[:8])
++        probs, note = cx29_problems(ctx, log)
++        R.check(not probs, f"CX-29 {log}: {note}", probs[:8])
+ 
+ 
+ # ----------------------------------------------------------------------------------------------
+@@ -2441,6 +2651,110 @@ def s8_negative_controls(ctx: Ctx):
+             "NC-14 a wrong section citation (retention in data model §6), an undefined rule ID (PB-CAL-9) and an activation gate "
+             "without G6 are caught by CX-31", probs[:6])
+     ctx.readme = saved_readme
++    # NC-15 (A0 patch 1, CX-18): a task_id pattern that admits a lowercase suffix on every ID, a pattern that drops the
++    # split task F02a, and a suffixed task ID that tasks.json does not record as a split are each caught by CX-18
++    saved_wh, saved_ids = ctx.schemas["worker-handoff"], ctx.task_ids
++    wpat = saved_wh["properties"]["task_id"]["pattern"]
++    hits = []
++    if wpat.startswith("^(?:") and wpat.endswith(")$") and "|F02a|" in wpat:
++        for mutated, want in (("^(?:" + wpat[4:-2].replace("|F02a|", "|") + ")[a-z]?$", "W00a"),
++                              (wpat.replace("|F02a|", "|"), "F02a")):
++            ctx.schemas["worker-handoff"] = copy.deepcopy(saved_wh)
++            ctx.schemas["worker-handoff"]["properties"]["task_id"]["pattern"] = mutated
++            hits.append(any("task_id pattern vs tasks.json" in x and want in x for x in run_cx(ctx, "CX-18")))
++        ctx.schemas["worker-handoff"] = saved_wh
++        ctx.task_ids = saved_ids | {"W00a"}
++        hits.append(any("W00a is neither a planned ID nor a recorded split" in x for x in run_cx(ctx, "CX-18")))
++        ctx.task_ids = saved_ids
++    R.check(len(hits) == 3 and all(hits), "NC-15 a task_id pattern with a suffix on every ID, one without F02a, and a "
++            "suffixed task ID that tasks.json does not record as a split are caught by CX-18", hits)
++    # NC-16 (A0 patch 1, CX-21): the workshop-math.md s10 count and range left at 36, the s10 table without WM40, and
++    # README row 14 left at WM01-WM36 are each caught by CX-21
++    saved_md = ctx.md
++    wm = saved_md.get("workshop-math.md", "")
++    mm = dict(saved_md)
++    mm["workshop-math.md"] = re.sub(r"^\| WM40 \|[^\n]*\n", "", re.sub(r"\d+ math fixtures \(WM01[–-]WM\d\d\)",
++                                                                  "36 math fixtures (WM01–WM36)", wm), flags=re.M)
++    ctx.md = mm
++    ctx.readme = re.sub(r"The fixtures are WM01[–-]WM\d\d plus", "The fixtures are WM01–WM36 plus", saved_readme)
++    probs = run_cx(ctx, "CX-21")
++    ctx.md, ctx.readme = saved_md, saved_readme
++    R.check(mm["workshop-math.md"] != wm and any("fixture count" in x for x in probs) and any("fixture range" in x for x in probs)
++            and any("s10 table" in x and "WM40" in x for x in probs) and any("README row 14" in x for x in probs),
++            "NC-16 a s10 count and range of 36, a s10 table without WM40 and a README row 14 range ending WM36 are caught by CX-21",
++            probs[:6])
++    # NC-17 (A0 patch 1, CX-29): without its records the math lane log drifts and WM37-WM40 have no recorded hash (the
++    # coverage rule: a fixture file no log records is caught); a record holding a stale hash is caught
++    probs_none = cx29_problems(ctx, _MATH_LOG, records=[])[0]
++    rec = LANE_LOG_RECORDS[1][1]
++    rtext = _log_text(ctx, rec) or ""
++    m = re.search(r"^([0-9a-f]{64})(\s+\S*fixtures/workshop/index\.json)\s*$", rtext, re.M)
++    stale_hits = []
++    if m:
++        ctx.log_overrides = {rec: rtext.replace(m.group(0), ("0" * 64) + m.group(2))}
++        stale_hits = cx29_problems(ctx, _MATH_LOG)[0]
++        ctx.log_overrides = {}
++    R.check(any("drift" in x and "index.json" in x for x in probs_none) and any("drift" in x and "workshop-math.md" in x for x in probs_none)
++            and any("no recorded hash" in x and all(w in x for w in ("WM37", "WM38", "WM39", "WM40")) for x in probs_none)
++            and any("stale" in x and "index.json" in x for x in stale_hits),
++            "NC-17 the math lane log without its records (index.json and workshop-math.md drift; WM37-WM40 have no recorded hash) "
++            "and a record holding a stale hash are caught by CX-29", (probs_none[:3], stale_hits[:2]))
++    # NC-18 (A0 patch 1 attempt 2, CX-29, A0P1-A6-P2-1): a record supersedes only the files its round changed, and it is
++    # written once. In memory only: a wrong expected value in WM01 (a file no record lists as changed) and in WM38 (a
++    # file F02a lists as changed), with and without the record regenerated as make_records.sh did in attempt 1.
++    def _mutated_sha(q, old, new):
++        b = q.read_bytes() if q.is_file() else b""
++        b2 = b.replace(old, new, 1)
++        return (hashlib.sha256(b2).hexdigest() if b2 != b else None)
++
++    def _regen(rtext, q, new_sha):
++        rel = ctx.rel(q)
++        pat = re.compile(r"^[0-9a-f]{64}(\s+\S*" + re.escape(rel.split("contracts/", 1)[-1]) + r")\s*$", re.M)
++        return pat.sub(lambda m: new_sha + m.group(1), rtext) if pat.search(rtext) else None
++
++    nc18 = {}
++    by_rec = {r[1]: r for r in LANE_LOG_RECORDS}
++    a0m, f2a, a0o = LANE_LOG_RECORDS[1][1], LANE_LOG_RECORDS[0][1], LANE_LOG_RECORDS[2][1]
++    wm01 = ctx.C / "fixtures/workshop/WM01-zero-inflation-zero-escalation.json"
++    wm38 = ctx.C / "fixtures/workshop/WM38-joint-owner-participant-age.json"
++    ex = ctx.C / "examples/valid/worker-handoff/normalized-f00-subset.json"
++    s01 = _mutated_sha(wm01, b'"gap_cents": 1800000', b'"gap_cents": 1800001')
++    s38 = _mutated_sha(wm38, b'"gap_cents": 4200000', b'"gap_cents": 4200001')
++    sex = _mutated_sha(ex, b'"task_id": "F00"', b'"task_id": "F01"')
++    rt_a0m, rt_f2a, rt_a0o = (_log_text(ctx, x) or "" for x in (a0m, f2a, a0o))
++    reg01 = _regen(rt_a0m, wm01, s01) if s01 else None
++    reg38 = _regen(rt_f2a, wm38, s38) if s38 else None
++    regex = _regen(rt_a0o, ex, sex) if sex else None
++
++    def _repin(rec, text):
++        r = by_rec[rec]
++        return [x if x[1] != rec else (r[0], r[1], r[2], hashlib.sha256(text.encode("utf-8")).hexdigest(), r[4], r[5])
++                for x in LANE_LOG_RECORDS]
++
++    if s01 and reg01 and s38 and reg38 and sex and regex:
++        ctx.hash_overrides = {wm01: s01}
++        nc18["WM01, record not regenerated"] = cx29_problems(ctx, _MATH_LOG)[0]
++        ctx.log_overrides = {a0m: reg01}
++        nc18["WM01, record regenerated in place"] = cx29_problems(ctx, _MATH_LOG)[0]
++        nc18["WM01, record regenerated and re-registered"] = cx29_problems(ctx, _MATH_LOG, records=_repin(a0m, reg01))[0]
++        ctx.hash_overrides, ctx.log_overrides = {wm38: s38}, {f2a: reg38}
++        nc18["WM38, F02a record regenerated in place"] = cx29_problems(ctx, _MATH_LOG)[0]
++        ctx.hash_overrides, ctx.log_overrides = {ex: sex}, {a0o: regex}
++        nc18["worker-handoff example, record regenerated and re-registered"] = cx29_problems(ctx, _OFFERS_LOG, records=_repin(a0o, regex))[0]
++    ctx.hash_overrides, ctx.log_overrides = {}, {}
++    pinned = "bytes differ from its registration"
++    want18 = {
++        "WM01, record not regenerated": lambda P: any("drift" in x and "WM01" in x for x in P) and any("stale" in x and "WM01" in x for x in P),
++        "WM01, record regenerated in place": lambda P: any("drift" in x and "WM01" in x for x in P) and any(pinned in x for x in P),
++        "WM01, record regenerated and re-registered": lambda P: any("drift" in x and "WM01" in x for x in P) and not any(pinned in x for x in P),
++        "WM38, F02a record regenerated in place": lambda P: any(pinned in x and "F02a" in x for x in P),
++        "worker-handoff example, record regenerated and re-registered": lambda P: any("drift" in x and "normalized-f00-subset" in x for x in P),
++    }
++    R.check(len(nc18) == len(want18) and all(want18[k](v) for k, v in nc18.items()),
++            "NC-18 a wrong WM01 value is caught by CX-29 even after the A0 patch 1 record is regenerated (in place, or also "
++            "re-registered: its lines outside `changed` supersede nothing); a WM38 value with the F02a record regenerated in "
++            "place, and an unchanged worker-handoff example with its record regenerated and re-registered, are caught too",
++            {k: [x for x in v if "WM01" in x or "WM38" in x or pinned in x or "normalized" in x][:3] for k, v in nc18.items()} or "precondition not met")
+     cx_checks(ctx)  # restore CX_LIST bound to the original data
+ 
+ 
+@@ -2462,8 +2776,8 @@ def handoff_problems(ctx: Ctx, path: Path, deep: bool) -> list[str]:
+         probs.append(f"base_commit {h['base_commit']} != HEAD {head.strip()}")
+     if h["task_id"] not in ctx.task_ids:
+         probs.append("task_id not in tasks.json")
+-    if h["contract_version"] != SET_VERSION:
+-        probs.append("contract_version")
++    if h["contract_version"] not in HANDOFF_CONTRACT_VERSIONS:
++        probs.append(f"contract_version {h['contract_version']} is not one a dispatch packet can name {HANDOFF_CONTRACT_VERSIONS}")
+     for a in h["artifacts"]:
+         p = ctx.repo / a["path"]
+         if not p.is_file():
+@@ -2487,13 +2801,13 @@ def handoff_problems(ctx: Ctx, path: Path, deep: bool) -> list[str]:
+ 
+ 
+ def s9_handoffs(ctx: Ctx):
+-    R.section("S9. Handoffs against worker-handoff 1.0")
++    R.section(f"S9. Handoffs against worker-handoff {CONTRACT_VERSIONS['worker-handoff']}")
+     for p in sorted((ctx.orch / "handoffs").glob("*.json")):
+         if p.name == "F00.json":
+             R.info("F00.json is tracked as XL-14 (written before worker-handoff 1.0 existed)")
+             continue
+         probs = handoff_problems(ctx, p, deep=False)
+-        R.check(not probs, f"handoffs/{p.name} conforms to worker-handoff 1.0 (schema only; --handoff for hashes)", probs[:6])
++        R.check(not probs, f"handoffs/{p.name} conforms to worker-handoff {CONTRACT_VERSIONS['worker-handoff']} (schema only; --handoff for hashes)", probs[:6])
+ 
+ 
+ # ----------------------------------------------------------------------------------------------
+@@ -2513,7 +2827,7 @@ def header(ctx: Ctx):
+ 
+ def main(argv=None) -> int:
+     here = Path(__file__).resolve().parent
+-    ap = argparse.ArgumentParser(description="Validate the F02 contract set 1.0.")
++    ap = argparse.ArgumentParser(description=f"Validate the F02 contract set {SET_VERSION}.")
+     ap.add_argument("--repo", type=Path, default=here.parent.parent, help="repository root (default: two levels above this file)")
+     ap.add_argument("--contracts-dir", type=Path, default=here, help="contracts directory to validate (default: this file's directory)")
+     ap.add_argument("--handoff", type=Path, help="validate one handoff JSON deeply (schema, HEAD, artifact hashes, evidence paths) and exit")
+diff --git a/.orchestration/contracts/worker-handoff.schema.json b/.orchestration/contracts/worker-handoff.schema.json
+index 819f406..ed6351f 100644
+--- a/.orchestration/contracts/worker-handoff.schema.json
++++ b/.orchestration/contracts/worker-handoff.schema.json
+@@ -1,7 +1,7 @@
+ {
+   "$schema": "https://json-schema.org/draft/2020-12/schema",
+-  "$id": "https://bill.contracts.local/worker-handoff/1.0",
+-  "title": "Worker handoff 1.0",
++  "$id": "https://bill.contracts.local/worker-handoff/1.1",
++  "title": "Worker handoff 1.1",
+   "description": "The worker handoff of 03 ('Worker handoff schema'), closed. A worker submits it and stops; status can only be 'submitted' because A0 writes acceptance separately after A6 verification. Placeholders are rejected: commits are 40 lowercase hex, artifact hashes 64 lowercase hex, and the 03 example strings are refused. exit_code null means the exit status was not captured (say so in assumptions). blocked_checks use the evidence vocabulary blocked | not_run (D-038). A side effect needs a gate authorization. metered_cost never carries an estimate. Semantics: approval-scopes.md §8. Status: proposed, submitted, not accepted.",
+   "type": "object",
+   "additionalProperties": false,
+@@ -23,8 +23,8 @@
+   "properties": {
+     "task_id": {
+       "type": "string",
+-      "pattern": "^(?:F0[0-3]|D0[0-2]|P0[0-5]|W0[0-4]|C(?:0[0-9]|1[01])|U0[0-5]|N(?:0[0-9]|10)|R0[0-2]|H0[01]|L0[0-6]|O0[0-2])$",
+-      "description": "One of the 62 task IDs in .orchestration/tasks.json. A split task needs a contract minor version."
++      "pattern": "^(?:F0[0-3]|F02a|D0[0-2]|P0[0-5]|W0[0-4]|C(?:0[0-9]|1[01])|U0[0-5]|N(?:0[0-9]|10)|R0[0-2]|H0[01]|L0[0-6]|O0[0-2])$",
++      "description": "One of the 63 task IDs in .orchestration/tasks.json: the 62 planned IDs and the split task F02a (D-072), listed explicitly, not as a generic suffix. A further split task needs a new contract minor version (WH-ID-1)."
+     },
+     "base_commit": {
+       "type": "string",
+diff --git a/.orchestration/contracts/workshop-math.md b/.orchestration/contracts/workshop-math.md
+index 49e49b0..61f46c1 100644
+--- a/.orchestration/contracts/workshop-math.md
++++ b/.orchestration/contracts/workshop-math.md
+@@ -1,6 +1,6 @@
+ # Workshop math contract, version 1.0
+ 
+-**Review status: proposed. A6 must review the math, and G3 (Bill plus the firm reviewer) must give professional approval.** This document is not approved and it contains no retirement advice. HB-26 is still open. Its proposal is to keep the capital illustration off for the pilot, with no safe-withdrawal rule and no readiness verdict. Any approval must name the sha256 of this file, of `workshop-inputs.schema.json` and of `fixtures/workshop/*.json`, as printed in `.orchestration/evidence/F02/math/validation.log`.
++**Review status: proposed. A6 must review the math, and G3 (Bill plus the firm reviewer) must give professional approval.** This document is not approved and it contains no retirement advice. HB-26 is still open. Its proposal is to keep the capital illustration off for the pilot, with no safe-withdrawal rule and no readiness verdict. Any approval must name the sha256 of this file, of `workshop-inputs.schema.json` and of `fixtures/workshop/*.json`, as printed in `.orchestration/evidence/F02/math/validation.log` or in the later record that supersedes it for a file (README §4 CX-29). After A0 patch 1 the whole bundle is printed in `.orchestration/evidence/A0-patch-1/math-bundle.sha256.log`.
+ 
+ This document takes the inputs defined in `workshop-inputs.md` and defines exactly what is computed from them. It is educational, deterministic, annual and nominal, and it runs in the browser. The formulas implement 01 §9. Where this document goes beyond §9, the text says so: the optional `end` index, the price-basis conversion, per-year computability and today-dollar display values.
+ 
+@@ -205,7 +205,7 @@ Flag names, completeness states and reason codes are identifiers inside the brow
+ 
+ `fixtures/workshop/` contains:
+ 
+-- 36 math fixtures (WM01–WM36). Each has `input` (valid against the schema and the semantic rules), `expected` (the full output record in §12) and `independent_checks`.
++- 40 math fixtures (WM01–WM40). Each has `input` (valid against the schema and the semantic rules), `expected` (the full output record in §12) and `independent_checks`. WM37–WM40 were added by F02a (D-072) under README §3 rule 6; no formula or rule changed.
+ - `clip-rules.json`.
+ - `index.json`.
+ 
+@@ -214,7 +214,9 @@ Two paths produce every expected value:
+ 1. the exact-rational reference model `evidence/F02/math/workshop_reference.py`;
+ 2. independent hand arithmetic or closed forms in `evidence/F02/math/compute_fixtures.py` (the geometric series, the level annuity g[1 − (1+r)^−H]/r, the growing annuity a(1+i)^{t_R}[1 − ((1+i)/(1+r))^H]/(r − i), hand powers, and code sets written out by hand from §4).
+ 
+-A fixture is written only if both paths agree. Negative controls in `validate.py` inject each of the following faults into the reference model, and each one is caught by the fixture written for it:
++WM37–WM40 come from `evidence/F02a/compute_f02a_fixtures.py`, which uses the same two paths: the reference model above, and hand arithmetic from §2–§5 and §9.
++
++A fixture is written only if both paths agree. Negative controls in `evidence/F02/math/validate.py` inject each of the following faults into the reference model, and each one is caught by the fixture written for it:
+ 
+ - half-up rounding (WM17) and float64 factors (WM24);
+ - unanswered income treated as zero (WM07), and a partial source list read as complete (WM30);
+@@ -231,6 +233,15 @@ A fixture is written only if both paths agree. Negative controls in `validate.py
+ - netted surpluses (WM12);
+ - C_R discounted to t = 0 instead of the start of t_R (WM35), and C_R = 0 treated as display-eligible (WM36).
+ 
++F02a's negative controls run in `evidence/F02a/mutation_check.py`, not in the lane `validate.py`. They inject each of the following faults into the same reference model. Each fault is caught by the fixture written for it, and WM01–WM36 alone miss it:
++
++- a today-dollar amount grown before its start at q_j instead of i, or indexed at i after its start (WM37);
++- a `joint` source's age-based start or end resolved against the partner's age (WM38);
++- an income group summed from the rounded per-source rows (WM39, and WM37);
++- a today-dollar value deflated from the rounded gap instead of the exact gap (WM40).
++
++A6 reproduced these results with its own model (`evidence/F02a/a6-attempt3/`).
++
+ **Tolerance: none.** Rounded cents must match exactly, and exact strings must match character for character. A runtime that cannot reproduce every fixture is not conformant (W00).
+ 
+ | Fixture | Covers | Case |
+@@ -267,6 +278,10 @@ A fixture is written only if both paths agree. Negative controls in `validate.py
+ | WM34 | WK01, WK03 | several unknowns on one source: every applicable code |
+ | WM35 | WK02 | capital illustration with t_R = 4 > 0: valued at the start of t_R (feature OFF) |
+ | WM36 | WK02, WK03 | capital illustration, all surplus: C_R = 0, `no_positive_gap` (feature OFF) |
++| WM37 | WK02 | today-dollar amounts carried to their start at i, then escalated at their own q_j (F02-MATH3-P2-1) |
++| WM38 | WK02 | a `joint` source's age-based start and end resolve against the participant's age, never the partner's (F02-MATH3-P2-2) |
++| WM39 | WK01, WK02 | income group total rounded once from exact values, not summed from rounded rows (F02-MATH3-P3-1) |
++| WM40 | WK01, WK02 | today-dollar gap deflated from the exact gap, not from the rounded gap (F02-MATH3-P3-1) |
+ 
+ ## 11. Capital illustration: documented, feature flag OFF by default
+ 
+@@ -380,6 +395,14 @@ A6 checks for these in the UI, copy, export and print (WK03, WK07). None of them
+ 
+ ## 15. Revision notes (pre-approval, contract still 1.0)
+ 
++### A0 patch 1 (F02a integration, D-072, D-074; editorial)
++
++- No formula, rule, field, state, flag, clip or existing fixture changed, and this contract stays 1.0. The patch only records the four fixtures that F02a added under README §3 rule 6.
++- §10: the fixture count and range (40, WM01–WM40), the WM37–WM40 rows, and F02a's negative controls with where they run.
++- Header: where the approval hash list is printed. The approval rule itself is unchanged.
++- The repair-3 note below that P3-1 is open is historical: WM39 and WM40 now pin both display-rounding faults.
++- This file's hash changed, so the change needs a `validate.py` run and an A6 look (README §3 rule 6). Any approval bound to the old hash is void.
++
+ ### Repair 3 (after `reviews/F02-math-attempt2.md`)
+ 
+ No field, enum or range of `workshop-inputs.schema.json` changed, and no output field was added or removed.
+diff --git a/.orchestration/costs.json b/.orchestration/costs.json
+index 1c9b107..1e98d96 100644
+--- a/.orchestration/costs.json
++++ b/.orchestration/costs.json
+@@ -3,7 +3,7 @@
+     "task": "F01",
+     "written": "2026-09-30",
+     "base_commit": "5cbbf9b5d21dbf03d2cb44e524a6fcdc10d5515b",
+-    "status": "submitted, not accepted",
++    "status": "accepted (F01; A0 accepted it on 2026-09-30 after the A6 attempt-2 pass, reviews/F01-attempt2.md, recorded at cb3becf). A0 patch 1 (evidence/A0-patch-1/) added where each existing_cost_unknown amount and renewal is collected (HB-08(b)); every amount stays null.",
+     "purpose": "Real cost sheet required by 01 §17. It holds only amounts that are actually known from evidence. Existing subscriptions count as existing costs, not as free.",
+     "rules": [
+       "amount is null unless the value is known from evidence (an invoice, a checkout, provider metering, or a plan rule that fixes it at 0).",
+@@ -42,7 +42,7 @@
+       "source": "01 §2 defaults (reuse the existing VPS), §17 cost sheet; 07 unresolved facts (VPS resources, existing subscription prices); inventory.md §7 (VPS not visible)",
+       "owner": "Arnaud",
+       "approval_gate": "G0 (production host, HB-01); G2 (any upgrade or new subscription)",
+-      "note": "The current VPS price, its plan and whether an upgrade is needed are unknown (HB-02). Upgrade only after a measured need."
++      "note": "The current VPS plan, amount, currency and renewal date are collected by HB-08(b). Whether an upgrade is needed depends on the VPS resources asked in HB-02. amount and currency stay null until an invoice or checkout fixes them. Upgrade only after a measured need."
+     },
+     {
+       "id": "media_storage_egress",
+@@ -75,7 +75,7 @@
+       "source": "01 §2 unknowns (existing Workspace edition); inventory.md §7, D12 (no Bill Google account visible)",
+       "owner": "Bill",
+       "approval_gate": "G2",
+-      "note": "The edition, its payer and its Meet entitlement are unknown (HB-14). It may already suffice for the pilot."
++      "note": "The edition, its payer and its Meet entitlement are unknown (HB-14). It may already suffice for the pilot. The plan, amount, currency and renewal date are asked in HB-08(b); amount and currency stay null until an invoice or checkout fixes them."
+     },
+     {
+       "id": "workspace_business_standard_candidate",
+@@ -175,7 +175,7 @@
+       "source": "01 §2 (content generation row), §4 (record provider, model, usage and wall time; no price assumptions); measured_usage (F00 run wf_5bb05036-e58, cost unavailable)",
+       "owner": "Arnaud",
+       "approval_gate": "none (existing); unattended API use needs G2",
+-      "note": "An existing subscription is not assumed to include unattended API use (01 §4). Token counts are recorded without a price."
++      "note": "An existing subscription is not assumed to include unattended API use (01 §4). Token counts are recorded without a price. HB-08(b) does not ask for it: it is Arnaud's build-time subscription, recorded from its own invoice. Per-run usage goes to measured_usage without a price."
+     },
+     {
+       "id": "model_api_weekly_draft",
+@@ -252,7 +252,7 @@
+       "source": "01 §11 (hosted checkout with approved tax treatment), §17 cost sheet",
+       "owner": "Bill (with his accountant)",
+       "approval_gate": "G0 (book price, HB-20); G1 (disclosed terms)",
+-      "note": "Tax status, registration and treatment are unknown and are not decided by agents. Taxes on existing subscriptions are part of those unknown existing costs."
++      "note": "Tax status, registration and treatment are unknown and are not decided by agents. Taxes on existing subscriptions are part of those unknown existing costs. HB-08(b) does not ask for it: taxes are Bill's to confirm with his accountant (HB-20 for the book)."
+     },
+     {
+       "id": "bill_time",
+@@ -264,7 +264,7 @@
+       "source": "01 §17 (capacity), §6 (recording), §10 (event); 06 G0 (approved time allocation)",
+       "owner": "Bill",
+       "approval_gate": "G0 (time allocation, HB-16, HB-19)",
+-      "note": "The proposed meeting reservation is under capacity_proposal (unconfirmed). Recording and event time are not estimated."
++      "note": "The proposed meeting reservation is under capacity_proposal (unconfirmed). Recording and event time are not estimated. HB-08(b) does not ask for it: time is allocated at G0 (HB-16, HB-19) and recorded in hours, not money."
+     },
+     {
+       "id": "operator_time",
+@@ -276,7 +276,7 @@
+       "source": "01 §10 (Arnaud moderates), §11 (daily reconciliation fallback), §17 (weekly loop); 06 run of show",
+       "owner": "Arnaud",
+       "approval_gate": "G0 (time allocation)",
+-      "note": "Not estimated. Record actual hours once operating."
++      "note": "Not estimated. Record actual hours once operating. HB-08(b) does not ask for it: operator time is recorded in hours once operating, not as an amount."
+     },
+     {
+       "id": "calendly_existing",
+@@ -287,7 +287,7 @@
+       "source": "inventory.md §3, §7 (link exists; bookingVerified=true; live read 403); docs/INTEGRATIONS.md on main (three meeting choices seen 2026-09-28); 01 §2 (scheduling row)",
+       "owner": "Bill",
+       "approval_gate": "G0 (scheduling owner, HB-15)",
+-      "note": "Plan tier and payer unknown. It may be consolidated into Google appointment schedules only after verified behaviour (01 §11)."
++      "note": "Plan tier and payer unknown. It may be consolidated into Google appointment schedules only after verified behaviour (01 §11). The plan, amount, currency and renewal date are asked in HB-08(b); amount and currency stay null until an invoice or checkout fixes them."
+     },
+     {
+       "id": "domain_dns_existing",
+@@ -298,7 +298,7 @@
+       "source": "lib/business.ts (domain); 01 §2 unknowns (DNS ownership); 06 handover (renewals)",
+       "owner": "Bill (owner); Arnaud (to confirm, HB-05)",
+       "approval_gate": "G2",
+-      "note": "Registrar, renewal date and cost unknown."
++      "note": "Registrar, renewal date and cost unknown. The plan, amount, currency and renewal date are asked in HB-08(b); amount and currency stay null until an invoice or checkout fixes them."
+     },
+     {
+       "id": "current_mail_provider_existing",
+@@ -309,7 +309,7 @@
+       "source": "lib/business.ts (email); 06 input sheet (no automatic domain or email migration)",
+       "owner": "Bill",
+       "approval_gate": "G2",
+-      "note": "Provider unknown (HB-05). Not migrated or changed by this project."
++      "note": "Provider unknown (HB-05). Not migrated or changed by this project. The plan, amount, currency and renewal date are asked in HB-08(b); amount and currency stay null until an invoice or checkout fixes them."
+     },
+     {
+       "id": "resend_upstash_existing",
+@@ -320,7 +320,7 @@
+       "source": "inventory.md §6.4, D8 (lib/contact.ts, docs/INTEGRATIONS.md)",
+       "owner": "Arnaud",
+       "approval_gate": "G2; G5 (processor change)",
+-      "note": "The existing inquiry-form code depends on Resend and Upstash, but whether live accounts exist, and who pays, is unknown (HB-06b). They are not extended. Retirement is open: only if they exist, and only after the Brevo path passes MAIL01 and G5 reviews the processor change (D-051).",
++      "note": "The existing inquiry-form code depends on Resend and Upstash, but whether live accounts exist, and who pays, is unknown (HB-06b). They are not extended. Retirement is open: only if they exist, and only after the Brevo path passes MAIL01 and G5 reviews the processor change (D-051). If the accounts exist, their plan, amount, currency and renewal date are asked in HB-08(b); amount and currency stay null until an invoice or checkout fixes them.",
+       "account_existence": "unknown"
+     },
+     {
+@@ -332,7 +332,7 @@
+       "source": "inventory.md §1.1 (private repo), §7",
+       "owner": "Arnaud",
+       "approval_gate": "none (existing)",
+-      "note": "Plan tier unknown. Used for CI (TB-02, TB-03)."
++      "note": "Plan tier unknown. Used for CI (TB-02, TB-03). The plan, amount, currency and renewal date are asked in HB-08(b); amount and currency stay null until an invoice or checkout fixes them."
+     }
+   ],
+   "measured_usage": [
+diff --git a/.orchestration/decisions.md b/.orchestration/decisions.md
+index 235eb8d..ca3f02a 100644
+--- a/.orchestration/decisions.md
++++ b/.orchestration/decisions.md
+@@ -1,6 +1,7 @@
+ # Decision register (F01)
+ 
+-- Task: F01 "Consolidate decisions, human blockers and real cost assumptions". Owner A0 (delegate), reviewer A6, stage design_or_audit. Status: **submitted, not accepted**.
++- Task: F01 "Consolidate decisions, human blockers and real cost assumptions". Owner A0 (delegate), reviewer A6, stage design_or_audit. Status: **accepted**. A0 accepted F01 on 2026-09-30 after the A6 attempt-2 pass (`reviews/F01-attempt2.md`), recorded at `cb3becf`.
++- Post-acceptance patches by A0: the `blockers.md` patch for F01 attempt-2 P3-1…P3-5 (reviewed by A6 in F02a attempt 3, part B), then A0 patch 1 (`evidence/A0-patch-1/`). A0 patch 1 added the three backup and media secret rows to D-070 (F02A-A6R3-P3-3), amended D-072, added D-074 and updated this header.
+ - Written 2026-09-30 against `/home/user/bill` HEAD `5cbbf9b5d21dbf03d2cb44e524a6fcdc10d5515b` (branch `claude/orchestration-foundation`, F00 accepted at attempt 3).
+ - Inputs: `source/01_MASTER_PLAN.md` (cited "01 §n"; the 00 launch instruction sits at the top of that file), `03`, `04`, `05`, `06`, `07`, `TASK_LEDGER.md`, the accepted F00 inventory (`inventory.md §n`) and `evidence/F00/` (cited `E/…`).
+ - Companion files: `blockers.md` (every open or pending row below has an HB or TB ID there, listed in the index at the end, or says why it is not askable yet) and `costs.json`.
+@@ -138,7 +139,7 @@ A consent withdrawal or provider blocklist vetoes a send even when an older reco
+ | D-067 | **Operating cadence.** Product scope (00): reviewed weekly articles with LinkedIn distribution, and two social videos a week. **Proposal only** (01 §17 "suggested initial cadence"): one pilot event, then one Crossroads a month while measured attendance and Bill's capacity justify it. Live dates are human-set, never assumed. Only the first Crossroads date is askable now (D-030, HB-17); later dates are not askable yet and are set after the pilot from measured attendance. | frozen-by-plan (weekly article and two videos, as scope); open (monthly Crossroads is a proposal; later dates not askable yet) | 00 product statement (01 file, line 19); 01 §17 | Bill and Arnaud; first date via HB-17 | C08, N08, O00 |
+ | D-068 | **Workshop invitation link.** A clearly described, forwardable generic link: no figures, no identity, not a secure account, no login added to raise lead counts. An individualized link needs the separate token design in 01 §7. | frozen-by-plan | 01 §7, §9 | Explicit plan change | N03, U00, W04 |
+ | D-069 | **n8n licence.** Check the Community licence terms for this client's internal use against the pinned image; never market it as unrestricted open source or resell its interface. | open | 01 §8; 07 unresolved facts | A3 verifies in P03; Arnaud confirms (HB-06) | P03 |
+-| D-070 | **Secrets and logins outside the 06 map.** The controlling `source/06` file is not edited. These names and destinations go into the secret-location map that the 06 handover standard requires (names and locations only, never values): VPS SSH access (owner adds the operator's public key; private keys in the HB-07 password manager); GitHub token for CI (GitHub repository secret, set by the repository owner); DNS or registrar login (stays with its owner, who enters records); provider account logins for Brevo, Supabase, Stripe, Calendly and Google (the named owner, in the HB-07 password manager); Telegram bot token for SM02 (n8n credential vault on the self-hosted instance only, never in the exported JSON); SM02 webhook authentication secret (n8n credential on the webhook node, plus the test caller's secret store). Same rules as the 06 map: never in chat, task JSON, git, screenshots, prompts or general backups. | open (proposal; Arnaud confirms) | 06 secrets map rules, handover standard ("secret-location map"); 04 §5 SM02 ("no token in export"); blockers.md Secrets table | Arnaud (HB-07); an explicit plan change if 06 itself should change | P00, P03, P05, N10, L01, H01 |
++| D-070 | **Secrets and logins outside the 06 map.** The controlling `source/06` file is not edited. These names and destinations go into the secret-location map that the 06 handover standard requires (names and locations only, never values): VPS SSH access (owner adds the operator's public key; private keys in the HB-07 password manager); GitHub token for CI (GitHub repository secret, set by the repository owner); DNS or registrar login (stays with its owner, who enters records); provider account logins for Brevo, Supabase, Stripe, Calendly and Google (the named owner, in the HB-07 password manager); Telegram bot token for SM02 (n8n credential vault on the self-hosted instance only, never in the exported JSON); SM02 webhook authentication secret (n8n credential on the webhook node, plus the test caller's secret store); off-host backup destination write credential (VPS protected env or secret file readable only by the backup job, plus a copy in the HB-07 password manager; HB-10, P04); backup encryption key or passphrase (HB-07 password manager plus one offline copy held by the owner, never on the backup destination or inside a backup set; HB-10, P04); media-master storage upload credential (HB-07 password manager, used only by whoever uploads approved masters; HB-10, C10). Same rules as the 06 map: never in chat, task JSON, git, screenshots, prompts or general backups. | open (proposal; Arnaud confirms) | 06 secrets map rules, handover standard ("secret-location map"); 04 §5 SM02 ("no token in export"); blockers.md Secrets table | Arnaud (HB-07); an explicit plan change if 06 itself should change | P00, P03, P04, P05, N10, L01, H01, C10 |
+ | D-071 | **N10 smoke targets.** SM01 (RSS to email) reads only an approved feed and delivers only to an allowlisted inbox; SM02 (webhook to Telegram) accepts only authenticated, bounded payloads and posts only to an approved chat. Feed content is untrusted data (01 §5). No target is chosen: the feed, the inbox, the bot owner and the chat are Arnaud's inputs. The starter JSONs are imported disabled; delivery needs G2. | **open** | TASK_LEDGER N10; 04 §5 SM01, SM02; AUTO03; 01 §8 ("Allowlist the smoke recipients") | Arnaud (HB-09b); G2 | N10, then L01, L04, L05 (task graph) |
+ 
+ ---
+@@ -172,12 +173,13 @@ A consent withdrawal or provider blocklist vetoes a send even when an older reco
+ | D-066 ads proposal | HB-08, HB-13 |
+ | D-067 cadence | HB-17 (first Crossroads only); later dates not askable yet |
+ | D-069 n8n licence | HB-06, TB-15 |
+-| D-070 secrets outside the 06 map | HB-07 (with HB-02, HB-05, HB-06, HB-09, HB-11) |
++| D-070 secrets outside the 06 map | HB-07 (with HB-02, HB-05, HB-06, HB-09, HB-10, HB-11) |
+ | D-071 N10 smoke targets | HB-09 (b) |
+ 
+ ## A0 execution decisions (appended after F01 acceptance)
+ 
+ | ID | Decision | Status | Source | Change route | Affects |
+ |---|---|---|---|---|---|
+-| D-072 | **Split F02 once (01 §5 bounded repair).** After 3 attempts the F02 math verifier still reported two P2 findings that are conformance-coverage gaps, not wrong formulas (`reviews/F02-math-attempt3.md` F02-MATH3-P2-1, P2-2). F02 is accepted at design_or_audit for all contracts; split task F02a adds the missing fixtures with independent mutation evidence. W00 and C02 depend on F02a. Contract version stays 1.0 (fixtures are additive). | resolved-by-A0 | reviews/F02-math-attempt3.md; reviews/F02-design-attempt3.md (pass) | A0; any semantic change bumps the contract version | F02a, W00, C02 |
++| D-072 | **Split F02 once (01 §5 bounded repair).** After 3 attempts the F02 math verifier still reported two P2 findings that are conformance-coverage gaps, not wrong formulas (`reviews/F02-math-attempt3.md` F02-MATH3-P2-1, P2-2). F02 is accepted at design_or_audit for all contracts; split task F02a adds the missing fixtures with independent mutation evidence. W00 and C02 depend on F02a. Contract version stays 1.0 (fixtures are additive). *Amended by D-074:* the workshop contracts stay 1.0. The split itself needs worker handoff 1.1, because 1.0's `task_id` refuses `F02a` (WH-ID-1), so the set is 1.1. | resolved-by-A0 | reviews/F02-math-attempt3.md; reviews/F02-design-attempt3.md (pass) | A0; any semantic change bumps the contract version | F02a, W00, C02 |
+ | D-073 | **Integration baseline scope for F03.** F03 builds the integration baseline from codex `66cce52` + guide (clean merge) + the orchestration record. homepage (design conflict, HB-03) and presentation (internal pitch with superseded offers, HB-12) stay preserved, unmerged, on their own branches. This is the technical baseline for local work, not the canonical production branch, which G0 records (HB-03). | resolved-by-A0 (technical); canonical pending-G0 | inventory.md §2; blockers.md HB-03, HB-12 | Arnaud via HB-03/HB-12 | F03 and every code task |
++| D-074 | **Contract set 1.1: worker handoff 1.1 for split tasks (A0 patch 1).** Worker handoff 1.0 accepted only the 62 planned task IDs, so the handoff of the split task F02a (D-072) could not validate (`reviews/F02a-attempt3.md` F02A-A6R3-P2-2). Worker handoff moves to 1.1: its `task_id` pattern also accepts `F02a`, listed explicitly (no generic suffix), and approval-scopes.md §8 WH-ID-1 says the same. The set version is 1.1; every other contract stays 1.0. F02a's fixtures WM37–WM40 are noted as additions under contracts README §3 rule 6: workshop-math.md §10 is updated editorially and its version is unchanged (F02A-A6R3-P2-1). The harness checks each contract's own version (CX-01), split IDs against `split_from` in tasks.json (CX-18), the fixture count, range, table and row 14 (CX-21), and the lane logs with registered later records (CX-29), with negative controls NC-15 to NC-18. Attempt 2 (`reviews/A0-patch-1.md`, A0P1-A6-P2-1): each CX-29 record is pinned in `validate.py` by the sha256 of its bytes. It supersedes only the files its round changed. `make_records.sh` refuses to overwrite a record, and a later round writes and registers its own record (contracts README §1). **Tasks re-issued: none.** The change only widens acceptance by one task ID and adds fixtures; every 1.0 handoff and packet stays valid, and no field, rule or meaning changed. A task dispatched under 1.0 still hands off naming 1.0. No approval was bound to the changed hashes. | resolved-by-A0 | reviews/F02a-attempt3.md (P2-1, P2-2); reviews/A0-patch-1.md (A0P1-A6-P2-1); contracts/README.md §1, §3, §3a; evidence/A0-patch-1/ | A0 (contract change control, README §3); A6 reviews the change | F02a (handoff validates), W00, C02 (fixture set WM01–WM40), every task's handoff (worker handoff 1.1) |
+diff --git a/.orchestration/evidence/F02/offers/gen_offers.py b/.orchestration/evidence/F02/offers/gen_offers.py
+index 26424c7..1934d46 100644
+--- a/.orchestration/evidence/F02/offers/gen_offers.py
++++ b/.orchestration/evidence/F02/offers/gen_offers.py
+@@ -34,8 +34,11 @@ DRAFT = "https://json-schema.org/draft/2020-12/schema"
+ GATES = [f"G{i}" for i in range(7)]
+ HUMAN_ROLES = ["arnaud", "bill", "firm_reviewer", "privacy_owner", "account_owner"]
+ AGENT_ROLES = ["A0", "A1", "A2", "A3", "A4", "A5", "A6"]
++# Worker handoff 1.1 (A0 patch 1, D-074): the 62 planned IDs plus each split task recorded in tasks.json
++# (split_from), listed explicitly. Today the only split is F02a (D-072). A further split adds its ID here in a
++# new minor version (WH-ID-1); no generic suffix is accepted.
+ TASK_ID_PATTERN = (
+-    "^(?:F0[0-3]|D0[0-2]|P0[0-5]|W0[0-4]|C(?:0[0-9]|1[01])|U0[0-5]"
++    "^(?:F0[0-3]|F02a|D0[0-2]|P0[0-5]|W0[0-4]|C(?:0[0-9]|1[01])|U0[0-5]"
+     "|N(?:0[0-9]|10)|R0[0-2]|H0[01]|L0[0-6]|O0[0-2])$"
+ )
+ DATE_PATTERN = "^20[0-9]{2}-(?:0[1-9]|1[0-2])-(?:0[1-9]|[12][0-9]|3[01])$"
+@@ -1447,8 +1450,8 @@ def text(min_len=1, max_len=4000):
+ 
+ WORKER_HANDOFF_SCHEMA = {
+     "$schema": DRAFT,
+-    "$id": f"{BASE}/worker-handoff/1.0",
+-    "title": "Worker handoff 1.0",
++    "$id": f"{BASE}/worker-handoff/1.1",
++    "title": "Worker handoff 1.1",
+     "description": (
+         "The worker handoff of 03 ('Worker handoff schema'), closed. A worker submits it and stops; "
+         "status can only be 'submitted' because A0 writes acceptance separately after A6 verification. "
+@@ -1465,7 +1468,7 @@ WORKER_HANDOFF_SCHEMA = {
+                  "external_actions_taken", "metered_cost", "status"],
+     "properties": {
+         "task_id": {"type": "string", "pattern": TASK_ID_PATTERN,
+-                    "description": "One of the 62 task IDs in .orchestration/tasks.json. A split task needs a contract minor version."},
++                    "description": "One of the 63 task IDs in .orchestration/tasks.json: the 62 planned IDs and the split task F02a (D-072), listed explicitly, not as a generic suffix. A further split task needs a new contract minor version (WH-ID-1)."},
+         "base_commit": {"type": "string", "pattern": SHA40},
+         "result_commit": {"anyOf": [{"type": "string", "pattern": SHA40}, {"type": "null"}],
+                           "description": "null when the work is uncommitted (workers do not commit unless the packet says so)."},
+@@ -1659,7 +1662,7 @@ WH_INVALID = [
+      "WH-PATH-2", "changed_paths hold paths only; prose notes belong in assumptions.",
+      "pattern", "/changed_paths/0"),
+     ("unknown-task-id", "min", lambda d: dict(d, task_id="W99"), "WH-ID-1",
+-     "task_id is one of the 62 task IDs in tasks.json.",
++     "task_id is one of the 63 task IDs in tasks.json (the 62 planned IDs and the split task F02a).",
+      "pattern", "/task_id"),
+     ("exit-code-string", "min",
+      lambda d: dict(d, tests=[dict(d["tests"][0], exit_code="0")]), "WH-TEST-1",
+diff --git a/.orchestration/evidence/F02/offers/validate_offers.py b/.orchestration/evidence/F02/offers/validate_offers.py
+index ef4b8dc..2c5c47d 100644
+--- a/.orchestration/evidence/F02/offers/validate_offers.py
++++ b/.orchestration/evidence/F02/offers/validate_offers.py
+@@ -7,7 +7,7 @@
+    (expect_keyword at expect_path, searched through nested anyOf/oneOf contexts;
+    'harness:<ID>' rules are checked by the harness below, and those examples must be
+    schema-valid so that only the harness rule catches them).
+-4. Validates .orchestration/handoffs/F00.json against worker-handoff 1.0 and reports every
++4. Validates .orchestration/handoffs/F00.json against worker-handoff 1.1 and reports every
+    mismatch (informational; F00.json is not edited).
+ 5. Cross-checks names against the repository (route keys in lib/routes.ts on main and codex,
+    bookings.offer_id values in operational-data-model.md, event-envelope resource-code
+@@ -37,7 +37,8 @@ EX = C / "examples"
+ CONTRACTS = {
+     "offer-matrix": ("offer-matrix.json", "https://bill.contracts.local/offer-matrix/1.0"),
+     "asset-manifest": ("asset-manifest.schema.json", "https://bill.contracts.local/asset-manifest/1.0"),
+-    "worker-handoff": ("worker-handoff.schema.json", "https://bill.contracts.local/worker-handoff/1.0"),
++    # worker handoff 1.1: A0 patch 1 (D-074) admits the split task F02a; the other two contracts stay 1.0
++    "worker-handoff": ("worker-handoff.schema.json", "https://bill.contracts.local/worker-handoff/1.1"),
+ }
+ 
+ failures: list[str] = []
+@@ -269,7 +270,7 @@ def main():
+     dup = [r for r, n in rules_seen.items() if n > 1]
+     print(f"rules covered: {len(rules_seen)} distinct rule IDs; duplicated IDs: {dup or 'none'}")
+ 
+-    print("\n## 4. .orchestration/handoffs/F00.json against worker-handoff 1.0 (informational; file not edited)")
++    print("\n## 4. .orchestration/handoffs/F00.json against worker-handoff 1.1 (informational; file not edited)")
+     f00p = ORCH / "handoffs" / "F00.json"
+     f00 = json.loads(f00p.read_text(encoding="utf-8"))
+     print("F00.json sha256:", hashlib.sha256(f00p.read_bytes()).hexdigest())

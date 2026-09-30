@@ -1,6 +1,6 @@
 # Workshop math contract, version 1.0
 
-**Review status: proposed. A6 must review the math, and G3 (Bill plus the firm reviewer) must give professional approval.** This document is not approved and it contains no retirement advice. HB-26 is still open. Its proposal is to keep the capital illustration off for the pilot, with no safe-withdrawal rule and no readiness verdict. Any approval must name the sha256 of this file, of `workshop-inputs.schema.json` and of `fixtures/workshop/*.json`, as printed in `.orchestration/evidence/F02/math/validation.log`.
+**Review status: proposed. A6 must review the math, and G3 (Bill plus the firm reviewer) must give professional approval.** This document is not approved and it contains no retirement advice. HB-26 is still open. Its proposal is to keep the capital illustration off for the pilot, with no safe-withdrawal rule and no readiness verdict. Any approval must name the sha256 of this file, of `workshop-inputs.schema.json` and of `fixtures/workshop/*.json`, as printed in `.orchestration/evidence/F02/math/validation.log` or in the later record that supersedes it for a file (README §4 CX-29). After A0 patch 1 the whole bundle is printed in `.orchestration/evidence/A0-patch-1/math-bundle.sha256.log`.
 
 This document takes the inputs defined in `workshop-inputs.md` and defines exactly what is computed from them. It is educational, deterministic, annual and nominal, and it runs in the browser. The formulas implement 01 §9. Where this document goes beyond §9, the text says so: the optional `end` index, the price-basis conversion, per-year computability and today-dollar display values.
 
@@ -205,7 +205,7 @@ Flag names, completeness states and reason codes are identifiers inside the brow
 
 `fixtures/workshop/` contains:
 
-- 36 math fixtures (WM01–WM36). Each has `input` (valid against the schema and the semantic rules), `expected` (the full output record in §12) and `independent_checks`.
+- 40 math fixtures (WM01–WM40). Each has `input` (valid against the schema and the semantic rules), `expected` (the full output record in §12) and `independent_checks`. WM37–WM40 were added by F02a (D-072) under README §3 rule 6; no formula or rule changed.
 - `clip-rules.json`.
 - `index.json`.
 
@@ -214,7 +214,9 @@ Two paths produce every expected value:
 1. the exact-rational reference model `evidence/F02/math/workshop_reference.py`;
 2. independent hand arithmetic or closed forms in `evidence/F02/math/compute_fixtures.py` (the geometric series, the level annuity g[1 − (1+r)^−H]/r, the growing annuity a(1+i)^{t_R}[1 − ((1+i)/(1+r))^H]/(r − i), hand powers, and code sets written out by hand from §4).
 
-A fixture is written only if both paths agree. Negative controls in `validate.py` inject each of the following faults into the reference model, and each one is caught by the fixture written for it:
+WM37–WM40 come from `evidence/F02a/compute_f02a_fixtures.py`, which uses the same two paths: the reference model above, and hand arithmetic from §2–§5 and §9.
+
+A fixture is written only if both paths agree. Negative controls in `evidence/F02/math/validate.py` inject each of the following faults into the reference model, and each one is caught by the fixture written for it:
 
 - half-up rounding (WM17) and float64 factors (WM24);
 - unanswered income treated as zero (WM07), and a partial source list read as complete (WM30);
@@ -230,6 +232,15 @@ A fixture is written only if both paths agree. Negative controls in `validate.py
 - the wrong clip precedence (WM08, WM21);
 - netted surpluses (WM12);
 - C_R discounted to t = 0 instead of the start of t_R (WM35), and C_R = 0 treated as display-eligible (WM36).
+
+F02a's negative controls run in `evidence/F02a/mutation_check.py`, not in the lane `validate.py`. They inject each of the following faults into the same reference model. Each fault is caught by the fixture written for it, and WM01–WM36 alone miss it:
+
+- a today-dollar amount grown before its start at q_j instead of i, or indexed at i after its start (WM37);
+- a `joint` source's age-based start or end resolved against the partner's age (WM38);
+- an income group summed from the rounded per-source rows (WM39, and WM37);
+- a today-dollar value deflated from the rounded gap instead of the exact gap (WM40).
+
+A6 reproduced these results with its own model (`evidence/F02a/a6-attempt3/`).
 
 **Tolerance: none.** Rounded cents must match exactly, and exact strings must match character for character. A runtime that cannot reproduce every fixture is not conformant (W00).
 
@@ -267,6 +278,10 @@ A fixture is written only if both paths agree. Negative controls in `validate.py
 | WM34 | WK01, WK03 | several unknowns on one source: every applicable code |
 | WM35 | WK02 | capital illustration with t_R = 4 > 0: valued at the start of t_R (feature OFF) |
 | WM36 | WK02, WK03 | capital illustration, all surplus: C_R = 0, `no_positive_gap` (feature OFF) |
+| WM37 | WK02 | today-dollar amounts carried to their start at i, then escalated at their own q_j (F02-MATH3-P2-1) |
+| WM38 | WK02 | a `joint` source's age-based start and end resolve against the participant's age, never the partner's (F02-MATH3-P2-2) |
+| WM39 | WK01, WK02 | income group total rounded once from exact values, not summed from rounded rows (F02-MATH3-P3-1) |
+| WM40 | WK01, WK02 | today-dollar gap deflated from the exact gap, not from the rounded gap (F02-MATH3-P3-1) |
 
 ## 11. Capital illustration: documented, feature flag OFF by default
 
@@ -379,6 +394,14 @@ A6 checks for these in the UI, copy, export and print (WK03, WK07). None of them
 8. The payment test does not use XF-05 to infer that a source is paying (§4). For example, with a known start and an unknown end, the start year itself is `unknown` although XF-05 implies the source pays then. This withholds a few years that could in principle be computed. It is conservative, it is disclosed, and it never produces a false number. Is that acceptable?
 
 ## 15. Revision notes (pre-approval, contract still 1.0)
+
+### A0 patch 1 (F02a integration, D-072, D-074; editorial)
+
+- No formula, rule, field, state, flag, clip or existing fixture changed, and this contract stays 1.0. The patch only records the four fixtures that F02a added under README §3 rule 6.
+- §10: the fixture count and range (40, WM01–WM40), the WM37–WM40 rows, and F02a's negative controls with where they run.
+- Header: where the approval hash list is printed. The approval rule itself is unchanged.
+- The repair-3 note below that P3-1 is open is historical: WM39 and WM40 now pin both display-rounding faults.
+- This file's hash changed, so the change needs a `validate.py` run and an A6 look (README §3 rule 6). Any approval bound to the old hash is void.
 
 ### Repair 3 (after `reviews/F02-math-attempt2.md`)
 

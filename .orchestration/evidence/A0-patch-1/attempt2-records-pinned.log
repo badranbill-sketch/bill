@@ -1,0 +1,13 @@
+# A0 patch 1 attempt 2: CX-29 record bytes vs the sha256 pinned in validate.py (and reviewed by A6). date (UTC): 2026-09-30T11:38:20Z
+
+$ sha256sum .orchestration/evidence/F02a/after-hashes.log .orchestration/evidence/A0-patch-1/math-bundle.sha256.log .orchestration/evidence/A0-patch-1/worker-handoff-1.1.sha256.log
+4eb22f88d3f9256a6ee20b309a477c44890f78790b58c71d80f5c6577b0b38a3  .orchestration/evidence/F02a/after-hashes.log
+bc80f539dc5c73809610d4bba7f3de002383889860bdfb3e57280c0d03402b05  .orchestration/evidence/A0-patch-1/math-bundle.sha256.log
+e838813371b9684567d4f918ce4411fb515a051deb8a1b4cf486cfc7ee304985  .orchestration/evidence/A0-patch-1/worker-handoff-1.1.sha256.log
+[exit 0]
+
+$ grep -nE "[0-9a-f]{64}",$ .orchestration/contracts/validate.py
+187:     "4eb22f88d3f9256a6ee20b309a477c44890f78790b58c71d80f5c6577b0b38a3",
+192:     "bc80f539dc5c73809610d4bba7f3de002383889860bdfb3e57280c0d03402b05",
+195:     "e838813371b9684567d4f918ce4411fb515a051deb8a1b4cf486cfc7ee304985",
+[exit 0]

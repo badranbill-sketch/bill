@@ -1,10 +1,10 @@
 #!/usr/bin/env python3
-"""F02 contract set 1.0: the single validation harness (A0 delegate, F02 integrator).
+"""F02 contract set 1.1: the single validation harness (A0 delegate, F02 integrator; A0 patch 1, D-074).
 
 What it checks (read-only; it writes nothing and uses no network):
   S1  the README index: version line, one row per contract, every file under contracts/ indexed,
       sha256 of every contract file (the values the F02 handoff binds to)
-  S2  the seven JSON Schemas and the two registry schemas: draft 2020-12, $id .../1.0, closed shapes, and
+  S2  the seven JSON Schemas and the two registry schemas: draft 2020-12, $id .../<contract version>, closed shapes, and
       ECMA-262 pattern semantics (A6D2-04): every schema pattern is translated before use, see ecma_translate
   S3  every example: valid examples pass schema + harness; invalid examples fail for the exact
       reason in their .why.txt (the three lane dialects are normalised, see README XL-07)
@@ -16,8 +16,9 @@ What it checks (read-only; it writes nothing and uses no network):
       described (KNOWN); if one no longer reproduces the run fails until README is updated.
       The items resolved by the lanes' repair attempt 2 (README s5.2) are checked the other way:
       each must stay resolved (PASS), and a regression fails the run.
-  S8  negative controls NC-1..NC-14: injected defects must be caught by the checks above (non-vacuity)
-  S9  handoffs/*.json against worker-handoff 1.0
+  S7b CX-29: the lane logs, plus the later records registered in LANE_LOG_RECORDS, describe the current bytes
+  S8  negative controls NC-1..NC-18: injected defects must be caught by the checks above (non-vacuity)
+  S9  handoffs/*.json against worker-handoff 1.1
 
 Usage (from anywhere; paths are resolved from this file):
   VENV=/tmp/claude-0/-home-user/bb8d4187-6ae8-587b-a816-8153faeea853/scratchpad/venv-f02
@@ -124,7 +125,17 @@ def _kw_pattern_ecma(validator, patrn, instance, schema):
 
 EcmaValidator = js_validators.extend(Draft202012Validator, {"pattern": _kw_pattern_ecma})
 
-SET_VERSION = "1.0"
+SET_VERSION = "1.1"
+# Each contract's own version (README s3 rule 2: "Unchanged contracts keep their version, and the index records each
+# one"). A0 patch 1 (D-074) moved only the worker handoff to 1.1, to admit the split task F02a (D-072).
+CONTRACT_VERSIONS = {
+    "event-envelope": "1.0", "delivery-job": "1.0", "feature-flags": "1.0", "offer-matrix": "1.0",
+    "asset-manifest": "1.0", "worker-handoff": "1.1", "workshop-inputs": "1.0",
+    "email-eligibility": "1.0", "data-flow-register": "1.0", "workshop-math": "1.0",
+}
+# The contract_version a handoff may name: the version in its dispatch packet. 1.1 forced no re-issue (README s3a,
+# D-074), so a task dispatched under 1.0 still hands off under 1.0. Any other value is refused.
+HANDOFF_CONTRACT_VERSIONS = ("1.0", "1.1")
 FROZEN_ON = "2026-09-30"
 DRAFT = "https://json-schema.org/draft/2020-12/schema"
 ID_BASE = "https://bill.contracts.local/"
@@ -154,6 +165,45 @@ SCHEMAS = OrderedDict([
 REGISTRIES = OrderedDict([("email-eligibility", "email-eligibility.json"), ("data-flow-register", "data-flow-register.json")])
 LANE_LOGS = [".orchestration/evidence/F02/data/validation.log", ".orchestration/evidence/F02/math/validation.log",
              ".orchestration/evidence/F02/offers/validation.log"]
+# CX-29 records (README s1, s4 CX-29, s3a). A lane log is historical evidence and is never rewritten. A later round that
+# changes or adds a file a lane log describes prints the new sha256 in its own record. A record is written once, for its
+# round, and registered here in round order as (lane log, record, round, record sha256, changed, whole):
+#   record sha256  the record's own bytes, pinned when it is registered. A record is never regenerated in place: a record
+#                  whose bytes differ fails. A later round writes its own record and registers it as a new entry here.
+#   changed        the files that round changed or added, listed explicitly (never "every line"). Only these may
+#                  supersede a lane-log entry or give a covered file its recorded hash, and each must appear in the
+#                  record with the sha256 of the current bytes. This list, not a record's header line, says what a
+#                  record supersedes.
+#   whole          True when the record prints a whole bundle (the G3/HB-26 hash list): every hash line must then match
+#                  the current bytes too, but its lines outside `changed` supersede nothing. False: the record's other
+#                  lines are that round's own before/after evidence and are not checked here.
+# A registered line may differ from the current bytes only if a later registered record for the same lane lists that
+# file in `changed` with the current sha256 (A0P1-A6-P2-1).
+_MATH_LOG, _OFFERS_LOG = LANE_LOGS[1], LANE_LOGS[2]
+_FX = ".orchestration/contracts/fixtures/workshop/"
+_WH = ".orchestration/contracts/"
+LANE_LOG_RECORDS = [
+    (_MATH_LOG, ".orchestration/evidence/F02a/after-hashes.log", "F02a (D-072)",
+     "4eb22f88d3f9256a6ee20b309a477c44890f78790b58c71d80f5c6577b0b38a3",
+     [_FX + f for f in ("WM37-today-dollar-pre-start-factor.json", "WM38-joint-owner-participant-age.json",
+                        "WM39-group-total-from-exact-values.json", "WM40-today-dollar-display-from-exact-gap.json",
+                        "index.json")], False),
+    (_MATH_LOG, ".orchestration/evidence/A0-patch-1/math-bundle.sha256.log", "A0 patch 1 (D-074)",
+     "bc80f539dc5c73809610d4bba7f3de002383889860bdfb3e57280c0d03402b05",
+     [_WH + "workshop-math.md", _FX + "index.json"], True),  # index.json: F02a changed it; this record names it too
+    (_OFFERS_LOG, ".orchestration/evidence/A0-patch-1/worker-handoff-1.1.sha256.log", "A0 patch 1 (D-074)",
+     "e838813371b9684567d4f918ce4411fb515a051deb8a1b4cf486cfc7ee304985",
+     [_WH + "worker-handoff.schema.json", _WH + "approval-scopes.md",
+      _WH + "examples/invalid/worker-handoff/unknown-task-id.why.txt",
+      ".orchestration/evidence/F02/offers/gen_offers.py", ".orchestration/evidence/F02/offers/validate_offers.py"], True),
+]
+# Files each lane log must describe, directly or through a record: a new file here without a recorded hash fails.
+LANE_LOG_COVERAGE = {
+    _MATH_LOG: ["fixtures/workshop/*.json"],
+    _OFFERS_LOG: ["offer-matrix.json", "asset-manifest.schema.json", "worker-handoff.schema.json"]
+                 + [f"examples/{k}/{c}/*" for k in ("valid", "invalid") for c in ("offer-matrix", "asset-manifest", "worker-handoff")],
+}
+HASH_LINE = re.compile(r"^\s*([0-9a-f]{64})\s+(\S+)\s*$", re.M)
 WHY_KEYS = {"rule", "layer", "breaks", "expect_keyword", "expect_path", "expect_validator_value", "expect_message_contains",
             "expect_rule", "also_schema_keyword", "also_schema_path"}
 
@@ -495,7 +545,9 @@ class Ctx:
         self.reg = {n: strict_load(contracts / f) for n, f in REGISTRIES.items()}
         self.fix_dir = contracts / "fixtures" / "workshop"
         self.catalog_ids = {c["id"] for c in strict_load(self.orch / "acceptance_catalog.json")["checks"]}
-        self.task_ids = {t["id"] for t in strict_load(self.orch / "tasks.json")["tasks"]}
+        tasks = strict_load(self.orch / "tasks.json")["tasks"]
+        self.task_ids = {t["id"] for t in tasks}
+        self.task_split_from = {t["id"]: t["split_from"] for t in tasks if t.get("split_from")}  # WH-ID-1, D-072
         self.decisions = (self.orch / "decisions.md").read_text(encoding="utf-8")
         self.blockers = (self.orch / "blockers.md").read_text(encoding="utf-8")
         self.src04 = (self.orch / "source" / "04_CONTRACTS_AND_TESTS.md").read_text(encoding="utf-8")
@@ -612,7 +664,8 @@ def s2_schemas(ctx: Ctx):
         except Exception as exc:  # noqa: BLE001
             R.bad(f"{fname} meta-validation: {exc}")
         R.check(s.get("$schema") == DRAFT, f"{fname} declares $schema draft 2020-12")
-        R.check(s.get("$id") == f"{ID_BASE}{name}/{SET_VERSION}", f"{fname} $id = {ID_BASE}{name}/{SET_VERSION}", s.get("$id"))
+        want_v = CONTRACT_VERSIONS[name]
+        R.check(s.get("$id") == f"{ID_BASE}{name}/{want_v}", f"{fname} $id = {ID_BASE}{name}/{want_v}", s.get("$id"))
         R.check(s.get("additionalProperties") is False, f"{fname} root is closed")
         open_ = closed_shape_audit(s)
         R.check(not open_, f"{fname} closed-shape audit: no open object schema", open_[:5])
@@ -628,8 +681,8 @@ def s2_schemas(ctx: Ctx):
             R.ok(f"{rs_path.name} is a valid draft 2020-12 schema")
         except Exception as exc:  # noqa: BLE001
             R.bad(f"{rs_path.name} meta-validation: {exc}")
-        R.check(rs.get("$id", "").startswith(ID_BASE) and rs.get("$id", "").endswith("/" + SET_VERSION),
-                f"{rs_path.name} $id is versioned {SET_VERSION}", rs.get("$id"))
+        R.check(rs.get("$id", "").startswith(ID_BASE) and rs.get("$id", "").endswith("/" + CONTRACT_VERSIONS[name]),
+                f"{rs_path.name} $id is versioned {CONTRACT_VERSIONS[name]}", rs.get("$id"))
         open_ = closed_shape_audit(rs)
         if open_:
             R.info(f"{rs_path.name} (evidence-located registry schema) has {len(open_)} open object schemas: {open_}")
@@ -780,8 +833,8 @@ def s4_registries(ctx: Ctx):
         errs = top_errors(v, doc)
         R.check(not errs, f"{REGISTRIES[name]} matches {Path(doc['registry_schema']).name}",
                 [f"{e.validator}@{ptr(e)}: {e.message[:90]}" for e in errs[:5]])
-        R.check(doc.get("contract_version") == SET_VERSION and doc.get("contract_id", "").endswith("/" + SET_VERSION),
-                f"{REGISTRIES[name]} contract_version and contract_id are {SET_VERSION}")
+        R.check(doc.get("contract_version") == CONTRACT_VERSIONS[name] and doc.get("contract_id", "").endswith("/" + CONTRACT_VERSIONS[name]),
+                f"{REGISTRIES[name]} contract_version and contract_id are {CONTRACT_VERSIONS[name]}")
 
 
 # ----------------------------------------------------------------------------------------------
@@ -837,7 +890,7 @@ def fixture_problems(ctx: Ctx, doc: dict, index_entry: dict | None, vocab) -> li
     if set(doc) != FIXTURE_KEYS:
         probs.append(f"top-level keys {sorted(set(doc) ^ FIXTURE_KEYS)}")
         return probs
-    if doc["contract_version"] != SET_VERSION:
+    if doc["contract_version"] != CONTRACT_VERSIONS["workshop-math"]:
         probs.append("contract_version")
     errs = top_errors(ctx.validators["workshop-inputs"], doc["input"])
     if errs:
@@ -850,7 +903,7 @@ def fixture_problems(ctx: Ctx, doc: dict, index_entry: dict | None, vocab) -> li
     if set(ex) != EXPECTED_KEYS:
         probs.append(f"expected keys differ from workshop-math.md s12: {sorted(set(ex) ^ EXPECTED_KEYS)}")
         return probs
-    if ex["contract_version"] != SET_VERSION:
+    if ex["contract_version"] != CONTRACT_VERSIONS["workshop-math"]:
         probs.append("expected.contract_version")
     st = ex["completeness"]["state"]
     if st not in states:
@@ -967,7 +1020,8 @@ def s5_fixtures(ctx: Ctx):
     R.check(len(states) == 6 and len(flags) == 9 and len(prec) == 5 and fb,
             f"workshop vocabulary parsed from the md files ({len(states)} states, {len(flags)} flags, {len(prec)} precedence rules)")
     idx = strict_load(ctx.fix_dir / "index.json")
-    R.check(idx.get("contract_version") == SET_VERSION, "fixtures/workshop/index.json contract_version 1.0")
+    R.check(idx.get("contract_version") == CONTRACT_VERSIONS["workshop-math"],
+            f"fixtures/workshop/index.json contract_version {CONTRACT_VERSIONS['workshop-math']}")
     listed = {e["file"]: e for e in idx["fixtures"]}
     on_disk = {p.name for p in ctx.fix_dir.glob("*.json")} - {"index.json"}
     R.check(set(listed) == on_disk, "index.json lists exactly the fixture files on disk", sorted(set(listed) ^ on_disk))
@@ -1090,22 +1144,55 @@ def cx_checks(ctx: Ctx):
     md = ctx.md
 
     def cx01():
+        """Versions (README s3 rule 2): the set version is the highest contract version, all share one major, and each
+        contract's $id, title, version const and README index row carry that contract's own version."""
         p = []
+        vkey = lambda v: tuple(int(x) for x in v.split("."))  # noqa: E731
+        vers = set(CONTRACT_VERSIONS.values())
+        if SET_VERSION != max(vers, key=vkey):
+            p.append(f"set version {SET_VERSION} is not the highest contract version {sorted(vers, key=vkey)}")
+        if {v.split(".")[0] for v in vers} != {SET_VERSION.split(".")[0]}:
+            p.append(f"contract versions span more than one major version: {sorted(vers, key=vkey)}")
         for n, s in ctx.schemas.items():
-            if not s.get("$id", "").endswith("/" + SET_VERSION):
-                p.append(f"{n} $id")
+            want = CONTRACT_VERSIONS[n]
+            if s.get("$id") != f"{ID_BASE}{n}/{want}":
+                p.append(f"{n} $id {s.get('$id')} (its version is {want})")
+            tv = re.findall(r"\b(\d+\.\d+)\b", str(s.get("title", "")))
+            if tv and tv != [want]:
+                p.append(f"{n} title {s.get('title')!r} (its version is {want})")
         for n in ("event-envelope", "delivery-job", "feature-flags"):
-            if ctx.schemas[n]["properties"].get("schema_version", {}).get("const") != SET_VERSION:
+            if ctx.schemas[n]["properties"].get("schema_version", {}).get("const") != CONTRACT_VERSIONS[n]:
                 p.append(f"{n} schema_version const")
         for n in ("offer-matrix", "asset-manifest", "workshop-inputs"):
-            if ctx.schemas[n]["properties"].get("contract_version", {}).get("const") != SET_VERSION:
+            if ctx.schemas[n]["properties"].get("contract_version", {}).get("const") != CONTRACT_VERSIONS[n]:
                 p.append(f"{n} contract_version const")
-        if not ecma_re(wh["properties"]["contract_version"]["pattern"]).fullmatch(SET_VERSION):
-            p.append("worker-handoff contract_version pattern rejects 1.0")
+        for v in HANDOFF_CONTRACT_VERSIONS:
+            if not ecma_re(wh["properties"]["contract_version"]["pattern"]).fullmatch(v):
+                p.append(f"worker-handoff contract_version pattern rejects {v}")
+        if max(HANDOFF_CONTRACT_VERSIONS, key=vkey) != SET_VERSION:
+            p.append(f"the newest version a handoff may name {HANDOFF_CONTRACT_VERSIONS} is not the set version {SET_VERSION}")
         for n, d in ctx.reg.items():
-            if d.get("contract_version") != SET_VERSION:
+            if d.get("contract_version") != CONTRACT_VERSIONS[n]:
                 p.append(f"{n} contract_version")
-        return p
+        # the index records each contract's version: a row naming a schema or registry file states that file's version
+        by_file = {f: n for n, f in list(SCHEMAS.items()) + list(REGISTRIES.items())}
+        by_file["workshop-math.md"] = "workshop-math"
+        n_rows = 0
+        for r in getattr(ctx, "readme_rows", []):
+            m = re.search(r"\s(\d+\.\d+)$", r["name"])
+            named = sorted({by_file[f] for f in r["files"] if f in by_file})
+            if not m:
+                if named:
+                    p.append(f"README row {r['no']} ({r['name']}) states no version but holds {named}")
+                continue
+            n_rows += 1
+            if vkey(m.group(1)) > vkey(SET_VERSION):
+                p.append(f"README row {r['no']} version {m.group(1)} is above the set version {SET_VERSION}")
+            for n in named:
+                if CONTRACT_VERSIONS[n] != m.group(1):
+                    p.append(f"README row {r['no']} ({r['name']}) says {m.group(1)}; {n} is {CONTRACT_VERSIONS[n]}")
+        return p, f"set {SET_VERSION}; " + ", ".join(f"{n} {v}" for n, v in CONTRACT_VERSIONS.items() if v != "1.0") + \
+            f", every other contract 1.0; {n_rows} versioned index rows checked"
 
     def cx02():
         p = []
@@ -1711,12 +1798,30 @@ def cx_checks(ctx: Ctx):
         for e in idx["fixtures"]:
             if not set(e.get("covers", [])) <= ctx.catalog_ids:
                 p.append(f"fixture {e['file']} covers unknown check")
-        cand = {a + "%02d" % i for a in "ABCDEFGHIJKLMNOPQRSTUVWXYZ" for i in range(100)}
+        # WH-ID-1 (worker handoff 1.1, D-072, D-074): a task ID is a planned ID (a letter and two digits) or a split ID,
+        # which is its parent's ID plus one lowercase letter and is recorded in tasks.json with split_from = the parent
+        split = getattr(ctx, "task_split_from", {})
+        for tid in sorted(ctx.task_ids):
+            if re.fullmatch(r"[A-Z]\d\d", tid):
+                continue
+            m = re.fullmatch(r"([A-Z]\d\d)[a-z]", tid)
+            if not m or split.get(tid) != m.group(1) or m.group(1) not in ctx.task_ids:
+                p.append(f"task {tid} is neither a planned ID nor a recorded split (split_from) of an existing task")
+        for tid, parent in sorted(split.items()):
+            if not re.fullmatch(re.escape(str(parent)) + "[a-z]", tid):
+                p.append(f"task {tid} records split_from {parent} but its ID is not {parent} plus one lowercase letter")
+        base = {a + "%02d" % i for a in "ABCDEFGHIJKLMNOPQRSTUVWXYZ" for i in range(100)}
+        cand = base | {c + x for c in base for x in "abcdefghijklmnopqrstuvwxyz"}
         pat = ecma_re(wh["properties"]["task_id"]["pattern"])
         accepted = {c for c in cand if pat.fullmatch(c)}
         if accepted != ctx.task_ids:
             p.append(f"worker-handoff task_id pattern vs tasks.json: {sorted(accepted ^ ctx.task_ids)}")
-        return p, f"task_id pattern accepts exactly {len(accepted)} IDs"
+        odd = [x for x in ("F02A", "f02a", "F02aa", "F02a ", "F02a\n", "F2a", "F002a", "F02-a") if pat.search(x)]
+        if odd:
+            p.append(f"worker-handoff task_id pattern accepts malformed IDs {odd!r}")
+        n_split = len(accepted - base)
+        return p, (f"task_id pattern accepts exactly {len(accepted)} of {len(cand)} candidate IDs "
+                   f"({len(accepted & base)} planned, {n_split} split: {sorted(accepted - base)})")
 
     def cx19():
         p = []
@@ -1769,16 +1874,32 @@ def cx_checks(ctx: Ctx):
                     actual = len(ctx.examples.get((kind, sch), []))
                     if int(n) != actual:
                         p.append(f"{name} says examples/{kind}/{sch}/ has {n}, found {actual}")
-        m = re.search(r"(\d+) math fixtures \(WM01", md.get("workshop-math.md", ""))
-        nwm = len(list(ctx.fix_dir.glob("WM*.json")))
+        wm_md = md.get("workshop-math.md", "")
+        wm_ids = sorted(f.name[:4] for f in ctx.fix_dir.glob("WM*.json"))
+        nwm, last = len(wm_ids), (wm_ids[-1] if wm_ids else "WM00")
+        m = re.search(r"(\d+) math fixtures \(WM01[–-](WM\d\d)\)", wm_md)
         if not m or int(m.group(1)) != nwm:
             p.append(f"workshop-math.md fixture count vs {nwm}")
+        if not m or m.group(2) != last or wm_ids != ["WM%02d" % i for i in range(1, nwm + 1)]:
+            p.append(f"workshop-math.md fixture range vs files WM01-{last} ({nwm} files)")
+        # the s10 table lists every fixture on disk, and only those (a row may name several, e.g. "WM06 / WM07")
+        tab = set()
+        for cells in table_rows(section_text(wm_md, r"^## 10\.", r"^## 11\.")):
+            if cells and re.match(r"WM\d\d", cells[0]):
+                tab |= set(re.findall(r"WM\d\d", cells[0]))
+        if tab != set(wm_ids):
+            p.append(f"workshop-math.md s10 table vs files: missing {sorted(set(wm_ids) - tab)}, extra {sorted(tab - set(wm_ids))}")
+        # README row 14 names the same range (README s2: "the integrator then updates this row and CX-21")
+        rd = getattr(ctx, "readme", md.get("README.md", ""))
+        r14 = re.search(r"The fixtures are WM01[–-](WM\d\d) plus", rd)
+        if not r14 or r14.group(1) != last:
+            p.append(f"README row 14 fixture range {r14.group(1) if r14 else None} vs files WM01-{last}")
         cr = strict_load(ctx.fix_dir / "clip-rules.json")
         m = re.search(r"(\d+)-row truth table, (\d+) supplementary cases and (\d+) media-state cases", md.get("workshop-clip-rules.md", ""))
         got = (len(cr["truth_table"]), len(cr["supplementary_cases"]), len(cr["media_state_cases"]))
         if not m or tuple(map(int, m.groups())) != got:
             p.append(f"workshop-clip-rules.md counts vs {got}")
-        return p, f"{n_stated} stated example counts + fixture and clip counts"
+        return p, f"{n_stated} stated example counts; {nwm} WM fixtures (count, range, s10 table, README row 14); clip counts"
 
     def cx22():
         p = []
@@ -2050,7 +2171,7 @@ def cx_checks(ctx: Ctx):
 
     global CX_LIST
     CX_LIST = [
-        ("CX-01", "one contract version 1.0 across schemas, registries and fixtures", cx01),
+        ("CX-01", "versions: set = highest contract version; each contract's $id, title, const and index row carry its own version", cx01),
         ("CX-02", "the same five human approver roles everywhere; no agent role can approve", cx02),
         ("CX-03", "one gate vocabulary G0-G6", cx03),
         ("CX-04", "locales are fr or en (asset-manifest adds zxx, see XL-02)", cx04),
@@ -2078,7 +2199,7 @@ def cx_checks(ctx: Ctx):
         ("CX-26", "every normative md file states it is proposed", cx26),
         ("CX-27", "clip availability can be derived from asset-manifest 1.0", cx27),
         ("CX-28", "text hygiene: UTF-8, LF, no BOM (checked in S1)", None),
-        ("CX-29", "the three lane validation logs still describe the current bytes (checked in S7b)", None),
+        ("CX-29", "the three lane validation logs, with their registered later records, describe the current bytes (checked in S7b)", None),
         ("CX-30", "every workshop reason code is pinned by a fixture with null values, never 0; s6 fixture references exist", cx30),
         ("CX-31", "README workflow trace: the 14 workflows of 04 s5, every cited name exists, every event, template and operation traced", cx31),
     ]
@@ -2159,7 +2280,7 @@ def known_list(ctx: Ctx):
         if not f00.exists():
             return False, "F00.json missing"
         errs = top_errors(ctx.validators["worker-handoff"], strict_load(f00))
-        return len(errs) == 6, f"F00.json has {len(errs)} top-level errors against worker-handoff 1.0"
+        return len(errs) == 6, f"F00.json has {len(errs)} top-level errors against worker-handoff {CONTRACT_VERSIONS['worker-handoff']}"
 
     def xl15():
         text = "".join(v for k, v in md.items() if k != "README.md")
@@ -2212,7 +2333,7 @@ def known_list(ctx: Ctx):
         ("XL-10", "media-manifest shape has two proposed owners (W03/C10 vs asset-manifest 1.0)", xl10),
         ("XL-12", "offer-matrix meeting-link lists use pseudo-key 'articles' and omit 'ask'", xl12),
         ("XL-13", "privacy sink matrix and data-flow register draw the DC-CONTACT/Stripe boundary differently", xl13),
-        ("XL-14", "handoffs/F00.json does not conform to worker-handoff 1.0 (6 errors)", xl14),
+        ("XL-14", "handoffs/F00.json does not conform to worker-handoff 1.0 or 1.1 (6 errors)", xl14),
         ("XL-15", "math-lane .why.txt rule labels are not defined as rule IDs in workshop-inputs.md", xl15),
         ("XL-16", "delivery.failed resource may carry a v-form template version; jobs only hold h-form", xl16),
         ("XL-18", "04 s4 and s5 runtime rules (truthful queued state; one dispatcher, no per-person Wait node) restated in no contract", xl18),
@@ -2309,23 +2430,112 @@ def s7_known(ctx: Ctx):
 # ----------------------------------------------------------------------------------------------
 # lane evidence drift (part of S7 output)
 # ----------------------------------------------------------------------------------------------
-def s7b_drift(ctx: Ctx):
-    R.section("S7b. Lane evidence drift: sha256 recorded in the three lane logs vs current bytes")
-    for log in LANE_LOGS:
-        p = ctx.repo / log
-        if not p.exists():
-            R.bad(f"{log} missing")
+def _log_text(ctx: Ctx, rel: str):
+    """Text of a lane log or record; negative controls may substitute an in-memory text (never written to disk)."""
+    ov = getattr(ctx, "log_overrides", {})
+    if rel in ov:
+        return ov[rel]
+    p = ctx.repo / rel
+    return p.read_text(encoding="utf-8") if p.is_file() else None
+
+
+def _log_sha(ctx: Ctx, rel: str):
+    """sha256 of a record's bytes (of the in-memory text when a negative control substitutes one)."""
+    ov = getattr(ctx, "log_overrides", {})
+    if rel in ov:
+        return hashlib.sha256(ov[rel].encode("utf-8")).hexdigest()
+    p = ctx.repo / rel
+    return sha256_file(p) if p.is_file() else None
+
+
+def _cur_sha(ctx: Ctx, q: Path):
+    """sha256 of a file's current bytes, or None if it is missing; negative controls may substitute the sha256 of
+    in-memory mutated bytes (never written to disk)."""
+    ov = getattr(ctx, "hash_overrides", {})
+    if q in ov:
+        return ov[q]
+    return sha256_file(q) if q.is_file() else None
+
+
+def cx29_problems(ctx: Ctx, log: str, records=None):
+    """CX-29 for one lane log (README s4). Every sha256 the lane log records matches the current bytes, or the file is
+    in the `changed` list of a registered record (LANE_LOG_RECORDS) that holds its current sha256. Each record's bytes
+    equal the sha256 pinned at registration (written once, never regenerated in place). Each `changed` line, and for a
+    whole-bundle record every line, matches the current bytes unless a later registered record for the lane lists the
+    file in `changed` with the current sha256. Every file in LANE_LOG_COVERAGE is matched by the lane log or is in a
+    record's `changed` list. Returns (problems, note)."""
+    recs = [r for r in (LANE_LOG_RECORDS if records is None else records) if r[0] == log]
+    text = _log_text(ctx, log)
+    if text is None:
+        return [f"{log} missing"], ""
+    entries = HASH_LINE.findall(text)
+    probs, parsed = [], []
+    for _, rec, label, pin, changed, whole in recs:
+        rtext = _log_text(ctx, rec)
+        if rtext is None:
+            probs.append(f"record {rec} ({label}) missing")
             continue
-        entries = re.findall(r"^\s*([0-9a-f]{64})\s+(\S+)\s*$", p.read_text(encoding="utf-8"), re.M)
-        drift, missing = [], []
-        for h, rel in entries:
-            q = ctx.resolve_logged(rel)
-            if not q.exists():
-                missing.append(rel)
-            elif sha256_file(q) != h:
-                drift.append(rel)
-        R.check(entries and not drift and not missing, f"CX-29 {log}: {len(entries)} recorded hashes match current files",
-                (drift + missing)[:8])
+        got = _log_sha(ctx, rec)
+        if got != pin:
+            probs.append(f"record {rec} ({label}) bytes differ from its registration (sha256 {got[:12]}..., registered "
+                         f"{str(pin)[:12]}...): a record is written once for its round; a later round writes and "
+                         f"registers its own record")
+        rent = {}
+        for h, rel in HASH_LINE.findall(rtext):
+            rent[ctx.resolve_logged(rel)] = h  # a later line for the same file wins
+        if not rent:
+            probs.append(f"record {rec} ({label}) holds no hash line")
+        if not changed:
+            probs.append(f"record {rec} ({label}) registers no changed file (every record lists the files its round changed)")
+        chg = {ctx.resolve_logged(x) for x in (changed or [])}
+        for q in sorted(chg - set(rent)):
+            probs.append(f"record {rec} ({label}) has no hash for changed file {ctx.rel(q)}")
+        parsed.append((rec, label, rent, chg, bool(whole)))
+    covered = {}
+    for i, (rec, label, rent, chg, whole) in enumerate(parsed):
+        for q in sorted(rent):
+            if q not in chg and not whole:
+                continue  # this round's own before/after evidence, not a claim about the current bytes
+            cur = _cur_sha(ctx, q)
+            if cur is None:
+                probs.append(f"record {rec} ({label}): {ctx.rel(q)} missing")
+            elif cur == rent[q]:
+                if q in chg:
+                    covered.setdefault(q, set()).add(label)
+            elif not any(q in c2 and r2.get(q) == cur for _, _, r2, c2, _ in parsed[i + 1:]):
+                probs.append(f"record {rec} ({label}) is stale for {ctx.rel(q)}")
+    good, superseded = set(), 0
+    for h, rel in entries:
+        q = ctx.resolve_logged(rel)
+        cur = _cur_sha(ctx, q)
+        if cur is None:
+            probs.append(f"missing {rel}")
+        elif cur == h:
+            good.add(q)
+        elif q in covered:
+            superseded += 1
+        else:
+            probs.append(f"drift {rel}")
+    if not entries:
+        probs.append(f"{log} holds no hash line")
+    uncovered = [ctx.rel(f) for g in LANE_LOG_COVERAGE.get(log, []) for f in sorted(ctx.C.glob(g))
+                 if f.is_file() and f not in good and f not in covered]
+    if uncovered:
+        probs.append(f"no recorded hash for {uncovered}")
+    labels = sorted({x for v in covered.values() for x in v})
+    recnote = "; ".join(f"{label} {Path(rec).name}: pinned, {len(chg)} changed" + (f", {len(rent)} bundle lines" if whole else "")
+                        for rec, label, rent, chg, whole in parsed)
+    note = (f"{len(entries)} recorded hashes, {len(entries) - superseded} match; {superseded} superseded"
+            + (f" and {len(set(covered) - good)} files recorded by {labels} [{recnote}]" if recs else "")
+            + (f"; coverage {LANE_LOG_COVERAGE[log]}" if log in LANE_LOG_COVERAGE else ""))
+    return probs, note
+
+
+def s7b_drift(ctx: Ctx):
+    R.section("S7b. CX-29 lane evidence: sha256 in the three lane logs and their registered records vs current bytes")
+    for log in LANE_LOGS:
+        probs, note = cx29_problems(ctx, log)
+        R.check(not probs, f"CX-29 {log}: {note}", probs[:8])
 
 
 # ----------------------------------------------------------------------------------------------
@@ -2441,6 +2651,110 @@ def s8_negative_controls(ctx: Ctx):
             "NC-14 a wrong section citation (retention in data model §6), an undefined rule ID (PB-CAL-9) and an activation gate "
             "without G6 are caught by CX-31", probs[:6])
     ctx.readme = saved_readme
+    # NC-15 (A0 patch 1, CX-18): a task_id pattern that admits a lowercase suffix on every ID, a pattern that drops the
+    # split task F02a, and a suffixed task ID that tasks.json does not record as a split are each caught by CX-18
+    saved_wh, saved_ids = ctx.schemas["worker-handoff"], ctx.task_ids
+    wpat = saved_wh["properties"]["task_id"]["pattern"]
+    hits = []
+    if wpat.startswith("^(?:") and wpat.endswith(")$") and "|F02a|" in wpat:
+        for mutated, want in (("^(?:" + wpat[4:-2].replace("|F02a|", "|") + ")[a-z]?$", "W00a"),
+                              (wpat.replace("|F02a|", "|"), "F02a")):
+            ctx.schemas["worker-handoff"] = copy.deepcopy(saved_wh)
+            ctx.schemas["worker-handoff"]["properties"]["task_id"]["pattern"] = mutated
+            hits.append(any("task_id pattern vs tasks.json" in x and want in x for x in run_cx(ctx, "CX-18")))
+        ctx.schemas["worker-handoff"] = saved_wh
+        ctx.task_ids = saved_ids | {"W00a"}
+        hits.append(any("W00a is neither a planned ID nor a recorded split" in x for x in run_cx(ctx, "CX-18")))
+        ctx.task_ids = saved_ids
+    R.check(len(hits) == 3 and all(hits), "NC-15 a task_id pattern with a suffix on every ID, one without F02a, and a "
+            "suffixed task ID that tasks.json does not record as a split are caught by CX-18", hits)
+    # NC-16 (A0 patch 1, CX-21): the workshop-math.md s10 count and range left at 36, the s10 table without WM40, and
+    # README row 14 left at WM01-WM36 are each caught by CX-21
+    saved_md = ctx.md
+    wm = saved_md.get("workshop-math.md", "")
+    mm = dict(saved_md)
+    mm["workshop-math.md"] = re.sub(r"^\| WM40 \|[^\n]*\n", "", re.sub(r"\d+ math fixtures \(WM01[–-]WM\d\d\)",
+                                                                  "36 math fixtures (WM01–WM36)", wm), flags=re.M)
+    ctx.md = mm
+    ctx.readme = re.sub(r"The fixtures are WM01[–-]WM\d\d plus", "The fixtures are WM01–WM36 plus", saved_readme)
+    probs = run_cx(ctx, "CX-21")
+    ctx.md, ctx.readme = saved_md, saved_readme
+    R.check(mm["workshop-math.md"] != wm and any("fixture count" in x for x in probs) and any("fixture range" in x for x in probs)
+            and any("s10 table" in x and "WM40" in x for x in probs) and any("README row 14" in x for x in probs),
+            "NC-16 a s10 count and range of 36, a s10 table without WM40 and a README row 14 range ending WM36 are caught by CX-21",
+            probs[:6])
+    # NC-17 (A0 patch 1, CX-29): without its records the math lane log drifts and WM37-WM40 have no recorded hash (the
+    # coverage rule: a fixture file no log records is caught); a record holding a stale hash is caught
+    probs_none = cx29_problems(ctx, _MATH_LOG, records=[])[0]
+    rec = LANE_LOG_RECORDS[1][1]
+    rtext = _log_text(ctx, rec) or ""
+    m = re.search(r"^([0-9a-f]{64})(\s+\S*fixtures/workshop/index\.json)\s*$", rtext, re.M)
+    stale_hits = []
+    if m:
+        ctx.log_overrides = {rec: rtext.replace(m.group(0), ("0" * 64) + m.group(2))}
+        stale_hits = cx29_problems(ctx, _MATH_LOG)[0]
+        ctx.log_overrides = {}
+    R.check(any("drift" in x and "index.json" in x for x in probs_none) and any("drift" in x and "workshop-math.md" in x for x in probs_none)
+            and any("no recorded hash" in x and all(w in x for w in ("WM37", "WM38", "WM39", "WM40")) for x in probs_none)
+            and any("stale" in x and "index.json" in x for x in stale_hits),
+            "NC-17 the math lane log without its records (index.json and workshop-math.md drift; WM37-WM40 have no recorded hash) "
+            "and a record holding a stale hash are caught by CX-29", (probs_none[:3], stale_hits[:2]))
+    # NC-18 (A0 patch 1 attempt 2, CX-29, A0P1-A6-P2-1): a record supersedes only the files its round changed, and it is
+    # written once. In memory only: a wrong expected value in WM01 (a file no record lists as changed) and in WM38 (a
+    # file F02a lists as changed), with and without the record regenerated as make_records.sh did in attempt 1.
+    def _mutated_sha(q, old, new):
+        b = q.read_bytes() if q.is_file() else b""
+        b2 = b.replace(old, new, 1)
+        return (hashlib.sha256(b2).hexdigest() if b2 != b else None)
+
+    def _regen(rtext, q, new_sha):
+        rel = ctx.rel(q)
+        pat = re.compile(r"^[0-9a-f]{64}(\s+\S*" + re.escape(rel.split("contracts/", 1)[-1]) + r")\s*$", re.M)
+        return pat.sub(lambda m: new_sha + m.group(1), rtext) if pat.search(rtext) else None
+
+    nc18 = {}
+    by_rec = {r[1]: r for r in LANE_LOG_RECORDS}
+    a0m, f2a, a0o = LANE_LOG_RECORDS[1][1], LANE_LOG_RECORDS[0][1], LANE_LOG_RECORDS[2][1]
+    wm01 = ctx.C / "fixtures/workshop/WM01-zero-inflation-zero-escalation.json"
+    wm38 = ctx.C / "fixtures/workshop/WM38-joint-owner-participant-age.json"
+    ex = ctx.C / "examples/valid/worker-handoff/normalized-f00-subset.json"
+    s01 = _mutated_sha(wm01, b'"gap_cents": 1800000', b'"gap_cents": 1800001')
+    s38 = _mutated_sha(wm38, b'"gap_cents": 4200000', b'"gap_cents": 4200001')
+    sex = _mutated_sha(ex, b'"task_id": "F00"', b'"task_id": "F01"')
+    rt_a0m, rt_f2a, rt_a0o = (_log_text(ctx, x) or "" for x in (a0m, f2a, a0o))
+    reg01 = _regen(rt_a0m, wm01, s01) if s01 else None
+    reg38 = _regen(rt_f2a, wm38, s38) if s38 else None
+    regex = _regen(rt_a0o, ex, sex) if sex else None
+
+    def _repin(rec, text):
+        r = by_rec[rec]
+        return [x if x[1] != rec else (r[0], r[1], r[2], hashlib.sha256(text.encode("utf-8")).hexdigest(), r[4], r[5])
+                for x in LANE_LOG_RECORDS]
+
+    if s01 and reg01 and s38 and reg38 and sex and regex:
+        ctx.hash_overrides = {wm01: s01}
+        nc18["WM01, record not regenerated"] = cx29_problems(ctx, _MATH_LOG)[0]
+        ctx.log_overrides = {a0m: reg01}
+        nc18["WM01, record regenerated in place"] = cx29_problems(ctx, _MATH_LOG)[0]
+        nc18["WM01, record regenerated and re-registered"] = cx29_problems(ctx, _MATH_LOG, records=_repin(a0m, reg01))[0]
+        ctx.hash_overrides, ctx.log_overrides = {wm38: s38}, {f2a: reg38}
+        nc18["WM38, F02a record regenerated in place"] = cx29_problems(ctx, _MATH_LOG)[0]
+        ctx.hash_overrides, ctx.log_overrides = {ex: sex}, {a0o: regex}
+        nc18["worker-handoff example, record regenerated and re-registered"] = cx29_problems(ctx, _OFFERS_LOG, records=_repin(a0o, regex))[0]
+    ctx.hash_overrides, ctx.log_overrides = {}, {}
+    pinned = "bytes differ from its registration"
+    want18 = {
+        "WM01, record not regenerated": lambda P: any("drift" in x and "WM01" in x for x in P) and any("stale" in x and "WM01" in x for x in P),
+        "WM01, record regenerated in place": lambda P: any("drift" in x and "WM01" in x for x in P) and any(pinned in x for x in P),
+        "WM01, record regenerated and re-registered": lambda P: any("drift" in x and "WM01" in x for x in P) and not any(pinned in x for x in P),
+        "WM38, F02a record regenerated in place": lambda P: any(pinned in x and "F02a" in x for x in P),
+        "worker-handoff example, record regenerated and re-registered": lambda P: any("drift" in x and "normalized-f00-subset" in x for x in P),
+    }
+    R.check(len(nc18) == len(want18) and all(want18[k](v) for k, v in nc18.items()),
+            "NC-18 a wrong WM01 value is caught by CX-29 even after the A0 patch 1 record is regenerated (in place, or also "
+            "re-registered: its lines outside `changed` supersede nothing); a WM38 value with the F02a record regenerated in "
+            "place, and an unchanged worker-handoff example with its record regenerated and re-registered, are caught too",
+            {k: [x for x in v if "WM01" in x or "WM38" in x or pinned in x or "normalized" in x][:3] for k, v in nc18.items()} or "precondition not met")
     cx_checks(ctx)  # restore CX_LIST bound to the original data
 
 
@@ -2462,8 +2776,8 @@ def handoff_problems(ctx: Ctx, path: Path, deep: bool) -> list[str]:
         probs.append(f"base_commit {h['base_commit']} != HEAD {head.strip()}")
     if h["task_id"] not in ctx.task_ids:
         probs.append("task_id not in tasks.json")
-    if h["contract_version"] != SET_VERSION:
-        probs.append("contract_version")
+    if h["contract_version"] not in HANDOFF_CONTRACT_VERSIONS:
+        probs.append(f"contract_version {h['contract_version']} is not one a dispatch packet can name {HANDOFF_CONTRACT_VERSIONS}")
     for a in h["artifacts"]:
         p = ctx.repo / a["path"]
         if not p.is_file():
@@ -2487,13 +2801,13 @@ def handoff_problems(ctx: Ctx, path: Path, deep: bool) -> list[str]:
 
 
 def s9_handoffs(ctx: Ctx):
-    R.section("S9. Handoffs against worker-handoff 1.0")
+    R.section(f"S9. Handoffs against worker-handoff {CONTRACT_VERSIONS['worker-handoff']}")
     for p in sorted((ctx.orch / "handoffs").glob("*.json")):
         if p.name == "F00.json":
             R.info("F00.json is tracked as XL-14 (written before worker-handoff 1.0 existed)")
             continue
         probs = handoff_problems(ctx, p, deep=False)
-        R.check(not probs, f"handoffs/{p.name} conforms to worker-handoff 1.0 (schema only; --handoff for hashes)", probs[:6])
+        R.check(not probs, f"handoffs/{p.name} conforms to worker-handoff {CONTRACT_VERSIONS['worker-handoff']} (schema only; --handoff for hashes)", probs[:6])
 
 
 # ----------------------------------------------------------------------------------------------
@@ -2513,7 +2827,7 @@ def header(ctx: Ctx):
 
 def main(argv=None) -> int:
     here = Path(__file__).resolve().parent
-    ap = argparse.ArgumentParser(description="Validate the F02 contract set 1.0.")
+    ap = argparse.ArgumentParser(description=f"Validate the F02 contract set {SET_VERSION}.")
     ap.add_argument("--repo", type=Path, default=here.parent.parent, help="repository root (default: two levels above this file)")
     ap.add_argument("--contracts-dir", type=Path, default=here, help="contracts directory to validate (default: this file's directory)")
     ap.add_argument("--handoff", type=Path, help="validate one handoff JSON deeply (schema, HEAD, artifact hashes, evidence paths) and exit")

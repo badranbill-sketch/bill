@@ -1,0 +1,20 @@
+{
+  "run_id": "wf_cc398756-8c2",
+  "task_ids": [
+    "A0-patch-1",
+    "F02a"
+  ],
+  "kind": "workflow",
+  "provider": "Anthropic (Claude Code session)",
+  "model": "inherited session model",
+  "agents": 4,
+  "tool_uses": 257,
+  "subagent_tokens": 1123916,
+  "wall_time_s": 4381,
+  "metered_cost": {
+    "amount": null,
+    "currency": null,
+    "status": "unavailable-not-estimated"
+  },
+  "external_actions": "none"
+}

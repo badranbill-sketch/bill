@@ -1,0 +1,75 @@
+# A0 patch 1 (D-074): exact commands, in order. cwd /home/user/bill unless stated. Date 2026-09-30 (UTC ~10:53-11:06).
+# VENV=/tmp/claude-0/-home-user/bb8d4187-6ae8-587b-a816-8153faeea853/scratchpad/venv-f02 (Python 3.11.15, jsonschema 4.26.0; existing, not recreated)
+# Environment: local container, fixture evidence only. No network, no provider, no commit, no push.
+# HEAD d1a37cf3c17953529774e7801af8f0c16eedb925 on claude/orchestration-foundation; git status was clean before the patch.
+
+## 1. Before
+PYTHONDONTWRITEBYTECODE=1 $VENV/bin/python .orchestration/contracts/validate.py > .orchestration/evidence/A0-patch-1/before-contracts-validate.log 2>&1; echo "[exit $?]" >> (same file)
+for t in F00 F02 F02a F03; do PYTHONDONTWRITEBYTECODE=1 $VENV/bin/python .orchestration/contracts/validate.py --handoff .orchestration/handoffs/$t.json > .orchestration/evidence/A0-patch-1/before-handoff-$t.log 2>&1; echo "[exit $?]" >> (same file); done
+cp -a .orchestration/contracts /tmp/claude-0/-home-user/bb8d4187-6ae8-587b-a816-8153faeea853/scratchpad/contracts-pre-a0p1     # scratch backup, not evidence
+
+## 2. Offers-lane generator (README s3 rule 7: generated files are regenerated, never hand-edited)
+(generated file list) | xargs sha256sum > .orchestration/evidence/A0-patch-1/gen-offers-outputs.before.sha256      # 132 files
+# unmodified generator reproduces HEAD bytes: see gen-offers-baseline.log (exit 0, sha256sum -c exit 0, git status clean)
+PYTHONDONTWRITEBYTECODE=1 $VENV/bin/python .orchestration/evidence/F02/offers/gen_offers.py
+# edit gen_offers.py (Python heredoc, exact-string replacements; content in patch.diff): TASK_ID_PATTERN adds F02a explicitly;
+#   worker-handoff $id and title 1.1; task_id description; WH-ID-1 "breaks" text of the unknown-task-id invalid example
+PYTHONDONTWRITEBYTECODE=1 $VENV/bin/python .orchestration/evidence/F02/offers/gen_offers.py      # see gen-offers-regenerate.log
+sha256sum -c --quiet .orchestration/evidence/A0-patch-1/gen-offers-outputs.before.sha256          # exactly 2 files differ: worker-handoff.schema.json, unknown-task-id.why.txt
+PYTHONDONTWRITEBYTECODE=1 $VENV/bin/python .orchestration/evidence/F02/offers/gen_offers.py && sha256sum -c --quiet .orchestration/evidence/A0-patch-1/gen-offers-outputs.after.sha256   # deterministic, exit 0
+# edit validate_offers.py: expected worker-handoff $id 1.1 (and two "1.0" labels)
+
+## 3. Hand-written files (Python heredoc exact-string replacements with count assertions; content in patch.diff)
+# contracts/approval-scopes.md s8: heading 1.1, WH-ID-1 (63 IDs, F02a explicit), F00 result "1.0 or 1.1"
+# contracts/workshop-math.md: header hash-record pointer; s10 count/range 40 (WM01-WM40), WM37-WM40 rows, F02a negative controls and where they run; s15 A0 patch 1 note
+# contracts/validate.py: SET_VERSION 1.1, CONTRACT_VERSIONS, HANDOFF_CONTRACT_VERSIONS; CX-01, CX-18, CX-21 rewritten; CX-29 with LANE_LOG_RECORDS and LANE_LOG_COVERAGE; NC-15..NC-17
+# contracts/README.md: set 1.1, s1 records, rows 12-14, s3a change log, CX-01/18/21/29, XL-14, s5.3, s7
+# decisions.md: header status accepted; D-070 three secret rows (+P04, C10; index adds HB-10); D-072 amendment note; new D-074
+# blockers.md: header status accepted; HB-08 "Provide" routes the (b) answers to costs.json existing_cost_unknown
+# costs.json (json.loads/json.dumps indent=2, ensure_ascii=False: round-trip verified byte-identical before editing):
+#   meta.status accepted; vps_increment note cites HB-08(b); the other 10 existing_cost_unknown notes cite HB-08(b) or say HB-08(b) does not ask for them; amounts stay null
+
+## 4. After (bash .orchestration/evidence/A0-patch-1/run_after.sh does all of this)
+bash .orchestration/evidence/A0-patch-1/make_records.sh                                   # math-bundle.sha256.log, worker-handoff-1.1.sha256.log (CX-29 records)
+PYTHONDONTWRITEBYTECODE=1 $VENV/bin/python .orchestration/contracts/validate.py           # after-contracts-validate.log: pass 360 fail 0 known 16 info 2, exit 0
+PYTHONDONTWRITEBYTECODE=1 $VENV/bin/python .orchestration/contracts/validate.py --handoff .orchestration/handoffs/{F00,F02,F02a,F03}.json   # after-handoff-*.log
+$VENV/bin/python .orchestration/contracts/validate.py --contracts-dir <scratch copy with one injected defect>   # negative-controls-copy.log: nc0 exit 0, nc1-nc5 exit 1
+$VENV/bin/python .orchestration/evidence/F02/{data/validate_f02_data.py,math/validate.py,offers/validate_offers.py}   # after-lane-validators.log (read-only)
+git -C /home/user/bill diff -- .orchestration > .orchestration/evidence/A0-patch-1/patch.diff
+git status --short -- .orchestration; git ls-files --others --exclude-standard -- .orchestration   # untracked-and-status.txt
+(cd .orchestration/evidence/A0-patch-1 && sha256sum <every file except MANIFEST.sha256>) > MANIFEST.sha256
+
+## Repair attempt 2 (reviews/A0-patch-1.md: A0P1-A6-P2-1; P3-1..P3-4 also addressed). Date 2026-09-30 (UTC ~11:25-11:45).
+# VENV as above (existing, not recreated). Same HEAD d1a37cf; nothing committed or pushed; no network.
+# 0. baseline and a full scratch copy of attempt 1's tree, taken before any attempt-2 edit (PRE):
+PYTHONDONTWRITEBYTECODE=1 $VENV/bin/python .orchestration/contracts/validate.py      # pass 360 fail 0 known 16 info 2, exit 0
+cp -a /home/user/bill /tmp/claude-0/-home-user/bb8d4187-6ae8-587b-a816-8153faeea853/scratchpad/a0p1r2/pre-attempt2
+sha256sum .orchestration/evidence/F02a/after-hashes.log .orchestration/evidence/A0-patch-1/{math-bundle,worker-handoff-1.1}.sha256.log
+#   4eb22f88... (= the F02a handoff artifact hash), bc80f539..., e8388133... (= the two hashes A6 reviewed); these are pinned, and the records are NOT rewritten
+# 1. contracts/validate.py (Python heredoc exact-string replacements with count assertions; content in patch.diff):
+#    LANE_LOG_RECORDS entries become (lane log, record, round, record sha256, changed, whole); no paths=None.
+#      F02a after-hashes.log: changed WM37-WM40 + index.json, whole=False
+#      A0 patch 1 math-bundle.sha256.log: changed workshop-math.md + index.json, whole=True (46 bundle lines must be current; they supersede nothing)
+#      A0 patch 1 worker-handoff-1.1.sha256.log: changed worker-handoff.schema.json, approval-scopes.md, unknown-task-id.why.txt,
+#        gen_offers.py, validate_offers.py; whole=True (40 lines must be current; they supersede nothing)
+#    cx29_problems: record bytes must equal the pinned sha256; only `changed` files supersede a lane-log entry or satisfy coverage;
+#      a registered line may differ only if a later registered record lists that file as changed with the current sha256.
+#    new helpers _log_sha, _cur_sha (in-memory overrides for negative controls; nothing written); NC-18 added; docstring NC-1..NC-18
+# 2. evidence/A0-patch-1/make_records.sh: header no longer says "Re-run after any change"; refuses (exit 3) if a record exists.
+#    evidence/A0-patch-1/run_after.sh: step 1 (make_records.sh) removed, with a note. New driver: run_attempt2.sh.
+bash .orchestration/evidence/A0-patch-1/make_records.sh        # refusing: ... exists; exit 3 (records untouched, sha256 unchanged)
+# 3. contracts/README.md: s1 records (pinned, changed lists, whole-bundle lines supersede nothing; how a later round records, incl. the
+#    math lane fold); s3 rule 4 exception (P3-1); s3a 1.1 row NC-15..NC-18, notes on the workshop-math.md header sentence (P3-2) and attempt 2;
+#    CX-29 row; s5.3 math lane gate red with its exact failure (P3-3); s7 S8 NC-1..NC-18 and the math lane validator's known exit 1.
+#    decisions.md D-074: NC-15..NC-18, attempt-2 sentence, reviews/A0-patch-1.md cited. blockers.md line 24 labelled as a 5cbbf9b snapshot
+#    with the current tasks.json states (P3-4).
+# 4. debug (scratch only): a temporary copy .orchestration/contracts/.dbg_validate.py printed each NC-18 case's problem list, then was deleted
+# 5. after: bash .orchestration/evidence/A0-patch-1/run_attempt2.sh (writes attempt2-*.log, patch.diff, untracked-and-status.txt):
+#    attempt2-before-contracts-validate.log  (PRE: pass 360 fail 0, exit 0)
+#    attempt2-after-contracts-validate.log   (pass 361 fail 0 known 16 info 2, exit 0; +NC-18)
+#    attempt2-handoff-{F00,F02,F02a,F03}.log (same results as attempt 1: F00 XL-14 6 schema errors; F02a only base_commit; F02/F03 as explained)
+#    attempt2-rebless-repro.log              (the reviewer's WM01 reproduction: attempt 1 exit 0 after make_records.sh; attempt 2 exit 1 in every variant)
+#    attempt2-negative-controls-copy.log     (nc0 exit 0; nc1-nc6 exit 1; nc6 = WM01 value)
+#    attempt2-lane-validators.log            (data 298/0; math 116/1 exit 1, the known README s5.3 failure; offers 92/0; F02a --check exit 0)
+#    attempt2-records-pinned.log             (record sha256 = pinned values)
+(cd .orchestration/evidence/A0-patch-1 && sha256sum <every file except MANIFEST.sha256>) > MANIFEST.sha256

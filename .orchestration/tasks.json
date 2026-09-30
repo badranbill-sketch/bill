@@ -286,10 +286,17 @@
         "WK02"
       ],
       "max_attempts": 3,
-      "state": "running",
+      "state": "accepted",
       "attempts": 1,
-      "accepted_at_stage": null,
-      "evidence": [],
+      "accepted_at_stage": "design_or_audit",
+      "evidence": [
+        ".orchestration/contracts/fixtures/workshop/WM37..WM40",
+        ".orchestration/handoffs/F02a.json",
+        ".orchestration/evidence/F02a/",
+        ".orchestration/reviews/F02a*.md",
+        ".orchestration/evidence/A0-patch-1/",
+        ".orchestration/reviews/A0-patch-1*.md"
+      ],
       "split_from": "F02",
       "history": [
         {
@@ -303,6 +310,13 @@
           "at": "2026-09-30",
           "by": "A0",
           "note": "3 attempts used. Fixtures WM37-WM40 verified correct (faulty runtimes now fail). Remaining P2s are A0-owned integration items (fixture registry text + task_id pattern), handled as A0 patch 1 with fresh A6 review before acceptance."
+        },
+        {
+          "at": "2026-09-30",
+          "from": "running",
+          "to": "accepted",
+          "by": "A0",
+          "note": "Fixtures verified (faulty runtimes fail); A0 patch 1 (contracts v1.1: split task IDs, WM37-WM40 registry, validator 361 pass/0 fail; F01 P3 doc fixes) passed A6 on attempt 2 (2 P3: F02a handoff contract_version now set to 1.1 by A0; CX-01 row check narrower than its wording — tracked)."
         }
       ]
     },

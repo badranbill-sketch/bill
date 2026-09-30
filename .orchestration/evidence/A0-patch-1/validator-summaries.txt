@@ -1,0 +1,105 @@
+# A0 patch 1: validator summaries, before and after (contracts/validate.py; handoff deep checks)
+# before = working tree at HEAD d1a37cf3c17953529774e7801af8f0c16eedb925 before any A0 patch 1 edit; after = with A0 patch 1 applied (uncommitted)
+
+## BEFORE: PYTHONDONTWRITEBYTECODE=1 $VENV/bin/python .orchestration/contracts/validate.py   (before-contracts-validate.log)
+## Summary
+pass: 353  fail: 4  known: 16  info: 2
+unexpected results:
+  - CX-18 check IDs, fixture coverage and the handoff task_id pattern match the catalog and tasks.json [task_id pattern accepts exactly 62 IDs] :: ["worker-handoff task_id pattern vs tasks.json: ['F02a']"]
+  - CX-21 example and fixture counts stated in the md files match the files [10 stated example counts + fixture and clip counts] :: ['workshop-math.md fixture count vs 40']
+  - CX-29 .orchestration/evidence/F02/math/validation.log: 49 recorded hashes match current files :: ['.orchestration/contracts/fixtures/workshop/index.json']
+  - handoffs/F02a.json conforms to worker-handoff 1.0 (schema only; --handoff for hashes) :: ["schema pattern@/task_id: 'F02a' does not match '^(?:F0[0-3]|D0[0-2]|P0[0-5]|W0[0-4]|C(?:0[0-9]|1[01])|U0[0-5]|N(?:0[0-9]|10)|"]
+exit_code=1
+[exit 1]
+
+## AFTER: same command   (after-contracts-validate.log)
+## Summary
+pass: 360  fail: 0  known: 16  info: 2
+exit_code=0
+[exit 0]
+
+## Checks that changed state (before -> after)
+  CX-18 : FAIL  -> PASS 
+  CX-21 : FAIL  -> PASS 
+  CX-29 .orchestration/evidence/F02/math: FAIL  -> PASS 
+  CX-29 .orchestration/evidence/F02/offers: PASS  -> PASS 
+  handoffs/F02a.json: FAIL  -> PASS 
+  CX-01 : PASS  -> PASS 
+  NC-15: absent -> PASS 
+  NC-16: absent -> PASS 
+  NC-17: absent -> PASS 
+
+## Handoff deep checks: $VENV/bin/python .orchestration/contracts/validate.py --handoff .orchestration/handoffs/<T>.json
+### F00 before
+FAIL  F00.json: schema-valid; base_commit = HEAD; 157 artifact hashes match; changed paths and 145 evidence paths exist :: ["schema enum@/blocked_checks/5/status: 'not_visible' is not one of ['blocked', 'not_run']", "schema enum@/blocked_checks/6/status: 'not_visible' is not one of ['blocked', 'not_run']", "schema pattern@/changed_paths/2: '.orchestration/evidence/F00/ (untracked; written by the repo, assets and chec
+### F00 after
+FAIL  F00.json: schema-valid; base_commit = HEAD; 157 artifact hashes match; changed paths and 145 evidence paths exist :: ["schema enum@/blocked_checks/5/status: 'not_visible' is not one of ['blocked', 'not_run']", "schema enum@/blocked_checks/6/status: 'not_visible' is not one of ['blocked', 'not_run']", "schema pattern@/changed_paths/2: '.orchestration/evidence/F00/ (untracked; written by the repo, assets and chec
+### F02 before
+FAIL  F02.json: schema-valid; base_commit = HEAD; 431 artifact hashes match; changed paths and 6 evidence paths exist :: ['base_commit 5cbbf9b5d21dbf03d2cb44e524a6fcdc10d5515b != HEAD d1a37cf3c17953529774e7801af8f0c16eedb925', 'artifact hash differs .orchestration/contracts/fixtures/workshop/index.json', 'contract file not listed as artifact: .orchestration/contracts/fixtures/workshop/WM39-group-total-from-exact-valu
+### F02 after
+FAIL  F02.json: schema-valid; base_commit = HEAD; 431 artifact hashes match; changed paths and 6 evidence paths exist :: ['base_commit 5cbbf9b5d21dbf03d2cb44e524a6fcdc10d5515b != HEAD d1a37cf3c17953529774e7801af8f0c16eedb925', 'artifact hash differs .orchestration/contracts/README.md', 'artifact hash differs .orchestration/contracts/approval-scopes.md', 'artifact hash differs .orchestration/contracts/examples/invalid
+### F02a before
+FAIL  F02a.json: schema-valid; base_commit = HEAD; 35 artifact hashes match; changed paths and 20 evidence paths exist :: ["schema pattern@/task_id: 'F02a' does not match '^(?:F0[0-3]|D0[0-2]|P0[0-5]|W0[0-4]|C(?:0[0-9]|1[01])|U0[0-5]|N(?:0[0-9]|10)|"]
+### F02a after
+FAIL  F02a.json: schema-valid; base_commit = HEAD; 35 artifact hashes match; changed paths and 20 evidence paths exist :: ['base_commit cb3becf25ed042b977d4864ae71e74d13829320f != HEAD d1a37cf3c17953529774e7801af8f0c16eedb925']
+### F03 before
+FAIL  F03.json: schema-valid; base_commit = HEAD; 36 artifact hashes match; changed paths and 42 evidence paths exist :: ['base_commit cb3becf25ed042b977d4864ae71e74d13829320f != HEAD d1a37cf3c17953529774e7801af8f0c16eedb925', 'artifact missing tests/baseline/run.mjs', 'artifact missing tests/baseline/runner-lib.mjs', 'artifact missing tests/baseline/runner.test.mjs', 'artifact missing tests/baseline/contracts.test.t
+### F03 after
+FAIL  F03.json: schema-valid; base_commit = HEAD; 36 artifact hashes match; changed paths and 42 evidence paths exist :: ['base_commit cb3becf25ed042b977d4864ae71e74d13829320f != HEAD d1a37cf3c17953529774e7801af8f0c16eedb925', 'artifact missing tests/baseline/run.mjs', 'artifact missing tests/baseline/runner-lib.mjs', 'artifact missing tests/baseline/runner.test.mjs', 'artifact missing tests/baseline/contracts.test.t
+
+## Negative controls on copies (negative-controls-copy.log)
+== nc0: unmodified copy of the current contracts/
+[exit 0]
+== nc1: contracts/ at HEAD d1a37cf (before A0 patch 1), checked by the patched validate.py
+[exit 1]
+== nc2: task_id pattern widened to a generic [a-z] suffix on every ID (expect CX-18)
+[exit 1]
+== nc3: the WM40 row removed from the workshop-math.md s10 table (expect CX-21)
+[exit 1]
+== nc4: an extra fixture WM41 with no index entry, no s10 row and no recorded hash (expect S5, CX-21, CX-29)
+[exit 1]
+== nc5: worker-handoff $id set back to 1.0 while the title and index row say 1.1 (expect S2, CX-01)
+[exit 1]
+
+## Lane validators, read-only (after-lane-validators.log)
+$ $VENV/bin/python .orchestration/evidence/F02/data/validate_f02_data.py
+## Result: 298 passed, 0 failed
+[exit 0]
+$ $VENV/bin/python .orchestration/evidence/F02/math/validate.py
+== summary: 116 passed, 1 failed
+[exit 1]
+$ $VENV/bin/python .orchestration/evidence/F02/offers/validate_offers.py
+pass: 92  fail: 0
+[exit 0]
+
+## ===== Repair attempt 2 (reviews/A0-patch-1.md, A0P1-A6-P2-1) =====
+## BEFORE attempt 2 (attempt 1's tree, scratch copy PRE):   attempt2-before-contracts-validate.log
+pass: 360  fail: 0  known: 16  info: 2
+exit_code=0
+## AFTER attempt 2:   attempt2-after-contracts-validate.log
+pass: 361  fail: 0  known: 16  info: 2
+exit_code=0
+## Checks that changed (before -> after): every attempt-1 check still runs (label multiset compared; none removed)
+  CX-29 math log   : PASS -> PASS  (now: records pinned; A0 patch 1 math record changed = workshop-math.md, index.json; 46 bundle lines current, superseding nothing)
+  CX-29 offers log : PASS -> PASS  (now: record pinned; changed = schema, approval-scopes.md, unknown-task-id.why.txt, gen_offers.py, validate_offers.py; 40 lines current)
+  NC-18            : absent -> PASS (WM01 value + record not regenerated / regenerated in place / regenerated and re-registered; WM38 + F02a record regenerated in place; worker-handoff example + offers record regenerated and re-registered: all caught by CX-29)
+
+## The reviewer's reproduction (attempt2-rebless-repro.log): WM01 first gap_cents 1800000 -> 1800001
+  attempt 1 tree: validate exit 1 -> make_records.sh exit 0 -> validate exit 0   (the defect)
+  attempt 2 tree: validate exit 1 -> make_records.sh refuses, exit 3 -> validate exit 1
+                  forced regeneration (records deleted, script re-run) -> validate exit 1 (record bytes differ from registration; WM01 drift)
+                  forced regeneration + re-pinned in validate.py -> validate exit 1 (WM01 drift: WM01 is in no record's changed list)
+  lane compute_fixtures.py --check reports WM01 differing in both copies (exit 1)
+
+## Handoff deep checks (attempt2-handoff-*.log): unchanged from attempt 1
+  F00  exit 1: the same 6 XL-14 schema errors
+  F02  exit 1: base_commit 5cbbf9b != HEAD; patched contract bytes differ from F02's acceptance hashes (the recorded change, s3a)
+  F02a exit 1: only base_commit cb3becf != HEAD; 35/35 artifact hashes match
+  F03  exit 1: base_commit cb3becf != HEAD; F03 branch artifacts not in this tree
+
+## Negative controls on copies (attempt2-negative-controls-copy.log)
+  nc0 exit 0; nc1 (contracts at HEAD) exit 1; nc2 (generic suffix) exit 1; nc3 (no WM40 row) exit 1; nc4 (WM41) exit 1; nc5 ($id 1.0) exit 1; nc6 (WM01 value) exit 1
+
+## Lane validators, read-only (attempt2-lane-validators.log)
+  data 298 passed, 0 failed, exit 0; math 116 passed, 1 failed, exit 1 (the known compute_fixtures.py --check failure: index.json, WM37-WM40; README s5.3);
+  offers pass 92 fail 0, exit 0; F02a compute_f02a_fixtures.py --check exit 0 (WM37-WM40 + index.json, and WM01-WM36 + clip-rules.json byte for byte)

@@ -1,0 +1,57 @@
+# A0 patch 1 attempt 2: the A0P1-A6-P2-1 reproduction (reviews/A0-patch-1.md, Findings, steps 1-3) before and after. date (UTC): 2026-09-30T11:37:10Z
+# expected BEFORE (attempt 1): edit -> exit 1; make_records.sh -> exit 0; validate -> exit 0 (the defect).
+# expected AFTER (attempt 2): edit -> exit 1; make_records.sh refuses (exit 3); forced regeneration -> exit 1;
+#   forced regeneration plus re-pinning the regenerated records in validate.py -> still exit 1 (WM01 is in no record's changed list).
+
+== BEFORE (copy of attempt 1's tree: /tmp/claude-0/-home-user/bb8d4187-6ae8-587b-a816-8153faeea853/scratchpad/a0p1r2/rb-before)
+WM01: first gap_cents 1800000 -> 1800001 (a wrong expected value in a file A0 patch 1 never touched)
+validate.py after the WM01 edit: [exit 1]
+pass: 359  fail: 1  known: 16  info: 2
+exit_code=1
+  FAIL CX-29 .orchestration/evidence/F02/math/validation.log: 49 recorded hashes, 47 match; 2 superseded an ... :: ['record .orchestration/evidence/A0-patch-1/math-bundle.sha256.log (A0 patch 1 (D-074)) is stale for fixtures/workshop/WM01-zero-inflation-zero-escalation.json', 'drift .orchestration/contracts/fixtures/workshop/WM01-zero-inflation-zero-escalation.json', "no recorded hash for ['fixtures/workshop/WM01-zero-inflation-zero-escalation.json']"]
+   50 /tmp/claude-0/-home-user/bb8d4187-6ae8-587b-a816-8153faeea853/scratchpad/a0p1r2/rb-before/.orchestration/evidence/A0-patch-1/math-bundle.sha256.log
+   44 /tmp/claude-0/-home-user/bb8d4187-6ae8-587b-a816-8153faeea853/scratchpad/a0p1r2/rb-before/.orchestration/evidence/A0-patch-1/worker-handoff-1.1.sha256.log
+   94 total
+make_records.sh: [exit 0]
+validate.py after make_records.sh: [exit 0]
+pass: 360  fail: 0  known: 16  info: 2
+exit_code=0
+PASS  CX-29 .orchestration/evidence/F02/math/validation.log: 49 recorded hashes, 46 match; 3 superseded and 7 files recorded by ['A0 patch 1 (D-074)', 'F02a (D-072)']; coverage ['fixtures/workshop/*.json']
+== bound: max C_R at r = 0 = 21,938,105,946,171 cents (< 2^53-1 = 9,007,199,254,740,991: True)
+== check: 38 fixture files regenerated; differing: ['WM01-zero-inflation-zero-escalation.json', 'index.json']; unexpected files: ['WM37-today-dollar-pre-start-factor.json', 'WM38-joint-owner-participant-age.json', 'WM39-group-total-from-exact-values.json', 'WM40-today-dollar-display-from-exact-gap.json']
+lane compute_fixtures.py --check: [exit 1]
+
+== AFTER (copy of this tree: /tmp/claude-0/-home-user/bb8d4187-6ae8-587b-a816-8153faeea853/scratchpad/a0p1r2/rb-after)
+WM01: first gap_cents 1800000 -> 1800001 (a wrong expected value in a file A0 patch 1 never touched)
+validate.py after the WM01 edit: [exit 1]
+pass: 360  fail: 1  known: 16  info: 2
+exit_code=1
+  FAIL CX-29 .orchestration/evidence/F02/math/validation.log: 49 recorded hashes, 47 match; 2 superseded an ... :: ['record .orchestration/evidence/A0-patch-1/math-bundle.sha256.log (A0 patch 1 (D-074)) is stale for fixtures/workshop/WM01-zero-inflation-zero-escalation.json', 'drift .orchestration/contracts/fixtures/workshop/WM01-zero-inflation-zero-escalation.json', "no recorded hash for ['fixtures/workshop/WM01-zero-inflation-zero-escalation.json']"]
+refusing: /tmp/claude-0/-home-user/bb8d4187-6ae8-587b-a816-8153faeea853/scratchpad/a0p1r2/rb-after/.orchestration/evidence/A0-patch-1/math-bundle.sha256.log exists; a CX-29 record is written once for its round (contracts README s1, CX-29)
+make_records.sh: [exit 3]
+validate.py after the refused make_records.sh: [exit 1]
+pass: 360  fail: 1  known: 16  info: 2
+exit_code=1
+  FAIL CX-29 .orchestration/evidence/F02/math/validation.log: 49 recorded hashes, 47 match; 2 superseded an ... :: ['record .orchestration/evidence/A0-patch-1/math-bundle.sha256.log (A0 patch 1 (D-074)) is stale for fixtures/workshop/WM01-zero-inflation-zero-escalation.json', 'drift .orchestration/contracts/fixtures/workshop/WM01-zero-inflation-zero-escalation.json', "no recorded hash for ['fixtures/workshop/WM01-zero-inflation-zero-escalation.json']"]
+
+-- forced regeneration: delete both records, then make_records.sh
+   50 /tmp/claude-0/-home-user/bb8d4187-6ae8-587b-a816-8153faeea853/scratchpad/a0p1r2/rb-after/.orchestration/evidence/A0-patch-1/math-bundle.sha256.log
+   44 /tmp/claude-0/-home-user/bb8d4187-6ae8-587b-a816-8153faeea853/scratchpad/a0p1r2/rb-after/.orchestration/evidence/A0-patch-1/worker-handoff-1.1.sha256.log
+   94 total
+make_records.sh: [exit 0]
+validate.py after the forced regeneration: [exit 1]
+pass: 359  fail: 2  known: 16  info: 2
+exit_code=1
+  FAIL CX-29 .orchestration/evidence/F02/math/validation.log: 49 recorded hashes, 47 match; 2 superseded an ... :: ['record .orchestration/evidence/A0-patch-1/math-bundle.sha256.log (A0 patch 1 (D-074)) bytes differ from its registration (sha256 4561635c93df..., registered bc80f539dc5c...): a record is written once for its round; a later round writes and registers its own record', 'drift .orchestration/contracts/fixtures/workshop/WM01-zero-inflation-zero-escalation.json', "no recorded hash for ['fixtures/workshop/WM01-zero-inflation-zero-escalation.json']"]
+  FAIL CX-29 .orchestration/evidence/F02/offers/validation.log: 139 recorded hashes, 135 match; 4 supersede ... :: ['record .orchestration/evidence/A0-patch-1/worker-handoff-1.1.sha256.log (A0 patch 1 (D-074)) bytes differ from its registration (sha256 8661c9f57f53..., registered e838813371b9...): a record is written once for its round; a later round writes and registers its own record']
+
+-- forced regeneration plus re-registration: the pinned sha256 in the copy's validate.py set to the regenerated records
+re-pinned .orchestration/evidence/A0-patch-1/math-bundle.sha256.log: bc80f539dc5c... -> 4561635c93df...
+re-pinned .orchestration/evidence/A0-patch-1/worker-handoff-1.1.sha256.log: e838813371b9... -> 8661c9f57f53...
+validate.py after re-registration: [exit 1]
+pass: 360  fail: 1  known: 16  info: 2
+exit_code=1
+  FAIL CX-29 .orchestration/evidence/F02/math/validation.log: 49 recorded hashes, 47 match; 2 superseded an ... :: ['drift .orchestration/contracts/fixtures/workshop/WM01-zero-inflation-zero-escalation.json', "no recorded hash for ['fixtures/workshop/WM01-zero-inflation-zero-escalation.json']"]
+== bound: max C_R at r = 0 = 21,938,105,946,171 cents (< 2^53-1 = 9,007,199,254,740,991: True)
+== check: 38 fixture files regenerated; differing: ['WM01-zero-inflation-zero-escalation.json', 'index.json']; unexpected files: ['WM37-today-dollar-pre-start-factor.json', 'WM38-joint-owner-participant-age.json', 'WM39-group-total-from-exact-values.json', 'WM40-today-dollar-display-from-exact-gap.json']
+lane compute_fixtures.py --check: [exit 1]

@@ -1,0 +1,19 @@
+{
+  "run_id": "wf_f0daf97f-ca5",
+  "task_ids": [
+    "briefing-video-prep"
+  ],
+  "kind": "workflow",
+  "provider": "Anthropic (Claude Code session)",
+  "model": "inherited session model",
+  "agents": 2,
+  "tool_uses": 133,
+  "subagent_tokens": 390325,
+  "wall_time_s": 1601,
+  "metered_cost": {
+    "amount": null,
+    "currency": null,
+    "status": "unavailable-not-estimated"
+  },
+  "external_actions": "read-only web searches; npm installs; local renders"
+}

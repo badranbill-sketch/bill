@@ -1,0 +1,17 @@
+# F02 contract set validation (validate.py)
+utc_now: 2026-09-30T10:47:53Z
+python: 3.11.15  jsonschema: 4.26.0
+repo: /home/user/bill  branch: claude/orchestration-foundation  HEAD: d1a37cf3c17953529774e7801af8f0c16eedb925
+contracts dir: /home/user/bill/.orchestration/contracts
+contract set version: 1.0  frozen for build on: 2026-09-30
+environment: local container; fixture evidence only (no browser, no network, no provider)
+
+## Handoff check: /home/user/bill/.orchestration/handoffs/F02.json
+FAIL  F02.json: schema-valid; base_commit = HEAD; 431 artifact hashes match; changed paths and 6 evidence paths exist :: ['base_commit 5cbbf9b5d21dbf03d2cb44e524a6fcdc10d5515b != HEAD d1a37cf3c17953529774e7801af8f0c16eedb925', 'artifact hash differs .orchestration/contracts/fixtures/workshop/index.json', 'contract file not listed as artifact: .orchestration/contracts/fixtures/workshop/WM39-group-total-from-exact-values.json', 'contract file not listed as artifact: .orchestration/contracts/fixtures/workshop/WM37-today-dollar-pre-start-factor.json', 'contract file not listed as artifact: .orchestration/contracts/fixtures/workshop/WM40-today-dollar-display-from-exact-gap.json', 'contract file not listed as artifact: .orchestration/contracts/fixtures/workshop/WM38-joint-owner-participant-age.json']
+
+## Summary
+pass: 0  fail: 1  known: 0  info: 0
+unexpected results:
+  - F02.json: schema-valid; base_commit = HEAD; 431 artifact hashes match; changed paths and 6 evidence paths exist :: ['base_commit 5cbbf9b5d21dbf03d2cb44e524a6fcdc10d5515b != HEAD d1a37cf3c17953529774e7801af8f0c16eedb925', 'artifact hash differs .orchestration/contracts/fixtures/workshop/index.json', 
+exit_code=1
+[exit 1]

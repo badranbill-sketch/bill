@@ -34,8 +34,11 @@ DRAFT = "https://json-schema.org/draft/2020-12/schema"
 GATES = [f"G{i}" for i in range(7)]
 HUMAN_ROLES = ["arnaud", "bill", "firm_reviewer", "privacy_owner", "account_owner"]
 AGENT_ROLES = ["A0", "A1", "A2", "A3", "A4", "A5", "A6"]
+# Worker handoff 1.1 (A0 patch 1, D-074): the 62 planned IDs plus each split task recorded in tasks.json
+# (split_from), listed explicitly. Today the only split is F02a (D-072). A further split adds its ID here in a
+# new minor version (WH-ID-1); no generic suffix is accepted.
 TASK_ID_PATTERN = (
-    "^(?:F0[0-3]|D0[0-2]|P0[0-5]|W0[0-4]|C(?:0[0-9]|1[01])|U0[0-5]"
+    "^(?:F0[0-3]|F02a|D0[0-2]|P0[0-5]|W0[0-4]|C(?:0[0-9]|1[01])|U0[0-5]"
     "|N(?:0[0-9]|10)|R0[0-2]|H0[01]|L0[0-6]|O0[0-2])$"
 )
 DATE_PATTERN = "^20[0-9]{2}-(?:0[1-9]|1[0-2])-(?:0[1-9]|[12][0-9]|3[01])$"
@@ -1447,8 +1450,8 @@ def text(min_len=1, max_len=4000):
 
 WORKER_HANDOFF_SCHEMA = {
     "$schema": DRAFT,
-    "$id": f"{BASE}/worker-handoff/1.0",
-    "title": "Worker handoff 1.0",
+    "$id": f"{BASE}/worker-handoff/1.1",
+    "title": "Worker handoff 1.1",
     "description": (
         "The worker handoff of 03 ('Worker handoff schema'), closed. A worker submits it and stops; "
         "status can only be 'submitted' because A0 writes acceptance separately after A6 verification. "
@@ -1465,7 +1468,7 @@ WORKER_HANDOFF_SCHEMA = {
                  "external_actions_taken", "metered_cost", "status"],
     "properties": {
         "task_id": {"type": "string", "pattern": TASK_ID_PATTERN,
-                    "description": "One of the 62 task IDs in .orchestration/tasks.json. A split task needs a contract minor version."},
+                    "description": "One of the 63 task IDs in .orchestration/tasks.json: the 62 planned IDs and the split task F02a (D-072), listed explicitly, not as a generic suffix. A further split task needs a new contract minor version (WH-ID-1)."},
         "base_commit": {"type": "string", "pattern": SHA40},
         "result_commit": {"anyOf": [{"type": "string", "pattern": SHA40}, {"type": "null"}],
                           "description": "null when the work is uncommitted (workers do not commit unless the packet says so)."},
@@ -1659,7 +1662,7 @@ WH_INVALID = [
      "WH-PATH-2", "changed_paths hold paths only; prose notes belong in assumptions.",
      "pattern", "/changed_paths/0"),
     ("unknown-task-id", "min", lambda d: dict(d, task_id="W99"), "WH-ID-1",
-     "task_id is one of the 62 task IDs in tasks.json.",
+     "task_id is one of the 63 task IDs in tasks.json (the 62 planned IDs and the split task F02a).",
      "pattern", "/task_id"),
     ("exit-code-string", "min",
      lambda d: dict(d, tests=[dict(d["tests"][0], exit_code="0")]), "WH-TEST-1",
