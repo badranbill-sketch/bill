@@ -1,0 +1,505 @@
+{
+  "meta": {
+    "source": "04_CONTRACTS_AND_TESTS.md §8",
+    "count": 62,
+    "note": "Every check starts not_run. Statuses: pass, fail, blocked, not_run."
+  },
+  "checks": [
+    {
+      "id": "BASE01",
+      "title": "Preserve and reproduce the actual baseline",
+      "method": "Inspect git status and branch graph; clean install and run existing check commands without modifying guards.",
+      "required_evidence": "Commit SHA, dirty-tree handling, command logs and observed failures.",
+      "status": "not_run",
+      "evidence": []
+    },
+    {
+      "id": "BASE02",
+      "title": "No regressions in chosen site",
+      "method": "Exercise both language routes and existing guide/journey/contact paths at supported widths.",
+      "required_evidence": "Before/after screenshots, browser logs and regression results.",
+      "status": "not_run",
+      "evidence": []
+    },
+    {
+      "id": "AUTH01",
+      "title": "No unauthorized operational data access",
+      "method": "Attempt anonymous and other-identity reads/writes of contacts, orders, rights and jobs.",
+      "required_evidence": "Denied access tests plus RLS/grant review.",
+      "status": "not_run",
+      "evidence": []
+    },
+    {
+      "id": "AUTH02",
+      "title": "No secrets in client/source/artifacts",
+      "method": "Scan bundle, source, exports, logs and screenshots; inspect public environment prefix use.",
+      "required_evidence": "Scanner output and manually inspected bundles.",
+      "status": "not_run",
+      "evidence": []
+    },
+    {
+      "id": "AUTH03",
+      "title": "Verified ingress and validation",
+      "method": "Send invalid signatures, stale/replayed requests, oversized/malformed bodies and foreign-origin form posts.",
+      "required_evidence": "HTTP results and unchanged durable state.",
+      "status": "not_run",
+      "evidence": []
+    },
+    {
+      "id": "AUTH04",
+      "title": "Staging stays separate and private",
+      "method": "Access staging without credentials and test callback-specific verification; compare provider/database IDs.",
+      "required_evidence": "Access tests, configuration names, recipient allowlist evidence.",
+      "status": "not_run",
+      "evidence": []
+    },
+    {
+      "id": "AUTH05",
+      "title": "No privilege escalation through agent or content input",
+      "method": "Inject instructions/URLs into RSS, forms and notes; verify data never becomes commands or new tool authority.",
+      "required_evidence": "Adversarial fixtures and resulting safe behavior.",
+      "status": "not_run",
+      "evidence": []
+    },
+    {
+      "id": "INF01",
+      "title": "n8n loopback and TLS",
+      "method": "Inspect compose/ss/docker ports and external probes; inspect proxy and HTTPS chain.",
+      "required_evidence": "Only intended public ports; hostname and editor authentication evidence.",
+      "status": "not_run",
+      "evidence": []
+    },
+    {
+      "id": "INF02",
+      "title": "Pinned supported n8n setup",
+      "method": "Resolve exact official image tag/digest and version-supported variables; validate Compose and start clean.",
+      "required_evidence": "Image digest, version, startup logs and Compose validation.",
+      "status": "not_run",
+      "evidence": []
+    },
+    {
+      "id": "INF03",
+      "title": "Encryption key recovery works",
+      "method": "Restore encrypted credentials into isolated instance using separate backed-up original key.",
+      "required_evidence": "Isolated decryption/use evidence without exposing values.",
+      "status": "not_run",
+      "evidence": []
+    },
+    {
+      "id": "INF04",
+      "title": "Consistent nightly backup and retention",
+      "method": "Run backup twice, inject failure, verify data/exports/checksums and fourteen successful daily sets.",
+      "required_evidence": "Manifests, failure alert and retained known-good snapshot.",
+      "status": "not_run",
+      "evidence": []
+    },
+    {
+      "id": "INF05",
+      "title": "Off-host restore and update rollback",
+      "method": "Restore to separate blocked-egress environment; exercise pinned update and failed health check.",
+      "required_evidence": "Measured recovery, compatible version/data pair and no real side effects.",
+      "status": "not_run",
+      "evidence": []
+    },
+    {
+      "id": "INF06",
+      "title": "Supabase restore and media separation",
+      "method": "Restore database/schema and required object manifest into isolated test project/store.",
+      "required_evidence": "Counts/checksums, RLS restored and object availability.",
+      "status": "not_run",
+      "evidence": []
+    },
+    {
+      "id": "INF07",
+      "title": "No production first-boot takeover",
+      "method": "Verify owner setup is inaccessible to arbitrary internet user until legitimate owner establishes account.",
+      "required_evidence": "Bootstrap access procedure and authentication check.",
+      "status": "not_run",
+      "evidence": []
+    },
+    {
+      "id": "WK01",
+      "title": "Units and missingness",
+      "method": "Test zero versus unknown, month/year conversion, household basis, invalid numbers and field limits.",
+      "required_evidence": "Independent deterministic unit fixtures.",
+      "status": "not_run",
+      "evidence": []
+    },
+    {
+      "id": "WK02",
+      "title": "Inflation and timing math",
+      "method": "Test zero inflation/return, known closed forms, later starts, start/end-year conventions and nominal/real handling.",
+      "required_evidence": "Independently computed fixtures and tolerance results.",
+      "status": "not_run",
+      "evidence": []
+    },
+    {
+      "id": "WK03",
+      "title": "No false sufficiency verdict",
+      "method": "Use gross/net mismatch, incomplete income, housing-only wealth and overlapping pension asset/income cases.",
+      "required_evidence": "Explicit warnings/no verdict; reviewer output.",
+      "status": "not_run",
+      "evidence": []
+    },
+    {
+      "id": "WK04",
+      "title": "Private figures remain local",
+      "method": "Enter synthetic distinctive amounts; inspect all requests, analytics, errors, logs and storage.",
+      "required_evidence": "Network capture proves no amounts/derived financial profile leaves browser.",
+      "status": "not_run",
+      "evidence": []
+    },
+    {
+      "id": "WK05",
+      "title": "Navigate/edit/reset",
+      "method": "Complete, go back, edit, skip, refresh and reset; test optional local-save expiry/shared-device disclosure.",
+      "required_evidence": "State-machine/browser test results.",
+      "status": "not_run",
+      "evidence": []
+    },
+    {
+      "id": "WK06",
+      "title": "Branch precedence and truthful media",
+      "method": "Test all clip-rule overlaps and fallback; verify disclosure and actual media/captions.",
+      "required_evidence": "Rule matrix, playable IDs and no false personal-review copy.",
+      "status": "not_run",
+      "evidence": []
+    },
+    {
+      "id": "WK07",
+      "title": "Useful independent summary",
+      "method": "Finish without email or booking and print/export; inspect assumptions and accessible data.",
+      "required_evidence": "Readable local summary/PDF/print and no mandatory upsell.",
+      "status": "not_run",
+      "evidence": []
+    },
+    {
+      "id": "UX01",
+      "title": "Phone and desktop accessibility",
+      "method": "Keyboard, focus, screen-reader spot test, contrast, zoom, reduced motion, 320/390/768/1440 widths.",
+      "required_evidence": "Screenshots, a11y scan and manual walkthrough notes.",
+      "status": "not_run",
+      "evidence": []
+    },
+    {
+      "id": "UX02",
+      "title": "Real iPhone Safari walkthrough",
+      "method": "Use actual available iPhone Safari for video/form/print/booking; if unavailable record blocked not pass.",
+      "required_evidence": "Device/version, steps and observed issues.",
+      "status": "not_run",
+      "evidence": []
+    },
+    {
+      "id": "UX03",
+      "title": "Professional ink family",
+      "method": "Render all eight in context and mobile crops; inspect perspective, hatching and accidental artifacts.",
+      "required_evidence": "Approved contact sheet, source files, alt text and rights manifest.",
+      "status": "not_run",
+      "evidence": []
+    },
+    {
+      "id": "MED01",
+      "title": "Real approved recordings",
+      "method": "Compare manifest against supplied Bill recordings, rights, transcripts and actual clip durations.",
+      "required_evidence": "Playable files, checksums, caption checks and permission refs.",
+      "status": "not_run",
+      "evidence": []
+    },
+    {
+      "id": "MED02",
+      "title": "Bandwidth/playback behavior",
+      "method": "Measure real encode sizes; test seek/range, buffering, no-autoplay audio and caption behavior.",
+      "required_evidence": "Media-origin test and usage estimate.",
+      "status": "not_run",
+      "evidence": []
+    },
+    {
+      "id": "EV01",
+      "title": "Correct event details and private invites",
+      "method": "Register external test guests in chosen language; verify time zone/link/ICS/cap; inspect recipient visibility.",
+      "required_evidence": "Received individual invitations and no exposed guest list.",
+      "status": "not_run",
+      "evidence": []
+    },
+    {
+      "id": "EV02",
+      "title": "Fair cases and scoring",
+      "method": "Independently solve all ten cases from disclosed facts; check sources and hidden-reveal scoring.",
+      "required_evidence": "Answer-key audit and timed rehearsal.",
+      "status": "not_run",
+      "evidence": []
+    },
+    {
+      "id": "EV03",
+      "title": "Meet works for external attendees",
+      "method": "Test outside-organization phone/desktop guest, host/moderator, polls/chat and recording disclosure.",
+      "required_evidence": "Actual tenant/feature evidence and rehearsal checklist.",
+      "status": "not_run",
+      "evidence": []
+    },
+    {
+      "id": "EV04",
+      "title": "Attendance truthfulness",
+      "method": "Exercise registered, join_clicked, verified attended and unknown states.",
+      "required_evidence": "No-show branch never inferred from missing/unavailable evidence.",
+      "status": "not_run",
+      "evidence": []
+    },
+    {
+      "id": "MAIL01",
+      "title": "Delivery not just API acceptance",
+      "method": "Send approved test messages to allowlisted inboxes; verify headers, body, language, links and actual receipt.",
+      "required_evidence": "Provider ID plus inbox evidence, no exposed credentials.",
+      "status": "not_run",
+      "evidence": []
+    },
+    {
+      "id": "MAIL02",
+      "title": "No silent marketing enrolment",
+      "method": "Request PDF/event without opt-in and separately opt in; inspect eligibility and records.",
+      "required_evidence": "Consent fixtures and no unauthorized promotional sends.",
+      "status": "not_run",
+      "evidence": []
+    },
+    {
+      "id": "MAIL03",
+      "title": "Unsubscribe wins races",
+      "method": "Withdraw consent while a job is queued/leased; upsert contact after blocklist and retry old job.",
+      "required_evidence": "Suppressed send, no automatic resubscribe and audit record.",
+      "status": "not_run",
+      "evidence": []
+    },
+    {
+      "id": "MAIL04",
+      "title": "Shared quota and expired reminders",
+      "method": "Forecast overlapping campaigns; force 429/daily cap/restart and event-time expiry.",
+      "required_evidence": "Priority/cap behavior, no overdue reminder and operator alert.",
+      "status": "not_run",
+      "evidence": []
+    },
+    {
+      "id": "MAIL05",
+      "title": "No duplicate send on uncertain timeout",
+      "method": "Simulate provider accepted request then response lost; restart worker and reconcile.",
+      "required_evidence": "Stored provider/job state, documented uncertainty handling.",
+      "status": "not_run",
+      "evidence": []
+    },
+    {
+      "id": "AUTO01",
+      "title": "Import works in selected n8n version",
+      "method": "Import each disabled export and validate credentials/nodes manually with fixtures.",
+      "required_evidence": "Actual workflow IDs, version and import logs.",
+      "status": "not_run",
+      "evidence": []
+    },
+    {
+      "id": "AUTO02",
+      "title": "Atomic job claim and retry",
+      "method": "Run simultaneous worker claims, replay same source event, crash mid-job and re-run.",
+      "required_evidence": "Unique event/job rows, lease recovery and bounded retries.",
+      "status": "not_run",
+      "evidence": []
+    },
+    {
+      "id": "AUTO03",
+      "title": "Smoke integrations work",
+      "method": "Run RSS-to-email and authenticated Telegram webhook to approved test recipients; test failure cases.",
+      "required_evidence": "Imported workflow IDs, actual received messages and safe rejection.",
+      "status": "not_run",
+      "evidence": []
+    },
+    {
+      "id": "AUTO04",
+      "title": "Manual fallback reconciles",
+      "method": "Use documented manual fulfilment/booking/posting path; record ID; resume automation.",
+      "required_evidence": "No duplicate or lost action after operator reconciliation.",
+      "status": "not_run",
+      "evidence": []
+    },
+    {
+      "id": "PAY01",
+      "title": "Payment truth and deduplication",
+      "method": "Replay signed paid webhook; send redirect-only and unpaid/failed/asynchronous fixtures.",
+      "required_evidence": "No entitlement until verified paid; one right/order.",
+      "status": "not_run",
+      "evidence": []
+    },
+    {
+      "id": "PAY02",
+      "title": "Rights redemption and rescheduling",
+      "method": "Redeem another identity, expired/used token, duplicate request and valid buyer reschedule.",
+      "required_evidence": "Unauthorized denied; existing right preserved once.",
+      "status": "not_run",
+      "evidence": []
+    },
+    {
+      "id": "PAY03",
+      "title": "Refund/cap/fulfilment consistency",
+      "method": "Test approved refund behavior, stock/calendar cap and dispatch failure.",
+      "required_evidence": "Correct rights/fulfilment ledger and no fabricated shipment.",
+      "status": "not_run",
+      "evidence": []
+    },
+    {
+      "id": "BOOK01",
+      "title": "Actual calendar is authoritative",
+      "method": "Book/cancel/reschedule with cross-calendar conflict, buffer, DST and online/in-person variants.",
+      "required_evidence": "Provider event IDs and no double-booked slot.",
+      "status": "not_run",
+      "evidence": []
+    },
+    {
+      "id": "BOOK02",
+      "title": "No false conversion from clicks",
+      "method": "Visit scheduling page without booking; reconcile actual test booking and cancellation.",
+      "required_evidence": "Only actual event/operator evidence changes booked state.",
+      "status": "not_run",
+      "evidence": []
+    },
+    {
+      "id": "CNT01",
+      "title": "Inventory exists and is substantive",
+      "method": "Count and read all required scripts/briefs/templates/drawings, not filenames only.",
+      "required_evidence": "Asset manifest with completeness review.",
+      "status": "not_run",
+      "evidence": []
+    },
+    {
+      "id": "CNT02",
+      "title": "No fabricated Bill claims",
+      "method": "Check every client anecdote, experience/designation, first-person philosophy and promise against approved sources.",
+      "required_evidence": "Claim ledger and flagged/removed unsupported copy.",
+      "status": "not_run",
+      "evidence": []
+    },
+    {
+      "id": "CNT03",
+      "title": "Financial claims are current and reviewed",
+      "method": "Follow primary sources for jurisdiction/date; independently check arithmetic and meaning.",
+      "required_evidence": "Source ledger and real reviewer approval refs.",
+      "status": "not_run",
+      "evidence": []
+    },
+    {
+      "id": "CNT04",
+      "title": "Bilingual meaning and natural voice",
+      "method": "Read scripts aloud; verify FR/EN terms, offer durations and unsupported overclaims.",
+      "required_evidence": "Bill/reviewer notes and matched versions.",
+      "status": "not_run",
+      "evidence": []
+    },
+    {
+      "id": "CNT05",
+      "title": "Approval hashes cannot be bypassed",
+      "method": "Modify approved title/body/claim/clip and try publishing; edit approval ledger as worker.",
+      "required_evidence": "Release blocked; only genuine latest approvals accepted.",
+      "status": "not_run",
+      "evidence": []
+    },
+    {
+      "id": "CNT06",
+      "title": "Weekly publication is controlled",
+      "method": "Run draft job twice, reject draft, expire approval, fail deploy and fail LinkedIn publish.",
+      "required_evidence": "One draft/week, no unauthorized publication, ready-to-post fallback.",
+      "status": "not_run",
+      "evidence": []
+    },
+    {
+      "id": "SEO01",
+      "title": "Public content is crawlable and truthful",
+      "method": "Check robots/canonicals/hreflang/sitemap/status/structured data and protected drafts.",
+      "required_evidence": "HTTP/schema results and correct indexing boundaries.",
+      "status": "not_run",
+      "evidence": []
+    },
+    {
+      "id": "ADS01",
+      "title": "Current category/permissions verified",
+      "method": "Review current official/account-specific rules and permitted targeting, creative and audiences.",
+      "required_evidence": "Dated operator/account evidence; no unsupported age-targeting claim.",
+      "status": "not_run",
+      "evidence": []
+    },
+    {
+      "id": "ADS02",
+      "title": "No financial tracking leakage",
+      "method": "Inspect pixel/server events before/after consent, route and payload allowlists.",
+      "required_evidence": "No financial inputs, hidden personal profiling or unauthorized tags.",
+      "status": "not_run",
+      "evidence": []
+    },
+    {
+      "id": "ADS03",
+      "title": "Budget and destinations match approval",
+      "method": "Test every ad CTA; compare active scope/spend cap to human authorization.",
+      "required_evidence": "Approved campaign IDs, working destinations and cap evidence.",
+      "status": "not_run",
+      "evidence": []
+    },
+    {
+      "id": "OPS01",
+      "title": "Fail safely during outages",
+      "method": "Disable email/DB/media/integration in staging and interrupt deployment.",
+      "required_evidence": "Helpful user states, durable accepted work or honest retry error, no fake success.",
+      "status": "not_run",
+      "evidence": []
+    },
+    {
+      "id": "OPS02",
+      "title": "Actionable operator report",
+      "method": "Seed pending rights/orders, provider failures, quota warnings and booking gaps.",
+      "required_evidence": "One readable report with owner, event ID and next action.",
+      "status": "not_run",
+      "evidence": []
+    },
+    {
+      "id": "OPS03",
+      "title": "Privacy and deletion procedure",
+      "method": "Exercise access/deletion with order/consent retention constraints in fictional data.",
+      "required_evidence": "Approved retention behavior, minimal suppression retained appropriately.",
+      "status": "not_run",
+      "evidence": []
+    },
+    {
+      "id": "REL01",
+      "title": "Manifest/rollback match tested version",
+      "method": "Compare artifact hashes, approved media, migrations, workflow versions and active flags.",
+      "required_evidence": "Signed/scoped human release ref and reproducible rollback.",
+      "status": "not_run",
+      "evidence": []
+    },
+    {
+      "id": "REL02",
+      "title": "End-to-end invited pilot",
+      "method": "An external tester completes guide, workshop, event join, booking and test book path.",
+      "required_evidence": "Timestamped user journey evidence and fixed P0/P1 findings.",
+      "status": "not_run",
+      "evidence": []
+    },
+    {
+      "id": "GROW01",
+      "title": "Weekly metrics reflect real outcomes",
+      "method": "Reconcile provider/calendar/operator outcomes to source cohorts; show unknown attendance.",
+      "required_evidence": "Held-meeting counts and denominators without invented conversion results.",
+      "status": "not_run",
+      "evidence": []
+    },
+    {
+      "id": "GROW02",
+      "title": "One measured change with limits",
+      "method": "Review 30/60/90-day cohorts and actual time/cost; approve one experiment at a time.",
+      "required_evidence": "Decision log, actual budget and no autonomous spend increase.",
+      "status": "not_run",
+      "evidence": []
+    },
+    {
+      "id": "HAND01",
+      "title": "Owner can operate and recover",
+      "method": "Run an owner walkthrough, renewals review, rights/keys transfer and isolated recovery.",
+      "required_evidence": "Owner acceptance, revoked temporary access and complete runbooks.",
+      "status": "not_run",
+      "evidence": []
+    }
+  ]
+}
