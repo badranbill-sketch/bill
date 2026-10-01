@@ -8,7 +8,15 @@ import {FPS} from '../timing/timing';
 // tools/voice.py; hand edits to that file show up here). Styled apart from the film's design type: no serif, no
 // gold, just a plain high-contrast box, the same everywhere, inside the title-safe area (90% of the frame). For
 // YouTube or social uploads prefer the uncaptioned film plus the .srt as a separate track.
-export const CaptionTrack: React.FC = () => {
+// The Instagram Reel reuses it with its own file and placement (`src`, `area`, `box`); the film's defaults are below.
+export const CaptionTrack: React.FC<{
+  /** The .srt in public/ (default: the film's narration). */
+  src?: string;
+  /** Where the captions sit on the frame (merged over the film's placement). */
+  area?: React.CSSProperties;
+  /** The caption box and its type (merged over the film's style). */
+  box?: React.CSSProperties;
+}> = ({src = 'captions/narration.srt', area, box}) => {
   const frame = useCurrentFrame();
   const [captions, setCaptions] = useState<Caption[] | null>(null);
   const {delayRender, continueRender, cancelRender} = useDelayRender();
@@ -16,13 +24,13 @@ export const CaptionTrack: React.FC = () => {
 
   const load = useCallback(async () => {
     try {
-      const text = await (await fetch(staticFile('captions/narration.srt'))).text();
+      const text = await (await fetch(staticFile(src))).text();
       setCaptions(parseSrt({input: text}).captions);
       continueRender(handle);
     } catch (e) {
       cancelRender(e);
     }
-  }, [continueRender, cancelRender, handle]);
+  }, [src, continueRender, cancelRender, handle]);
 
   useEffect(() => {
     load();
@@ -33,7 +41,7 @@ export const CaptionTrack: React.FC = () => {
   if (!current) return null;
 
   return (
-    <AbsoluteFill style={{justifyContent: 'flex-end', alignItems: 'center', paddingBottom: 86, pointerEvents: 'none'}}>
+    <AbsoluteFill style={{justifyContent: 'flex-end', alignItems: 'center', paddingBottom: 86, pointerEvents: 'none', ...area}}>
       <div
         style={{
           maxWidth: 1500,
@@ -47,6 +55,7 @@ export const CaptionTrack: React.FC = () => {
           lineHeight: 1.32,
           textAlign: 'center',
           whiteSpace: 'pre-line',
+          ...box,
         }}
       >
         {current.text.trim()}

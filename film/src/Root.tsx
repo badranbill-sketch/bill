@@ -7,6 +7,8 @@ import {Film, ScenePreview} from './Film';
 import {fontsReady} from './design/typography';
 import {SCENES, SceneId} from './timing/scenes';
 import {FPS, TOTAL_FRAMES} from './timing/timing';
+import {BillReel} from './reel/BillReel';
+import {FPS as REEL_FPS, REEL_FRAMES} from './reel/timing';
 
 void fontsReady;
 
@@ -30,6 +32,8 @@ export const RemotionRoot: React.FC = () => (
       durationInFrames={TOTAL_FRAMES}
       defaultProps={{captions: true}}
     />
+    {/* the 30-second vertical Instagram Reel (src/reel), timed from src/data/reel-timing.json */}
+    <Composition id="BillReel" component={BillReel} width={1080} height={1920} fps={REEL_FPS} durationInFrames={REEL_FRAMES} />
     <Folder name="Scenes">
       {(Object.keys(SCENES) as SceneId[]).map((id) => (
         <Composition

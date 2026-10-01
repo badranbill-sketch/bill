@@ -174,3 +174,44 @@ ratings. The five blind spots are shown as situations. The end card carries: *"F
 personalized financial, tax or legal advice."* and says the guide is currently available in French. Bill (and his
 compliance officer, if applicable) should approve the final cut, especially the credential line "15+ years ·
 individuals & families".
+
+## 9. The Instagram Reel (BillReel)
+
+A 30-second vertical cut for Instagram (1080 × 1920, 30 fps, 900 frames), promoting the *Guide de la prospérité
+financière*, in French. Same sketchbook, its own composition: **BillReel** in the Studio. Code in `src/reel/`.
+
+| What | Command | Result |
+|---|---|---|
+| Render | `npm run render:reel` | `out/bill-reel.mp4` (H.264, yuv420p, BT.709). Silent until Bill records the voice. |
+| QC stills | `npm run reel:stills` (add `--guides` to draw the safe box) | `out/reel/stills/`: 0, 3, 9, 16, 23 and 29.5 s, plus a contact sheet. |
+| Rebuild the captions | `npm run reel:captions` | `public/captions/reel.srt` / `.vtt` from `src/data/reel-timing.json`. |
+| Bill's narration | `npm run voice:reel -- <recording(s)>` | Rewrites `public/audio/reel-narration.wav`, `src/data/reel-timing.json` and the captions. |
+
+**Beats** (all timed from `src/data/reel-timing.json` with `at()` / `endOf()` / `wordAt()` from `src/reel/timing.ts`):
+1. hook: the notebook draws itself; « Avant les chiffres, il y a votre vie. » is handwritten; the brass line is born
+   under « votre vie ». 2. life: the two chairs by the lake; the line comes back in as the shoreline the couple walks
+   on. 3. pieces: the statement, the policy and the will land as taped clippings with their notes; on « qui regarde
+   comment tout s’emboîte ? » the line climbs toward them and stops short. 4. guide: Bill as a large taped print
+   (4:5, 800 × 1000), the guide booklet, three notes; then the page clears and the line walks the meadow's footpath.
+5. close: « Un point de départ honnête. », and the end card (name, « Le guide : lien en bio », the disclaimer).
+
+**Layout.** Every word stays inside x 64–960, y 270–1450 (Instagram's interface covers the rest), and above the
+caption band (y ≥ 1270) while the voice speaks. Captions are burned in (a Reel autoplays muted): 58 px, two lines at
+most, cut at the script's own pauses by `tools/reel-captions.mjs`.
+
+**Timing.** `src/data/reel-timing.json` has the shape of `src/data/timing.json`. Until Bill records
+`script/reel.json` it is **hand-authored** at a natural French pace (about 5.5 syllables a second). His recording
+replaces it with `npm run voice:reel` (same pipeline as `voice:bill`, with `VOICE_SET=reel`), and the beats, notes and
+captions follow. The Reel stops at 30 s: if his read is longer, shorten `tail` or the pauses in `script/reel.json`.
+
+**Bill on camera.** His photo stands in. Footage drops in as `public/video/bill-reel.mp4` (4:5 framing, chest up); if
+it is also passed to `npm run voice:reel`, its sound becomes the narration and the print stays lip-synced.
+
+**Motion.** Calm and frame-driven. The reel uses Framer Motion's pure functions (easing curves, keyframes, an
+over-damped spring, stagger) evaluated at the current frame (`src/reel/motion.ts`), never `<motion.div>` or
+`animate()`, which run on the wall clock and would flicker in a Remotion render.
+
+**Before publishing.** Every on-screen line marked `NEW COPY` in `src/reel/copy.ts` needs Bill's approval, and
+« planificateur financier » is a protected title (see `docs/COPY-STRATEGY.md`, flag 2). The reel has no music or
+effects: the film's come from an ElevenLabs free plan, which does not allow commercial use. Add licensed music in
+Instagram if wanted.

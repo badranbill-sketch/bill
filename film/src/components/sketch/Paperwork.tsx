@@ -106,7 +106,9 @@ export const BillPrint: React.FC<{
   focus?: {x: number; y: number};
   zoom?: [number, number];
   clipStart?: number;
-}> = ({slot, from, to, left, top, width, height, rotate = -1.2, arrive, focus, zoom, clipStart}) => {
+  /** Seconds into the footage at `clipStart` (see BillShot); leave it out for the film's automatic lip sync. */
+  videoStart?: number;
+}> = ({slot, from, to, left, top, width, height, rotate = -1.2, arrive, focus, zoom, clipStart, videoStart}) => {
   const border = 16;
   const w = width - 2 * border;
   const h = height - 2 * border;
@@ -121,6 +123,7 @@ export const BillPrint: React.FC<{
         focus={focus}
         zoom={zoom}
         clipStart={clipStart}
+        videoStart={videoStart}
       />
     </TapedPrint>
   );

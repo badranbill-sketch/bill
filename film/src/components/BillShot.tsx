@@ -6,7 +6,8 @@ import {ease, tween} from '../design/motion';
 import {useT} from './stage';
 import {FPS, LINES} from '../timing/timing';
 
-export type BillSlot = 'intro' | 'credibility' | 'mistakes' | 'approach' | 'role' | 'invitation';
+// 'reel' is the 30-second Instagram Reel (src/reel), whose timing lives in src/data/reel-timing.json.
+export type BillSlot = 'intro' | 'credibility' | 'mistakes' | 'approach' | 'role' | 'invitation' | 'reel';
 
 export type ShotFrame =
   | {kind: 'window'; x: number; y: number; w: number; h: number; radius?: number}

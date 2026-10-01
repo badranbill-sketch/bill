@@ -139,3 +139,5 @@ const COPY = {
 } as const;
 
 export const copy = COPY[LANG];
+/** The French set, whatever LANG is (the Instagram Reel is in French). */
+export const copyFr = COPY.fr;

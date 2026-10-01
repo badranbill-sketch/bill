@@ -1,5 +1,8 @@
 """Narration pipeline: script/script.json -> public/audio/narration.wav + src/data/timing.json + public/captions/*.
 
+VOICE_SET=reel runs the same pipeline for the 30-second Instagram Reel instead: script/reel.json ->
+public/audio/reel-narration.wav + src/data/reel-timing.json (its captions are then built by tools/reel-captions.mjs).
+
 Each stage runs in the Python environment that has its dependencies; tools/voice.sh wires them together.
 
   tts      temporary clips with a preset synthetic voice (Qwen3-TTS, no cloning)   [PY_TTS]
@@ -13,6 +16,7 @@ import argparse
 import difflib
 import hashlib
 import json
+import os
 import re
 import shutil
 import sys
@@ -23,20 +27,31 @@ from pathlib import Path
 import numpy as np
 
 ROOT = Path(__file__).resolve().parent.parent
-SCRIPT = json.loads((ROOT / "script" / "script.json").read_text())
+# Which narration: the 3-minute film (default) or the Instagram Reel (VOICE_SET=reel). Same stages, other files.
+SETS = {
+    "film": {"script": "script/script.json", "build": "build/voice", "audio": "audio/narration.wav",
+             "timing": "src/data/timing.json", "captions": "narration", "seeds": "script/voice-seeds.json"},
+    "reel": {"script": "script/reel.json", "build": "build/voice-reel", "audio": "audio/reel-narration.wav",
+             "timing": "src/data/reel-timing.json", "captions": None, "seeds": "script/voice-seeds-reel.json"},
+}
+VOICE_SET = os.environ.get("VOICE_SET", "film")
+if VOICE_SET not in SETS:
+    raise SystemExit(f"VOICE_SET must be one of {', '.join(SETS)}")
+CFG = SETS[VOICE_SET]
+SCRIPT = json.loads((ROOT / CFG["script"]).read_text())
 # settings for the local Qwen3-TTS scratch voice (kept under qwen_fallback once another voice is in use)
 QWEN = SCRIPT["voice"].get("qwen_fallback", SCRIPT["voice"])
-SEEDS_FILE = ROOT / "script" / "voice-seeds.json"
-BUILD = ROOT / "build" / "voice"
+SEEDS_FILE = ROOT / CFG["seeds"]
+BUILD = ROOT / CFG["build"]
 CLIPS, CACHE, ASR, REC = BUILD / "clips", BUILD / "cache", BUILD / "asr", BUILD / "recordings"
-OUT_AUDIO = ROOT / "public" / "audio" / "narration.wav"
-OUT_TIMING = ROOT / "src" / "data" / "timing.json"
+OUT_AUDIO = ROOT / "public" / CFG["audio"]
+OUT_TIMING = ROOT / CFG["timing"]
 OUT_CAPTIONS = ROOT / "public" / "captions"
 for d in (CLIPS, CACHE, ASR, REC):
     d.mkdir(parents=True, exist_ok=True)
 
 LINES = SCRIPT["lines"]
-PROMPT = "Bill Badran. The Guide to Financial Prosperity. Financial planner."
+PROMPT = SCRIPT.get("prompt", "Bill Badran. The Guide to Financial Prosperity. Financial planner.")
 WER_GATE = 0.12
 
 
@@ -345,7 +360,7 @@ def stage_cut(args):
         r, s, e = best_match(target, pointer, horizon)
         if s is None or r < 0.6:
             raise SystemExit(f"cut: could not find clip '{c['id']}' ({c['text']}) — best ratio {r:.2f}. "
-                             "Check that the recording follows script/script.json in order.")
+                             f"Check that the recording follows {CFG['script']} in order.")
         # retake-aware: a later, equally good take of the same clip before the next clip wins
         if i + 1 < len(cl):
             nxt = norm_tokens(cl[i + 1]["text"])
@@ -451,11 +466,12 @@ def stage_layout(args):
 
     source = args.source
     timing = {
-        "_generated": "by tools/voice.py — do not edit; change script/script.json and re-run npm run voice:scratch / voice:bill",
+        "_generated": (f"by tools/voice.py — do not edit; change {CFG['script']} and re-run "
+                       + ("npm run voice:scratch / voice:bill" if VOICE_SET == "film" else "npm run voice:reel")),
         "source": source,
         "voice": ("TEMPORARY synthetic voice (" + SCRIPT["voice"]["engine"] + ", '" + SCRIPT["voice"]["speaker"]
                   + "') — not Bill") if source == "scratch" else "Bill Badran (recorded)",
-        "audio": "audio/narration.wav",
+        "audio": CFG["audio"],
         "leadIn": SCRIPT["leadIn"],
         "narrationEnd": round(narration_end, 3),
         "tail": SCRIPT["tail"],
@@ -465,6 +481,10 @@ def stage_layout(args):
     OUT_TIMING.parent.mkdir(parents=True, exist_ok=True)
     OUT_TIMING.write_text(json.dumps(timing, indent=1, ensure_ascii=False) + "\n")
 
+    if CFG["captions"] is None:  # the reel's captions are cut shorter, by tools/reel-captions.mjs
+        print(f"layout: {OUT_TIMING.relative_to(ROOT)} and {OUT_AUDIO.relative_to(ROOT)} written "
+              f"(narration {narration_end:.1f}s + tail {SCRIPT['tail']}s = {total:.1f}s)")
+        return
     OUT_CAPTIONS.mkdir(parents=True, exist_ok=True)
     srt, vtt = [], ["WEBVTT", ""]
     for n, l in enumerate(timing_lines, 1):
@@ -473,8 +493,8 @@ def stage_layout(args):
         body = "\n".join(wrap(l["text"]))
         srt += [str(n), f"{srt_time(l['start'])} --> {srt_time(end)}", body, ""]
         vtt += [f"{srt_time(l['start'], '.')} --> {srt_time(end, '.')}", body, ""]
-    (OUT_CAPTIONS / "narration.srt").write_text("\n".join(srt))
-    (OUT_CAPTIONS / "narration.vtt").write_text("\n".join(vtt))
+    (OUT_CAPTIONS / f"{CFG['captions']}.srt").write_text("\n".join(srt))
+    (OUT_CAPTIONS / f"{CFG['captions']}.vtt").write_text("\n".join(vtt))
     scenes = {}
     for l in timing_lines:
         scenes.setdefault(l["scene"], [l["start"], l["end"]])[1] = l["end"]

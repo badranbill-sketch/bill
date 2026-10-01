@@ -1,0 +1,470 @@
+{
+ "_generated": "HAND-AUTHORED placeholder timing (no audio yet) at a natural French pace, in the shape tools/voice.py writes. Bill's recording replaces it: npm run voice:reel -- <recording(s)> (script: script/reel.json).",
+ "source": "hand",
+ "voice": "none yet: Bill records script/reel.json",
+ "audio": "audio/reel-narration.wav",
+ "leadIn": 0.4,
+ "narrationEnd": 25.6,
+ "tail": 4.4,
+ "duration": 30,
+ "lines": [
+  {
+   "id": "avant",
+   "scene": "hook",
+   "slot": null,
+   "clip": "avant",
+   "text": "Avant les chiffres, il y a votre vie.",
+   "cue": "A notebook draws itself. The line is handwritten; a brass underline under « votre vie ».",
+   "start": 0.4,
+   "end": 2.65,
+   "words": [
+    {
+     "w": "Avant",
+     "s": 0.4,
+     "e": 0.598
+    },
+    {
+     "w": "les",
+     "s": 0.628,
+     "e": 0.752
+    },
+    {
+     "w": "chiffres,",
+     "s": 0.782,
+     "e": 1.09
+    },
+    {
+     "w": "il",
+     "s": 1.36,
+     "e": 1.55
+    },
+    {
+     "w": "y",
+     "s": 1.58,
+     "e": 1.702
+    },
+    {
+     "w": "a",
+     "s": 1.732,
+     "e": 1.854
+    },
+    {
+     "w": "votre",
+     "s": 1.884,
+     "e": 2.281
+    },
+    {
+     "w": "vie.",
+     "s": 2.311,
+     "e": 2.57
+    }
+   ]
+  },
+  {
+   "id": "retraite",
+   "scene": "life",
+   "slot": null,
+   "clip": "retraite",
+   "text": "La retraite que vous attendez.",
+   "cue": "Two chairs by the lake. The brass line becomes the shoreline.",
+   "start": 3.15,
+   "end": 4.65,
+   "words": [
+    {
+     "w": "La",
+     "s": 3.15,
+     "e": 3.27
+    },
+    {
+     "w": "retraite",
+     "s": 3.3,
+     "e": 3.7
+    },
+    {
+     "w": "que",
+     "s": 3.73,
+     "e": 3.896
+    },
+    {
+     "w": "vous",
+     "s": 3.926,
+     "e": 4.14
+    },
+    {
+     "w": "attendez.",
+     "s": 4.17,
+     "e": 4.57
+    }
+   ]
+  },
+  {
+   "id": "gens",
+   "scene": "life",
+   "slot": null,
+   "clip": "gens",
+   "text": "Les gens dont vous prenez soin.",
+   "cue": "The couple walking along the shore.",
+   "start": 5.3,
+   "end": 6.67,
+   "words": [
+    {
+     "w": "Les",
+     "s": 5.3,
+     "e": 5.442
+    },
+    {
+     "w": "gens",
+     "s": 5.472,
+     "e": 5.655
+    },
+    {
+     "w": "dont",
+     "s": 5.685,
+     "e": 5.869
+    },
+    {
+     "w": "vous",
+     "s": 5.899,
+     "e": 6.082
+    },
+    {
+     "w": "prenez",
+     "s": 6.112,
+     "e": 6.377
+    },
+    {
+     "w": "soin.",
+     "s": 6.407,
+     "e": 6.59
+    }
+   ]
+  },
+  {
+   "id": "morceaux",
+   "scene": "pieces",
+   "slot": null,
+   "clip": "morceaux",
+   "text": "Un compte ici, une police là, un testament pas revu depuis des années.",
+   "cue": "Three clippings land one by one: statement, policy, will.",
+   "start": 8.4,
+   "end": 12.75,
+   "words": [
+    {
+     "w": "Un",
+     "s": 8.4,
+     "e": 8.523
+    },
+    {
+     "w": "compte",
+     "s": 8.553,
+     "e": 8.869
+    },
+    {
+     "w": "ici,",
+     "s": 8.899,
+     "e": 9.07
+    },
+    {
+     "w": "une",
+     "s": 9.45,
+     "e": 9.621
+    },
+    {
+     "w": "police",
+     "s": 9.651,
+     "e": 9.967
+    },
+    {
+     "w": "là,",
+     "s": 9.997,
+     "e": 10.12
+    },
+    {
+     "w": "un",
+     "s": 10.5,
+     "e": 10.64
+    },
+    {
+     "w": "testament",
+     "s": 10.67,
+     "e": 11.182
+    },
+    {
+     "w": "pas",
+     "s": 11.212,
+     "e": 11.405
+    },
+    {
+     "w": "revu",
+     "s": 11.435,
+     "e": 11.682
+    },
+    {
+     "w": "depuis",
+     "s": 11.712,
+     "e": 12.064
+    },
+    {
+     "w": "des",
+     "s": 12.094,
+     "e": 12.287
+    },
+    {
+     "w": "années.",
+     "s": 12.317,
+     "e": 12.67
+    }
+   ]
+  },
+  {
+   "id": "sens",
+   "scene": "pieces",
+   "slot": null,
+   "clip": "sens",
+   "text": "Chaque morceau a du sens.",
+   "cue": "The pieces sit apart.",
+   "start": 13.05,
+   "end": 14.2,
+   "words": [
+    {
+     "w": "Chaque",
+     "s": 13.05,
+     "e": 13.325
+    },
+    {
+     "w": "morceau",
+     "s": 13.355,
+     "e": 13.672
+    },
+    {
+     "w": "a",
+     "s": 13.702,
+     "e": 13.765
+    },
+    {
+     "w": "du",
+     "s": 13.795,
+     "e": 13.9
+    },
+    {
+     "w": "sens.",
+     "s": 13.93,
+     "e": 14.12
+    }
+   ]
+  },
+  {
+   "id": "emboite",
+   "scene": "pieces",
+   "slot": null,
+   "clip": "emboite",
+   "text": "Mais qui regarde comment tout s’emboîte ?",
+   "cue": "The brass line reaches toward the pieces and stops short.",
+   "start": 14.4,
+   "end": 16.05,
+   "words": [
+    {
+     "w": "Mais",
+     "s": 14.4,
+     "e": 14.577
+    },
+    {
+     "w": "qui",
+     "s": 14.607,
+     "e": 14.744
+    },
+    {
+     "w": "regarde",
+     "s": 14.774,
+     "e": 15.07
+    },
+    {
+     "w": "comment",
+     "s": 15.1,
+     "e": 15.397
+    },
+    {
+     "w": "tout",
+     "s": 15.427,
+     "e": 15.604
+    },
+    {
+     "w": "s’emboîte",
+     "s": 15.634,
+     "e": 15.97
+    },
+    {
+     "w": "?",
+     "s": 15.97,
+     "e": 15.97
+    }
+   ]
+  },
+  {
+   "id": "guide",
+   "scene": "guide",
+   "slot": "reel",
+   "clip": "guide",
+   "text": "J’ai créé un guide : cinq angles morts, des exemples simples, aucun jargon.",
+   "cue": "Bill as a large taped print; the guide lands; three short notes.",
+   "start": 16.45,
+   "end": 20.95,
+   "words": [
+    {
+     "w": "J’ai",
+     "s": 16.45,
+     "e": 16.632
+    },
+    {
+     "w": "créé",
+     "s": 16.662,
+     "e": 16.895
+    },
+    {
+     "w": "un",
+     "s": 16.925,
+     "e": 17.057
+    },
+    {
+     "w": "guide",
+     "s": 17.087,
+     "e": 17.37
+    },
+    {
+     "w": ":",
+     "s": 17.37,
+     "e": 17.37
+    },
+    {
+     "w": "cinq",
+     "s": 17.75,
+     "e": 17.93
+    },
+    {
+     "w": "angles",
+     "s": 17.96,
+     "e": 18.22
+    },
+    {
+     "w": "morts,",
+     "s": 18.25,
+     "e": 18.47
+    },
+    {
+     "w": "des",
+     "s": 18.8,
+     "e": 18.984
+    },
+    {
+     "w": "exemples",
+     "s": 19.014,
+     "e": 19.452
+    },
+    {
+     "w": "simples,",
+     "s": 19.482,
+     "e": 19.87
+    },
+    {
+     "w": "aucun",
+     "s": 20.2,
+     "e": 20.494
+    },
+    {
+     "w": "jargon.",
+     "s": 20.524,
+     "e": 20.87
+    }
+   ]
+  },
+  {
+   "id": "parfaites",
+   "scene": "guide",
+   "slot": null,
+   "clip": "parfaites",
+   "text": "Vous n’avez pas besoin de réponses parfaites.",
+   "cue": "The meadow draws itself; the brass line walks its footpath.",
+   "start": 21.3,
+   "end": 23.45,
+   "words": [
+    {
+     "w": "Vous",
+     "s": 21.3,
+     "e": 21.511
+    },
+    {
+     "w": "n’avez",
+     "s": 21.541,
+     "e": 21.797
+    },
+    {
+     "w": "pas",
+     "s": 21.827,
+     "e": 21.992
+    },
+    {
+     "w": "besoin",
+     "s": 22.022,
+     "e": 22.325
+    },
+    {
+     "w": "de",
+     "s": 22.355,
+     "e": 22.473
+    },
+    {
+     "w": "réponses",
+     "s": 22.503,
+     "e": 22.898
+    },
+    {
+     "w": "parfaites.",
+     "s": 22.928,
+     "e": 23.37
+    }
+   ]
+  },
+  {
+   "id": "depart",
+   "scene": "close",
+   "slot": null,
+   "clip": "depart",
+   "text": "Juste un point de départ honnête.",
+   "cue": "« Un point de départ honnête. » Then the end card.",
+   "start": 23.85,
+   "end": 25.6,
+   "words": [
+    {
+     "w": "Juste",
+     "s": 23.85,
+     "e": 24.128
+    },
+    {
+     "w": "un",
+     "s": 24.158,
+     "e": 24.287
+    },
+    {
+     "w": "point",
+     "s": 24.317,
+     "e": 24.595
+    },
+    {
+     "w": "de",
+     "s": 24.625,
+     "e": 24.755
+    },
+    {
+     "w": "départ",
+     "s": 24.785,
+     "e": 25.112
+    },
+    {
+     "w": "honnête.",
+     "s": 25.142,
+     "e": 25.52
+    }
+   ]
+  }
+ ]
+}

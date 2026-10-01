@@ -1,0 +1,95 @@
+{
+ "_readme": "The 30-second Instagram Reel's narration (French), in the same shape as script.json. Bill reads the lines in order, in one take or several; `npm run voice:reel -- <recording(s)>` then rewrites public/audio/reel-narration.wav, src/data/reel-timing.json and public/captions/reel.{srt,vtt}, and the reel follows. Until he records it, src/data/reel-timing.json is hand-authored at a natural French pace and the reel is silent. `clip` groups lines spoken in one breath; `pause` is the silence (s) after a clip; `slot` marks the line Bill may say on camera (public/video/bill-reel.mp4). Keep the ids: the reel's beats refer to them.",
+ "language": "fr",
+ "leadIn": 0.4,
+ "tail": 4.4,
+ "prompt": "Bill Badran. Guide de la prospérité financière. Planificateur financier.",
+ "voice": {
+  "_note": "No synthetic voice for the reel: it waits for Bill's own recording (npm run voice:reel). Do not use the ElevenLabs free plan for it: its licence does not allow commercial use.",
+  "engine": "none",
+  "speaker": "Bill Badran (to record)"
+ },
+ "lines": [
+  {
+   "id": "avant",
+   "clip": "avant",
+   "scene": "hook",
+   "slot": null,
+   "pause": 0.5,
+   "text": "Avant les chiffres, il y a votre vie.",
+   "cue": "A notebook draws itself. The line is handwritten; a brass underline under « votre vie »."
+  },
+  {
+   "id": "retraite",
+   "clip": "retraite",
+   "scene": "life",
+   "slot": null,
+   "pause": 0.7,
+   "text": "La retraite que vous attendez.",
+   "cue": "Two chairs by the lake. The brass line becomes the shoreline."
+  },
+  {
+   "id": "gens",
+   "clip": "gens",
+   "scene": "life",
+   "slot": null,
+   "pause": 1.8,
+   "text": "Les gens dont vous prenez soin.",
+   "cue": "The couple walking along the shore."
+  },
+  {
+   "id": "morceaux",
+   "clip": "morceaux",
+   "scene": "pieces",
+   "slot": null,
+   "pause": 0.35,
+   "text": "Un compte ici, une police là, un testament pas revu depuis des années.",
+   "cue": "Three clippings land one by one: statement, policy, will."
+  },
+  {
+   "id": "sens",
+   "clip": "sens",
+   "scene": "pieces",
+   "slot": null,
+   "pause": 0.25,
+   "text": "Chaque morceau a du sens.",
+   "cue": "The pieces sit apart."
+  },
+  {
+   "id": "emboite",
+   "clip": "emboite",
+   "scene": "pieces",
+   "slot": null,
+   "pause": 0.45,
+   "text": "Mais qui regarde comment tout s’emboîte ?",
+   "cue": "The brass line reaches toward the pieces and stops short."
+  },
+  {
+   "id": "guide",
+   "clip": "guide",
+   "scene": "guide",
+   "slot": "reel",
+   "pause": 0.4,
+   "text": "J’ai créé un guide : cinq angles morts, des exemples simples, aucun jargon.",
+   "cue": "Bill as a large taped print; the guide lands; three short notes."
+  },
+  {
+   "id": "parfaites",
+   "clip": "parfaites",
+   "scene": "guide",
+   "slot": null,
+   "pause": 0.45,
+   "text": "Vous n’avez pas besoin de réponses parfaites.",
+   "cue": "The meadow draws itself; the brass line walks its footpath."
+  },
+  {
+   "id": "depart",
+   "clip": "depart",
+   "scene": "close",
+   "slot": null,
+   "pause": 0,
+   "text": "Juste un point de départ honnête.",
+   "cue": "« Un point de départ honnête. » Then the end card."
+  }
+ ]
+}
