@@ -23,7 +23,7 @@ const wanted = args.filter((a) => !a.startsWith('--'));
 const browserExecutable = process.env.REMOTION_BROWSER_EXECUTABLE || null;
 
 const serveUrl = await bundle({entryPoint: path.join(ROOT, 'src/index.ts'), publicDir: path.join(ROOT, 'public')});
-const composition = await selectComposition({serveUrl, id: 'BillReel', inputProps: {}, browserExecutable});
+const composition = await selectComposition({serveUrl, id: process.env.REEL_COMP || 'BillReel', inputProps: {}, browserExecutable});
 const {fps} = composition;
 const last = composition.durationInFrames - 1;
 const frames = (wanted.length ? wanted : QC)
