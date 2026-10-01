@@ -5,3 +5,5 @@ dist
 # renders and intermediate audio
 out
 build
+# Python bytecode from tools/*.py
+__pycache__
