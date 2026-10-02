@@ -5,16 +5,16 @@ import {fmEase, keyframes} from '../motion';
 import {FPS, WORDS} from './edit';
 
 // Captions for a feed that autoplays muted: a short phrase at a time (at most MAX characters, never across the
-// script's punctuation or a pause), always in the same place, low on the frame. Calm, not karaoke: only the words
-// that carry the point (PSV, revenu net, the figures, rien) are set in warm brass, and each one lifts slightly as it
-// is said. The parent hides them while the layout moves.
+// script's punctuation or a pause), always in the same place, low on the frame. Each word comes up from 45 % as it
+// is said, so the captions never run ahead of the voice; only the words that carry the point (PSV, revenu net, the
+// figures, rien) are set in warm brass, and lift slightly as they land. The parent hides them while the layout moves.
 const MAX = 22;
 const PAUSE = 0.45;
 const KEY = /^(psv|revenu|net|95323|15|155000|rien|complet)$/;
 const keyOf = (w: string) =>
   w
     .normalize('NFD')
-    .replace(/[̀-ͯ]/g, '')
+    .replace(/[\u0300-\u036f]/g, '')
     .toLowerCase()
     .replace(/[^a-z0-9]/g, '');
 
@@ -74,6 +74,7 @@ export const WordCaptions: React.FC<{centerY: number; left: number; width: numbe
           const key = KEY.test(keyOf(w.w));
           const said = sec >= w.s - 0.02;
           const lift = keyframes(frame, [Math.round(w.s * FPS), Math.round(w.s * FPS) + 5], [0, 1], fmEase.out);
+          const lit = keyframes(frame, [Math.round(w.s * FPS) - 1, Math.round(w.s * FPS) + 3], [0.45, 1], fmEase.out);
           return (
             <span
               key={i}
@@ -81,6 +82,7 @@ export const WordCaptions: React.FC<{centerY: number; left: number; width: numbe
                 display: 'inline-block',
                 whiteSpace: 'pre',
                 color: key ? '#E2BE7E' : undefined,
+                opacity: lit,
                 translate: key && said ? `0 ${-4 * lift}px` : undefined,
               }}
             >

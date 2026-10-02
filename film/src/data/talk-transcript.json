@@ -6,7 +6,7 @@
   "« 95 323 $ »: the model heard « quatre-vingt-quinze mille deux cent vingt-trois » (95 223); the 2026 threshold published for ages 65–74 is 95 323 $",
   "« il n'y a presque plus rien qui reste » (recognised as « il y a place y presque plus rien qui reste »)"
  ],
- "segments": [[3.17, 7.42], [16.92, 21.16], [21.6, 29.96], [31.06, 34.86]],
+ "segments": [[3.135, 7.42], [16.92, 21.16], [21.6, 29.96], [31.06, 34.86]],
  "words": [
   {"w": "Pourquoi", "s": 3.27, "e": 3.57}, {"w": "c’est", "s": 3.57, "e": 3.72}, {"w": "important", "s": 3.75, "e": 4.05},
   {"w": "de", "s": 4.05, "e": 4.14}, {"w": "regarder", "s": 4.14, "e": 4.41}, {"w": "son", "s": 4.41, "e": 4.59},

@@ -21,7 +21,7 @@ export const SEGMENTS = (() => {
 
 /** Seconds of Bill speaking on the Reel; the end card follows. */
 export const SPEECH_END = SEGMENTS.reduce((t, s) => t + s.len, 0);
-export const END_CARD = 3.0;
+export const END_CARD = 2.2;
 export const TALK_FRAMES = Math.min(30 * FPS, f(SPEECH_END + END_CARD));
 
 /** Take time → Reel time (null if that moment was cut). */
@@ -38,7 +38,7 @@ export const WORDS = T.words
 const clean = (s: string) =>
   s
     .normalize('NFD')
-    .replace(/[̀-ͯ]/g, '')
+    .replace(/[\u0300-\u036f]/g, '')
     .toLowerCase()
     .replace(/[^a-z0-9]/g, '');
 
