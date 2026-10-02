@@ -6,18 +6,45 @@ import {fmEase, keyframes} from '../motion';
 import {FPS, WORDS} from './edit';
 
 // Captions for a feed that autoplays muted, in the brand's own language: an ivory label like the title card, navy
-// serif type, and a brass underline drawn under the words that carry the point (PSV, revenu net, the figures, rien)
-// as they are said. A short phrase at a time (at most MAX characters, never across the script's punctuation or a
-// pause), shown whole, always in the same place, low on the frame. The parent hides them while the layout moves.
-const MAX = 22;
+// serif type, and a brass underline drawn under the words that carry the point (PSV, pension, revenu net, the
+// figures, presque plus rien) as they are said. A short phrase at a time, shown whole, always in the same place, low
+// on the frame, and on top of everything: they never blank during a move.
+// Phrasing is an editor's, not a line-length rule's: each phrase starts at one of PHRASES, in order, so a break never
+// splits a unit of meaning (« si votre revenu net | de 2026 | dépasse 95 323 $, »). Punctuation, a pause and MAX
+// characters still break a phrase, so a changed transcript is still captioned sensibly.
+const MAX = 24;
 const PAUSE = 0.45;
-const KEY = /^(psv|revenu|net|95323|15|155000|rien|complet)$/;
+const PHRASES = [
+  'le gouvernement',
+  'reprendre',
+  'de la sécurité',
+  'de la vieillesse',
+  'au complet',
+  'voici',
+  'si',
+  'de 2026',
+  'dépasse',
+  'ottawa',
+  'environ',
+  'pour',
+  'au-dessus',
+  'de ce',
+  'à',
+  'il',
+  'presque',
+  'qui',
+];
+const KEY = /^(psv|pension|revenu|net|95323|15|155000|presque|plus|rien|complet)$/;
 const keyOf = (w: string) =>
   w
     .normalize('NFD')
     .replace(/[\u0300-\u036f]/g, '')
     .toLowerCase()
     .replace(/[^a-z0-9]/g, '');
+const startsPhrase = (i: number, phrase: string) => {
+  const want = phrase.split(' ').map(keyOf);
+  return want.every((k, j) => WORDS[i + j] && keyOf(WORDS[i + j].w) === k);
+};
 
 type Page = {from: number; to: number; words: {w: string; s: number}[]};
 
@@ -31,12 +58,14 @@ export const WordCaptions: React.FC<{centerY: number; left: number; width: numbe
   const pages = useMemo(() => {
     const out: Page[] = [];
     let cur: Page | null = null;
+    let next = 0;
     WORDS.forEach((w, i) => {
       const prev = WORDS[i - 1];
       const text = cur ? cur.words.map((x) => x.w).join(' ') : '';
-      const breakHere =
-        !cur || (prev && /[.,:?!]$/.test(prev.w)) || (prev && w.s - prev.e > PAUSE) || (text + ' ' + w.w).length > MAX;
-      if (breakHere) {
+      const phrased = next < PHRASES.length && startsPhrase(i, PHRASES[next]);
+      if (phrased) next++;
+      const fallback = !!prev && (/[.,:?!]$/.test(prev.w) || w.s - prev.e > PAUSE);
+      if (!cur || phrased || fallback || (text + ' ' + w.w).length > MAX) {
         cur = {from: w.s, to: w.e, words: []};
         out.push(cur);
       }

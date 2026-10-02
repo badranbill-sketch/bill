@@ -7,7 +7,7 @@ export const FPS = 30;
 export const f = (s: number) => Math.round(s * FPS);
 
 type Word = {w: string; s: number; e: number};
-const T = raw as unknown as {segments: [number, number][]; words: Word[]};
+const T = raw as unknown as {segments: [number, number][]; endCard: number; words: Word[]};
 
 /** The kept parts of the take, back to back: `at` is where each starts on the Reel (s). */
 export const SEGMENTS = (() => {
@@ -25,7 +25,7 @@ export const SEGMENTS = (() => {
 
 /** Seconds of Bill speaking on the Reel; the end card follows. */
 export const SPEECH_END = SEGMENTS.reduce((t, s) => t + s.len, 0);
-export const END_CARD = 3.0;
+export const END_CARD = T.endCard;
 export const TALK_FRAMES = Math.min(30 * FPS, f(SPEECH_END + END_CARD));
 
 /** Take time → Reel time (null if that moment was cut). */
@@ -52,4 +52,17 @@ export const cue = (text: string, n = 0, edge: 's' | 'e' = 's', offset = 0) => {
   const w = hits[Math.min(n, hits.length - 1)];
   if (!w) throw new Error(`talk edit: no word "${text}" in src/data/talk-transcript.json`);
   return f(w[edge] + offset);
+};
+
+/**
+ * The edit's beats (Reel frames). The move into the explainer starts 4 frames before its cut, so the cut lands inside
+ * the move, at speed:
+ *   focus   « Voici comment » — Bill becomes a taped print and the explainer takes the frame
+ *   split   « Ottawa récupère… » — the picture comes back large, above the explainer, for the 15 ¢ line and the punchline
+ *   end     « …reste » — he shrinks into the print on the end card
+ */
+export const BEATS = {
+  focus: f(SEGMENTS[1].at) - 4,
+  split: cue('Ottawa') - 8,
+  end: f(SPEECH_END - 0.45),
 };

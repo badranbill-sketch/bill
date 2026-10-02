@@ -1,12 +1,13 @@
 {
- "_readme": "What Bill says in public/video/bill-talk.mp4 (IMG_5295.mov), word by word, in seconds of that video. Transcribed locally (Vosk French small model, cross-checked with Whisper tiny) and corrected by hand: CHECK THE WORDS MARKED in `check` against the video before publishing. Fix a word here and re-render: the captions follow. `segments` are the parts of the take the Reel keeps, in order.",
+ "_readme": "What Bill says in public/video/bill-talk.mp4 (IMG_5295.mov), word by word, in seconds of that video. Transcribed locally (Vosk French small model, cross-checked with Whisper tiny) and corrected by hand: CHECK THE WORDS MARKED in `check` against the video before publishing. Fix a word here and re-render: the captions follow. `segments` are the parts of the take the Reel keeps, in order; `endCard` is how long the end card holds after his last word (s).",
  "check": [
   "« son revenu, sa ligne de revenu lorsqu'on a la PSV » (recognised as « sont revenu sa ligne de revenus lorsque la pavé »)",
   "« de la vieillesse » (not clearly heard in this take)",
-  "« 95 323 $ »: the model heard « quatre-vingt-quinze mille deux cent vingt-trois » (95 223); the 2026 threshold published for ages 65–74 is 95 323 $",
+  "« 95 323 $ »: BILL SAYS « quatre-vingt-quinze mille deux cent vingt-trois » (95 223). Free recognition and a recognition constrained to the two readings both pick 223; « trois cent » is not among the top six. The published 2026 threshold is 95 323 $, which the screen shows: re-record « si votre revenu net de 2026 dépasse 95 323 $ », or accept the slip, before publishing",
   "« il n'y a presque plus rien qui reste » (recognised as « il y a place y presque plus rien qui reste »)"
  ],
- "segments": [[3.135, 7.42], [16.92, 21.16], [21.6, 29.96], [31.06, 34.86]],
+ "segments": [[17.0, 19.96], [20.17, 21.12], [21.66, 29.9], [31.14, 34.8]],
+ "endCard": 2.4,
  "words": [
   {"w": "Pourquoi", "s": 3.27, "e": 3.57}, {"w": "c’est", "s": 3.57, "e": 3.72}, {"w": "important", "s": 3.75, "e": 4.05},
   {"w": "de", "s": 4.05, "e": 4.14}, {"w": "regarder", "s": 4.14, "e": 4.41}, {"w": "son", "s": 4.41, "e": 4.59},
