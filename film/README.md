@@ -215,3 +215,30 @@ over-damped spring, stagger) evaluated at the current frame (`src/reel/motion.ts
 « planificateur financier » is a protected title (see `docs/COPY-STRATEGY.md`, flag 2). The reel has no music or
 effects: the film's come from an ElevenLabs free plan, which does not allow commercial use. Add licensed music in
 Instagram if wanted.
+
+## 10. The talking-head Reel (BillReelTalk)
+
+Bill on camera, tightened with jump cuts, with an explainer drawn as he speaks: **BillReelTalk** in the Studio, about
+18 s. Code in `src/reel/talk/`, footage in `public/video/bill-talk.mp4` (his take, IMG_5295.mov, transcoded).
+
+| What | Command | Result |
+|---|---|---|
+| Render | `npm run render:talk` | `out/bill-reel-talk.mp4`: rebuilds the voice track, renders the picture muted, lays the voice under it from sample 0, -14 LUFS / -1 dBTP. |
+| Voice track only | `node tools/talk-voice.mjs` | `public/audio/talk-voice.wav`: the kept parts of the take back to back, a room-tone bed under the cuts and the end card. |
+| QC stills | `REEL_COMP=BillReelTalk node tools/reel-stills.mjs --guides --out=out/talk 0s 3s 6.6s 9.8s 15.1s 18.1s` | Stills and a contact sheet. |
+
+**The edit is data.** `src/data/talk-transcript.json` holds what Bill says, word by word (seconds of the take), the
+`segments` of the take the Reel keeps, and `endCard` (seconds). Picture, voice, captions and every animation cue
+(`cue('Ottawa')`, `BEATS` in `src/reel/talk/edit.ts`) follow from it: change a segment and re-render.
+
+**Structure.** Hook in full frame with the stakes as a headline; « Voici comment » moves Bill into a taped print while
+the explainer takes the frame (the threshold lands beside him as he says it); « Ottawa récupère… » brings the picture
+back large above the explainer; the punchline's cut punches in; over « …reste » he shrinks onto the end card. The only
+figures on screen are the two Bill says, each shown once.
+
+**Before publishing.**
+- `check` in the transcript lists the words to verify against the video. Most important: Bill says
+  « quatre-vingt-quinze mille **deux** cent vingt-trois » (95 223), while the published 2026 threshold, shown on
+  screen, is 95 323 $. Re-record that sentence, or approve the slip.
+- Every line marked `NEW COPY` in `src/reel/talk/Explainer.tsx` (`talkCopy`) needs Bill's approval.
+- No music: add licensed music in Instagram if wanted.
