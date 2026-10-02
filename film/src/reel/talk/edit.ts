@@ -12,7 +12,11 @@ const T = raw as unknown as {segments: [number, number][]; words: Word[]};
 /** The kept parts of the take, back to back: `at` is where each starts on the Reel (s). */
 export const SEGMENTS = (() => {
   let at = 0;
-  return T.segments.map(([a, b], i) => {
+  // cut on whole frames, like the voice track (tools/talk-voice.mjs), so picture and sound stay locked
+  const snap = (s: number) => Math.round(s * FPS) / FPS;
+  return T.segments.map(([a0, b0], i) => {
+    const a = snap(a0);
+    const b = snap(b0);
     const seg = {i, a, b, at, len: b - a};
     at += b - a;
     return seg;
@@ -21,7 +25,7 @@ export const SEGMENTS = (() => {
 
 /** Seconds of Bill speaking on the Reel; the end card follows. */
 export const SPEECH_END = SEGMENTS.reduce((t, s) => t + s.len, 0);
-export const END_CARD = 2.2;
+export const END_CARD = 3.0;
 export const TALK_FRAMES = Math.min(30 * FPS, f(SPEECH_END + END_CARD));
 
 /** Take time → Reel time (null if that moment was cut). */

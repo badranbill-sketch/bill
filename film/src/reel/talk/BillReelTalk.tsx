@@ -33,6 +33,8 @@ type Layout = {bill: Box; zoom: number; fy: number; melt: number; explainer: {dy
 const SPLIT_H = 820;
 const FULL: Layout = {bill: {x: 0, y: 0, w: 1080, h: 1920, rot: 0, border: 0}, zoom: 1.45, fy: 0.49, melt: 0, explainer: {dy: 160, o: 0}};
 const SPLIT: Layout = {bill: {x: 0, y: 0, w: 1080, h: SPLIT_H, rot: 0, border: 0}, zoom: 1, fy: 0.41, melt: 1, explainer: {dy: 0, o: 1}};
+/** the punchline's split: the explainer a little lower, under the counter */
+const SPLIT_C: Layout = {...SPLIT, explainer: {dy: 40, o: 1}};
 const FOCUS: Layout = {bill: {x: 575, y: 296, w: 385, h: 480, rot: 2.5, border: 12}, zoom: 2.3, fy: 0.45, melt: 0, explainer: {dy: -90, o: 1}};
 const END: Layout = {bill: {x: 640, y: 300, w: 312, h: 390, rot: 3, border: 12}, zoom: 2.3, fy: 0.45, melt: 0, explainer: {dy: 120, o: 0}};
 
@@ -48,8 +50,8 @@ const mixLayout = (a: Layout, b: Layout, p: number): Layout => ({
   },
   zoom: mix(a.zoom, b.zoom, p),
   fy: mix(a.fy, b.fy, p),
-  // the melt is there from the first frame of a move into the split (no hard edge mid-move)
-  melt: b.melt > a.melt ? (p > 0 ? 1 : a.melt) : mix(a.melt, b.melt, p),
+  // the melt and the print's border trade places early in the move, so there is no hard edge mid-move
+  melt: mix(a.melt, b.melt, Math.min(1, p * 2.5)),
   explainer: {dy: mix(a.explainer.dy, b.explainer.dy, p), o: mix(a.explainer.o, b.explainer.o, p)},
 });
 
@@ -58,31 +60,32 @@ const END_AT = f(SPEECH_END - 0.3);
 const STEPS: {at: number; L: Layout}[] = [
   {at: f(SEGMENTS[1].at), L: SPLIT},
   {at: f(SEGMENTS[2].at), L: FOCUS},
-  {at: f(SEGMENTS[3].at), L: SPLIT},
+  {at: f(SEGMENTS[3].at), L: SPLIT_C},
   {at: END_AT, L: END},
 ];
 const MOVE = {duration: 0.5, ease: cubicBezier(0.65, 0, 0.35, 1)};
 const layoutAt = (t: number) => STEPS.reduce((L, s) => mixLayout(L, s.L, progress(t, s.at, MOVE)), FULL);
 /** 1 while the layout is settled, 0 while it moves (captions and the counter step aside for each move). */
 const settledAt = (t: number) => STEPS.reduce((v, s) => v * keyframes(t, [s.at - 4, s.at, s.at + 15, s.at + 21], [1, 0, 0, 1], fmEase.soft), 1);
-/** Index of the step in force at t (0 = the hook). */
-const stepAt = (t: number) => STEPS.filter((s) => t >= s.at + 8).length;
 
 /** Punch-ins: each kept part has its own framing (strong lines are closer); a slow drift inside each. */
 const PUNCH = [1.0, 1.1, 1.0, 1.15];
 const DRIFT = [0.07, 0.025, 0.02, 0.03];
 
-/** The still on the end card: frame 975 of the take (32.5 s), Bill looking into the lens. */
-const END_STILL = 32.5;
+/** The still on the end card: frame 1044 of the take (34.8 s), just after his last word: mouth closed, eyes on the lens. */
+const END_STILL = 34.8;
+/** The first six frames hold frame 100 of the take (eyes on the lens), which the picture then plays on from. */
+const OPEN_HOLD = 6;
 
 // The grade, measured on the footage (least squares on skin, wall, sofa, jacket, beard): skin from a red
-// rgb(206,142,114) to rgb(214,163,137); the cyan-grey wall to the page's warm white; the jacket kept neutral; an
+// rgb(206,142,114) to rgb(214,163,137); the cyan-grey wall to the page's warm white (+5 R, −2 B more in the highlights,
+// measured against the paper); the jacket kept neutral; an
 // identity curve with a soft shoulder above 80 % so the forehead never clips; a light sharpen for the 720p source.
 const GradeDefs: React.FC = () => (
   <svg width={0} height={0} style={{position: 'absolute'}}>
     <defs>
       <filter id="bill-grade" colorInterpolationFilters="sRGB" x="0" y="0" width="100%" height="100%">
-        <feColorMatrix type="matrix" values="0.7004 0.7783 -0.3892 0 0.0208  -0.0430 1.4905 -0.3957 0 0.0205  -0.1190 1.1012 0.0051 0 0.0174  0 0 0 1 0" />
+        <feColorMatrix type="matrix" values="0.7004 0.7783 -0.3892 0 0.0408  -0.0430 1.4905 -0.3957 0 0.0205  -0.1190 1.1012 0.0051 0 0.0094  0 0 0 1 0" />
         <feComponentTransfer>
           <feFuncR type="table" tableValues="0 0.1 0.2 0.3 0.4 0.5 0.6 0.7 0.8 0.885 0.955" />
           <feFuncG type="table" tableValues="0 0.1 0.2 0.3 0.4 0.5 0.6 0.7 0.8 0.885 0.955" />
@@ -94,19 +97,8 @@ const GradeDefs: React.FC = () => (
   </svg>
 );
 
-/** His voice, on its own track, so the picture can be held on a still at the end. */
-const Voice: React.FC = () => (
-  <>
-    {SEGMENTS.map((s) => {
-      const len = f(s.at + s.len) - f(s.at);
-      return (
-        <Sequence key={s.i} from={f(s.at)} durationInFrames={len} layout="none">
-          <Audio src={staticFile('video/bill-talk.mp4')} trimBefore={f(s.a)} trimAfter={f(s.b)} volume={(fr) => Math.min(1, fr / 3, (len - fr) / 3)} />
-        </Sequence>
-      );
-    })}
-  </>
-);
+/** His voice: one continuous track built from the same cut list (tools/talk-voice.mjs), played from frame 0. */
+const Voice: React.FC = () => <Audio src={staticFile('audio/talk-voice.wav')} />;
 
 const Take: React.FC<{i: number; box: {w: number; h: number}; zoom: number; fy: number}> = ({i, box, zoom, fy}) => {
   const seg = SEGMENTS[i];
@@ -129,8 +121,9 @@ const Take: React.FC<{i: number; box: {w: number; h: number}; zoom: number; fy: 
       style={{position: 'absolute', left, top, width: W, height: H, maxWidth: 'none', filter: 'url(#bill-grade)'}}
     />
   );
-  // the end card holds a still of him looking into the lens
-  const stillFrom = END_AT - f(seg.at) + 6;
+  // the first frames hold a look into the lens; the end card holds a still of him, mouth closed
+  if (i === 0 && frame < OPEN_HOLD) return <Freeze frame={OPEN_HOLD}>{video}</Freeze>;
+  const stillFrom = END_AT - f(seg.at) + 4;
   return last && frame >= stillFrom ? <Freeze frame={f(END_STILL - seg.a)}>{video}</Freeze> : video;
 };
 
@@ -158,7 +151,7 @@ const Bill: React.FC<{L: Layout}> = ({L}) => {
   // the split melts into the paper: an oval that drops the sofa at the sides, and a long fade at the bottom
   const melt =
     L.melt > 0.01
-      ? `radial-gradient(ellipse ${100 + 60 * (1 - L.melt)}% ${118 + 60 * (1 - L.melt)}% at 50% 22%, #000 62%, rgba(0,0,0,0) 100%), linear-gradient(to bottom, #000 calc(100% - ${190 * L.melt}px), rgba(0,0,0,0) 100%)`
+      ? `radial-gradient(ellipse ${100 + 60 * (1 - L.melt)}% ${118 + 60 * (1 - L.melt)}% at 50% 22%, #000 62%, rgba(0,0,0,0) 100%), linear-gradient(to bottom, #000 calc(100% - ${80 * L.melt}px), rgba(0,0,0,0) 100%)`
       : undefined;
   return (
     <div
@@ -198,8 +191,8 @@ const Bill: React.FC<{L: Layout}> = ({L}) => {
           style={{position: 'absolute', width: 1920, height: 1080, left: (inner.w - 1920) / 2, top: (inner.h - 1080) / 2, rotate: '90deg', mixBlendMode: 'soft-light', opacity: 0.4}}
         />
       </div>
-      <Tape x={w * 0.22} y={2} rot={-6} o={print} />
-      <Tape x={w * 0.78} y={h - 2} rot={-4} o={print} />
+      <Tape x={w * 0.22} y={2} rot={-6} o={Math.max(0, (print - 0.85) / 0.15)} />
+      <Tape x={w * 0.78} y={h - 2} rot={-4} o={Math.max(0, (print - 0.85) / 0.15)} />
     </div>
   );
 };
@@ -207,7 +200,7 @@ const Bill: React.FC<{L: Layout}> = ({L}) => {
 /** The stakes, in Bill's words, rising in with the first frame; the brass line underlines « toute votre PSV ». */
 const HookCard: React.FC = () => {
   const t = useT();
-  const inn = keyframes(t, [-6, 12], [0, 1], cubicBezier(0.33, 1, 0.68, 1));
+  const inn = keyframes(t, [-3, 3], [0, 1], cubicBezier(0.33, 1, 0.68, 1));
   const out = progress(t, f(SEGMENTS[1].at) - 3, {duration: 0.3, ease: fmEase.inOut});
   if (out >= 1) return null;
   const o = inn * (1 - out);
@@ -216,9 +209,9 @@ const HookCard: React.FC = () => {
       style={{
         position: 'absolute',
         left: 64,
-        top: 292,
-        width: 830,
-        padding: '18px 30px 26px',
+        top: 284,
+        width: 800,
+        padding: '14px 28px 22px',
         background: sketch.printBorder,
         boxShadow: '0 18px 40px rgba(30,42,62,0.22), 0 3px 8px rgba(30,42,62,0.10)',
         rotate: '-1deg',
@@ -227,39 +220,54 @@ const HookCard: React.FC = () => {
       }}
     >
       <div style={{fontFamily: 'Caveat, cursive', fontWeight: 600, fontSize: 40, color: sketch.brassDeep, lineHeight: 1}}>{talkCopy.title}</div>
-      <div style={{fontFamily: `${SERIF}, serif`, fontWeight: 600, fontSize: 70, color: sketch.ink, lineHeight: 1.08, marginTop: 10, whiteSpace: 'nowrap'}}>
+      <div style={{fontFamily: `${SERIF}, serif`, fontWeight: 600, fontSize: 66, color: sketch.ink, lineHeight: 1.06, marginTop: 8, whiteSpace: 'nowrap'}}>
         {talkCopy.hook1}
         <br />
         {talkCopy.hook2}
       </div>
-      <svg width={830} height={30} style={{position: 'absolute', left: 30, top: 214, overflow: 'visible'}}>
+      <svg width={800} height={30} style={{position: 'absolute', left: 28, top: 196, overflow: 'visible'}}>
         <path
-          d="M 2 12 C 140 8, 360 6, 528 4"
+          d="M 2 12 C 130 8, 340 6, 496 4"
           fill="none"
           stroke={sketch.brass}
           strokeWidth={6}
           strokeLinecap="round"
           strokeDasharray={540}
-          strokeDashoffset={540 * (1 - keyframes(t, [12, 23], [0, 1], fmEase.draw))}
+          strokeDashoffset={540 * (1 - keyframes(t, [8, 19], [0, 1], fmEase.draw))}
         />
       </svg>
     </div>
   );
 };
 
-/** His income, counted as the dot moves along the line. Steps aside for every move, never crosses the print. */
+/** His income, counted as the dot moves along the line: one element, above the print, that moves with the layout
+ *  (beside the print in the explanation, under the picture for the punchline) and is underlined when it lands. */
 const Counter: React.FC<{t: number}> = ({t}) => {
-  const step = stepAt(t);
-  const pos = step === 2 ? {x: 96, y: 500, size: 88} : {x: 96, y: 848, size: 58};
-  const on = step === 2 || step === 3 ? 1 : 0;
-  const shown = on * settledAt(t) * keyframes(t, [cue('si', 0, 's', 0.05), cue('si', 0, 's', 0.3)], [0, 1], fmEase.soft);
+  const toC = progress(t, f(SEGMENTS[3].at), MOVE);
+  const pos = {x: 96, y: mix(500, 826, toC), size: mix(86, 84, toC)};
+  const shown =
+    keyframes(t, [cue('si', 0, 's', 0.05), cue('si', 0, 's', 0.3)], [0, 1], fmEase.soft) * keyframes(t, [END_AT - 2, END_AT + 5], [1, 0], fmEase.soft);
   if (shown < 0.01) return null;
-  const value = incomeAt(t).toLocaleString('fr-CA').replace(/\s/g, ' ') + ' $';
+  const value = incomeAt(t).toLocaleString('fr-CA').replace(/\s/g, '\u00a0') + '\u00a0$';
+  const landed = keyframes(t, [cue('155000', 0, 'e'), cue('155000', 0, 'e') + 8], [0, 1], fmEase.out);
   return (
     <div style={{position: 'absolute', left: pos.x, top: pos.y, opacity: shown}}>
-      <div style={{fontFamily: 'Caveat, cursive', fontWeight: 500, fontSize: pos.size * 0.5, color: sketch.inkSoft, lineHeight: 1}}>{talkCopy.counter}</div>
-      <div style={{fontFamily: `${SERIF}, serif`, fontWeight: 600, fontSize: pos.size, color: sketch.ink, letterSpacing: '-0.01em', fontVariantNumeric: 'tabular-nums', lineHeight: 1.1}}>
+      <div style={{fontFamily: 'Caveat, cursive', fontWeight: 500, fontSize: 44, color: sketch.inkSoft, lineHeight: 1}}>{talkCopy.counter}</div>
+      <div
+        style={{
+          position: 'relative',
+          display: 'inline-block',
+          fontFamily: `${SERIF}, serif`,
+          fontWeight: 600,
+          fontSize: pos.size,
+          color: sketch.ink,
+          letterSpacing: '-0.01em',
+          fontVariantNumeric: 'tabular-nums',
+          lineHeight: 1.1,
+        }}
+      >
         {value}
+        <div style={{position: 'absolute', left: 0, right: 0, bottom: -4, height: 6, borderRadius: 3, background: sketch.brass, transformOrigin: 'left center', scale: `${landed} 1`}} />
       </div>
     </div>
   );
@@ -317,7 +325,7 @@ const Seam: React.FC<{t: number}> = ({t}) => {
       {lines.map((l, i) => (
         <div key={i} style={{opacity: keyframes(t, [l.to, l.to + 6], [1, 0], fmEase.soft)}}>
           {t < l.to + 6 && (
-            <BrassLine points={[[0, SPLIT_H - 34], [540, SPLIT_H - 35], [1080, SPLIT_H - 34]]} start={l.from} duration={11} width={4} wobble={0.6} seed={`talk-seam-${i}`} tip={false} />
+            <BrassLine points={[[0, SPLIT_H - 3], [540, SPLIT_H - 4], [1080, SPLIT_H - 3]]} start={l.from} duration={11} width={4} wobble={0.6} seed={`talk-seam-${i}`} tip={false} />
           )}
         </div>
       ))}
@@ -338,16 +346,16 @@ export const BillReelTalk: React.FC = () => {
         <Explainer
           style={{
             translate: `0 ${L.explainer.dy}px`,
-            opacity: L.explainer.o * keyframes(t, [END_AT - 2, END_AT + 5], [1, 0], fmEase.soft),
+            opacity: L.explainer.o * keyframes(t, [END_AT, END_AT + 8], [1, 0], fmEase.soft),
           }}
         />
-        <Counter t={t} />
-        <EndCard start={END_AT - 2} />
+        <EndCard start={END_AT + 3} />
         <Bill L={L} />
         <Seam t={t} />
+        <Counter t={t} />
         <HookCard />
       </div>
-      {t < END_AT + 4 && <WordCaptions centerY={1362} left={64} width={896} opacity={settledAt(t) * keyframes(t, [END_AT, END_AT + 4], [1, 0], fmEase.soft)} />}
+      {t < END_AT + 4 && <WordCaptions centerY={1380} left={64} width={896} opacity={settledAt(t) * keyframes(t, [END_AT, END_AT + 4], [1, 0], fmEase.soft)} />}
     </ReelStage>
   );
 };

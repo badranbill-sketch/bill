@@ -1,13 +1,14 @@
 import React, {useMemo} from 'react';
 import {useCurrentFrame} from 'remotion';
 import {sketch} from '../../design/palette';
+import {SERIF} from '../../design/typography';
 import {fmEase, keyframes} from '../motion';
 import {FPS, WORDS} from './edit';
 
-// Captions for a feed that autoplays muted: a short phrase at a time (at most MAX characters, never across the
-// script's punctuation or a pause), always in the same place, low on the frame. Each word comes up from 45 % as it
-// is said, so the captions never run ahead of the voice; only the words that carry the point (PSV, revenu net, the
-// figures, rien) are set in warm brass, and lift slightly as they land. The parent hides them while the layout moves.
+// Captions for a feed that autoplays muted, in the brand's own language: an ivory label like the title card, navy
+// serif type, and a brass underline drawn under the words that carry the point (PSV, revenu net, the figures, rien)
+// as they are said. A short phrase at a time (at most MAX characters, never across the script's punctuation or a
+// pause), shown whole, always in the same place, low on the frame. The parent hides them while the layout moves.
 const MAX = 22;
 const PAUSE = 0.45;
 const KEY = /^(psv|revenu|net|95323|15|155000|rien|complet)$/;
@@ -56,16 +57,16 @@ export const WordCaptions: React.FC<{centerY: number; left: number; width: numbe
       <div
         style={{
           maxWidth: width,
-          padding: '12px 30px 16px',
-          borderRadius: 18,
-          background: 'rgba(30, 42, 62, 0.94)',
-          boxShadow: '0 12px 32px rgba(30,42,62,0.28)',
-          fontFamily: 'Poppins, sans-serif',
+          padding: '10px 30px 18px',
+          borderRadius: 6,
+          background: sketch.printBorder,
+          boxShadow: '0 8px 22px rgba(30,42,62,0.14), 0 1px 3px rgba(30,42,62,0.08)',
+          fontFamily: `${SERIF}, serif`,
           fontWeight: 600,
-          fontSize: 64,
-          lineHeight: 1.16,
+          fontSize: 60,
+          lineHeight: 1.2,
           textAlign: 'center',
-          color: sketch.printBorder,
+          color: sketch.ink,
           opacity: pop,
           translate: `0 ${(1 - pop) * 10}px`,
         }}
@@ -73,20 +74,25 @@ export const WordCaptions: React.FC<{centerY: number; left: number; width: numbe
         {page.words.map((w, i) => {
           const key = KEY.test(keyOf(w.w));
           const said = sec >= w.s - 0.02;
-          const lift = keyframes(frame, [Math.round(w.s * FPS), Math.round(w.s * FPS) + 5], [0, 1], fmEase.out);
-          const lit = keyframes(frame, [Math.round(w.s * FPS) - 1, Math.round(w.s * FPS) + 3], [0.45, 1], fmEase.out);
+          const under = said ? keyframes(frame, [Math.round(w.s * FPS), Math.round(w.s * FPS) + 6], [0, 1], fmEase.out) : 0;
           return (
-            <span
-              key={i}
-              style={{
-                display: 'inline-block',
-                whiteSpace: 'pre',
-                color: key ? '#E2BE7E' : undefined,
-                opacity: lit,
-                translate: key && said ? `0 ${-4 * lift}px` : undefined,
-              }}
-            >
+            <span key={i} style={{display: 'inline-block', whiteSpace: 'pre', position: 'relative'}}>
               {(i === 0 ? '' : ' ') + w.w}
+              {key && (
+                <span
+                  style={{
+                    position: 'absolute',
+                    left: i === 0 ? 0 : '0.3em',
+                    right: 0,
+                    bottom: 2,
+                    height: 4,
+                    borderRadius: 2,
+                    background: sketch.brass,
+                    transformOrigin: 'left center',
+                    scale: `${under} 1`,
+                  }}
+                />
+              )}
             </span>
           );
         })}
