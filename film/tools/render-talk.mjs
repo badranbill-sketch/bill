@@ -7,7 +7,7 @@
 // 2. ffmpeg's two-pass loudnorm, in linear mode (one fixed gain, the voice's dynamics untouched), to -14 LUFS
 //    integrated and -1 dBTP: the level Reels play at. The picture is copied, not re-encoded.
 import {execFileSync, spawnSync} from 'node:child_process';
-import {mkdirSync, renameSync} from 'node:fs';
+import {mkdirSync, rmSync} from 'node:fs';
 import path from 'node:path';
 import {fileURLToPath} from 'node:url';
 
@@ -51,6 +51,5 @@ execFileSync('ffmpeg', [
   '+faststart',
   out,
 ]);
-renameSync(raw, raw + '.done');
-spawnSync('rm', ['-f', raw + '.done']);
+rmSync(raw, {force: true});
 console.log(`Done: ${path.relative(root, out)} (input ${m.input_i} LUFS)`);
