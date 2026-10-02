@@ -41,6 +41,7 @@
     "render": "node tools/render.mjs",
     "render:captioned": "node tools/render.mjs --captioned",
     "render:reel": "remotion render src/index.ts BillReel out/bill-reel.mp4 --color-space=bt709",
+    "render:talk": "node tools/render-talk.mjs",
     "qc": "node tools/stills.mjs --qc",
     "scene": "node tools/scene-stills.mjs",
     "reel:stills": "node tools/reel-stills.mjs",
