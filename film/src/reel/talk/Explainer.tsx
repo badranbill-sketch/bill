@@ -44,14 +44,14 @@ const xOf = (income: number) => X0 + ((X1 - X0) * income) / MAX;
 const XS = xOf(START);
 const XT = xOf(95323);
 const XF = xOf(155000);
-const ROW = {label: 846, bar: 924, line: 1100};
+const ROW = {label: 834, bar: 924, line: 1100};
 const BAR = {x: X0, y: ROW.bar, w: X1 - X0, h: 72};
 /** Where the threshold figure stands beside the print, before it settles under its tick. */
 const HERO = {x: X0, y: 492, size: 96};
-const TICK_LABEL = {dy: 28, size: 48};
+const TICK_LABEL = {dy: 40, size: 50};
 
-/** The explainer draws in once the move into the print has settled. */
-export const EXPLAINER_IN = BEATS.focus + 15;
+/** The explainer draws in during the move into the print, so it is complete as the print lands. */
+export const EXPLAINER_IN = BEATS.focus + 6;
 
 /** Where « votre revenu » is on the income line at frame t, word by word (it starts at 60 000 $). */
 const dotAt = (t: number) =>
@@ -114,8 +114,8 @@ export const Explainer: React.FC<{style?: React.CSSProperties}> = ({style}) => {
 
   return (
     <div style={{position: 'absolute', inset: 0, ...style}}>
-      <Handwriting text={c.pension} start={EXPLAINER_IN + 4} speed={write(c.pension)} left={X0} top={ROW.label} variant="hand" style={{fontSize: 50}} opacity={pensionOut} />
-      <Handwriting text={c.nothing} start={cue('presque', 0, 's', -0.1)} speed={write(c.nothing)} left={X0} top={ROW.label - 6} variant="hand" style={{fontSize: 58}} />
+      <Handwriting text={c.pension} start={EXPLAINER_IN + 4} speed={write(c.pension)} left={X0} top={ROW.label} variant="hand" style={{fontSize: 58}} opacity={pensionOut} />
+      <Handwriting text={c.nothing} start={cue('presque', 0, 's', -0.1)} speed={write(c.nothing)} left={X0} top={ROW.label - 4} variant="hand" style={{fontSize: 62}} />
 
       {/* the pension bar: navy is what he keeps; what Ottawa takes back empties out */}
       <div style={{position: 'absolute', left: BAR.x, top: BAR.y, width: BAR.w, height: BAR.h, scale: String(pulse), transformOrigin: 'left center'}}>
@@ -131,7 +131,7 @@ export const Explainer: React.FC<{style?: React.CSSProperties}> = ({style}) => {
         />
         <div style={{position: 'absolute', left: 5, top: 5, width: keptW, height: BAR.h - 10, borderRadius: 7, background: sketch.ink, opacity: 0.92}} />
       </div>
-      <Handwriting text={c.taken} start={cue('récupère')} speed={write(c.taken)} left={X1 - 290} top={BAR.y + BAR.h + 6} variant="hand" style={{fontSize: 46}} color={sketch.inkSoft} />
+      <Handwriting text={c.taken} start={cue('récupère')} speed={write(c.taken)} left={X1 - 320} top={BAR.y + BAR.h + 6} variant="hand" style={{fontSize: 52}} color={sketch.inkSoft} />
 
       <ReelInk>
         {/* « presque plus rien »: an ink circle round what is left */}
@@ -147,7 +147,7 @@ export const Explainer: React.FC<{style?: React.CSSProperties}> = ({style}) => {
           </g>
         )}
       </ReelInk>
-      <Handwriting text={c.income} start={EXPLAINER_IN + 8} speed={write(c.income)} left={X0} top={ROW.line + 24} variant="hand" style={{fontSize: 50}} />
+      <Handwriting text={c.income} start={EXPLAINER_IN + 8} speed={write(c.income)} left={X0} top={ROW.line + 22} variant="hand" style={{fontSize: 58}} />
 
       {/* 155 000 $ lands under its tick as Bill says it, underlined: the punchline's number */}
       <div
@@ -161,9 +161,10 @@ export const Explainer: React.FC<{style?: React.CSSProperties}> = ({style}) => {
         {c.full}
         <Underline p={keyframes(t, [cue('155000') + 6, cue('155000') + 14], [0, 1], fmEase.out)} height={4} bottom={-2} />
       </div>
-      <div style={{position: 'absolute', left: XT - 100, top: ROW.line + 92, whiteSpace: 'nowrap', color: sketch.ink, opacity: appear(cue('15'))}}>
-        <span style={{fontFamily: `${SERIF}, serif`, fontWeight: 600, fontSize: 42}}>{c.rateCents}</span>
-        <span style={{fontFamily: 'Caveat, cursive', fontWeight: 500, fontSize: 48}}>{c.rateRest}</span>
+      {/* the mechanism, in one line: second only to the figures */}
+      <div style={{position: 'absolute', left: X0, top: ROW.line + 104, whiteSpace: 'nowrap', color: sketch.ink, opacity: appear(cue('15'))}}>
+        <span style={{fontFamily: `${SERIF}, serif`, fontWeight: 600, fontSize: 54}}>{c.rateCents}</span>
+        <span style={{fontFamily: 'Caveat, cursive', fontWeight: 500, fontSize: 58}}>{c.rateRest}</span>
       </div>
     </div>
   );
@@ -206,6 +207,8 @@ export const ThresholdFigure: React.FC<{opacity?: number}> = ({opacity = 1}) => 
             translate: `${-50 * px}% ${(1 - shown) * 20}px`,
             opacity: shown,
             letterSpacing: '-0.01em',
+            // a paper halo while it flies, so it reads as it crosses the bar
+            textShadow: p > 0 && p < 1 ? `0 0 10px ${sketch.printBorder}, 0 0 3px ${sketch.printBorder}` : undefined,
           }}
         >
           {c.thresholdFigure}

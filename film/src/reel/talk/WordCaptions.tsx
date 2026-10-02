@@ -96,7 +96,8 @@ export const WordCaptions: React.FC<{centerY: number; left: number; width: numbe
           lineHeight: 1.2,
           textAlign: 'center',
           color: sketch.ink,
-          opacity: pop,
+          // opaque within two frames (never a grey chip over the picture); the rise finishes over five
+          opacity: Math.min(1, pop * 2.5),
           translate: `0 ${(1 - pop) * 10}px`,
         }}
       >

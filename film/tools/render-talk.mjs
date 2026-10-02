@@ -3,8 +3,9 @@
 //   node tools/render-talk.mjs [out/bill-reel-talk.mp4]      (npm run render:talk)
 //
 // 1. tools/talk-voice.mjs rebuilds Bill's voice track from the cut list (public/audio/talk-voice.wav).
-// 2. Remotion renders BillReelTalk's picture, muted (H.264, yuv420p, BT.709). Set REMOTION_BROWSER_EXECUTABLE to use
-//    an installed Chrome / Chromium headless shell instead of Remotion's download.
+// 2. Remotion renders BillReelTalk's picture, muted (H.264 at CRF 16, a master that survives Instagram's re-encode;
+//    yuv420p, BT.709). Set REMOTION_BROWSER_EXECUTABLE to use an installed Chrome / Chromium headless shell instead of
+//    Remotion's download.
 // 3. The voice track is laid under the picture directly, from sample 0 (Remotion's own audio path encodes AAC twice
 //    and leaves 2048 samples of encoder delay in the file: the voice 43 ms late on the lips), and brought to
 //    Instagram's level with ffmpeg's two-pass loudnorm, in linear mode (one fixed gain, the voice's dynamics untouched):
@@ -26,7 +27,7 @@ const browser = process.env.REMOTION_BROWSER_EXECUTABLE;
 console.log('2/3  Rendering BillReelTalk …');
 const r = spawnSync(
   'npx',
-  ['remotion', 'render', 'src/index.ts', 'BillReelTalk', raw, '--color-space=bt709', '--muted', ...(browser ? [`--browser-executable=${browser}`] : [])],
+  ['remotion', 'render', 'src/index.ts', 'BillReelTalk', raw, '--color-space=bt709', '--crf=16', '--muted', ...(browser ? [`--browser-executable=${browser}`] : [])],
   {cwd: root, stdio: 'inherit'},
 );
 if (r.status !== 0) process.exit(r.status ?? 1);

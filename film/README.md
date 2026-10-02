@@ -219,7 +219,7 @@ Instagram if wanted.
 ## 10. The talking-head Reel (BillReelTalk)
 
 Bill on camera, tightened with jump cuts, with an explainer drawn as he speaks: **BillReelTalk** in the Studio, about
-18 s. Code in `src/reel/talk/`, footage in `public/video/bill-talk.mp4` (his take, IMG_5295.mov, transcoded).
+17 s. Code in `src/reel/talk/`, footage in `public/video/bill-talk.mp4` (his take, IMG_5295.mov, transcoded).
 
 | What | Command | Result |
 |---|---|---|

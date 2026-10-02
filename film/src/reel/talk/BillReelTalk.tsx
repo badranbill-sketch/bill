@@ -10,7 +10,7 @@ import {SERIF} from '../../design/typography';
 import {reelCopy} from '../copy';
 import {fmEase, keyframes, poseStyle, presence, progress, SPRING, staggerAt} from '../motion';
 import {ReelInk, ReelPaper, ReelStage} from '../stage';
-import {BEATS, f, SEGMENTS, SPEECH_END, TALK_FRAMES} from './edit';
+import {BEATS, cue, f, SEGMENTS, TALK_FRAMES} from './edit';
 import {Explainer, talkCopy, ThresholdFigure} from './Explainer';
 import {WordCaptions} from './WordCaptions';
 
@@ -29,30 +29,38 @@ export {TALK_FRAMES};
 // touch of motion blur at its fastest.
 
 type Box = {x: number; y: number; w: number; h: number; rot: number; border: number};
-type Layout = {bill: Box; zoom: number; fy: number; melt: number; explainer: {dy: number; o: number}};
+/** fx, fy: where his face sits in the picture's box (fractions of its width and of the scaled take's height). */
+type Layout = {bill: Box; zoom: number; fx: number; fy: number; melt: number; explainer: {dy: number; o: number}};
 
 const SPLIT_H = 820;
-const FULL: Layout = {bill: {x: 0, y: 0, w: 1080, h: 1920, rot: 0, border: 0}, zoom: 1.45, fy: 0.49, melt: 0, explainer: {dy: 160, o: 0}};
-const FOCUS: Layout = {bill: {x: 575, y: 296, w: 385, h: 480, rot: 2.5, border: 12}, zoom: 2.3, fy: 0.45, melt: 0, explainer: {dy: 0, o: 1}};
-const SPLIT: Layout = {bill: {x: 0, y: 0, w: 1080, h: SPLIT_H, rot: 0, border: 0}, zoom: 1, fy: 0.41, melt: 1, explainer: {dy: 0, o: 1}};
-const END: Layout = {bill: {x: 640, y: 300, w: 312, h: 390, rot: 3, border: 12}, zoom: 2.3, fy: 0.45, melt: 0, explainer: {dy: 120, o: 0}};
+const FULL: Layout = {bill: {x: 0, y: 0, w: 1080, h: 1920, rot: 0, border: 0}, zoom: 1.45, fx: 0.56, fy: 0.49, melt: 0, explainer: {dy: 160, o: 0}};
+const FOCUS: Layout = {bill: {x: 575, y: 296, w: 385, h: 480, rot: 2.5, border: 12}, zoom: 2.3, fx: 0.5, fy: 0.45, melt: 0, explainer: {dy: 0, o: 1}};
+const SPLIT: Layout = {bill: {x: 0, y: 0, w: 1080, h: SPLIT_H, rot: 0, border: 0}, zoom: 1, fx: 0.56, fy: 0.41, melt: 1, explainer: {dy: 0, o: 1}};
+const END: Layout = {bill: {x: 640, y: 300, w: 312, h: 390, rot: 3, border: 12}, zoom: 2.3, fx: 0.5, fy: 0.45, melt: 0, explainer: {dy: 120, o: 0}};
 
 const mix = (a: number, b: number, p: number) => a + (b - a) * p;
-const mixLayout = (a: Layout, b: Layout, p: number): Layout => ({
-  bill: {
-    x: mix(a.bill.x, b.bill.x, p),
-    y: mix(a.bill.y, b.bill.y, p),
-    w: mix(a.bill.w, b.bill.w, p),
-    h: mix(a.bill.h, b.bill.h, p),
-    rot: mix(a.bill.rot, b.bill.rot, p),
-    border: mix(a.bill.border, b.bill.border, p),
-  },
-  zoom: mix(a.zoom, b.zoom, p),
-  fy: mix(a.fy, b.fy, p),
-  // the melt and the print's border trade places early in the move, so there is no hard edge mid-move
-  melt: mix(a.melt, b.melt, Math.min(1, p * 2.5)),
-  explainer: {dy: mix(a.explainer.dy, b.explainer.dy, p), o: mix(a.explainer.o, b.explainer.o, p)},
-});
+const clamp01 = (v: number) => Math.min(1, Math.max(0, v));
+const mixLayout = (a: Layout, b: Layout, p: number): Layout => {
+  // a picture becoming a print gets its border (and loses the melt) early in the move; a print opening into the
+  // split keeps its border, tape and hard edges until the end, so it never floats as a fogged rectangle mid-move
+  const early = clamp01(p * 2.5);
+  const late = clamp01((p - 0.6) / 0.4);
+  return {
+    bill: {
+      x: mix(a.bill.x, b.bill.x, p),
+      y: mix(a.bill.y, b.bill.y, p),
+      w: mix(a.bill.w, b.bill.w, p),
+      h: mix(a.bill.h, b.bill.h, p),
+      rot: mix(a.bill.rot, b.bill.rot, p),
+      border: mix(a.bill.border, b.bill.border, b.bill.border > a.bill.border ? early : late),
+    },
+    zoom: mix(a.zoom, b.zoom, p),
+    fx: mix(a.fx, b.fx, p),
+    fy: mix(a.fy, b.fy, p),
+    melt: mix(a.melt, b.melt, b.melt > a.melt ? late : early),
+    explainer: {dy: mix(a.explainer.dy, b.explainer.dy, p), o: mix(a.explainer.o, b.explainer.o, p)},
+  };
+};
 
 const STEPS: {at: number; L: Layout}[] = [
   {at: BEATS.focus, L: FOCUS},
@@ -68,12 +76,15 @@ const speedAt = (t: number) => {
   return Math.abs(b.x - a.x) + Math.abs(b.y - a.y) + Math.abs(b.w - a.w) + Math.abs(b.h - a.h);
 };
 
+/** Where his face is in each kept part (x, px of the 720-wide take, measured): he shifts between takes, so each one is
+ *  framed on his face and his eyes stay put across the cuts. */
+const FACE_X = [410, 404, 405, 342];
 /** Punch-ins: each kept part has its own framing (the punchline is closer); a slow drift inside each. */
 const PUNCH = [1.0, 1.0, 1.0, 1.15];
 const DRIFT = [0.07, 0.01, 0.03, 0.03];
 
-/** The still on the end card: frame 1044 of the take (34.8 s), just after his last word: mouth closed, eyes on the lens. */
-const END_STILL = 34.8;
+/** The still on the end card: frame 1077 of the take (35.9 s), after his last word: mouth closed, eyes on the lens. */
+const END_STILL = 35.9;
 
 // The grade, measured on the footage (least squares on skin, wall, sofa, jacket, beard): skin from a red
 // rgb(206,142,114) to rgb(214,163,137); the cyan-grey wall to the page's warm white (+5 R, −2 B more in the highlights,
@@ -101,7 +112,7 @@ const GradeDefs: React.FC = () => (
  */
 const Voice: React.FC = () => <Audio src={staticFile('audio/talk-voice.wav')} />;
 
-const Take: React.FC<{i: number; box: {w: number; h: number}; zoom: number; fy: number}> = ({i, box, zoom, fy}) => {
+const Take: React.FC<{i: number; box: {w: number; h: number}; zoom: number; fx: number; fy: number}> = ({i, box, zoom, fx, fy}) => {
   const seg = SEGMENTS[i];
   const frame = useCurrentFrame();
   const len = f(seg.len);
@@ -111,7 +122,7 @@ const Take: React.FC<{i: number; box: {w: number; h: number}; zoom: number; fy: 
   const s = Math.max(box.w / 720, box.h / 1280) * zoom * (PUNCH[i] + drift);
   const W = 720 * s;
   const H = 1280 * s;
-  const left = Math.min(0, Math.max(box.w - W, box.w / 2 - 0.5 * W));
+  const left = Math.min(0, Math.max(box.w - W, fx * box.w - (FACE_X[i] / 720) * W));
   const top = Math.min(0, Math.max(box.h - H, box.h / 2 - fy * H));
   const video = (
     <Video
@@ -123,8 +134,7 @@ const Take: React.FC<{i: number; box: {w: number; h: number}; zoom: number; fy: 
     />
   );
   // once his last word is said, the end card holds a still of him, mouth closed
-  const still = f(END_STILL - seg.a);
-  return last && frame >= still ? <Freeze frame={still}>{video}</Freeze> : video;
+  return last && frame >= len ? <Freeze frame={f(END_STILL - seg.a)}>{video}</Freeze> : video;
 };
 
 const Tape: React.FC<{x: number; y: number; rot: number; o: number}> = ({x, y, rot, o}) => (
@@ -151,7 +161,7 @@ const Bill: React.FC<{L: Layout; blur: number}> = ({L, blur}) => {
   // the split melts into the paper: an oval that drops the sofa at the sides, and a long fade at the bottom
   const melt =
     L.melt > 0.01
-      ? `radial-gradient(ellipse ${100 + 60 * (1 - L.melt)}% ${118 + 60 * (1 - L.melt)}% at 50% 22%, #000 62%, rgba(0,0,0,0) 100%), linear-gradient(to bottom, #000 calc(100% - ${80 * L.melt}px), rgba(0,0,0,0) 100%)`
+      ? `radial-gradient(ellipse ${100 + 60 * (1 - L.melt)}% ${118 + 60 * (1 - L.melt)}% at 50% 22%, #000 62%, rgba(0,0,0,0) 100%), linear-gradient(to bottom, #000 calc(100% - ${24 * L.melt}px), rgba(0,0,0,0) 100%)`
       : undefined;
   return (
     <div
@@ -183,7 +193,7 @@ const Bill: React.FC<{L: Layout; blur: number}> = ({L, blur}) => {
       >
         {SEGMENTS.map((s) => (
           <Sequence key={s.i} from={f(s.at)} durationInFrames={(s.i === SEGMENTS.length - 1 ? TALK_FRAMES : f(s.at + s.len)) - f(s.at)} layout="none">
-            <Take i={s.i} box={inner} zoom={L.zoom} fy={L.fy} />
+            <Take i={s.i} box={inner} zoom={L.zoom} fx={L.fx} fy={L.fy} />
           </Sequence>
         ))}
         {/* the paper's own grain over the picture, so both are the same material */}
@@ -211,8 +221,8 @@ const HookCard: React.FC = () => {
         position: 'absolute',
         left: 64,
         top: 284,
-        width: 800,
-        padding: '14px 28px 22px',
+        width: 896,
+        padding: '14px 28px 24px',
         background: sketch.printBorder,
         boxShadow: '0 18px 40px rgba(30,42,62,0.22), 0 3px 8px rgba(30,42,62,0.10)',
         rotate: '-1deg',
@@ -220,21 +230,21 @@ const HookCard: React.FC = () => {
         translate: `0 ${24 * (1 - inn) - 40 * out}px`,
       }}
     >
-      <div style={{fontFamily: 'Caveat, cursive', fontWeight: 600, fontSize: 40, color: sketch.brassDeep, lineHeight: 1}}>{talkCopy.title}</div>
-      <div style={{fontFamily: `${SERIF}, serif`, fontWeight: 600, fontSize: 66, color: sketch.ink, lineHeight: 1.06, marginTop: 8, whiteSpace: 'nowrap'}}>
+      <div style={{fontFamily: 'Caveat, cursive', fontWeight: 600, fontSize: 46, color: sketch.brassDeep, lineHeight: 1}}>{talkCopy.title}</div>
+      <div style={{fontFamily: `${SERIF}, serif`, fontWeight: 600, fontSize: 78, color: sketch.ink, lineHeight: 1.06, marginTop: 8, whiteSpace: 'nowrap'}}>
         {talkCopy.hook1}
         <br />
         {talkCopy.hook2}
       </div>
-      <svg width={800} height={30} style={{position: 'absolute', left: 28, top: 196, overflow: 'visible'}}>
+      <svg width={896} height={30} style={{position: 'absolute', left: 28, top: 226, overflow: 'visible'}}>
         <path
-          d="M 2 12 C 130 8, 340 6, 496 4"
+          d="M 2 12 C 155 8, 400 6, 586 4"
           fill="none"
           stroke={sketch.brass}
           strokeWidth={6}
           strokeLinecap="round"
-          strokeDasharray={540}
-          strokeDashoffset={540 * (1 - keyframes(t, [8, 19], [0, 1], fmEase.draw))}
+          strokeDasharray={640}
+          strokeDashoffset={640 * (1 - keyframes(t, [8, 19], [0, 1], fmEase.draw))}
         />
       </svg>
     </div>
@@ -299,7 +309,7 @@ export const BillReelTalk: React.FC = () => {
   const L = layoutAt(t);
   const push = keyframes(t, [BEATS.end, TALK_FRAMES], [1, 1.02], fmEase.inOut);
   const explainerOut = keyframes(t, [BEATS.end, BEATS.end + 8], [1, 0], fmEase.soft);
-  const said = f(SPEECH_END);
+  const said = cue('reste', 0, 'e');
   return (
     <ReelStage>
       <GradeDefs />
@@ -313,7 +323,7 @@ export const BillReelTalk: React.FC = () => {
         <ThresholdFigure opacity={explainerOut} />
         <HookCard />
       </div>
-      {t < said + 6 && <WordCaptions centerY={1380} left={64} width={896} opacity={keyframes(t, [said - 2, said + 6], [1, 0], fmEase.soft)} />}
+      {t < said + 4 && <WordCaptions centerY={1380} left={64} width={896} opacity={keyframes(t, [said, said + 4], [1, 0], fmEase.soft)} />}
     </ReelStage>
   );
 };

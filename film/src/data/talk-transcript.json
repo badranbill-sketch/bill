@@ -7,7 +7,7 @@
   "« il n'y a presque plus rien qui reste » (recognised as « il y a place y presque plus rien qui reste »)"
  ],
  "segments": [[17.0, 19.96], [20.17, 21.12], [21.66, 29.9], [31.14, 34.8]],
- "endCard": 2.4,
+ "endCard": 1.6,
  "words": [
   {"w": "Pourquoi", "s": 3.27, "e": 3.57}, {"w": "c’est", "s": 3.57, "e": 3.72}, {"w": "important", "s": 3.75, "e": 4.05},
   {"w": "de", "s": 4.05, "e": 4.14}, {"w": "regarder", "s": 4.14, "e": 4.41}, {"w": "son", "s": 4.41, "e": 4.59},
