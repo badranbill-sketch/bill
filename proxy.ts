@@ -1,6 +1,11 @@
 import { NextRequest, NextResponse } from "next/server";
 import { timingSafeEqual } from "node:crypto";
-import { launchApproved, localReview, reviewEnabled } from "./lib/business";
+import {
+  launchApproved,
+  localReview,
+  openPreview,
+  reviewEnabled,
+} from "./lib/business";
 function equal(a: string, b: string) {
   const x = Buffer.from(a),
     y = Buffer.from(b);
@@ -16,7 +21,8 @@ export function proxy(request: NextRequest) {
   if (draft && !reviewEnabled())
     return new NextResponse("Not found", { status: 404, headers });
   const needsAuth =
-    (draft && !localReview()) || (!launchApproved() && !localReview());
+    (draft && !localReview()) ||
+    (!launchApproved() && !localReview() && !openPreview());
   if (needsAuth) {
     const user = process.env.REVIEW_USER,
       pass = process.env.REVIEW_PASSWORD;
