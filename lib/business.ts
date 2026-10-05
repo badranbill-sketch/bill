@@ -49,6 +49,12 @@ export function launchApproved() {
     Object.values(business.approvals).every(Boolean)
   );
 }
+// Owner-approved (2026-10-05): lets anyone view the site without a password
+// while approvals are pending. Search engines stay blocked (noindex, empty
+// sitemap) until launchApproved() is true. Set OPEN_PREVIEW=true in Vercel.
+export function openPreview() {
+  return process.env.OPEN_PREVIEW === "true";
+}
 export function localReview() {
   return (
     !process.env.VERCEL &&
