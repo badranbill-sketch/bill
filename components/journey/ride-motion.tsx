@@ -169,7 +169,7 @@ export function RideMotion({ children }: { children: ReactNode }) {
     const update = () => {
       frame = 0;
       const rect = section.getBoundingClientRect();
-      const run = section.offsetHeight - window.innerHeight;
+      const run = section.offsetHeight - stage.clientHeight;
       const p = clamp01(-rect.top / Math.max(1, run)) * ACTS;
       const { t, holding } = timeline(p);
       const [x, y] = pointAt(t);
@@ -245,10 +245,13 @@ export function RideMotion({ children }: { children: ReactNode }) {
       schedule();
     };
 
-    // Phones, reduced motion, and short screens (including a laptop at
-    // 200 % zoom) get still panels with the drawing beside its explanation.
+    // Respect the system preference until the visitor explicitly chooses.
+    let motionChoice: boolean | null = null;
+    const toggle = $<HTMLButtonElement>("[data-motion-toggle]");
     const still = () =>
-      motion.matches || window.innerWidth <= 760 || window.innerHeight < 520;
+      motionChoice === null
+        ? motion.matches || window.innerHeight < 520
+        : !motionChoice;
     const drawn = [
       ...words.map(({ el }) => el as SVGElement),
       ...(alts ? [alts] : []),
@@ -257,6 +260,9 @@ export function RideMotion({ children }: { children: ReactNode }) {
     const sunAt = sun?.getAttribute("transform");
     const apply = () => {
       const mode = still() ? "static" : "live";
+      if (toggle)
+        toggle.textContent =
+          mode === "live" ? toggle.dataset.stop! : toggle.dataset.play!;
       if (mode === section.dataset.mode) return;
       section.dataset.mode = mode;
       if (mode === "static") {
@@ -273,6 +279,17 @@ export function RideMotion({ children }: { children: ReactNode }) {
       size();
       update();
     };
+    const onToggle = () => {
+      const top = section.getBoundingClientRect().top + window.scrollY;
+      motionChoice = !live();
+      apply();
+      window.scrollTo({
+        top: Math.max(0, top - (narrow ? 76 : 0)),
+        behavior: "instant",
+      });
+      schedule();
+    };
+    toggle?.addEventListener("click", onToggle);
     apply();
     // A keyboard user tabbing to an act's link is taken to that act, so the
     // text and the landscape always match.
@@ -294,6 +311,7 @@ export function RideMotion({ children }: { children: ReactNode }) {
     motion.addEventListener("change", apply);
     return () => {
       alive = false;
+      toggle?.removeEventListener("click", onToggle);
       cancelAnimationFrame(frame);
       window.removeEventListener("scroll", schedule);
       window.removeEventListener("resize", onResize);

@@ -10,6 +10,7 @@ for (const lang of ["fr", "en"] as const) {
   ])
     test(`${lang} visual ${viewport.width}, landmarks and accessibility`, async ({
       page,
+      request,
     }) => {
       await page.setViewportSize(viewport);
       const errors: string[] = [];
@@ -18,12 +19,24 @@ for (const lang of ["fr", "en"] as const) {
       await page.evaluate(() => document.fonts.ready);
       await expect(page.locator("h1")).toBeVisible();
       await expect(page.locator("html")).toHaveAttribute("lang", `${lang}-CA`);
-      await expect(page.locator(".hero-person img")).toBeVisible();
-      expect(
-        await page
-          .locator(".hero-person img")
-          .evaluate((img: HTMLImageElement) => img.naturalWidth),
-      ).toBeGreaterThan(0);
+      const heroAsset = await request.get(
+        "/assets/bill-conversation-hero.webp",
+      );
+      expect(heroAsset.status()).toBe(200);
+      expect(heroAsset.headers()["content-type"]).toContain("image/webp");
+      if (viewport.width <= 900) {
+        await expect(page.locator(".hero-mobile-art img")).toBeVisible();
+        expect(
+          await page
+            .locator(".hero-mobile-art img")
+            .evaluate((img: HTMLImageElement) => img.naturalWidth),
+        ).toBeGreaterThan(0);
+      } else {
+        await expect(page.locator(".hero")).toHaveCSS(
+          "background-image",
+          /bill-conversation-hero\.webp/,
+        );
+      }
       expect(
         await page
           .locator(".hero .button")
@@ -268,17 +281,11 @@ test("missing portrait has deliberate fallback; absent guides have no download c
 }) => {
   await page.route("**/_next/image*", (route) => route.abort());
   await page.goto("/en");
-  await expect(
-    page.locator(".hero-art").getByText("Portrait temporarily unavailable"),
-  ).toBeVisible();
+  await page.goto("/en/about");
+  await expect(page.locator(".portrait-wrap .portrait-fallback")).toBeVisible();
   await expect(page.locator("a[download]")).toHaveCount(0);
   await page.setViewportSize({ width: 390, height: 844 });
-  await expect(page.locator(".hero-person .portrait-fallback")).toBeVisible();
-  expect(
-    await page
-      .locator(".hero-person .portrait-fallback")
-      .evaluate((el) => el.getBoundingClientRect().width),
-  ).toBe(48);
+  await expect(page.locator(".portrait-wrap .portrait-fallback")).toBeVisible();
 });
 test("contact: accepted only after confirmed response; no duplicate click or quiz data", async ({
   page,
