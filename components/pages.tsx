@@ -101,7 +101,14 @@ export function Home({ lang, review }: { lang: Language; review: boolean }) {
             <h1>
               <span>{c.hero}</span> <em>{c.heroAccent}</em>
             </h1>
-            <p className="lede">{c.intro}</p>
+            <p className="lede">
+              <span className="hero-intro-original">{c.intro}</span>
+              <span className="hero-intro-desktop">
+                {lang === "fr"
+                  ? "Votre épargne. Vos projets. Un plan pour les faire avancer ensemble."
+                  : "Your savings. Your plans. A plan to bring them together."}
+              </span>
+            </p>
             <div className="hero-actions">
               <MeetingLink lang={lang} />
               <Link className="text-link" href="#guide">
@@ -123,7 +130,15 @@ export function Home({ lang, review }: { lang: Language; review: boolean }) {
             </div>
           </div>
           <div className="hero-mobile-art">
-            <InkFile name="hiker" lang={lang} priority />
+            <img
+              src="/assets/bill-conversation-hero.webp"
+              alt={
+                lang === "fr"
+                  ? "Bill Badran en conversation avec une cliente"
+                  : "Bill Badran speaking with a client"
+              }
+              fetchPriority="high"
+            />
           </div>
           <figure className="hero-art">
             <InkFile name="desk" lang={lang} priority />

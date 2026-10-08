@@ -155,6 +155,21 @@ export function Ride({ lang }: { lang: Language }) {
             style={{ "--i": i } as CSSProperties}
           />
         ))}
+        <div className="ride-controls">
+          <button
+            type="button"
+            className="ride-motion-toggle"
+            data-motion-toggle=""
+            data-play={lang === "fr" ? "Voir l’animation" : "Play animation"}
+            data-stop={
+              lang === "fr"
+                ? "Voir les étapes sans animation"
+                : "View without animation"
+            }
+          >
+            {lang === "fr" ? "Voir l’animation" : "Play animation"}
+          </button>
+        </div>
         <div className="ride-stage">
           <div className="ride-window" aria-hidden="true">
             {layer(FAR_DEPTH, <FarLayer />)}

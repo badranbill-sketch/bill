@@ -34,7 +34,18 @@ for (const lang of ["fr", "en"] as const) {
       if (width <= 760) {
         await expect(page.locator("#parcours")).toHaveAttribute(
           "data-mode",
+          "live",
+        );
+        await page.locator("[data-motion-toggle]").click();
+        await expect(page.locator("#parcours")).toHaveAttribute(
+          "data-mode",
           "static",
+        );
+        await expect(page.locator(".ride-panel").first()).toBeVisible();
+        await page.locator("[data-motion-toggle]").click();
+        await expect(page.locator("#parcours")).toHaveAttribute(
+          "data-mode",
+          "live",
         );
         await page.locator(".ask-dots button").nth(2).click();
         await expect(page.locator(".ask-dots button").nth(2)).toHaveAttribute(
